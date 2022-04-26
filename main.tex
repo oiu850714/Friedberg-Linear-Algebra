@@ -1,0 +1,108 @@
+\documentclass[12pt]{book}
+\usepackage{xspace}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{systeme,mathtools}
+\usepackage{dirtytalk}
+\usepackage{array}
+
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{parskip}
+
+\usepackage{CJKutf8} % 讓我寫中文
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+\urlstyle{same}
+
+\title{Linear Algebra}
+\author{ChienChiWang}
+
+\DeclareMathOperator{\spann}{span}
+\newcommand\spanset[1]{\ensuremath\spann(#1)}
+
+\begin{document}
+\begin{CJK*}{UTF8}{bsmi}
+
+\maketitle
+
+\tableofcontents{}
+
+\theoremstyle{definition}
+\newtheorem{additional corollary}{Additional Corollary}[section]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{additional theorem}{Additional Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{additional definition}{Additional Definition}[chapter]
+\newtheorem{example}{Example}[section]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note}
+
+\theoremstyle{remark}
+
+\renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\exercisesection}{
+    \begin{center}
+        --- Exercises ---
+    \end{center}
+}
+
+\newcommand{\AXM}[1]{Axiom \ref{axm #1}}
+\newcommand{\ATHM}[1]{Additional Theorem \ref{athm #1}}
+\newcommand{\ADEF}[1]{Additional Definition \ref{adef #1}}
+\newcommand{\DEF}[1]{Definition \ref{def #1}}
+\newcommand{\LEM}[1]{Lemma \ref{lem #1}}
+\newcommand{\CORO}[1]{Corollary \ref{corollary #1}}
+\newcommand{\EXAMPLE}[1]{Example \ref{example #1}}
+\newcommand{\EXEC}[1]{Exercise \ref{exercise #1}}
+\newcommand{\RMK}[1]{Remark \ref{remark #1}}
+\newcommand{\THM}[1]{Theorem \ref{thm #1}}
+\newcommand{\SEC}[1]{Section \ref{sec #1}}
+\newcommand{\CH}[1]{Chapter \ref{ch #1}}
+
+\newcommand{\X}{\times}
+\newcommand{\FLOOR}[1]{\lfloor{#1}\rfloor}
+\newcommand{\BLUE}[1]{\textcolor{RoyalBlue}{#1}}
+\newcommand{\GREEN}[1]{\textcolor{YellowGreen}{#1}}
+\newcommand{\MAROON}[1]{\textcolor{Maroon}{#1}}
+\newcommand{\RED}[1]{\textcolor{Red}{#1}}
+
+\newcommand{\TODOREF}{} % For the reference that has not been written.
+
+\newcommand{\CONTR}{\mathcal{C}(\SET{R})}
+\newcommand{\TRACE}{\textbf{tr}}
+\newcommand{\SET}[1]{\mathbf{#1}}%
+
+\newcommand{\OF}{0_{_F}}
+\newcommand{\OV}{0_{_V}}
+\newcommand{\OW}{0_{_W}}
+\newcommand{\IF}{1_{_F}}
+\newcommand{\IV}{1_{_V}}
+\newcommand{\FRR}{\mathcal{F}(\SET{R}, \SET{R})}
+\newcommand{\toINF}{\to \infty}
+
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\LDP}{linearly dependent}
+\newcommand{\LID}{linearly independent}
+
+\input{0-precautions.tex}
+\input{1-vector-spaces.tex}
+
+\end{CJK*}
+\end{document}

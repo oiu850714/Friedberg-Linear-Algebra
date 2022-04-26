@@ -1,0 +1,697 @@
+\section{Linear Dependence and Linear Independence} \label{sec 1.5}
+
+\begin{note}
+交大莊重老師: \SEC{1.4} 是，給定一個集合，如何找包含這個集何「最小的」子空間(i.e. 就是他的\ span)；
+\SEC{1.5} 則是，給定一個子空間，如何找到一個最小的集合，這個集合的\ span 是該子空間。
+\end{note}
+
+\begin{definition} \label{def 1.6}
+A subsets \(S\) of a vector space \(V\) (over \(F\)) is called \textbf{\LDP{}} if there exist a finite number of \emph{distinct} vectors \(u_1, u_2, ..., u_n\) in \(S\) and scalars \(a_1, a_2, ..., a_n\), \textbf{not all zero}, in \(F\), such that
+\[
+    a_1 u_1 + a_2 u_2 + ... + a_n u_n = \OV.
+\]
+In this case we also say that the vectors of \(S\) are \LDP{}.
+\end{definition}
+
+\begin{additional definition} \label{adef 1.10}
+It is of course that for any vectors \(u_1, u_2, ..., u_n\), if \(a_1 = a_2 = ... = a_n = \OF\). we have \(a_1 u_1 + a_2 u_2 + ... + a_n u_n = \OV\).
+We call this the \textbf{trivial representation} of \(\OV\) as a linear combination of \(u_1, u_2, ..., u_n\).
+Thus, for a set to be \LDP{}, there must exist a \emph{nontrivial} representation of \(0\) as a linear combination of vectors in the set.
+\textbf{Consequently}, any subset of a vector space that \emph{contains the zero vector is \LDP{}}, because \(\OV = 1 \cdot \OV\) is a nontrivial representation of \(\OV\) as a linear combination of vectors in the set.
+\end{additional definition}
+
+\begin{example}
+Given the set
+\[
+    S = \{(1, 3, -4, 2), (2, 2, -4, 0), (1, -3, 2, -4), ( -1, 0, 1, 0)\},
+\]
+We have
+\[
+    4(1, 3, -4, 2) - 3(2, 2, -4, 0) + 2(1, -3, 2, -4) + 0( -1 , 0, 1, 0) = (0, 0, 0, 0).
+\]
+So by \DEF{1.6}, \(S\) is \LDP{}.
+\end{example}
+
+\begin{example}
+Similar to previous example, with vector space \(V = M_{2 \X 3}(\SET{R})\).
+\end{example}
+
+\begin{definition} \label{def 1.7}
+A subset \(S\) of a vector space that is \emph{not} \LDP{} is called \textbf{\LID{}}.
+As before: we also say that the vectors of \(S\) are \LID{}.
+\end{definition}
+
+\begin{additional theorem} \label{athm 1.15}
+The following facts about \LID{} sets are true in any vector space.
+\begin{enumerate}
+\item The empty set is \LID{}, for \LDP{} sets must be nonempty. (You cannot pick vectors in empty set, not to mention making a linear combination with nonzero coefficients.)  
+\item A set consisting of a single \emph{nonzero} vector is \LID{}.
+      For if \(\{ u \}\) is \LDP{}, then \(a u = \OV\) for some nonzero scalar \(a\).
+      And
+      \begin{align*}
+                   & a u = \OV \\
+          \implies & a^{-1} (a u ) = a^{-1} \OV = \OV \\
+          \implies & (a a^{-1}) u = \OV \\
+          \implies & 1 u = \OV \\
+          \implies & u = \OV,
+      \end{align*}
+      which is impossible.
+\item A set is \LID{} if and only if the only representations of \(\OV\) as linear combinations of the set's vectors are trivial representations.
+      This is immediately true from the definition.
+\end{enumerate}
+
+The condition in part(c) provides a useful method for determining whether a finite set is \LID{}.
+This technique is illustrated in the examples that follow.
+\end{additional theorem}
+
+\begin{example} \label{example 1.5.3}
+To prove that the set
+\[
+    S = \{(1 , 0, 0, -1), (0, 1, 0, -1), (0, 0, 1, -1), (0, 0, 0, 1)\}
+\]
+is \LID{}, we must show that the only linear combination of vectors in \(S\) that equals the zero vector is the one in which all the coefficients are zero.
+Suppose that \(a_1, a_2, a_3\), and \(a_4\) are scalars such that
+\[
+    a_1 (1, 0, 0, -1) + a_2(0, 1, 0, -1) + a_3(0, 0, 1, -1) + a_4(0, 0, 0, 1) = (0, 0, 0, 0).
+\]
+Equating the corresponding coordinates of the vectors on the left and the right sides of this equation, we obtain the following system of linear equations.
+\begin{equation*}
+\sysdelim..\systeme{
+    a_1 = 0,
+    a_2 = 0,
+    a_3 = 0,
+    -a_1 - a_2 - a_3 + a_4 = 0}
+\end{equation*}
+Clearly the only solution to this system is \(a_1 = a_2 = a_3 = a_4 = 0\), and so \(S\) is \LID{}.
+\end{example}
+
+\begin{example} \label{example 1.5.4}
+For \(k = 0, 1, ..., n\) let \(p_k(x) = x^k + x^{k+l} + ... + x^n\).
+(That is, \(p_0(x) = 1 + x + x^2 + ... + x^n, p_1(x) = x + x^2 + ... + x^n, ..., p_n(x) = x^n\).)
+The set
+\[
+    \{ p_0(x), p_1(x), ..., p_n(x) \}
+\]
+is \LID{} in \(\mathcal{P}_n(F)\).
+For if
+\[
+    a_0 p_0(x) + a_1 p_1(x) + ... + a_n p_n(x) = 0
+\]
+for some scalars \(a_0, a_1, ..., a_n \in F\), then
+\[
+    a_0 + (a_0 + a_1)x + (a_0 + a_1 + a_2)x^2 + ... + (a_0 + a_1 + ... + a_n)x^n = 0.
+\]
+Then we must have
+\begin{align*}
+                            a_0 & = 0 \\
+                      a_0 + a_1 & = 0 \\
+                a_0 + a_1 + a_2 & = 0 \\
+    a_0 + a_1 + a_2 + ... + a_n & = 0,
+\end{align*}
+Clearly the only solution to this system of linear equations is \(a_0 = a_1 = ... = a_n = 0\).
+\end{example}
+
+\begin{theorem} \label{thm 1.6}
+Let \(V\) be a vector space (over \(F\)), and let \(S_1 \subseteq S_2 \subseteq V\).
+If \(S_1\) is \LDP{}, then \(S_2\) is \LDP{}.
+\end{theorem}
+
+\begin{proof}
+Suppose \(S_1\) is \LDP{}.
+Then we can find a nontrivial representation \(\OV = a_1 v_1 + a_2 v_2 + ... + a_n v_n\) where \(a_1, ..., a_2 \in F\) and are \emph{not all zero}, and \emph{distinct} \(v_1, ..., v_n \in S_1\).
+Since \(S_1 \subseteq S_2\), in particular \(v_1, ..., v_n \in S_2\).
+Hence we have found coefficients \(a_1, a_2, ..., a_n \in F\), not all zero, and distinct \(v_1, v_2, ..., v_n \in S_2\), s.t. \(\OV = a_1 v_1 + a_2 v_2 + ... + a_n v_n\).
+Then by \DEF{1.6}, \(S_2\) is \LDP{}.
+\end{proof}
+
+\begin{corollary} \label{corollary 1.6.1}
+Let \(V\) be a vector space (over \(F\)), and let \(S_1 \subseteq S_2 \subseteq V\).
+If \(S_2\) is \LID{}, then \(S_1\) is \LID{}.
+\end{corollary}
+
+\begin{proof}
+Unwrapping the definition of \LID{}, the corollary is in fact the contrapositive of \THM{1.6}, hence is true.
+\end{proof}
+
+Now suppose that \(S\) is any \LDP{} set containing two or more vectors
+(we have shown that a set with one(single) nonzero vector is \LID{}, in \ATHM{1.15}(b)).
+Then some vector \(v \in S\) can be written as a linear combination of the other vectors in \(S\), and the subset \emph{obtained by removing \(v\) from \(S\)} has the \emph{same span} as \(S\).
+It follows that, by contrapositive, if no proper subset of \(S\) generates the span of \(S\), then \(S\) must be \LID{}.
+(Informally, if \(S\) is \LDP{}, then we can remove some \(v \in S\) s.t. \(\spann(S) = \spann(S \setminus \{ v \})\).
+Contrapositively, if for all element \(v \in S\), \(\spann(S) \ne \spann(S \setminus \{ v \})\), then \(S\) is \LID{}.)
+Another way to view these statements is given in \THM{1.7}.
+
+\begin{theorem} \label{thm 1.7}
+Let \(S\) be a \LID{} subset of a vector space \(V\) (over \(F\)), and let \(v\) be a vector in \(V\) that is \textbf{not} in \(S\) (or equivalently, \(v \in V \setminus S\)).
+Then \(S \cup \{v\}\) is \LDP{} if and only if \(v \in \spann(S)\).
+(Or equivalently, \(S \cup \{v\}\) is \LID{}{} if and only if \(v \notin \spann(S)\).)
+\end{theorem}
+
+\begin{proof}\ 
+
+\(\Longrightarrow\):
+If \(S \cup \{ v \}\) is \LDP{}, then there \emph{distinct} vectors \(u_1, u_2, ..., u_n\) in \(S \cup \{ v \}\) such that \(a_1 u_1 + a_2 u_2 + ... + a_n u_n = \OV\) for some \(a_1, a_2, ... , a_n\), not all zero.
+Since \(S\) is \LID{}, one of the \(u_i\)'s, say \(u_1\), must equal \(v\).
+(For if none of \(u_1, ..., u_n\) equal to \(v\), then all of them belong to \(S\), then since \(S\) is \LID{}, we have \(a_1 = ... = a_n = 0\), which is a contradiction.)
+Furthermore, \(a_1\) is also nonzero. (otherwise we will get contradiction again.)
+Hence \(a_1^{-1}\) exists by the field property of \(F\).
+Thus
+\begin{align*}
+             & a_1 \RED{u_1} + a_2 u_2 + ... + a_n u_n = \OV \\
+    \implies & a_1 \RED{v} + a_2 u_2 + ... + a_n u_n = \OV \\
+    \implies & a_1 v = -(a_2 u_2 + ... + a_n u_n) \\
+    \implies & v = -a_1^{-1}(a_2 u_2 + ... + a_n u_n) \\
+    \implies & v = -(a_1^{-1} a_2) u_2 - ... - (a_1^{-1} a_n) u_n.
+\end{align*}
+In particular, \(v\) is a linear combination of \(u_2, ..., u_n \in S\), hence \(v \in \spann(S)\).
+
+\(\Longleftarrow\):
+Suppose \(v \in \spann(S)\).
+Then there exist \emph{distinct} vectors \(v_1, v_2, ..., v_m \in S\)
+(WLOG; if \(v_i = v_j\) then just combining them by adding the corresponding coefficients) 
+and scalars \(b_1, b_2, ..., b_m \in F\) such that \(v = b_1 v_1 + b_2 v_2 + ... + b_m v_m\).
+Therefore
+\begin{align*}
+    \OV & = v + (-1)v \\
+      & = b_1 v_1 + b_2 v_2 + ... + b_m v_m + (-1)v \MAROON{(1)}.
+\end{align*}
+    
+Note that \(v \ne v_i\) for \(i = 1, 2, ..., m\) because \(v \notin S\).
+Hence the coefficient of \(v\) in the linear combination \MAROON{(1)} is really \(-1\), nonzero.
+so the linear combination is \emph{nontrivial}.
+So we can find distinct \(v_1, v_2, ..., v_m, v \in S \cup \{ v \}\), and coefficient \(b_1, b_2, ..., b_m, -1\), not all zero, to construct a nontrivial linear combination of \(\OV\).
+Hence by \DEF{1.6}, \(S \cup \{ v \}\) is \LDP{}.
+\end{proof}
+
+\begin{note}
+Linearly \emph{independent} generating sets are investigated in detail in \SEC{1.6}.
+\end{note}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 1.5.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item If \(S\) is a \LDP{} set, then \emph{each} vector in \(S\) is a linear combination of other vectors in \(S\).
+\item Any set containing the zero vector is \LDP{}.
+\item The empty set is \LDP{}.
+\item Any subset of \LDP{} sets is \LDP{}.
+\item Any subset of \LID{} sets is \LID{}.
+\item If \(a_1 x_1 + a_2 x_2 + ... + a_n x_n = \OV\) and \(x_1, x_2, ..., x_n\) are \LID{}, then all the scalars \(a_i\) are zero.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}\ 
+
+\begin{enumerate}
+\item False; The set \(\{(1, 0, 0,), (0, 0, 1), (0, 0, 2)\} \in \SET{R}^3\) trivially is \LDP{} but \((1, 0, 0)\) is \emph{not} a linear combination of \((0, 0, 1)\) and \((0, 0, 2)\).
+      So we can just conclude \emph{some} vector in a \LDP{} set is a linear combination of other vectors in the set.
+\item True; See the consequence of \ADEF{1.10}.
+\item False; see \ATHM{1.15}(a).
+\item False.
+
+    \(\{(1, 0, 0,), (0, 0, 1), (0, 0, 2)\} \in \SET{R}^3\) trivially is \LDP{}, but \(\{(1, 0, 0,), (0, 0, 1)\} \in \SET{R}^3\) trivially is \LID{}.
+\item True by \CORO{1.6.1}.
+\item True by \DEF{1.7}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.2}
+Calculation problems. Skip.
+\end{exercise}
+
+\begin{exercise} \label{exercise 1.5.3}
+In \(M_{3 \X 2}(F)\), prove that the set
+\[
+\Bigg\{
+    \begin{pmatrix}
+        1 & 1 \\
+        0 & 0 \\
+        0 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 & 0 \\
+        1 & 1 \\
+        0 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 & 0 \\
+        0 & 0 \\
+        1 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+        1 & 0 \\
+        1 & 0 \\
+        1 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 & 1 \\
+        0 & 1 \\
+        0 & 1
+    \end{pmatrix}
+\Bigg\}
+\]
+is \LDP{}.
+\end{exercise}
+
+\begin{proof}
+We have nontrivial linear combination:
+\[
+    \begin{pmatrix}
+        0 & 0 \\
+        0 & 0 \\
+        0 & 0
+    \end{pmatrix}
+    = 1 \begin{pmatrix}
+        1 & 1 \\
+        0 & 0 \\
+        0 & 0
+    \end{pmatrix}
+    + 1 \begin{pmatrix}
+        0 & 0 \\
+        1 & 1 \\
+        0 & 0
+    \end{pmatrix}
+    + 1 \begin{pmatrix}
+        0 & 0 \\
+        0 & 0 \\
+        1 & 1
+    \end{pmatrix}
+    - 1 \begin{pmatrix}
+        1 & 0 \\
+        1 & 0 \\
+        1 & 0
+    \end{pmatrix}
+    - 1 \begin{pmatrix}
+        0 & 1 \\
+        0 & 1 \\
+        0 & 1
+    \end{pmatrix}
+\]
+So the set is \LDP{}
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.4}
+In \(F^n\), let \(e_j\) denote the vector whose \(j\)th coordinate is \(1\) and whose other coordinates are \(0\).
+Prove that \( \{ e_1, e_2, ..., e_n \} \) is \LID{}.
+\end{exercise}
+
+\begin{proof}
+Suppose \(\OV = a_1 e_1 + a_2 e_2 + ... + a_n e_n\).
+Then we have
+\begin{align*}
+             & a_1 (1, 0, ..., 0) + a_2 (0, 1, ..., 0) + ... + a_n(0, ..., 0) = (0, 0, ..., 0) \\
+    \implies & (a_1, 0, ..., 0) + (0, a_2, ..., 0) + ... + (0, 0, ..., a_n) = (0, 0, ..., 0) \\
+    \implies & (a_1, a_2, ..., a_n) = (0, 0, ..., 0) \\
+    \implies & a_1 = a_2 = ... = a_n = 0.
+\end{align*}
+So we only have trivial combination to represent \(\OV\), hence \( \{ e_1, e_2, ..., e_n \} \) is \LID{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.5}
+Show that the set \(\{ 1, x, x^2, ..., x^n \}\) is \LID{} in \(\mathcal{P}_n(F)\).
+\end{exercise}
+
+\begin{proof}
+Similar to \EXEC{1.5.4}, skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.6}
+Similar to previous exercises, skip.
+\end{exercise}
+
+\begin{exercise} \label{exercise 1.5.7}
+Recall from \EXEC{1.3.3} that the set of diagonal matrices in \(M_{2 \X 2}(F)\) is a subspace.
+Find a \LID{} set that generates this subspace.
+\end{exercise}
+
+\begin{proof}
+\[
+\bigg\{
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0 & 0 \\
+        0 & 1
+    \end{pmatrix}
+\bigg\}
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.8}
+Let \(S = \{(1, 1, 0), (1, 0, 1), (0, 1, 1)\}\) be a subset of the vector space \(F^3\).
+\begin{enumerate}
+\item Prove that if \(F = \SET{R}\), then \(S\) is \LID{}.
+\item Prove that if \(F\) has \emph{characteristic two}(textbook page 549), then \(S\) is \LDP{}.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Part(a) is calculation problem, skip.
+For part(b),
+\begin{align*}
+    (0, 0, 0) & = 1(0, 0, 0) & \text{by page 549(or 549, example 4)} \\
+              & = 1(1 + 1, 1 + 1, 1 + 1) & \text{same} \\
+              & = 1(1, 1, 0) + 1(1, 0, 1) + 1(0, 1, 1) & \text{same}
+\end{align*}
+So we find a nontrivial combination of \((0, 0, 0)\), so the subset \(S = \{(1, 1, 0), (1, 0, 1), (0, 1, 1)\}\) of \(F^3\) with \(F\) having characteristic two is \LDP{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.9}
+Let \(u\) and \(v\) be \emph{distinct} vectors in a vector space \(V\). (over \(F\))
+Show that \(\{ u, v \}\) is \LDP{} if and only if \(u\) (or \(v\)) is a multiple of the other.
+\end{exercise}
+
+\begin{proof}\ 
+
+\(\Longrightarrow\):
+Suppose \(\{ u, v \}\) is \LDP{}.
+Then there are two cases: one of them is zero vector, or both of them are not zero vector.
+If one of them is zero vector, then by the consequence of \ADEF{1.10}, \(\{ u, v \}\) is \LDP{}.
+
+So suppose both of them are not zero vector.
+Then we must take \emph{both} \(u, v\) to get a nontrivial combination of \(\OV\). (Otherwise we get something like \(a u = \OV \land a \ne \OF \implies u = a^{-1} \OV = \OV\), a contradiction.)
+So we have \(\OV = a_1 u + a_2 v\), both \(a_1, a_2\) are not zero;
+and that implies \(u = -(a_2/a_1)v\), so one is a multiple of the other.
+
+\(\Longleftarrow\):
+Suppose \(u\) is a multiple of \(v\).
+Again if one of them is zero vector, them \(\{ u, v \}\) is \LDP{}.
+So suppose both \(u, v\) are not zero vector.
+Then we have \(u = a v\) where \(a \in F\) and \(a \ne 0\) (otherwise \(u\) is again equal to zero vector, a contradiction).
+And that implies \(\OV = a v - u\), so we find a nontrivial combination of \(\OV\) from the set \(\{u, v\}\), hence \(\{ u, v \}\) is \LDP{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.10}
+Give an example of three linearly \emph{dependent} vectors in \(\SET{R}^3\) such that none of the three is a multiple of another.
+\end{exercise}
+
+\begin{proof}
+Example: \(\{ (1, 0, 0), (0, 1, 0), (-1, -1, 0) \}\).
+And we have that none of the three is a multiple of another and they are dependent since \((0, 0, 0) = 1(1, 0, 0) + 1(0, 1, 0) + 1(-1, -1, 0)\).
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.11}
+Let \(S = \{ u_1, u_2, ..., u_n \}\) be a \LID{} subset of a vector space \(V\) over the field \(Z_2\).
+(See textbook page 549.)
+How many vectors are there in \(\spann(S)\)?
+Justify your answer.
+\end{exercise}
+
+\begin{proof}
+Since the filed is \(Z_2\), we can only use \(0\) or \(1\) as coefficients for each vector \(u_1, ..., u_2\).
+So in total there are \(2^n\) \emph{different} linear combinations in \(\spann(S)\).
+But by \EXEC{1.4.16} (which in fact has linear independence as hypothesis), these linear combinations must \emph{not} equal to each other, otherwise there exists a vector \(v \in \spann(S)\) which can be represented as two different linear combinations, contradicting \EXEC{1.4.16}.
+So the set \(\spann(S)\) really has \(2^n\) different elements.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.12}
+Prove \THM{1.6} and its corollary.
+\end{exercise}
+
+\begin{proof}
+See \THM{1.6} and \CORO{1.6.1}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.13}
+Let \(V\) be a vector space over a field of characteristic not equal to two.
+\begin{enumerate}
+\item Let \(u\) and \(v\) be distinct vectors in \(V\).
+      Prove that \(\{ u, v \}\) is \LID{} if and only if \(\{ u + v, u - v\}\) is \LID{}.
+\item Let \(u, v\), and \(w\) be \emph{distinct} vectors in \(V\).
+      Prove that \(\{ u, v, w \}\) is \LID{} if and only if \(\{ u + v, u + w, v + w \}\) is \LID{}.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}\ 
+
+\begin{enumerate}
+\item
+\(\Longrightarrow\):
+    Suppose \(\{ u, v \}\) is \LID{}. \MAROON{(1)}
+    And suppose \(a_1 (u + v) + a_2 (u - v) = \OV\).
+    Then
+    \begin{align*}
+                 & a_1 (u + v) + a_2 (u - v) = \OV \\
+        \implies & (a_1 + a_2) u + (a_1 - a_2) v = \OV \\
+        \implies & a_1 + a_2 = 0 \land a_1 - a_2 = 0 & \text{by \MAROON{(1)}} \\
+        \implies & a_1 = 0 \land a_2 = 0 & \text{just solving equation}
+    \end{align*}
+    Hence \(\{ u + v, u - v \}\) is \LID{}.
+
+\(\Longleftarrow\):
+    Suppose \(\{ u + v, u - v\}\) is \LID{}. \MAROON{(2)}
+    And suppose \(a_1 u + a_2 v = \OV\).
+    \begin{align*}
+                 & a_1 u + a_2 v = \OV \\
+        \implies & \frac{a_1 + a_1}{2} u + \frac{a_2 + a_2}{2} v = \OV & \text{of course} \\
+        \implies & \frac{a_1 + a_2}{2} (u + v) + \frac{a_1 - a_2}{2} (u - v) = \OV. & \text{\RED{tricky} but of course}
+    \end{align*}
+    And by \MAROON{(2)}, \(\frac{a_1 + a_2}{2} = 0 \land \frac{a_1 - a_2}{2} = 0\), which implies \(a_1 + a_2 = 0 \land a_1 - a_2 = 0\);
+    and solving equations, we have \(a_1 = 0 \land a_2 = 0\).
+    Hence \(\{ u, v \}\) is \LID{}.
+
+\item
+\(\Longrightarrow\):
+    Suppose \(\{ u, v, w \}\) is \LID{}. \MAROON{(3)}
+    And suppose \(a_1 (u + v) + a_2 (u + w) + a_3 (v + w) = \OV\).
+    Then
+    \begin{align*}
+                 & a_1 (u + v) + a_2 (u + w) + a_3 (v + w) = \OV \\
+        \implies & (a_1 + a_2) u + (a_1 + a_3) v + (a_2 + a_3) w = \OV \\
+        \implies & a_1 + a_2 = a_1 + a_3 = a_2 + a_3 = 0 & \text{by \MAROON{(3)}} \\
+        \implies & a_1 = a_2 = a_3 = 0 & \text{just solving equation}
+    \end{align*}
+    Hence \(\{ u + v, u + w, v + w \}\) is \LID{}.
+
+\(\Longleftarrow\):
+    Suppose \(\{ u + v, u + w, v + w \}\) is \LID{}. \MAROON{(4)}
+    And suppose \(a u + a v + a w = \OV\).
+    Then (\RED{again tricky part}) rearranging equations, we have
+    \[
+        \frac{a + b - c}{2} (u + v) + \frac{a - b + c}{2} (u + w) + \frac{-a + b + c}{2} (v + w) = \OV.
+    \]
+    And by \MAROON{(4)}, we have \(\frac{a + b - c}{2} = \frac{a - b + c}{2} = \frac{-a + b + c}{2} = 0\).
+    Solving equations we have \(a = b = c = 0\).
+    Hence \(\{ u, v, w \}\) is \LID{}
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+\TODOREF{} Apart from using (tricky) heuristic to find the nasty coefficient,
+the above exercise related to \emph{matrix inverse};
+You can go back to this exercise when you learn what is the inverse of a matrix and the ``if and only if'' condition about the existence of matrix inverse. (i.e. the matrix composed of \LID{} vectors has inverse.)
+\end{note}
+
+\begin{exercise} \label{exercise 1.5.14}
+Prove that a set \(S\) is \LDP{} if and only if \(S = \{ \OV \}\) or there exist \emph{distinct} vectors \(v, u_1, u_2, ..., u_n\) in \(S\) such that \(v\) is a linear combination of \(u_1, u_2, ..., u_n\).
+\end{exercise}
+
+\begin{proof}
+For \(S = \{ \OV \}\), it had been shown in the consequence of \ADEF{1.10}.
+
+\(\Longrightarrow\):
+Now suppose \(S\) is \LDP{}
+Then by \DEF{1.6} there exists nontrivial representation \(a_1 v_1 + a_2 v_2 + ... + a_n v_n = \OV\) \MAROON{(1)}, where \(a_i\) not all zeros and \(v_i\) are \emph{distinct}.
+WLOG, suppose \(a_1 \ne 0\), hence \(a_1^{-1}\) exists.
+Then
+\begin{align*}
+             & a_1 v_1 + a_2 v_2 + ... + a_n v_n = \OV & \text{from \MAROON{(1)}} \\
+    \implies & a_1 v_1 = -(a_2 v_2 + ... + a_n v_n) \\
+    \implies & v_1 = -a_1^{-1} a_2 v_2 - ... - a_1^{-1} a_n v_n.
+\end{align*}
+So we have found distinct vectors \(v_1, v_2, ..., v_n\) in \(S\) s.t. \(v_1\) is a linear combination of vectors \(v_2, ..., v_n\) is \(S\), as desired.
+
+\(\Longleftarrow\):
+Now suppose there exist \emph{distinct} vectors \(v, u_1, u_2, ..., u_n\) in \(S\) such that \(v\) is a linear combination of \(u_1, u_2, ..., u_n\).
+Then we have \(v = a_1 u_1 + a_2 u_2 + ... + a_n u_n\), or \(v - a_1 u_1 - a_2 u_2 - ... - a_n u_n = \OV\).
+Then the coefficient of the vector \(v\) in this linear combination of \(\OV\) is really \(1\) since \(u_1, ..., u_n\) are not equal to \(v\).
+Hence we have found a nontrivial linear combination of \(\OV\) using vectors \(v, u_1, u_2, ..., u_n\) in \(S\).
+Hence by \DEF{1.6}, \(S\) is \LDP{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.15}
+Let \(S = \{ u_1, u_2, ..., u_n \}\) be a finite set of vectors.
+Prove that \(S\) is \LDP{} if and only if \(u_1 = \OV\) or \(u_{k + 1} \in \spann(\{ u_1, u_2, ..., u_k \})\)
+for some \(k\) (\(1 \le k\ \RED{<}\ n\)).
+\end{exercise}
+
+\begin{proof}
+We skip the case when \(S\) contain zero vector, since it is the consequence in \ADEF{1.10}.
+
+\(\Longrightarrow\):
+So suppose \(S\) is \LDP{}{}.
+Then by \EXEC{1.5.14}, there exist \emph{distinct} vectors \(v, v_1, v_2, ..., v_k\) in \(S\) such that \(v\) is a linear combination of \(v_1, v_2, ..., v_k\).
+
+That is, \(v \in \spann(\{ v_1, v_2, ..., v_k \})\).
+Since all of \(v, v_1, v_2, ..., v_k\) are different and belong to \(S\), and \(S\) has \(n\) elements, we have \(k + 1 \le n\), where \(k + 1\) is the number of these vectors.
+In particular, \(k < n\).
+So in particular we can just relabel \(v\) as \(u_{k + 1}\) and \(v_1, v_2, ..., v_k\) as \(u_1, u_2, ..., u_k\), as desired.
+
+\(\Longleftarrow\):
+Suppose \(u_{k + 1} \in \spann(\{ u_1, u_2, ..., u_k \})\).
+
+Then in particular we have distinct vectors \(u_{k + 1}, u_1, u_2, ..., u_k\) in \(S\) s.t. \(u_{k + 1}\) is a linear combination of \(u_1, u_2, ..., u_k\).
+Again by \EXEC{1.5.14}, \(S\) is \LDP{}{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.16}
+Prove that a set \(S\) of vectors is \LID{} if and only if each finite subset of \(S\) is \LID{}.
+\end{exercise}
+
+\begin{proof}
+\(\Longrightarrow\):
+Suppose \(S\) is \LID{}.
+Then by \CORO{1.6.1}, any subset of \(S\) is \LID{}.
+
+\(\Longleftarrow\):
+Suppose Any subset of \(S\) is \LID{}.
+Then in particular, \(S\) is a subset of \(S\), so \(S\) is \LID{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.17}
+Let \(M\) be a square upper triangular matrix (see \ADEF{1.7}) with \emph{nonzero} diagonal entries.
+Prove that the columns of \(M\) are \LID{}.
+\end{exercise}
+
+\begin{proof}
+Let arbitrary \(M \in M_{n \X n}(F)\) for some natural number \(n\).
+Then let \(C_i\) be the \(i\)th column vector of \(M\) for all \(1 \le i \le n\).
+And suppose
+\[
+    a_1 C_1 + a_2 C_2 + ... + a_n C_n = \begin{bmatrix}
+        0 \\
+        0 \\
+        \vdots \\
+        0
+    \end{bmatrix} \MAROON{(1)}
+\]
+Then we have
+\[
+\begin{aligned}
+a_{1} C_{1, 1} + a_{2} C_{1, 2} + a_{3} C_{1, 3} + \ldots + a_{n-1} C_{1, n-1} + a_{n} C_{1, n} & = 0 \\
+                 a_{2} C_{2, 2} + a_{3} C_{2, 3} + \ldots + a_{n-1} C_{2, n-1} + a_{n} C_{2, n} & = 0 \\
+                                  a_{3} C_{3, 3} + \ldots + a_{n-1} C_{3, n-1} + a_{n} C_{3, n} & = 0 \\
+                                                                                         \vdots & \\
+                                                            a_{n-1} C_{n-1, n-1} + a_{n} C_{n-1, n} & = 0 \\
+                                                                                 a_{n} C_{n, n} & = 0
+\end{aligned}
+\]
+where \(C_{i,j}\) is the \(C_j\)'s \(i\)th component, that is, \(M_{ij}\).
+For the last equation, \(C_{n,n}\) is nonzero since it is diagonal entry, hence (by zero product property) we get \(a_n = 0\).
+And (informally) inductively, we get \(a_{n - 1} = a_{n - 2} = ... = a_1 = 0\).
+Hence from \MAROON{(1)} the columns \(C_1, C_2, ..., C_n\) of \(M\) are \LID{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.18}
+Let \(S\) be a set of nonzero polynomials in \(\mathcal{P}(F)\) such that no two have the same degree. 
+Prove that \(S\) is \LID{}.
+\end{exercise}
+
+\begin{proof}
+It is in fact similar to \EXEC{1.5.17}, skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.19}
+Prove that if \(\{ A_1, A_2, ..., A_k \}\) is a \LID{} subset of \(M_{n \X n}(F)\), then \(\{ A^\top_1, A^\top_2, ..., A^\top_k \}\) is also \LID{}.
+\end{exercise}
+
+\begin{proof}
+Suppose \(\{ A_1, A_2, ..., A_k \}\) is \LID{}. \MAROON{(1)}.
+We have to show \(\{ A^\top_1, A^\top_2, ..., A^\top_k \}\) is also \LID{}.
+So suppose \(a_1 A^\top_1 + a_2 A^\top_2 + ... + a_n A^\top_n = O_{n \X n}\) \MAROON{(2)}.
+Then
+\begin{align*}
+             & a_1 A^\top_1 + a_2 A^\top_2 + ... + a_n A^\top_n = O_{n \X n} \\
+    \implies & (a_1 A^\top_1 + a_2 A^\top_2 + ... + a_n A^\top_n)^\top = O_{n \X n}^\top = O_{n \X n} \\
+    \implies & a_1 (A^\top_1)^\top + a_2 (A^\top_2)^\top + ... + a_n (A^\top_n)^\top = O_{n \X n} & \text{by \ATHM{1.2}(1) and induction} \\
+    \implies & a_1 A_1 + a_2 A_2 + ... + a_n A_n = O_{n \X n}. & \text{by \ATHM{1.2}(2)}
+\end{align*}
+Then by \MAROON{(1)}, we have \(a_1 = a_2 = ... = a_n = 0\).
+So by \MAROON{(2)}, \(\{ A^\top_1, A^\top_2, ..., A^\top_k \}\) is also \LID{}, as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.20}
+Let \(f, g \in \FRR\) be the functions defined by \(f(t) = \me^{rt}\) and \(g(t) = \me^{st}\), where \(r \ne s\) \BLUE{(1)}.
+Prove that \(f\) and \(g\) are \LID{} in \(\FRR\).
+\end{exercise}
+
+\begin{proof}
+We prove by contradiction.
+Suppose for the sake of contradiction that \(f, g\) are \LDP{} \MAROON{(1)}.
+Then by \EXEC{1.4.14}, \(f = kg\) for some \(k \in \SET{R}\) \MAROON{(2)}.
+That is, by definition of equality and scalar multiplication of functions, \(f(t) = kg(t)\) for all \(t \in \SET{R}\).
+And in particular, \(f(0) = kg(0)\).
+That is, \(\me^{r \X 0} = k \me^{s \X 0}\), which implies \(1 = k \X 1\), so \(k\) must be \(1\).
+So by \MAROON{(2)} we have \(f = 1 \cdot g = g\);
+that is, \(\me^{rt} = \me^{st}\).
+But in particular for \(t = 1\), \(\me^r = \me^s\), hence by property of exponential function (i.e. exponential function is \emph{one-to-one}), we have \(r = s\), which contradicts \BLUE{(1)}.
+So the supposition \MAROON{(1)} is false, so \(f, g\) are \LID{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 1.5.21}
+Let \(S_1\) and \(S_2\) be \emph{disjoint} subset of vector space \(V\) and \(S_1\), \(S_2\) are \LID{}. 
+Prove that \(S_1 \cup S_2\) is linearly \emph{dependent} if and only if \(\spann(S_1) \cap \spann(S_2) \ne \{ \OV \}\).
+\end{exercise}
+
+\begin{proof}
+\(\Longrightarrow\):
+Suppose \(S_1 \cup S_2\) is \LDP{}.
+Then we can represent \(\OV\) with nontrivial combinations using some of \(S_1 \cup S_2\)'s vector;
+also, we \textbf{must} use both \(S_1\)'s and \(S_2\)'s vector.
+For WLOG if we just use \(S_1\)'s vector as a nontrivial representation of \(\OV\), then that implies \(S_1\) is \LDP{}, which contradicts that \(S_1\) is \LID{}.
+So we have
+\[
+    \OV = a_1 v_1 + a_2 v_2 + ... + a_n v_n + b_1 u_1 + b_2 u_2 + ... + b_m u_m, \MAROON{(1)}
+\]
+where \(a_1, ..., a_n, b_1, ..., b_n\) are not all zero, and \(v_1, ..., v_n \in S_1\), \(u_1, ..., u_m \in S_2\).
+Also notice that \(a_1, ..., a_n\) also cannot be all zero, otherwise \MAROON{(1)} becomes \(\OV = b_1 u_1 + b_2 u_2 + ... + b_m u_m\), which means \(S_2\) is \LDP{}, again a contradiction;
+similarly, \(b_1, ..., b_m\) cannot be all zero.
+So from \MAROON{(1)}, we have
+\[
+    a_1 v_1 + a_2 v_2 + ... + a_n v_n = - b_1 u_1 - b_2 u_2 - ... - b_m u_m, \MAROON{(2)}
+\]
+By definition of span, \(a_1 v_1 + ... + a_n v_n \in \spann(S_1)\) and \(-b_1 u_1 - ... - b_m u_m \in \spann(S_2)\).
+And by the equation \MAROON{(2)}, that means \(a_1 v_1 + ... + a_n v_n \in \spann(S_2)\), so \(a_1 v_1 + ... + a_n v_n \in \spann(S_1) \cap \spann(S_2)\).
+Also, again \(a_1 v_1 + a_2 v_2 + ... + a_n v_n\) must not equal to \(\OV\), otherwise we again get a nontrivial combination of \(\OV\) using \(S_1\)'s vector.
+So we find a \emph{nonzero} vector in \(\spann(S_1) \cap \spann(S_2)\), so \(\spann(S_1) \cap \spann(S_2)\) -- which must be a subspace by \THM{1.4} -- is not equal to the subspace \(\{ \OV \}\).
+
+\(\Longleftarrow\):
+Suppose \(\spann(S_1) \cap \spann(S_2) \ne \{ \OV \}\).
+Again by \THM{1.4} \(\spann(S_1) \cap \spann(S_2)\) is a subspace, but now that it is not equal to \(\{ \OV \}\), we can pick a nonzero vector \(v\) from the set.
+And in particular, \(v \in \spann(S_1)\) and \(v \in \spann(S_2)\).
+So by definition of span,
+\[
+    v = a_1 v_1 + a_2 v_2 + ... + a_n v_n = b_1 u_1 + b_2 u_2 + ... + b_m u_m, \MAROON{(3)}
+\]
+where we have \(v_1, ..., v_n \in S_1\) and \(u_1, ..., u_m \in S_2\), where these vectors are all distinct, and \(a_1, ..., a_n\), not all zero (otherwise \(v\) is zero vector) and \(b_1, ..., b_n\), not all zero(similarly).
+Then from \MAROON{(3)} we have
+\[
+    \OV = a_1 v_1 + a_2 v_2 + ... + a_n v_n - b_1 u_1 - b_2 u_2 - ... - b_m u_m,
+\]
+where \(v_1, ..., v_n, u_1, ..., u_m \in S_1 \cup S_2\) all distinct and \(a_1, ... a_n, b_1, ..., b_m\) not all zero.
+So we have a nontrivial combination of \(\OV\) using \(S_1 \cup S_2\)'s vectors.
+So \(S_1 \cup S_2\) is \LDP{}.
+\end{proof}
+
+\begin{additional theorem} \label{athm 1.16}
+This is the placeholder theorem for \EXEC{1.5.9}:
+\(\{ u, v \}\) is \LDP{} if and only if \(u\) (or \(v\)) is a multiple of the other.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 1.17}
+This is the placeholder theorem for
+
+\BLUE{(1)} \EXEC{1.5.14},
+
+\BLUE{(2)} \EXEC{1.5.15},
+
+\BLUE{(3)} \EXEC{1.5.16},
+where all of these exercises show the if and only if condition for a subset to be \LDP{}(or \LID{}).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 1.18}
+This is the placeholder theorem for \EXEC{1.5.21}, which seems cool: The union of two disjoint \LID{} subsets is \LDP{}, if they both can generate the same nonzero vectors.
+\end{additional theorem}

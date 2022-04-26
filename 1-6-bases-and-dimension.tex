@@ -1,0 +1,675 @@
+\section{Bases and Dimension} \label{sec 1.6}
+
+\begin{note}
+注意，Bases 是\ Basis 的複數。
+\end{note}
+
+We saw in \SEC{1.5} that if \(S\) is a generating set for a subspace \(W\) (i.e. \(\spann(S) = W\)) and no \emph{proper} subset of \(S\) is a generating set for \(W\), then \(S\) must be \LID{}.
+A \LID{} generating set for \(W\) possesses a very useful property - every vector in \(W\) can be \emph{expressed in one and only one way} as a linear combination of the vectors in the generating set.
+(This property is proved below in \THM{1.8}; also see some related \EXEC{1.4.16})
+It is this property that makes \LID{}
+generating sets the \emph{building blocks} of vector spaces.
+
+\begin{definition} \label{def 1.8}
+A \textbf{basis} \(\beta\) for a vector space \(V\) is a \BLUE{(1)} \LID{} subset of \(V\) \BLUE{(2)} that generates \(V\).
+If \(\beta\) is a basis for \(V\), we also say that the
+\emph{vectors of} \(\beta\) form a basis for \(V\).
+\end{definition}
+
+\begin{example} \label{example 1.6.1}
+Recalling that \(\spann(\emptyset) = \{ \OV \}\) (by \DEF{1.4}) and \(\emptyset\) is \LID{} (by \ATHM{1.15}(a)), we see that \(\emptyset\) is a basis for the zero vector space.
+\end{example}
+
+\begin{example} \label{example 1.6.2}
+In \(F^n\), let \(e_1 = (1, 0, 0, ..., 0), e_2 = (0, 1, 0, ..., 0), ..., e_n = (0, 0, ..., 0, 1)\);
+
+\(\{ e_1, e_2, ..., e_n \}\) is readily seen to be a basis(\LID{} by \EXEC{1.5.4}, generating set of \(F^n\) by \EXEC{1.4.7}) for \(F^n\) and is called the \textbf{standard basis} for \(F^n\).
+\end{example}
+
+\begin{example} \label{example 1.6.3}
+In \(M_{m \X n}(F)\), let \(E_{ij}\) denote the matrix whose only nonzero entry is a \(1\) in the \(i\)th row and \(j\)th column.
+Then \(\{ E_{ij} : 1 \le i \le m, 1 \le j \le n \}\) is a (standard?) basis for \(M_{m \X n}(F)\).
+\end{example}
+
+\begin{example} \label{example 1.6.4}
+In \(\mathcal{P}_n(F)\), the set \(\{ 1, x, x^2, ..., x^n \}\) is a basis.
+We call this basis the \textbf{standard basis} for \(\mathcal{P}_n(F)\).
+\end{example}
+
+\begin{additional definition} \label{adef 1.11}
+A placeholder for the meaning of \textbf{standard basis} of various vector spaces, \(F^n\), \(M_{m \X n}(F)\), \(\mathcal{P}_n(F)\).
+\end{additional definition}
+
+\begin{example} \label{example 1.6.5}
+In \(\mathcal{P}(F)\), the set \(\{1, x, x^2, ... \}\) is a basis.
+\end{example}
+
+\begin{remark} \label{remark 1.6.1}
+Observe that \EXAMPLE{1.6.5} shows that a basis (set) \emph{need not be finite}.
+In fact, later in this section it is shown that no basis for \(\mathcal{P}(F)\) can be finite.
+Hence \emph{not} every vector space has a finite basis.
+\end{remark}
+
+The next theorem, which is used frequently in \CH{2}, establishes the most significant property of a basis.
+
+\begin{theorem} \label{thm 1.8}
+Let \(V\) be a vector space and \(u_1, u_2, ..., u_n\) be distinct vectors in \(V\).
+Then \(\beta = \{ u_1, u_2, ..., u_n \}\) is a basis for \(V\) if and only if each \(v \in V\) can be \textbf{uniquely} (i.e. one and only one) expressed as a linear combination of vectors of \(\beta\), that is, can be expressed in the form
+\[
+    v = a_1 u_1 + a_2 u_2 + ... + a_n u_n
+\]
+for unique scalars \(a_1, a_2, ..., a_n\).
+\end{theorem}
+
+\begin{proof}\ 
+
+\(\Longrightarrow\):
+Let \(\beta\) be a basis for \(V\).
+Then by \DEF{1.8}, \(\spann(\beta) = V\) and \(\beta\) is \LID{}.
+Then let arbitrary \(v \in V\).
+Thus \(v\) is a linear combination of the vectors of \(\beta\).
+(Hence the existence part is proved.)
+Now we prove the combination is unique.
+Suppose that
+\[
+    v = a_1 u_1 + a_2 u_2 + ... + a_n u_n \text{ and } v = b_1 u_1 + b_2 u_2 + ... + b_n u_n. \MAROON{(1)}
+\]
+Then from \MAROON{(1)} we have
+\begin{align*}
+    \OV & = v - v \\
+        & = a_1 u_1 + ... + a_n u_n - (b_1 u_1 + ... + b_n u_n) & \text{by \MAROON{(1)}} \\
+        & = (a_1 - b_1) u_1 + ... + (a_n - b_n) u_n.
+\end{align*}
+But since \(\beta\) is \LID{}, we have \(a_1 - b_1 = a_2 - b_2 = ... = a_n - b_n = 0\).
+Hence \(a_1 = b_1, a_2 = b_2, ..., a_n = b_n\), hence the linear combination is unique.
+
+\(\Longleftarrow\):
+Suppose any \(v \in V\) can be uniquely represented by vectors in \(\beta\).
+Then in particular, this means \(V \subseteq \spann(\beta)\), hence \(V = \spann(\beta)\) (another direction is automatically true).
+
+Also in particular, \(\OV\) can be uniquely represented:
+suppose \(\OV = a_1 u_1 + a_2 u_2 + ... + a_n u_n\).
+But \(\OV\) already has a \textbf{trivial representation}, which implies
+\[
+    \OV = a_1 u_1 + a_2 u_2 + ... + a_n u_n = 0 u_1 + 0 u_2 + ... + 0 u_n,
+\]
+that is, \(a_1 = a_2 = ... = a_n = 0\).
+Hence \(\beta\) is \LID{}.
+So \(\beta\) is both \LID{} and a generating set of \(V\), hence by \DEF{1.8} is a basis of \(V\).
+\end{proof}
+
+\begin{note}
+\THM{1.8} shows that if the vectors \(u_1, u_2, ..., u_n\) form a basis for a vector space \(V\), then every vector in \(V\) can be \emph{uniquely} expressed in the form
+\[
+    v = a_1 u_2 + a_2 u_2 + ... + a_n u_n
+\]
+for appropriately chosen scalars \(a_1, a_2, ..., a_n\).
+Thus each \(v \in V\) determines a unique \(n\)-tuple of scalars \((a_1, a_2, ..., a_n)\) and,
+conversely, each \(n\)-tuple of scalars determines a unique vector \(v \in V\) by using the entries of the \(n\)-tuple as the coefficients of a linear combination of \(u_1, u_2, ..., u_n\).
+This fact suggests that \textbf{\(V\) is like the vector space \(F^n\)}, where \(n\) is the number of vectors in the basis for \(V\).
+We see in \SEC{2.4} that this is indeed the case.
+\end{note}
+
+In this book, we are primarily interested in vector spaces \textbf{having finite bases}.
+\THM{1.9} identifies a large class of vector spaces of this type.
+
+\begin{theorem} \label{thm 1.9}
+If a vector space \(V\) is generated by a finite set \(S\), then some \(subset\) of \(S\) is a basis for \(V\).
+Hence \(V\) has a finite basis.
+\end{theorem}
+
+\begin{proof}
+Suppose \(\spann(S) = V\) \BLUE{(1)} and \(S\) is a finite set.
+We prove by cases of the elements of \(S\): \(S\) is empty set, \(S = \{ \OV \}\), and otherwise(that is, \(S\) has nonzero vector).
+
+If \(S = \emptyset\), then by \DEF{1.4}, \(\spann(S) = \{ \OV \}\).
+That is, by \BLUE{(1)}, \(V = \{ \OV \}\).
+Also by \ATHM{1.15}(a), \(S\) is \LID{}.
+So with \BLUE{(1)} and \(S\) is \LID{}, by \DEF{1.8}, we have found a finite subset of \(S\), namely itself, which is a basis of \(V\).
+
+If \(S = \{ \OV \}\), then \(S\) is itself a subspace, hence \(\spann(S) = S\) by \ATHM{1.11}.
+That is, by \BLUE{(1)}, \(V = \spann(S) = S = \{ \OV \}\).
+And by \DEF{1.4}, \(\spann(\emptyset) = \{ \OV \} = V\);
+by \ATHM{1.15}(a), \(\emptyset\) is \LID{}.
+So we have found a finite subset of \(S\), namely \(\emptyset\), which is a basis of \(V\).
+
+Now suppose \(S\) has nonzero vector.
+We pick it as \(u_1\).
+Then by \ATHM{1.15}(b), \(\{ u_1 \}\) is \LID{}.
+Continue, if possible, choosing vectors \(u_2, ..., u_k\) in \(S\) such that \(\{ u_1, u_2, ..., u_k \}\) is still a \LID{} set of \(k\) vectors. 
+
+The process when we have \(k'\) elements is like: look \emph{each} remaining element that has \emph{not} been checked, and check whether the union of the \(k'\) elements and this elements is still \LID{};
+if yes, we pick this element;
+if no, we check next element;
+if all the remaining unchecked elements cannot be added, then we ``break the loop''(end the process).
+
+Since \(S\) is a finite set, this choosing process must end with a \LID{} set \(\beta = \{ u_1, u_2, ..., u_n \}\) having \(n\) elements.
+There are two ways this could happen:
+\begin{enumerate}
+\item[(i)] The set \(\beta = S\).
+    In this case, \(S\) is both a \LID{}(by the choosing process) set and a generating set for \(V\) (by the supposition, \BLUE{(1)}).
+    That is, \(S\) is itself a (finite) basis for \(V\).
+
+\item [(ii)] The set \(\beta\) is a \emph{proper} \LID{} subset of \(S\) such that if we add the remaining vectors in \(S\) which are not in \(\beta\), we will get a \LDP{} set (this happens when we ``break the loop''.
+\end{enumerate}
+In the second case, we claim that \(\beta\) is the desired subset of \(S\) that is a basis for \(V\).
+Because \(\beta\) is \LID{} by construction (of the choosing process), it suffices to show that \(\beta\) spans \(V\) (so by \DEF{1.8} \(\beta\) is a basis of \(V\)).
+
+But by \THM{1.5}, we only need to show that \(S \subseteq \spann(\beta)\).
+Why?
+\begin{align*}
+             & S \subseteq \spann(\beta) \\
+    \implies & \spann(S) \subseteq \spann(\beta) & \text{by \THM{1.5}}(2) \\
+    \implies & V \subseteq \spann(\beta) & \text{by the supposition, \BLUE{(1)}} \\
+    \implies & V = \spann(\beta) & \text{the other direction is automatically true}
+\end{align*}
+So let arbitrary \(v \in S\), we have to show \(v \in \spann(\beta)\) to show \(S \subseteq \spann(\beta)\).
+Then there are two cases, \(v \in \beta\) or \(v \notin \beta\).
+If \(v \in \beta\), then clearly \(v \in \spann(\beta)\).
+Otherwise, if \(v \notin \beta\), then (since \(v \in S\)) the preceding construction shows that \(\beta \cup \{ v \}\) is \LDP{}.
+So by \THM{1.7}, since \(\beta\) is \LID{} by construction and \(\beta \cup \{ v \}\) is \LDP{}, \(v \in \spann(\beta)\).
+So in all cases, \(v \in \spann(\beta)\).
+Thus \(S \subseteq \spann(\beta)\), as desired.
+\end{proof}
+
+\begin{remark} \label{remark 1.6.2}
+Because of the method by which the basis \(\beta\) was obtained in the proof of \THM{1.9}, this theorem is often remembered as saying that
+\begin{center}
+    A finite spanning set for \(V\) can be \emph{reduced} to a basis for \(V\).
+\end{center}
+This method is illustrated in the next example.
+\end{remark}
+
+\begin{example} \label{example 1.6.6}
+Let
+\[
+    S = \{ (2, -3, 5), (8, -12, 20), (1, 0, -2), (0, 2, -1), (7, 2, 0) \}.
+\]
+It can be shown that \(S\) generates \(\SET{R}^3\).
+We can select a basis for \(\SET{R}^3\) that is a \emph{subset} of \(S\) by the technique used in proving \THM{1.9}.
+
+To start, select any \emph{nonzero} vector in \(S\), say \((2, -3, 5)\), to be a vector in the basis.
+Since \(4(2, -3, 5) = (8 , -12, 20)\), the set \(\{ (2, -3, 5), (8 , -12, 20) \}\) is \LDP{} by \ATHM{1.16}.
+Hence we do not include \((8, -12, 20)\) in our basis.
+On the other hand, \((1, 0, -2)\) is not a multiple of \((2, -3, 5)\) and vice versa, so (again by \ATHM{1.16}) that the set \(\{ (2, -3, 5), (1, 0, -2) \}\) is \LID{}.
+Thus we include \((1, 0, -2)\) as part of our basis.
+Now we consider the set \(\{ (2, -3, 5), (1, 0, -2), (0, 2, -1) \}\) obtained by adjoining another vector \((0, 2, -1)\) in \(S\) to the two vectors that we have already included in our basis.
+As before, we include \((0, 2, -1)\) in our basis or exclude it from the basis according to whether \(\{ (2, -3, 5), (1, 0, -2), (0, 2, -1) \}\) is \LID{} or \LDP{}.
+An easy calculation shows that this set is \LID{}, so we include \((0, 2, -1)\) in our basis.
+In a similar fashion the final vector in \(S\) is included or excluded from our basis according to whether the set
+\[
+    \{ (2, -3, 5), (1, 0, -2), (0, 2, -1), (7, 2, 0) \}
+\]
+is \LID{} or \LDP{}.
+Because
+\[
+    2(2, -3, 5) + 3(1, 0, -2) + 4(0, 2, -1) - (7, 2, 0) = (0, 0, 0),
+\]
+we exclude \((7, 2, 0)\) from our basis.
+We conclude (by \THM{1.9}) that
+\[
+    \{(2, -3, 5), (1, 0, -2), (0, 2, -1)\}
+\]
+is a \emph{subset} of \(S\) that is a basis for \(\SET{R}^3\).
+\end{example}
+
+The corollaries of the following theorem are perhaps the most significant results in \CH{1}.
+(That is, \THM{1.10} is somewhat difficult to use, but \CORO{1.10.1}, \CORO{1.10.2}, \CORO{1.10.3} are more useful.)
+
+\begin{theorem} [Replacement Theorem] \label{thm 1.10}
+Let \(V\) be a vector space that is generated by a set \(G\) containing exactly \(n\) vectors.
+and let \(L\) be a \LID{} \emph{subset} of \(V\) containing exactly \(m\) vectors.
+
+Then \BLUE{(1)} \(m \le n\) \BLUE{(2)} and there \emph{exists} a \emph{subset} \(H\) of \(G\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(V\).
+\end{theorem}
+
+\begin{note}
+Note that we just require \(L \cup H\) to generate \(V\).
+We do not require \(L \cup H\) to be \LID{} or something else.
+\end{note}
+
+\begin{note}
+會叫做\ replacement theorem，是因為這邊實際上是把\ \(G\) 的部分\ elements 拔掉，拔到只剩\ \(H\)；而被拔掉的那些\ elements 改用\ \(L\)，然後\ \(L \cup H\) 一樣可以\ generate \(V\)。
+\end{note}
+
+\begin{proof}
+
+The proof is by mathematical induction on \(m\).
+The induction begins with \(m = 0\); for in this case \(L\) is a subset of \(V\) that contains zero vectors; that is, \(L = \emptyset\), so \(L\) is \LID{} by \ATHM{1.15}(a).
+Then taking \(H = G\), we have \(L \cup H = L \cup G = \emptyset \cup G = G\), so \(\spann(L \cup H) = \spann(G) = V\), as desired.
+(In this case, the intuition is that we do not ``replace anything'' in \(G\) using \(L\), since \(L\) is empty.)
+
+Now suppose inductively that the theorem is true for some integer \(m \ge 0\).
+That is, if \(L\) is a \LID{} subset with \(m\) vectors, we have \(m \le n\) and there exists a subset \(H\) of \(G\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(V\).
+We prove that the theorem is true for \(m + 1\).
+That is, if \(L'\) is a \LID{} subset with \(m + 1\) vectors, we have \(m + 1 \le n\) and there exists a subset \(H'\) of \(G\) containing exactly \(n - (m + 1)\) vectors such that \(L' \cup H'\) generates \(V\).
+
+(BTW, note that if there is no \LID{} subset \(L\)(or \(L'\)) with \(m\)(or \(m + 1\)) vectors, then the hypothesis of these if-then statements is false, hence the whole if-then statement is \emph{vacuously} true).
+
+So let \(L' = \{ v_1, v_2, ..., v_{m + 1} \}\) be a \LID{} subset of \(V\) consisting of \(m + 1\) vectors \BLUE{(*)}.
+
+By \CORO{1.6.1}, since \(\{ v_1, v_2, ..., v_m \} \subseteq \{ v_1, v_2, ..., v_{m + 1} \}\) and \(\{ v_1, v_2, ..., v_{m + 1} \}\) is \LID{}, \(\{ v_1, v_2, ..., v_m \}\) is \LID{} \textbf{having \(m\) elements}.
+So we may apply the induction hypothesis to conclude that \(m \le n\) and that there is a subset \(\{ u_1, u_2, ..., u_{n - m} \}\) of \(G\) (containing exactly \(n - m\) vectors) such that \(\{ v_1, v_2, ..., v_m \} \cup \{u_1, u_2, ..., u_{n - m} \}\) generates \(V\) \BLUE{(1)}.
+
+And in particular, since \(v_{m + 1} \in V\), by definition of span and \BLUE{(1)}, we have
+\[
+    a_1 v_1 + a_2 v_2 + ... + a_m v_m + b_1 u_1 + b_2 u_2 + ... + b_{n - m} u_{n - m} = v_{m + 1} \MAROON{(1)}
+\]
+for some scalar \(a_1, ..., a_m, b_1, ..., b_{n - m}\).
+
+\textbf{Note that} \(n - m > 0\), for if \(n - m \le 0\), then the subset \(\{ u_1, u_2, ..., u_{n - m} \}\) of \(G\) will in fact be empty set(when \(n = m\)) or even not well-defined(when \(n < m\); in this case we have asserted some gibberish that there exists a set that have negative number of elements);
+and if \(\{ u_1, u_2, ..., u_{n - m} \}\) is in fact empty, then from \MAROON{(1)} we conclude that \(v_{m + 1}\) is in fact in \(\spann(\{ v_1, v_2, ..., v_m \})\), and by \ATHM{1.17}(1) that \(\{ v_{m + 1}, v_1, v_2, ..., v_m \} = L'\) is \LDP{}, which is a contradiction to \BLUE{(*)}.
+So it must be that \(n - m > 0\), or \(n > m\);
+in particular, \(n \ge m + 1\).
+
+Moreover, some \(b_i\), say \(b_1\), must be nonzero, for otherwise we obtain the same contradiction.
+And solving \MAROON{(1)} gives
+\begin{align*}
+    u_1 = (-b_1^{-1} a_1) v_1 + (-b_1^{-1} a_2) v_2 + ... + (-b_1^{-1} a_m) v_m + (-b_1^{-1}) v_{m + 1} \\
+        + (-b_1^{-1} b_{\RED{2}}) u_{\RED{2}} + ... + (-b^{-1}_1 b_{n - m}) u_{n - m}. \MAROON{(2)}
+\end{align*}
+Now let \(H' = \{ u_2, ..., u_{n - m} \}\).
+Then from the nasty \MAROON{(2)} above we can find that \(\GREEN{u_1} \in \spann(L' \cup H')\).
+Also, because \(v_1, v_2, ..., v_m, u_{\RED{2}}, ..., u_{m - n}\) are clearly in \(\spann(L' \cup H')\), it follows that
+\[
+    \{ v_1, v_2, ..., v_m, u_{\RED{2}}, ..., u_{m - n}\} \cup \{ \GREEN{u_1} \} \subseteq \spann(L' \cup H');
+\]
+that is,
+\[
+    \{ v_1, v_2, ..., v_m, \GREEN{u_1}, u_{\RED{2}}, ..., u_{m - n}\} \subseteq \spann(L' \cup H'). \MAROON{(3)}
+\]
+But because \(\{ v_l, v_2, ..., v_m, u_1, u_2, ..., u_{n - m} \}\) -- the LHS of the set inclusion \MAROON{(3)} -- generates \(V\) (by \BLUE{(1)}),
+\THM{1.5} implies that the RHS \(\spann(L' \cup H')\), which is a subspace of \(V\), must contain the span of the LHS, that is, \(V\).
+So we have \(\spann(L' \cup H') = V\).
+Since we have shown that for the \LID{} set \(L'\) with \(m + 1\) elements,
+\begin{itemize}
+    \item \(m + 1 \le n\),
+    \item \(H'\) is a subset of \(G\) that contains \((n - m) - 1 = n - (m + 1)\) vectors s.t. \(\spann(L' \cup H') = V\),
+\end{itemize}
+the theorem is true for \(m + 1\).
+This completes the induction.
+\end{proof}
+
+\begin{corollary} \label{corollary 1.10.1}
+Let \(V\) be a vector space having a \emph{finite} basis.
+Then \emph{all bases} for \(V\) are finite, and every basis for \(V\) contains the \emph{same number of} vectors.
+\end{corollary}
+
+\begin{proof}
+Let \(\beta\) be a finite basis for \(V\), (the existence of \(\beta\) is guaranteed by supposition).
+Let \(\gamma\) be an arbitrary basis for \(V\).
+Then in particular by \DEF{1.8}, \(\gamma\) is also a \LID{} subset, and \(\beta\) generates \(V\), so by \THM{1.10}, we have \(\#(\gamma) \le \#(\beta)\).
+
+But similarly, since \(\beta\) is also a \LID{} subset, and \(\gamma\) generates \(V\), so again by \THM{1.10}, we have \(\#(\beta) \le \#(\gamma)\).
+
+Together we have \(\#(\beta) = \#(\gamma)\).
+Since \(\gamma\) is arbitrary, any basis of \(V\) has the same number of elements of \(\beta\) and hence finite.
+\end{proof}
+
+\begin{remark} \label{remark 1.6.3}
+If a vector space has a finite basis, \CORO{1.10.1} asserts that the \emph{number of vectors in any basis} for \(V\) is an \emph{intrinsic property} of \(V\).
+This fact makes possible the following important (well-defined) definitions.
+\end{remark}
+
+\begin{definition} \label{def 1.9}
+A vector space is called \textbf{finite-dimensional} if it has a basis consisting of a finite number of vectors.
+The \emph{unique}(by \CORO{1.10.1}) integer \(n\) such that every basis for \(V\) contains exactly \(n\) elements is called the \textbf{dimension} of \(V\) and is denoted by \(\dim(V)\).
+A vector space that is \emph{not} finite-dimensional is called \textbf{infinite-dimensional}.
+\end{definition}
+
+\begin{corollary} \label{corollary 1.10.2}
+An immediate conclusion in the replacement theorem states that if \(V\) is a finite-dimensional vector space, then no \LID{} subset of V can contain more than \(\dim(V)\) vectors.
+\end{corollary}
+
+\begin{example} \label{example 1.6.7}
+The vector space \(\{ \OV \}\) has dimension zero, since it has a basis \(\emptyset\), which has zero elements.
+\end{example}
+
+\begin{example} \label{example 1.6.8}
+The vector space \(F^n\) has dimension \(n\), since \(\{ e_1, e_2, ..., e_n \}\), which has \(n\) elements, is a basis of \(F^n\).
+\end{example}
+
+\begin{example} \label{example 1.6.9}
+The vector space \(M_{m \X n}(F)\) has dimension \(mn\), since by \EXAMPLE{1.6.3}, \(\{ E_{ij} : 1 \le i \le m, 1 \le j \le n \}\), which has \(mn\) elements, is a basis for \(M_{m \X n}(F)\).
+\end{example}
+
+\begin{example} \label{example 1.6.10}
+The vector space \(\mathcal{P}_n(F)\) has dimension \(n + 1\), since by \EXAMPLE{1.6.4}, \\
+\(\{ 1, x, x^2, ..., x^n \}\), which has \(n + 1\) elements, is a basis for \(\mathcal{P}_n(F)\).
+\end{example}
+
+The following examples show that \textbf{the dimension} of a vector space \textbf{depends on its field of scalars}.
+
+\begin{example} \label{example 1.6.11}
+Over the field of complex numbers, the vector space of complex numbers has dimension \(1\).
+(A basis is \(\{ 1 \}\); given any complex number \(c\), \(c = c \X 1\), where the second \(c\) means a scalar from the complex number field \(\SET{C}\).)
+\end{example}
+
+\begin{example} \label{example 1.6.12}
+Over the field of \textit{real numbers}, the vector space of complex numbers has dimension \(2\).
+(A basis is \(\{ 1, i \}\).)
+\end{example}
+
+\begin{remark} \label{remark 1.6.4}
+Another mind=blown example: the vector space of real number over \emph{rational number}.
+It's infinite dimensional, and even uncountable dimensional.
+\end{remark}
+
+\begin{example} \label{example 1.6.13}
+The vector space \(\mathcal{P}(F)\) is infinite-dimensional because, by \EXAMPLE{1.6.5}, it has an infinite \LID{} set, namely \(\{ 1, x, x^2, ... \}\).
+Hence by (contrapositive of) \CORO{1.10.2}, \(\mathcal{P}(F)\) is infinite-dimensional.
+\end{example}
+
+In \EXAMPLE{1.6.13}, the \emph{infinite} \LID{} set \(\{1, x, x^2, ... \}\) is, in fact, a basis for \(\mathcal{P}(F)\).
+Yet \textbf{nothing} that we have proved in this section guarantees an infinite-dimensional vector space must have a basis.
+In \SEC{1.7} it is shown, however, that \textbf{every} vector space has basis. (It in fact depends on \textbf{Axiom of Choice}.)
+
+Just as no \LID{} subset of a finite-dimensional vector space \(V\) can contain more than \(\dim(V)\) vectors, a corresponding statement can be
+made about the size of a generating set.
+
+\begin{corollary} \label{corollary 1.10.3}
+Let V be a vector space with dimension n.
+\begin{enumerate}
+\item Any finite generating set for \(V\) contains \emph{at least} \(n\) vectors, and a generating set for \(V\) that contains \emph{exactly} \(n\) vectors is a basis for \(V\).
+\item Any \LID{} subset of \(V\) that contains exactly \(n\) vectors is a basis for \(V\).
+\item Every \LID{} subset of \(V\) can be \textit{extended to} a basis for \(V\),
+    that is, if \(L\) is a \LID{} subset of \(V\), then there is a basis \(\beta\) of \(V\) such that \(L \subseteq \beta\).
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}\ 
+
+Let \(\beta\) be a basis for \(V\).
+\begin{enumerate}
+\item Let \(G\) be a finite generating set for \(V\) (\(\spann(G) = V\)).
+    By \THM{1.9} some subset \(H\) of \(G\) is a basis for \(V\). \CORO{1.10.1} implies that \(H\) contains exactly \(n\) vectors.
+    Since a subset of \(G\) contains \(n\) vectors, \(G\) must contain at least \(n\) vectors.
+    
+    Moreover, if \(G\) contains exactly \(n\) vectors, then we must have \(H = G\) (if a (finite) set's subset has the same element as the set, then the subset is in fact equal to the set), so that \(G\) is a basis for \(V\).
+\item Let \(L\) be a \LID{} subset of \(V\) containing exactly \(\BLUE{n}\) vectors.
+    It follows from the replacement theorem \THM{1.10} that there is a subset \(H\) of \(\beta\) containing \(n - \BLUE{n} = 0\) vectors such that \(L \cup H\) generates \(V\).
+    Thus \(H = \emptyset\), and \(L \cup H = L \cup \emptyset = L\) generates \(V\). Since \(L\) is also \LID{}, \(L\) is a basis for \(V\).
+\item If \(L\) is a \LID{} subset of \(V\) containing \(m\) vectors, then the replacement theorem \THM{1.10} asserts that there is a subset \(H\) of \(\beta\) containing exactly \(n - m\) vectors such that \(L \cup H\) generates \(V\).
+    Now \(L \cup H\) contains \emph{at most} \(m + (n - m) = n\) vectors (sine \(L\) and \(H\) may contain same elements);
+    but part(a) also implies that the generating set \(L \cup H\) contains \emph{at least} \(n\) elements, so in fact \(L \cup H\) contains \emph{exactly} \(n\) elements, and again by (second statement of) part(a), \(L \cup H\) is a basis for \(V\).
+    So we have found a basis \(L \cup H\) that contains \(L\), as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{example} \label{1.6.14}
+It follows from \EXAMPLE{1.4.4} that
+\[
+    \{ x^2 + 3x - 2, 2x^2 + 5x - 3, -x^2 -4x + 4 \}
+\]
+generates \(\mathcal{P}_2(\SET{R})\) and has \(3\) elements, same as the dimension of \(\mathcal{P}_2(\SET{R})\).
+Hence by \CORO{1.10.3}(a) the set is a basis for \(\mathcal{P}_2(\SET{R})\).
+\end{example}
+
+\begin{example} \label{example 1.6.15}
+(Similarly to the previous example) It follows from \EXAMPLE{1.4.5} of and \CORO{1.10.3}(a) that
+\[
+\bigg\{
+    \begin{pmatrix}
+      1 & 1 \\
+      1 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 & 0 \\
+      1 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 1
+    \end{pmatrix}
+\bigg\}
+\]
+is a basis for \(M_{2 \X 2}(\SET{R})\).
+\end{example}
+
+\begin{example} \label{example 1.6.16}
+It follows from \EXAMPLE{1.5.3} that
+\[
+    \{ (1, 0, 0, -1), (0, 1, 0, -1), (0, 0, 1, -1), (0, 0, 0, 1) \}
+\]
+is \LID{}.
+But it has \(4\) elements, same as the dimension of \(\SET{R}^4\), hence by \CORO{1.10.3}(b) is a basis for \(\SET{R}^4\).
+Note that currently we do not prove the set actually generates \(\SET{R}^4\) to show it's a basis, but instead use the fact it the number of elements is equal to the dimension of the vector space to derive it is a basis for \(\SET{R}^4\).
+\end{example}
+
+\begin{example} \label{example 1.6.17}
+(Similarly to the previous example) For \(k = 0, 1, ..., n\), let \(p_k(x) = x^k + x^{k + 1} + ... + x^n\).
+It follows from \EXAMPLE{1.5.4} and \CORO{1.10.3}(b) that
+\(
+    \{ p_0(x), p_1(x), ..., p_n(x) \}
+\)
+is a basis for \(\mathcal{P}_n(F)\).
+\end{example}
+
+\begin{remark} \label{remark 1.6.5}
+A procedure for reducing a generating set to a basis was illustrated in \EXAMPLE{1.6.6}.
+\TODOREF{} In \SEC{3.4}, when we have learned more about solving systems of linear equations, we will discover a simpler method for reducing a generating set to a basis.
+This procedure also can be used to \emph{extend} a linearly
+independent set to a basis, which is always possible by the assertion of \CORO{1.10.3}(c).
+\end{remark}
+
+\subsection{An Overview of Dimension and Its Consequences}
+\THM{1.9} as well as the replacement theorem \THM{1.10} and its corollaries \CORO{1.10.1}, \CORO{1.10.2}, \CORO{1.10.3}
+contain a wealth of information about the relationships among \LID{} sets, bases, and generating sets.
+For this reason, we summarize here the main results of this section in order to put them into better perspective.
+\begin{itemize}
+\item A basis for a vector space \(V\) is a \LID{} subset of \(V\) that generates \(V\).
+\item If \(V\) has a finite basis, then every basis for \(V\) contains \emph{the same} number of vectors.
+    This number is called the dimension of \(V\), and \(V\) is said to be finite-dimensional.
+    Thus if the dimension of \(V\) is \(n\), \emph{every} basis for \(V\) contains exactly \(n\) vectors.
+\item Moreover, every \emph{\LID{}} subset of \(V\) contains no more than \(n\) vectors and \emph{can be extended to} a basis for \(V\) by including appropriately chosen vectors.
+\item Also, each \emph{generating set} for \(V\) contains at least \(n\) vectors and \emph{can be reduced to} a basis for \(V\) by excluding appropriately chosen vectors.
+\end{itemize}
+
+\subsection{The Dimension of \emph{Subspaces}}
+Our next result relates the dimension of a \emph{subspace} to the dimension of the vector space that contains it.
+
+\begin{theorem} \label{thm 1.11}
+Let \(W\) be a subspace of a \emph{finite}-dimensional vector space \(V\).
+Then \BLUE{(1)} \(W\) is finite-dimensional and \(\dim(W) \le \dim(V)\).
+\BLUE{(2)} Moreover, if \(\dim(W) = \dim(V)\), then \(V = W\).
+\end{theorem}
+
+\begin{proof}
+Let \(W\) be a subspace of a finite-dimensional vector space \(V\).
+Let \(\dim(V) = n\).
+If \(W = \{ \OV \}\), then \(W\) is finite-dimensional
+(since it has \(\emptyset\) as a basis having zero, i.e. finite, elements)
+and \(\dim(W) = 0 \le n\).
+Otherwise, \(W\) contains a nonzero vector \(x_1\);
+so \(\{ x_l \}\) is a \LID{} set. (by \ATHM{1.15}(b).)
+Continue choosing vectors, \(x_1, x_2 , ..., x_k \in W\) such that \(\{ x_1, x_2, ..., x_k \}\) is \LID{}.
+(the process is identical to the process in \THM{1.9})
+Since no \LID{} subset of \(V\) can contain more than \(n\) vectors, this process must stop at a stage where \(k \le n\) \MAROON{(1)} and \(\beta = \{ x_1, x_2, ..., x_k \}\) is \LID{} but adjoining \emph{any other vector \(w\) from} \(W\)(i.e. \(w \in W \setminus \beta\)) produces a linearly \emph{dependent} set.
+So by \THM{1.7} we have \(w \in \spann(\beta)\).
+Since \(w \in W \setminus \beta\) is arbitrary element, we have \(W \setminus \beta \in \spann(\beta)\).
+But since of course \(\beta \in \spann(\beta)\) we have \((W \setminus \beta) \cup \beta \in \spann(\beta)\).
+That is, \(W \in \spann(\beta)\).
+But since \(\beta \subseteq W\) (because \(x_1, x_2, ... x_k\) are chosen from \(W\)), by \THM{1.5} we have \(\spann(\beta) \subseteq W\).
+So all in all we have \(W = \spann(\beta)\).
+Therefore, \(\beta\) is a \LID{} set that generates \(W\), hence is a basis of \(W\), so \(\dim(W) = k\) and by \MAROON{(1)}, \(\dim(W) = k \le n = \dim(V)\).
+If \(\dim(W) = n\), then a basis \(\beta\) for \(W\) is \(a\) \LID{} subset of \(V\) containing \(n\) vectors.
+But \CORO{1.10.3}(b) implies that the basis \(\beta\) for \(W\) is also a basis for \(V\);
+So (by \DEF{1.8}) we have \(\spann(\beta) = W\) and \(\spann(\beta) = V\);
+that is, \(W = V\).
+\end{proof}
+
+\begin{example} \label{example 1.6.18}
+Let
+\[
+    W = \{ ( a_1, a_2, a_3, a_4, a_5) \in F^5 : a_1 + a_3 + a_5 = 0, a_2 = a_4 \}.
+\]
+\sloppy It is easily shown(easy if you use \CH{3}) that \(W\) is a subspace of \(F^5\) having \( (-1, 0, 1, 0, 0), (-1, 0, 0, 0, 1), (0, 1, 0,1, 0)\}\) as a basis.
+Thus \(\dim(W) = 3\).
+\end{example}
+
+\begin{example} \label{example 1.6.19}
+The set of diagonal \(n \X n\) matrices is a subspace \(W\) of \(M_{n \X n}(F)\) (See \EXAMPLE{1.3.3}).
+A basis for \(W\) is
+\[
+    \{ E_{11}, E_{22}, ..., E_{nn} \},
+\]
+having \(n\) elements where \(E_{ij}\) is the matrix in which the only \emph{nonzero} entry is a \(1\) in the \(i\)th row and \(j\)th column.
+Thus \(\dim(W) = n\).
+\end{example}
+
+\begin{example} \label{example 1.6.20}
+We saw in \ATHM{1.1} that the set of symmetric \(n \X n\) matrices is a subspace \(W\) of \(M_{n \X n}(F)\).
+A basis for \(W\) is
+\[
+    \{ A_{ij} : 1 \le i \le j \le n \},
+\]
+where \(A_{ij}\) is the \(n \X n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column. and \(0\) elsewhere.
+It follows that
+\[
+    \dim(W) = n + (n - 1) + ... + 1 = \frac{1}{2}n(n + 1). 
+\]
+\end{example}
+
+\begin{corollary} \label{corollary 1.11.1}
+If \(W\) is a subspace of a finite-dimensional vector space \(V\), then any basis for \(W\) can be extended to a basis for \(V\).
+\end{corollary}
+
+\begin{proof}
+Let \(S\) be a basis for \(W\).
+Because \(S\) is a \LID{} subset of \(V\), \CORO{1.10.3}(c) guarantees that \(S\) can be extended to a basis for \(V\).
+\end{proof}
+
+\begin{example} \label{example 1.6.21}
+The set of all polynomials of the form
+\[
+    a_{18} x^{18} + a_{16} x^{16} + ... + a_2 x^2 + a_0,
+\]
+where \(a_{18}, a_{16}, ..., a_2, a_0 \in F\), is a subspace \(W\) of \(\mathcal{P}_{18}(F)\).
+A basis for \(W\) is \(\{ 1, x^2, ..., x^{16}, x^{18} \}\), which is a subset of the \emph{standard basis} for \(\mathcal{P}_{18}(F)\).
+\end{example}
+
+\subsection{The Lagrange Interpolation Formula}
+In many applications, we have a collection of data obtained from experiments or samples;
+e.g. we may know the locations of an airplane at certain (\textbf{distinct}) times:
+\begin{align*}
+    t_1 = l_1,
+    t_2 = l_2,
+    ...,
+    t_n = l_n,
+\end{align*}
+where \(t_i\) is a particular time point and \(l_i\) is the corresponding location for the time point.
+And we want to \textbf{approximate} the locations of the plane at one or more \textbf{intermediate} times.
+The process of estimating intermediate values of a variable from known values is called \href{https://www.wikiwand.com/en/Interpolation}{interpolation}.
+In this section we find a polynomial that satisfies the given data points.
+
+Let \(c_0, c_1, ..., c_n\) be \textbf{distinct} scalars in an infinite field \(F\).
+(This \(c_i\) is like \(t_i\) of the example above.)
+The polynomials \(f_0(x), f_1(x), ..., f_n(x)\) defined by
+\[
+    f_i(x) = \frac{(x - c_0) ... (x - c_{\BLUE{i - 1}})(x - c_{\BLUE{i + 1}}) ... (x - c_n)}{(\RED{c_i} - c_0) ... (\RED{c_i} - c_{\BLUE{i - 1}})(\RED{c_i} - c_{\BLUE{i + 1}}) ... (\RED{c_i} - c_n)}
+    = \prod_{\substack{k = 0 \\
+                       \RED{k \ne j}}}^n
+             \frac{x - c_k}{c_i - c_k}
+\]
+are called the \textbf{Lagrange polynomials} (associated with \(c_0, c_1, ..., c_n\)).
+Note that
+\begin{itemize}
+\item Each \(f_i(x)\) is a polynomial of degree \(n\) and hence is in \(\mathcal{P}_n(F)\).
+\item If we regard \(f_i(x)\) as a polynomial function \(f_i : F \to F\), we see that
+    \begin{equation*}
+        f_{\RED{i}}(c_{\RED{j}}) =
+        \begin{cases}
+            0 \text{ if } i \ne j \\
+            1 \text{ if } i = j \\
+        \end{cases}
+        \MAROON{(1)}
+    \end{equation*}
+\end{itemize}
+
+
+This property of Lagrange polynomials can be used to show that \(\beta = \{ f_0, f_1, ..., f_n \}\) is a \emph{\LID{}} subset of \(\mathcal{P}_n(F)\):
+
+Suppose that
+\[
+    \sum_{i = 0}^n a_i f_i = 0_{zero} \text{ for some scalars } a_0, a_1, ..., a_n \MAROON{(2)},
+\]
+where \(0_{zero}\) denote the zero function.
+Then in particular, given any input, say \(c_j\) for \(j = 1, ..., n\), the output of the \(0_{zero}(c_j)\) is \(\OF\) (the zero of field \(F\)).
+That is, (by the definition of equality of functions,) from \MAROON{(2)}, we have
+\[
+    \sum_{i = 0}^n a_i f_i(c_j) = \OF \text{ for } j = 0, 1, ..., n. \MAROON{(3)}
+\]
+But also, by \MAROON{(3)}, for \(j = 0, 1, ..., n\),
+\begin{align*}
+    \OF & = \sum_{i = 0}^n a_i f_i(c_{\RED{j}}) \\
+        & = a_0 f_0(c_j) + a_1 f_1(c_j) + ... + \RED{a_j f_j(c_j)} + ... + a_n f_n(c_j) \\
+        & = a_0 \OF + a_1 \OF + ... + \RED{a_j 1} + ... + a_n \OF & \text{by \MAROON{(1)}} \\
+        & = a_j.
+\end{align*}
+Hence \(a_0 = a_1 = ... = a_j = 0\).
+Hence by \MAROON{(2)} we see that \(\beta = \{ f_0, f_1, ..., f_n \}\) is \LID{}.
+
+Since \(\beta\) is \LID{} and has \(n + 1\) elements, which equals to the dimension of the parent vector space \(\mathcal{P}_n(F)\), by \CORO{1.10.3}(b), \(\beta\) is a basis for \(\mathcal{P}_n(F)\).
+
+Because \(\beta\) is a basis for \(\mathcal{P}_n(F)\), every polynomial function \(g\) in \(\mathcal{P}_n(F)\) is a linear combination of polynomial functions of \(\beta\), say,
+\[
+    g = \sum_{i = 0}^n b_i f_i \MAROON{(4)}
+\]
+Again by definition of equality of functions, given any input \(c_j\) for \(j = 0, 1, ..., n\), we have
+\[
+    g(c_j) = \sum_{i = 0}^n b_i f_i(c_j).
+\]
+But using similar derivation like above, we have \(RHS = \sum_{i = 0}^n b_i f_i(c_j) = b_j\).
+So \(g(c_j) = b_j\) for all \(j = 0, 1, ..., n\).
+(Or renaming index, we have \(g(c_i) = b_i\) for all \(i = 0, 1, ..., n\).)
+So in fact from \MAROON{(4)} we have
+\[
+    g = \sum_{i = 0}^n b_i f_i = \sum_{i = 0}^n g(c_i) f_i,
+\]
+which is the \emph{unique} representation of \(g\) is a linear combination of elements of \(\beta\).
+This representation is called the \textbf{Lagrange interpolation formula}.
+
+Notice that if you use any \(n + 1\) scalars in \(F\), \(b_0, b_1, ..., b_n\) (not necessarily distinct) to represent the corresponding values of the ``input'' \(c_0, c_1, ..., c_n\),
+and use \(c_0, c_1, ..., c_n\) to construct \(f_0, f_1, ..., f_n\) using the above method,
+then using \(b_0, b_1, ..., b_n\) as the coefficients of linear combination of vectors in \(\beta = \{ f_0, f_1, ..., f_n \}\), the polynomial function
+\[
+    h = \sum_{i = 0}^n b_i f_i
+\]
+is a polynomial in \(\mathcal{P}_n(F)\) s.t. \(h(c_i) = b_i\) for all \(i = 0, 1, ..., n\).
+Also \(h\) is \emph{the unique} polynomial in \(\mathcal{P}_n(F)\) satisfying this condition.
+(Suppose there exists another degree \(n\) polynomial \(p\) satisfying these points and show it is equal to \(h\).
+Then you can let \(q = p - h\), then we have \(q(c_i) = 0\) for \(i = 0, 1, ..., n\).
+But using \RMK{1.6.6} \RED{below}, \(q\) is in fact the zero function, which implies \(p = h\).)
+
+Thus we have found the unique polynomial of degree not exceeding \(n\) that has specified values \(b_j\) at given points \(c_j\) in its domain (for \(j = 0, 1, ..., n\)).
+
+For example, let us construct the real polynomial \(g\) of degree \emph{at most} \(2\) whose graph contains the points \((1, 8), (2, 5)\), and \((3, -4)\).
+(Thus, in the notation above, \(c_0 = 1, c_1 = 2, c_2 = 3, b_0 = 8, b_1 = 5\), and \(b_2 = -4\).)
+The Lagrange polynomials associated with \(c_0, c_1\), and \(c_2\) are
+\begin{align*}
+    f_0(x) & = \frac{(x - c_1)(x - c_2)}{(c_0 - c_1)(c_0 - c_2)} = \frac{(x - 2)(x - 3)}{(1 - 2)(1 - 3)} = \frac{1}{2}(x^2 - 5x + 6). \\
+    f_1(x) & = \frac{(x - c_0)(x - c_2)}{(c_1 - c_0)(c_1 - c_2)} = \frac{(x - 1)(x - 3)}{(2 - 1)(2 - 3)} = -1(x^2 - 4x + 3). \\
+    f_2(x) & = \frac{(x - c_0)(x - c_1)}{(c_2 - c_0)(c_2 - c_1)} = \frac{(x - 1)(x - 2)}{(3 - 1)(3 - 2)} = \frac{1}{2}(x^2 - 3x + 2).
+\end{align*}
+Hence the desired polynomial is
+\begin{align*}
+    h(x) & = \sum_{i = 0}^2 b_i f_i(x) = b_0 f_0(x) + b_1 f_1(x) + b_2 f_2(x) \\
+         & = 8 (\frac{1}{2}(x^2 - 5x + 6)) + 5 (-1(x^2 - 4x + 3)) - 4 (\frac{1}{2}(x^2 - 3x + 2)) \\
+         & = -3x^2 + 6x + 5.
+\end{align*}
+
+\begin{remark} \label{remark 1.6.6}
+An important consequence of the Lagrange interpolation formula is the following result:
+If \(f \in \mathcal{P}_n(F)\) and \(f(c_i) = 0\) for \(n + 1\) distinct scalars \(c_0, c_1, ..., c_n\) in \(F\),
+then \(f\) is the zero function.
+Why? Since
+\begin{align*}
+    f & = \sum_{i = 0}^n b_i f_i & \text{by the argument above} \\
+      & = \sum_{i = 0}^n 0 f_i, & \text{since \(b_0 = b_1 = ... b_n = 0\)} \\
+\end{align*}
+which is the trivial representation of the zero vector(zero function) of \(\mathcal{P}_n(F)\).
+\end{remark}
