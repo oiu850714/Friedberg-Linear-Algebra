@@ -1,0 +1,1074 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 2.3.1}
+Label the following statements as true or false.
+In each part, \(V, W\), and \(Z\) denote vector spaces with ordered (finite) bases \(\alpha, \beta\), and \(\gamma\), respectively;
+\(\T : V \to W\) and \(\U : W \to Z\) denote linear transformations;
+and \(A\) and \(B\) denote matrices.
+
+\begin{enumerate}
+\item \([\U\T]_{\alpha}^{\gamma} = [\T]_{\alpha}^{\beta}[\U]_{\beta}^{\gamma}\).
+\item \([\T(v)]_{\beta} = [\T]_{\alpha}^{\beta}[v]_{\alpha}\) for all \(v \in V\).
+\item \([\U(w)]_{\beta} = [\U]_{\alpha}^{\beta}[w]_{\beta}\) for all \(w \in W\).
+\item \([\ITRANV]_{\alpha} = I\).
+    Notice that LHS is the matrix representation (under the basis \(\alpha\)) of the identity transformation,
+    and RHS is identity matrix.
+\item \([\T^2]_{\alpha}^{\beta} = ([\T]_{\alpha}^{\beta})^2\).
+\item \(A^2 = I\) implies that \(A = I\) or \(A = -I\).
+\item \(\T = \LMTRAN_A\) for some matrix \(A\).
+\item \(A^2 = O\) implies that \(A = O\), where \(O\) denotes the zero matrix.
+\item \(\LMTRAN_{A + B} = \LMTRAN_A + \LMTRAN_B\).
+\item If \(A\) is square and \(A_{ij} = \delta_{ij}\) for all \(i\) and \(j\), then \(A = I\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item False, RHS is not necessarily defined, and by \THM{2.11}, \([\U\T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma}[\T]_{\alpha}^{\beta}\).
+\item True by \THM{2.14}.
+\item False, both sides of the equation are not necessarily defined.
+\item True, need to prove, but trivial.
+\item False, \(\T^2\) is not necessarily defined, hence \([\T^2]_{\alpha}^{\beta}\) is not necessarily defined;
+    similarly for RHS.
+\item False.
+    Counter example: \(A = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\), then \(A \ne I\) and \(A \ne -I\), but \(A^2 = I\).
+\item False. \(\T\)'s domain and codomain are not necessarily equal to \(F^m\) for some \(m\), hence \(\T\) is not necessarily equal to some left-multiplication transformation.
+\item False, see \RMK{2.3.3}.
+\item True by \THM{2.15}(c), but of course we need that \(A, B\) have same dimensions.
+\item True by \DEF{2.7}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.2} \ 
+
+\begin{enumerate}
+\item Let
+\[
+    \begin{array}{l}
+        A=\left(\begin{array}{rr}
+            1 & 3 \\
+            2 & -1
+        \end{array}\right),
+        B=\left(\begin{array}{rrr}
+            1 & 0 & -3 \\
+            4 & 1 & 2
+        \end{array}\right) \\
+        C=\left(\begin{array}{rrr}
+            1 & 1 & 4 \\
+            -1 & -2 & 0
+        \end{array}\right),
+        \text { and }
+        D=\left(\begin{array}{r}
+            2 \\
+            -2 \\
+            3
+        \end{array}\right).
+    \end{array}
+\]
+Compute  \(A(2B + 3C), (AB)D, and A(BD)\).
+
+\item Let
+\[
+    A=\left(\begin{array}{rr}
+        2 & 5 \\
+        -3 & 1 \\
+        4 & 2
+    \end{array}\right),
+    B=\left(\begin{array}{rrr}
+        3 & -2 & 0 \\
+        1 & -1 & 4 \\
+        5 & 5 & 3
+    \end{array}\right),
+    \text { and }
+    C=\left(\begin{array}{lll}
+        4 & 0 & 3
+    \end{array}\right)
+\]
+Compute \(A^\top, A^\top B, B C^\top, CB,\) and \(CA\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Pure matrix calculation problem, skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.3}
+Let \(g(x) = 3 + x\).
+Let \(\T: \mathcal{P}_{2}(\SET{R}) \to \mathcal{P}_{2}(\SET{R})\)  and \(\U: \mathcal{P}_{2}(\SET{R}) \to \SET{R}^3\) be the linear transformations respectively defined by
+\[
+    \T(f(x)) = f'(x) g(x) + 2 f(x) \text{ and } \U(a + bx + cx^2) = (a + b, c, a - b). 
+\]
+Let  \(\beta\) and \(\gamma\) be the standard ordered bases of  \(\mathcal{P}_{2}(\SET{R})\) and \(\SET{R}^3\), respectively.
+\begin{enumerate}
+\item Compute \([\U]_{\beta}^{\gamma}, [\T]_{\beta}\), and \([\U\T]_{\beta}^{\gamma}\) \emph{directly}.
+    Then use \THM{2.11} to verify your result.
+\item Let \(h(x) = 3 - 2x + x^2\).
+    Compute \([h(x)]_{\beta}\) and \([\U(h(x))]_{\gamma}\).
+    Then use \([\U]_{\beta}^{\gamma}\) from (a) and \THM{2.14} to verify your result.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item
+First we calculate the formula for \(\U\T\).
+Given \(f(x) = a + bx + cx^2 \in \mathcal{P}_2(\SET{R})\),
+\begin{align*}
+    (\U\T)(f(x)) & = \U(\T(a + bx + cx^2)) \\
+                 & = \U((a + bx + cx^2)'(3 + x) + 2(a + bx + cx^2)) \\
+                 & = \U((b + 2cx)(3 + x) + 2a + 2bx + 2cx^2) \\
+                 & = \U(3b + 6cx + bx + 2cx^2 + 2a + 2bx + 2cx^2) \\
+                 & = \U((3b + 2a) + (3b + 6c)x + 4cx^2) \\
+                 & = ((3b + 2a) + (3b + 6c), 4c, (3b + 2a) - (3b + 6c)) \\
+                 & = (2a + 6b + 6c, 4c, 2a - 6c)
+\end{align*}
+Then
+\begin{align*}
+    \U\T(1 + 0x + 0x^2) & = (2 + 0 + 0, 0, 2 - 0) = (2, 0, 2) \\
+    \U\T(0 + 1x + 0x^2) & = (0 + 6 + 0, 0, 0 - 0) = (6, 0, 0) \\
+    \U\T(0 + 0x + 1x^2) & = (0 + 0 + 6, 4, 0 - 6) = (6, 4, -6)
+\end{align*}
+So
+\[
+    [\U\T]_{\beta}^{\gamma} = \begin{pmatrix} 2 & 6 & 6 \\ 0 & 0 & 4 \\ 2 & 0 & -6 \end{pmatrix}.
+\]
+And
+\begin{align*}
+    \U(1 + 0x + 0x^2) & = (1 + 0, 0, 1 - 0) = (1, 0, 1) \\
+    \U(0 + 1x + 0x^2) & = (0 + 1, 0, 0 - 1) = (1, 0, -1) \\
+    \U(0 + 0x + 1x^2) & = (0 + 0, 1, 0 - 0) = (0, 1, 0)
+\end{align*}
+so
+\[
+    [\U]_{\beta}^{\gamma} = \begin{pmatrix} 1 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -1 & 0 \end{pmatrix},
+\]
+and
+\begin{align*}
+    \T(1 + 0x + 0x^2) & = 0(3 + x) + 2(1) = 2 + 0x + 0x^2 \\
+    \T(0 + 1x + 0x^2) & = 1(3 + x) + 2(x) = 3 + 3x + 0x^2 \\
+    \T(0 + 0x + 1x^2) & = (2x)(3 + x) + 2(x^2) = 0 + 6x + 4x^2
+\end{align*}
+so
+\[
+    [\T]_{\beta} = \begin{pmatrix} 2 & 3 & 0 \\ 0 & 3 & 6 \\ 0 & 0 & 4 \end{pmatrix}
+\]
+So
+\[
+    [\U]_{\beta}^{\gamma} [\T]_{\beta}
+    = \begin{pmatrix} 1 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -1 & 0 \end{pmatrix}
+      \begin{pmatrix} 2 & 3 & 0 \\ 0 & 3 & 6 \\ 0 & 0 & 4 \end{pmatrix}
+    = \begin{pmatrix} 2 & 6 & 6 \\ 0 & 0 & 4 \\ 2 & 0 & -6 \end{pmatrix}
+\]
+which is equal to \([\U\T]_{\beta}^{\gamma}\).
+
+\item
+\[
+    [h(x)]_{\beta} = \begin{pmatrix} 3 \\ -2 \\ 1 \end{pmatrix}
+\]
+And \(\U(h(x)) = (3 + (-2), 1, 3 - (-2)) = (1, 1, 5)\), hence
+\[
+    [\U(h(x))]_{\gamma} = \begin{pmatrix} 1 \\ 1 \\ 5 \end{pmatrix}
+\]
+Now
+\[
+    [\U]_{\beta}^{\gamma} [h(x)]_{\beta} =
+    \begin{pmatrix} 1 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -1 & 0 \end{pmatrix} \begin{pmatrix} 3 \\ -2 \\ 1 \end{pmatrix}
+    = \begin{pmatrix} 1 \\ 1 \\ 5 \end{pmatrix}
+\]
+which is equal to \([\U(h(x))]_{\gamma}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.4}
+For each of the following parts, let \(\T\) be the \LTRAN{} defined in the corresponding part of \EXEC{2.2.5}.
+Use \THM{2.14} to compute the following vectors:
+
+\begin{enumerate}
+\item \([\T(A)]_{\alpha}\), where \(A = \begin{pmatrix} 1 & 4 \\ -1 & 6 \end{pmatrix}\).
+\item \([\T(f(x))]_{\alpha}\), where \(f(x) = 4 - 6x + 3x^2\).
+\item \([\T(A)]_{\gamma}\), where \(A = \begin{pmatrix} 1 & 3 \\ 2 & 4 \end{pmatrix}\).
+\item \([\T(f(x))]_{\gamma}\), where \(f(x) = 6 - x + 2x^2\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{note}
+Preventing from flipping pages back and forth, we list \EXEC{2.2.5} below:
+
+Let
+\[
+    \alpha = \bigg\{
+                \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix},
+                \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+                \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},
+                \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+            \bigg\},
+    \beta = \{ 1, x, x^{2} \},
+    \text { and }
+    \gamma = \{ 1 \}.
+\]
+\begin{enumerate}
+\item Define \(\T : M_{2 \X 2}(F) \to M_{2 \X 2}(F)\) by \(\T(A) = A^\top\).
+Compute \([\T]_{\alpha}\).
+\item Define
+\[
+    \T: \mathcal{P}_2(\SET{R}) \to M_{2 \X 2}(\SET{R}) \text{ by }
+    \T(f) = \begin{pmatrix} f'(0) & 2f(1) \\ 0 & f''(3) \end{pmatrix},
+\]
+where \('\) denotes differentiation.
+Compute \([\T]_{\beta}^{\alpha}\).
+\item Define \(\T: M_{2 \X 2}(F) \to F\) by \(\T(A) = \TRACE(A)\).
+Compute \([\T]_{\alpha}^{\gamma}\).
+\item Define \(\T: \mathcal{P}_2(\SET{R}) \to \SET{R}\) by \(\T(f) = f(2)\). 
+Compute \([\T]_{\beta}^{\gamma}\).
+\end{enumerate}
+\end{note}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item
+\[
+    [\T]_{\alpha}
+    = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+    \text{ and }
+    [A]_{\alpha} = \begin{pmatrix} 1 \\ 4 \\ -1 \\ 6 \end{pmatrix}
+    \text{, hence by \THM{2.14},}
+\]
+\[
+    [\T(A)]_{\alpha} = [\T]_{\alpha} [A]_{\alpha}
+    = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix} 1 \\ 4 \\ -1 \\ 6 \end{pmatrix}
+    = \begin{pmatrix} 1 \\ -1 \\ 4 \\ 6 \end{pmatrix}
+\]
+
+\item
+\[
+    [\T]_{\beta}^{\alpha} = \begin{pmatrix} 0 & 1 & 0 \\ 2 & 2 & 2 \\ 0 & 0 & 0 \\ 0 & 0 & 2 \end{pmatrix}
+    \text{ and  }
+    [f(x)]_{\beta} = \begin{pmatrix} 4 \\ -6 \\ 3 \end{pmatrix}
+    \text{, hence by \THM{2.14},}
+\]
+\[
+    [\T(f(x))]_{\alpha} = [\T]_{\beta}^{\alpha} [f(x)]_{\beta}
+    = \begin{pmatrix} 0 & 1 & 0 \\ 2 & 2 & 2 \\ 0 & 0 & 0 \\ 0 & 0 & 2 \end{pmatrix}
+    \begin{pmatrix} 4 \\ -6 \\ 3 \end{pmatrix}
+    = \begin{pmatrix} -6 \\ 2 \\ 0 \\ 6 \end{pmatrix}
+\]
+
+\item
+\[
+    [\T]_{\alpha}^{\gamma} = \begin{pmatrix} 1 & 0 & 0 & 1 \end{pmatrix}
+    \text{ and  }
+    [A]_{\alpha} = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}
+    \text{, hence by \THM{2.14},}
+\]
+\[
+    [\T(A)]_{\gamma} = [\T]_{\alpha}^{\gamma} [A]_{\alpha}
+    = \begin{pmatrix} 1 & 0 & 0 & 1 \end{pmatrix}
+    \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}
+    = \begin{pmatrix} 5 \end{pmatrix}
+\]
+
+\item
+\[
+    [\T]_{\beta}^{\gamma} = \begin{pmatrix} 1 & 2 & 4 \end{pmatrix}
+    \text{ and  }
+    [f(x)]_{\beta} = \begin{pmatrix} 6 \\ -1 \\ 2 \end{pmatrix}
+    \text{, hence by \THM{2.14},}
+\]
+\[
+    [\T(f(x))]_{\gamma} = [\T]_{\beta}^{\gamma} [f]_{\beta}
+    = \begin{pmatrix} 1 & 2 & 4 \end{pmatrix}
+    \begin{pmatrix} 6 \\ -1 \\ 2 \end{pmatrix}
+    = \begin{pmatrix} 12 \end{pmatrix}
+\]
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.5}
+Complete the proof of \THM{2.12} and \CORO{2.12.1}.
+\end{exercise}
+
+\begin{proof}
+See \THM{2.12} and \CORO{2.12.1}.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.6}
+Prove \THM{2.13}(b).
+\end{exercise}
+
+\begin{proof}
+See \THM{2.13}.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.7}
+Prove \THM{2.15}(c)(f).
+\end{exercise}
+
+\begin{proof}
+See \THM{2.15}.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.8}
+Prove \THM{2.10}.
+Now state and prove a more general result involving linear transformations with domains unequal to their codomains.
+\end{exercise}
+
+\begin{proof}
+See \THM{2.10}.
+
+Now for the general result, they are immediately true since by the ``nature'' of the proof, the structure of the proof in \THM{2.10} does not depend on the domain and codomain, so the proof can also be used in the general case.
+But you need to specify appropriate domain and codomain to make the function composition well defined.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.9}
+Find linear transformations \(\U, \T: F^2 \to F^2\) such that \(\U\T = \TZERO\) (the zero transformation) but \(\T\U \ne \TZERO\).
+Use your answer to find matrices \(A\) and \(B\) such that \(AB = O_{2 \X 2}\) but \(BA \ne O_{2 \X 2}\).
+\end{exercise}
+
+\begin{proof}
+Let \(\U(a, b) = (a, a), \T(a, b) = (0, b)\).
+Then \(\U\T(a, b) = \U(\T(a, b)) = \U(0, b) = (0, 0)\), hence \(\U\T = \TZERO\).
+But \(\T\U(a, b) = \T(\U(a, b)) = \T(a, a) = (0, a)\), hence \(\T\U \ne \TZERO\).
+Now from \THM{2.15}(d), we know \(\U = \LMTRAN_A\) and \(\T = \LMTRAN_B\) where \(A = [\U]_{\beta}\), \(B = [\T]_{\beta}\) and \(\beta\) is the standard basis of \(F^2\).
+And (trivially) \(A = \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix}, B = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\), and \(AB = O_{2 \X 2}\) but \(BA \ne O_{2 \X 2}\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.10}
+Let \(A\) be an \(n \X n\) matrix.
+Prove that \(A\) is a diagonal matrix if and only if \(A_{ij} = \delta_{ij} A_{ij}\) for all \(i\) and \(j\).
+\end{exercise}
+
+\begin{proof} \ 
+
+\(\Longrightarrow\):
+Suppose \(A\) is diagonal, then
+\begin{equation*}
+    A_{ij} = \begin{cases}
+        A_{ij} & \text{(of course) if } i = j \\
+        0 & \text{ if } i \ne j
+    \end{cases}
+\end{equation*}
+But in particular,
+\begin{equation*}
+    A_{ij} = \begin{cases}
+        A_{ij} = 1 A_{ij} = \delta_{ij} A_{ij} & \text{ if } i = j \\
+        0 = 0 A_{ij} = \delta_{ij} A_{ij} & \text{ if } i \ne j
+    \end{cases}
+\end{equation*}
+So for all \(i\) and \(j\), \(A_{ij} = \delta_{ij} A_{ij}\).
+
+\(\Longleftarrow\):
+For all \(i\) and \(j\),
+\begin{equation*}
+    A_{ij} = \begin{cases}
+        \delta_{ij} A_{ij} = 1 A_{ij} = A_{ij} & \text{ if } i = j \\
+        \delta_{ij} A_{ij} = 0 A_{ij} = 0 & \text{ if } i \ne j
+    \end{cases}
+\end{equation*}
+Hence \(A\) has zero on non-diagonal entries, hence by definition \(A\) is a diagonal matrix.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.11}
+Let \(V\) be a vector space, and let \(\T : V \to V\) be linear.
+Prove that \(\T^2 = \TZERO\) if and only if \(\RANGET \subseteq \NULLT\).
+\end{exercise}
+
+\begin{proof} \ 
+\(\Longrightarrow\): Suppose \(\T^2 = \TZERO\), we have to show \(\RANGET \subseteq \NULLT\).
+So suppose arbitrary \(x \in \RANGET\).
+Then by definition of range, we can find \(v \in V\) s.t. \(\T(v) = x\).
+And in particular, \(\T(\T(v)) = \T(x)\).
+But LHS \(= \T(\T(v)) = \T^2(v) = \OV\) by supposition, so we have RHS \(= \T(x) = \OV\).
+So by definition of null space, \(x \in \NULLT\).
+Since \(x\) is arbitrary, we have \(\RANGET \in \NULLT\).
+
+\(\Longleftarrow\): Suppose \(\RANGET \subseteq \NULLT\), we have to show \(\T^2 = \TZERO\).
+Then for all \(x \in V\), of course \(\BLUE{\T(x)} \in \RANGET\). but since \(\RANGET \subseteq \NULLT\), we have \(\BLUE{\T(x)} \in \NULLT\).
+Then by definition, \(\T(\BLUE{\T(x)}) = \OV\), that is, \(\T^2(x) = \OV\).
+
+So for all \(x \in V\), \(\T^2(x) = \OV\), hence \(\T^2 = \TZERO\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.12}
+Let \(V, W\), and \(Z\) be vector spaces, and let \(\T : V \to W\) and \(\U: W \to Z\) be linear.
+\begin{enumerate}
+\item Prove that if \(\U\T\) is one-to-one. then \(\T\) is one-to-one.
+    Must \(\U\) also be one-to-one?
+\item Prove that if \(\U\T\) is onto, then \(\U\) is onto.
+    Must \(\T\) also be onto?
+\item Prove that if \(\U\) and \(\T\) are one-to-one and onto, then \(\U\T\) is also.
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+All these statements \textbf{do not require linearity} and are true for normal functions.
+\end{note}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item Suppose \(\U\T\) is one-to-one, we have to show \(\T\) is also.
+So suppose \(x, y \in \T\) s.t. \(\T(x) = \T(y)\) we have to show \(x = y\).
+Then
+\begin{align*}
+             & \T(x) = \T(y) \\
+    \implies & \U(\T(x)) = \U(\T(y)) & \text{of course} \\
+    \implies & (\U\T)(x) = (\U\T)(y) & \text{by def of function composition} \\
+    \implies & x = y, & \text{since \(\U\T\) is one-to-one}
+\end{align*}
+as desired.
+
+Note that \(\U\) is not necessarily one-to-one.
+Let \(\T : \SET{R}^2 \to \SET{R}^3\) by \(\T(a, b) = (a, b, 0)\), \(\U : \SET{R}^3 \to \SET{R}^3\) be projection on \(xy\)-plane along \(z\)-axis, that is \(\U(a, b, c) = (a, b, 0)\).
+Then \((\U\T)(a, b) = \U(a, b, 0) = (a, b, 0)\), trivially \(\U\T\) is one-to-one, but \(\U(a, b, 1) = \U(a, b, 2) = (a, b, 0)\) and \((a, b, 1) \ne (a, b, 2)\), so \(\U\) is not one-to-one.
+
+\item
+Suppose \(\U\T\) is onto, we have to show \(\U\) is onto.
+So let arbitrary \(z \in Z\), we have to find a vector \(w \in W\) s.t. \(\U(w) = z\).
+
+But in particular, since \(\U\T\) is onto, we can find a vector \(v \in V\) s.t. \((\U\T)(v) = z\).
+By definition of function composition, \(\U(\T(v)) = z\).
+But \(\T(v)\) is in \(W\), so we have found a vector \(w = \T(v) \in W\) s.t. \(\U(w) = z\).
+Since \(z\) is arbitrary, we have \(\U\) is onto.
+
+Note that \(\T\) is not necessarily onto.
+Let \(\T : \SET{R}^2 \to \SET{R}^3\) by \(\T(a, b) = (a, b, 0)\), \(\U : \SET{R}^3 \to \SET{R}^2\) by \(\U(a, b, c) = (a, b)\).
+Then \((\U\T)(a, b) = \U(a, b, 0) = (a, b)\), trivially \(\U\T\) is onto, but \((0, 0, 1)\) cannot by mapped by \(\T\) since the output of \(\T\) must have nonzero in the third component, hence \(\T\) is not onto.
+
+\item Suppose \(\U, \T\) are one-to-one and onto.
+First we show \(\U\T\) is one-to-one.
+So suppose \((\U\T)(x) = (\U\T)(y)\), we have to show \(x = y\).
+Then
+\begin{align*}
+             & (\U\T)(x) = (\U\T)(y) \\
+    \implies & \U(\T(x)) = \U(\T(y)) & \text{by definition of function composition} \\
+    \implies & \T(x) = \T(y) & \text{since \(\U\) is one-to-one} \\
+    \implies & x = y & \text{since \(\T\) is one-to-one}
+\end{align*}
+So \(\U\T\) is one-to-one.
+
+Now we show \(\U\T\) is onto.
+So suppose \(z \in Z\), we have to find \(v \in V\) s.t. \((\U\T)(v) = z\).
+But since \(\U\) is onto, we can find \(w \in W\) s.t. \(\U(w) = z\).
+And since \(\T\) is onto, we can find \(v \in V\) s.t. \(\T(v) = w\).
+Then \((\U\T)(v) = \U(\T(v)) = \U(w) = z\),
+hence we have found \(v \in V\) s.t. \((\U\T)(v) = z\).
+So \(\U\T\) is onto.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.13}
+Let \(A\) and \(B\) be \(n \X n\) matrices.
+Prove that \(\TRACE(AB) = \TRACE(BA)\) and \(\TRACE(A) = \TRACE(A^\top)\).
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+    \TRACE(AB) & = \sum_{i = 1}^n (AB)_{ii} & \text{by def of trace} \\
+               & = \sum_{i = 1}^n \bigg( \sum_{k = 1}^n A_{ik} B_{ki} \bigg) & \text{by \DEF{2.10}} \\
+               & = \sum_{k = 1}^n \bigg( \sum_{i = 1}^n A_{ik} B_{ki} \bigg) & \text{finite summation can change order} \\
+               & = \sum_{k = 1}^n \bigg( \sum_{i = 1}^n B_{ki} A_{ik} \bigg) & \text{of course} \\
+               & = \sum_{k = 1}^n (BA)_{kk} & \text{by \DEF{2.10}} \\
+               & = \TRACE(BA) & \text{by def of trace}
+\end{align*}
+
+And
+\begin{align*}
+    \TRACE(A) & = \sum_{i = 1}^n A_{ii} & \text{by def of trace} \\
+              & = \sum_{i = 1}^n (A^\top)_{ii} & \text{since \((A^\top)_{ij} = A_{ji}\), and in particular \((A^\top)_{ii} = A_{ii}\)} \\
+              & = \TRACE(A^\top).
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.14}
+Assume the notation in \THM{2.13}, that is,
+let \(A\) be an \(m \X n\) matrix and \(B\) be an \(n \X p\) matrix.
+For each \(j\), \(j = 1, 2, ..., p\), let \(u_j\) and \(v_j\) denote \emph{the \(j\)th columns of} \(AB\) and \(B\), respectively.
+\begin{enumerate}
+\item Suppose that \(z\) is a (column) vector in \(F^P\).
+    Use \THM{2.13}(b) to prove that \(Bz\) is a \textbf{linear combination of the columns of} \(B\).
+    In particular, if \(z = (a_1, a_2, ..., a_p)^\top\), then show that
+    \[
+        Bz = \sum_{j = 1}^p a_j v_j.
+    \]
+
+\item Extend (a) to prove that column \(j\) of \(AB\) is a linear combination of the columns of \(A\) with the coefficients being the entries of column \(j\) of \(B\).
+
+\item For any row vector \(w \in F^m\), prove that \(wA\) is a linear combination of the \textbf{rows of} \(A\) with the coefficients being the coordinates of \(w\).
+    Hint: Use properties of the \textit{transpose operation} applied to (a).
+\item Prove the analogous result to (b) about rows:
+    Row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with the coefficients being the entries of row \(i\) of \(A\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item First given \(z = (a_1, a_2, ..., a_p) \in F^p\), \(z = a_1 e_1 + a_2 e_2 + ... + a_p e_p\) where \(\{ e_1, e_2, ..., e_p \}\) is the standard basis for \(F^p\).
+And
+\begin{align*}
+    Bz & = B(a_1 e_1 + a_2 e_2 + ... + a_p e_p) \\
+       & = a_1 B e_1 + a_2 B e_2 + ... + a_p B e_p & \text{by \THM{2.12}(a)(b)} \\
+       & = a_1 v_1 + a_2 v_2 + ... + a_p v_p, & \text{by \THM{2.13}(b)}
+\end{align*}
+which is a linear combination of columns of \(B\) with the coefficients being the components of \(z\).
+
+\item for the column \(j\), \(u_j\), of \(AB\),
+\begin{align*}
+    u_j & = A v_j & \text{by \THM{2.13}(a)} \\
+        & = A \begin{pmatrix}
+              B_{1j} \\ B_{2j} \\ \vdots \\ B_{nj}
+          \end{pmatrix} \\
+        & = A (B_{1j} e_1 + B_{2j} e_2 + ... + B_{nj} e_n) & \text{where \(e_1, ..., e_n\) is the standard basis of \(F^n\)} \\
+        & = B_{1j} A e_1 + B_{2j} A e_2 + ... + B_{nj} A e_n \MAROON{\ \ \ (b.1)} & \text{by \THM{2.12}(a)(b)}.
+\end{align*}
+But similar to \THM{2.13}(b), \(A e_j\) is equal to the \(j\)th column of \(A\) for \(j = 1, ..., n\), hence by \MAROON{(b.1)}, \(u_j\), the column \(j\) of \(AB\), is a linear combination of columns of \(A\) with the coefficients from the column \(j\) of \(B\).
+
+\item
+Let \(w = (w_1, w_2, ..., w_m) \in F^m\).
+First, by \ATHM{2.24}, \((wA)^\top = A^\top w^\top\), with \(A^\top\) being \(n \X m\) and \(w^\top\) being \(m \X 1\).
+And by part(a), let \(q_j\) be the \(j\)th column of \(A^\top\), then
+\[
+    A^\top w^\top = \sum_{j = 1}^m w_j q_j
+\]
+So,
+\begin{align*}
+             & (wA)^\top = w_1 q_1 + w_2 q_2 + ... + w_m q_m \\
+    \implies & ((wA)^\top)^\top = (w_1 q_1 + w_2 q_2 + ... + w_m q_m)^\top \\
+    \implies & wA = (w_1 q_1 + w_2 q_2 + ... + w_m q_m)^\top & \text{by \ATHM{1.2}(2)} \\
+    \implies & wA = w_1 q_1^\top + w_2 q_2^\top + ... + w_m q_m^\top, \MAROON{(c.1)} & \text{by \ATHM{1.2}(1)}
+\end{align*}
+But since \(q_j\) is the \(j\)th column of \(A^\top\), that means \(q_j^\top\) is the \(j\)th row of \(A\).
+Hence by \MAROON{(c.1)}, \(wA\) is the linear combination of rows of \(A\) with the coefficients being the coordinates of \(w\).
+
+\item Again, \((AB)^\top = B^\top A^\top\).
+And by part(b), column \(i\) of \(B^\top A^\top\) is a linear combination of columns of \(B^\top\) with the coefficients being the entries of column \(i\) of \(A^\top\).
+
+But that means \RED{row} \(i\) of \((B^\top A^\top)^{\RED{\top}}\) (which is equal to \(((AB)^\top)^\top = AB\)) is a linear combinations of \RED{rows} of \((B^\top)^{\RED{\top}}\) with the coefficients being the entries of \RED{row} \(i\) of \((A^\top)^{\RED{\top}}\).
+
+Simplifying, we have row \(i\) of \(AB\) is a linear combinations of rows of \(B\) with the coefficients being the entries of row \(i\) of \(A\), as desired.
+
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.15}
+USEDINSEC3.4\#15.
+Let \(A\) and \(B\) be matrices for which the product matrix \(AB\) is defined, and let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
+If \(v_p = c_1 v_{j_{1}} + c_2 v_{j_{2}} + ... + c_k v_{j_{k}}\) for some scalars \(c_1, c_2, ..., c_k\), prove that \(u_p = c_1 u_{j_{1}} + c_2 u_{j_{2}} + ... + c_k u_{j_{k}}\).
+\end{exercise}
+
+\begin{note}
+That is, if the \(p\)th column of \(B\), \(v_p\), is the linear combination of \(v_{j_{1}}, v_{j_{2}}, ..., v_{j_{k}}\), where
+\[
+    v_{j_{1}}, v_{j_{2}}, ..., v_{j_{k}}, \text{ are the \(j_1\)th, \(j_2\)th, ..., \(j_k\)th columns of \(B\)}, 
+\]
+with the coefficients \(c_1, c_2, ..., c_k\),
+then the \(p\)th column of \(AB\), \(u_p\), is the linear combination of \(u_{j_{1}}, u_{j_{2}}, ..., u_{j_{k}}\), where
+\[
+    u_{j_{1}}, u_{j_{2}}, ..., u_{j_{k}} \text{ are (also) the \(j_1\)th, \(j_2\)th, ..., \(j_k\)th columns of \(AB\)}
+\]
+and \textbf{also with the same} coefficients \(c_1, c_2, ..., c_k\).
+\end{note}
+
+\begin{proof}
+\begin{align*}
+             & v_p = c_1 v_{j_{1}} + c_2 v_{j_{2}} + ... + c_k v_{j_{k}} \\
+    \implies & A v_p = A(c_1 v_{j_{1}} + c_2 v_{j_{2}} + ... + c_k v_{j_{k}}) & \text{in particular} \\
+    \implies & A v_p = c_1 A v_{j_{1}} + c_2 A v_{j_{2}} + ... + c_k A v_{j_{k}} & \text{by \THM{2.12}(a)(b)} \\
+    \implies & u_p = c_1 u_{j_1} + c_2 u_{j_2} + ... + c_k u_{j_k} & \text{by \THM{2.13}(a), \(A v_p = u_p\), and so on}
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.16}
+Let \(V\) be a \emph{finite}-dimensional vector space, and let \(\T : V \to V\) be linear.
+\begin{enumerate}
+\item If \(\rankT = \rank(\T^2)\), prove that \(\RANGET \cap \NULLT = \{ \OV \}\).
+    Deduce that \(V = \RANGET \oplus \NULLT\).
+\item Prove that \(V = \RANGE(\T^k) \oplus \NULL(\T^k)\) for some positive integer \(k\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Suppose \(\rankT = \rank(\T^2)\).
+That is, \(\dim(\RANGET) = \dim(\RANGE(\T^2))\) \MAROON{(a.1)}.
+
+We first do some pre-work.
+We first show that \(\NULLT = \NULL(\T^2)\) by showing that (by \THM{1.11},) \(\NULLT \subseteq \NULL(\T^2)\) and \(\dim(\NULLT) = \dim(\NULL(\T^2))\).
+
+So suppose arbitrary \(v \in \NULLT\).
+Then
+\begin{align*}
+             & \BLUE{\T(v)} = \OV & \text{since \(v \in \NULLT\)} \\
+    \implies & \T(\BLUE{\T(v)}) = \T(\OV) & \text{same as above} \\
+             & = \OV & \text{since \(\T\) is linear} \\
+    \implies & (\T^2)(v) = \OV & \text{by \ADEF{2.6}} \\
+    \implies & v \in \NULL(\T^2) & \text{by def of null space}
+\end{align*}
+Since \(v\) is arbitrary, \(\NULLT \subseteq \NULL(\T^2)\).
+
+Now we show that \(\dim(\NULLT) = \dim(\NULL(\T^2))\).
+And
+\begin{align*}
+    \dim(\NULLT) & = \dim(V) - \dim(\RANGET) & \text{since \(V\) is finite, and by \THM{2.3}} \\
+                 & = \dim(V) - \dim(\RANGE(\T^2)) & \text{by \MAROON{(a.1)}} \\
+                 & = \dim(\NULL(\T^2)) & \text{by \THM{2.3} again}
+\end{align*}
+Hence (by \THM{1.11},) we have shown that \(\NULLT = \NULL(\T^2)\) \MAROON{(a.2)}.
+
+Now we first show that \(\RANGET \cap \NULLT = \{ \OV \}\).
+So let arbitrary \(w \in \RANGET \cap \NULLT\), we have to show that \(w = \OV\).
+So in particular, \(w \in \RANGET\) and \(w \in \NULLT\).
+Since \(w \in \RANGET\), we have some \(v \in V\) s.t. \(\T(v) = w\) \MAROON{(a.3)}.
+Since \(w \in \NULLT\), we have \(\T(w) = \OV\).
+Together, we have \(\T(\T(v)) = \T(w) = \OV\), hence \((\T^2)(v) = \OV\), hence \(v \in \NULL(\T^2)\).
+But by \MAROON{(a.2)}, \(v\) is also in \(\NULLT\), so \(\T(v) = \OV\), hence by \MAROON{(a.3)} we have \(w = \OV\), as desired.
+
+Now we show \(V = \RANGET \oplus \NULLT\).
+Since we have shown \(\RANGET \cap \NULLT = \{ \OV \}\), by \ATHM{2.11}(1.2), \(V = \RANGET \oplus \NULLT\) is true as desired.
+
+\item
+First we show that given any linear \(\T : V \to V\), \(\RANGE(\T^{k + 1}) \subseteq \RANGE(\T^k)\) for some nonnegative integer \(k\).
+Suppose arbitrary \(v \in \RANGE(\T^{k + 1})\), then exists \(x \in V\) s.t. \(\T^{k + 1}(x) = v\);
+that is, \(\T^k(\BLUE{\T(x)}) = v\);
+so we have found \(\BLUE{\T(x)} \in V\) s.t. \(\T^k(\BLUE{\T(x)}) = v\), so \(v \in \RANGE(\T^k)\).
+Hence \(\RANGE(\T^{k + 1}) \subseteq \RANGE(\T^k)\).
+
+Now given arbitrary nonnegative integer \(k\), we have two cases:
+\begin{itemize}
+    \item \(\RANGE(\T^{k + 1}) = \RANGE(\T^k)\): Then by definition we have \(\T^{k + 1}(V) = \T^k(V)\) \MAROON{(b.1)}.
+    
+    And furthermore,
+    \begin{align*}
+        \T^{k + 2}(V) & = (\T \T^{k+1})(V) & \text{of course} \\
+                      & = \T(\T^{k + 1}(V)) & \text{of course} \\
+                      & = \T(\T^k(V)) & \text{by \MAROON{(b.1)}} \\
+                      & = \T^{k + 1}(V) & \text{of course} \\
+                      & = \T^k(V) & \text{by \MAROON{(b.1)}}
+    \end{align*}
+    and (informally) inductively, we have \(\T^{2k}(V) = \T(V)\).
+    That is, \(\RANGE(\T^{2k}) = \RANGE(\T^k)\), and equivalently, \(\RANGE((\T^k)^2) = \RANGE(\T^k)\).
+    Hence by part(a), we have \(V = \RANGE(\T^k) \oplus \NULL(\T^k)\), as desired.
+    
+    \item \(\RANGE(\T^{k + 1}) \subset \RANGE(\T^k)\) (proper subset):
+
+    Then (by \THM{1.11}(2)), \(\dim(\RANGE(\T^{k + 1}) < \dim(\RANGE)(\T^k))\).
+    And (informally by well-ordering principle) since the (finite) dimension of \(\RANGE(\T^{k + 1})\) can only be \(0\) to \(\dim(\RANGE(\T^k)) - 1\), we must have some integer \(k'\) s.t. \(\dim(\RANGE(\T^{k + \RED{k'} + 1}) = \dim(\RANGE(\T^{k + \RED{k'}}))\).
+    But then we have found \(k'' = k + k'\) s.t. \(\dim(\RANGE(\T^{k'' + 1}) = \dim(\RANGE(\T^{''}))\), and this falls back to the previous case.
+\end{itemize}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.17}
+(Refer to \ADEF{2.2}.)
+Let \(V\) be a vector space and \(\T : V \to V\) be a linear transformation.
+Prove that \(\T = \T^2\) if and only if \(\T\) is a \textbf{projection} on \(W_1 = \{ y : \T(y) = y \}\)
+along \(\NULLT\).
+\end{exercise}
+
+\begin{proof} \ 
+
+\(\Longrightarrow\): Suppose \(\T = \T^2\), we have to show \(\T\) is a projection on \(W_1\) along \(\NULLT\).
+But by \ADEF{2.2} we first need to show \(V = W_1 \oplus \NULLT\).
+
+Now (\RED{tricky part}) given arbitrary \(x \in V\), we have \(x = \T(x) + (x - \T(x))\) \MAROON{(1)}.
+And
+\begin{align*}
+             & \T(x) = \T^2(x) & \text{by supposition} \\
+    \implies & \T(x) = \T(\T(x)) & \text{of course}
+\end{align*}
+Hence we have \(\T(\BLUE{\T(x)}) = \BLUE{\T(x)}\) \MAROON{(2)}, so by definition of \(W_1\), \(\T(x) \in W_1\) \MAROON{(3)}.
+And
+\begin{align*}
+        \T(x - \T(x)) & = \T^2(x - \T(x)) & \text{by supposition} \\
+                      & = \T(\T(x - \T(x)) & \text{of course} \\
+                      & = \T(\T(x) - \T(\T(x))) & \text{(nasty, but) since \(\T\) is linear} \\
+                      & = \T(\T(x)) - \T\Big( \T \big( \T(x) \big) \Big) & \text{since \(\T\) is linear!} \\
+                      & = \T(x) - \T\Big( \T(x) \Big) & \text{by \MAROON{(2)}} \\
+                      & = \T(x) - \T(x) & \text{by \MAROON{(2)}} \\
+                      & = \OV.
+\end{align*}
+Hence \(x - \T(x) \in \NULLT\) \MAROON{(4)}.
+So by \MAROON{(3)} and \MAROON{(4)}, we have \(x = \T(x) + (x - \T(x))\) where \(\T(x) \in W_1\) and \(x - \T(x) \in \NULLT\).
+Hence by definition, \(x \in W_1 + \NULLT\), so \(V \subseteq W_1 + \NULLT\), which implies \(V = W_1 + \NULLT\) since other direction is automatically true.
+
+Now, if \(x \in W_1 \cap \NULLT\), then by \(x \in W_1\) we have \(\T(x) = x\),
+and by \(x \in \NULLT\) we have \(\T(x) = \OV\), hence \(x = \OV\), hence \(W_1 \cap \NULLT = \{ \OV \}\).
+
+So together we have \(V = W_1 \oplus \NULLT\).
+
+Finally, for all \(x \in V\),
+\begin{align*}
+    \T(x) & = \T(\BLUE{\T(x)} + (x - \T(x))) & \text{where by \MAROON{(3)} \(\BLUE{\T(x)} \in W_1\) and by \MAROON{(4)} \(x - \T(x) \in \NULLT\)} \\
+          & = \T(\T(x)) + \T(x - \T(x)) & \text{since \(\T\) is linear} \\
+          & = \T(x) + \T(x - \T(x)) & \text{by supposition that \(\T = \T^2\)} \\
+          & = \T(x) + \OV & \text{by \MAROON{(4)}} \\
+          & = \BLUE{\T(x)},
+\end{align*}
+hence by \ADEF{2.2}, \(\T\) is a projection on \(W_1\) along \(\NULLT\).
+
+\(\Longleftarrow\): Suppose \(\T\) is a projection on \(W_1\) along \(\NULLT\), we have to show \(\T = \T^2\).
+So by definition of projection, for all \(x \in V\), we have \(x = w_1 + w_2\) where \(w_1 \in W_1\) and \(w_2 \in \NULLT\), and \(\T(x) = w_1\).
+And
+\begin{align*}
+    \T^2(x) & = \T(\T(x)) \\
+            & = \T(\T(w_1 + w_2)) \\
+            & = \T(\T(w_1) + \T(w_2)) & \text{since \(\T\) is linear} \\
+            & = \T(w_1 + \OV) & \text{since \(w_1 \in W_1\) and \(w_2 \in \OV\)} \\
+            & = \T(w_1) \\
+            & = w_1 & \text{since \(w_1 \in W_1\)}
+\end{align*}
+Hence \(\T^2(x) = \T(x) = w_1\).
+So we have \(\T^2 = \T\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.18}
+Let \(\beta\) be an ordered basis for a finite-dimensional vector space \(V\), and let \(\T : V \to V\) be linear.
+Prove that, for any nonnegative integer \(k\),
+\([\T^k]_{\beta} = ([\T]_{\beta})^k\).
+\end{exercise}
+
+\begin{proof}
+This is of course by \THM{2.11} and induction.
+Anyway, we prove by induction on \(k\) with base case \(0\).
+For \(k = 0\),
+\begin{align*}
+    [\T^0]_{\beta} & = [\ITRANV]_{\beta} & \text{by \ADEF{2.6}} \\
+                   & = I & \text{by \EXEC{2.3.1}(d)} \\
+                   & = ([\T]_{\beta})^0 & \text{by \ADEF{2.7}}
+\end{align*}
+So the base case is true.
+
+Suppose \([\T^k]_{\beta} = ([\T]_{\beta})^k\) for some integer \(k \ge 0\).
+Then
+\begin{align*}
+    [\T^{k + 1}]_{\beta} & = [\T^k \T]_{\beta} & \text{by \ADEF{2.6}} \\
+                         & = [\T^k]_{\beta} [\T]_{\beta} & \text{by \THM{2.11}} \\
+                         & & \text{(or \CORO{2.11.1})} \\
+                         & = ([\T]_{\beta})^k [\T]_{\beta} & \text{by inductive hypothesis} \\
+                         & = ([\T]_{\beta})^{k + 1} & \text{by \ADEF{2.7}}
+\end{align*}
+This closes the induction.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.19}
+Using only the definition of matrix multiplication, prove that, multiplication of matrices is associative (\THM{2.16}).
+\end{exercise}
+
+\begin{proof}
+Let \(A, B, C\) be \(m \X n, n \X p, p \X q\) matrices respectively such that \(A(BC)\) is defined.
+Then for all \(1 \le i \le m\), \(1 \le j \le q\),
+\begin{align*}
+    [A(BC)]_{ij} & = \sum_{k = 1}^n A_{ik} (BC)_{kj} & \text{by \DEF{2.10}} \\
+                 & = \sum_{k = 1}^n A_{ik} \bigg( \sum_{l = 1}^p B_{kl} C_{lj} \bigg) & \text{by \DEF{2.10}} \\
+                 & = \sum_{k = 1}^n \Bigg( \sum_{l = 1}^p A_{ik} \Big(B_{kl} C_{lj} \Big) \Bigg) & \text{move constant into summation} \\
+                 & = \sum_{k = 1}^n \Bigg( \sum_{l = 1}^p \Big( A_{ik} B_{kl} \Big) C_{lj} \Bigg) & \text{of course} \\
+                 & = \sum_{l = 1}^p \Bigg( \sum_{k = 1}^n \Big( A_{ik} B_{kl} \Big) C_{lj} \Bigg) & \text{finite summation can change order} \\
+                 & = \sum_{l = 1}^p C_{lj} \Bigg( \sum_{k = 1}^n \Big( A_{ik} B_{kl} \Big) \Bigg) & \text{move constant out of summation} \\
+                 & = \sum_{l = 1}^p C_{lj} (AB)_{il} & \text{by \DEF{2.10}} \\
+                 & = \sum_{l = 1}^p (AB)_{il} C_{lj} & \text{of course} \\
+                 & = [(AB)C]_{ij} & \text{by \DEF{2.10}}
+\end{align*}
+Hence \(A(BC) = (AB)C\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.20}
+For an incidence matrix(see \ADEF{2.8}) with related matrix \(B\) defined by \(B_{ij} = 1\) if \(i\) is related to \(j\) and \(j\) is related to \(i\), and \(B_{ij} = 0\) otherwise,
+prove that \(i\) belongs to a clique if and only if \((B^3)_{ii} > 0\).
+\end{exercise}
+
+\begin{proof} \ 
+
+\(\Longrightarrow\): Suppose \(i\) belongs to a clique.
+Then
+\begin{align*}
+    (B^3)_{ii} & = (BB^2)_{ii} & \text{by \ADEF{2.7} (and \THM{2.16})}\\
+               & = \sum_{k = 1}^n B_{ik} (B^2)_{ki} & \text{by \THM{2.10}} \\
+               & = \sum_{k = 1}^n B_{ik} \sum_{l = 1}^n B_{kl} B_{lk} & \text{by \DEF{2.10}} \\
+               & = \sum_{k = 1}^n \sum_{l = 1}^n B_{ik} B_{kl} B_{li};
+\end{align*}
+So by definition of \(B\), \((B^3)_{ii}\) means all the combination of \(k, l\) where \(1 \le k \le n\) and \(1 \le l \le n\) such that \(i, k\) have relation with each other, and \(k, l\) have relation with each other, and \(l, i\) have relation with each other.
+But since \(i\) belongs to a clique, we really can find another two members \(p, q\) where \(1 \le p \le n\) and \(1 \le q \le n\), and \(i, p, q\) are distinct and related to each other.
+That is, (by permutation law,)
+\begin{itemize}
+    \item \(i, p\) have relation with each other, that is, \(B_{ip} = 1\);
+    \item \(p, q\) have relation with each other, that is, \(B_{pq} = 1\);
+    \item \(q, i\) have relation with each other, that is, \(B_{qi} = 1\).
+\end{itemize}
+So we have \(B_{ip} B_{pq} B_{qi} = 1 \X 1 \X 1 = 1\), hence \(\sum_{k = 1}^n \sum_{l = 1}^n B_{ik} B_{kl} B_{li}\), which contains \(B_{ip} B_{pq} B_{qi}\) and all terms are nonnegative, is greater than \(0\).
+
+\(\Longleftarrow\): Suppose \((B^3)_{ii} > 0\) for some \(1 \le i \le n\).
+Then by the calculation in the previous case, some terms in \(\sum_{k = 1}^n \sum_{l = 1}^n B_{ik} B_{kl} B_{li}\) is equal to \(1\).
+That is, we can find three member \(i, p, q\) where \(1 \le p \le n\) and \(1 \le q \le n\) and \(i, p, q\) are distinct s.t. \(B_{ip} B_{pq} B_{qi} = 1\).
+And (by zero product property) this means all of \(B_{ip}, B_{pq}, B_{qi}\) are nonzero, and by definition of \(B\), are equal to \(1\).
+But by definition of \(B\), that implies \(i, p\) have relation with each other, \(p, q\) have relation with each other, and \(q, i\) have relation with each other;
+so (by permutations law,) \(i, p, q\) form a clique.
+so we have found a clique containing \(i\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.21}
+Use \EXEC{2.3.20} to determine the cliques in the relations corresponding to the following incidence matrices.
+\begin{enumerate}
+\item
+\[
+    \begin{pmatrix}
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0
+    \end{pmatrix}
+\]
+\item
+\[
+    \begin{pmatrix}
+        0 & 0 & 1 & 1 \\
+        1 & 0 & 0 & 1 \\
+        1 & 0 & 0 & 1 \\
+        1 & 0 & 1 & 0
+    \end{pmatrix}
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item The corresponding \(B\) is
+\[
+    \begin{pmatrix}
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 0 & 0 \\
+        0 & \RED{0} & 0 & 1 \\
+        1 & 0 & 1 & 0
+    \end{pmatrix}
+\]
+and \(B^3\) is
+\[
+    \begin{pmatrix}
+        0 & 3 & 0 & 3 \\
+        2 & 0 & 1 & 0 \\
+        0 & 3 & 0 & 3 \\
+        4 & 0 & 2 & 0
+    \end{pmatrix}
+\]
+hence by \EXEC{2.3.20}, since all \((B^3)_{ii} = 0\), \(A\) has no clique.
+
+\item
+The corresponding \(B\) is
+\[
+    \begin{pmatrix}
+        0 & 0 & 1 & 1 \\
+        \RED{0} & 0 & 0 & \RED{0} \\
+        1 & 0 & 0 & 1 \\
+        1 & 0 & 1 & 0
+    \end{pmatrix}
+\]
+and \(B^3\) is
+\[
+    \begin{pmatrix}
+        2 & 0 & 3 & 3 \\
+        3 & 0 & 2 & 3 \\
+        3 & 0 & 2 & 3 \\
+        3 & 0 & 3 & 2
+    \end{pmatrix}
+\]
+hence by \EXEC{2.3.20}, \(1, 3, 4\) belong to some clique(s).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.22}
+Let \(A\) be an incidence matrix that is associated with a dominance relation(see \ADEF{2.9}).
+Prove that the matrix \(A + A^2\) has a row [column] in which each entry is positive except for the diagonal entry.
+\end{exercise}
+
+\begin{proof}
+We go back to the equivalent statements using graph theory: Given any positive integer \(n\), every graph corresponding a dominant incidence \(n \X n\) matrix has a vertex that can reach all other vertices within two steps.
+(and has a vertex that can be reached by all other vertices within two steps, but we just skip this statement.)
+
+BTW, we use \(v \to u\) to represent there is an edge from \(v\) to \(u\).
+
+We prove this by induction on the number of vertices, starting from \(2\).
+
+But the base case is really trivial.
+
+So inductively, suppose for some positive integer \(k \ge 2\), \begin{center}
+    every graph corresponding to a dominant incidence \(k \X k\) matrix has a vertex that can reach all other vertices within two steps.
+\end{center}
+We have to show
+\begin{center}
+    every graph corresponding to a dominant incidence \(k + 1 \X k + 1\) matrix has a vertex that can reach all other vertices within two steps.
+\end{center}
+
+So let \(A\) be an arbitrary \(k + 1 \X k + 1\) dominant incidence matrix, and let \(G\) be corresponding graph.
+If we consider a new \(k \X k \) matrix \(A'\) by removing \(k+1\)-th row and column of \(A\), it is of course a dominant incidence \(k \X k\) matrix, and the corresponding graph \(G'\) is of course a \emph{subgraph} of \(G\).
+
+So, by inductive hypothesis, (since \(G'\) corresponds to a \(k \X k\) dominant incidence matrix,) we can find a vertex, say \(v_1\), in \(G'\) such that \(v_1\) can reach all other vertices within two steps.
+
+Now we consider the whole graph \(G\), we have to find a vertex in \(G\) such that it can reach all other vertices within two steps.
+Note that there is only one vertex that is in \(G\) but not in \(G'\), so we name it \(v_{k + 1}\).
+And we name the remaining vertices \(v_1, v_2, ..., v_k\) (where \(v_1\) satisfies inductive hypothesis).
+
+Now we consider the cases of the connection between \(v_1\) and \(v_{k + 1}\).
+Since \(A\) is a dominant coincidence matrix, exactly one of the following happens:
+\begin{itemize}
+\item \(v_1 \to v_{k + 1}\):
+    Then \(v_1\) can reach \(v_{k + 1}\) using one step, and (by inductive hypothesis) \(v_1\) can reach other vertices within two steps, so \(v_1\) can reach all other vertices in \(G\) within two steps.
+\item \(v_{k + 1} \to v_1\) \MAROON{(1)}:
+    For this case we further consider the vertices that \(v_1\) connects to.
+    (BTW these vertices are not empty, otherwise \(v_1\) cannot even reach any other vertex, which contradicts the inductive hypothesis.)
+    \begin{itemize}
+    \item There exists \(v_{a_t}\) (for some index \(a_t\)) (such that \(v_1 \to v_{a_t}\) \textbf{and}) \(v_{a_t} \to v_{k + 1}\):
+        In this case, \(v_1\) can reach \(v_{k + 1}\) within two steps by \(v_1 \to v_{a_t}\) and \(v_{a_t} \to v_{k + 1}\).
+        So again \(v_1\) can reach all other vertices within two steps.
+    \item The negation of the first case; that is, every vertex that is connected by \(v_1\) does not connect to \(v_{k + 1}\).
+        \textbf{But by the property of dominant coincidence relation}, that means \(v_{k + 1}\) connects to all vertices that is connected to \(v_1\) \MAROON{(2)}.
+        
+        We will show \(v_{k + 1}\) can reach all other vertices within two steps.
+        Apart from \(v_{k + 1}\), the remaining vertices can be split into two types: \(v_{a_1}, v_{a_2}, ..., v_{a_i}\) that \(v_1\) connects to, and \(v_{b_1}, v_{b_2}, ..., v_{b_j}\) that \(v_1\) does not connect to.
+        
+        For \(v_{a_1}, ..., v_{a_i}\), since we have \(v_{k + 1} \to v_1\) (from \MAROON{(1)}), \(v_{k + 1}\) can reach these vertices within two steps by \(v_{k + 1} \to v_1\) and \(v_1\) to \(v_{a_1}, ..., v_{a_i}\).
+        
+        For \(v_{b_1}, ..., v_{b_j}\), since these nodes are in (subgraph) \(G'\), and \(v_1\) can reach this nodes within two steps, but \(v_1\) does not connect to these nodes, this implies that \(v_1\) \textbf{must} reach these nodes by exactly two steps.
+        That is, for each \(v_b\) in \(v_{b_1}, ..., v_{b_k}\), we can find a vertices \(v'\) s.t. \(v_1 \to v'\) and \(v' \to v_b\) \MAROON{(3)}.
+        But in particular, \(v_1\) connects to \(v'\), then by \MAROON{(2)}, \(v_{k + 1} \to v'\).
+        Then we have \(v_{k + 1} \to v'\) and (by \MAROON{(3)}) \(v' \to v_b\).
+        So \(v_{k + 1}\) can reach all \(v_{b_1}, ... v_{b_j}\) within two steps.
+        
+        So \(v_{k + 1}\) can reach all other vertices within two steps.
+    \end{itemize}
+\end{itemize}
+Hence in all cases we can find a vertex that can reach all other vertices within two steps.
+This closes this induction.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.23}
+Prove that the matrix
+\[
+    A = \begin{pmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        1 & 0 & 0
+    \end{pmatrix}
+\]
+corresponds to a dominance relation.
+Use \EXEC{2.3.22} to determine which persons dominate [are dominated by) each of the others within two stages.
+\end{exercise}
+
+\begin{proof}
+\(A_{11} = A_{22} = A_{33} = 0\), and \(A_{12} = 0, A_{21} = 0, A_{13} = 0, A_{31} = 1, A_{23} = 1, A_{32} = 0\), hence by \ADEF{2.9}, \(A\) is an incidence matrix that is associated with a dominance relation.
+
+And
+\[
+    A + A^2
+    = \begin{pmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        1 & 0 & 0
+    \end{pmatrix}
+    + \begin{pmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        1 & 0 & 0
+    \end{pmatrix}^2
+    = + \begin{pmatrix}
+        0 & 1 & 1 \\
+        1 & 0 & 1 \\
+        1 & 1 & 0
+    \end{pmatrix}^2
+\]
+That is, everyone can reach others within two steps, and everyone can be reached by others within two steps.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.3.24}
+Let \(A\) be an \(n \X n\) incidence matrix that corresponds to a dominance relation.
+Determine the number of nonzero entries of \(A\).
+\end{exercise}
+
+\begin{proof}
+It has \(\frac{n(n-1)}{2}\) nonzero entries.
+We can also consider the corresponding graph of \(A\), which is in fact a \emph{directed complete graph} with \(n\) vertices, so it has \(\frac{n(n-1)}{2}\) edges.
+\end{proof}
+
+\begin{additional theorem} \label{athm 2.25}
+This is the placeholder theorem for \EXEC{2.3.11}:
+
+Given linear \(\T : V \to V\), then \(\T^2 = \TZERO\) if and only if \(\RANGET \subseteq \NULLT\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.26}
+This is the placeholder theorem for \EXEC{2.3.12}:
+
+\BLUE{(1)}: \(\U\T\) is one-to-one implies \(\T\) is one-to-one, but \(\U\) is not necessarily.
+
+\BLUE{(2)}: \(\U\T\) is onto implies \(\U\) is onto, but \(\T\) is not necessarily.
+
+\BLUE{(3)}: \(\U, \T\) both one-to-one and onto implies \(\U\T\) is also one-to-one and onto.
+
+And these facts does \textbf{not} depends on linearity.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.27}
+This is the placeholder theorem for \EXEC{2.3.13}:
+
+Let \(A, B\) be \(n \X n\) matrices\(AB\) is defined, then \(\TRACE(AB) = \TRACE(BA)\) and \(\TRACE(A) = \TRACE(A^\top)\).
+Some trivial properties about trace.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.28}
+This is the placeholder theorem for \EXEC{2.3.14}:
+
+\(Ax\) is a linear combination of \(A\)'s columns with coefficients being \(x\)'s components.
+And the column \(j\) of \(AB\) a linear linear combination of the columns of \(A\) with the coefficients being the entries of column \(j\) of \(B\).
+
+(And similar for rows' version).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.29}
+This is the placeholder theorem for \EXEC{2.3.15}, which is just nasty;
+refer to the note in that exercise.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.30}
+This is the placeholder theorem for \EXEC{2.3.16}:
+
+Let \(V\) be finite, and let \(\T : V \to V\) be linear.
+\begin{enumerate}
+\item If \(\rankT = \rank(\T^2)\), then \(\RANGET \cap \NULLT = \{ \OV \}\) and (by \ATHM{2.11}(1.2)) \(V = \RANGET \oplus \NULLT\).
+\item \(V = \RANGE(\T^k) \oplus \NULL(\T^k)\) for some positive integer \(k\).
+\end{enumerate}
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.31}
+This is the placeholder theorem for \EXEC{2.3.17}:
+
+Let \(V\) be a vector space and \(\T : V \to V\) be a linear transformation.
+Then \(\T = \T^2\) if and only if \(\T\) is a \textbf{projection} on \(W_1 = \{ y : \T(y) = y \}\)
+along \(\NULLT\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.32}
+This is the placeholder theorem for \EXEC{2.3.18}:
+
+This is \THM{2.11} with induction:
+\[
+    [\T^k]_{\beta} = ([\T]_{\beta})^k.
+\]
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.33}
+This is the placeholder theorem for \EXEC{2.3.20}, which determines whether a member belongs to a clique.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.34}
+This is the placeholder theorem for \EXEC{2.3.22}, which says every dominant coincidence relation has a member which can reach (can be reached by) all the other members within two steps.
+\end{additional theorem}

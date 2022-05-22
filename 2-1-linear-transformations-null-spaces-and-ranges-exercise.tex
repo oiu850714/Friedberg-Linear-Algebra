@@ -1,0 +1,1520 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 2.1.1}
+Label the following statements as true or false.
+In each part, \(V\) and \(W\) are \textbf{finite}-dimensional vector spaces (over common \(F\)), and \(\T\) is a function from \(V\) to \(W\).
+\begin{enumerate}
+\item If \(\T\) is linear, then \(\T\) preserves sums and scalar products.
+\item If \(\T(x + y) = \T(x) + \T(y)\). then \(\T\) is linear.
+\item \(\T\) is one-to-one if and only if the only vector \(x\) such that \(\T(x) = \OW\) is \(x = \OV\).
+\item If \(\T\) is linear, then \(\T(\OV) = \OW\).
+\item If \(\T\) is linear, then \(\nullityT + \rankT = \dim(W)\).
+\item If \(\T\) is linear, then \(\T\) carries \LID{} subsets of \(V\) onto \LID{} subsets of \(W\).
+\item If \(\T, \U : V \to W\) are both linear and agree on a basis for \(V\), then \(\T = \U\).
+\item Given \(x_1, x_2 \in V\) and \(y_1, y_2 \in W\), there exists a \LTRAN{} \(\T : V \to W\) such that \(\T(x_1) = y_1\) and \(\T(x_2) = y_2\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item I really don't know what does the problem want to say, but others say it's true.
+\item No, \(\T\) must also need to satisfy \DEF{2.1}(b).
+\item False, that is true (by \THM{2.4}) only when we know \(\T\) is linear.
+\item True by \ATHM{2.1}(a).
+\item False, by \THM{2.3}, \(\nullityT + \rankT = \dim(V)\).
+\item False, zero transformation, which is linear, carries all vectors into \(\OW\), which is itself \LDP{}.
+    But this is true if \(\T\) is also one-to-one, see \EXEC{2.1.14}.
+\item True by \THM{2.6}(or \CORO{2.6.1}).
+\item False.
+    We can easily find a counterexample when \(x_1, x_2\) are \LDP{}: Let \(V = W = \SET{R}^2\) and \(x_1 = (1, 0), x_2 = (2, 0), y_1 = (1, 0), y_2 = (0, 1)\).
+    Then suppose arbitrary \(\T : V \to W\) s.t. \(\T\) is linear, and suppose \(\T(1, 0) = (1, 0)\), that is, \(\T(x_1) = y_1\).
+    Then
+    \begin{align*}
+        \T(x_2) & = \T(2, 0) \\
+                & = \T(2(1, 0)) \\
+                & = 2\T(1, 0) & \text{since \(\T\) is linear} \\
+                & = 2(1, 0) & \text{by supposition} \\
+                & = (2, 0) \ne (0, 1) = y_2,    
+    \end{align*}
+    so any linear \(\T\) can never satisfy the requirement.
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+Exercises 2 - 5 are calculation problems, it's good practice, but it's painful using \LaTeX, skip.
+\end{note}
+
+\setcounter{exercise}{5}
+
+\begin{exercise} \label{exercise 2.1.6}
+\(\T : M_{n \X n}(F) \to F\) defined by
+\[
+    \T(A) = \TRACE(A) = \sum_{i = 1}^n A_{ii}.
+\]
+\end{exercise}
+
+\begin{proof}
+\(\NULLT\) is the set of all \(n \X n\) matrices with trace equal to \(0\).
+By \ATHM{1.19}(a), \(\nullityT = n^2 - 1\).
+And it's trivial that \(\rankT = 1\).
+So \(\dim(M_{n \X n}(F)) = n^2 = (n^2 - 1) + 1 = \nullityT + \rankT\), as desired.
+And since \(\NULLT \ne \{ \OV \}\), by \THM{2.4}, \(\T\) is not one-to-one.
+And since \(\rankT = \dim(W)\), which implies \(\RANGET = W\), \(\T\) is onto.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.7}
+Prove properties 1, 2, 3, and 4 on page 65.
+\end{exercise}
+
+\begin{proof}
+See \ATHM{2.1}.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.8}
+Prove rotation, reflection, and projection on \EXAMPLE{2.1.2}, \EXAMPLE{2.1.3} are linear.
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+By \EXAMPLE{2.1.2}, given any \(\theta\), we have rotation formula
+\[
+    \T_{\theta}(a_1, a_2) = (a_1 \cos \theta - a_2 \sin \theta, a_1 \sin \theta + a_2 \cos \theta).
+\]
+And
+\begin{align*}
+    & \ \T_{\theta}(c(a_1, a_2) + (b_1, b_2)) \\
+    & = \T_{\theta}(ca_1 + b_1, ca_2 + b_2) \\
+    & \text{\ \ \ \ \ \ (combining coordinates)} \\
+    & = \big( (ca_1 + b_1) \cos \theta - (ca_2 + b_2) \sin \theta, (ca_1 + b_1) \sin \theta + (ca_2 + b_2) \cos \theta \big) \\
+    & \text{\ \ \ \ \ \ (by def of \(\T_{\theta}\))} \\
+    & = c(a_1 \cos \theta - a_2 \sin \theta, a_1 \sin \theta + a_2 \cos \theta) + (b_1 \cos \theta - b_2 \sin \theta, b_1 \sin \theta + b_2 \cos \theta) \\
+    & \text{\ \ \ \ \ \ (splitting coordinates)} \\
+    & = c\T(a_1, a_2) + \T(b_1, b_2) \\
+    & \text{\ \ \ \ \ \ (by def of \(\T_{\theta}\))}
+\end{align*}
+So by \ATHM{2.1}(b), \(\T\) is linear.
+
+
+\item
+By \EXAMPLE{2.1.3}, the reflection (about \(x\)-axis) is
+\[
+    \T(a_1, a_2) = (a_1, -a_2).
+\]
+Then
+\begin{align*}
+    & \ \T(c(a_1, a_2) + (b_1, b_2)) \\
+    & = \T(ca_1 + b_1, ca_2 + b_2) \\
+    & = (ca_1 + b_1, -(ca_2 + b_2)) & \text{by def of \(\T\)} \\
+    & = c(a_1, -a_2) + (b_1, -b_2) & \text{splitting coordinates} \\
+    & = c\T(a_1, a_2) + \T(b_1, b_2), & \text{by def of \(T\)}
+\end{align*}
+So by \ATHM{2.1}(b), \(\T\) is linear.
+
+\item
+By \EXAMPLE{2.1.4}, the projection (on \(x\)-axis) is
+\[
+    \T(a_1, a_2) = (a_1, 0).
+\]
+Then
+\begin{align*}
+    & \ \T(c(a_1, a_2) + (b_1, b_2)) \\
+    & = \T(ca_1 + b_1, ca_2 + b_2) \\
+    & = (ca_1 + b_1, 0) & \text{by def of \(\T\)} \\
+    & = c(a_1, 0) + (b_1, 0) & \text{splitting coordinates} \\
+    & = c\T(a_1, a_2) + \T(b_1, b_2), & \text{by def of \(T\)}
+\end{align*}
+So by \ATHM{2.1}(b), \(\T\) is linear.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.9}
+In this exercise, \(\T : \SET{R}^2 \to \SET{R}^2\) is a \emph{function}.
+For each of the following parts, state why \(\T\) is \emph{not} linear.
+\begin{enumerate}
+\item \(\T(a_1 , a_2) = (1, a_2)\)
+\item \(\T(a_1, a_2) = (a_1, a_1^2)\)
+\item \(\T(a_1, a_2) = (\sin a_1, 0)\)
+\item \(\T(a_1, a_2) = (\abs{a_1}, a_2)\)
+\item \(T(a_1, a_2) = (a_1 + 1, a_2)\)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+By \RMK{2.1.3}, it is immediately seen that all of them are \emph{not} linear.
+The particular reasons are:
+\begin{enumerate}
+\item \(T(0, 0) = (1, 0) \ne \OW\), violating \ATHM{2.1}(a) hence is not linear.
+\item \(\T((1, 0) + (1, 0)) = \T(2, 0) = (2, 4)\), but \(\T(1, 0) + \T(1, 0) = (1, 1) + (1, 1) = (2, 2) \ne (2, 4)\), violating \DEF{2.1}(a).
+\item \(\T((x, 0) + (y, 0)) = \T(x + y, 0) = (\sin (x + y), 0) = (\sin x \cos y + \cos x \sin y, 0)\) \MAROON{(1)},
+    but \(\T(x, 0) + \T(y, 0) = (\sin x, 0) + (\sin y, 0) = (\sin x + \sin y, 0)\),
+    which is not necessarily equal to \MAROON{(1)}, so \DEF{2.1}(a) is violated.
+\item \(\T(-1(-5, 0)) = \T(5, 0) = (5, 0)\) but \(-1\T(-5, 0) = -1(5, 0) = (-5, 0)\), so \DEF{2.1}(b) is violated.
+\item \(\T(0, 0) = (1, 0) \ne \OW\), violating \ATHM{2.1}(a), hence is not linear.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.10}
+Suppose that \(\T : \SET{R}^2 \to \SET{R}^2\) is \emph{linear}, \(\T(1, 0) = (1, 4)\), and \(\T(1, 1) = (2, 5)\).
+What is \(\T(2, 3)\)?
+Is \(\T\) one-to-one?
+\end{exercise}
+
+\begin{proof}
+Since \(\{ (1, 0), (1, 1) \}\) is (trivially) a basis for \(\SET{R}^2\), by \THM{2.6} the \(\T\) is \emph{already uniquely determined}.
+And
+\begin{align*}
+    \T(2, 3) & = \T(-1(1, 0) + 3(1, 1)) & \text{of course} \\
+             & = -1\T(1, 0) + 3\T(1, 1) & \text{since \(\T\) is linear} \\
+             & = -1(1, 4) + 3(2, 5) \\
+             & = (5, 11).
+\end{align*}
+Now by \THM{2.2}, \(\RANGET = \spann(\{ \T(1, 0), \T(1, 1) \}) = \spann(\{ (1, 4), (2, 5) \}\).
+Since \(\{ (1, 4), (2, 5) \}\) is \LID{}, it is a basis for \(\RANGET\), hence \(\rankT = 2\).
+By \THM{2.3}, \(\nullityT = \dim(V) - \rankT = 2 - 2 = 0\), so \(\NULLT = \{ \OV \}\);
+by \THM{2.4}, \(\T\) is one-to-one.
+(Also since domain and codomain of \(\T\) have same finite dimension, by \THM{2.5} \(\T\) is also onto.)
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.11}
+Prove that there exists a \LTRAN{} \(\T : \SET{R}^2 \to \SET{R}^3\) such that \(\T(1, 1) = (1, 0, 2)\) and \(\T(2, 3) = (1, -1, 4)\).
+What is \(\T(8, 11)\)?
+\end{exercise}
+
+\begin{proof}
+Similar to previous exercise, \(\{ (1, 1), (2, 3) \}\) is a basis for domain \(\SET{R}^2\) hence by \THM{2.6}, \(\T\) is uniquely determined.
+And \(\T(8, 11) = \T(2(1, 1) + 3(2, 3)) = 2\T(1, 1) + 3\T(2, 3) = 2(1, 0, 2) + 3(1, -1, 4) = (5, -3, 16)\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.12}
+Is there a \LTRAN{} \(\T : \SET{R}^3 \to \SET{R}^2\) such that \(\T(1, 0, 3) = (1, 1)\) and \(\T(-2, 0, -6) = (2, 1)\)?
+\end{exercise}
+
+\begin{proof}
+No.
+Suppose \(\T\) is linear and \(\T(1, 0, 3) = (1, 1)\).
+Then
+\begin{align*}
+    \T(-2, 0, -6) & = -2\T(1, 0, 3) & \text{since \(\T\) is linear} \\
+                  & = -2(1, 1) & \text{by supposition} \\
+                  & = (-2, -2) \ne (2, 1).
+\end{align*}
+So any liner \(\T\) cannot meet the requirements.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.13}
+Let \(V\) and \(W\) be vector spaces, let \(\T : V \to W\) be linear, and let \(\{ w_1, w_2, ..., w_k \}\) be a \emph{\LID{}} set of \(k\) vectors from \(\RANGET\).
+Prove that if \(S = \{ v_1, v_2, ..., v_k \}\) is \emph{chosen} so that \(\T(v_i) = w_i\) for \(i = 1, 2, ..., k\), then \(S\) is \emph{\LID{}}.
+\end{exercise}
+
+\begin{proof}
+Suppose \(a_1 v_1 + a_2 v_2 + ... + a_k v_k = \OV\), we have to show \(a_1 = a_2 = ... = a_k = 0\).
+Then
+\begin{align*}
+    \T(\OV) & = \T(a_1 v_1 + a_2 v_2 + ... + a_k v_k) & \text{by assumption} \\
+            & = a_1\T(a_1) + a_2\T(a_2) + ... + a_k\T(a_k) & \text{since \(T\) is linear} \\
+            & = a_1 w_1 + a_2 w_2 + ... + a_k w_k & \text{by assumption} \\
+            & = \OW, & \text{since \(\T(\OV) = \OW\)}
+\end{align*}
+which implies \(a_1 = a_2 = ... = a_k\) since \(\{ w_1, w_2, ..., w_k \}\) is \LID{}.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.14}
+Let \(V\) and \(W\) be vector spaces and \(\T : V \to W\) be linear.
+\begin{enumerate}
+\item Prove that \(\T\) is one-to-one if and only if \(\T\) carries \LID{} subsets of \(V\) onto \LID{} subsets of \(W\).
+\item Suppose that \(\T\) is one-to-one and that \(S\) is a subset of \(V\).
+    Prove that \(S\) is \LID{} if and only if \(\T(S)\) is \LID{}.
+\item Suppose \(\beta = \{ v_1, v_2, ..., v_n \}\) is a basis for \(V\) and \(\T\) is one-to-one \emph{and onto}.
+    Prove that \(\T(\beta) = \{ \T(v_1), \T(v_2), ..., \T(v_n) \}\) is a basis for \(W\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item
+\(\Longrightarrow\): Suppose \(\T\) is one-to-one, we have to show \(\T\) carries \LID{} subsets of \(V\) onto \LID{} subsets of \(W\).
+So let \(\beta = \{ v_1, v_2, ..., v_k \}\) be arbitrary subset of \(V\) s.t. \(\beta\) is \LID{}.
+Then suppose \(a_1\T(v_1) + a_2\T(v_2) + ... + a_k\T(v_k) = \OW\), it suffices to show \(a_1 = a_2 = .. = a_k\) to show the corresponding subset \(\{ \T(v_1), \T(v_2), ..., \T(v_k) \}\) is \LID{}.
+Then
+\begin{align*}
+             & a_1\T(v_1) + a_2\T(v_2) + ... + a_k\T(v_k) = \OW \\
+    \implies & \T(a_1 v_1 + a_2 v_2 + ... + a_k v_k) = \OW & \text{since \(\T\) is linear} \\
+    \implies & a_1 v_1 + a_2 v_2 + ... + a_k v_k \in \NULLT & \text{by \DEF{2.2}} \\
+    \implies & a_1 v_1 + a_2 v_2 + ... + a_k v_k \in \{ \OV \} & \text{since \(\T\) is one-to-one, and by \THM{2.4}} \\
+    \implies & a_1 v_1 + a_2 v_2 + ... + a_k v_k = \OV \\
+    \implies & a_1 = a_2 = ... = a_k = 0, & \text{since \(\beta\) is \LID{}}
+\end{align*}
+as desired.
+
+\(\Longleftarrow\): Suppose \(\T\) carries \LID{} subsets of \(V\) onto \LID{} subsets of \(W\), we have to show \(\T\) is one-to-one.
+So by definition of one-to-one, suppose \(\T(x) = \T(y)\) for arbitrary \(x, y \in V\), we have to show \(x = y\).
+And let \(\beta' = \{ u_1, u_2, ..., u_n \}\) be a basis for \(V\).
+In particular, \(\beta'\) is \LID{}.
+Then we have \(x = c_1 u_1 + ... + c_n u_n\) and \(y = d_1 u_1 + ... + d_n u_n\) for some unique scalars \(c_1, ..., c_n, d_1, ..., d_n\), and
+\begin{align*}
+             & \T(x) = \T(y) \\
+             & \T(x) - \T(y) = \OW \\
+    \implies & \T(x - y) = \OW \\
+             & \text{(by \ATHM{2.1}(c))} \\
+    \implies & \T(c_1 u_1 + ... + c_n u_n - d_1 u_1 - ... - d_n u_n) = \OW \\
+    \implies & c_1\T(u_1) + ... + c_n\T(u_n) - d_1\T(u_1) - ... - d_n\T(u_n) = \OW & \text{since \(\T\) is linear} \\
+    \implies & (c_1 - d_1)\T(u_1) + ... + (c_n - d_n)\T(u_n) = \OW & \text{combine same terms} \\
+    \implies & c_1 - d_1 = c_2 - d_2 = ... = c_n - d_n = 0 & \\
+             & \text{(since by assumption, \(\{ \T(v_1), ..., \T(v_n) \}\) is \LID{})} \\
+    \implies & c_1 = d_1, c_2 = d_2, ..., c_n = d_n \\
+    \implies & x = y,
+\end{align*}
+So \(\T\) is one-to-one.
+
+\item Note that this is related but \emph{different} with part(a);
+    We do not say \(S\) is \LID{}.
+
+\(\Longrightarrow\): Suppose \(S\) \LID{}.
+    Then since \(\T\) is one-to-one, by part(a), \(\T(S)\) is also \LID{}.
+
+\(\Longleftarrow\): Suppose \(\T(S)\) is \LID{}.
+    Then in particular, \(\T(S)\) is of course a subset of \(\RANGET\), so by \EXEC{2.1.13}, \(S\) is \LID{}.
+    
+    \RED{CAUTION}: we can only use \EXEC{2.1.13} when \(S\) is finite.
+    I don't know how to solve this when \(S\) is infinite.
+
+\item First, since \(\beta\) (in particular) is \LID{} and \(\T\) is one-to-one, by part(a) \(\T(\beta)\) is \LID{}.
+Since \(\T\) is onto, by definition \(\RANGET = W\).
+And by \THM{2.2}, \(\spann(\T(\beta)) = \RANGET\), so \(\spann(\T(\beta)) = W\).
+So \(\T(\beta))\) is a spanning set of \(W\) and is \LID{}, hence is a basis for \(W\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.15}
+Define
+\[
+    \T : \mathcal{P}(\SET{R}) \to \mathcal{P}(\SET{R}) \text{ by } \T(f(x)) = \int_0^x f(t) dt.
+\]
+Prove that \(\T\) is linear and one-to-one, but \emph{not} onto.
+\end{exercise}
+
+\begin{proof}
+Note that now the domain(and codomain) of \(\T\) are \emph{infinite}-dimensional, hence \THM{2.5} is not applicable.
+
+\(\T\) is linear since by Calculus, the integration is linear.
+And \(\T\) is one-to-one, since only the zero polynomial has the integration that is still zero polynomial.
+So \(\NULLT = \{ \OV \}\), hence by \THM{2.4} \(\T\) is one-to-one.
+But \(\T\) is not onto since no zero-degree polynomial(i.e. a constant function) can be obtained by integrating any polynomial.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.16}
+Let \(\T : \mathcal{P}(\SET{R}) \to \mathcal{P}(\SET{R})\) be defined by \(\T(f) = f'\).
+Recall that \(\T\) is linear.
+Prove that \(\T\) is onto, but not one-to-one.
+\end{exercise}
+
+\begin{proof}
+Again note that now the domain(and codomain) of \(\T\) are infinite-dimensional, hence \THM{2.5} is not applicable.
+
+For some zero degree polynomial \(g(x) = 1\) and \(h(x) = 2\) where \(g \ne h\), the derivative of \(g\) and \(h\) is the zero function, so \(\T\) is not one-to-one.
+
+Now let \(p(x) = a_0 + a_1 x + ... + a_n x^n\) be an arbitrary polynomial in (the codomain of \(\T\)) \(\mathcal{P}(\SET{R})\).
+We can find a function in (the domain of \(\T\)) \(\mathcal{P}(\SET{R})\), \(q(x) = a_0 x + \frac{a_1}{2} x^2 + ... + \frac{a_n}{n + 1} x^{n + 1}\) s.t. \(\T(q) = q' = p\).
+Hence \(\T\) is onto.
+\end{proof}
+
+\begin{note}
+Compare \EXEC{2.1.15} and \EXEC{2.1.16}, they are somewhat ``dual'' to each other.
+\end{note}
+
+\begin{exercise} \label{exercise 2.1.17}
+Let \(V\) and \(W\) be \emph{finite}-dimensional vector spaces and \(\T: V \to W\) be linear.
+\begin{enumerate}
+\item Prove that if \(\dim(V) < \dim(W)\), then \(\T\) cannot be onto.
+\item Prove that if \(\dim(V) > \dim(W)\), then \(\T\) cannot be one-to-one.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item
+\begin{align*}
+             & \nullityT + \rankT = \dim(V) & \text{by \THM{2.3}} \\
+    \implies & \nullityT + \rankT < \dim(W) & \text{by assumption} \\
+    \implies & \rankT < \dim(W) & \text{since \(\nullityT \ge 0\)} \\
+    \implies & \RANGET \ne W, & \text{of course}
+\end{align*}
+which implies \(\T\) is not onto.
+
+\item
+\begin{align*}
+             & \nullityT + \rankT = \dim(V) & \text{by \THM{2.3}} \\
+    \implies & \nullityT + \rankT > \dim(W) & \text{by assumption} \\
+    \implies & \nullityT > \dim(W) - \rankT \\
+    \implies & \nullityT > \dim(W) - \rankT \ge 0 & \text{by \THM{1.11}} \\
+    \implies & \nullityT > 0 & \text{in particular} \\
+    \implies & \NULLT \ne \{ \OV \}, & \text{since \(\nullityT > 0 = \dim(\{ \OV \})\)}
+\end{align*}
+which by \THM{2.4} implies \(\T\) is not one-to-one.
+\end{enumerate}
+\end{proof}
+
+
+\begin{exercise} \label{exercise 2.1.18}
+Give an example of a \LTRAN{} \(\T: \SET{R}^2 \to \SET{R}^2\) such that \(\NULLT = \RANGET\).
+\end{exercise}
+
+\begin{proof}
+Let \(\T(a, b) = (a - b, a - b)\).
+Then clearly both \(\NULLT\) and \(\RANGET\) have a basis \(\{ (1, 1) \}\) hence are equal to each other.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.19}
+Give an example of vector spaces \(V\) and \(W\) and \emph{distinct} \LTRAN{}s \(\T\) and \(\U\) from \(V\) to \(W\) such that \(\NULLT = \NULL(\U)\) and \(\RANGET = \RANGE(\U)\).
+\end{exercise}
+
+\begin{proof}
+Let \(V = W = \SET{R}^2\) and \(\T(a, b) = (a, b)\), \(\U(a, b) = (2a, 2b)\).
+Then clearly both \(\T, \U\) are one-to-one and (by \THM{2.5}) onto, so \(\NULLT = \{ \OV \} = \NULL(\U)\) and \(\RANGET = \SET{R}^2 = \RANGE(\U)\);
+but \(\T \ne \U\) since in particular \(\T(1, 1) = (1, 1) \ne (2, 2) = \U(1, 1)\).
+\end{proof}
+
+\begin{note}
+So by \EXEC{2.1.19}, different \LTRAN{}s can have the same null space and range.
+\end{note}
+
+\begin{exercise} \label{exercise 2.1.20}
+Let \(V\) and \(W\) be vector spaces (over a common field \(F\)) with subspaces \(V_1\) and \(W_1\), respectively.
+If \(\T : V \to W\) is linear, prove that \(\T(V_1)\) is a subspace of \(W\) and that \(\{ x \in V: \T(x) \in W_1 \}\) is a subspace of \(V\).
+\end{exercise}
+
+\begin{note}
+\(V\) 的\ subspace 被\ \(\T\) 打到\ \(W\) 還是\ subspace；
+反之，給定\ \(W\) 的某\ subspace，蒐集所有可以被\ \(\T\) 打到該\ subspace 的\ element，也會形成一個\ \(V\) 的\ subspace。
+\end{note}
+
+\begin{proof}
+We first show \(\T(V_1)\) is a subspace of \(W\).
+Since \(V_1\) is a subspace of \(V\), \(\OV \in V_1\), hence \(\T(\OV) \in \T(V_1)\);
+that is, by \ATHM{2.1}(a), \(\OW \in \T(V_1)\).
+
+Now suppose \(w_1, w_2 \in \T(V_1)\).
+Then there exist \(v_1, v_2 \in V_1\) s.t. \(\T(v_1) = w_1\) and \(\T(v_2) = w_2\), and
+\begin{align*}
+             & \T(v_1) = w_1 \land \T(v_2) = w_2 \\
+    \implies & \T(v_1) + \T(v_2) = w_1 + w_2 & \text{in particular} \\
+    \implies & \T(v_1 + v_2) = w_1 + w_2. & \text{since \(\T\) is linear}
+\end{align*}
+But since \(V_1\) is a subspace, \(v_1 + v_2 \in V_1\), which implies \(\T(v_1 + v_2) \in \T(V_1)\), that is, \(w_1 + w_2 \in \T(V_1)\).
+
+Now suppose \(w \in \T(V_1)\) and \(c \in F\).
+Then there exists \(v \in V_1\) s.t. \(\T(v) = w\) and
+\begin{align*}
+             & \T(v) = w \\
+    \implies & c\T(v) = cw & \text{in particular} \\
+    \implies & \T(cv) = cw. & \text{since \(\T\) is linear}
+\end{align*}
+But since \(V_1\) is a subspace, \(cv \in V_1\), which implies \(\T(cv) \in \T(V_1)\), that is, \(cw \in \T(V_1)\).
+
+So by \THM{1.3}, all conditions are met, hence \(\T(V_1)\) is a subspace of \(W\).
+
+Now we show that \(X = \{ x \in V: \T(x) \in W_1 \}\) is a subspace of \(V\).
+
+Since \(W_1\) is a subspace of \(W\), \(\OW \in W_1\), and by \ATHM{2.1}(a), \(\T(\OV) = \OW\), hence by definition of \(X\), \(\OV \in X\).
+
+Now suppose \(x_1, x_2 \in X\).
+Then by definition of \(X\) there exist \(w_1, w_2 \in W_1\) s.t. \(\T(x_1) = w_1\) and \(\T(x_2) = w_2\), and
+\begin{align*}
+             & \T(x_1) = w_1 \land \T(x_2) = w_2 \\
+    \implies & \T(x_1) + \T(x_2) = w_1 + w_2 & \text{in particular} \\
+    \implies & \T(x_1 + x_2) = w_1 + w_2. & \text{since \(\T\) is linear}
+\end{align*}
+But since \(W_1\) is a subspace, \(w_1 + w_2 \in W_1\), and we have found \(x_1 + x_2\) s.t. \(\T(x_1 + x_2) = w_1 + w_2\), so by definition of \(X\), \(x_1 + x_2 \in X\).
+
+Now suppose \(x \in X\) and \(c \in F\).
+Then by definition of \(X\), there exists \(w \in W_1\) s.t. \(\T(x) = w\) and
+\begin{align*}
+             & \T(x) = w \\
+    \implies & c\T(x) = cw & \text{in particular} \\
+    \implies & \T(cx) = cw. & \text{since \(\T\) is linear}
+\end{align*}
+But since \(W_1\) is a subspace, \(cw \in W_1\), and we have found \(cx\) s.t. \(\T(cx) = cw\), so by definition of \(X\), \(cx \in X\).
+
+So by \THM{1.3}, all conditions are met, hence \(X = \{ x \in V: \T(x) \in W_1 \}\) is a subspace of \(V\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.21}
+Let \(V\) be the vector space of sequences(defined in \EXAMPLE{1.2.5}).
+Note that \(V\) is \emph{infinite}-dimensional.
+Define the functions \(\T, \U: V \to V\) by
+\[
+    \T(a_1, a_2, ...) = (a_2, a_3, ...) \text{ and } \U(a_1, a_2, ...) = (0, a_l, a_2, ...).
+\]
+\(\T\) and \(\U\) are called the \textbf{left shift} and \textbf{right shift} operators on \(V\), respectively.
+\begin{enumerate}
+\item Prove that \(\T\) and \(\U\) are linear.
+\item Prove that \(\T\) is onto, but not one-to-one.
+\item Prove that \(\U\) is one-to-one, but not onto.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item
+\begin{align*}
+    \T(c(a_n) + (b_n)) & = \T((c a_n + b_n)) & \text{by sequences' \(+\) and \(\cdot\)} \\
+                       & = (c a_1 + b_1, c a_2 + b_2, ...) & \text{by def of \(\T\)} \\
+                       & = c(a_1, a_2, ...) + (b_1, b_2, ...) & \text{by sequences' \(+\) and \(\cdot\)} \\
+                       & = c\T((a_n)) + \T((b_n)). & \text{by def of \(\T\)}
+\end{align*}
+Hence by \ATHM{2.1}(b) \(\T\) is linear.
+
+\begin{align*}
+    \U(c(a_n) + (b_n)) & = \U((c a_n + b_n)) & \text{by sequences' \(+\) and \(\cdot\)} \\
+                       & = (0, c a_1 + b_1, c a_2 + b_2, ...) & \text{by def of \(\U\)} \\
+                       & = c(0, a_1, a_2, ...) + (0, b_1, b_2, ...) & \text{by sequences' \(+\) and \(\cdot\)} \\
+                       & = c\U((a_n)) + \U((b_n)). & \text{by def of \(\U\)}
+\end{align*}
+Hence by \ATHM{2.1}(b) \(\U\) is linear.
+
+\item
+Given any \((a_1, a_2, ...)\) in codomain of \(\T\), we can find \((0, a_1, a_2, ...)\) in domain of \(\T\) s.t. \\ 
+\(\T((0, a_1, a_2, ...)) = (a_1, a_2, ...)\), so \(\T\) is onto.
+
+But we have \(\T((1, a_1, a_2, ...)) = (a_1, a_2, ...) = \T((2, a_1, a_2, ...))\) but \\
+\((1, a_1, a_2, ...) \ne (2, a_1, a_2, ...)\), hence \(\T\) is not one-to-one.
+
+\item
+It's of course that any sequence \((a_1, a_2, ...)\) where \(a_1 \ne 0\) cannot be mapped by \(\U\), hence \(\U\) is not onto.
+
+But if we have \(\U((a_1, a_2, ...)) = \U((b_1, a_2, ...))\), then \((0, a_1, a_2, ...) = (0, b_1, b_2, ...)\), which implies \(a_1 = b_1, a_2 = b_2, ...\), which implies \((a_1, a_2, ...) = (b_1, a_2, ...)\), hence \(\U\) is one-to-one.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.22}
+Let \(\T: \SET{R}^3 \to \SET{R}\) be linear.
+Show that there exist scalars \(a, b\), and \(c\) such that \(\T(x, y, z) = ax + by + cz\) for all \((x, y, z) \in \SET{R}^3\).
+Can you generalize this result for \(\T: F_n \to F\)?
+State and prove an analogous result for \(\T: F_n \to F^m\).
+\end{exercise}
+
+\begin{proof}
+First since \(\T\) is given, in particular we can acquire the output of \(\T\) given input of each vector of the standard basis of \(\SET{R}^3\).
+That is, suppose \(\T(1, 0, 0) = r_1\), \(\T(0, 1, 0) = r_2\), \(\T(0, 0, 1) = r_3\) \MAROON{(1)}.
+Then for any \((x, y, z) \in \SET{R}^3\),
+\begin{align*}
+    \T(x, y, z) & = \T(x(1, 0, 0) + y(0, 1, 0) + z(0, 0, 1)) & \text{in particular} \\
+                & = x\T(1, 0, 0) + y\T(0, 1, 0) + z\T(0, 0, 1) & \text{since \(\T\) is linear} \\
+                & = x r_1 + y r_2 + z r_3 & \text{by \MAROON{(1)}} \\
+                & = r_1 x + r_2 y + r_3 z, & \text{of course}
+\end{align*}
+so we have found \(a = r_1, b = r_2, c = r_3\) s.t. \(\T(x, y, z) = ax + by + cz\) for all \((x, y, z) \in \SET{R}^3\).
+
+And in general, for \(\T: F_n \to F\), we again have \(\T(e_1) = r_1\), \(\T(e_2) = r_2\), ..., \(\T(e_n) = r_n\) \MAROON{(2)}.
+And for any \((x_1, x_2, ..., x_n) \in F^n\),
+\begin{align*}
+    \T(x_1, x_2, ..., x_n) & = \T(x_1 e_1 + x_2 e_2 + ... + z_n e_n) & \text{in particular} \\
+                & = x_1\T(e_1) + x_2\T(e_2) + ... + x_n\T(e_n) & \text{since \(\T\) is linear} \\
+                & = x_1 r_1 + x_2 r_2 + ... + x_n r_n & \text{by \MAROON{(2)}} \\
+                & = r_1 x_1 + r_2 x_2 + ... + r_n x_n, & \text{of course}
+\end{align*}
+
+For the generalization, given \(\T : F^n \to F^m\), (I think) we should find \(a_{ij}\) for \(1 \le i \le m\) and \(1 \le j \le n\) s.t.
+\[
+    \T(x_1, x_2, ..., x_n) = \bigg(\sum_{j = 1}^n a_{1 j} x_{j}, \sum_{j = 1}^n a_{2 j} x_{j}, ..., \sum_{j = 1}^n a_{m j} x_{j} \bigg)
+\]
+But again since \(\T\) is given, we know the output of \(\T(e_1), \T(e_2), ..., \T(e_n)\).
+Now we \emph{just declare these \(a_{ij}\) as}:
+\[
+    \T(e_j) = (a_{1j}, a_{2j}, ..., a_{mj}). \MAROON{(3)}
+\]
+Then for any \((x_1, x_2, ..., x_n) \in F^n\),
+\begin{align*}
+    \T(x_1, x_2, ..., x_n) & = \T(x_1 e_1 + x_2 e_2 + ... + x_n e_n) & \text{in particular} \\
+                           & = x_1 \T(e_1) + x_2 \T(e_2) + ... + x_n \T(e_n) & \text{since \(\T\) is linear} \\
+                           & = x_1 (a_{11}, a_{21}, ..., a_{m1}) \\
+                           & \ \ \ + x_2 (a_{12}, a_{22}, ..., a_{m2}) \\
+                           & \ \ \ + ... \\
+                           & \ \ \ + x_n (a_{1n}, a_{2n}, ..., a_{mn}) & \text{by \MAROON{(3)}} \\
+                           & = (x_1 a_{11} + x_2 a_{12} + ... + x_n a_{1n}, \\
+                           & \ \ \ \ \ x_1 a_{21} + x_2 a_{22} + ... + x_n a_{2n}, \\
+                           & \ \ \ \ \ ..., \\
+                           & \ \ \ \ \ x_1 a_{m1} + x_2 a_{m2} + ... + x_n a_{mn}) & \text{of course} \\
+                           & = \bigg(\sum_{j=1}^n a_{1 j} x_{j}, \sum_{j=1}^n a_{2 j} x_{j}, \ldots, \sum_{j=1}^n a_{m j} x_{j} \bigg),
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{note}
+The remaining sections in \CH{2} explain the \emph{matrix representation} of \(\T\), which is highly related to the second generalization of \(\T: F^n \to F^m\) of \EXEC{2.1.22}.
+\end{note}
+
+\begin{exercise} \label{exercise 2.1.23}
+Let \(\T: \SET{R}^3 \to \SET{R}\) be linear.
+Describe \emph{geometrically} the possibilities for the null space of \(\T\).
+Hint: Use \EXEC{2.1.22}.
+\end{exercise}
+
+\begin{proof}
+The null space of \(\T\) can only be a plane passing the origin, or the whole \(\SET{R}^3\): by \EXEC{2.1.22}, \(\T\) can be represented by scalars \(a, b, c\);
+that is
+\[
+    \T(x, y, z) = ax + by + cz. \MAROON{(1)}
+\]
+Hence by definition the null space is \(\{ v : \T(v) = \OW \}\);
+that is, by \MAROON{(1)},
+\[
+    \NULLT = \{(x, y, z): ax + by + cz = 0\}
+\]
+Then geometrically, \(ax + by + cz\) is a plane.
+But if \(a, b, c\) are all zeros -- that is, if \(\T\) is in fact the zero transformation -- then \(ax + by + cz\) becomes the whole \(\SET{R}^3\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.24}
+Let \(\T : V \to W\) be linear, \(b \in W\), and \(K = \{ x \in V : \T(x) = b \}\) be \emph{nonempty}.
+Prove that if \(s \in K\), then \(K = \{ s \} + \NULLT\). (Note that this is a \emph{sum} of subsets.)
+\end{exercise}
+
+\begin{note}
+Intuitively, \(K\) is the solution set of \(\T(x) = b\).
+The exercise says that given a solution \(s\), then the solution set can be represented as \(\{ s \} + \NULLT\).
+\end{note}
+
+\begin{proof}
+Let \(K = \{ x \in V : \T(x) = b \}\) be \emph{nonempty} (so we can find \(s \in K\) s.t. \(\T(s) = b\).
+Let \(s\) be a solution of \(\T(x) = b\), that is, \(\T(s) = b\) \MAROON{(1)}.
+We have to show that \(K = \{ s \} + \NULLT\).
+
+We first show \(K \subseteq \{ s \} + \NULLT\).
+So let arbitrary \(k \in K\) (so \(\T(k) = b\)), we have to show \(k \in \{ s \} + \NULLT\).
+For the sake of contradiction, suppose \(k \notin \{ s \} + \NULLT\).
+That is, \(k \notin \{ s + x : x \in \NULLT \}\).
+\emph{That is}, for all \(x \in \NULLT\), \(k \ne s + x\).
+Then
+\begin{align*}
+             & \forall x \in \NULLT, k \ne s + x \\
+    \implies & \forall x \in \NULLT, k - s \ne x,
+\end{align*}
+which implies \(k - s \notin \NULLT\).
+So by definition, \(\T(k - s) \ne \OW\), which implies 
+\begin{align*}
+             & \T(k) - \T(s) \ne \OW & \text{by \ATHM{2.1}(c)} \\
+    \implies & b - b \ne \OW & \text{since both \(\T(k) = b\) and \(\T(s) = b\)} \\
+    \implies & \OW \ne \OW,
+\end{align*}
+which is impossible.
+Hence \(k \in \{ s \} + \NULLT\).
+Since \(k\) is arbitrary, we have \(K \subseteq \{ s \} + \NULLT\).
+
+Now suppose arbitrary \(k \in \{ s \} + \NULLT\), we have to show \(k \in K\).
+Then
+\begin{align*}
+             & k \in \{ s \} + \NULLT \\
+    \implies & k = s + v \text{ for some \(v\) where } v \in \NULLT.
+\end{align*}
+So
+\begin{align*}
+    \T(k) & = \T(s + v) \\
+          & = \T(s) + \T(v) & \text{since \(\T\) is linear} \\
+          & = b + \OW \\
+          & = b.
+\end{align*}
+Then by definition of \(K\), \(k \in K\).
+Since \(k\) is arbitrary, we have \(\{ s \} + \NULLT \subseteq K\).
+
+So we have \(K = \{ s \} + \NULLT\), as desired.
+\end{proof}
+
+\begin{additional definition} \label{adef 2.2}
+Let \(V\) be a vector space and \(W_1\) and \(W_2\) be subspaces of \(V\) such that \(V = W_1 \oplus W_2\).
+The function \(\T : V \to V\) defined by \(\T(x) = x_1\) where \(x = x_1 + x_2\) with \(x_1 \in W_1\) and \(x_2 \in W_2\), is called the \textbf{projection of \(V\) on \(W_1\)} or the \textbf{projection on \(W_1\) along \(W_2\)}.
+\end{additional definition}
+
+\begin{note}
+We need to prove that the function in \ADEF{2.2} is actually a \LTRAN{}.
+See \EXEC{2.1.27}(a).
+\end{note}
+
+\begin{note}
+It seems that saying \(\T\) is the projection on \(W_1\) along \(W_2\) is more precise than just saying \(\T\) is the projection of \(V\) on \(W_1\), since you can use different subspaces \(W_2\) and \(W_2'\) s.t. both \(W_1 \oplus W_2\) and \(W_1 \oplus W_2'\) are equal to \(V\).
+\EXEC{2.1.25} is a particular example.
+\end{note}
+
+\begin{exercise} \label{exercise 2.1.25}
+Let \(\T : \SET{R}^2 \to \SET{R}^2\).
+Include figures for each of the following parts.
+\begin{enumerate}
+\item Find a formula for \(\T(a, b)\), where \(\T\) represents the projection on the \(y\)-axis along the \(x\)-axis.
+\item Find a formula for \(\T(a, b)\), where \(\T\) represents the projection on the \(y\)-axis along the line \(L = \{(s, s): s \in \SET{R} \}\).
+\end{enumerate} 
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item The subspace of \(y\)-axis is \(W_1 = \{ (0, r) : r \in \SET{R} \}\).
+    It's trivial that the \(x\)-axis and \(y\)-axis is a direct sum of \(\SET{R}^2\).
+    And given \((a, b) \in \SET{R}^2\), \((a, b) = (0, b) + (a, 0)\), where \((0, b)\) is in \(y\)-axis, and \((a, 0)\) is in \(x\)-axis.
+    Hence by \ADEF{2.2}, \(\T(a, b) = (0, b)\) is the projection on \(y\)-axis along \(x\)-axis.
+
+\item Similarly, it can be shown that the subspace \(y\)-axis and \(L\) is a direct sum of \(\SET{R}^2\).
+    And given \((a, b) \in \SET{R}^2\), \((a, b) = (0, b - a) + (a, a)\), where \((0, b - a)\) is in the \(y\)-axis, and \((a, a) \in L\).
+    Hence by \ADEF{2.2}, \(\T(a, b) = (0, b - a)\) is the projection on \(y\)-axis along \(L\)..
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.26}
+Let \(\T: \SET{R}^3 \to \SET{R}^3\)
+\begin{enumerate}
+\item If \(\T(a, b, c) = (a, b, 0)\), show that \(\T\) is the projection on the \(xy\)-plane along the \(z\)-axis.
+\item Find a formula for \(\T(a, b, c)\), where \(\T\) represents the projection on the \(z\)-axis along the \(xy\)-plane.
+\item If \(\T(a, b, c) = (a - c, b, 0)\), show that \(\T\) is the projection on the \(xy\)-plane along the line \(L = \{ (a, 0, a) : a \in \SET{R} \}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item Again, it's trivial that \(xy\)-plan \(\oplus\) \(z\)-axis is \(\SET{R}^3\).
+And since \((a, b, c) = (a, b, 0) + (0, 0, c)\) where \((a, b, 0)\) in \(xy\)-plane and \((0, 0, c)\) in \(z\)-axis, by \ADEF{2.2}, \(\T(a, b, c) = (a, b, 0)\) is the projection on \(xy\)-plane along \(z\)-axis.
+
+\item Of course, \(z\)-axis \(\oplus\) \(xy\)-plane is \(\SET{R}^3\).
+And for any \((a, b, c) \in \SET{R}^3\), \((a, b, c) = (0, 0, c) + (a, b, 0)\), where \((0, 0, c)\) in \(z\)-axis, \((a, b, 0)\) in \(xy\)-plane.
+Then just let \(\T(a, b, c) = (0, 0, c)\), by \ADEF{2.2}, \(\T\) is the projection on \(z\)-axis along \(xy\)-plane.
+
+\item Of course, \(xy\)-plan \(\oplus L\) is \(\SET{R}^3\).
+And for any \((a, b, c) \in \SET{R}^3\), \((a, b, c) = (a - c, b, 0) + (c, 0, c)\), where \((a - c, b, 0)\) in \(xy\)-plane, \((c, 0, c)\) in \(L\),
+by \ADEF{2.2}, \(\T(a, b, c) = (a - c, b, 0)\) is the projection on \(xy\)-plane along \(L\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.27}
+Using the notation in the definition above, assume that \(\T : V \to V\) is the projection on \(W_1\) along \(W_2\)
+(So by definition we also know \(W_1 \oplus W_2 = V\)).
+\begin{enumerate}
+\item Prove that \(\T\) is linear and \(W_1 = \{ x \in V: \T(x) = x \}\).
+\item Prove that \(W_1 = \RANGET\) and \(W_2 = \NULLT\).
+\item Describe \(\T\) if \(W_1 = V\).
+\item Describe \(\T\) if \(W_1\) is the zero subspace.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item
+Let arbitrary \(u, v \in V\) and \(c\) be scalar.
+Since \(V = W_1 \oplus W_2\), We can let \(u = u_1 + u_2, v = v_1 + v_2\), where \(v_1, u_1 \in W_1\) and \(v_2, u_2 \in W_2\).
+Then of course \(c u_1 + v_1 \in W_1\) and \(c u_2 + v_2 \in W_2\) \MAROON{(1)}, and
+\begin{align*}
+    \T(cu + v) & = \T(c(u_1 + u_2) + (v_1 + v_2)) \\
+               & = \T((c u_1 + v_1) + (c u_2 + v_2)) & \text{of course} \\
+               & = c u_1 + v_1 & \text{by def of \(\T\) and \MAROON{(1)}} \\
+               & = c \T(u_1 + u_2) + \T(v_1 + v_2) & \text{by def of \(\T\)} \\
+               & = c \T(u) + \T(v),
+\end{align*}
+hence by \ATHM{2.1}(b), \(\T\) is linear.
+
+Now we have to show \(W_1 = \{ x \in V : \T(x) = x \}\).
+So let arbitrary \(w_1 \in W_1\), then
+\begin{align*}
+             & w_1 \in W_1 \\
+    \implies & w_1 + \OV \in W_1 + W_2 \text{ where } w_1 \in W_1, \OV \in W_2 & \text{in particular} \\
+    \implies & \T(w_1) = \T(w_1 + \OV) = w_1 & \text{by def of \(\T\)} \\
+    \implies & w_1 \in \{ x \in V : \T(x) = x \},
+\end{align*}
+so \(W_1 \subseteq \{ x \in V : \T(x) = x \}\).
+
+Now let arbitrary \(x \in \{ x \in V : \T(x) = x \}\).
+Then we have \(\T(x) = x\) \MAROON{(2)}.
+And since \(V = W_1 \oplus W_2\), we can let \(x = w_1 + w_2\) where \(w_1 \in W_1, w_2 \in W_2\);
+and by def of \(\T\), \(\T(x) = w_1\) \MAROON{(3)}.
+So by \MAROON{(2)(3)}, we have \(x = w_1\); so \(x \in W_1\).
+So \(\{ x \in V : \T(x) = x \} \subseteq W_1\).
+
+So \(W_1 = \{ x \in V : \T(x) = x\}\), as desired.
+
+\item
+First we show \(W_1 = \RANGET\).
+So suppose arbitrary \(x \in W_1\).
+But by part(a), that means \(x \in \{x \in V : \T(x) = x\}\);
+In particular, \(\T(\BLUE{x}) = \GREEN{x}\).
+Then by def of \(\RANGET\), \(\GREEN{x} \in \RANGET\).
+So \(W_1 \subseteq \RANGET\).
+
+Now let arbitrary \(x \in \RANGET\).
+Then there exists \(v \in V\) s.t. \(\T(v) = x\).
+But by definition of \(\T\), that implies \(x \in W_1\).
+So we have \(\RANGET \subseteq W_1\).
+
+So \(W_1 = \RANGET\), as desired.
+
+Now we show \(W_2 = \NULLT\).
+So let arbitrary \(x \in W_2\).
+In particular, \(x = \OV + \BLUE{x}\), where \(\OV \in W_1\), \(\BLUE{x} \in W_2\).
+So by definition of \(\T\), \(\T(x) = \T(\OV + \BLUE{x}) = \OV\), hence \(x \in \NULLT\).
+So \(W_2 \in \NULLT\).
+
+Now let arbitrary \(x \in \NULLT\).
+Then we have \(\T(x) = \OV\). \MAROON{(4)}
+And since \(V = W_1 \oplus W_2\), we can let \(x = w_1 + w_2\) where \(w_1 \in W_1, w_2 \in W_2\);
+And by definition of \(\T\), \(\T(x) = \T(w_1 + w_2) = w_1\).
+So by \MAROON{(4)}, \(w_1 = \OV\).
+So \(x = w_1 + w_2 = \OV + w_2 = w_2\), hence \(x \in W_2\).
+So \(\NULLT \subseteq W_2\).
+
+So \(W_2 = \NULLT\).
+
+\item
+If \(W_1 = V\), then by part(b), \(\RANGET = W_1 = V\), which means \(\T\) is onto.
+And (since domain and codomain have same dimension,) by \THM{2.5} \(\T\) is one-to-one.
+And by \THM{2.4}, \(\NULLT = \{ \OV \}\), which again by part(b), \(W_1 = \NULLT = \{ \OV \}\).
+
+So given arbitrary \(x \in V\), since \(V = W_1 \oplus W_2\), we can let \(x = w_1 + w_2\) where \(w_1 \in W_1\) and \(w_2 \in W_2\).
+But since \(W_2 = \{ \OV \}\), that implies \(w_2 = \OV\).
+So \(x = w_1 + w_2 = w_1 + \OV = w_1\).
+And by definition of \(\T\), \(\T(x) = w_1\);
+that is, \(\T(x) = x\).
+So \(\T\) is equal to the identity transformation.
+
+\item
+If \(W_1 = \{ \OV \}\), then by part(b), \(\RANGET = W_1 = \{ \OV \}\).
+But that just implies for arbitrary \(x \in V\), the output of \(\T\) is always equal to \(\OV\).
+So \(\T\) is equal to the zero transformation.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.28}
+Suppose that \(W\) is a subspace of a \emph{finite}-dimensional vector space \(V\).
+\begin{enumerate}
+\item Prove that there exists a subspace \(W'\) and a function \(\T : V \to V\) such that \(\T\) is a projection on \(W\) along \(W'\).
+\item Give an example of a subspace \(W\) of a vector space \(V\) such that \emph{there are two projections} (in fact, many) on \(W\) along two (distinct) subspaces.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item First, by \ATHM{1.27}(4), there exists a subspace \(W'\) s.t. \(V = W \oplus W'\).
+Since \(V = W \oplus W'\), for any \(v \in V\) we can let \(v = w + w'\) where \(w \in W\) and \(w' \in W'\).
+And let \(\T : V \to V\) s.t. \(\T(v) = w'\).
+Then by \ADEF{2.2}, \(\T\) is a projection on \(W\) along \(W'\).
+
+\item \EXEC{2.1.15}(a)(b) is a particular example.
+\end{enumerate}
+\end{proof}
+
+\begin{additional definition} \label{adef 2.3}
+Let \(V\) be a vector space, and let \(\T : V \to V\) be linear.
+
+\BLUE{(1)} A subspace \(W\) of \(V\) is said to be \textbf{\(\T\)-invariant} if \(\T(x) \in \BLUE{W}\) for every \(x \in \GREEN{W}\)
+(just use colors to represent \BLUE{\(W\)} as codomain and \GREEN{\(W\)} as domain);
+that is, \(\T(W) \subseteq W\).
+
+\BLUE{(2)} If \(W\) is \(\T\)-invariant, we define the \textbf{restriction of \(\T\) on \(W\)} to
+be the function \(\T_W : \GREEN{W} \to \BLUE{W}\) defined by \(\T_W(x) = \T(x)\) for all \(x \in \GREEN{W}\).
+\end{additional definition}
+
+\begin{note}
+Only if \(W\) is \(\T\)-is invariant makes the definition of \(\T\)-restriction well-defined.
+Otherwise there exists \(w \in \GREEN{W}\) s.t. \(\T(w) \notin \BLUE{W}\), which makes \(\T_W\) not well-defined(\(\T_W(w) = \T(w)\) does not exist in the codomain \(\BLUE{W}\)).
+\end{note}
+
+\begin{note}
+\EXEC{2.1.29} to \EXEC{2.1.33} assume that \(W\) is a subspace of a vector space \(V\) and that \(\T : V \to V\) is linear.
+
+\RED{Warning}: Do not assume that \(W\) is \(\T\)-invariant or that \(\T\) is a projection unless explicitly stated.
+Also note that we also do not say \(V\) or \(W\) is \emph{finite}-dimensional unless explicitly stated.
+\end{note}
+
+\begin{exercise} \label{exercise 2.1.29}
+Prove that the subspaces \(\{ \OV \}, V, \RANGET\), and \(\NULLT\) are all \(\T\)-invariant.
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item[\(\{ \OV \}\)]:
+    \begin{align*}
+        \T(\{ \OV \}) & = \{ \T(\OV) \} \\
+                      & = \{ \OV \} & \text{by \ATHM{2.1}(a)} \\
+                      & \subseteq \{ \OV \}, & \text{in particular}
+    \end{align*}
+    so \(\{ \OV \}\) is \(\T\)-invariant.
+\item[\(V\)]:
+    \begin{align*}
+        \T(V) & = \RANGET & \text{by definition of function range} \\
+              & \subseteq V, & \text{since range is a subset of codomain}
+    \end{align*}
+    so \(V\) is \(\T\)-invariant.
+\item[\(\RANGET\)]:
+    Again \(\RANGET \subseteq \GREEN{V}\), where \(\BLUE{V}\) is treated as the \emph{codomain} of \(\T\);
+    but that just implies \(\RANGET \subseteq \GREEN{V}\), where \(\GREEN{V}\) is treated as the \emph{domain} of \(\T\), so we have \(\T(\RANGET) \subseteq \T(\GREEN{V})\).
+    But by definition of range, \(\T(\GREEN{V}) = \RANGET\), then we have \(\T(\RANGET) \subseteq \RANGET\).
+    Hence \(\RANGET\) is \(\T\)-invariant.
+\item[\(\NULLT\)]:
+    It is of course that \(\T(\NULLT) = \{ \OV \}\), which is also of course a subset of \(\NULLT\), so we have \(\T(\NULLT) \subseteq \NULLT\).
+    Hence \(\NULLT\) is \(\T\)-invariant.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.30}
+If \(W\) is \(\T\)-invariant, prove that \(\T_W\) is linear.
+\end{exercise}
+
+\begin{note}
+If \(W\) is not \(\T\)-invariant, then \(\T_W\) is not even well-defined.
+What the exercise wants to say is, if \(W\) is \(\T\)-invariant, then \(\T_W\) is not only well-defined function, but also linear.
+\end{note}
+
+\begin{proof}
+Suppose \(W\) is \(\T\)-invariant.
+Then for any \(u, v \in W\) and scalar \(c\), of course \(cu + v \in W\), and
+\begin{align*}
+    \T_W(cu + v) & = \T(cu + v) & \text{by \ADEF{2.3}(2)} \\
+                 & = c\T(u) + \T(v) & \text{since \(\T\) is linear} \\
+                 & = c\T_W(u) + \T_W(v) & \text{by \ADEF{2.3}(2)}
+\end{align*}
+Hence by \ATHM{2.1}(b), \(\T_W\) is linear.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.31}
+Suppose that \(\T\) is the projection on \(W\) along some subspace \(W'\).
+Prove that \(W\) is \(\T\)-invariant and that \(\T_W = \ITRANW\).
+\end{exercise}
+
+\begin{proof}
+By \EXEC{2.1.27}(b), \(W = \RANGET\), and by \EXEC{2.1.29}, \(\RANGET\) is \(\T\)-invariant, so \(W\) is \(\T\)-invariant.
+
+And for arbitrary \(w \in W\), \(w = \BLUE{w} + \OV\) \MAROON{(1)} where \(\BLUE{w} \in W\) and \(\OV \in W'\), and
+\begin{align*}
+    \T_W(w) & = \T(w) & \text{by \ADEF{2.3}(b)} \\
+            & = \T(\BLUE{w} + \OV) & \text{by \MAROON{(1)}} \\
+            & = \BLUE{w} & \text{since \(\T\) is a projection on \(W\) along \(W'\)}
+\end{align*}
+Hence \(\T_W\) is equal to the identity transformation (from \(W\) to \(W\)), \(\ITRANW\).
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.32}
+Suppose that \(V = \RANGET \oplus W\) and \(W\) is \(\T\)-invariant.
+\begin{enumerate}
+\item Prove that \(W \subseteq \NULLT\).
+\item Show that if \(V\) is finite-dimensional, then \(W = \NULLT\).
+\item Show by example that the conclusion of (b) is not necessarily true if \(V\) is not finite-dimensional.
+\end{enumerate}
+
+\RED{Warning}: we do not say \(\T\) is a projection.
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item Since \(W\) is \(\T\)-invariant, \(\T(W) \subseteq W\) \MAROON{(1)}.
+
+    And since \(V = \RANGET \oplus W\), we have \(\RANGET{} \cap W = \{ \OV \}\) \MAROON{(2)}.
+
+    In particular, from \MAROON{(1)} (and basic set theory), \(\RANGET{} \cap \T(W) \subseteq \RANGET{} \cap W\);
+    and in particular, from \MAROON{(2)}, \(\RANGET{} \cap \T(W) \subseteq \{ \OV \}\).
+    But LHS is a subspace, so it contains \(\{ \OV \}\), so we have \(\RANGET{} \cap \T(W) = \{ \OV \}\) \MAROON{(3)}.
+
+    But since \(\T(W)\) is of course a subset of \(\RANGET\), so in particular \(\RANGET{} \cap \T(W) = \T(W)\), so from \MAROON{(3)} we have \(\T(W) = \{ \OV \}\).
+    But that implies for any \(w \in W\), \(\T(w) = \OV\), which implies \(w \in \NULLT\), so we have \(W \subseteq \NULLT\).
+
+\item Suppose \(V\) is finite-dimensional.
+    From part(a), we know \(W\) is (a subset of \(\NULLT\) and is also a vector space, hence) a subspace of \(\NULLT\).
+    And by \THM{2.3}, \(\dim(V) = \nullityT + \rankT\) \MAROON{(4)}.
+
+    But by \ATHM{1.27}(1.2), since \(V = \RANGET \oplus W\), we have \(\dim(V) = \dim(\RANGET) + \dim(W)\), or \(\dim(V) = \rankT + \dim(W)\).
+    But by \MAROON{(4)}, that implies \(\dim(W) = \nullityT\)
+    So we have \(W\) is a subspace of \(\NULLT\) and \(\dim(W) = \nullityT\), by \THM{1.11}, \(W = \NULLT\).
+
+\item Let \(V = \mathcal{P}(\SET{R})\), so \(V\) is infinite-dimensional.
+    And let \(\T(f) = f'\) (See \EXEC{2.1.16}).
+
+    Then \(\NULLT = \{ \text{ arbitrary constant functions } \}\).
+    Now let \(W = \{ \OV \}\) \MAROON{(5)}, then of course \(W \subseteq \NULLT\), and \(W \ne \NULLT\), and by \EXEC{2.1.29}, \(W = \{ \OV \}\) is \(\T\)-invariant.
+    Furthermore, by \EXEC{2.1.16}, \(\T\) is onto, so \(\RANGET = V\).
+    Then we have
+    \begin{align*}
+        \RANGET + W & = \RANGET + \{ \OV \} & \text{by \MAROON{(5)}} \\
+                    & = \RANGET & \text{of course} \\
+                    & = V, & \text{since \(\T\) is onto} 
+    \end{align*}
+    and
+    \begin{align*}
+        \RANGET \cap W & = \RANGET \cap \{ \OV \} & \text{by \MAROON{(5)}} \\
+                       & = \{ \OV \}, & \text{of course}
+    \end{align*}
+    so by definition of direct sum, \(V = \RANGET \oplus W\).
+
+    So now we have \(V = \RANGET \oplus W\) and \(W\) is \(\T\)-invariant, but \(W \ne \NULLT\), hence part(b) is false.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.33}
+Suppose that \(W\) is \(\T\)-invariant.
+Prove that \(\NULL(\T_W) = \NULLT \cap W\) and \(\RANGE(\T_W) = \T(W)\).
+\end{exercise}
+
+\begin{note}
+This exercise shows that we can represent the null space and the range of the restriction using the original transformation.
+\end{note}
+
+\begin{proof} We prove the two set equalities by splitting into four set inclusions:
+
+\(\NULL(\T_W) \subseteq \NULLT \cap W\):
+Suppose arbitrary \(w \in \NULL(\T_W)\), we have to show \(w \in \NULLT \cap W\).
+Since \(w \in \NULL(\T_W)\), that just implies \(w\) is an element of the domain of \(\T_W\), that is, \(w \in W\).
+And
+\begin{align*}
+             & w \in \NULL(\T_W) \\
+    \implies & \T_W(w) = \OV & \text{by def of null space} \\
+    \implies & \T(w) = \OV & \text{since \(\T_W(w) = \T(w)\)} \\
+    \implies & w \in \NULLT. & \text{by def of null space}
+\end{align*}
+So we have \(w \in W\) and \(w \in \NULLT\), in particular \(w \in W \cap \NULLT\), as desired.
+
+\(\NULLT \cap W \subseteq \NULL(\T_W)\):
+Suppose arbitrary \(w \in \NULLT \cap W\), we have to show \(w \in \NULL(\T_W)\).
+In particular \(w \in \NULLT\), so \(\T(w) = \OV\).
+And in particular, \(w \in W\), so \(\T_W(w) = \T(w)\), that is \(\T_W(w) = \OV\).
+So by definition of null space, \(w \in \NULL(\T_W)\), as desired.
+
+\(\RANGE(\T_W) \subseteq \T(W)\):
+Suppose arbitrary \(w \in \RANGE(\T_W)\), we have to show \(w \in \T(W)\).
+Then
+\begin{align*}
+             & w \in \RANGE(\T_W) \\
+    \implies & \exists v \in W, \T_W(v) = w & \text{by def of range} \\
+    \implies & \exists v \in W, \T(v) = w & \text{since \(\T_W(v) = \T(v)\)},
+\end{align*}
+so we have found \(v \in W\) s.t. \(\T(v) = w\), hence \(w \in \T(W)\), as desired.
+
+\(\T(W) \subseteq \RANGE(\T_W)\):
+Suppose arbitrary \(w \in \T(W)\), we have to show \(w \in \RANGE(\T_W)\).
+Then
+\begin{align*}
+             & w \in \T(W) \\
+    \implies & \exists v \in W, \T(v) = w & \text{by def of \(\T(W)\)} \\
+    \implies & \exists v \in W, \T_W(v) = w & \text{since \(v \in W\) and \(\T_W(v) = \T(v)\)} \\
+    \implies & w \in \RANGE(\T_W) & \text{by def of range}
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.34}
+Prove \THM{2.2} for the case that (the basis for \(V\)) \(\beta\) is infinite,
+that is, \(\RANGET = \spann(\{ \T(v) : v \in \beta \})\).
+\end{exercise}
+
+\begin{proof}
+One direction is easy, \(\spann(\{ \T(v) : v \in \beta \}) \subseteq \RANGET\), since any set of images, \(\{ \T(v) : v \in \beta \}\), of \(\T\) is a subset of \(\RANGET\), and by \THM{1.5}, the span of that set is a subset of \(\RANGET\).
+
+So it remains to show \(\RANGET \subseteq \spann(\{ \T(v) : v \in \beta \})\).
+So suppose arbitrary \(y \in \RANGET\).
+Then there exists \(x \in V\) s.t. \(\T(x) = y\).
+But \(x\) is a linear combination of \textbf{finite}\RED{*} vectors in \(\beta\),
+That is, \(x = \sum_{i = 1}^k a_i v_i\) for some \(v_i \in \beta\).
+So we have
+\begin{align*}
+    y & = \T(x) \\
+      & = \T\bigg(\sum_{i = 1}^k a_i v_i\bigg) \\
+      & = \sum_{i = 1}^k a_i \T(v_i) & \text{since \(\T\) is linear} \\
+      & \in \spann(\{ \T(v_1), \T(v_2), ..., \T(v_k) \}) & \text{of course} \\
+      & \subseteq \spann(\{ \T(v) : v \in \beta \}) & \text{of course}
+\end{align*}
+Hence \(y \in \spann(\{ \T(v) : v \in \beta \})\), so \(\RANGET \subseteq \spann(\{ \T(v) : v \in \beta \})\), as desired.
+
+\RED{*}: You can refer to the \href{https://www.wikiwand.com/en/Linear_combination#/Generalizations}{generalization} of \emph{infinite} linear combination, but that requires the vector space to be ``\href{https://www.wikiwand.com/en/Topological_vector_space}{Topological vector space}'', which is far beyond the scope.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.35}
+Prove the following \emph{generalization} of \THM{2.6}:
+Let \(V\) and \(W\) be vector spaces over a common field, and let \(\beta\) be a basis for \(V\).
+Then for any function \(f: \beta \to W\) there exists \emph{exactly one} \LTRAN{} \(\T: V \to W\) such that \(\T(x) = f(x)\) for all \(x \in \beta\).
+
+\RED{Note that} \(\beta\) can be infinite.
+\end{exercise}
+
+\begin{proof}
+If \(\beta = \{ v_1, v_2, ..., v_n \}\) is finite, then from the function \(f\) we can just find the corresponding vectors \(w_1, w_2, ..., w_n\) in \(W\),
+and this falls back to the case of \THM{2.6}, because there exists unique \LTRAN{} \(\T\) s.t. \(\T(v_i) = w_i\) for \(i = 1, ..., n\),
+that is, \(\T(v_i) = f(w_i)\) for all \(w_i \in \beta\).
+
+So let \(\beta\) be an \emph{infinite} basis for \(V\), and let \(f\) be arbitrary function \(f: \beta \to W\).
+
+We first prove the existence of \(\T\) such that \(\T\) is linear and \(\T(x) = f(x)\) for all \(x \in \beta\).
+
+So suppose arbitrary \(x \in V\).
+Then since \(\beta\) is a basis for \(V\), \(x\) can be represented as \textbf{finite} linear combination of vectors in \(\beta\)
+\[
+    x = \sum_{i = 1}^k a_i v_i,
+\]
+for \emph{some} \(v_1, v_2, ..., v_k \in \beta\), and \emph{unique} scalars \(a_1, ..., a_k\).
+Now we prove by construction by defining \(\T\), using this scalars \emph{that depend on \(x\)}:
+\[
+    \T : V \to W \text{ by } \T(x) = \T\bigg(\sum_{i = 1}^k a_i v_i\bigg) = \sum_{i = 1}^k a_i f(v_i). \MAROON{(1)}
+\]
+Then of course \(T\) is really a function, since
+\BLUE{(1)} it's output is a linear combination of \(f(v_i)\)'s, which belong to \(W\), so the combination must be in \(W\);
+\BLUE{(2)} And since for any \(x\) in \(V\), the corresponding scalars \(a_1, ..., a_n\) are unique, and the corresponding \(f(v_1), ..., f(v_i)\) are unique since \(f\) is a function, hence the output of \(T\) is also unique.
+Also note that \MAROON{(1)} is not actually a ``formula'' with ``constant scalars'' \(a_1, ..., a_k\), since \(a_1, ..., a_k\) are determined by (or dependent on) the given \(x\), so they are ``dynamic''.
+
+Then we have to show (a) \(\T\) is linear; (b) \(\T(v) = f(v)\) for all \(v \in \beta\):
+\begin{enumerate}
+\item
+We will use \ATHM{2.1}(b) to show \(\T\) is linear.
+So suppose \(u, v \in V\), and \(d \in F\).
+Then (similarly as \(x \in V\),) we may write \textbf{finite} combination
+\[
+    u = \sum_{i = 1}^{k} b_i v_i \text{ and } v = \sum_{i = 1}^{k} c_i v_i \MAROON{(2)}
+\]
+for some (unique) scalars \(b_1, b_2, ..., b_k\) and \(c_1, c_2, ..., c_k\) and \(v_1, v_2, ... v_k \in \beta\).
+
+Note that in fact we should write \(u, v\) as \textbf{finite} combinations
+\[
+    u = \sum_{i = 1}^{k_1} d_i u_i \text{ and } v = \sum_{i = 1}^{k_2} e_i w_i
+\]
+for some (unique) scalars \(d_1, d_2, ..., d_{k_1}\) and \(e_1, e_2, ..., e_{k_2}\) and \(u_1, u_2, ... u_{k_1} \in \beta\), and \(w_1, w_2, ..., w_{k_2} \in \beta\).
+But WLOG, we can first just \emph{relabel} all these variables to get \MAROON{(2)}.
+That is, let \(k = k_1 + k_2\), and
+\begin{align*}
+    v_1 = u_1, v_2 = u_2, ..., v_{k_1} = u_{k_1}, \\
+    v_{k_1 + 1} = w_1, v_{k_1 + 2} = w_2, ..., v_{k_1 + k_2} = w_{k_2} \\
+    b_1 = d_1, b_2 = d_2, ..., b_{k_1} = d_{k_1}, \\
+    b_{k_1 + 1} = b_{k_1 + 2} = ... = b_{k_1 + k_2} = 0, \\
+    c_1 = c_2 = ... = c_{k_1} = 0, \\
+    c_{k_1 + 1} = e_1, c_{k_1 + 2} = e_2, ..., c_{k_1 + k_2} = e_{k_2}.
+\end{align*}
+And then \emph{combine} some \(u_i\) and \(w_i\) if in fact they are equal.
+And then just relabel again.
+
+Thus
+\begin{align*}
+    d u + v & = d \sum_{i = 1}^{k} b_i v_i + \sum_{i = 1}^{k} c_i v_i & \text{by \MAROON{(2)}} \\
+            & = \sum_{i = 1}^k (db_i + c_i) v_i \MAROON{(3)} & \text{by rules of finite summation}
+\end{align*}
+So
+\begin{align*}
+    \T(du + v) & = \T\bigg( \sum_{i = 1}^k (db_i + c_i) v_i \bigg) & \text{by \MAROON{(3)}} \\
+               & = \sum_{i = 1}^k (db_i + c_i) f(v_i) & \text{by \MAROON{(1)};} \\
+               & \text{\ \ \ \ \ \ (note that now the corresponding scalars} \\
+               & \text{\ \ \ \ \ \ \ \(a_1, ..., a_k\) are \(d b_1 + c_1, ..., d b_k + c_k\))} \\
+               & = d \sum_{i = 1}^k b_i f(v_i) + \sum_{i = 1}^k c_i f(v_i) & \text{by rules of finite summation} \\
+               & = d \T\bigg( \sum_{i = 1}^k b_i v_i \bigg) + \T\bigg( \sum_{i = 1}^k c_i v_i \bigg) & \text{again by \MAROON{(1)}} \\
+               & = d \T(u) + \T(v), & \text{by \MAROON{(2)}}
+\end{align*}
+hence \(\T\) is linear.
+
+\item
+For \(v \in \beta\):
+\begin{align*}
+    \T(v) & = \T(1 v) & \text{in particular, \(1v\) is a finite linear combination (of single vector) of \(\beta\)} \\
+            & = 1 f(v) & \text{by \MAROON{(1)}} \\
+            & = f(v).
+\end{align*}
+\end{enumerate}
+Hence \(\T\) satisfies the two requirements, so the existence part is proved.
+
+Now we have to show \(\T\) is unique.
+So suppose \(\U\) is also linear s.t. \(\U(v) = f(v)\) for \(v \in \beta\).
+We have to show \(\U = \T\);
+that is, (by definition of function equality,) we have to show \(\forall x \in V, \U(x) = \T(x)\).
+
+But for each \(x \in V\), where again we represent \(x = \sum_{i = 1}^k a_i v_i\) for some \(v_i \in \beta\) and unique scalars \(a_1, ..., a_k\) \MAROON{(4)},
+\begin{align*}
+    \U(x) & = \U\bigg(\sum_{i = 1}^k a_i v_i\bigg) & \text{by \MAROON{(4)}}\\
+           & = \sum_{i = 1}^k a_i \U(v_i) & \text{since \(\U\) is linear} \\
+           & = \sum_{i = 1}^k a_i f(v_i) & \text{since also \(\U(v_i) = f(v_i)\)} \\
+           & = \T\bigg(\sum_{i = 1}^k a_i v_i\bigg) & \text{by \MAROON{(1)}} \\
+           & = \T(x). & \text{by \MAROON{(4)}}
+\end{align*}
+So \(\U = \T\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.36}
+Let \(V\) be a \emph{finite}-dimensional vector space and \(\T : V \to V\) be linear.
+\begin{enumerate}
+\item Suppose that \(V = \RANGET + \NULLT\).
+    Prove that \(V = \RANGET \oplus \NULLT\).
+\item Suppose that \(\RANGET \cap \NULLT = \{ \OV \}\).
+    Prove that \(V = \RANGET \oplus \NULLT\).
+\end{enumerate}
+
+Be careful to say in each part where finite-dimensionality is used.
+
+Also \RED{note that} \(\RANGET + \NULLT\) is \emph{not necessarily equal} to \(V\), a counterexample is \EXEC{2.1.18}.
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item Suppose that \(V = \RANGET + \NULLT\), we have to show that \(V = \RANGET \oplus \NULLT\).
+Now since \(V\) is finite-dimensional, the subspace \(\NULLT\) and \(\RANGET\) are also finite;
+and by \ATHM{1.27}(1.2), it suffices to show \(\dim(V) = \dim(\RANGET) + \dim(\NULLT)\).
+But since \(V\) is finite-dimensional, the equality is true by \THM{2.3}, as desired.
+
+\item Suppose that \(\RANGET \cap \NULLT = \{ \OV \}\), we have to show that \(V = \RANGET \oplus \NULLT\).
+And it suffices to show \(V = \RANGET + \NULLT\).
+But since \(\RANGET + \NULLT\) is a subspace of \(V\), by \THM{1.11} we can show \(V = \RANGET + \NULLT\) by showing \(\dim(\RANGET + \NULLT) = \dim(V)\).
+But
+\begin{align*}
+    \dim(\RANGET + \NULLT) & = \dim(\RANGET) + \dim(\NULLT) - \dim(\RANGET \cap \NULLT) \\
+                           & \text{\ \ \ \ \ \ (by \ATHM{1.27}(1.1))} \\
+                           & = \dim(\RANGET) + \dim(\NULLT) + 0 \\
+                           & \text{\ \ \ \ \ \ (since \(\RANGET \cap \NULLT = \{ \OV \}\))} \\
+                           & = \dim(\RANGET) + \dim(\NULLT).
+\end{align*}
+And since \(V\) is finite-dimensional, by \THM{2.3}, \(\dim(\RANGET) + \dim(\NULLT) = \dim(V)\), as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.37}
+Let \(V\) and \(\T\) be as defined in \EXEC{2.1.21}.
+(\(\T\) is left-shit.)
+\begin{enumerate}
+\item Prove that \(V = \RANGET + \NULLT\), but \(V\) is not a direct sum of these two spaces.
+    Thus the result of \EXEC{2.1.36} above \emph{cannot} be proved without assuming that \(V\) is finite-dimensional.
+\item Find a linear operator \(\T_1\) on \(V\) such that \(\RANGE(\T_1) \cap \NULL(\T_1) = \{ \OV \}\) but \(V\) is not a direct sum of \(\RANGE(\T_1)\) and \(\NULL(\T_1)\).
+    Conclude that \(V\) being finite-dimensional is also essential in \EXEC{2.1.36}(b).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item It's obvious that \(\NULLT\) is the set of all sequences of the form \((a, 0, 0, ...)\) where \(a\) is not necessarily zero.
+And \(V = \RANGET + \NULLT\), since by \EXEC{2.1.21}, \(\T\) is onto, so \(\RANGET = V\), so of course \(\RANGET + \NULLT = V\).
+But now we have \(\RANGET \cap \NULLT = \{ (a, 0, 0, ...) : a \in F \} \ne \{ (0, 0, 0, ...) \}\),
+so \(V\) is not the direct sum of \(\NULLT\) and \(\RANGET\).
+
+\item The \(\U\) in \EXEC{2.1.21} is an example;
+    \(\NULL(\U) = \{ (0, 0, ...) \}\), and the sequences of \(\RANGE(\U)\) always have zero as first entry,
+    so the sequences of \(\NULL(\U) + \RANGE(\U)\) also always have zero as first entry, and \(\NULL(\U) + \RANGE(\U) \ne V\),
+    hence \(V\) is not the direct sum of \(\NULL(\U) + \RANGE(\U)\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.38}
+A function \(\T: V \to W\) between vector spaces \(V\) and \(W\) is called \textbf{additive} if \(\T(x + y) = \T(x) + \T(y)\) for all \(x, y \in V\).
+Prove that if \(V\) and \(W\) are vector spaces over the field of \textbf{rational} numbers, then any additive
+function from \(V\) into \(W\) is a \LTRAN{}.
+
+That is, when the field is rational, then \DEF{2.1}(a) implies \DEF{2.1}(b).
+\end{exercise}
+
+\begin{proof}
+Suppose \(\T : V \to W\) over \(\SET{Q}\) is additive.
+We have to show \(\T(cv) = c\T(v)\) \MAROON{(1)} for all \(v \in V\) and any \emph{rational} scalar \(c\).
+
+We show \MAROON{(1)} by each kind of numbers in the rational numbers;
+that is, natural numbers, negative integers, \(1/m\) for some integer \(m\), and ultimately show \MAROON{(1)} is true for any rational numbers \(n/m\).
+
+So let arbitrary \(v \in V\).
+
+First we show \(\T(cx) = c\T(x)\) for all positive integers \(c\).
+We prove by induction on \(c\), with the base case \(c = 0\).
+So for \(c = 0\),
+\begin{align*}
+    \T(0x) + \OW & = \T(0x) & \text{by (VS 3) of \(W\)} \\
+                 & = \T(0x + \OV) & \text{by (VS 3) of \(V\)} \\
+                 & = \T(0x) + \T(\OV) & \text{since \(\T\) is additive}
+\end{align*}
+So by cancellation law, \(\T(\OV) = \OW\).
+
+Now of course \(\OW = 0\T(x)\), and since \(0x = \OV\), we have \(\T(0x) = \T(\OV) = \OW\).
+So both \(0\T(x)\) and \(\T(0x)\) are equal to \(\OW\) hence are equal to each other, so the base case is true.
+
+Now suppose \(\T(cx) = c\T(x)\) for some positive integer \(c \ge 0\), we have to show \(\T((c + 1)x) = (c + 1)\T(x)\).
+Then
+\begin{align*}
+    \T((c + 1)x) & = \T(cx + 1x) & \text{by (VS 8) of \(V\)} \\
+                 & = \T(cx + x) & \text{by (VS 5) of \(V\)} \\
+                 & = \T(cx) + \T(x) & \text{since \(\T\) is additive} \\
+                 & = c\T(x) + \T(x) & \text{by inductive hypothesis} \\
+                 & = (c + 1)\T(x). & \text{by (VS 8) of \(W\)}
+\end{align*}
+This closes the induction.
+
+Now we consider the case that \(c\) is arbitrary negative integer.
+But we first consider \(c = -1\), that is, \((-1)\T(x) = \T((-1)x)\), or \(-\T(x) = \T(-x)\).
+Then
+\begin{align*}
+    \T(x) & = \T(2x + (-x)) & \text{of course} \\
+          & = \T(2x) + \T(-x) & \text{since \(\T\) is additive} \\
+          & = 2\T(x) + \T(-x), & \text{we have shown the case for natural numbers}
+\end{align*}
+which implies \(\T(x) - 2\T(x) = \T(-x)\), that is \(-\T(x) = \T(-x)\).
+
+Then we consider that \(c\) is any negative integer.
+Then
+\begin{align*}
+    \T(cx) & = \T\Big( \big( (-c)(-1) \big) x \Big) & \text{of course by field \(\SET{Q}\)} \\
+           & = \T\Big( (-c) \big( (-1)x \big) \Big) & \text{by (VS 6) of \(V\)} \\
+           & = (-c)\T((-1)x) & \text{we have show the case for positive integer;} \\
+           & & \text{note that \(-c\) is positive integer} \\
+           & = (-c)(-1)\T(x) & \text{we have shown the case for \(c = -1\)} \\
+           & = c\T(x).
+\end{align*}
+
+Now we show the case for \(c = 1/m\) for some nonzero integer \(m\).
+Then
+\begin{align*}
+    \T(x) & = \T((m \cdot \frac{1}{m})x) & \text{of course by field \(\SET{Q}\)} \\
+          & = \T(m(\frac{1}{m}x)) & \text{of (VS 6) of \(V\)} \\
+          & = m\T(\frac{1}{m}x) & \text{we have shown the case for integer},
+\end{align*}
+which implies \(\frac{1}{m} \T(x) = \T(\frac{1}{m}x)\), that is, \(c \T(x) = \T(c x)\).
+
+Finally we show the case for \(c = n/m\) for some integers \(n, m\) where \(m \ne 0\).
+Then
+\begin{align*}
+    \T(cx) & = \T(\frac{n}{m} x) \\
+           & = \T((n\frac{1}{m}) x) & \text{of course}\\
+           & = \T(n(\frac{1}{m}x)) & \text{by (VS 6) of \(V\)} \\
+           & = n\T(\frac{1}{m}x) & \text{we have shown the case for integer} \\
+           & = n (\frac{1}{m}\T(x)) & \text{we have shown the case for rational \(1/m\)} \\
+           & = (n\frac{1}{m}) \T(x) & \text{by (VS 6) of \(W\)} \\
+           & = \frac{n}{m} \T(x) & \text{of course} \\
+           & = c \T(x)
+\end{align*}
+
+So we have show \(\T(cx) = c\T(x)\) for any scalar \(c\) in the field of \emph{rationals}.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.39}
+Let \(\T : \SET{C} \to \SET{C}\) be the function defined by \(\T(z) = \conjugatet{z}\).
+Prove that \(\T\) is additive but not linear.
+\end{exercise}
+
+\begin{proof}
+For any complex number \(z_1, z_2 \in \SET{C}\), let \(z_1 = a_1 + b_1 \iu\) and \(z_2 = a_2 + b_2 \iu\), then
+\begin{align*}
+    \T(z_1 + z_2) & = \T((a_1 + b_1 \iu) + (a_2 + b_2 \iu) \\
+                  & = \T((a_1 + a_2) + (b_1 + b_2) \iu) & \text{by def of \(+\) of complex} \\
+                  & = \conjugatet{(a_1 + a_2) + (b_1 + b_2) \iu} & \text{by def of \(\T\)} \\
+                  & = (a_1 + a_2) - (b_1 + b_2) \iu & \text{by def of conjugate} \\
+                  & = (a_1 - b_1 \iu) + (a_2 - b_2 \iu) & \text{by def of \(+\) of complex} \\
+                  & = \conjugatet{a_1 + b_1 \iu} + \conjugatet{a_2 + b_2 \iu} & \text{by def of conjugate} \\
+                  & = \T(a_1 + b_1 \iu) + \T(a_2 + b_2 \iu) & \text{by def of \(\T\)} \\
+                  & = \T(z_1) + \T(z_2),
+\end{align*}
+hence \(\T\) is additive.
+
+But let \(z = a + b \iu \in \SET{C}\), then for scalar \(\iu \in \SET{C}\),
+\begin{align*}
+    \T(\iu z) & = \T(\iu (a + b \iu)) \\
+              & = \T(-b + a \iu) & \text{by operation of complex number} \\
+              & = - b - a \iu,
+\end{align*}
+But
+\begin{align*}
+    \iu \T(z) & = \iu \T(a + b \iu) \\
+           & = \iu (a - b \iu) \\
+           & = b - a \iu \\
+           & \ne \T(\iu z).
+\end{align*}
+So \(T\) is not linear.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.40}
+Prove that there is an additive function \(\T : \SET{R} \to \SET{R}\) that is not linear.
+\end{exercise}
+
+\begin{proof}
+\TODOREF{} \RED{Skip}, this need section 1.7.
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.41}
+Prove that \THM{2.6} and \CORO{2.6.1} are true when \(V\) is infinite dimensional.
+\end{exercise}
+
+\begin{proof}
+In fact I have proved the case when \(V\) is infinite-dimensional in \EXEC{2.1.35}.
+In seems that maybe I can just assume \EXEC{2.1.35} only cares the case when \(V\) is finite dimensional?
+\end{proof}
+
+\begin{exercise} \label{exercise 2.1.42}
+Let \(V\) be a vector space and \(W\) be a subspace of \(V\).
+Define the mapping \(\eta: V \to V/W\) by \(\eta(v) = v + W\) for \(v \in V\).
+(\(\eta\) is somewhat has the concept of ``identity mapping'' in spirit.)
+\begin{enumerate}
+\item Prove that \(\eta\) is a \LTRAN{} from \(V\) onto \(V/W\) and that \(\NULL(\eta) = W\).
+\item Suppose that \(V\) is \emph{finite}-dimensional.
+    Use (a) and the dimension theorem \THM{2.3} to derive a formula relating \(\dim(V), \dim(W)\), and \(\dim(V/W)\).
+\item Read the proof of the dimension theorem.
+    Compare the method of solving (b) with the method of deriving the same result as outlined in \EXEC{1.6.35}.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+First, if \(v \in W\), then \(v + W = \OV + W\) \MAROON{(1)};
+the proof is similar to \EXEC{1.6.35}'s \RED{(*)}.
+\begin{enumerate}
+\item For any \(v_1, v_2 \in V\) and scalar \(c \in F\),
+\begin{align*}
+    \eta(c v_1 + v_2) & = (c v_1 + v_2) + W & \text{by def of \(\eta\)} \\
+                      & = c(v_1 + W) + (v_2 + W) & \text{by def of \(+\) and \(\cdot\) of \(V/W\)} \\
+                      & = c\eta(v_1) + \eta(v_2), & \text{by def of \(\eta\)}
+\end{align*}
+hence by \ATHM{2.1}(b), \(\eta\) is linear.
+
+Now we have to show \(\NULL(\eta) = W\).
+So suppose \(v \in \NULL(\eta)\), then we have \(\eta(v) = \OV + W\), the zero vector of \(V/W\).
+But in particular, by definition of \(\eta\), \(\eta(v) = v + W\).
+So we have \(\OV + W = v + W\).
+But LHS, \(\OV + W\), trivially is equal to \(W\), which is a subspace of \(V\), so RHS, \(v + W\), is a subspace of \(V\).
+Then by \EXEC{1.3.31}(a), \(v \in W\).
+So we have \(\NULL(\eta) \subseteq W\).
+
+Now suppose \(v \in W\), we have to show \(v \in \NULL(\eta)\).
+But
+\begin{align*}
+    \eta(v) & = v + W \\
+            & = \OV + W & \text{since \(v \in W\) and by \MAROON{(1)}}
+\end{align*}
+
+So \(v \in \NULL(\eta)\).
+So we have \(W \subseteq \NULL(\eta)\).
+So \(\NULL(\eta) = W\).
+
+\item
+Since \(V\) is finite-dimensional, By \THM{2.3} We have \(\rank(\eta) = \dim(V) - \nullity(\eta)\), or \(\dim(\RANGE(\eta)) = \dim(V) - \dim(\MAROON{\NULL(\eta)})\), which implies, by part(a), \(\dim(\RANGE(\eta)) = \dim(V) - \dim(\MAROON{W})\) \MAROON{(2)}.
+
+But it's of course that \(\eta\) is \emph{onto} (given any \(v + W \in V/W\), we can just use that \(v\) s.t. \(\eta(v) = v + W\), hence \(\eta\) is onto),
+hence \(\dim(\RANGE(\eta)) = \dim(V/W)\), so \MAROON{(2)} becomes \(\dim(V/W) = \dim(V) - \dim(W)\).
+
+\item Skip.
+\end{enumerate}
+\end{proof}
+
+
+\begin{additional theorem} \label{athm 2.2}
+This is the placeholder theorem for
+
+\EXEC{2.1.13}: 
+
+\BLUE{(1)}: Given \(\T : V \to W\), and any \LID{} subset \(\{ w_1, w_2, ..., w_k \}\) of \(\RANGET\), then any subset \(\{ v_1, v_2, ..., v_k \} \in V\) s.t. \(\T(v_1) = w_1, ..., \T(v_k) = w_k\) is also \LID{}.
+
+\EXEC{2.1.14}: Given linear \(\T : V \to W\),
+
+\BLUE{(2.a)}: \(\T\) is one-to-one if and only if \(\T\) carries \LID{} subsets of \(V\) onto \LID{} subsets of \(W\).
+
+\BLUE{(2.b)}: If \(\T\) is one-to-one and \(S\) is a subset of \(V\), then \(S\) is \LID{} if and only if \(\T(S)\) is \LID{}.
+
+\BLUE{(2.c)}: Given one-to-one and onto \(\T : V \to W\), \(\beta = \{ v_1, v_2, ..., v_n \}\) a basis for \(V\), then\\
+\(\T(\beta) = \{ \T(v_1), \T(v_2), ..., \T(v_n) \}\) is a basis for \(W\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.3}
+This is a placeholder theorem for \EXEC{2.1.17}:
+
+\BLUE{(1)}: If \(\dim(V) < \dim(W)\) then \(\T\) cannot be onto.
+
+\BLUE{(2)}: If \(\dim(V) > \dim(W)\) then \(\T\) cannot be one-to-one.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.4}
+This is a placeholder theorem for \EXEC{2.1.20}:
+
+Given linear \(\T : V \to W\)
+
+\BLUE{(1)}: Given any subspace of \(V\), the corresponding range is a subspace of \(W\).
+
+\BLUE{(2)}: Given any subspace of codomain, the set of all vectors mapped by \(\T\) into that subspace is also a subspace of \(V\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.5}
+This is a placeholder theorem for \EXEC{2.1.22}.
+
+The important result is the second generalization of \(\T : F^n \to F^m\), which in fact corresponds to the matrix representation of \(\T\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.6}
+This is a placeholder theorem for \EXEC{2.1.24}:
+
+Intuitively, \(K\) is the solution set of \(\T(x) = b\).
+The exercise says that if \(K\) is nonempty, then given a solution \(s\), the solution set can be represented as \(\{ s \} + \NULLT\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.7}
+This is a placeholder theorem for \EXEC{2.1.27}:
+
+Given the projection \(\T : V \to V\) on \(W_1\) along \(W_2\):
+
+\BLUE{(1)}: Projection is linear, and \(W_1 = \{ x \in V: \T(x) = x \}\).
+
+\BLUE{(2)}: \(W_1 = \RANGET, W_2 = \NULLT\).
+
+\BLUE{(3)}: If \(W_1 = V\), then \(\T\) is identity transformation.
+If \(W_1 = \{ \OV \}\), then \(\T\) is zero transformation.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.8}
+This is a placeholder theorem for \EXEC{2.1.28}:
+Given any subspace \(W\) of \emph{finite} space \(V\):
+
+\BLUE{(1)} We can find \(W'\) and a function \(\T\) s.t. \(\T\) is the projection on \(W\) along \(W'\).
+
+\BLUE{(2)} We can find \emph{different} \(W'\) and \(W''\) s.t. \(T_1\) is the projection on \(W\) along \(W'\) and \(\T_2\) is the projection on \(W\) along \(W''\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.9}
+Suppose \(\T : V \to V\) is linear, and \(W\) is a subspace of \(V\).
+Then
+
+\BLUE{(1)}: \EXEC{2.1.29}: \(\{ \OV \}, V, \RANGET, \NULLT\) are all \(\T\)-invariant.
+
+\BLUE{(2)}: \EXEC{2.1.30}: If \(W\) is \(\T\)-invariant, then \(\T_W\) is linear.
+
+\BLUE{(3)} \EXEC{2.1.31}: If \(\T\) is the projection on \(W\) along some subspace \(W'\), then \(W\) is \(\T\)-invariant and that \(\T_W = \ITRANW\).
+
+\EXEC{2.1.32}: (\RED{Warning}: we do not say \(\T\) is a projection.)
+If \(V = \RANGET \oplus W\) and \(W\) is \(\T\)-invariant, then
+
+\BLUE{(3.1)}: \(W \subseteq \NULLT\).
+
+\BLUE{(3.1)}: Show that if \(V\) is \emph{finite}-dimensional, then \(W = \NULLT\).
+
+\BLUE{(3.2)}: Show by example that the conclusion of \BLUE{(3.1)} is not necessarily true if \(V\) is not finite-dimensional.
+
+\EXEC{2.1.33}
+
+\BLUE{(4)}:
+If \(W\) is \(\T\)-invariant, then \(\NULL(\T_W) = \NULLT \cap W\) and \(\RANGE(\T_W) = \T(W)\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.10}
+This is a placeholder theorem for
+
+\BLUE{(1)} \EXEC{2.1.34}: The generalization of \THM{2.2} that if (the basis for \(V\)) \(\beta\) is infinite, and we still have \(\RANGET = \spann(\{ \T(v) : v \in \beta \})\).
+
+\BLUE{(2)} \EXEC{2.1.35}: The generalization of \THM{2.6}.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.11}
+
+\EXEC{2.1.36}:
+Let \(V\) be a finite-dimensional vector space and \(\T : V \to V\) be linear.
+
+\BLUE{(1.1)}: If that \(V = \RANGET + \NULLT\), then in fact
+\(V = \RANGET \oplus \NULLT\).
+
+\BLUE{(1.2)}: If \(\RANGET \cap \NULLT = \{ \OV \}\), then in fact \(V = \RANGET \oplus \NULLT\).
+
+\BLUE{(2)} But with \EXEC{2.1.37}, the \(V\) being finite-dimensional is essential for \BLUE{(1.1)} and \BLUE{(1.2)}
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.12}
+This is a placeholder theorem for
+
+\BLUE{(1)} \EXEC{2.1.38}: If field is \(\SET{Q}\), then any additive function is also linear.
+
+\BLUE{(2)}: \EXEC{2.1.39}: Just a case that additive is not linear when the field is not \(\SET{Q}\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.13}
+This is a placeholder theorem for \EXEC{2.1.40}:
+But I skipped the exercise because it requires section 1.7.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.14}
+This is a placeholder theorem for \EXEC{2.1.41}:
+It is also the generalization for \THM{2.6}, but I can tell the difference between this exercise and \EXEC{2.1.35}.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 2.15}
+This is a placeholder theorem for \EXEC{2.1.42}:
+This is some exercise related to linear transformation on quotient space.
+\end{additional theorem}

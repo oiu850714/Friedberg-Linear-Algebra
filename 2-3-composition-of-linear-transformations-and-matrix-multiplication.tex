@@ -1,0 +1,977 @@
+\section{Composition of Linear Transformations and Matrix Multiplication} \label{sec 2.3}
+
+In \SEC{2.2}, we learned how to associate a matrix with a linear transformation in such a way that both sums and scalar multiples of matrices are associated with the corresponding sums and scalar multiples of the transformations.
+(See \THM{2.8}.)
+The question now arises as to how the matrix representation of a \textbf{composite of linear transformations} is related to the matrix representation of each of the associated linear transformations.
+The attempt to answer this question leads to \emph{a definition of matrix multiplication}.
+We use the more convenient notation of \(\U\T\) rather than \(\U \circ \T\) for the composite of linear transformations \(\U\) and \(T\).
+
+\begin{remark} \label{remark 2.3.1}
+In the textbook (and maybe other textbooks also) we encounter some expression like \(\U\T(x)\);
+this really means \((\U\T)(x)\), not \(\U(\T(x))\).
+This is because \(\U\T\) really is \(\U \circ \T\), and function composition ``\textbf{has higher precedence}'' than function ``input''.
+
+But I am stupid, I may just write \((\U\T)(x)\) in the proof to make the proof more... \emph{clear} (to me).
+\end{remark}
+
+\begin{note}
+暴雷，我們希望\ \(\U \circ \T\) 這個線性變換的合成的矩陣代表可以表示成\ \(\U\) 的矩陣代表跟\ \(\T\) 的矩陣代表的「相乘」。
+但我們還沒定義矩陣相乘；但實際上定義就是以前高中學的那個定義。
+\end{note}
+
+Our first result shows that \emph{the composite of linear transformations is linear}.
+
+\begin{theorem} \label{thm 2.9}
+Let \(V, W\), and \(Z\) be vector spaces over the same field \(F\), and let \(\T: V \to W\) and \(\U : W \to Z\) be linear.
+Then \(\U\T : V \to Z\) is linear.
+\end{theorem}
+
+\begin{proof}
+Let \(x, y \in V\) and \(a \in F\).
+Then
+\begin{align*}
+    \U\T(ax + y) & = \U(\T(ax + y)) & \text{by def of function composition} \\
+                 & = \U(a\T(x) + \T(y)) & \text{since \(\T\) is linear} \\
+                & = a\U(\T(x)) + \U(\T(y)) & \text{since \(\U\) is linear} \\
+                & = a\big( \U\T(x) \big) + \U\T(y). & \text{by def of function composition}
+\end{align*}
+Hence by \ATHM{2.1}(b), \(\U\T\) is linear.
+\end{proof}
+
+\begin{theorem} \label{thm 2.10}
+Let \(V\) be a vector space. Let \(\T, \U_1, \U_2 \in \mathcal{L}(V)\).
+Then
+\begin{enumerate}
+\item \(\T(\U_1 + \U_2) = \T\U_1 + \T\U_2\) and \((\U_1 + \U_2)\T = \U_1\T + \U_2\T\)
+\item \(\T(\U_1 \U_2) = (\T\U_1)\U_2\)
+\item \(\T \ITRANV = \ITRANV \T = \T\) (where \(I\) is identity transformation from \(V\) to \(V\))
+\item \(a(\U_1\U_2) = (a\U_1)\U_2 = \U_1(a\U_2)\) for all scalars \(a\).
+\end{enumerate}
+\sloppy A more general result holds for linear transformations that have domains unequal to their codomains. (See \EXEC{2.3.8}.)
+\end{theorem}
+
+\begin{note}
+In fact, some statements do \emph{not} require the linearity.
+See the proof below.
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item For all \(x \in V\),
+\begin{align*}
+    \Big( \T(\U_1 + \U_2) \Big)(x) & = \T \Big( (\U_1 + \U_2)(x) \Big) & \text{by def of function composition} \\
+                                   & = \T\Big( \U_1(x) + \U_2(x) \Big) & \text{by \DEF{2.8}(1)} \\
+                                   & = \T(\U_1(x)) + \T(\U_2(x)) & \text{\RED{since \(\T\) is linear}} \\
+                                   & = (\T\U_1)(x) + (\T\U_2)(x) & \text{by def of function composition} \\
+                                   & = \Big( \T\U_1 + \T\U_2 \Big)(x), & \text{by \DEF{2.8}(1)}
+\end{align*}
+hence \(\T(\U_1 + \U_2) = \T\U_1 + \T\U_2\);
+
+and
+\begin{align*}
+    \Big( (\U_1 + \U_2)\T \Big)(x) & = (\U_1 + \U_2)(\T(x)) & \text{by def of function composition} \\
+                                   & = \U_1(\T(x)) + \U_2(\T(x)) & \text{by \DEF{2.8}(1)} \\
+                                   & = (\U_1\T)(x) + (\U_2\T)(x) & \text{by def of function composition} \\
+                                   & = (\U_1\T + \U_2\T)(x), & \text{by \DEF{2.8}(1)}
+\end{align*}
+hence \((\U_1 + \U_2)\T = \U_1\T + \U_2\T\).
+
+\item For all \(x \in V\),
+\begin{align*}
+    \Big( \T(\U_1\U_2) \Big)(x) & = \T \Big((\U_1\U_2)(x) \Big) & \text{by def of function composition} \\
+                                & = \T(\U_1(\U_2(x))) & \text{by def of function composition} \\
+                                & = (\T\U_1)(\U_2(x)) & \text{by def of function composition} \\
+                                & = \Big( (\T\U_1)\U_2 \Big)(x), & \text{by def of function composition}
+\end{align*}
+hence \(\T(\U_1\U_2) = (\T\U_1)\U_2\).
+
+\item For all \(x \in V\),
+\begin{align*}
+    \BLUE{(\T I)(x)} & = \T(I(x)) & \text{by def of function composition} \\
+                     & \BLUE{= \T(x)} & \text{since \(I(x) = x\)} \\
+                     & = I(\T(x)) & \text{since \(\T(x) = I(\T(x))\)} \\
+                     & \BLUE{= (I\T)(x)}
+\end{align*}
+hence (by blue part), \(\T I = I \T = \T\).
+
+\item For all \(x \in V\),
+\begin{align*}
+    \Big( a(\U_1 \U_2) \Big)(x) & = a\Big( (\U_1\U_2)(x) \Big) & \text{by \DEF{2.8}(2)} \\
+                                & = a\Big( \U_1(\U_2(x)) \Big) & \text{by def of function composition} \\
+                                & = \Big( \U_1(a\U_2(x)) ) & \text{\RED{since \(\U_1\) is linear}} \\
+                                & = \U_1 \Big( (a\U_2)(x) \Big) & \text{by \DEF{2.8}(2)} \\
+                                & = \Big( \U_1(a\U_2) \Big)(x), & \text{by def of function composition}
+\end{align*}
+Hence \(a(\U_1\U_2) = \U_1(a\U_2)\).
+
+And for all \(x \in V\):
+\begin{align*}
+    \Big( \U_1(a\U_2) \Big)(x) & = \U_1 \Big( (a\U_2)(x) \Big) & \text{by def of function composition} \\
+                               & = \U_1 \Big( a\U_2(x) \Big) & \text{by \DEF{2.8}(2)} \\
+                               & = a\U_1(\U_2(x)) & \text{\RED{since \(\U_1\) is linear}} \\
+                               & = (a\U_1)(\U_2(x)) & \text{by \DEF{2.8}(2)} \\
+                               & = \Big( (a\U_1)\U_2 \Big)(x) & \text{by def of function composition}
+\end{align*}
+Hence \(\U_1(a\U_2) = (a\U_1)\U_2\).
+
+Hence all of \(a(\U_1\U_2), (a\U_1)\U_2, \U_1(a\U_2)\) are equal to each other.
+\end{enumerate}
+\end{proof}
+
+If \(\T \in \mathcal{L}(V)\), there are circumstances where \emph{it is natural (and \textbf{valid}) to compose \(\T\) with itself} one or more times.
+In \EXAMPLE{2.1.6}, for instance, we considered the \LTRAN{} \(\T : V \to V\) defined by \(\T(f) = f'\),
+where \(V\) denotes the set of all real-valued functions on the real line that have derivatives of every order.
+In this context, \(\T\T(f) = \T(\T(f)) = \T(f') = (f')' = f''\) is the second derivative of \(f\), and \(\T\T\T(f) = f'''\) is the third derivative of \(f\).
+In this type of situation, the following notation is useful.
+
+\begin{additional definition} \label{adef 2.6}
+If \(\T \in \mathcal{L}(V)\), that is, \(\T\) is a linear transformation having the same domain and codomain, we define \(\T^1 = \T, \T^2 = \T\T, T^3 = \T^2\T\),
+and, in general, \(\T^k = \T^{k - 1}\T\), for \(k = 2,3, ...\).
+For convenience, we also define \(\T^0 = \ITRANV\).
+\end{additional definition}
+
+We now turn our attention to the \textbf{multiplication of matrices}.
+Let \(V, W\), and \(Z\) be \emph{finite}-dimensional vector spaces and \(\T : V \to W\) and \(\U: W \to Z\) be linear transformations.
+Suppose that
+\[
+    A = [\U]_{\beta}^{\gamma} \MAROON{(1.1)} \text{\ \  and \ \ } B = [\T]_{\alpha}^{\beta} \MAROON{(1.2)},
+\]
+where \(\alpha = \{v_1, v_2, ... , v_p\}\), \(\beta = \{ w_1, w_2, ..., w_n \}\), and \(\gamma = \{ z_1, z_2, ..., z_m \}\) are ordered bases for \(V, W\), and \(Z\), respectively.
+
+(\RED{Warning}: I use the index \(p, n, m\) with the \textbf{different} order in the textbook, to match \DEF{2.10} below.)
+
+We would like to \textbf{define the product \(AB\) of two matrices} \textbf{so that \(AB = [\U\T]_{\alpha}^{\gamma}\)}.
+That is, we want the equation \([\U]_{\beta}^{\gamma}[\T]_{\alpha}^{\beta} = [\U\T]_{\alpha}^{\gamma}\) holds.
+
+So we first consider the matrix \([\U\T]_{\alpha}^{\gamma}\), and then think how to define the matrix product to make the equation hold.
+
+So given vector \(v_j\) in the \(V\)'s basis \(\alpha\), for \(j = 1, 2, ..., p\), we want to know how \(\U\T\) sends \(v_j\) into \(Z\), that is, we want to know \([\U\T(v_j)]_{\gamma}\).
+Then we just compute \(\U\T(v_j)\) directly:
+\begin{align*}
+    (\U\T)(v_j) & = \U(\T(v_j)) & \text{by def of function composition} \\
+                & = \U \bigg( \sum_{k = 1}^{n} B_{kj} w_k \bigg) & \text{by \MAROON{(1.2)}, and the basis \(\beta\) of \(W\)} \\
+                & = \sum_{k = 1}^n B_{kj} \U(w_k) & \text{\textbf{since \(\U\) is linear}} \\
+                & = \sum_{k = 1}^n B_{kj} \bigg( \sum_{i = 1}^m A_{ik} z_i \bigg) & \text{by \MAROON{(1.1)}, and the basis \(\gamma\) of \(Z\)} \\
+                & = \sum_{k = 1}^n \bigg( \sum_{i = 1}^m B_{kj} A_{ik} z_i \bigg) & \text{move constant \(B_{kj}\) into the nested summation} \\
+                & = \sum_{k = 1}^n \bigg( \sum_{i = 1}^m A_{ik} B_{kj} z_i \bigg) & \text{of course} \\
+                & = \sum_{i = 1}^m \bigg( \sum_{k = 1}^n A_{ik} B_{kj} z_i \bigg) & \text{nested finite summation can change order} \\
+                & = \sum_{i = 1}^m \bigg( \sum_{k = 1}^n A_{ik} B_{kj} \bigg) z_i & \text{\(z_i\) does not depend on nested summation} \\
+                & = \sum_{i = 1}^p C_{ij} z_i,
+\end{align*}
+where
+\[
+    C_{ij} = \sum_{k = 1}^n A_{ik} B_{kj} \text{ for } 1 \le i \le m, 1 \le j \le p.
+\]
+which means the \(ij\)th component of \([\U\T]_{\alpha}^{\gamma}\) is \(\sum_{k = 1}^n A_{ik} B_{kj}\).
+
+This computation motivates the following definition of matrix multiplication. \begin{definition} \label{def 2.10}
+Let \(A\) be an \(m \X n\) matrix and \(B\) be an \(n \X p\) matrix. 
+We define the \textbf{product} of \(A\) and \(B\), denoted \(AB\), to be the \(m \X p\) matrix such that
+\[
+    (AB)_{ij} = \sum_{k = 1}^n A_{ik} B_{kj} \text{ for } 1 \le i \le m, 1 \le j \le p.
+\]
+\end{definition}
+
+\begin{remark} \label{remark 2.3.2}
+Note that \((AB)_{ij}\) is the \textbf{sum of products of corresponding entries from the \(i\)th row of \(A\) and the \(j\)th column of \(B\)}.
+This is just a rule of thumb for memorizing the definition of matrix multiplication in high school.
+
+The reader should observe that in order for the product \(AB\) to be defined, there are restrictions regarding the relative sizes of \(A\) and \(B\).
+The following mnemonic device is helpful: ``\((\RED{m} \X \GREEN{n}) \cdot (\GREEN{n} \X \BLUE{p}) = (\RED{m} \X \BLUE{p})\)'';
+that is, in order for the product \(AB\) to be defined, the two ``inner'' dimensions must be equal, and the two ``outer'' dimensions yield the size of the product.
+\end{remark}
+
+\begin{example} \label{example 2.3.1}
+We have
+\[
+    \left(\begin{array}{rrr}
+        1 & 2 & 1 \\
+        0 & 4 & -1
+    \end{array}\right)
+    \left(\begin{array}{l}
+        4 \\
+        2 \\
+        5
+    \end{array}\right)
+    =\left(\begin{array}{c}
+        1 \cdot 4+2 \cdot 2+1 \cdot 5 \\
+        0 \cdot 4+4 \cdot 2+(-1) \cdot 5
+    \end{array}\right)
+    =\left(\begin{array}{r}
+        13 \\
+        3
+    \end{array}\right).
+\]
+
+Notice again the symbolic relationship of the dimension of the product is \((2 \times 3) \cdot (3 \times 1) = 2 \times 1\).
+\end{example}
+
+\begin{remark} \label{remark 2.3.3}
+As in the case with composition of functions, we have that matrix multiplication is \textbf{not} commutative.
+Consider the following two products:
+\[
+    \left(\begin{array}{ll}
+        1 & 1 \\
+        0 & 0
+    \end{array}\right)
+    \left(\begin{array}{ll}
+        0 & 1 \\
+        1 & 0
+    \end{array}\right)
+    =\left(\begin{array}{ll}
+        1 & 1 \\
+        0 & 0
+    \end{array}\right)
+    \text { and }
+    \left(\begin{array}{ll}
+        0 & 1 \\
+        1 & 0
+    \end{array}\right)
+    \left(\begin{array}{ll}
+        1 & 1 \\
+        0 & 0
+    \end{array}\right)
+    =\left(\begin{array}{ll}
+        0 & 0 \\
+        1 & 1
+    \end{array}\right).
+\]
+\end{remark}
+
+\begin{additional theorem} \label{athm 2.24}
+Recalling the definition of the transpose of a matrix, we show that if \(A\) is an \(m \X n\) matrix and \(B\) is an \(n \X p\) matrix, then \((AB)^\top = B^\top A^\top\), since for all \(1 \le i \le m\), \(1 \le j \le p\),
+\begin{align*}
+    (AB)^\top_{ij} & = (AB)_{ji} & \text{by def of transpose} \\
+                   & = \sum_{k = 1}^n A_{jk} B_{ki} & \text{by \DEF{2.10}}
+\end{align*}
+And (note that \(B^\top\) is \(p \X n\) matrix, \(A^\top\) is \(n \X m\) matrix),
+\begin{align*}
+    (B^\top A^\top)_{ij} & = \sum_{k = 1}^n B^\top_{ik} A^\top_{kj} & \text{by \DEF{2.10}} \\
+                         & = \sum_{k = 1}^n B_{ki} A_{jk} & \text{by def of transpose} \\
+                         & = \sum_{k = 1}^n A_{jk} B_{ki}. & \text{of course}
+\end{align*}
+\end{additional theorem}
+
+Our definition of matrix multiplication was chosen so that the next theorem is true.
+\begin{theorem} \label{thm 2.11}
+Let \(V, W\), and \(Z\) be finite-dimensional vector spaces with ordered bases \(\alpha\), \(\beta\), and \(\gamma\), respectively.
+Let \(\T : V \to W\) and \(\U : W \to Z\) be linear transformations.
+Then
+\[
+    [\U\T]_{\alpha}^{\gamma} = [\U]_{\beta}^{\gamma}[\T]_{\alpha}^{\beta}.
+\]
+\end{theorem}
+
+\begin{corollary} \label{corollary 2.11.1}
+Let \(V\) be a finite-dimensional vector space with an ordered
+basis \(\beta\).
+Let \(\T, \U \in \mathcal{L}(V)\).
+Then \([\U\T]_{\beta} = [\U]_{\beta}[\T]_{\beta}\).
+
+This is just a particular case of \THM{2.11} where \(V = W = Z\) and \(\alpha = \beta = \gamma\).
+\end{corollary}
+
+\begin{example} \label{example 2.3.2}
+Let \(\U: \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) and \(\T: \mathcal{P}_2(\SET{R}) \to \mathcal{P}_3(\SET{R})\) be the linear transformations respectively defined by
+\[
+    \U(f(x)) = f'(x) \text{ and } \T(f(x)) = \int_0^x f(t) dt.
+\]
+Let \(\alpha\) and \(\beta\) be the standard ordered bases of \(\mathcal{P}_3(\SET{R})\) and \(\mathcal{P}_2(\SET{R})\), respectively.
+From Calculus(fundamental theorem of calculus), it follows that \(\U\T = \mathrm{I}\), the \emph{identity transformation} on \(\mathcal{P}_2(\SET{R})\).
+
+To illustrate \THM{2.11}, observe that
+
+\[
+    [\U\T]_{\beta} = [\U]_{\alpha}^{\beta}[\T]_{\beta}^{\alpha}
+    =\left(\begin{array}{cccc}
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 2 & 0 \\
+        0 & 0 & 0 & 3
+    \end{array}\right)
+    \left(\begin{array}{ccc}
+        0 & 0 & 0 \\
+        1 & 0 & 0 \\
+        0 & \frac{1}{2} & 0 \\
+        0 & 0 & \frac{1}{3}
+    \end{array}\right)
+    =\left(\begin{array}{ccc}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{array}\right)
+    =[\mathrm{I}]_{\beta}
+\]
+\end{example}
+
+The next theorem provides analogs of (a), (c), and (d) of \THM{2.10}.
+\THM{2.10}(b) (associativity of composition of linear transformations) has its analog in \THM{2.16}.
+Observe also that part (c) of the \THM{2.12} illustrates that the identity matrix \(I_n\) \emph{acts as a multiplicative identity} in \(M_{n \X n}(F)\).
+When the context is clear, we sometimes omit the subscript \(n\) from \(I_n\).
+
+\begin{note}
+這邊的論述讓人覺得有點可笑，怎麼可能會「現在」才知道\ identity matrix 是乘法單位元素? 這在\ \EXAMPLE{1.2.2} 就已經需要知道了才對。
+\end{note}
+
+\begin{theorem} \label{thm 2.12}
+Let \(A\) be an \(m \X n\) matrix, \(B\) and \(C\) be \(n \X p\) matrices, and \(D\) and \(E\) be \(q \X m\) matrices.
+Then
+\begin{enumerate}
+\item \(A(B + C) = AB + AC\) and \((D + E)A = DA + EA\).
+\item \(a(AB) = (aA)B = A(aB)\) for any scalar \(a\).
+\item \(I_{\RED{m}}A = A = AI_{\RED{n}}\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item
+We have
+\begin{align*}
+    [A(B + C)]_{ij} & = \sum_{k = 1}^{\RED{n}} A_{ik} (B + C)_{kj} & \text{by \DEF{2.10}} \\
+                    & = \sum_{k = 1}^n A_{ik} (B_{kj} + C_{kj}) & \text{by def of matrix addition} \\
+                    & = \sum_{k = 1}^n (A_{ik} B_{kj} + A_{ik} C_{kj}) & \text{by field distributive law} \\
+                    & = \sum_{k = 1}^n A_{ik} B_{kj} + \sum_{k = 1}^n A_{ik} C_{kj} & \text{by splitting summation} \\
+                    & = (AB)_{ij} + (AC)_{ij} & \text{by \DEF{2.10}} \\
+                    & = (AB + AC)_{ij}, & \text{by def of matrix addition}
+\end{align*}
+hence \(A(B + C) = AB + AC\).
+
+And we have
+\begin{align*}
+    [(D + E)A]_{ij} & = \sum_{k = 1}^{\RED{m}} (D + E)_{ik} A_{kj} & \text{by \DEF{2.10}} \\
+                    & = \sum_{k = 1}^m (D_{ik} + E_{ik}) A_{kj} & \text{by def of matrix addition} \\
+                    & = \sum_{k = 1}^m (D_{ik} A_{kj} + E_{ik} A_{kj}) & \text{by field distributive law} \\
+                    & = \sum_{k = 1}^m D_{ik} A_{kj} + \sum_{k = 1}^m E_{ik} A_{kj} & \text{by splitting summation} \\
+                    & = (DA)_{ij} + (EA)_{ij} & \text{by \DEF{2.10}} \\
+                    & = (DA + EA)_{ij}, & \text{by def of matrix addition}
+\end{align*}
+hence \((D + E)A = DA + EA\).
+
+\item
+We have
+\begin{align*}
+    [a(AB)]_{ij} & = a[(AB)_{ij}] & \text{by def of matrix scalar mul.} \\
+                 & = a\bigg( \sum_{k = 1}^{\RED{n}} A_{ik} B_{kj} \bigg) & \text{by \DEF{2.10}} \\
+                 & = \sum_{k = 1}^n a (A_{ik} B_{kj}) \MAROON{(1)} & \text{moving constant into summation} \\
+                 & = \sum_{k = 1}^n (a A_{ik}) B_{kj} & \text{of course} \\
+                 & = \sum_{k = 1}^n (aA)_{ik} B_{kj} & \text{by def of matrix scalar multiplication} \\
+                 & = [(aA)B]_{ij}, & \text{by \DEF{2.10}}
+\end{align*}
+hence \(a(AB) = (aA)B\).
+
+And continuing from \MAROON{(1)},
+\begin{align*}
+    & \sum_{k = 1}^n a (A_{ik} B_{kj}) \\
+    & = \sum_{k = 1}^n A_{ik} (a B_{kj}) & \text{of course} \\
+    & = \sum_{k = 1}^n A_{ik} (a B)_{kj} & \text{by def of matrix scalar multiplication} \\
+    & = [A(aB)]_{ij}, & \text{by \DEF{2.10}}
+\end{align*}
+hence \(a(AB) = A(aB)\).
+
+Hence \(a(AB) = (aA)B = A(aB)\).
+
+\item
+We have
+\begin{align*}
+    (I_mA)_{ij} & = \sum_{k = 1}^{\RED{m}} (I_m)_{ik} A_{kj} & \text{by \DEF{2.10}} \\
+                & = \sum_{k = 1}^m \delta_{ik} A_{kj} & \text{by \DEF{2.7}} \\
+                & = \delta_{ii} A_{ij} & \text{other terms equal to \(0\) since \(\delta_{ik} = 0\) when \(i \ne k\)} \\
+                & = 1 A_{ij} = A_{ij},
+\end{align*}
+hence \(I_mA = A\).
+
+And
+\begin{align*}
+    A_{ij} & = A_{ij} 1 \\
+           & = A_{ij} \delta_{jj} \\
+           & = \sum_{k = 1}^{\RED{n}} A_{ik} \delta_{kj} & \text{similar to previous case} \\
+           & = \sum_{k = 1}^n A_{ik} (I_n)_{kj} & \text{by \DEF{2.7}} \\
+           & = (AI_n)_{ij}, & \text{by \DEF{2.10}}
+\end{align*}
+hence \(A = AI_n\).
+\end{enumerate}
+\end{proof}
+
+\begin{corollary} \label{corollary 2.12.1}
+Let \(A\) be an \(m \X n\) matrix, \(B_1 B_2, ..., B_k\) be \(n \X p\) matrices, \(C_1, C_2, ..., C_k\) be \(q \X m\) matrices, and \(a_1, a_2, ..., a_k\) be scalars.
+Then
+\[
+    A\bigg( \sum_{i = 1}^k a_i B_i \bigg) = \sum_{i = 1}^k a_i A B_i
+\]
+and
+\[
+    \bigg( \sum_{i = 1}^k a_i C_i \bigg) A = \sum_{i = 1}^k a_i C_i A.
+\]
+This is immediately true by \THM{2.12}(a),(b) and induction.
+\end{corollary}
+
+\begin{additional definition} \label{adef 2.7}
+For an \(n \X n\) matrix \(A\), we define \(A^1 = A\), \(A^2 = AA\), \(A^3 = A^2A\), and, in general, \(A^k = A^{k - 1} A\) for \(k = 2, 3, ...\).
+We define \(A^0 = I_n\).
+\end{additional definition}
+
+\begin{remark} \label{remark 2.3.4}
+Compare \ADEF{2.6} and \ADEF{2.7}.
+Also, with this notation, we see that if
+\[
+    A = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+\]
+then \(A^0 = O_{2 \X 2}\), the zero matrix, \textbf{even though} \(A \ne O_{2 \X 2}\).
+Thus \emph{the cancellation property is not valid} for matrices, because if cancellation law works, then
+\begin{align*}
+    AA & = O_{2 \X 2} & \text{by what we have shown} \\
+       & = O_{2 \X 2} A, & \text{of course}
+\end{align*}
+which by cancellation law implies \(A = O_{2 \X 2}\), which is false.
+\end{remark} 
+
+\begin{theorem} \label{thm 2.13}
+Let \(A\) be an \(m \X n\) matrix and \(B\) be an \(n \X p\) matrix.
+For each \(j\), \(j = 1, 2, ..., p\), let \(u_j\) and \(v_j\) denote \emph{the \(j\)th columns of} \(AB\) and \(B\), respectively.
+Then
+\begin{enumerate}
+\item \(u_j = A v_j\)
+\item \(v_j = B e_j\), where \(e_i\) is the \(j\)th standard vector of \(F^p\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item We have
+\begin{align*}
+    u_j & = \begin{pmatrix}
+            (AB)_{1j} \\
+            (AB)_{2j} \\
+            \vdots \\
+            (AB)_{mj}
+        \end{pmatrix} & \text{by \DEF{2.6}} \\
+        & = \begin{pmatrix}
+            \sum_{k = 1}^{n} A_{1k} B_{kj} \\
+            \sum_{k = 1}^{n} A_{2k} B_{kj} \\
+            \vdots \\
+            \sum_{k = 1}^{n} A_{mk} B_{kj} \\
+        \end{pmatrix} & \text{by \DEF{2.10}} \\
+        & = A \begin{pmatrix}
+            B_{1j} \\
+            B_{2j} \\
+            \vdots \\
+            B_{nj}
+        \end{pmatrix} & \text{well, it's really true,} \\
+        & & \text{but it's more intuitive from RHS to LHS} \\
+        & = A v_j
+\end{align*}
+
+\item
+We have
+\begin{align*}
+    v_j & = \begin{pmatrix}
+            B_{1j} \\
+            B_{2j} \\
+            \vdots \\
+            B_{nj}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            B_{1j} \delta_{jj} \\
+            B_{2j} \delta_{jj} \\
+            \vdots \\
+            B_{nj} \delta_{jj}
+        \end{pmatrix} & \text{nasty but of course} \\
+        & = \begin{pmatrix}
+            \sum_{k = 1}^p B_{1k} \delta_{kj} \\
+            \sum_{k = 1}^p B_{2k} \delta_{kj} \\
+            \vdots \\
+            \sum_{k = 1}^p B_{nk} \delta_{kj}
+        \end{pmatrix} & \text{nasty but of course!} \\
+        & & \text{similar to the proof of second-half of \THM{2.12}(c)} \\
+        & = B \begin{pmatrix}
+            \delta_{1j} \\
+            \delta_{2j} \\
+            \vdots \\
+            \delta_{pj} \\
+        \end{pmatrix} & \text{well, it's really true,} \\
+        & & \text{but it's more intuitive from RHS to LHS} \\
+        & = B e_j
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{remark} \label{remark 2.3.5}
+For \THM{2.13},
+(a) means the product of \(A\) and the \(j\)th column of \(B\) is equal to the \(j\)th column of \(AB\);
+(b) means the product of \(B\) and the \(j\)th standard vector is equal to the \(j\)th column of \(B\) itself.
+\end{remark}
+
+\begin{remark} \label{remark 2.3.6}
+It follows (see \EXEC{2.3.14}) from \THM{2.13} that the column \(j\) of \(AB\) is a linear combination of the columns of \(A\), with the coefficients being the entries of column \(j\) of \(B\).
+An analogous result holds for rows; that is, the row \(i\) of \(AB\) is a linear combination of the rows of \(B\) with
+the coefficients being the entries of row \(i\) of \(A\).
+\end{remark}
+
+The next result justifies much of our past work.
+It utilizes both the matrix representation of a linear transformation and matrix multiplication in order
+to \emph{evaluate the transformation} at any given vector.
+That is, we can use the corresponding matrix representation of the transformation to calculate the transformation itself.
+
+\begin{theorem} \label{thm 2.14}
+Let \(V\) and \(W\) be \emph{finite}-dimensional vector spaces (over common \(F\)) having ordered bases \(\beta\) and \(\gamma\), respectively, and let \(\T : V \to W\) be linear.
+Then, for each \(u \in V\), we have
+\[
+    [\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma}[u]_{\beta}.
+\]
+\end{theorem}
+
+\begin{note}
+\THM{2.14} means, the coordinate vector of the transformation output (on the codomain's basis) is equal to the product of the matrix representation of the linear transformation (with the specified bases) and the coordinate vector of the transformation input (on the domain's basis).
+\end{note}
+
+\begin{proof}
+Let arbitrary \(u \in V\).
+Then we define the linear(trivial to prove linear) transformations depending on \(u\):
+\begin{center}
+    \(f : F \to V\) by \(f(a) = au\) and \(g : F \to W\) by \(g(a) = a\T(u)\).
+\end{center}
+And let \(\alpha = \{ 1 \}\) be the standard basis for \(F\).
+Notice that \(g = \T f\) since for all \(a \in F\),
+\begin{align*}
+    g(a) & = a\T(u) & \text{by def of \(g\)} \\
+         & = \T(au) & \text{since \(\T\) is linear} \\
+         & = \T(f(u)) & \text{by def of \(f\)} \\
+         & = (\T f)(u).
+\end{align*}
+
+If we identify an \(m\)-dimension column vector as a \(m \X 1\) matrix, then
+\begin{align*}
+    [\T(u)]_{\gamma} & = [1\T(u)]_{\gamma} & \text{of course} \\
+                     & = [g(1)]_{\gamma} & \text{by def of \(g\)} \\
+                     & \RED{*}= [g]_{\alpha}^{\gamma} & \text{identify column vector as matrix, but see blow} \\
+                     & = [\T f]_{\alpha}^{\gamma} & \text{since \(g = \T f\)} \\
+                     & = [\T]_{\beta}^{\gamma} [f]_{\alpha}^{\beta} & \text{by \THM{2.11}} \\
+                     & \RED{**}= [\T]_{\beta}^{\gamma} [f(1)]_{\beta} & \text{identify column vector as matrix, but see blow}\\
+                     & = [\T]_{\beta}^{\gamma} [1u]_{\beta} & \text{by def of \(f\)} \\
+                     & = [\T]_{\beta}^{\gamma}[u]_{\beta}. & \text{of course}
+\end{align*}
+Since \(u\) is arbitrary, we have \([\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma}[u]_{\beta}\) for all \(u \in V\).
+
+BTW, this proof is really tricky, and some steps in the proof just make little sense without explanation, so I list them below.
+\begin{itemize}
+\item[\RED{*}]: The meaning of \([g(1)]_{\gamma}\) is the coordinate vector of \(g(1)\) on the basis \(\gamma\).
+\textbf{But}, \(1\) is the \textbf{single} vector in the basis \(\alpha\) of \(F\), hence \([g(1)]_{\gamma}\) is actually the \emph{first column} of the matrix representation \([g]_{\alpha}^{\gamma}\).
+But again, since \(\alpha\) only have a single vector, that implies the matrix representation \([g]_{\alpha}^{\gamma}\) only has one column, hence \([g(1)]_{\gamma}\) in fact is equal to the whole \([g]_{\alpha}^{\gamma}\).
+\item[\RED{**}]: The meaning of \([f(1)]_{\beta}\) is the coordinate vector  of \(f(1)\) on the basis \(\beta\).
+\textbf{But}, \(1\) is the \textbf{single} vector in the basis \(\alpha\) of \(F\), hence \([f(1)]_{\beta}\) is actually the \emph{first column} of the matrix representation \([f]_{\alpha}^{\beta}\).
+But again, since \(\alpha\) only have a single vector, that implies the matrix representation \([f]_{\alpha}^{\beta}\) only has one column, hence \([f(1)]_{\beta}\) in fact is equal to the whole \([f]_{\alpha}^{\beta}\).
+\end{itemize}
+These two steps has some ``type mismatch'', but the ``format`` of the objects on each side of the equation is the same(since we identify column vectors as matrices).
+
+But the \(\RED{*}, \RED{**}\) above give the heuristic that \THM{2.14} is somewhat like a \emph{special case} of \THM{2.11}, where the second matrix of \THM{2.11} is a \(m \X 1\) ``matrix''.
+\end{proof}
+
+You can of course prove the theorem using more normal method, which we give below.
+
+\begin{proof}
+Suppose arbitrary \(u \in V\), Let \(\beta = \{ v_1, v_2, ..., v_n \}\) and \(\gamma = \{ w_1, w_2, ..., w_m \}\).
+Now we let \(A = [\T]_{\beta}^{\gamma}\) \MAROON{(1)}, \(u = a_1 v_1 + a_2 v_2 + ... + a_n v_n\), hence
+\[
+    [u]_{\beta} = \begin{pmatrix}
+        a_1 \\ a_2 \\ \vdots \\ a_n
+    \end{pmatrix} \MAROON{(2)}
+\]
+Then
+\begin{align*}
+    [\T(u)]_{\gamma} & = [\T(a_1 v_1 + a_2 v_2 + ... + a_n v_n)]_{\gamma} \\
+                     & = [a_1\T(v_1) + a_2\T(v_2) + ... + a_n\T(v_n)]_{\gamma} & \text{since \(\T\) is linear} \\
+                     & = \bigg[
+                            a_1 \Big(\sum_{i = 1}^m A_{i1} w_i \Big)
+                            + a_2 \Big(\sum_{i = 1}^m A_{i2} w_i \Big)
+                            + ...
+                            + a_n \Big(\sum_{i = 1}^m A_{in} \Big) w_i
+                         \bigg]_{\gamma} & \text{since \MAROON{(1)}} \\
+                     & = \bigg[
+                            \sum_{j = 1}^n a_j A_{1j} w_1
+                            + \sum_{j = 1}^n a_j A_{2j} w_2
+                            + ...
+                            + \sum_{j = 1}^n a_j A_{mj} w_m
+                         \bigg]_{\gamma} \\
+                     & \text{\ \ \ \ \ (need to prove but trivially true)} \\
+                     & = \begin{pmatrix}
+                            \sum_{j = 1}^n a_j A_{1j} \\
+                            \sum_{j = 1}^n a_j A_{2j} \\
+                            \vdots \\
+                            \sum_{j = 1}^n a_j A_{mj}
+                     \end{pmatrix} & \text{by \DEF{2.5}} \\
+                     & = A \begin{pmatrix}
+                        a_1 \\
+                        a_2 \\
+                        \vdots \\
+                        a_n
+                     \end{pmatrix} & \\
+                     & \text{\ \ \ \ \ (well, it's really true,)} \\
+                     & \text{\ \ \ \ \ (but it's more intuitive from RHS to LHS)} \\
+                     & = [\T]_{\beta}^{\gamma} [u]_{\beta} & \text{by \MAROON{(1)(2)}}
+\end{align*}
+So again we have \([\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma}[u]_{\beta}\) for all \(u \in V\).
+\end{proof}
+
+\begin{example} \label{example 2.3.3}
+Let \(\T: \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) be the linear transformation defined by \(\T(f(x)) = f'(x)\),
+and let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\mathcal{P}_3(\SET{R})\) and \(\mathcal{P}_2(\SET{R})\), respectively.
+If \(A = [\T]_{\beta}^{\gamma}\), then, from \EXAMPLE{2.2.4}, we have
+\[
+    A = \begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 2 & 0 \\
+        0 & 0 & 0 & 3
+    \end{pmatrix}.
+\]
+We illustrate \THM{2.14} by verifying that \([\T(p(x))_{\gamma} = [\T]_{\beta}^{\gamma}[p(x)]_{\beta}\),
+where \(p(x) \in \mathcal{P}_3(\SET{R})\) is the polynomial \(p(x) = 2 - 4x + x^2 + 3x^3\).
+Let \(q(x) = \T(p(x))\);
+then \(q(x) = p'(x) = -4 + 2x + 9x^2\).
+Hence
+\[
+    [\T(p(x))]_{\gamma} = [q(x)]_{\gamma} = \begin{pmatrix}
+        -4 \\ 2 \\ 9
+    \end{pmatrix},
+\]
+but also
+\[
+    [\T]_{\beta}^{\gamma}[p(x)]_{\beta} = A [p(x)]_{\beta} = \begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 2 & 0 \\
+        0 & 0 & 0 & 3
+    \end{pmatrix}
+    \begin{pmatrix}
+        2 \\ -4 \\ 1 \\ 3
+    \end{pmatrix}
+    = \begin{pmatrix}
+        -4 \\ 2 \\ 9
+    \end{pmatrix}.
+\]
+\end{example}
+
+\begin{note}
+\EXAMPLE{2.3.3} 的可能情境是，直接算\ \(\T(u)\) 還是很慢，但你知道\ \(\T\) 是\ linear，所以你把\ \(\T\) 跟\ \(u\) 都轉成矩陣(或座標向量)然後做矩陣運算。
+算完後把(codomain 的)座標再轉回\ codomain 的向量，就可以得到\ \(\T(u)\) 了。
+\end{note}
+
+We complete this section with the introduction of the \emph{left-multiplication} transformation \(\LMTRAN_A\), where \(A\) is an \(m \X n\) matrix.
+This transformation is probably the most important tool for \emph{transferring properties} about \emph{transformations} to analogous properties about \emph{matrices} and vice versa.
+For example, we use it to \emph{prove that matrix multiplication is associative}.
+
+\begin{definition} \label{def 2.11}
+Let \(A\) be an \(\RED{m} \X \BLUE{n}\) matrix with entries from a field \(F\).
+We denote by \(\LMTRAN_A\) the mapping \(\LMTRAN_A: F^{\BLUE{n}} \to F^{\RED{m}}\) defined by \(\LMTRAN_A(x) = Ax\) (the matrix product of \(A\) and \(x\)) for each column vector \(x \in F^{\BLUE{n}}\).
+We call \(\LMTRAN_A\) a \textbf{left-multiplication transformation}.
+\end{definition}
+
+\begin{note}
+\DEF{2.11} 跟比它前面的內容的目的有點倒過來；
+前面是想講線性變換怎麼用矩陣來表示或運算；
+\DEF{2.11} 則是給定一個矩陣，想辦法兜出一個跟該矩陣有關的線性變換。
+\end{note}
+
+\begin{example} \label{example 2.3.4}
+Let
+\[
+    A=\left(\begin{array}{lll}
+        1 & 2 & 1 \\
+        0 & 1 & 2
+    \end{array}\right)
+\]
+
+Then \(A \in M_{2 \X 3}(\SET{R})\) and \(\LMTRAN_A: \SET{R}^{3} \to \SET{R}^{2}\).
+If
+\[
+    x=\left(\begin{array}{r}
+        1 \\ 3 \\ -1
+    \end{array}\right)
+\]
+then
+\[
+    \LMTRAN_{A}(x)=A x=\left(\begin{array}{lll}
+        1 & 2 & 1 \\ 0 & 1 & 2
+    \end{array}\right)\left(\begin{array}{r}
+        1 \\ 3 \\ -1
+    \end{array}\right)
+    =\left(\begin{array}{l}
+        6 \\ 1
+    \end{array}\right)
+\]
+\end{example}
+
+We see in the next theorem that not only is \(\LMTRAN\) \emph{linear}, but, in fact, it has a great many other useful properties.
+These properties are all quite natural and so are easy to remember.
+
+\begin{theorem} \label{thm 2.15}
+Let \(A\) be an \(m \X n\) matrix with entries from \(F\).
+Then the left-multiplication transformation \(\LMTRAN : F^n \to F^m\) \emph{is linear}.
+Furthermore, if \(B\) is any other \(m \X n\) matrix (with entries from \(F\)) and \(\beta\) and \(\gamma\) are the \textbf{standard ordered bases} for \(F^n\) and \(F^m\), respectively, then we have the following properties.
+
+\begin{enumerate}
+\item \([\LMTRAN_A]_{\beta}^{\gamma} = A\).
+\item \(\LMTRAN_A = \LMTRAN_B\) if and only if \(A = B\).
+\item \(\LMTRAN_{A + B} = \LMTRAN_A + \LMTRAN_B\) and \(\LMTRAN_{aA} = a\LMTRAN_A\) for all \(a \in F\).
+\item If \(\T : F^n \to F^m\) is linear, then there exists a \emph{unique} \(m \X n\) matrix \(C\) such that \(\T = \LMTRAN_C\).
+    In fact, \(C = [\T]_{\beta}^{\gamma}\).
+\item If \(E\) is an \(n \X p\) matrix, then \(\LMTRAN_{AE} = \LMTRAN_A\LMTRAN_E\).
+\item If \(m = n\), then \(\LMTRAN_{I_n} = \ITRAN{F^n}\), where \(\ITRAN{F^n}\) is the identity transformation from \(F^n\) to \(F^n\).
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+For (a), only when we use the standard ordered bases does the matrix representation of \(\LMTRAN_A\) (under these standard bases) equal to \(A\).
+Similarly, for (d), \(C\) is unique, and it is equal to the matrix representation of \(\T\) using the standard ordered bases.
+If we use some nonstandard ordered bases to represent \(\T\), than that representation will not equal to \(C\).
+\end{note}
+
+\begin{proof} \ 
+
+For linearity:
+\begin{align*}
+    \LMTRAN_A(ax + y) & = A(ax + y) & \text{by \DEF{2.11}} \\
+                      & = A(ax) + Ay & \text{by \THM{2.12}(a)} \\
+                      & = a(Ax) + Ay & \text{by \THM{2.12}(b)} \\
+                      & = a\LMTRAN_A(x) + \LMTRAN_A(y), & \text{by \DEF{2.11}}
+\end{align*}
+so \(\LMTRAN_A\) is linear.
+
+\begin{enumerate}
+\item
+For \(j = 1, 2, ..., n\), (by \DEF{2.6}) the \(j\)th column of \([\LMTRAN_A]_{\beta}^{\gamma}\) is equal to \(\LMTRAN_A(e_j)\). (where \(e_j\) is the \(j\)th standard vector in \(\beta\).)
+However (by \DEF{2.11}) \(\LMTRAN_A(e_j) = A e_j\), which is also the \(j\)th column of \(A\) by \THM{2.13}(b).
+So \([\LMTRAN_A]_{\beta}^{\gamma} = A\).
+
+\item
+\(\Longrightarrow\):
+If \(\LMTRAN_A = \LMTRAN_B\), then we may use (a) to write
+\begin{align*}
+    A & = [\LMTRAN_A]_{\beta}^{\gamma} & \text{by part(a)} \\
+      & = [\LMTRAN_B]_{\beta}^{\gamma} & \text{two same transformation have the same representation;} \\
+      & & \text{or \RMK{2.2.2}} \\
+      & = B. & \text{by part(a)}
+\end{align*}
+Hence \(A = B\).
+
+Now if \(A = B\), then for all \(x \in F^n\),
+\begin{align*}
+    \LMTRAN_A(x) & = Ax & \text{by \DEF{2.11}} \\
+                 & = Bx & \text{since \(A = B\)} \\
+                 & = \LMTRAN_B(x). & \text{by \DEF{2.11}}
+\end{align*}
+Hence \(\LMTRAN_A = \LMTRAN_B\).
+
+\item For all \(x \in F^n\),
+\begin{align*}
+    \LMTRAN_{A + B}(x) & = (A + B)x & \text{by \DEF{2.11}} \\
+                       & = Ax + Bx & \text{by \THM{2.12}(a)} \\
+                       & = \LMTRAN_A(x) + \LMTRAN_B(x) & \text{by \DEF{2.11}} \\
+                       & = (\LMTRAN_A + \LMTRAN_B)(x) & \text{by def of function addition}
+\end{align*}
+Hence \(\LMTRAN_{A + B} = \LMTRAN_A + \LMTRAN_B\).
+
+And for any scalar \(a\),
+\begin{align*}
+    \LMTRAN_{aA}(x) & = (aA)x & \text{by \DEF{2.11}} \\
+                       & = aAx & \text{by \THM{2.12}(b)} \\
+                       & = a\LMTRAN_A(x) & \text{by \DEF{2.11}} \\
+                       & = (a\LMTRAN_A)(x) & \text{by def of function scalar multiplication}
+\end{align*}
+Hence \(\LMTRAN_{aA} = a\LMTRAN_A\).
+
+\item
+Let \(C = [\T]_{\beta}^{\gamma}\).
+Then for all \(x \in F^n\), note that \([x]_{\beta} = x\) since \(x\) itself is coordinate vector (of \(\beta\)), and
+\begin{align*}
+    [\T(x)]_{\gamma} & = [\T]_{\beta}^{\gamma}[x]_{\beta} & \text{by \THM{2.14}} \\
+                     & = C [x]_{\beta} \\
+                     & = C x \\
+                     & = \LMTRAN_C(x) & \text{by \DEF{2.11}}
+\end{align*}
+So \(\T = \LMTRAN_C\), hence we prove that existence part.
+
+Now suppose we have \(\T = \LMTRAN_D\) for some matrix \(D\), then we have \(\LMTRAN_C = \LMTRAN_D\), which by part(b) implies \(C = D\), hence we prove the uniqueness.
+
+\item
+Let \(\alpha\) be the standard basis for \(F^p\).
+For any \(j\) (\(1 \le j \le p\)), given \(e_j\), the \(j\)th vector in \(\alpha\), we may apply \THM{2.13} several times to note that (by \THM{2.13}(b)) \BLUE{\((AE)e_j\)} is the \(j\)th column of \(AE\) and that (by \THM{2.13}(a)) the \(j\)th column of \(AE\) is also equal to the product of \(A\) and the \(j\) column of \(E\), which again by \THM{2.13}(b) is equal to \(Ee_j\), so \(j\)th column of \(AE\) is equal to \MAROON{\(A(Eej)\)}.
+So \(\BLUE{(AE)e_j} = \MAROON{A(Ee_j)}\) \MAROON{(e.1)}.
+Thus
+\begin{align*}
+    \LMTRAN_{AE}(e_j) & = (AE)ej & \text{by \DEF{2.11}} \\
+                      & = A(Ee_j) & \text{by \MAROON{(e.1)}} \\
+                      & = \LMTRAN_A(Ee_j) & \text{by \DEF{2.11}} \\
+                      & = \LMTRAN_A(\LMTRAN_E(e_j)) & \text{by \DEF{2.11}} \\
+                      & = (\LMTRAN_A \LMTRAN_E)(e_j) & \text{by def of function composition}
+\end{align*}
+Hence \(\LMTRAN_{AE}\) and \(\LMTRAN_A \LMTRAN_E\) sends each vector in the basis \(\alpha\) to the same output.
+So by \CORO{2.6.1}, \(\LMTRAN_{AE} = \LMTRAN_A \LMTRAN_E\)
+
+\item For all \(x \in F^n\),
+\begin{align*}
+    \LMTRAN_{I_n} & = I_n x & \text{by \DEF{2.11}} \\
+                  & = x & \text{by \THM{2.12}(c) (treat \(x\) as \(1 \X n\) matrix)} \\
+                  & = \ITRAN{F^n}(x) & \text{by definition of identity transformation}
+\end{align*}
+Hence \(\LMTRAN_{I_n} = \ITRAN{F^n}\).
+\end{enumerate}
+\end{proof}
+
+We now use left-multiplication transformations to establish the associativity of matrix multiplication.
+
+\begin{theorem} \label{thm 2.16}
+Let \(A\), \(B\), and \(C\) be matrices such that \(A(BC)\) is defined.
+Then \((AB)C\) is also defined and \(A(BC) = (AB)C\);
+that is, matrix multiplication is associative.
+\end{theorem}
+
+\begin{proof}
+Since \(A(BC)\) is defined, that means: (1) the columns of \(A\) is equal to the rows of \(BC\) (hence \(A \X (BC)\) is defined), and (2) the columns of \(B\) is equal to the rows of \(C\) (hence \(B \X C\) is defined).
+
+So in particular, we can just label the dimension of \(A, B, C\) as \(m \X n, n \X p, p \X q\),
+such that (1) \(AB\) is defined since the columns of \(A\) is equal to the rows of \(B\), which is \(n\),
+and the dimension of \(AB\) is \(m \X p\);
+(2) \((AB)C\) is defined since the columns of \(AB\) is equal to the rows of \(C\), which is \(p\), and the dimension of \((AB)C\) is \(m \X q\).
+
+Now we have
+\begin{align*}
+    \LMTRAN_{A(BC)} & = \LMTRAN_A \LMTRAN_{BC} & \text{by \THM{2.15}(e)} \\
+                    & = \LMTRAN_A (\LMTRAN_B \LMTRAN_C) & \text{by \THM{2.15}(e)} \\
+                    & = (\LMTRAN_A \LMTRAN_B) \LMTRAN_C & \text{by associativity of function composition} \\
+                    & = \LMTRAN_{AB} \LMTRAN_C & \text{by \THM{2.15}(e)} \\
+                    & = \LMTRAN_{(AB)C} & \text{by \THM{2.15}(e)}
+\end{align*}
+So from \THM{2.15}(b), it follows that \(A(BC) = (AB)C\).
+\end{proof}
+
+\begin{remark} \label{remark 2.3.7}
+Needless to say, \THM{2.16} could be proved directly from the definition of matrix multiplication (see \EXEC{2.3.19}).
+The proof above, however, provides \emph{a prototype of} many of the arguments that \textbf{utilize the relationships between
+linear transformations and matrices}.
+\end{remark}
+
+\subsection{Applications*}
+
+A large and varied collection of interesting applications arises in connection with special matrices called \emph{incidence matrices}.
+
+\begin{additional definition} \label{adef 2.8}
+An \textbf{incidence matrix} is a square matrix in which all the entries are either zero or one and,
+for convenience, all the diagonal entries are zero.
+\end{additional definition}
+
+If we have a relationship on a set of \(n\) objects that we denote by \(1, 2, ..., n\),
+then we define the associated incidence matrix \(A\) by \(A_{ij} = 1\) if \(i\) \textbf{is related to} \(j\), and \(A_{ij} = 0\) otherwise.
+To make things concrete, suppose that we have four people, each of whom owns a communication device.
+If the relationship on this group is ``can transmit to,'' then \(A_{ij} = 1\) if \(i\) can send a message to \(j\), and \(A_{ij} = 0\) otherwise.
+Suppose that
+\[
+    A = \begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 1 \\
+        1 & 1 & 0 & 0
+    \end{pmatrix}
+\]
+Then since \(A_{34} = 1\) and \(A_{14} = 0\), we see that person \(3\) can send to \(4\) but \(1\) cannot send to \(4\).
+
+We obtain an \emph{interesting interpretation} of the entries of \(A^2\).
+Consider, for instance,
+\begin{align*}
+    (A^2)_{31} & = (AA)_{31} & \text{by \ADEF{2.7}} \\
+               & = \sum_{k = 1}^4 A_{3k} A_{k1} & \text{by \DEF{2.10}} \\
+               & = A_{31} A_{11} + A_{32} A_{21} + A_{33} A_{31} + A_{34} A_{41}
+\end{align*}
+Note that any term \(A_{3k} A_{k1}\) equals \(1\) \emph{if and only if} (by zero product property) both \(A_{3k}\) and \(A_{k1}\) equal 1,
+that is, \textbf{if and only if \(3\) can send to \(k\) and \(k\) can send to \(1\)}.
+Thus \((A^2)_{31}\) gives the number of ways in which \(3\) can send to \(1\) in \emph{two stages}.
+
+Since
+\[
+    A^2 = \begin{pmatrix}
+        1 & 0 & 0 & 1 \\
+        1 & 2 & 0 & 0 \\
+        \RED{2} & 1 & 0 & 1 \\
+        1 & 1 & 0 & 1
+    \end{pmatrix}
+\]
+we see that there are two ways \(3\) can send to \(1\) in two stages.
+In general, \((A + A^2 + ... + A^m)_{ij}\) is the number of ways in which \(i\) can send to \(j\) in \textbf{at most} \(m\) stages.
+In this case the maximal ways is 2, i.e. \(3 \to 2 \to 1\) and \(3 \to 4 \to 1\).
+We cannot have the path like \(\RED{3} \to \RED{3} \to 1\) since (trivially) the diagonal entries of \(A\) is \(0\), that is, any one have no relation to itself.
+
+In particular, A (maximal) collection of three or more people (of all people) with the property that any two can send to each other is called a \textbf{clique}.
+
+The problem of determining cliques of maximal size is \emph{difficult}(that is, \href{https://www.wikiwand.com/en/NP-completeness}{NP-complete}), but there is a simple method for determining if someone belongs to a clique.
+
+If we define a new matrix \(B\) by \(B_{ij} = 1\) if \(i\) and \(j\) can send to \textit{each other}, and \(B_{ij} = 0\) otherwise,
+then it can be shown (see \EXEC{2.3.20}) that person \(i\) belongs to a clique if and only if \((B^3)_{ii} > 0\). (where \({B^3}_{ii}\) is diagonal entry.)
+
+For example, suppose that the incidence matrix associated with some relationship is
+\[
+    A = \begin{pmatrix}
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 1 \\
+        1 & 1 & 1 & 0
+    \end{pmatrix}
+\]
+
+To determine which people belong to cliques, we form the matrix \(B\), described earlier, and compute \(B^3\).
+In this case,
+\[
+    B = \begin{pmatrix}
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0
+    \end{pmatrix}
+    \text{ and }
+    B^3 = \begin{pmatrix}
+        0 & 4 & 0 & 4 \\
+        4 & 0 & 4 & 0 \\
+        0 & 4 & 0 & 4 \\
+        4 & 0 & 4 & 0
+    \end{pmatrix}
+\]
+
+Since all the diagonal entries of \(B^3\) are zero, (anyone does not belong to a clique so) we conclude that there are \emph{no cliques} in this relationship.
+
+Our final example of the use of incidence matrices is concerned with the \emph{concept of dominance}.
+
+\begin{additional definition} \label{adef 2.9}
+A relation among a group of people is called a \textbf{dominance relation} if the associated incidence matrix \(A\) has the property that \emph{for all} distinct pairs \(i\) and \(j\), \(A_{ij} = 1\) if and only if \(A_{ji} = 0\),
+that is, given any two people, \textbf{exactly one of them dominates} (or, using the terminology of our first example, can send a message to) the other.
+Since \(A\) is an incidence matrix, \(A_{ii} = 0\) for all \(i\).
+\end{additional definition}
+
+For such a relation, it can be shown (see \EXEC{2.3.22}) that the matrix \(A + A^2\) has a row [column] in which each entry is positive except for the diagonal entry.
+In other words, there is at least one person who dominates [is dominated by) \emph{all others} in one or two stages.
+In fact, it can be shown that any person who dominates [is dominated by] the greatest number of people in the first stage has this property.
+(But this is just a sufficient condition;
+a person can still have this property even though he/she does not dominate the greatest number of people in the first stage.)
+Consider, for example, the matrix
+\[
+    A = \begin{pmatrix}
+        0 & 1 & 0 & 1 & 0 \\
+        0 & 0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 & 1 \\
+        1 & 1 & 1 & 0 & 0
+    \end{pmatrix}
+\]
+The reader should verify that this matrix corresponds to a dominance relation.
+
+Now
+\[
+    A + A^2 = A = \begin{pmatrix}
+        0 & 2 & 1 & 1 & 1 \\
+        1 & 0 & 1 & 1 & \RED{0} \\
+        1 & 2 & 0 & 2 & 1 \\
+        1 & 2 & 2 & 0 & 1 \\
+        2 & 2 & 2 & 2 & 0
+    \end{pmatrix}
+\]
+
+Thus persons \(1, 3, 4\), and \(5\) dominate (can send messages to) all the others in at most two stages,
+while persons \(1, 2, 3\), and \(4\) are dominated by (can
+receive messages from) all the others in at most two stages.

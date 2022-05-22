@@ -926,7 +926,7 @@ So we just show for any \(v\), \(v\) belongs to the former if and only if \(v\) 
          & \text{(since \(\{ u_1, ..., u_k \}\) is a basis for \(W\))} \\
     \iff & v = (a_1 + b_1) u_1 + (a_2 + b_2) u_2 + ... + (a_k + b_k) u_k & \text{of course} \\
     \iff & v = \OV + ((a_1 + b_1) u_1 + (a_2 + b_2) u_2 + ... + (a_k + b_k) u_k) & \text{of course} \\
-    \iff & \in v = \OV + W \\
+    \iff & v \in \OV + W \\
          & \text{(since \(\{ u_1, ..., u_k \}\) is a basis for \(W\))} \\
 \end{align*}
 So we have \((a_1 u_1 + a_2 u_2 + ... + a_k u_k) + W = \OV + W\).
@@ -943,11 +943,11 @@ So we have \(\dim(V) = \dim(W) + \dim(V/W)\).
 \begin{additional theorem} \label{athm 1.19}
 This is the placeholder theorem for the basis and dimension of some set of matrices having particular properties:
 
-\BLUE{(1)} \EXEC{1.6.15}: The set of all matrices with trace equal to zero;
+\BLUE{(1)} \EXEC{1.6.15}: The set of all \(n \X n\) matrices with trace equal to zero has dimension \(n^2 - 1\).
 
-\BLUE{(2)} \EXEC{1.6.16}: The set of all \(n \X n\) upper triangular matrices;
+\BLUE{(2)} \EXEC{1.6.16}: The set of all \(n \X n\) upper triangular matrices has dimension \(n(n + 1)/2\).
 
-\BLUE{(3)} \EXEC{1.6.17}: The set of all skew-symmetric matrices
+\BLUE{(3)} \EXEC{1.6.17}: The set of all \(n \X n\) skew-symmetric matrices has dimension \(n(n - 1)/2\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.20}
@@ -999,7 +999,7 @@ This is the placeholder theorem for \EXEC{1.6.29}, \EXEC{1.6.31}, \EXEC{1.6.33},
 
 \BLUE{(1.1)}: \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2)\).
 
-\BLUE{(1.2)} \(V = W_1 \oplus W_2\) if and only if \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2)\).
+\BLUE{(1.2)} IF \(V = W_1 + W_2\), then \(V = W_1 \oplus W_2\) if and only if \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2)\).
 
 \EXEC{1.6.31}: Let \(W_1, W_2\) be as like \BLUE{(1.1)} with dimension \(m, n\) respectively, where \(m \ge n\).
 
