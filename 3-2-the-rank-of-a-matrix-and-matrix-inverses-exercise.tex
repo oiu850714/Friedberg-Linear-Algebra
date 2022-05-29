@@ -1,0 +1,752 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 3.2.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item The rank of a matrix is equal to the number of its nonzero columns.
+\item The product of two matrices always has rank equal to the lesser of the ranks of the two matrices.
+\item The \(m \X n\) zero matrix is the only \(m \X n\) matrix having rank \(0\).
+\item e.r.o.s preserve rank.
+\item e.c.o.s do not necessarily preserve rank.
+\item The rank of a matrix is equal to the maximum number of linearly independent rows in the matrix.
+\item The inverse of a matrix can be computed exclusively by means of elementary row operations.
+\item The rank of an \(n \X n\) matrix is at most \(n\).
+\item An \(n \X n\) matrix having rank \(n\) is invertible.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item False. Counterexample: \(\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\) has rank \(1\) but has two nonzero columns.
+
+\item False. Counterexample: \(\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} = O_{2 \X 2}\), the product has rank \(0\) but both of the factors have rank \(1\).
+
+\item True. Any nonzero matrix has rank \(\ge 1\).
+\item True by \CORO{3.4.1}.
+\item False by \CORO{3.4.1}.
+\item True by \CORO{3.6.2}(b).
+\item True by the whole description in \RMK{3.2.6}.
+\item True by \THM{3.6}.
+\item True by \RMK{3.2.1}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.2}
+Calculation problem, skip.
+\end{exercise}
+
+
+\begin{exercise} \label{exercise 3.2.3}
+Prove that for any \(m \X n\) matrix \(A\), \(\rank(A) = 0\) if and only if \(A\) is the zero matrix.
+\end{exercise}
+
+\begin{proof}
+If \(A = O\) then by \THM{3.5} \(\rank(A) = 0\).
+Now if \(\rank(A) = 0\), again by \THM{3.5}, \(\dim(\spann(\{a_1, ..., a_n\})) = 0\) where \(a_i\) is the \(i\)th column of \(A\).
+But that implies \(\spann(\{a_1, ..., a_n\}) = \{ \OV \}\), which must implies \(a_1 = a_2 = ... = a_n = \OV\).
+Hence \(A = O_{m \X n}\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.4}
+Calculation problem, skip.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.2.5}
+Calculation problem, skip.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.2.6}
+For each of the following \LTRAN{}s \(\T\), determine whether \(\T\) is invertible, and compute \(\T^{-1}\) if it exists.
+\begin{enumerate}
+\item \(\T: \mathcal{P}_{2}(\SET{R}) \to \mathcal{P}_{2}(\SET{R})\) defined by \(\T(f(x)) = f''(x) + 2f'(x) - f(x)\).
+
+\item \(\T:\mathcal{P}_{2}(\SET{R}) \to \mathcal{P}_{2}(\SET{R})\) defined by \(\T(f(x)) = (x + 1) f'(x)\).
+
+\item \(\T: \SET{R}^{3} \to \SET{R}^{3}\) defined by
+\[
+    \T(a_1, a_2, a_3) = (a_1 + 2 a_2 + a_3, - a_1 + a_2 + 2 a_3, a_1 + a_3)
+\]
+
+\item \(\T: \SET{R}^{3} \to \mathcal{P}_{2}(\SET{R})\) defined by
+\[
+    \T(a_1, a_2, a_3) = (a_1 + a_2 + a_3) + (a_1 - a_2 + a_3)x + a_1 x^2.
+\]
+
+\item \(\T: \mathcal{P}_{2}(\SET{R}) \to \SET{R}^{3}\) defined by  \(\T(f(x)) = (f(-1), f(0), f(1))\).
+
+\item \(\T: M_{2 \X 2}(\SET{R}) \to \SET{R}^4\) defined by
+\[
+    \T(A)= (\TRACE(A), \TRACE(A^\top), \TRACE(EA), \TRACE(AE)),
+\]
+where
+\[
+    E = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+We use \CORO{2.18.1} to test \(\T\) for invertibility and compute the inverse if \(\T\) is invertible.
+
+In each item below, we let \(\alpha\) and \(\beta\) be the standard ordered basis of the domain and codomain of \(\T\), respectively.
+(\(\alpha\) may be equal to \(\beta\).)
+
+\begin{enumerate}
+\item
+We have
+\begin{align*}
+    \T(1) & = -1 = -1 \cdot 1 + 0 \cdot x + 0 \cdot x^2 \\
+    \T(x) & = -2 - x = -2 \cdot 1 + (-1) \cdot x + 0 \cdot x^2 \\
+    \T(x^2) & = -2 + 4x - x^2 = -2 \cdot 1 + 4 \cdot x + (-1) \cdot x^2
+\end{align*}
+Thus
+\[
+    [\T]_{\alpha}^{\beta} = \begin{pmatrix}
+        -1 & -2 & -2 \\ 0 & -1 & 4 \\ 0 & 0 & -1
+    \end{pmatrix}.
+\]
+Using the method of \EXAMPLE{3.2.5} and \EXAMPLE{3.2.6}, we can show that \([\T]_{\alpha}^{\beta}\) is invertible with inverse
+\[
+    ([\T]_{\alpha}^{\beta})^{-1} = \begin{pmatrix}
+        -1 & -2 & -10 \\ 0 & -1 & -4 \\ 0 & 0 & -1
+    \end{pmatrix}.
+\]
+Thus (by \CORO{2.18.1}) \(\T\) is invertible, and \(([\T]_{\alpha}^{\beta})^{-1} = [\T^{-1}]_{\beta}^{\alpha}\).
+Hence by \THM{2.14}, we have
+\begin{align*}
+    [\T^{-1}(a_0 + a_1 x + a_2 x^2)]_{\alpha}
+        & = [\T^{-1}]_{\beta}^{\alpha} [(a_0 + a_1 x + a_2 x^2)]_{\beta} & \text{by \THM{2.14}} \\
+        & = \left(\begin{array}{rrr}
+                -1 & -2 & -10 \\
+                0 & -1 & -4 \\
+                0 & 0 & -1
+            \end{array}\right)
+            \left(\begin{array}{l}
+                a_0 \\ a_1 \\ a_2
+            \end{array}\right) \\
+        & = \left(\begin{array}{c}
+                \BLUE{-a_0 - 2a_1 - 10a_2} \\ \RED{-a_1 - 4a_2} \\ \GREEN{-a_2}
+            \end{array}\right)
+\end{align*}
+Therefore
+\[
+    \T^{-1}(a_0 + + a_1 x + a_2 x^2) = \BLUE{(-a_0 - 2a_1 - 10a_2)} + \RED{(-a_1 - 4a_2)} x + \GREEN{-a_2} x^2.
+\]
+
+\item We have
+\begin{align*}
+    \T(1) & = (x + 1) \cdot 0 = 0 \cdot 1 + 0 \cdot x + 0 \cdot x^2 \\
+    \T(x) & = (x + 1) \cdot 1 = 1 \cdot 1 + 1 \cdot x + 0 \cdot x^2 \\
+    \T(x^2) & = (x + 1) \cdot 2x = 0 \cdot 1 + 2 \cdot x + 2 \cdot x^2
+\end{align*}
+Thus
+\[
+    [\T]_{\alpha}^{\beta} = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 1 & 2 \\ 0 & 0 & 2 \end{pmatrix}
+\]
+Which is not invertible.
+
+\item Skip.
+
+\item We have
+\begin{align*}
+    \T(1,0,0) & = 1 + x + x^{2} \\
+    \T(0,1,0) & = 1 - x \\
+    \T(0,0,1) & = 1 + x \\
+\end{align*}
+So
+\[
+    [\T]_{\alpha}^{\beta} = \begin{pmatrix}
+        1 & 1 & 1 \\ 1 & -1 & 1 \\ 1 & 0 & 0
+    \end{pmatrix}.
+\]
+Using the method of \EXAMPLE{3.2.5} and \EXAMPLE{3.2.6}, we can show that \([\T]_{\alpha}^{\beta}\) is invertible with inverse
+\[
+    ([\T]_{\alpha}^{\beta})^{-1} = \begin{pmatrix}
+        0 & 0 & 1 \\
+        \frac1{2} & -\frac1{2} & 0 \\
+        \frac1{2} & \frac1{2} & -1
+    \end{pmatrix}.
+\]
+Thus (by \CORO{2.18.1}) \(\T\) is invertible, and \(([\T]_{\alpha}^{\beta})^{-1} = [\T^{-1}]_{\beta}^{\alpha}\).
+Hence by \THM{2.14}, we have
+\begin{align*}
+    [\T^{-1}(a_0 + a_1 x + a_2 x^2)]_{\alpha}
+        & = [\T^{-1}]_{\beta}^{\alpha} [(a_0 + a_1 x + a_2 x^2)]_{\beta} & \text{by \THM{2.14}} \\
+        & = \left(\begin{array}{rrr}
+                0 & 0 & 1 \\
+                \frac1{2} & -\frac1{2} & 0 \\
+                \frac1{2} & \frac1{2} & -1
+            \end{array}\right)
+            \left(\begin{array}{l}
+                a_0 \\ a_1 \\ a_2
+            \end{array}\right) \\
+        & = \left(\begin{array}{c}
+                \BLUE{a_2} \\ \RED{\frac1{2}a_0 - \frac1{2}a_1} \\ \GREEN{\frac1{2}a_0 + \frac1{2}a_1 - a_2}
+            \end{array}\right)
+\end{align*}
+Therefore
+\[
+    \T^{-1}(a_0 + + a_1 x + a_2 x^2) = (\BLUE{a_2}, \RED{\frac1{2}a_0 - \frac1{2}a_1}, \GREEN{\frac1{2}a_0 + \frac1{2}a_1 - a_2}).
+\]
+
+\item Skip.
+\item Skip.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.7}
+Express the invertible matrix
+\[
+    \begin{pmatrix} 1 & 2 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 2 \end{pmatrix}
+\]
+as a product of elementary matrices.
+\end{exercise}
+
+\begin{proof}
+We can do the Gaussian elimination and record what operation we've done.
+\begin{align*}
+    \left(\begin{array}{lll}
+        1 & 2 & 1 \\
+        1 & 0 & 1 \\
+        1 & 1 & 2
+    \end{array}\right)
+    & \leadsto
+    \left(\begin{array}{ccc}
+        1 & 2 & 1 \\
+        0 & -2 & 0 \\
+        1 & 1 & 2
+    \end{array}\right)
+    \text{, with } & E_1 = \left(\begin{array}{ccc}
+        1 & 0 & 0 \\
+        -1 & 1 & 0 \\
+        0 & 0 & 1
+    \end{array}\right) \\
+    & \leadsto
+        \left(\begin{array}{ccc}
+        1 & 2 & 1 \\
+        0 & -2 & 0 \\
+        0 & -1 & 1
+    \end{array}\right)
+    \text{, with } & E_2 = \left(\begin{array}{ccc}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        -1 & 0 & 1
+    \end{array}\right) \\
+    & \leadsto
+        \left(\begin{array}{ccc}
+        1 & 2 & 1 \\
+        0 & 1 & 0 \\
+        0 & -1 & 1
+    \end{array}\right)
+    \text{, with } & E_3 = \left(\begin{array}{ccc}
+        1 & 0 & 0 \\
+        0 & -\frac1{2} & 0 \\
+        0 & 0 & 1
+    \end{array}\right) \\
+    & \leadsto
+        \left(\begin{array}{ccc}
+        1 & 0 & 1 \\
+        0 & 1 & 0 \\
+        0 & -1 & 1
+    \end{array}\right)
+    \text{, with } & E_4 = \left(\begin{array}{ccc}
+        1 & -2 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{array}\right) \\
+    & \leadsto
+    \left(\begin{array}{ccc}
+        1 & 0 & 1 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{array}\right)
+    \text{, with } & E_5 = \left(\begin{array}{ccc}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 1 & 1
+    \end{array}\right) \\
+        & \leadsto
+    \left(\begin{array}{ccc}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{array}\right)
+    \text{, with } & E_6 = \left(\begin{array}{ccc}
+        1 & 0 & -1 \\
+        0 & 1 & 0 \\
+        0 & 1 & 1
+    \end{array}\right)
+\end{align*}
+So we have \(\I_3 = E_6 E_5 E_4 E_3 E_2 E_1 A\), hence
+\(A = E_{1}^{-1} E_{2}^{-1} E_{3}^{-1} E_{4}^{-1} E_{5}^{-1} E_{6}^{-1}\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.8}
+Let \(A\) be an \(m \X n\) matrix.
+Prove that if \(c\) is any nonzero scalar, then \(\rank(cA) = \rank(A)\).
+\end{exercise}
+
+\begin{proof}
+Clearly,
+\[
+    cA = \begin{pmatrix} ca_1 \\ ca_2 \\ \vdots \\ ca_m
+    \end{pmatrix}
+\]
+where \(a_i\) is the \(i\)th row of \(A\).
+If we perform \(m\) type 2 e.r.o.s on each row of \(cA\) with scalar \(\frac1{c}\) then we get \(A\).
+And since e.r.o.s are rank-preserving, we have \(\rank(cA) = \rank(A)\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.9}
+Complete the proof of the \CORO{3.4.1} by showing that e.\RED{c}.o.s preserve rank.
+\end{exercise}
+
+\begin{proof}
+See the second part of the proof of \CORO{3.4.1}.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.10}
+Prove \THM{3.6} for the case that \(A\) is an \(m \X 1\) matrix.
+\end{exercise}
+
+\begin{proof}
+Given \(m \X 1\) nonzero matrix \(A\), there exists a position \((i, 1)\) s.t. \(A_{i1} \ne 0\).
+By means of at most one type 1 row operation and at most one type 2 row operation, \(A\) can be transformed into a matrix with a \(1\) in the \((1, 1)\) position.
+By means of at most \(m - 1\) type 3 row operations, this matrix can in turn be transformed into the matrix
+\[
+\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix},
+\]
+which has the desired form, and from \THM{3.5}, it has rank \(1\).
+Since e.r.o.s are rank-preserving, the original \(A\) has rank \(1\). which is both \(\le 1\), the number of columns of \(A\), and \(\le m\), the number of rows of \(A\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.11}
+Let
+\[
+    B = \left(\begin{array}{c|ccc}
+        1 & 0 & \cdots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & B^{\prime} & \\
+        0 & & &
+    \end{array}\right),
+\]
+where \(B'\) is an \(m \X n\) submatrix of \(B\).
+Prove that if \(\rank(B) = r\), then \(\rank(B') = r - 1\).
+\end{exercise}
+
+\begin{proof}
+By \THM{3.5}, the maximum number of \(B\)'s \LID{} rows is equal to \(r\).
+Furthermore, by the structure of the form of \(B\), the first column
+\[
+    \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+\]
+\emph{is \LID{} to the remaining columns of \(B\)} since these columns have \(0\) in the first entry.
+And that means \(r = \rank(B) = \dim(\spann(\{ \RED{b_1}, b_2, ..., b_n \})) \RED{=} \dim(\spann(\{ b_2, b_3, ..., b_n \})) \RED{+ 1}\), or \(\rank(\spann(\{ b_2, b_3, ..., b_n \})) = r - 1\).
+
+Now it suffices to show \(\rank(B') = \dim(\spann(\{ b_2, b_3, ..., b_n \}))\).
+(This is in fact very intuitive since the first \(0\) of each \(b_i\) ``does not contribute any linear independency'', and by removing the it the columns become the corresponding columns of \(B'\), hence \(B'\) and \(\spann(\{ b_2, b_3, ..., b_n \})\) have same dimensions.)
+
+To do this, we define \(\T : F^{m - 1} \to W\), where \(W\) is a subspace of \(F^m\) with elements having \(0\) as the first entry,
+and
+\[
+    \T(a_1, a_2, ..., a_m) = (0, a_1, a_2, ..., a_m).
+\]
+It's clear that \(\T\) is an isomorphism.
+Now let \(v_1, v_2, ..., v_{r - 1}\) be the selected \LID{} vectors of \(\{ b_2, b_3, ..., b_n \}\).
+And let \(v_1', v_2', ..., v_{r - 1}'\) be the columns of \(B'\) s.t. \(v_i'\) lies in the same column position as \(v_i\).
+Then it's clear that \(\T(v_i') = v_i\) for \(i = 1, ..., r - 1\).
+And by \ATHM{2.2}(2.b), \(\{ v_1', v_2', ..., v_{r - 1}'\}\) is also \LID{}, which implies the dimension of subspace generated by the columns of \(B'\) is at least \(r - 1\).
+But since \(\rank(\spann(\{ b_2, b_3, ..., b_n \})) = r - 1\) any \(r\) vectors  of \(b_2, ..., b_n\) must be \LDP{}.
+And by \ATHM{2.2}(2.b), the corresponding \(r\) vectors mapped by \(\T\) in columns of \(B'\) must also be \LDP{}, and that implies \(\rank(B') < r\).
+Hence \(\rank(B') = r - 1\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.12}
+Let \(B'\) and \(D'\) be \(m \X n\) matrices, and let \(B\) and \(D\) be \((m + 1) \X (n + 1)\) matrices respectively defined by
+\[
+    B = \left(\begin{array}{c|ccc}
+        1 & 0 & \cdots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & B^{\prime} & \\
+        0 & & &
+    \end{array}\right)
+    \text { and }
+    D = \left(\begin{array}{c|ccc}
+        1 & 0 & \cdots & 0 \\
+        \hline 0 & & \\
+        \vdots & & D^{\prime} & \\
+        0 & &
+    \end{array}\right).
+\]
+Prove that if \(B'\) can be transformed into \(D'\) by an elementary row [column] operation, then \(B\) can be transformed into \(D\) by an elementary row [column] operation.
+\end{exercise}
+
+\begin{proof}
+Suppose \(B'\) can be transformed into \(D'\) by an elementary row operation.
+Then by \THM{3.1} we can write \(D' = E'B'\) for some \(m \X m\) elementary matrix \(E'\).
+Now let
+\[
+    E = \left(\begin{array}{c|ccc}
+        1 & 0 & \ldots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & E' & \\
+        0 & & &
+    \end{array}\right)
+\]
+Then it's clear that \(E\) is also an elementary matrix with dimension \((m + 1) \X (m + 1)\).
+And
+\[
+    EB = \left(\begin{array}{c|ccc}
+        1 & 0 & \ldots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & E' & \\
+        0 & & &
+    \end{array}\right) \left(\begin{array}{c|ccc}
+        1 & 0 & \cdots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & B' & \\
+        0 & & &
+    \end{array}\right) \\
+    \RED{=} \left(\begin{array}{c|ccc}
+        1 & 0 & \ldots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & E' B' & \\
+        0 & & &
+    \end{array}\right) =
+    \left(\begin{array}{c|ccc}
+        1 & 0 & \ldots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & D' & \\
+        0 & & &
+    \end{array}\right)
+    = D.
+\]
+(Note that the red \RED{\(=\)} needs proof, but it's similar to the proof of \EXEC{3.2.15}.)
+Hence by \THM{3.1} again \(B\) can be transformed into \(D\) by an elementary row operation.
+
+The case of column operation is similar to prove.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.13}
+Prove (b) and (c) of \CORO{3.6.2}.
+\end{exercise}
+
+\begin{proof}
+See \CORO{3.6.2}.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.14}
+Let \(\T, \U: V \to W\) be linear transformations.
+\begin{enumerate}
+\item Prove that \(\RANGE(\T + \U) \subseteq \RANGET + \RANGE(\U)\).
+(See the definition \ADEF{1.8} of the sum of subsets of a vector space.)
+\item Prove that if \(W\) is finite-dimensional, then \(\rank(\T + \U) \le \rankT + \rank(\U)\).
+\item Deduce from (b) that \(\rank(A + B) \le \rank(A) + \rank(B)\) for any \(m \X n\) matrices \(A\) and \(B\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Suppose arbitrary \(w \in \RANGE(\T + \U)\).
+Then \(\exists v \in V s.t. (\T + \U)(v) = w\), or \(\T(v) + \U(v) = w\).
+Then by definition of sum, \(w \in \RANGET + \RANGE(\U)\) since \(w = \T(v) + \U(v)\) where \(\T(v) \in \RANGET\) and \(\U(v) \in \RANGE(\U)\).
+Hence \(\RANGE(\T + \U) \subseteq \RANGET + \RANGE(\U)\).
+
+\sloppy
+\item From \ATHM{1.27}(1.1), \(\dim(\RANGET + \RANGE(\U)) = \dim(\RANGET) + \dim(\RANGE(\U)) - \dim(\RANGET \cap \RANGE(\U))\).
+In particular, \(\dim(\RANGET + \RANGE(\U)) \le \dim(\RANGET) + \dim(\RANGE(\U))\).
+And from part(a) we have \(\dim(\RANGE(\T + \U)) \le \dim(\RANGET + \RANGE(\U))\).
+Put them together, we have \(\dim(\RANGE(\T + \U)) \le \dim(\RANGET) + \dim(\RANGE(\U))\).
+That is, by definition of rank, \(\rank(\T + \U)) \le \rankT + \rank(\U)\).
+
+\item
+\begin{align*}
+    \rank(A + B) & = \rank(\LMTRAN_{A + B}) & \text{by \DEF{3.3}} \\
+                 & = \rank(\LMTRAN_A + \LMTRAN_B) & \text{by \THM{2.15}(c)} \\
+                 & \le \rank(\LMTRAN_A) + \rank(\LMTRAN_B) & \text{by part(b)} \\
+                 & = \rank(A) + \rank(B) & \text{by \DEF{3.3}}
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.15}
+Suppose that \(A\) and \(B\) are matrices having \(n \X p\) and \(n \X q\) rows, respectively.
+Prove that \(M(A|B) = (MA|MB)\) for any \(m \X n\) matrix \(M\).
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{equation*}
+    [M(A | B)]_{ij} =
+    \begin{cases}
+        \sum_{k = 1}^n M_{ik} A_{kj} = (MA)_{ij} & \text{ if } 1 \le j \le p \\
+        \sum_{k = 1}^n M_{ik} B_{k(\RED{j - p})} = (MB)_{i(j - p)} & \text{ if } p < j \le p + q \\
+    \end{cases}
+\end{equation*}
+So
+\begin{align*}
+    M(A | B) & = \left(\begin{array}{lll|lll}
+        (MA)_{11} & ... & (MA)_{1p} & (MB)_{1(p+1-p)} & ... & (MB)_{1(p+q-p)} \\
+        \vdots    &     & \vdots    & \vdots          &     & \vdots \\
+        (MA)_{n1} & ... & (MA)_{np} & (MB)_{n(p+1-p)} & ... & (MB)_{n(p+q-p)} \\
+    \end{array}\right) \\
+             & = \left(\begin{array}{lll|lll}
+        (MA)_{11} & ... & (MA)_{1p} & (MB)_{11} & ... & (MB)_{1q} \\
+        \vdots    &     & \vdots    & \vdots          &     & \vdots \\
+        (MA)_{n1} & ... & (MA)_{np} & (MB)_{n1} & ... & (MB)_{nq} \\
+    \end{array}\right),
+\end{align*}
+which is equal to \((MA|MB)\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.16}
+Supply the details to the proof of (b) of \THM{3.4}.
+\end{exercise}
+
+\begin{proof}
+See the proof of \THM{3.4}.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.17}
+Prove that if \(B\) is a \(3 \X 1\) matrix and \(C\) is a \(1 \X 3\) matrix, then the \(3 \X 3\) matrix \(BC\) \textbf{has rank at most \(1\)}.
+Conversely, show that if \(A\) is any \(3 \X 3\) matrix having rank \(1\), then there exist a \(3 \X 1\) matrix \(B\) and a \(1 \X 3\) matrix \(C\) such that \(A = BC\).
+\end{exercise}
+
+\begin{proof} \ 
+
+\(\Longrightarrow\): By \THM{3.7}(c)(d), \(\rank(BC) \le \min(\rank(B), \rank(C)) = 1\).
+
+\(\Longleftarrow\): Suppose \(A\) is any \(3 \X 3\) matrix having rank \(1\).
+Then \(A\) must have the form
+\[
+    A = \begin{pmatrix} a & c_1 a & c_2 a \end{pmatrix} or \begin{pmatrix} c_1 a' & a' & c_2 a' \end{pmatrix} or \begin{pmatrix} c_1 a'' & c_2 a'' & a'' \end{pmatrix}
+\]
+where \(c_1, c_2 \in F\) and \(a, a', a''\) is the first/second/third column of \(A\).
+(If \(A\) is not in one of these forms then it will trivially to get contradiction that \(\rank(A) \ne 1\).)
+We just prove the case that \(A\) has the first form, the other cases are similar to prove.
+Now let \(a = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}\).
+Then \(A\) can be represented as the product of \(3 \X 1\) ``matrix'' \(a\) and \(1 \X 3\) matrix \(c = \begin{pmatrix} 1 & c_1 & c_2 \end{pmatrix}\) since
+\[
+    a c = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix} \begin{pmatrix} 1 & c_1 & c_2 \end{pmatrix}
+    = \begin{pmatrix}
+        a_1 & c_1 a_1 & c_2 a_1 \\
+        a_2 & c_1 a_2 & c_2 a_2 \\
+        a_3 & c_1 a_3 & c_2 a_3 \\
+    \end{pmatrix}
+    = \begin{pmatrix} a & c_1 a & c_2 a \end{pmatrix} = A.
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.18}
+Let \(A\) be an \(m \X n\) matrix and \(B\) be an \(n \X p\) matrix.
+Prove that \(AB\) can be written as a sum of \(n\) matrices of rank at most one.
+\end{exercise}
+
+\begin{proof}
+In fact, we can split \(AB\) as:
+\begin{align*}
+    AB & = \begin{pmatrix}
+                (AB)_{11} & ... & (AB)_{1p} \\
+                \vdots    &     & \vdots \\
+                (AB)_{m1} & ... & (AB)_{mp} \\
+            \end{pmatrix} & \\
+       & = \begin{pmatrix}
+                \sum_{k = 1}^n A_{1k} B_{k1} & ... & \sum_{k = 1}^n A_{1k} B_{kp} \\
+                \vdots    &     & \vdots \\
+                \sum_{k = 1}^n A_{mk} B_{k1} & ... & \sum_{k = 1}^n A_{mk} B_{kp} \\
+            \end{pmatrix} & \\
+        & \RED{=} \begin{pmatrix}
+                A_{1\RED{1}} B_{\RED{1}1} & ... & A_{1\RED{1}} B_{1p} \\
+                \vdots    &     & \vdots \\
+                A_{m\RED{1}} B_{\RED{1}1} & ... & A_{m\RED{1}} B_{\RED{1}p} \\
+            \end{pmatrix}
+            + \begin{pmatrix}
+                A_{1\RED{2}} B_{\RED{2}1} & ... & A_{1\RED{2}} B_{\RED{2}p} \\
+                \vdots    &     & \vdots \\
+                A_{m\RED{2}} B_{\RED{2}1} & ... & A_{m\RED{2}} B_{\RED{2}p} \\
+            \end{pmatrix}
+            + ... + \begin{pmatrix}
+                A_{1\RED{n}} B_{\RED{n}1} & ... & A_{1\RED{n}} B_{\RED{n}p} \\
+                \vdots    &     & \vdots \\
+                A_{m\RED{n}} B_{\RED{n}1} & ... & A_{m\RED{n}} B_{\RED{n}p} \\
+            \end{pmatrix}, \\
+            & \text{\ \ \ \ \ \ \ (by splitting into \(n\) matrices)}
+\end{align*}
+and each splitted matrix can be considered as the product of \(m \X 1\) and \(1 \X p\) matrices;
+that is,
+\[
+    \begin{pmatrix} A_{11} \\ A_{21} \\ \vdots \\ A_{m1} \end{pmatrix} \begin{pmatrix} B_{11} & B_{12} & ... & B_{1p} \end{pmatrix}
+    + \begin{pmatrix} A_{12} \\ A_{22} \\ \vdots \\ A_{m2} \end{pmatrix} \begin{pmatrix} B_{21} & B_{22} & ... & B_{2p} \end{pmatrix}
+    + ... + \begin{pmatrix} A_{1n} \\ A_{2n} \\ \vdots \\ A_{mn} \end{pmatrix} \begin{pmatrix} B_{n1} & B_{n2} & ... & B_{np} \end{pmatrix}.
+\]
+By (the generalization of) \EXEC{3.2.17}, each product has at most rank one.
+Hence we have written \(AB\) as the sum of \(n\) matrices of rank at most one, as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.19}
+Let \(A\) be an \(m \X n\) matrix with rank \(m\) and \(B\) be an \(n \X p\) matrix with rank \(n\).
+Determine the rank of \(AB\).
+Justify your answer.
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+             & \rank(A) = m \\
+    \implies & \rank(\LMTRAN_A) = m & \text{by \DEF{3.3}} \\
+    \implies & \LMTRAN_A \text{ is onto } & \text{since the codomain of \(\LMTRAN_A : F^n \to F^m\) has \(\dim = m\)}
+\end{align*}
+Similarly, \(\LMTRAN_B: F^p \to F^n\) is also onto.
+
+Then
+\begin{align*}
+    \rank(AB) & = \rank(\LMTRAN_{AB}) & \text{by \DEF{3.3}} \\
+              & = \rank(\LMTRAN_A \LMTRAN_B) & \text{by \THM{2.15}(e)} \\
+              & = \dim(\LMTRAN_A(\LMTRAN_B(F^p))) & \text{just by def of range and rank and composition} \\
+              & = \dim(\LMTRAN_A(F^n)) & \text{since \(\LMTRAN_B\) is onto} \\
+              & = \dim(F^m) & \text{since \(\LMTRAN_A\) is onto} \\
+              & = m.
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.20}
+Let
+\[
+    A = \begin{pmatrix}
+        1 & 0 & -1 & 2 & 1 \\
+        -1 & 1 & 3 & -1 & 0 \\
+        -2 & 1 & 4 & -1 & 3 \\
+        3 & -1 & -5 & 1 & -6
+    \end{pmatrix}.
+\]
+\begin{enumerate}
+\item Find a \(5 \X 5\) matrix \(M\) with rank \(\RED{2}\) such that \(AM = O\), where \(O\) is the \(4 \X 5\) zero matrix.
+
+\item Suppose that \(B\) is a \(5 \X 5\) matrix such that \(AB = O\).
+Prove that \(\rank(B) \le \RED{2}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+I feel that the exercise is really strange, because the criteria of rank \(\RED{2}\) is just like a magic number.
+It seems more reasonable to given some other fact, e.g. \(\rank(A) = 3\).
+\end{note}
+
+\begin{proof}
+(Note that I use \THM{3.8}, which is in \SEC{3.3}, so this proof is a forward reference.)
+\begin{enumerate}
+\item
+First, if \(AM = O\), that means \textbf{each} column of \(M\) is in the null space of \(\LMTRAN_A\), because \(A m_i = 0 \in F^m\) for each column \(m_i\) of \(M\).
+Hence given any that kind of \(M\) the columns space of \(M\) is a subspace of \(\NULL(\LMTRAN_A)\).
+Hence the \(\rank(M) \le \dim(\NULL(\LMTRAN_A))\).
+Then why not we just first find the null space of \(\LMTRAN_A\)?
+By the technique in \SEC{3.3}, this is equivalent to find the solution set of \(Ax = 0\),
+which is
+\[
+    \left\{
+        t_1 \begin{pmatrix} 1 \\ -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}
+        + t_2 \begin{pmatrix} 3 \\ 1 \\ 0 \\ -2 \\ 1 \end{pmatrix}
+        : t_1, t_2 \in \SET{R}
+    \right\}.
+\]
+Hence the dimension of \(\NULL(\LMTRAN_A)\) is \(2\), and the basis is
+\[
+    \left\{
+        \begin{pmatrix} 1 \\ -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}
+        \begin{pmatrix} 3 \\ 1 \\ 0 \\ -2 \\ 1 \end{pmatrix}
+    \right\}.
+\]
+So we just let
+\[
+    M = \left[\begin{array}{ccccc}
+        1 & 3 & 0 & 0 & 0 \\
+        -2 & 1 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 0 \\
+        0 & -2 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0
+    \end{array}\right]
+\]
+then \(\rank(M) = 2\) and \(AM = O\).
+
+\item We have shown in the previous case that any kind of \(B\) s.t. \(AB = O\) has the column space as a subspace of \(\NULL(\LMTRAN_A)\), and we have shown that \(\dim(\NULL(\LMTRAN_A)) = 2\), hence \(\rank(B) \le 2\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.21}
+Let \(A\) be an \(m \X n\) matrix with rank \(m\).
+Prove that there exists an \(n \X m\) matrix \(B\) such that \(AB = I_m\).
+\end{exercise}
+
+\begin{proof}
+With same argument in \EXEC{3.2.19}, \(\LMTRAN_A : F^n \to F^m\) is onto.
+So for each vector \(e_1, e_2, ..., e_m\) in the standard basis of \(F^m\), we can find \(v_1, v_2, ..., v_m \in F^n\) s.t. \(\LMTRAN_A(v_i) = e_i\);
+that is, \(A v_i = e_i\).
+Now let \(B = \begin{pmatrix} v_1 & v_2 & ... & v_m \end{pmatrix}\).
+Then
+\begin{align*}
+    AB & = \begin{pmatrix} A v_1 & A v_2 & ... & A v_m \end{pmatrix} & \text{by \THM{2.13}(a)} \\
+       & = \begin{pmatrix} e_1 & e_2 & ... & e_m \end{pmatrix} = I_m,
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.2.22}
+Let \(B\) be an \(n \X m\) matrix with rank \(m\).
+Prove that there exists an \(m \X n\) matrix \(A\) such that \(AB = I_m\).
+\end{exercise}
+
+\begin{proof}
+By \CORO{3.6.2}(a), \(B^\top\) is an \(m \X n\) matrix that also has rank \(m\).
+And by \EXEC{3.2.21}, we can find an \(n \X m\) matrix \(A^\top\) s.t. \(B^\top A^\top = I_m\).
+(I intentionally denote that matrix with transpose.)
+Then we have \((B^\top A^\top)^\top = I_m^\top = I_m\);
+that is \(A B = I_m\).
+So we have found a \(m \X n\) matrix \(A\) s.t. \(A B = I_m\).
+\end{proof}
+
+\begin{additional theorem} \label{athm 3.5}
+This is a placeholder theorem for \EXEC{3.2.8}, given any nonzero scalar \(c\), \(\rank(cA) = \rank(A)\) any any \(m \X n\) matrix \(A\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.6}
+This is a placeholder theorem for \EXEC{3.2.11} and \EXEC{3.2.12}, which are intermediate steps of \THM{3.6}.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.7}
+This is a placeholder theorem for \EXEC{3.2.14}:
+Let \(\T, \U: V \to W\) be linear transformations.
+\begin{enumerate}
+\item \(\RANGE(\T + \U) \subseteq \RANGET + \RANGE(\U)\).
+\item If \(W\) is finite-dimensional, then \(\rank(\T + \U) \le \rankT + \rank(\U)\).
+\item \(\rank(A + B) \le \rank(A) + \rank(B)\) for any \(m \X n\) matrices \(A\) and \(B\).
+\end{enumerate}
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.8}
+\sloppy This is a placeholder theorem for \EXEC{3.2.15}:
+\(M(A|B) = (MA|MB)\) (where these matrices have compatible dimensions).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.9}
+This is a placeholder theorem for \EXEC{3.2.17}:
+If \(B\) is a \(3 \X 1\) matrix and \(C\) is a \(1 \X 3\) matrix, then the \(3 \X 3\) matrix \(BC\) \textbf{has rank at most \(1\)}.
+Conversely, if \(A\) is any \(3 \X 3\) matrix having rank \(1\), then there exist a \(3 \X 1\) matrix \(B\) and a \(1 \X 3\) matrix \(C\) such that \(A = BC\).
+
+This theorem can be generalized with \(n \X 1\) and \(1 \X n\) matrices using induction.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.10}
+This is a placeholder theorem for \EXEC{3.2.18}:
+Let \(A\) be an \(m \X n\) matrix and \(B\) be an \(n \X p\) matrix.
+Then \(AB\) can be written as a sum of \(n\) matrices of rank at most one.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.11}
+This is a placeholder theorem for \EXEC{3.2.19}, which has concepts related to ``onto''.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.12}
+This is a placeholder theorem for \EXEC{3.2.21} and \EXEC{3.2.22}, which let us find ``some kind of inverse'' for \emph{non-square} matrices.
+\end{additional theorem}

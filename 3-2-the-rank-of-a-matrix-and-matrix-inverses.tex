@@ -1,0 +1,885 @@
+\section{The Rank of a Matrix and Matrix Inverses} \label{sec 3.2}
+
+In this section, we define the \emph{rank} of a matrix.
+We then use elementary operations to compute the rank of a matrix and a \LTRAN{}.
+(Recall that the definition of the rank of a \LTRAN{} is in \DEF{2.3}.)
+The section concludes with \emph{a procedure for computing the inverse} of an \emph{invertible} matrix.
+
+\begin{definition} \label{def 3.3}
+If \(A \in M_{m \X n}(F)\), we define the \textbf{rank} of \(A\), denoted \(\rank(A)\), to be the rank of the \LTRAN{} \(\LMTRAN_A: F^n \to F^m\).
+\end{definition}
+
+\begin{remark} \label{remark 3.2.1}
+Many results about the rank of a matrix follow immediately from the corresponding facts about a \LTRAN{}.
+An important result of this type, which follows from \ATHM{2.35}(3) and \CORO{2.18.2}, (p. 103), is that \textbf{an \(n \X n\) matrix is invertible if and only if its rank is \(n\)}.
+(That is, \(A\) is invertible, iff (by \CORO{2.18.2}) \(\LMTRAN_A\) is invertible, iff (by \ATHM{2.35}(3)) \(\rank(\LMTRAN_A) = \dim(F^n) = n\).) 
+\end{remark}
+
+\begin{remark} \label{remark 3.2.2}
+Every matrix \(A\) is the matrix representation of the \LTRAN{} \(\LMTRAN_A\) with respect to the appropriate \emph{standard} ordered bases.
+(See \THM{2.15}(a).)
+And by \DEF{3.3} we have \(\rank(A) = \rank(\LMTRAN_A)\).
+Thus the rank of the linear transformation \(\LMTRAN_A\) is the same as the rank of \RED{\textbf{one of}} its matrix representations, namely, \(A\).
+The next theorem extends this fact to \RED{\textbf{any}} matrix representation of any linear transformation defined on finite-dimensional vector spaces.
+\end{remark}
+
+\begin{theorem} \label{thm 3.3}
+Let \(\T : V \to W\) be a \LTRAN{} between finite-dimensional vector spaces, and let \(\beta\) and \(\gamma\) be \emph{arbitrary} ordered bases for \(V\) and \(W\), respectively.
+Then \(\rankT = \rank([\T]_{\beta}^{\gamma})\).
+\end{theorem}
+
+\begin{proof}
+From \ATHM{2.42}, we have \(\rankT = \rank(\LMTRAN_A)\) where \(A = [\T]_{\beta}^{\gamma}\).
+But by \DEF{3.3}, \(\rank(A) = \rank(\LMTRAN_A)\), so we have \(\rankT = \rank(A)\);
+that is, \(\rankT = \rank([\T]_{\beta}^{\gamma})\).
+\end{proof}
+
+\begin{proof}[Another proof for \THM{3.3}]
+This proof uses \ATHM{2.41}(2), which is the hint of \ATHM{2.42}.
+(I think it's more intuitive to use \ATHM{2.41}(2) in this context.)
+
+Again let \(A = [\T]_{\beta}^{\gamma}\).
+So, from \RMK{2.4.5}, we have \(\phi_{\gamma} \T = \LMTRAN_A \phi_{\beta}\), which (of course) implies \(\T = \phi_{\gamma}^{-1} \LMTRAN_A \phi_{\beta}\) \MAROON{(1)}.
+Then
+\begin{align*}
+    \rankT & = \dim(\RANGET) = \dim(\T(V)) & \text{just by definition} \\
+           & = \dim(\phi_{\gamma}^{-1} \LMTRAN_A \phi_{\beta}(V)) & \text{by \MAROON{(1)}} \\
+           & = \dim(\phi_{\gamma}^{-1} \LMTRAN_A (\phi_{\beta}(V))) & \text{by def of composition} \\
+           & = \dim(\phi_{\gamma}^{-1} \LMTRAN_A (F^n)) & \text{since in particular \(\phi_{\beta}\) is onto} \\
+           & = \dim(\phi_{\gamma}^{-1} (\LMTRAN_A (F^n))) & \text{by def of composition} \\
+           & = \dim(\LMTRAN_A (F^n)) & \text{by \ATHM{2.41}(2),} \\
+           & & \text{and since \(\phi_{\gamma}^{-1}\) is also an isomorphism} \\
+           & = \dim(\RANGE(\LMTRAN_A)) = \rank(\LMTRAN_A) & \text{just by definition} \\
+           & = \rank(A) & \text{by \DEF{3.3}} \\
+           & = \rank([\T]_{\beta}^{\gamma})
+\end{align*}
+\end{proof}
+
+\begin{remark} \label{remark 3.2.3}
+Now that from \THM{3.3}, the problem of finding the rank of a \LTRAN{} has been \emph{reduced to} the problem of finding the rank of a matrix.
+But given a matrix representation \(A\) of a \LTRAN{}, it could be difficult to compute its rank;
+(that is, it could also be difficult to compute \(\rank(\LMTRAN_A)\))
+but we can perform some \emph{``rank-preserving''} operations on the matrix to get a matrix of which it is easy to compute the rank.
+The next theorem and its corollary tell us how to do this.
+\end{remark}
+
+\begin{theorem} \label{thm 3.4}
+Let \(A\) be an \(m \X n\) matrix.
+If \(P\) and \(Q\) are \textbf{invertible} \(m \X m\) and \(n \X n\) matrices, respectively,
+then
+\begin{enumerate}
+\item \(\rank(AQ) = \rank(A)\),
+\item \(\rank(PA) = \rank(A)\), and \emph{therefore},
+\item \(\rank(PAQ) = \rank(A)\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First observe that
+\begin{align*}
+    \rank(AQ) & = \rank(\LMTRAN_{AQ}) & \text{by \DEF{3.3}} \\
+              & = \dim(\RANGE(\LMTRAN_{AQ})) & \text{by def of rank of \LTRAN{}} \\
+              & = \dim(\RANGE(\LMTRAN_A \LMTRAN_Q)) & \text{by \THM{2.15}(e)} \\
+              & = \dim(\LMTRAN_A \LMTRAN_Q(F^n)) & \text{by def of range} \\
+              & = \dim(\LMTRAN_A(\LMTRAN_Q(F^n))) & \text{by def of composition} \\
+              & = \dim(\LMTRAN_A(F^n)) & \text{\(Q\) invertible, so \(\LMTRAN_Q\) invertible, and in particular onto} \\
+              & = \dim(\RANGE(\LMTRAN_A)) & \text{by def of range} \\
+              & = \rank(\LMTRAN_A) & \text{by def of rank of \LTRAN{}} \\
+              & = \rank(A) & \text{by \DEF{3.3}}
+\end{align*}
+This establishes part(a).
+
+To establish part(b),
+\begin{align*}
+    \rank(PA) & = \rank(\LMTRAN_{PA}) & \text{by \DEF{3.3}} \\
+              & = \rank(\LMTRAN_P \LMTRAN_A) & \text{by \THM{2.15}(e)} \\
+              & = \dim(\RANGE(\LMTRAN_P \LMTRAN_A)) & \text{by def of rank of \LTRAN{}} \\
+              & = \dim(\LMTRAN_P \LMTRAN_A(F^n)) & \text{by def of range} \\
+              & = \dim(\LMTRAN_P(\LMTRAN_A(F^n)) & \text{by def of composition} \\
+              & = \dim(\LMTRAN_A(F^n)) & \text{by \ATHM{2.41}(2),} \\
+              & & \text{since (\(P\) is invertible then) \(\LMTRAN_P\) is invertible} \\
+              & = \dim(\RANGE(\LMTRAN_A)) & \text{by def of range} \\
+              & = \rank(\LMTRAN_A) & \text{by def of rank of \LTRAN{}} \\
+              & = \rank(A) & \text{by \DEF{3.3}}
+\end{align*}
+
+Finally, applying (a) and (b), we have
+\begin{align*}
+    \rank(PAQ) & = \rank((PA)Q) & \text{of course} \\
+               & = \rank(PA) & \text{by part(a)} \\
+               & = \rank(A). & \text{by part(b)}
+\end{align*}
+\end{proof}
+
+\begin{corollary} \label{corollary 3.4.1}
+Elementary row and column operations on a matrix are \emph{rank-preserving}.
+\end{corollary}
+
+\begin{proof}
+If \(B\) is obtained from a matrix \(A\) by an elementary row operation, then by \THM{3.1} there exists an elementary matrix \(E\) such that \(B = EA\).
+By \THM{3.2}, \(E\) is invertible, and hence \(\rank(B) = \rank(EA) = \rank(A)\) by \THM{3.4}(b).
+
+If \(B\) is obtained from a matrix \(A\) by an elementary column operation, then again by \THM{3.1} there exists an elementary matrix \(E\) such that \(B = AE\).
+By \THM{3.2}, \(E\) is invertible, and hence \(\rank(B) = \rank(AE) = \rank(A)\) by \THM{3.4}(a).
+\end{proof}
+
+Now that we have a class of matrix operations(i.e., e.r.o. and e.c.o.) that preserve rank, we need a way of \emph{examining a transformed matrix to ascertain its rank}.
+The next theorem is the first of several in this direction.
+
+\begin{note}
+這邊的脈絡是，直接把一個\ \LTRAN{} 寫成矩陣代表，我們常常還是不容易看出該矩陣的\ rank。
+但我們現在要給定一些方法使得我們可以很輕易的判斷某些類型的矩陣的\ rank。
+然後再用\ e.r.o. (跟\ e.c.o.) 這些\ rank-preserving 操作把那個矩陣代表轉成這類型的矩陣，判斷這類矩陣的\ rank，就能得到原本的矩陣代表的\ rank 了。
+\end{note}
+
+\begin{theorem} \label{thm 3.5}
+The rank of any matrix equals the \emph{maximum} number of its \emph{\LID{}} columns;
+that is, the rank of a matrix is the \emph{dimension of the subspace generated by its columns}.
+\end{theorem}
+
+\begin{note}
+In the theorem above, the second statement is equivalent to the first statement, but it needs proof;
+however, it's trivial(proof by contradiction).
+And the proof below just proves the second statement.
+\end{note}
+
+\begin{note}
+有了這個定理，我們就不用去看\ \(\LMTRAN_A\) 的\ rank 來得出\ \(A\) 的\ rank，而是可直接從「\(A\) 的長相」或者\ \(A\) 的\ columns span 出來的\ subspace(的\ dimension) 來知道\ \(A\) 的\ rank。
+\end{note}
+
+\begin{proof}
+Let arbitrary \(A \in M_{m \X n}(F)\),
+\(a_1, a_2, ..., a_n\) be the columns of \(A\),
+and \(\beta = \{ e_1, e_2, ..., e_n \}\) be the \emph{standard} ordered basis for \(F^n\).
+Then
+\begin{align*}
+    \rank(A) & = \rank(\LMTRAN_A) & \text{by \DEF{3.3}} \\
+             & = \dim(\RANGE(\LMTRAN_A)) & \text{by def of rank of \LTRAN{}} \\
+             & = \dim(\spann(\LMTRAN_A(\beta))) & \text{by \THM{2.2}} \\
+             & = \dim(\spann(\{ \LMTRAN_A(e_1), \LMTRAN_A(e_2), ..., \LMTRAN_A(e_n) \})) \\
+             & = \dim(\spann(\{ Ae_1, Ae_2, ..., Ae_n \})) & \text{just by def of left multiplication} \\
+             & = \dim(\spann(\{ a_1, a_2, ..., a_n \})) & \text{by \THM{2.13}(b)}
+\end{align*}
+\end{proof}
+
+\begin{example} \label{example 3.2.1}
+Let
+\[
+    A=\left(\begin{array}{lll}
+        1 & 0 & 1 \\
+        0 & 1 & 1 \\
+        1 & 0 & 1
+    \end{array}\right)
+\]
+Observe that the first and second columns of \(A\) are \LID{} and that the third column is a linear combination of the first two.
+
+Thus
+\[
+    \rank(A) =
+    \dim
+        \left(
+        \spann\left(\left\{
+            \left(\begin{array}{l}
+                1 \\
+                0 \\
+                1
+            \end{array}\right),
+            \left(\begin{array}{l}
+                0 \\
+                1 \\
+                0
+            \end{array}\right),
+            \left(\begin{array}{l}
+                1 \\
+                1 \\
+                1
+            \end{array}
+        \right)\right\}\right)
+        \right)
+    = 2
+\]
+\end{example}
+
+\begin{remark} \label{remark 3.2.4}
+To compute the rank of a matrix \(A\), it is frequently useful to \emph{postpone the use of \THM{3.5}} until \(A\) has been suitably \emph{modified by} means of appropriate \emph{elementary row and column operations} so that the number of \LID{} columns is obvious.
+\CORO{3.4.1} guarantees that the rank of the modified matrix is the same as the rank of \(A\).
+
+One such modification of \(A\) can be obtained by using elementary row and column operations to \emph{introduce zero entries}.
+The next example illustrates this procedure.
+\end{remark}
+
+\begin{example} \label{example 3.2.2}
+Let
+\[
+    A = \begin{pmatrix} 1 & 2 & 1 \\ 1 & 0 & 3 \\ 1 & 1 & 2 \end{pmatrix}.
+\]
+If we subtract the first row of \(A\) from rows 2 and 3 (type 3 elementary row operations), the result is
+\[
+    \begin{pmatrix} 1 & 2 & 1 \\ \RED{0} & -2 & 2 \\ \RED{0} & -1 & 1 \end{pmatrix}.
+\]
+If we now subtract twice the first \emph{column} from the second and subtract the first \emph{column} from the third (type 3 elementary \emph{column} operations), we obtain
+\[
+    \begin{pmatrix} 1 & \RED{0} & \RED{0} \\ 0 & -2 & 2 \\ 0 & -1 & 1 \end{pmatrix}.
+\]
+It is now obvious that the maximum number of \LID{} columns of this matrix is \(2\).
+Hence the rank of \(A\) is \(2\).
+\end{example}
+
+The next theorem uses this process to transform a matrix into a particularly simple form.
+The power of this theorem can be seen in its corollaries.
+
+\begin{theorem} \label{thm 3.6}
+Let \(A\) be an \(m \X n\) matrix and its rank is \(r\).
+
+\BLUE{(1)} Then by means of a \emph{finite} number of elementary row and column operations, \(A\) can be transformed into the matrix
+\[
+    D = \begin{pmatrix} I_r & O_1 \\ O_2 & O_3 \end{pmatrix}
+\]
+where \(O_1, O_2\), and \(O_3\) are zero matrices.
+Furthermore, \(r \le m\) \textbf{and} \(r \le n\), which is a direct consequence of \BLUE{(1)} since trivially by \THM{3.5}, \(\rank(D) = r\), and by \CORO{3.4.1}, \(\rank(A) = \rank(D)\), and from the structure of \(D\) we have \(r \le m\) and \(r \le n\).
+Thus \(D_{ii} = 1\) for \(i \le r\) and \(D_{ij} = 0\) otherwise.
+\end{theorem}
+
+\THM{3.6} and its corollaries are quite important.
+Its proof, though easy to understand, is tedious to read.
+As an aid in following the proof, we first consider an example.
+
+\begin{example} \label{example 3.2.3}
+Consider the matrix
+\[
+    A = \begin{pmatrix} 0 & 2 & 4 & 2 & 2 \\ 4 & 4 & 4 & 8 & 0 \\ 8 & 2 & 0 & 10 & 2 \\ 6 & 3 & 2 & 9 & 1 \end{pmatrix}.
+\]
+By means of a succession of elementary row and column operations, we can transform \(A\) into a matrix \(D\) as in \THM{3.6}.
+We list many of the intermediate matrices, but on several occasions a matrix is transformed from the preceding one by means of \emph{several} elementary operations.
+The number above each arrow indicates how many elementary operations are involved. Try to identify the nature of each elementary operation (row or column and type) in the following matrix transformations
+\begin{align*}
+    \left(\begin{array}{rrrrr}
+        0 & 2 & 4 & 2 & 2 \\
+        4 & 4 & 4 & 8 & 0 \\
+        8 & 2 & 0 & 10 & 2 \\
+        6 & 3 & 2 & 9 & 1
+    \end{array}\right) \stackrel{1\MAROON{(1)}}{\longrightarrow}
+    \left(\begin{array}{rrrrr}
+        4 & 4 & 4 & 8 & 0 \\
+        0 & 2 & 4 & 2 & 2 \\
+        8 & 2 & 0 & 10 & 2 \\
+        6 & 3 & 2 & 9 & 1
+    \end{array}\right) \stackrel{1\MAROON{(2)}}{\longrightarrow}
+    \left(\begin{array}{rrrrr}
+        1 & 1 & 1 & 2 & 0 \\
+        0 & 2 & 4 & 2 & 2 \\
+        8 & 2 & 0 & 10 & 2 \\
+        6 & 3 & 2 & 9 & 1
+    \end{array}\right) \stackrel{2\MAROON{(3)}}{\longrightarrow} \\
+    \left(\begin{array}{rrrrrr}
+        1 & 1 & 1 & 2 & 0 \\
+        0 & 2 & 4 & 2 & 2 \\
+        0 & -6 & -8 & -6 & 2 \\
+        0 & -3 & -4 & -3 & 1
+    \end{array}\right) \stackrel{3\MAROON{(4)}}{\longrightarrow}
+    \left(\begin{array}{rrrrrr}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 2 & 4 & 2 & 2 \\
+        0 & -6 & -8 & -6 & 2 \\
+        0 & -3 & -4 & -3 & 1
+    \end{array}\right) \stackrel{1\MAROON{(5)}}{\longrightarrow} \\
+    \left(\begin{array}{rrrrrr}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 2 & 1 & 1 \\
+        0 & -6 & -8 & -6 & 2 \\
+        0 & -3 & -4 & -3 & 1
+    \end{array}\right) \stackrel{2\MAROON{(6)}}{\longrightarrow}
+    \left(\begin{array}{rrrrr}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 2 & 1 & 1 \\
+        0 & 0 & 4 & 0 & 8 \\
+        0 & 0 & 2 & 0 & 4
+    \end{array}\right) \stackrel{3\MAROON{(7)}}{\longrightarrow}
+    \left(\begin{array}{rrrrrr}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 4 & 0 & 8 \\
+        0 & 0 & 2 & 0 & 4
+    \end{array}\right) \stackrel{1\MAROON{(8)}}{\longrightarrow} \\
+    \left(\begin{array}{rrrrr}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 2 \\
+        0 & 0 & 2 & 0 & 4
+    \end{array}\right) \stackrel{1\MAROON{(9)}}{\longrightarrow}
+    \left(\begin{array}{rrrrr}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 2 \\
+        0 & 0 & 0 & 0 & 0
+    \end{array}\right) \stackrel{1\MAROON{(10)}}{\longrightarrow}
+    \left(\begin{array}{rrrrr}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0
+    \end{array}\right) = D
+\end{align*}
+\begin{enumerate}
+\item[\MAROON{(1)}] one e.r.o.(1), changing row 1 and row 2.
+\item[\MAROON{(2)}] one e.r.o.(2), multiplying \(1/4\) to row 1
+\item[\MAROON{(3)}] two e.r.o.(3), subtracting row 3, 4 from row 1
+\item[\MAROON{(4)}] three e.c.o.(3), subtracting col 1 from col 2, 3, 4
+\item[\MAROON{(5)}] one e.r.o.(2), multiplying \(1/2\) to row 2
+\item[\MAROON{(6)}] two e.r.o.(3), subtracting row 2 from row 3, 4
+\item[\MAROON{(7)}] three e.c.o.(3), subtracting row 2 from col 3, 4, 5
+\item[\MAROON{(8)}] one e.r.o.(2), multiplying \(1/4\) to row 3
+\item[\MAROON{(9)}] one e.r.o.(3), subtracting row 3 from row 4
+\item[\MAROON{(10)}] one e.c.o.(3), subtracting col 3 from col 5
+\end{enumerate}
+By the \CORO{3.4.1}, \(\rank(A) = \rank(D)\).
+Clearly, however, \(\rank(D) = 3\); so \(\rank(A) = 3\).
+\end{example}
+
+\begin{note}
+Note that the first two elementary operations in \EXAMPLE{3.2.3} result in a \(1\) in the \(1,1\) position,
+and the next several operations (type 3) result in \(O\)'s everywhere in the first row and first column except for the \(1,1\) position.
+\emph{And the remaining elementary operations do not change the first row and first column}.
+With this example in mind, we proceed with the proof of \THM{3.6}.
+\end{note}
+
+\begin{proof}[Proof for \THM{3.6}]
+If \(A\) is the zero matrix, \(r = 0\) by \EXEC{3.2.3} and of course \(r \le m\) and \(r \le n\).
+In this case, the conclusion follows with \(D = A\).
+
+Now suppose that \(A \ne O_{m \X n}\) and \(r = \rank(A)\);
+then \(r > 0\).
+The proof is by mathematical induction on \(m\), the number of rows of \(A\).
+
+Suppose that \(m = 1\).
+We construct a sequence of finite operations to transform \(A\) into a matrix of the desired form.
+By means of at most one type 1 column operation and at most one type 2 column operation, \(A\) can be transformed into a matrix with a \(1\) in the 1,1 position.
+By means of at most \(n - 1\) type 3 column operations, this matrix can in turn be transformed into the matrix
+\[
+    \begin{pmatrix} 1 & 0 & ... & 0 \end{pmatrix},
+\]
+which has the desired form.
+And note that there is one \LID{} \emph{column} in \(D\).
+So
+\begin{align*}
+    \rank(A) & = \rank(D) & \text{by the \CORO{3.4.1}} \\
+             & = 1. & \text{by \THM{3.5}}
+\end{align*}
+Hence \(\rank(A) \le 1\), the number of rows of \(A\), and \(\rank(A) \le n\), the number of columns of \(A\).
+Thus the theorem is established for \(m = 1\).
+
+Next assume that the theorem holds for any matrix with \(m - 1\) rows (for some \(m > 1\)).
+We must prove that the theorem holds for any matrix with \(m\) rows.
+
+Suppose that \(A\) is any \(m \X n\) matrix.
+If \(n = 1\), \THM{3.6} can be established in a manner analogous to that for \(m = 1\) (see \EXEC{3.2.10}).
+
+We now suppose that \(n > 1\).
+Since \(A \ne O_{m \X n}\), \(A_{ij} \ne 0\) for \emph{some} \(i, j\).
+By means of at most one e.r.o. and at most one e.c.o. (each of type 1), we can move the nonzero entry to the \(1,1\) position (just as was done in \EXAMPLE{3.2.3}).
+By means of at most one additional type 2 operation, we can assure a \(1\) in the \(1,1\) position.
+(Look at the second operation in \EXAMPLE{3.2.3}.)
+By means of at most \(m - 1\) type 3 row operations and at most \(n - 1\) type 3 column operations,
+we can eliminate all nonzero entries in the first row and the first column with the exception of the \(1\) in the \(1,1\) position.
+(In \EXAMPLE{3.2.3}, we used two row and three column operations to do this.)
+Thus, with a finite number of elementary operations, \(A\) can be transformed into a matrix
+\[
+    B= \left(\begin{array}{c|ccc}
+        1 & 0 & \cdots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & B^{\prime} & \\
+        0 & & &
+    \end{array}\right)
+\]
+where \(B'\) is an \(\RED{(m - 1)} \X (n - 1)\) matrix.
+In \EXAMPLE{3.2.3}, for instance,
+\[
+    B' = \begin{pmatrix}
+        2 & 4 & 2 & 2 \\
+        -6 & -8 & -6 & 2 \\
+        -3 & -4 & -3 & 1
+    \end{pmatrix}.
+\]
+By \EXEC{3.2.11}, \(B'\) must have rank \emph{one less than} \(B\).
+Since \(\rank(A) = \rank(B) = r\), \(\rank(B') = r - 1\).
+Also by the \emph{induction hypothesis}, \(B'\) can be transformed by a \emph{finite} number of elementary row and column operations into the \((m - 1) \X (n - 1)\) matrix \(D'\) such that
+\[
+    D' = \begin{pmatrix}
+        I_{r - 1} & O_4 \\
+        O_5 & O_6
+    \end{pmatrix}
+\]
+where \(O_4, O_5,\) and \(O_6\) are zero matrices, and \(r - 1 \le m - 1\) and \(r - 1 \le n - 1\).
+And the latter simply implies \(r \le m\) and \(r \le n\).
+That is, \(D'\) consists of all zeros except for its first \(r - 1\) diagonal entries, which are ones.
+Let
+\[
+    D = \left(\begin{array}{c|ccc}
+        1 & 0 & \cdots & 0 \\
+        \hline 0 & & & \\
+        \vdots & & D^{\prime} & \\
+        0 & & &
+    \end{array}\right)
+\]
+We see that the theorem now follows once we show that \(D\) can be obtained from \(B\) by means of a finite number of elementary row and column operations.
+However this follows by repeated applications of \EXEC{3.2.12}.
+
+Thus, since \(A\) can be transformed into \(B\) and \(B\) can be transformed into \(D\), each by a \emph{finite} number of elementary operations,
+\(A\) can be transformed into \(D\) by a finite number of elementary operations.
+Finally, since \(D'\) contains ones as its first \(r - 1\) diagonal entries, \(D\) contains ones as its first \(r\) diagonal entries and zeros elsewhere.
+This establishes the theorem.
+\end{proof}
+
+\begin{corollary} \label{corollary 3.6.1}
+Let \(A\) be an \(m \X n\) matrix of rank \(r\).
+Then there exist \emph{invertible} matrices \(B\) and \(C\) of sizes \(m \X m\) and \(n \X n\), respectively, such that \(D = BAC\), where
+\[
+    D = \begin{pmatrix}
+        I_r & O_1 \\
+        O_2 & O_3
+    \end{pmatrix}
+\]
+is the \(m \X n\) matrix in which \(O_1, O_2\), and \(O_3\) are zero matrices.
+\end{corollary}
+
+\begin{proof}
+By \THM{3.6}, \(A\) can be transformed by means of a finite number of elementary row and column operations into the matrix \(D\).
+We can appeal to \THM{3.1} each time we perform an elementary operation.
+Thus there exist elementary \(m \X m\) matrices \(E_1, E_2, ..., E_p\) and elementary \(n \X n\) matrices \(G_1, G_2, ..., G_q\) such that
+\[
+    D = E_p E_{p - 1} ... E_2 E_1 A G_1 G_2 ... G_q.
+\]
+(Notice the \emph{reverse} order of \(E_i\) in the expression.)
+
+By \THM{3.2}, each \(E_i\) and \(G_j\) is invertible.
+Let \(B = E_p E_{p - 1} ... E_1\) and \(C = G_1 G_2 ... G_q\).
+Then \(B\) and \(C\) are invertible by (induction and) \ATHM{2.36}(1), and \(D = BAC\).
+\end{proof}
+
+\begin{corollary} \label{corollary 3.6.2}
+Let \(A\) be an \(m \X n\) matrix.
+Then
+\begin{enumerate}
+\item \(\rank(A^\top) = \rank(A)\).
+\item The rank of any matrix equals the maximum number of its \LID{} \textbf{rows} (this is a different statement from \THM{3.5});
+    that is, the rank of a matrix is the \emph{dimension of the subspace generated by its rows}.
+\item The rows and columns of any matrix generate subspaces of the \textbf{same dimension}, numerically equal to the rank of the matrix.
+\end{enumerate}
+\end{corollary}
+
+\begin{note}
+The corollary just says the dimensions of the ``column space'' and ``row space'' of the given matrix are the same,
+but the generated vector space can be different(although isomorphic).
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item By \CORO{3.6.1}, there exist invertible matrices \(B\) and \(C\) such that \(D = BAC\), where \(D\) satisfies the stated conditions of that corollary.
+Taking transposes, (by \ATHM{2.24},) we have
+\[
+    D^\top = (BAC)^\top = C^\top A^\top B^\top.
+\]
+Since \(B\) and \(C\) are invertible, so are \(B^\top\) and \(C^\top\) by \ATHM{2.36}(2).
+Hence
+\begin{align*}
+    \rank(A^\top) & = \rank(C^\top A^\top B^\top) & \text{by \THM{3.4}(c)} \\
+                  & = \rank(D^\top) \MAROON{(1)}.
+\end{align*}
+Suppose that \(r = \rank(A)\) \MAROON{(2)}.
+Then \(D^\top\) is an \(n \X m\) matrix with the form of the matrix \(D\) in \CORO{3.6.1}, and hence \(\rank(D^\top) = r\) \MAROON{(3)} by \THM{3.5}.
+(That is, the column space of \(D^\top\) trivially has dimension \(r\))
+Thus
+\begin{align*}
+    \rank(A^\top) & = \rank(D^\top) & \text{by \MAROON{(1)}} \\
+                  & = r & \text{by \MAROON{(3)}} \\
+                  & = \rank(A) & \text{by \MAROON{(1)}}.
+\end{align*}
+
+\item From part(a), given any matrix \(A\).
+Let \(a_1, a_2, ..., a_m\) be \emph{rows} of \(A\), therefore \(a_1^\top, a_2^\top, ..., a_m^\top\) are the \emph{columns} of \(A^\top\).
+Then
+\begin{align*}
+    \rank(A) & = \rank(A^\top) & \text{by part(a)} \\
+             & = \dim(\spann(\{a_1^\top, a_2^\top, ... a_m^\top\}), & \text{by \THM{3.5}}
+\end{align*}
+which of course has the same dimension (or isomorphic) as the subspace generated by \(\{ a_1, a_2, ..., a_m \}\),
+that is, the subspace generated by the rows of \(A\).
+
+\item This is a direct consequence of \THM{3.5} and part(b).
+\end{enumerate}
+\end{proof}
+
+\begin{corollary} \label{corollary 3.6.3}
+Every \emph{invertible} (which implies square) matrix is a product of elementary matrices.
+\end{corollary}
+
+\begin{proof} \ 
+
+If \(A\) is an invertible \(n \X n\) matrix, then (by \RMK{3.2.1}) \(\rank(A) = n\).
+Hence the matrix \(D\) in \CORO{3.6.1} equals \(I_n\), and there exist invertible matrices \(B\) and
+\(C\) such that
+\[
+    BAC = D = \I_n \MAROON{(1)}.
+\]
+As in the proof of \CORO{3.6.1}, note that \(B = E_p E_{p - 1} ... E_1\) and \(C = G_1 G_2 ... G_q\), where the \(E_i\)'s and \(G_i\)'s are elementary matrices.
+Thus from \MAROON{(1)} we have \(A = B^{-1} I_n C^{-1} = B^{-1} C^{-1}\),
+so that
+\[
+    A = E_1^{-1} E_2^{-1} ... E_p^{-1} G_q^{-1} G_{q - 1}^{-1} ... G_1^{-1}.
+\]
+The inverses of elementary matrices are elementary matrices, however, and hence \(A\) is the product of elementary matrices.
+\end{proof}
+
+We now use \CORO{3.6.2} to relate the rank of a matrix product to the rank of each factor.
+Notice how the proof exploits the \emph{relationship between the rank of a matrix and the rank of a \LTRAN{}}.
+
+\begin{theorem} \label{thm 3.7}
+Let \(\T : V \to W\) and \(\U : W \to Z\) be \LTRAN{}s on finite-dimensional vector spaces \(V, W\), and \(Z\), and let \(A\) and \(B\) be matrices such that the product \(AB\) is defined.
+Then
+\begin{enumerate}
+\item \(\rank(\U\T) \le \rank(\U)\).
+\item \(\rank(\U\T) \le \rank(\T)\).
+\item \(\rank(AB) \le \rank(A)\).
+\item \(\rank(AB) \le \rank(B)\).
+\end{enumerate}
+That is, the rank of the product [composition] of matrices [\LTRAN{}s] is less than or equal to \emph{both} of each factor.
+\end{theorem}
+
+\begin{proof}
+We prove these items in the order: (a), (c), (d), and (b).
+\begin{enumerate}
+\item[(a)] Clearly, \(\RANGET \subseteq W\) \MAROON{(a.1)}.
+Hence
+\begin{align*}
+    \RANGE(\U\T) & = \U\T(V) & \text{by def of range} \\
+                 & = \U(\T(V)) & \text{by def of composition} \\
+                 & = \U(\RANGET) & \text{by def of range} \\
+                 & \subseteq \U(W) & \text{by \MAROON{(a.1)}} \\
+                 & = \RANGE(\U) & \text{by def of range}
+\end{align*}
+So we have \(\RANGE(\U\T) \subseteq \RANGE(\U)\) \MAROON{(a.2)}.
+Thus
+\begin{align*}
+    \rank(\U\T) & = \dim(\RANGE(\U\T)) & \text{by def of rank of \LTRAN{}} \\
+                & \le \dim(\RANGE(\U)) & \text{by \MAROON{(a.2)}} \\
+                & = \rank(\U). & \text{by def of rank of \LTRAN{}}
+\end{align*}
+
+\item[(c)] We have
+\begin{align*}
+    \rank(AB) & = \rank(\LMTRAN_{AB}) & \text{by \DEF{3.3}} \\
+              & = \rank(\LMTRAN_A \LMTRAN_B) & \text{by \THM{2.15}(e)} \\
+              & \le \rank(\LMTRAN_A) & \text{by part(a)} \\
+              & = \rank(A). & \text{by \DEF{3.3}}
+\end{align*}
+
+\item[(d)] We have
+\begin{align*}
+    \rank(AB) & = \rank((AB)^\top) & \text{by \CORO{3.6.2}} \\
+              & = \rank(B^\top A^\top) & \text{by \ATHM{2.36}(2)} \\
+              & \le \rank(B^\top) & \text{by part(c)} \\
+              & = \rank(B). & \text{by \CORO{3.6.2}}
+\end{align*}
+
+\item[(b)] Let \(\alpha, \beta\), and \(\gamma\) be ordered bases for \(V\), \(W\), and \(Z\), respectively,
+and let \(A' = [\U]_{\beta}^{\gamma}\) and \(B' = [\T]_{\alpha}^{\beta}\).
+Then \(A'B' = [\U\T]_{\alpha}^{\gamma}\) \MAROON{(b.1)} by \THM{2.11}.
+And 
+\begin{align*}
+    \rank(\U\T) & = \rank([\U\T]_{\alpha}^{\gamma}) & \text{by \THM{3.3}} \\
+                & = \rank(A' B') & \text{by \MAROON{(b.1)}} \\
+                & \le \rank(B') & \text{by part(d)} \\
+                & = \rank(\T) & \text{by \THM{3.3}}.
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{remark} \label{remark 3.2.5}
+It is important to be able to compute the rank of any matrix.
+We can use the \CORO{3.4.1}, \THM{3.5} and \THM{3.6}, and \CORO{3.6.2} to accomplish this goal.
+
+The object is to perform elementary row and column operations on a matrix to ``simplify'' it
+(so that the transformed matrix has many zero entries)
+to the point where a simple observation enables us \emph{to determine how many \LID{} rows or columns the matrix has}, and thus to determine its rank.
+\end{remark}
+
+\begin{example} \label{example 3.2.4} \ 
+
+\begin{enumerate}
+\item Let
+\[
+    A = \begin{pmatrix} 1 & 2 & 1 & 1 \\ 1 & 1 & -1 & 1 \end{pmatrix}.
+\]
+Note that the first and second rows of \(A\) are \LID{} since one is not a multiple of the other.
+Thus \(\rank(A) = 2\).
+
+\item Let
+\[
+    A = \begin{pmatrix} 1 & 3 & 1 & 1 \\ 1 & 0 & 1 & 1 \\ 0 & 3 & 0 & 0 \end{pmatrix}.
+\]
+In this case, there are several ways to proceed.
+Suppose that we begin with an e.r.o. to obtain a zero in the \(2,1\) position.
+Subtracting the first row from the second row, we obtain
+\[
+    B = \begin{pmatrix} 1 & 3 & 1 & 1 \\ \RED{0} & -3 & 0 & 0 \\ 0 & 3 & 0 & 0 \end{pmatrix}.
+\]
+Now note that the third row is a multiple of the second row, and the first and second rows are \LID{}. Thus \(\rank(A) = 2\).
+\item Let
+\[
+    A = \begin{pmatrix} 1 & 2 & 3 & 1 \\ 2 & 1 & 1 & 1 \\ 1 & -1 & 1 & 0 \end{pmatrix}.
+\]
+Using elementary row operations, we can transform \(A\) as follows:
+\[
+    A \longrightarrow
+    \left(\begin{array}{rrrr}
+        1 & 2 & 3 & 1 \\
+        \RED{0} & -3 & -5 & -1 \\
+        \RED{0} & -3 & -2 & -1
+    \end{array}\right)
+    \longrightarrow
+    \left(\begin{array}{rrrr}
+        1 & 2 & 3 & 1 \\
+        0 & -3 & -5 & -1 \\
+        0 & \RED{0} & 3 & 0
+    \end{array}\right).
+\]
+It is clear that the last matrix has three \LID{} \emph{rows} and hence has rank \(3\). 
+\end{enumerate}
+\end{example}
+
+\subsection{The Inverse of a Matrix}
+We have remarked that an \(n \X n\) matrix is invertible if and only if its rank is \(n\). (\RMK{3.2.1}.)
+Since we know how to compute the rank of any matrix, we can always test a matrix to determine whether it is invertible.
+We now provide a \emph{simple technique for computing the inverse} of a matrix that utilizes elementary row
+operations.
+
+\begin{definition} \label{def 3.4}
+Let \(A\) and \(B\) be \(m \X n\) and \(m \X p\) matrices, respectively.
+By the \textbf{augmented matrix} \((A|B)\), we mean the \(m \X (n + p)\) matrix \((A B)\),
+that is, the matrix whose first \(n\) columns are the columns of \(A\), and whose last \(p\) columns are the columns of \(B\).
+\end{definition}
+
+\begin{remark} \label{remark 3.2.6}
+Let \(A\) be an invertible \(n \X n\) matrix, and consider the \(n \X 2n\) augmented matrix \(C = (A|I_n)\).
+By \EXEC{3.2.15}, we have
+\begin{align*}
+    A^{-1}C & = A^{-1} (A | I_n) \\
+            & = (A^{-1}A | A^{-1} I_n) & \text{by \EXEC{3.2.15}} \\
+            & = (I_n|\RED{A^{-1}}).
+\end{align*}
+By \CORO{3.6.3}, \(A^{-1}\) is the product of elementary matrices, say \(A^{-1} = E_p E_{p - 1} ... E_1\).
+Thus equation above becomes
+\[
+    E_p E_{p - 1} ... E_1 C = (A^{-1}A | A^{-1} I_n) = (I_n|\RED{A^{-1}}).
+\]
+Because multiplying a matrix \emph{on the left} by an elementary matrix transforms the matrix by an elementary \emph{row} operation (\THM{3.1}), we have the following result:
+
+\BLUE{(3.2.6.1)} If \(A\) is an invertible \(n \X n\) matrix, then it is possible to transform the matrix \((A | I_n)\) into the matrix \((I_n|A^{-1})\) by means of a finite number of elementary \emph{row} operations.
+
+Conversely, suppose that \(A\) is invertible and that, for some \(n \X n\) matrix \(B\), the matrix \((A|I_n)\) can be transformed into the matrix \((I_n|B)\) by a finite number of elementary \emph{row} operations.
+Let \(E_1, E_2, ..., E_p\) be the elementary matrices associated with these elementary \emph{row} operations as in \THM{3.1};
+then
+\[
+    E_p E_{p -1} ... E_1 (A|I_n) = (I_n | B).
+\]
+Letting \(M = E_p E_{p - 1} ... E_1\), then from the equation above and \EXEC{3.2.15} again,
+\[
+    (MA | M) = M(A | I_n) = (I_n | B).
+\]
+Hence \(MA = I_n\) and \(M = B\).
+It follows that \(M = A^{-1}\).
+So \(B = A^{-1}\).
+Thus we have the following result:
+
+\BLUE{(3.2.6.2)} If \(A\) is an invertible \(n \X n\) matrix, and the matrix \((A | I_n)\) is transformed into a matrix of the form \((I_n |B)\) by means of a finite number of elementary \emph{row} operations, then \(B = A^{-1}\).
+
+If, on the other hand, \(A\) is an \(n \X n\) matrix that is \textbf{not} invertible, then \(\rank(A) < n\) (by \RMK{3.2.1}).
+Hence any attempt to transform \((A|I_n)\) into a matrix of the form \((I_n|B)\) by means of elementary row operations must fail because otherwise \(A\) can be transformed into \(I_n\) using the same row operations.
+This is impossible, however, because elementary row operations preserve rank.
+In fact, \(A\) can be transformed \textbf{into a matrix with a row containing only zero entries},
+yielding the following result:
+
+\BLUE{(3.2.6.3)} If \(A\) is an \(n \X n\) matrix that is \emph{not} invertible, then any attempt to transform \((A | I_n)\) into a matrix of the form \((I_n | B)\) by elementary row operations produces a row whose \emph{first \(n\) entries} are zeros.
+
+The next two examples demonstrate these comments.
+\end{remark}
+
+\begin{example} \label{example 3.2.5}
+We determine whether the matrix
+\[
+    A = \begin{pmatrix} 0 & 2 & 4 \\ 2 & 4 & 2 \\ 3 & 3 & 1 \end{pmatrix}
+\]
+is invertible, and if it is, we compute its inverse.
+We attempt to use elementary row operations to transform
+\[
+    (A \mid I)
+    = \left(\begin{array}{lll|lll}
+        0 & 2 & 4 & 1 & 0 & 0 \\
+        2 & 4 & 2 & 0 & 1 & 0 \\
+        3 & 3 & 1 & 0 & 0 & 1
+    \end{array}\right).
+\]
+into a matrix of the form \((I|B)\).
+One method for accomplishing this transformation is to change each column of \(A\) successively, beginning with the first column, into the corresponding column of \(I\).
+Since we need a nonzero entry in the \(1,1\) position, we begin by interchanging rows \(1\) and \(2\).
+The result is
+\[
+    \left(\begin{array}{lll|lll}
+        2 & 4 & 2 & 0 & 1 & 0 \\
+        0 & 2 & 4 & 1 & 0 & 0 \\
+        3 & 3 & 1 & 0 & 0 & 1
+    \end{array}\right).
+\]
+In order to place a \(1\) in the \(1, 1\) position, we must multiply the first row by \(\frac1{2}\);
+this operation yields
+\[
+    \left(\begin{array}{lll|lll}
+        1 & 2 & 1 & 0 & \frac1{2} & 0 \\
+        0 & 2 & 4 & 1 & 0 & 0 \\
+        3 & 3 & 1 & 0 & 0 & 1
+    \end{array}\right).
+\]
+We now complete work in the first column by adding \(-3\) times row \(1\) to row \(3\) to obtain
+\[
+    \left(\begin{array}{lll|lll}
+        1 & 2 & 1 & 0 & \frac1{2} & 0 \\
+        0 & 2 & 4 & 1 & 0 & 0 \\
+        0 & -3 & -2 & 0 & -\frac{3}{2} & 1 
+    \end{array}\right).
+\]
+In order to change the second column of the preceding matrix into the second column of \(I\), we multiply row \(2\) by \(\frac1{2}\) to obtain a \(1\) in the \(2, 2\) position.
+This operation produces
+\[
+    \left(\begin{array}{lll|lll}
+        1 & 2 & 1 & 0 & \frac1{2} & 0 \\
+        0 & 1 & 2 & \frac1{2} & 0 & 0 \\
+        0 & -3 & -2 & 0 & -\frac{3}{2} & 1 
+    \end{array}\right).
+\]
+We now complete our work on the second column by adding \(-2\) times row \(2\) to row \(1\) and \(3\) times row \(2\) to row \(3\).
+The result is
+\[
+    \left(\begin{array}{rrr|rrr}
+        1 & 0 & -3 & -1 & \frac{1}{2} & 0 \\
+        0 & 1 & 2 & \frac{1}{2} & 0 & 0 \\
+        0 & 0 & 4 & \frac{3}{2} & -\frac{3}{2} & 1
+    \end{array}\right).
+\]
+Only the third column remains to be changed.
+In order to place a \(1\) in the \(3, 3\) position, we multiply row \(3\) by \(\frac1{4}\);
+this operation yields
+\[
+    \left(\begin{array}{rrr|rrr}
+        1 & 0 & -3 & -1 & \frac{1}{2} & 0 \\
+        0 & 1 & 2 & \frac{1}{2} & 0 & 0 \\
+        0 & 0 & 1 & \frac{3}{8} & -\frac{3}{8} & \frac1{4}
+    \end{array}\right).
+\]
+Adding appropriate multiples of row \(3\) to rows \(1\) and \(2\) completes the process and gives
+\[
+    \left(\begin{array}{lll|rrr}
+        1 & 0 & 0 & \frac{1}{8} & -\frac{5}{8} & \frac{3}{4} \\
+        0 & 1 & 0 & -\frac{1}{4} & \frac{3}{4} & -\frac{1}{2} \\
+        0 & 0 & 1 & \frac{3}{8} & -\frac{3}{8} & \frac{1}{4}
+    \end{array}\right).
+\]
+Thus \(A\) is invertible, and
+\[
+    A^{-1} = \left(\begin{array}{rrr}
+        \frac{1}{8} & -\frac{5}{8} & \frac{3}{4} \\
+        -\frac{1}{4} & \frac{3}{4} & -\frac{1}{2} \\
+        \frac{3}{8} & -\frac{3}{8} & \frac{1}{4}
+    \end{array}\right).
+\]
+\end{example}
+
+\begin{example} \label{example 3.2.6}
+We determine whether the matrix
+\[
+    A=\left(\begin{array}{rrr}
+        1 & 2 & 1 \\
+        2 & 1 & -1 \\
+        1 & 5 & 4
+    \end{array}\right)
+\]
+is invertible, and if it is, we compute its inverse.
+Using a strategy similar to the one used in \EXAMPLE{3.2.5}, we attempt to use elementary row operations to transform
+\[
+    (A \mid I) =\left(\begin{array}{rrr|rrr}
+        1 & 2 & 1 & 1 & 0 & 0 \\
+        2 & 1 & -1 & 0 & 1 & 0 \\
+        1 & 5 & 4 & 0 & 0 & 1
+    \end{array}\right)
+\]
+into a matrix of the form \((I \mid B)\).
+We first add \(-2\) times row \(1\) to row \(2\) and \(-1\) times row \(1\) to row \(3\).
+We then add row \(2\) to row \(3\).
+The result,
+\[
+\begin{aligned}
+    \left(\begin{array}{rrr|rrr}
+        1 & 2 & 1 & 1 & 0 & 0 \\
+        2 & 1 & -1 & 0 & 1 & 0 \\
+        1 & 5 & 4 & 0 & 0 & 1
+    \end{array}\right)
+    \longrightarrow
+    \left(\begin{array}{rrr|rrr}
+        1 & 2 & 1 & 1 & 0 & 0 \\
+        0 & -3 & -3 & -2 & 1 & 0 \\
+        0 & 3 & 3 & -1 & 0 & 1
+    \end{array}\right) \\
+    \longrightarrow
+    \left(\begin{array}{rrr|rrr}
+        1 & 2 & 1 & 1 & 0 & 0 \\
+        0 & -3 & -3 & -2 & 1 & 0 \\
+        0 & 0 & 0 & -3 & 1 & 1
+    \end{array}\right)
+\end{aligned}
+\]
+is a matrix with a row whose first \(3\) entries are zeros.
+Therefore \(A\) is not invertible.
+\end{example}
+
+Being able to test for invertibility and compute the inverse of a matrix allows us, with the help of \THM{2.18} and \CORO{2.18.1}, \CORO{2.18.2},
+to test for invertibility and \textbf{compute the inverse of a linear transformation}.
+The next example demonstrates this technique.
+
+\begin{example} \label{example 3.2.7}
+Let \(\T: \mathcal{P}_2(\SET{R}) \to \mathcal{P}_2(\SET{R})\) be defined by \(\T(f(x)) = f(x) + f'(x) + f''(x)\),
+where \(f(x)\) and \(f''(x)\) denote the first and second derivatives of \(f(x)\).
+We use \CORO{2.18.1} to test \(\T\) for invertibility and compute the inverse if \(\T\) is invertible.
+Taking \(\beta\) to be the \emph{standard} ordered basis of \(\mathcal{P}_2(\SET{R})\), we have
+\[
+    [\T]_{\beta} = \begin{pmatrix}
+        1 & 1 & 2 \\ 0 & 1 & 2 \\ 0 & 0 & 1
+    \end{pmatrix}.
+\]
+Using the method of \EXAMPLE{3.2.5} and \EXAMPLE{3.2.6}, we can show that \([\T]_{\beta}\) is invertible with inverse
+\[
+    ([\T]_{\beta})^{-1} = \begin{pmatrix}
+        1 & -1 & 0 \\ 0 & 1 & -2 \\ 0 & 0 & 1
+    \end{pmatrix}.
+\]
+Thus (by \CORO{2.18.1}) \(\T\) is invertible, and \(([\T]_{\beta})^{-1} = [\T^{-1}]_{\beta}\).
+Hence by \THM{2.14}, we have
+\begin{align*}
+    [\T^{-1}(a_0 + a_1 x + a_2 x^2)]_{\beta}
+        & = [\T^{-1}]_{\beta} [(a_0 + a_1 x + a_2 x^2)]_{\beta} & \text{by \THM{2.14}} \\
+        & = \left(\begin{array}{rrr}
+                1 & -1 & 0 \\
+                0 & 1 & -2 \\
+                0 & 0 & 1
+            \end{array}\right)
+            \left(\begin{array}{l}
+                a_0 \\ a_1 \\ a_2
+            \end{array}\right) \\
+        & = \left(\begin{array}{c}
+                \BLUE{a_0 - a_1} \\ \RED{a_1 - 2 a_2} \\ \GREEN{a_2}
+            \end{array}\right)
+\end{align*}
+Therefore
+\[
+    \T^{-1}(a_0 + + a_1 x + a_2 x^2) = \BLUE{(a_0 - a_1)} + \RED{(a_1 - 2 a_2)} x + \GREEN{a_2} x^2.
+\]
+\end{example}

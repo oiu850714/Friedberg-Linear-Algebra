@@ -561,7 +561,6 @@ Simplifying, we have row \(i\) of \(AB\) is a linear combinations of rows of \(B
 \end{proof}
 
 \begin{exercise} \label{exercise 2.3.15}
-USEDINSEC3.4\#15.
 Let \(A\) and \(B\) be matrices for which the product matrix \(AB\) is defined, and let \(u_j\) and \(v_j\) denote the \(j\)th columns of \(AB\) and \(B\), respectively.
 If \(v_p = c_1 v_{j_{1}} + c_2 v_{j_{2}} + ... + c_k v_{j_{k}}\) for some scalars \(c_1, c_2, ..., c_k\), prove that \(u_p = c_1 u_{j_{1}} + c_2 u_{j_{2}} + ... + c_k u_{j_{k}}\).
 \end{exercise}
@@ -587,6 +586,12 @@ and \textbf{also with the same} coefficients \(c_1, c_2, ..., c_k\).
     \implies & u_p = c_1 u_{j_1} + c_2 u_{j_2} + ... + c_k u_{j_k} & \text{by \THM{2.13}(a), \(A v_p = u_p\), and so on}
 \end{align*}
 \end{proof}
+
+\begin{note}
+注意，雖然我們有說\ \(v_p\) 可用\ \(v_{j_1}, ..., v_{j_k}\) 加上\ \(c_1, ..., c_k\) 這些係數組出來，\textbf{但我們沒有說\ \(c_1, ..., c_k\) 是唯一的}。我們只有說\ \(u_p\) 也可以用\ \(u_{j_1}, ..., u_{j_k}\) 加上\ \(c_1, ..., c_k\) 這些係數組出來。
+\(v_{j_1}, ..., v_{j_k}\) 是線性獨立才會保證\ \(c_1, ..., c_k\) 是唯一的。
+這種例子會用在\ \EXEC{3.4.15}。
+\end{note}
 
 \begin{exercise} \label{exercise 2.3.16}
 Let \(V\) be a \emph{finite}-dimensional vector space, and let \(\T : V \to V\) be linear.

@@ -1,0 +1,742 @@
+\section{Systems of Linear Equations -- Computational Aspects} \label{sec 3.4}
+
+In \SEC{3.3}. we obtained a necessary and sufficient condition for a system of linear equations to have solutions (\THM{3.11}) and learned how to express the solutions to a \textbf{non}homogeneous system in terms of solutions to the corresponding homogeneous system (\THM{3.9}).
+The latter result enables us to determine \textbf{all} the solutions to a given system if we can \textbf{find one solution} to the given system and \textbf{a basis} for the solution set of the corresponding homogeneous system.
+
+In this section, we use e.\RED{r}.o.s to \emph{accomplish these two objectives simultaneously}.
+(That is, checking consistency and expressing solutions.)
+The essence of this technique is to \textbf{transform} a given system of linear equations \textbf{into a system having the same solutions}, but which is \emph{easier to solve} (as in \SEC{1.4}).
+
+\begin{definition} \label{def 3.6}
+Two systems of linear equations are called \textbf{equivalent} if they have the \emph{same solution set}.
+\end{definition}
+
+The following theorem and corollary give a useful method for \emph{obtaining equivalent systems}.
+
+\begin{theorem} \label{thm 3.13}
+Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns, and let \(C\) be an \textbf{invertible} \(m \X m\) matrix.
+Then the system \((CA)x = Cb\) is equivalent to \(Ax = b\).
+\end{theorem}
+
+\begin{proof}
+Let \(K\) be the solution set for \(Ax = b\) and \(K'\) the solution set for \((CA)x = Cb\).
+If \(w \in K\), then
+\begin{align*}
+             & Aw = b \\
+    \implies & C(Aw) = Cb \\
+    \implies & (CA)w = Cb, & \text{by \THM{2.16}}
+\end{align*}
+and hence \(w \in K'\).
+Thus \(K \subseteq K'\).
+
+Conversely, if \(w \in K'\), then \((CA)w = Cb\).
+Hence \(Aw = C^{-1}(CAw) = C^{-1}(Cb) = b\);
+so \(w \in K\).
+Thus \(K' \subseteq K\), and therefore, \(K = K'\).
+\end{proof}
+
+\begin{corollary} \label{corollary 3.13.1}
+Let \(Ax = b\) be a system of m linear equations in \(n\) unknowns.
+IE \((A'|b')\) is obtained from \((A | b)\) by a finite number of \emph{elementary \textbf{row} operations}, then the system \(A'x = b'\) is equivalent to the original system.
+\end{corollary}
+
+\begin{note}
+Note that elementary \textbf{column} operations may change the solution set.
+Counterexample is easy to find.
+\end{note}
+
+\begin{proof}
+Suppose that \((A'|b')\) is obtained from \((A|b)\) by elementary row
+operations.
+(By \THM{3.3}) These may be executed by multiplying \((A|b)\) by elementary \(m \X m\) matrices \(E_1, E_2, ..., E_p\).
+Let \(C = E_p ... E_2 E_1\);
+then
+\begin{align*}
+    (A' | b') & = C(A | b) \\
+              & = (CA | Cb). & \text{by \ATHM{3.8}}
+\end{align*}
+Since each \(E_i\) is invertible, so is \(C\). Now \(A' = CA\) and \(b' = Cb\).
+Thus by \THM{3.13}, the system \(A'x = b'\) is equivalent to the system \(Ax = b\).
+\end{proof}
+
+\begin{remark} \label{remark 3.4.1}
+We now describe \emph{a method for solving any} system of linear equations.
+Consider, for example, the system of linear equations
+\[
+    \sysdelim..\systeme{
+        3 x_1 + 2 x_2 + 3 x_3 - 2 x_4 = 1,
+          x_1 +   x_2 +   x_3         = 3,
+          x_1 + 2 x_2 +   x_3 -   x_4 = 2
+    }
+\]
+First, we form the augmented matrix
+\[
+    \left(\begin{array}{rrrr|r}
+        3 & 2 & 3 & -2 & 1 \\
+        1 & 1 & 1 & 0 & 3 \\
+        1 & 2 & 1 & -1 & 2
+    \end{array}\right).
+\]
+By using elementary row operations, we transform the augmented matrix into an \textbf{upper triangular} matrix in which \textbf{the first nonzero entry of each row is \(1\)},
+and it occurs in a column \emph{to the right of} the first nonzero entry of each \emph{preceding} row.
+(Recall that matrix \(A\) is upper triangular if \(A_{ij} = 0\) whenever \(i > j\).)
+
+\begin{enumerate}
+\item[1.] \emph{In the leftmost nonzero column, create a \(1\) in the first row}.
+    In our example, we can accomplish this step by interchanging the first and third rows.
+    The resulting matrix is
+    \[
+        \left(\begin{array}{rrrr|r}
+            1 & 2 & 1 & -1 & 2 \\
+            1 & 1 & 1 & 0 & 3 \\
+            3 & 2 & 3 & -2 & 1
+        \end{array}\right).
+    \]
+\item[2.] \emph{By means of type \(3\) row operations, use the first row to obtain zeros in the remaining positions of the leftmost nonzero column}.
+    In our example, we must add \(-1\) times the first row to the second row and then add \(-3\) times the first row to the third row to obtain
+    \[
+        \left(\begin{array}{rrrr|r}
+            1 & 2 & 1 & -1 & 2 \\
+            \RED{0} & -1 & 0 & 1 & 1 \\
+            \RED{0} & -4 & 0 & 1 & -5
+        \end{array}\right).
+    \]
+\item[3.] \emph{Create a \(1\) in the next row in the \textbf{leftmost possible} column, without using previous row(s)}.
+    In our example, the second column is the leftmost possible column, and we can obtain a \(1\) in the second row, second column by multiplying the second row by \(-1\).
+    This operation produces
+    \[
+        \left(\begin{array}{rrrr|r}
+            1 & 2 & 1 & -1 & 2 \\
+            0 & \RED{1} & 0 & -1 & -1 \\
+            0 & -4 & 0 & 1 & -5
+        \end{array}\right).
+    \]
+\item[4.] \emph{Now use type 3 elementary row operations to obtain zeros below the \(1\) created in the preceding step}.
+    In our example, we must add four times the second row to the third row.
+    The resulting matrix is
+    \[
+        \left(\begin{array}{rrrr|r}
+            1 & 2 & 1 & -1 & 2 \\
+            0 & 1 & 0 & -1 & -1 \\
+            0 & \RED{0} & 0 & -3 & -9
+        \end{array}\right).
+    \]
+\item[5.] \emph{Repeat steps 3 and 4 on each succeeding row until no nonzero rows remain}.
+    (This creates zeros below the first nonzero entry in each row.)
+    In our example, this can be accomplished by multiplying the third row by \(-\frac1{3}\).
+    This operation produces
+    \[
+        \left(\begin{array}{rrrr|r}
+            1 & 2 & 1 & -1 & 2 \\
+            0 & 1 & 0 & -1 & -1 \\
+            0 & 0 & 0 & \RED{1} & 3
+        \end{array}\right).
+    \]
+We have now obtained the desired (upper-triangular) matrix.
+To complete the simplification of the augmented matrix, \emph{we must make the first nonzero entry in each row the only nonzero entry in its column}.
+(This corresponds to eliminating certain unknowns from all but one of the equations.)
+\item[6.] \emph{\textbf{Work upward}, beginning with the last nonzero row, and add multiples of each row to the rows above}.
+    (This creates zeros \textbf{above} the first nonzero entry in each row.)
+    In our example, the third row is the last nonzero row, and the first nonzero entry of this row lies in column \(4\).
+    Hence we add the third row to the first and second rows to obtain zeros in row \(1\), column \(4\) and row \(2\), column \(4\).
+    The resulting matrix is
+    \[
+        \left(\begin{array}{rrrr|r}
+            1 & 2 & 1 & \RED{0} & 5 \\
+            0 & 1 & 0 & \RED{0} & 2 \\
+            0 & 0 & 0 & 1 & 3
+        \end{array}\right).
+    \]
+\item[7.] \emph{Repeat the process described in step 6 for each preceding row until it is performed with the second row, at which time the reduction process is complete}.
+    In our example, we must add \(-2\) times the second row to the first row in order to make the first row, second column entry become zero. This operation produces
+    \[
+        \left(\begin{array}{rrrr|r}
+            1 & \RED{0} & 1 & 0 & 1 \\
+            0 & 1 & 0 & 0 & 2 \\
+            0 & 0 & 0 & 1 & 3
+        \end{array}\right).
+    \]
+\end{enumerate}
+We have now obtained the desired reduction of the augmented matrix.
+This matrix corresponds to the system of linear equations
+\[
+    \sysdelim..\systeme{
+        x_1 + x_3 = 1,
+        x_2 = 2,
+        x_4 = 3
+    }.
+\]
+Recall that, by the \CORO{3.13.1}, this system is \emph{equivalent to the original} system.
+But this system is easily solved.
+Obviously \(x_2 = 2\) and \(x_4 = 3\).
+Moreover, \(x_1\) and \(x_3\) can have any values provided their sum is \(1\).
+Letting \(x_3 = t\), we then have \(x_1 = 1 - t\).
+Thus an arbitrary solution to the original system has the form
+\[
+    \begin{pmatrix} 1 - t \\ 2 \\ t \\ 3 \end{pmatrix}
+    = \begin{pmatrix} 1 \\ 2 \\ 0 \\ 3 \end{pmatrix}
+    + t \begin{pmatrix} -1 \\ 0 \\ 1 \\ 0 \end{pmatrix}.
+\]
+Observe that
+\[
+    \left\{ \begin{pmatrix} -1 \\ 0 \\ 1 \\ 0 \end{pmatrix} \right\}
+\]
+is a basis for the solutions of \textbf{homogeneous} system of equations corresponding to the given system.
+\end{remark}
+
+In the preceding example we performed elementary \textbf{row} operations on the augmented matrix of the system until we obtained the augmented matrix of a system having properties 1, 2, and 3 in \RMK{1.4.1}.
+Such a matrix has a special name.
+
+\begin{definition} \label{def 3.7}
+A matrix is said to be in \textbf{reduced row echelon form} if the following three conditions are satisfied.
+\begin{enumerate}
+\item Any row containing a nonzero entry precedes any row in which all the entries are zero (if any).
+\item The first nonzero entry in each row is the only nonzero entry in its column.
+\item The first nonzero entry in each row is \(1\) and it occurs in a column to the right of the first nonzero entry in the preceding row.
+    (Or, its column position is greater than the column position of the preceding row's first nonzero entry.)
+\end{enumerate}
+\end{definition}
+
+\begin{remark} \label{remark 3.4.2}
+By the structure of the reduced row echelon form, it's of course that the rank of any matrix in reduced row echelon form is equal to \emph{the number of nonzero rows} of the matrix.
+\end{remark}
+
+\begin{note}
+英文苦手(的話)，可去看\href{https://www.wikiwand.com/zh-tw/\%E9\%98\%B6\%E6\%A2\%AF\%E5\%BD\%A2\%E7\%9F\%A9\%E9\%98\%B5}{中文的定義}，雖然也是非常的拗口。
+
+或者根據莊重:
+\begin{enumerate}
+\item[(1)] 所有全\ \(0\) 的列一定要在所有不為全\ \(0\) 的列下方。
+\item[(2)] 每一列的第一個非\ \(0\) 元素，其對應的那一行的其它元素都為\ \(0\)。
+\item[(3)] 任一列\ \(r\) 的第一個非\ \(0\) 元素必須是\ \(1\)，而且它的行數會比前一列的第一個非\ \(0\) 元素的行數還要大。
+\end{enumerate}
+\end{note}
+
+\begin{example} \label{example 3.4.1} \ 
+
+\begin{enumerate}
+\item 
+The (last) matrix in step 7 of \RMK{3.4.1} is in reduced row echelon form.
+Note that the first nonzero entry of each row is \(1\) and that the \emph{column} containing each such entry has all zeros otherwise.
+Also note that each time we move downward to a new row, \emph{we must move to the right one or more columns} to find the first nonzero entry of the new row.
+
+\item
+The matrix
+\[
+    \begin{pmatrix} 1 & 1 & 0 \\ 0 & 1 & 0 \\ \RED{1} & 0 & 1 \end{pmatrix}
+\]
+is not in reduced row echelon form, because the first column, which contains the first nonzero entry in row \(1\), contains another nonzero entry.
+Similarly, the matrix
+\[
+    \begin{pmatrix} 1 & 1 & 0 & 2 \\ \RED{1} & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \end{pmatrix}
+\]
+is not in reduced row echelon form, because the first nonzero entry of the second row is not to the right of the first nonzero entry of the first row.
+
+Finally, the matrix
+\[
+    \begin{pmatrix} \RED{2} & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}
+\]
+is not in reduced row echelon form, because the first nonzero entry of the first row is not \(1\).
+\end{enumerate}
+\end{example}
+
+\begin{remark} \label{remark 3.4.3}
+It can be shown (see the \CORO{3.16.1}) that \textbf{the reduced row echelon form of a matrix is unique};
+that is, if different sequences of elementary row operations are used to transform a matrix into matrices \(Q\) and \(Q'\) in reduced row echelon form, then \(Q = Q'\).
+Thus, although there are many different sequences of elementary row operations that can be used to transform a given matrix into reduced row echelon form, they all produce the same result.
+
+The procedure described in \RMK{3.4.1} for reducing an augmented matrix to reduced row echelon form is called \textbf{Gaussian elimination}.
+It consists of two separate parts: \emph{forward pass} and \emph{backward pass}.
+
+\begin{enumerate}
+\item[1.]
+In the \emph{forward pass} (steps 1 - 5), the augmented matrix is transformed into an \emph{upper triangular} matrix in which the first nonzero entry of each row is \(1\), and it occurs in a column to the right of the first nonzero entry of each preceding row.
+
+\item[2.]
+In the \emph{backward pass} or \emph{back-substitution} (steps 6 - 7), the upper triangular matrix is transformed into reduced row echelon form by making the first nonzero entry of each row \emph{the only} nonzero entry of its column.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \label{remark 3.4.4}
+Of all the methods for transforming a matrix into its reduced row echelon form, Gaussian elimination requires the fewest arithmetic operations.
+(For large matrices, it requires approximately 50\% fewer operations than the Gauss-Jordan method, in which the matrix is transformed into reduced row echelon form by using the first nonzero entry in each row to make zero all other entries in its column.)
+Because of this efficiency, Gaussian elimination is the preferred method when solving systems of linear equations \emph{on a computer}.
+
+In this context, the Gaussian elimination procedure is usually \emph{modified in order to minimize \textbf{roundoff errors}}.
+Since discussion of these techniques is inappropriate here, readers who are interested in such matters are referred to books on \textbf{numerical analysis}.
+\end{remark}
+
+\begin{remark} \label{remark 3.4.5}
+When a matrix is in reduced row echelon form, the corresponding system of linear equations is easy to solve.
+We present below a procedure for solving any system of linear equations for which the augmented matrix is in reduced row echelon form.
+
+First, however, we note that \emph{every matrix} can be transformed into reduced row echelon form by Gaussian elimination.
+In the forward pass, we satisfy conditions (a) and (c) in the definition of reduced row echelon form and thereby make zero all entries below the first nonzero entry in each row.
+Then in the backward pass, we make zero all entries above the first nonzero entry in each row, thereby satisfying condition (b) in the
+definition of reduced row echelon form.
+\end{remark}
+
+\begin{theorem} \label{thm 3.14}
+Gaussian elimination transforms \emph{any matrix} into its reduced row echelon form.
+\end{theorem}
+
+\begin{proof}
+See \RMK{3.4.5}.
+\end{proof}
+
+We now describe a method for solving a system in which the augmented matrix is in reduced row echelon form.
+To illustrate this procedure, we consider the system
+\[
+    \sysdelim..\systeme{
+        2 x_1 + 3 x_2 +   x_3 + 4 x_4 - 9 x_5 = 17,
+          x_1 +   x_2 +   x_3 +   x_4 - 3 x_5 = 6,
+          x_1 +   x_2 +   x_3 + 2 x_4 - 5 x_5 = 8,
+        2 x_1 + 2 x_2 + 2 x_3 + 3 x_4 - 8 x_5 = 14
+    }
+\]
+for which the augmented matrix is
+\[
+    \left(\begin{array}{rrrrr|r}
+        2 & 3 & 1 & 4 & -9 & 17 \\
+        1 & 1 & 1 & 1 & -3 & 6 \\
+        1 & 1 & 1 & 2 & -5 & 8 \\
+        2 & 2 & 2 & 3 & -8 & 14
+    \end{array}\right).
+\]
+Applying Gaussian elimination to the augmented matrix of the system produces the following sequence of matrices.
+\[
+\begin{array}{l}
+    \left(\begin{array}{rrrrr|r}
+        2 & 3 & 1 & 4 & -9 & 17 \\
+        1 & 1 & 1 & 1 & -3 & 6 \\
+        1 & 1 & 1 & 2 & -5 & 8 \\
+        2 & 2 & 2 & 3 & -8 & 14
+    \end{array}\right) 
+    \longrightarrow
+    \left(\begin{array}{rrrrr|r}
+        1 & 1 & 1 & 1 & -3 & 6 \\
+        2 & 3 & 1 & 4 & -9 & 17 \\
+        1 & 1 & 1 & 2 & -5 & 8 \\
+        2 & 2 & 2 & 3 & -8 & 14
+    \end{array}\right)
+    \longrightarrow \\
+    \left(\begin{array}{rrrrr|r}
+        1 & 1 & 1 & 1 & -3 & 6 \\
+        \RED{0} & 1 & -1 & 2 & -3 & 5 \\
+        \RED{0} & 0 & 0 & 1 & -2 & 2 \\
+        \RED{0} & 0 & 0 & 1 & -2 & 2
+    \end{array}\right) 
+    \longrightarrow
+    \left(\begin{array}{rrrrr|r}
+        1 & 1 & 1 & 1 & -3 & 6 \\
+        0 & 1 & -1 & 2 & -3 & 5 \\
+        0 & 0 & 0 & 1 & -2 & 2 \\
+        0 & 0 & 0 & \RED{0} & 0 & 0
+    \end{array}\right)
+    \longrightarrow \\
+    \left(\begin{array}{llllr|r}
+        1 & 1 & 1 & \BLUE{0} & -1 & 4 \\
+        0 & 1 & -1 & \BLUE{0} & 1 & 1 \\
+        0 & 0 & 0 & 1 & -2 & 2 \\
+        0 & 0 & 0 & 0 & 0 & 0
+    \end{array}\right)
+    \longrightarrow
+    \left(\begin{array}{rrrrr|r}
+        1 & \BLUE{0} & 2 & 0 & -2 & 3 \\
+        0 & 1 & -1 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 1 & -2 & 2 \\
+        0 & 0 & 0 & 0 & 0 & 0
+    \end{array}\right)
+\end{array}
+\]
+The system of linear equations corresponding to this last matrix is
+\[
+    \sysdelim..\systeme{
+        x_1 + 2 x_3 - 2 x_5 = 3,
+        x_2 - x_3 + x_5 = 1,
+        x_4 - 2 x_5 = 2.
+    }
+\]
+Notice that \emph{we have ignored the last row since it consists entirely of zeros}.
+
+To solve a system for which the augmented matrix is in reduced row echelon form, \textbf{divide the variables into two sets}.
+The first set consists of those variables that appear as \emph{leftmost variables} in one of the equations of the system (in this case the set is \(\{ x_1, x_2, x_4 \}\)).
+The second set consists of all the remaining variables (in this case, \(\{ x_3, x_5 \}\)).
+To each variable in the second set, assign a \emph{parametric} value \(t_1, t_2, ...\) (\(x_3 = t_1, x_5 = t_2\)),
+and then solve for the variables of the first set in terms of those in the second set:
+\begin{align*}
+    x_{1} & = -2 x_{3}+2 x_{5}+3 = -2 t_{1}+2 t_{2}+3 \\
+    x_{2} & = x_{3}-x_{5}+1= t_{1}-t_{2}+1 \\
+    x_{4} & = 2 x_{5}+2= 2 t_{2}+2 .
+\end{align*}
+
+Thus an arbitrary solution is of the form
+\[
+    \left(\begin{array}{l} x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \\ x_{5} \end{array}\right)
+    = \left(\begin{array}{c}
+        -2 t_{1}+2 t_{2}+3 \\
+        t_{1}-t_{2}+1 \\
+        t_{1} \\
+        2 t_{2}+2 \\
+        t_{2}
+    \end{array}\right)
+    = \left(\begin{array}{l} 3 \\ 1 \\ 0 \\ 2 \\ 0 \end{array}\right)
+    + t_{1} \left(\begin{array}{r} -2 \\ 1 \\ 1 \\ 0 \\ 0 \end{array}\right)
+    + t_{2}\left(\begin{array}{r} 2 \\ -1 \\ 0 \\ 2 \\ 1 \end{array}\right),
+\]
+where \(t_1, t_2 \in \SET{R}\).
+Notice that
+\[
+    \left\{
+    \left(\begin{array}{r} -2 \\ 1 \\ 1 \\ 0 \\ 0 \end{array}\right),
+    \left(\begin{array}{r} 2 \\ -1 \\ 0 \\ 2 \\ 1 \end{array}\right)
+    \right\}
+\]
+is a basis for the solution set of the \emph{corresponding homogeneous system} of equations and
+\[
+    \left(\begin{array}{l} 3 \\ 1 \\ 0 \\ 2 \\ 0 \end{array}\right)
+\]
+is a particular solution to the original system.
+
+Therefore, in simplifying the augmented matrix of the system to reduced row echelon form, \textbf{we are in effect simultaneously finding} a particular solution to the original system \textbf{and} a basis for the solution set of the associated homogeneous system.
+Moreover, this procedure \textbf{detects when} a system \textbf{is inconsistent}, for by \EXEC{3.4.3},
+solutions exist if and only if, in the reduction of the augmented matrix to reduced row echelon form, we \emph{do not obtain a row in which the only nonzero entry lies in the last column}.
+
+Thus to use this procedure for solving a system \(Ax = b\) of \(m\) linear equations in \(n\) unknowns, we need only begin to transform the augmented matrix \((A|b)\) into its reduced row echelon form \((A'|b')\) by means of Gaussian elimination.
+If a row is obtained in which the only nonzero entry lies in the last column, then the original system is inconsistent.
+Otherwise, discard any zero rows from \((A'|b')\), and write the corresponding system of equations.
+Solve this system as described above to obtain an arbitrary solution of the form
+\[
+    s = s_0 + t_1 u_1 + t_2 u_2 + ... + t_{n - r} u_{n - r},
+\]
+where \(r\) is the \emph{number of nonzero rows} in \(A'\) (\(r \le m\)).
+The preceding equation is called a \textbf{general solution} of the system \(Ax = b\).
+It \emph{expresses an arbitrary solution \(s\) of \(Ax = b\) in terms of \(n - r\) parameters}.
+(\(t_1, t_2, ..., t_{n - r}\).)
+
+The following theorem states that \(s\) \emph{cannot} be expressed in fewer than \(n - r\) parameters.
+
+\begin{theorem} \label{thm 3.15}
+Let \(Ax = b\) be a system of \(r\) nonzero equations in \(n\)
+unknowns.
+Suppose that \(\rank(A) = \rank(A|b)\) and that \((A|b)\) is in reduced row echelon form.
+Then
+\begin{enumerate}
+\item \(\rank(A) = r\).
+\item If the general solution obtained by the procedure above is of the form
+\[
+    s = s_0 + t_1 u_1 + t_2 u_2 + ... + t_{n - r} u_{n - r},
+\]
+then \(\{ u_1, u_2, ..., u_{n-r} \}\) \emph{is a basis} for the solution set of the \emph{corresponding homogeneous} system,
+and \(s_0\) is a solution to the original system.
+(Hence the general solution must be expressed in at least \(n - r\) parameters.)
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Since \(Ax = b\) has \(r\) nonzero equations, \(A\) has \(r\) nonzero rows, hence of course \((A|b)\) also has \(r\) nonzero rows.
+And since \((A|b)\) is in reduced row echelon form, clearly these rows are \emph{\LID{}} by the definition of reduced row echelon form, so \(\rank(A|b) = r\).
+And by supposition, \(\rank(A|b) = \rank(A)\), so \(\rank(A) = r\).
+
+Let \(K\) be the solution set for \(Ax = b\), and let \(\mathrm{K_H}\) be the solution set for \(Ax = 0\).
+We see from the form of the general solution that \(s = s_0 \in K\) if we set \(t_1 = t_2 = ... = t_{n - r} = 0\).
+But by \THM{3.9}, \(K = \{ s_0 \} + \mathrm{K_H}\).
+Hence
+\[
+    \mathrm{K_H} = \{ -s_0 \} + K = \spann(\{ u_1, u_2, ..., u_{n-r}\}).
+\]
+Why? Because by definition
+\begin{align*}
+    \{ -s_0 \} + K & = \{ -s_0 + k : k \in K \}) \\
+                   & = \{ -s_0 + k : k \in \{ s_0 \} + \mathrm{K_H} \}) \\
+                   & = \{ -s_0 + k : k \in \{ s_0 + k' : k' \in \mathrm{K_H} \} \}) \\
+                   & = \{ -s_0 + (s_0 + k') : k' \in \mathrm{K_H} \}) \\
+                   & = \{ k' : k' \in \mathrm{K_H} \}) \\
+                   & = \spann(\{ u_1, u_2, ..., u_{n-r}\}) & \text{of course by the form of general solution}
+\end{align*}
+
+And we have
+\begin{align*}
+    \dim(\mathrm{K_H}) & = \dim(\NULL(\LMTRAN_A)) & \text{by \THM{3.8}} \\
+                       & = n - \rank(\LMTRAN_A) & \text{by \THM{2.3}} \\
+                       & = n - \rank(A) & \text{by \DEF{3.3}} \\
+                       & = n - r & \text{by part(a)}
+\end{align*}
+So since \(\dim(\mathrm{K_H}) = n - r\) and \(\mathrm{K_H}\) is generated by a set \(\{ u_1, u_2, ..., u_{n - r} \}\) containing \emph{at most} \(n - r\) vectors, (by \CORO{1.10.3}(a)) we conclude that this set is a basis for \(\mathrm{K_H}\).
+\end{proof}
+
+\subsection{An Interpretation of the Reduced Row Echelon Form}
+Let \(A\) be an \(m \X n\) matrix with columns \(a_1, a_2, ..., a_n\), and let \(B\) be the reduced row echelon form of \(A\).
+Denote the columns of \(B\) by \(b_1, b_2, ..., b_n\).
+If the rank of \(A\) is \(r\), then the rank of \(B\) is also \(r\) by the \CORO{3.4.1}.
+Because \(B\) is in reduced row echelon form, (from the structure of the form,) no nonzero row of \(B\) can be a linear combination of the other rows of \(B\).
+Hence \(B\) must have exactly \(r\) nonzero rows.
+And if \(r \ge 1\), (then by the structure of r.r.e.f. again,) the vectors \(e_1, e_2, ..., e_r\), the first \(r\) vectors of the standard ordered basis of \(F^n\), must occur among the \textbf{columns} of \(B\).
+
+Now for \(i = 1, 2, ..., r\), let \(j_i\) denote a \emph{column number} of \(B\) such that \(b_{j_i} = e_i\).
+We \textbf{claim that} \(a_{j_1}, a_{j_2}, ..., a_{j_r}\), the columns of \(A\) corresponding to these columns of \(B\), are also \LID{}.
+
+For suppose that there are scalars \(c_1, c_2, ..., c_r\) such that
+\[
+    c_1 a_{j_1} + c_2 a_{j_2} + ... + c_r a_{j_r} = 0,
+\]
+Because \(B\) can be obtained from \(A\) by a sequence of elementary \emph{row} operations, there exists an invertible \(m \X m\) matrix \(M = E_p E_{p - 1} ... E_2 E_1\) where \(E_i\) represents elementary row operations, such that \(MA = B\).
+Multiplying the preceding equation by \(M\) yields
+\[
+    c_1 M a_{j_1} + c_2 M a_{j_2} + ... + c_r M a_{j_r} = 0.
+\]
+By \THM{2.13}(a), The \(j_i\)th column of \(MA\) is equal to \(M a_{j_i}\), but since \(MA = B\), the \(j_i\)th column of \(B\) is equal to \(M a_{j_i}\).
+That is, \(b_{j_i} = M a_{j_i}\) \MAROON{(1)}.
+But \(b_{j_i} = e_i\), we have \(M a_{j_i} = e_i\).
+It follows that
+\[
+    c_1 e_1 + c_2 e_2 + ... + c_r e_r = 0.
+\]
+Hence \(c_1 = c_2 = ... = c_r = 0\), proving that the vectors \(a_{j_1}, a_{j_2}, ..., a_{j_r}\) are \LID{}.
+
+Because \(B\) has only \(r\) nonzero rows, every column of \(B\) has the form
+\[
+    \begin{pmatrix} d_1 \\ d_2 \\ \vdots \\ d_r \\ \RED{0} \\ \RED{\vdots} \\ \RED{0} \end{pmatrix}
+\]
+for scalars \(d_1, d_2, ..., d_r\).
+And from the equation \MAROON{(1)}, we have \(b_i = M a_i\), hence \(a_i = M^{-1} b_i\) \MAROON{(2)}.
+But from the form of column of \(B\) above, \(a_i = M^{-1} b_i = M^{-1} (d_1 e_1 + d_2 e_2 + ... + d_r e_r)\).
+Hence \textbf{the corresponding column of \(A\) must be}
+\begin{align*}
+    M^{-1} (d_1 e_1 + d_2 e_2 + ... + d_r e_r)
+    & = d_1 M^{-1} e_1 + d_2 M^{-1} e_2 + ... + d_r M^{-1} e_r \\
+    & = d_1 M^{-1} b_{j_1} + d_2 M^{-1} b_{j_2} + ... + d_r M^{-1} b_{j_r} \\
+    & = d_1 a_{j_1} + d_2 a_{j_2} + ... + d_r a_{j_r} & \text{by \MAROON{(2)}}
+\end{align*}
+
+The next theorem summarizes these results.
+
+\begin{theorem} \label{thm 3.16}
+Let \(A\) be an \(m \X n\) matrix of rank \(r\), where \(r > 0\), and let \(B\) be the reduced row echelon form of \(A\).
+Then
+\begin{enumerate}
+\item The number of nonzero rows in \(B\) is \(r\).
+\item For each \(i = 1, 2, ... , r\), there is a column \(b_{j_i}\), of \(B\) such that \(b_{j_i} = e_i\)
+\item The columns of \(A\) numbered \(j_1, j_r, ..., j_r\) are \LID{}.
+\item For each \(k = 1, 2, ... , n\), if column \(k\) of \(B\) is \(d_1 e_1 + d_2 e_2 + ... + d_r e_r\), then column \(k\) of \(A\) is \(d_1 a_{j_1} + d_2 a_{j_2} + ... + d_r a_{j_r}\).
+\end{enumerate}
+
+The proof is described in the (long) previous discussion.
+BTW, for part(d), there is a related exercise: \EXEC{2.3.15}.
+\end{theorem}
+
+\begin{corollary} \label{corollary 3.16.1}
+The reduced row echelon form of a matrix is \textbf{unique}.
+\end{corollary}
+
+\begin{proof}
+See \EXEC{3.4.15}.
+\end{proof}
+
+\begin{example} \label{example 3.4.2}
+Let
+\[
+    A = \left(\begin{array}{ccccc}
+        2 & 4 & 6 & 2 & 4 \\
+        1 & 2 & 3 & 1 & 1 \\
+        2 & 4 & 8 & 0 & 0 \\
+        3 & 6 & 7 & 5 & 9
+    \end{array}\right)
+\]
+
+The reduced row echelon form of \(A\) is
+\[
+    B=\left(\begin{array}{rrrrr}
+        \RED{1} & 2 & 0 & 4 & 0 \\
+        0 & 0 & \RED{1} & -1 & 0 \\
+        0 & 0 & 0 & 0 & \RED{1} \\
+        0 & 0 & 0 & 0 & 0
+    \end{array}\right)
+\]
+Since \(B\) has three nonzero rows, (by \THM{3.16}(a)) the rank of \(A\) is \(3\).
+The first, third, and fifth columns of \(B\) are \(e_1, e_2\), and \(e_3\);
+so \THM{3.16}(c) \emph{asserts that the first, third, and fifth columns} of \(A\) are \LID{}.
+
+Let the columns of \(A\) be denoted \(a_1, a_2, a_3, a_4\), and \(a_5\).
+Because the \RED{second} column of \(B\) is \(2 e_{1}\), wehere \(e_{1} = b_{\BLUE{1}}\), it follows from \THM{3.16}(d) that \(a_{\RED{2}} = 2 a_{\BLUE{1}}\), as is easily checked.
+Moreover, since the fourth column of \(B\) is \(4 e_1 + (-1) e_2\), where \(e_1 = b_{\GREEN{1}}\) and \(e_2 = b_{\BLUE{3}}\), the same result shows that
+\[
+    a_4 = 4 a_{\GREEN{1}} + (-1) a_{\BLUE{3}}.
+\]
+\end{example}
+
+In \EXAMPLE{1.6.6}. we extracted a basis for \(\SET{R}^3\) from the \emph{generating} set
+\[
+    S = \{ (2, -3, 5), (8, -12, 20), (1, 0, -2), (0, 2, -1), (7, 2, 0) \}.
+\]
+The procedure described there (precisely, the procedure described in \THM{1.9}) can be \emph{streamlined} by using \THM{3.16}.
+We begin by noting that if \(S\) were \LID{}, then S would be a basis for \(\SET{R}^3\).
+In this case, it is clear that \(S\) is \LDP{} because
+\(S\) contains more than \(\dim(\SET{R}^3) = 3\) vectors.
+Nevertheless, it is \emph{instructive to consider the \textbf{calculation}} that is needed to determine whether \(S\) is \LDP{} or \LID{}.
+Recall that \(S\) is linearly dependent if there are scalars \(c_1, c_2, c_3, c_4\), and \(c_5\), \emph{not all zero}, such that
+\[
+    c_1(2, -3, 5) + c_2(8, -12, 20) + c_3(1, 0, -2) + c_4(0, 2, -1) + c_5(7, 2, 0) = (0, 0, 0).
+\]
+Thus \(S\) is \LDP{} if and only if the system of linear equations
+\[
+    \sysdelim..\systeme{
+         2 c_1 +  8 c_2 +   c_3         + 7 c_5 = 0,
+        -3 c_1 - 12 c_2         + 2 c_4 + 2 c_5 = 0,
+         5 c_1 + 20 c_2 - 2 c_3 -   c_4         = 0
+    }
+\]
+has a \textbf{nonzero} solution.
+The augmented matrix of this system of equations is
+\[
+    A=\left(\begin{array}{rrrrrr}
+        2 & 8 & 1 & 0 & 7 & 0 \\
+        -3 & -12 & 0 & 2 & 2 & 0 \\
+        5 & 20 & -2 & -1 & 0 & 0
+    \end{array}\right),
+\]
+and its reduced row echelon form is
+\[
+    B=\left(\begin{array}{llllll}
+        1 & 4 & 0 & 0 & 2 & 0 \\
+        0 & 0 & 1 & 0 & 3 & 0 \\
+        0 & 0 & 0 & 1 & 4 & 0
+    \end{array}\right).
+\]
+Using the technique described earlier in this section, that is, find the form of the general solution, we can find nonzero solutions of the preceding system, confirming that \(S\) is \LDP{}.
+However, \THM{3.16}(c) gives us additional information.
+Since the first, third, and fourth columns of \(B\) are \(e_1, e_2\), and \(e_3\), we conclude that the first, third, and fourth columns of \(A\) are \LID{}.
+But the columns of \(A\) other than the last column (which is the zero vector) are vectors in \(S\).
+Hence
+\[
+    \beta = \{ (2, -3, 5), (1, 0, -2), (0, 2, -1) \}
+\]
+is a \LID{} subset of \(S\).
+If follows from \CORO{1.10.2}(b) that \(\beta\) is a basis for \(\SET{R}^3\).
+
+\begin{note}
+這邊這坨敘述的意思是，給定一個\ vector space 的\ generating set，我們可以做一個轉換把它變成一個\ system of linear equations，然後用高斯消去法加上\ \THM{3.16}，就可以得到這個\ generating set 的一個\ (subset) basis。
+\end{note}
+
+Because every finite-dimensional vector space over \(F\) is isomorphic to \(F^n\) for some \(n\), a similar approach can be used to reduce any \emph{finite} generating set to a basis.
+This technique is illustrated in the next example.
+
+\begin{example} \label{example 3.4.3}
+The set
+\[
+    S = \{
+        2 + x + 2x^2 + 3x^3,
+        4 + 2x + 4x^2 + 6x^3,
+        6 + 3x + 8x^2 + 7x^3,
+        2 + x + 5x^3,
+        4 + x + 9x^3
+    \}
+\]
+generates a subspace \(V\) of \(\mathcal{P}_{3}(\SET{R})\).
+To find a subset of \(S\) that is a basis for \(V\), we consider the subset
+\[
+    S' = \{(2,1,2,3),(4,2,4,6),(6,3,8,7),(2,1,0,5),(4,1,0,9)\}
+\]
+consisting of the images of the polynomials in \(S\) \emph{under the standard representation} of \(\mathcal{P}_{3}(\SET{R})\) with respect to the standard ordered basis.
+Note that the \(4 \X 5\) matrix in which the \emph{columns} are the vectors in \(S'\) is the matrix \(A\) in \EXAMPLE{3.4.2}.
+From the reduced row echelon form of \(A\), which is the matrix \(B\) in \EXAMPLE{3.4.2},
+we see that the first, third, and fifth columns of \(A\) are \LID{} and the second and fourth columns of  \(A\) are linear combinations of the first, third, and fifth columns.
+Hence
+\[
+    \{(2,1,2,3),(6,3,8,7),(4,1,0,9)\}
+\]
+is a basis for the subspace of \(\SET{R}^4\) that is generated by \(S'\).
+It follows that
+\[
+    \{
+        2 + x + 2 x^2 + 3x^3,
+        6 + 3x + 8x^2 + 7x^3,
+        4 + x + 9x^3
+    \}
+\]
+is a basis for the subspace \(V\) of \(\mathcal{P}_{3}(\SET{R})\).
+\end{example}
+
+We conclude this section by describing a method for \textbf{extending} a \LID{} subset \(S\) of a finite-dimensional vector space \(V\) to a basis for \(V\).
+Recall that this is always possible by \CORO{1.10.2}(c).
+Our approach is based on the replacement theorem and assumes that we can find an explicit basis \(\beta\) for \(V\).
+
+Let \(S'\) be the ordered set consisting of the vectors in \(S\) \textbf{followed by those in} \(\beta\).
+Since \(\beta \subseteq S'\), the set \(S'\) generates \(V\).
+We can then apply the technique described above to reduce
+this generating set to a basis for \(V\) containing \(S\).
+
+\begin{remark} \label{remark 3.4.5}
+Note that the order for putting \(S\) and \(\beta\) into \(S'\) is important,
+because we prefer picking the vectors in \(S\) instead of those in \(\beta\).
+If \(S'\) consists vectors in \(\beta\) followed by those in \(\S\), \textbf{then the reduced basis does not necessarily contain the whole \(S\)!}
+\end{remark}
+
+\begin{note}
+這邊說要把一個線性獨立\ subset \(S\) extend 成一個\ basis 的目的是，我「就是要」一個有包含\ \(S\) 的\ basis。
+(\TODOREF{} 這在實務上很常見，補一下例子。)
+我們可以先造出一個有包含\ \(S\) 跟任一個\ basis \(\beta\) 的\ generating set，然後再用前面的方法把它\ reduce 成另一個(有包含 \(S\) 的) basis。
+\end{note}
+
+\begin{example} \label{example 3.4.4}
+Let
+\[
+    V = \{
+        (x_1, x_2, x_3, x_4, x_5) \in \SET{R}^5
+        : x_1 + 7x_2 + 5x_3 - 4x_4 + 2x_5 = 0
+    \}.
+\]
+
+It is easily verified that \(V\) is a subspace of \(\SET{R}^{5}\) with dimension \(4\) and that
+\[
+    S = \{(-2,0,0,-1,-1),(1,1,-2,-1,-1),(-5,1,0,1,1)\}
+\]
+is a \LID{} subset of \(V\).
+
+To extend \(S\) to a basis for \(V\), we first obtain a basis  \(\beta\) for \(V\).
+To do so, we solve the system of linear equations that defines \(V\).
+Since in this case \(V\) is defined by a single equation, we need only write the equation as
+\[
+    x_1 = -7 x_2 - 5 x_3 + 4 x_4 - 2 x_5
+\]
+and assign parametric values to \(x_2, x_3, x_4\), and \(x_5\).
+If \(x_2 = t_1, x_3 = t_2, x_4 = t_3\), and \(x_5 = t_4\), then the vectors in \(V\) have the form
+\[
+\begin{array}{l}
+    (x_1, x_2, x_3, x_4, x_5) = (-7 t_1 - 5 t_2 + 4 t_3 - 2 t_4, t_1, t_2, t_3, t_4) \\
+    = t_1(-7,1,0,0,0) + t_2(-5,0,1,0,0) + t_3(4,0,0,1,0) + t_4(-2,0,0,0,1)
+\end{array}
+\]
+Hence
+\[
+    \beta = \{(-7,1,0,0,0),(-5,0,1,0,0),(4,0,0,1,0),(-2,0,0,0,1)\}
+\]
+
+is a basis for \(V\) by \THM{3.15}(b).
+
+The matrix whose columns consist of the vectors in \(S\) \emph{followed by those in} \(\beta\) is
+\[
+    \left(\begin{array}{rrrrrrr}
+        \RED{-2} & \RED{1}  & \RED{-5} & -7 & -5 & \BLUE{4} & -2 \\
+        \RED{0}  & \RED{1}  & \RED{1}  &  1 &  0 & \BLUE{0} & 0 \\
+        \RED{0}  & \RED{-2} & \RED{0}  &  0 &  1 & \BLUE{0} & 0 \\
+        \RED{-1} & \RED{-1} & \RED{1}  &  0 &  0 & \BLUE{1} & 0 \\
+        \RED{-1} & \RED{-1} & \RED{1}  &  0 &  0 & \BLUE{0} & 1
+    \end{array}\right)
+\]
+and its reduced row echelon form is
+\[
+    \left(\begin{array}{llllrlr}
+        \RED{1} & \RED{0} & \RED{0} & 1 &    1 & \BLUE{0} & -1 \\
+        \RED{0} & \RED{1} & \RED{0} & 0 & -0.5 & \BLUE{0} & 0 \\
+        \RED{0} & \RED{0} & \RED{1} & 1 &  0.5 & \BLUE{0} & 0 \\
+        \RED{0} & \RED{0} & \RED{0} & 0 &    0 & \BLUE{1} & -1 \\
+        \RED{0} & \RED{0} & \RED{0} & 0 &    0 & \BLUE{0} & 0
+\end{array}\right).
+\]
+Thus (by \THM{3.16(c)})
+\[
+    \{(-2,0,0,-1,-1),(1,1,-2,-1,-1),(-5,1,0,1,1),(4,0,0,1,0)\}
+\]
+(is \LID{}, hence) is a basis for \(V\) containing \(S\).
+\end{example}

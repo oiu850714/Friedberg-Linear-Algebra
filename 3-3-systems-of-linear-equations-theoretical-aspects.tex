@@ -1,0 +1,802 @@
+\section{Systems of Linear Equations -- Theoretical Aspects} \label{sec 3.3}
+
+This section and the next are devoted to the study of systems of linear equations, which arise naturally in both the physical and social sciences.
+In this section, we apply results from \CH{2} to describe the \textbf{solution sets} of systems of linear equations as \emph{subsets}(not necessarily subspaces) of a vector space.
+In \SEC{3.4}, we will use e.r.o.s to provide a \emph{computational method} for finding all solutions to such systems.
+
+\begin{additional definition} \label{adef 3.1}
+The system of equations
+
+\[
+(S)
+\begin{array}{c}
+a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}=b_{1} \\
+a_{21} x_{1}+a_{22} x_{2}+\cdots+a_{2 n} x_{n}=b_{2} \\
+\vdots \\
+a_{m 1} x_{1}+a_{m 2} x_{2}+\cdots+a_{m n} x_{n}=b_{m}
+\end{array}
+\]
+
+where \(a_{ij}\) and  \(b_{i}\) (\(1 \le i \le m\) and \(1 \le j \le n\)) are scalars in a field \(F\) and \(x_1, x_2, ..., x_n\) are \(n\) variables taking values in \(F\), is called \textbf{a system of \(m\) linear equations in \(n\) unknowns over the field \(F\)}.
+
+The \(m \X n\) matrix
+\[
+    A = \left(\begin{array}{cccc}
+        a_{11} & a_{12} & ... & a_{1 n} \\
+        a_{21} & a_{22} & ... & a_{2 n} \\
+        \vdots & \vdots & & \vdots \\
+        a_{m 1} & a_{m 2} & ... & a_{m n}
+    \end{array}\right)
+\]
+is called the \textbf{coefficient matrix} of the system \((S)\).
+
+If we let
+\[
+    x = \left(\begin{array}{c} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{array}\right)
+    \text { and }
+    b = \left(\begin{array}{c} b_{1} \\ b_{2} \\ \vdots \\ b_{m} \end{array}\right),
+\]
+then the system \((S)\) \emph{may be rewritten as a single matrix equation}
+\[
+    A x = b.
+\]
+To exploit the results that we have developed, \emph{we often consider a system of linear equations as a single matrix equation}.
+
+A \textbf{solution} to the system \((S)\) is an \(n\)-tuple
+\[
+    s = \left(\begin{array}{c} s_{1} \\ s_{2} \\ \vdots \\ s_{n} \end{array}\right) \in \SET{R}^{n}
+\]
+such that \(As = b\).
+The \emph{set of all solutions} to the system \((S)\) is called the \textbf{solution set} of the system.
+System \((S)\) is called \textbf{consistent} if its solution set is nonempty;
+otherwise it is called \textbf{inconsistent}.
+\end{additional definition}
+
+\begin{example} \label{example 3.3.1} \ 
+
+\begin{enumerate}
+\item Consider the system
+\[
+    \begin{array}{l}
+        x_1 + x_2 = 3 \\
+        x_1 - x_2 = 1
+    \end{array}.
+\]
+By use of familiar techniques, we can solve the preceding system and conclude that there is only one solution: \(x_1 = 2, x_2 =1\);
+that is,
+\[
+    s = \left(\begin{array}{l} 2 \\ 1 \end{array}\right).
+\]
+
+In matrix form, the system can be written
+\[
+    \left(\begin{array}{rr} 1 & 1 \\ 1 & -1 \end{array}\right)
+    \left(\begin{array}{l} x_1 \\ x_2 \end{array}\right)
+    = \left(\begin{array}{l} 3 \\ 1 \end{array}\right).
+\]
+
+So
+\[
+    A = \left(\begin{array}{rr} 1 & 1 \\ 1 & -1 \end{array}\right) \text { and }
+    b = \left(\begin{array}{l} 3 \\ 1 \end{array}\right)
+\]
+
+\item Consider
+\[
+    \sysdelim..\systeme{
+        2 x_1 + 3 x_2 + x_3 = 1,
+        x_1 - x_2 + 2 x_3 = 6
+    };
+\]
+that is,
+\[
+    \left(\begin{array}{rrr} 2 & 3 & 1 \\ 1 & -1 & 2 \end{array}\right)
+    \left(\begin{array}{l} x_1 \\ x_2 \\ x_3 \end{array}\right)
+    = \left(\begin{array}{l} 1 \\ 6 \end{array}\right).
+\]
+This system has many solutions, such as
+\[
+    s = \left(\begin{array}{r} -6 \\ 2 \\ 7 \end{array}\right)
+    \text { and }
+    s = \left(\begin{array}{r} 8 \\ -4 \\ -3 \end{array}\right).
+\]
+
+\item Consider
+\[
+    \begin{array}{l} x_{1}+x_{2}=0 \\ x_{1}+x_{2}=1 \end{array}
+\]
+that is,
+\[
+    \left(\begin{array}{ll} 1 & 1 \\ 1 & 1 \end{array}\right)
+    \left(\begin{array}{l} x_{1} \\ x_{2} \end{array}\right)
+    = \left(\begin{array}{l} 0 \\ 1 \end{array}\right)
+\]
+It is evident that this system has no solutions.
+Thus we see that a system of linear equations can have one, many, or no solutions.
+\end{enumerate}
+\end{example}
+
+We must be able to \emph{recognize when} a system has a solution and then be able to describe all its solutions.
+This section and the next are devoted to this end.
+
+We begin our study of systems of linear equations by examining the class of \emph{homogeneous systems} of linear equations.
+Our first result (\THM{3.8}) shows that the set of solutions to a homogeneous system of \(m\) linear equations in \(n\) unknowns forms a \textbf{subspace} of \(F^n\).
+Hence we can then apply the theory of vector spaces to this set of solutions.
+For example, a basis for the solution space can be found, and any solution can be expressed as a linear combination of the vectors in the basis.
+
+\begin{definition} \label{def 3.5}
+A system \(Ax = b\) of \(m\) linear equations in \(n\) unknowns is said to be \textbf{homogeneous} if \(b = 0 \in F^m\).
+Otherwise the system is said to be \textbf{nonhomogeneous}.
+\end{definition}
+
+\begin{theorem} \label{thm 3.8}
+Let \(Ax = 0\) be a homogeneous system of \(m\) linear equations in \(n\) unknowns over a field \(F\).
+Let \(K\) denote the set of all solutions to \(Ax = 0\).
+Then \(K = \NULL(\LMTRAN_A)\);
+hence \(K\) is a subspace of \(F^n\) of dimension (by \THM{2.3}) \(\dim(F^n) - \dim(\RANGE(\LMTRAN_A)) = n - \rank(A)\).
+\end{theorem}
+
+\begin{proof}
+Clearly, \(K = \{s \in F^n : As = 0 \}\), which by definition of \(\LMTRAN_A\) is equal to \(\{s \in F^n : \LMTRAN(s) = 0 \}\), which by definition of null space is equal to \(\NULL(\LMTRAN_A)\).
+\end{proof}
+
+\begin{corollary} \label{corollary 3.8.1}
+If \(m < n\), the system \(Ax = 0\) has a \emph{nonzero} solution.
+\end{corollary}
+
+\begin{proof}
+Suppose that \(m < n\).
+Then
+\begin{align*}
+    \rank(A) & = \rank(\LMTRAN_A) & \text{by \DEF{3.3}} \\
+             & \le \min(m, n) & \text{by \THM{3.6}} \\
+             & = m. \MAROON{(1)}
+\end{align*}
+And let \(K = \NULL(\LMTRAN_A)\), then
+\begin{align*}
+    \dim(K) & = n - \rank(A) & \text{by \THM{3.8}} \\
+            & \ge n - m & \text{by \MAROON{(1)}} \\
+            & > 0 & \text{since \(m < n\)}
+\end{align*}
+Since \(\dim(K) > 0\), \(K \ne \{ 0 \}\).
+Thus there exists a \emph{nonzero} vector \(s \in K\);
+so \(s\) is a nonzero solution to \(Ax = 0\).
+\end{proof}
+
+\begin{example} \label{example 3.3.2} \ 
+
+\begin{enumerate}
+\item Consider the system
+\[
+    \sysdelim..\systeme{
+        x_1 + 2 x_2 + x_3 = 0,
+        x_1 - x_2 - x_3 = 0
+    }
+\]
+Let
+\[
+    A = \left(\begin{array}{rrr}
+        1 & 2 & 1 \\
+        1 & -1 & -1
+    \end{array}\right)
+\]
+be the coefficient matrix of this system.
+It is clear that \(\rank(A) = 2\).
+If \(K\) is the solution set of this system, then (by \THM{3.8}) \(\dim(K) = 3 - \rank(A) = 1\).
+Thus any nonzero solution constitutes a basis for \(K\).
+For example, since
+\[
+    \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}
+\]
+is a solution to the given system,
+\[
+    \left\{ \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix} \right\}
+\]
+is a basis for \(K\).
+Thus any vector in \(K\) is of the form
+\[
+    t \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix} = \begin{pmatrix} 1t \\ -2t \\ 3t \end{pmatrix},
+\]
+where \(t \in \SET{R}\).
+
+\item Consider the system \(x_1 - 2x_2 + x_3 = 0\) of \emph{one} equation in \emph{three} unknowns.
+If \(A = \begin{pmatrix} 1 & -2 & 1 \end{pmatrix}\) is the coefficient matrix, then \(\rank(A) = 1\).
+Hence if \(K\) is the solution set, then (by \THM{3.8}) \(\dim(K) = 3 - \rank(K) = 2\).
+Note that
+\[
+    \begin{pmatrix} 2 \\ 1 \\ 0 \end{pmatrix}
+    \text{ and }
+    \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
+\]
+are \LID{} vectors in \(K\).
+Thus they constitute a basis for \(K\), so that
+\[
+    K = \left\{
+        t_1 \begin{pmatrix} 2 \\ 1 \\ 0 \end{pmatrix}
+        + t_2 \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
+        : t_1, t_2 \in \SET{R} \right\}.
+\]
+\end{enumerate}
+\end{example}
+
+\begin{note}
+The example above just mysteriously gave some solution(s) of a system of linear equations.
+In \SEC{3.4}, \emph{explicit computational methods} for finding a basis for the solution set of a homogeneous system are discussed.
+\end{note}
+
+We now turn to the study of \textbf{non}\emph{homogeneous} systems.
+Our next result shows that the solution set of a nonhomogeneous system \(Ax = b\) can be \emph{described in terms of} the solution set of the homogeneous system \(Ax = 0\).
+
+\begin{additional definition} \label{adef 3.2}
+We refer to the equation \(Ax = 0\) as the \textbf{homogeneous system corresponding to} \(Ax = b\).
+\end{additional definition}
+
+\begin{theorem} \label{thm 3.9}
+Let \(K\) be the solution set of a \emph{consistent} system of linear equations \(Ax = b\), (hence \(K\) is non-empty;)
+and let \(\mathrm{K_H}\) be the solution set of the \emph{corresponding homogeneous system} \(Ax = 0\).
+Then for any solution \(s\) to \(Ax = b\),
+\[
+    K = \{ s \} + \mathrm{K_H} = \{ s + k : k \in K_H \}.
+\]
+\end{theorem}
+
+\begin{note}
+Related exercise: \EXEC{2.1.24}. (Or \ATHM{2.6}.)
+\end{note}
+
+\begin{proof}
+Let \(s\) be \emph{any} solution to \(Ax = b\).
+We must show that \(K = \{ s \} + \mathrm{K_H}\).
+Suppose arbitrary \(w \in K\), then \(Aw = b\).
+Hence
+\begin{align*}
+    A(w - s) & = Aw - As & \text{by \THM{2.12}(a)} \\
+             & = b - b \\
+             & = 0,
+\end{align*}
+so \(w - s \in \mathrm{K_H}\).
+In particular, \(w = s + (w - s)\), where \(s \in \{ s \}\) and \(w - s \in \mathrm{K_H}\), so by definition of \( \{ s \} + \mathrm{K_H}\), \(w \in \{ s \} + \mathrm{K_H}\).
+Since \(w\) is arbitrary, we have \(K \subseteq \{ s \} + \mathrm{K_H}\).
+
+Conversely, suppose arbitrary \(w \in \{ s \} + \mathrm{K_H}\);
+then \(w = s + k\) for some \(k \in \mathrm{K_H}\).
+But then \(Aw = A(s + k) = As + Ak = b + 0 = b\);
+so \(w \in K\).
+Therefore \(\{ s \} + \mathrm{K_H} \subseteq K\).
+
+Thus \(K = \{ s \} + \mathrm{K_H}\).
+
+Note that \(K\) is \emph{not} a subspace of \(F^n\) when \(b \ne 0 \in F^m\).
+\end{proof}
+
+\begin{example} \label{example 3.3.3} \ 
+
+\begin{enumerate}
+\item Consider the system
+\[
+    \sysdelim..\systeme{
+        x_1 + 2 x_2 + x_3 = 7,
+        x_1 - x_2 - x_3 = -4
+    }
+\]
+
+The corresponding homogeneous system is the system in \EXAMPLE{3.3.2}(a).
+It is easily verified that
+\[
+    s = \begin{pmatrix} 1 \\ 1 \\ 4 \end{pmatrix}
+\]
+is a solution to the preceding nonhomogeneous system.
+So the solution set of the system is (by \THM{3.9})
+\[
+    K = \left\{ s + k : k \in \mathrm{K_H} \right\}
+      = \left\{ \begin{pmatrix} 1 \\ 1 \\ 4 \end{pmatrix}
+           + t \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}
+           : t \in \SET{R}
+        \right\}
+\]
+
+\item
+Consider the system \(x_1 - 2x_2 + x_3 = 4\).
+The corresponding homogeneous system is the system in \EXAMPLE{3.2.2}(b).
+Since
+\[
+    s = \begin{pmatrix} 4 \\ 0 \\ 0 \end{pmatrix}
+\]
+is a solution to the given system, the solution set \(K\) can be written as
+\[
+    K = s + \mathrm{K_H}
+      = \bigg\{
+        \begin{pmatrix} 4 \\ 0 \\ 0 \end{pmatrix}
+        + t_1 \begin{pmatrix} 2 \\ 1 \\ 0 \end{pmatrix}
+        + t_2 \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
+        : t_1, t_2 \in \SET{R} \bigg\}.
+\]
+\end{enumerate}
+\end{example}
+
+The following theorem provides us with a means of computing solutions to \emph{certain}(\(n\) equations, \(n\) unknowns) systems of linear equations.
+
+\begin{theorem} \label{thm 3.10}
+Let \(Ax = b\) be a system of \(n\) linear equations in \(n\) unknowns.
+If \(A\) is invertible, then the system \textbf{has exactly one solution}, namely, \(A^{-1} b\).
+Conversely, if the system has exactly one solution, then \(A\) is invertible.
+\end{theorem}
+
+\begin{note}
+如果是\ \(n\) 條\ equations，\(n\) 個未知數，則\ \THM{3.10} 可用參數矩陣是否有反矩陣來判斷解是否唯一。
+如果不是\ \(n\) 條\ equations，\(n\) 個未知數，則就用\ \SEC{3.4} 的解法，也就是高斯消去法。
+\end{note}
+
+\begin{proof} \
+
+\(\Longrightarrow\):
+Suppose that \(A\) is invertible.
+Substituting \(A^{-1}b\) (as \(x\)) into the system, we have \(A(A^{-1}b) = (AA^{-1})b = I_n b = b\).
+Thus \(A^{-1}b\) is a solution.
+If \(s\) is an arbitrary solution, then \(As = b\).
+Multiplying both sides by \(A^{-1}\) gives \(s = A^{-1}b\).
+Thus the system has one and only one solution, namely, \(A^{-1}b\).
+
+\(\Longleftarrow\):
+Conversely, suppose that the system has exactly one solution \(s\).
+That is, if we let \(K\) be the solution set of the system, then \(K = \{ s \}\).
+Now let \(\mathrm{K_H}\) denote the solution set for the corresponding homogeneous system \(Ax = 0\).
+By \THM{3.9}, \(K = \{ s \} + \mathrm{K_H}\), that is, \(\{ s \} = \{ s \} + \mathrm{K_H}\).
+But this is so \emph{only if} \(\mathrm{K_H} = \{ 0 \}\).
+Thus (by \THM{3.8}) \(\NULL(\LMTRAN_A) = \{ 0 \}\), which implies \(\LMTRAN_A\) is invertible (since both domain and codomain are \(F^n\));
+that is, \(A\) is invertible.
+\end{proof}
+
+\begin{example} \label{example 3.3.4}
+Consider the following system of three linear equations in three unknowns:
+\[
+    \sysdelim..\systeme{
+        2 x_2 + 4 x_3 = 2,
+        2 x_1 + 4 x_2 + 2 x_3 = 3,
+        3 x_1 + 3 x_2 + 1 x_3 = 1}
+\]
+In \EXAMPLE{3.2.5}, we computed the inverse of the coefficient matrix \(A\) of this system.
+Thus (by \THM{3.10}) the system has exactly one solution, namely,
+\[
+    \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = A^{-1}b 
+    = \left(\begin{array}{rrr}
+        \frac{1}{8} & -\frac{5}{8} & \frac{3}{4} \\
+        -\frac{1}{4} & \frac{3}{4} & -\frac{1}{2} \\
+        \frac{3}{8} & -\frac{3}{8} & \frac{1}{4}
+    \end{array}\right)
+    \begin{pmatrix}
+        2 \\ 3 \\ 1
+    \end{pmatrix}
+    = \begin{pmatrix}
+        -\frac{7}{8} \\ \frac{5}{4} \\ -\frac1{8}
+    \end{pmatrix}.
+\]
+\end{example}
+
+We use this technique for solving systems of linear equations having invertible coefficient matrices in the application that concludes this section.
+
+In \EXAMPLE{3.3.1}(c), we saw a system of linear equations that has \emph{no} solutions.
+We now establish a criterion for determining when a system has solutions.
+This criterion involves the rank of the coefficient matrix of the system \(Ax = b\) and the rank of the matrix \((A|b)\).
+The matrix \((A|b)\) is called the \textbf{augmented matrix of the system} \(Ax = b\).
+
+\begin{theorem} \label{thm 3.11}
+Let \(Ax = b\) be a system of linear equations.
+Then the system is consistent if and only if \(\rank(A) = \rank(A|b)\).
+\end{theorem}
+
+\begin{note}
+直觀的說，就是\ \(Ax = b\) 有解，若且唯若\ \(A\) 的\ columns 能組出\ \(b\)。
+\end{note}
+
+\begin{proof}
+To say that \(Ax = b\) has a solution is equivalent to saying that \(b \in \RANGE(\LMTRAN_A)\).
+(See \EXEC{3.3.8}.)
+In the proof of \THM{3.5}, we saw that
+\[
+    \RANGE(\LMTRAN_A) = \spann(\{ a_1, a_2, ..., a_n \}),
+\]
+the span of the \emph{columns of} \(A\).
+Thus \(Ax = b\) has a solution if and only if \(b \in \spann(\{ a_1, a_2, ..., a_n \})\).
+But \(b \in \spann(\{ a_1, a_2, ... , a_n \})\) if and only if \(\spann(\{ a_1, a_2, ..., a_n \}) = \spann(\{ a_1, a_2, ..., a_n, \RED{b} \})\). (See \CH{1}.)
+This last statement is equivalent to
+\[
+    \dim(\spann(\{ a_1, a_2, ..., a_n \})) = \dim(\spann(\{ a_1, a_2, ..., a_n, b \})).
+\]
+So by \THM{3.5}, the preceding equation reduces to \(\rank(A) = \rank(A | b)\).
+\end{proof}
+
+\begin{example} \label{example 3.3.5}
+Recall the system of equations
+\[
+    \sysdelim..\systeme{
+        x_1 + x_2 = 0,
+        x_1 + x_2 = 1
+    }
+\]
+in \EXAMPLE{3.3.1}(c).
+Since
+\[
+    A = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}
+    \text{ and }
+    (A | b) = \begin{pmatrix} 1 & 1 & 0 \\ 1 & 1 & 1 \end{pmatrix},
+\]
+\(\rank(A) = 1\) and \(\rank(A|b) = 2\).
+Because the two ranks are unequal, the system has no solutions.
+\end{example}
+
+\begin{example} \label{example 3.3.6}
+We can use \THM{3.11} to determine whether \((3, 3, 2)\) is in the range of the \LTRAN{} \(\T : \SET{R}^3 \to \SET{R}^3\) defined by
+\[
+    \T(a_1, a_2, a_3) = (a_1 + a_2 + a_3, a_1 - a_2 + a_3, a_1 + a_3).
+\]
+Now \((3, 3, 2) \in \RANGET\) if and only if there exists a vector \(s = (x_1, x_2, x_3)\) in \(\SET{R}^3\) such that \(\T(s) = (3, 3, 2)\).
+Such a vectors must be a solution to the system
+\[
+    \sysdelim..\systeme{
+        x_1 + x_2 + x_3 = 3,
+        x_1 - x_2 + x_3 = 3,
+        x_1       + x_3 = 2
+    }.
+\]
+Since the ranks of the coefficient matrix and the augmented matrix of this system are \(2\) and \(3\), respectively, it follows by \THM{3.11} that this system has no solutions.
+Hence \((3, 3, 2) \notin \RANGET\).
+\end{example}
+
+\subsection{An Application}
+\begin{note}
+This is also related to \CH{5}.
+\end{note}
+
+In 1973, Wassily-Leontief won the Nobel prize in economics for his work in developing a mathematical model that can be used to \emph{describe various economic phenomena}.
+We close this section by applying some of the ideas we have studied to illustrate two special cases of his work.
+
+We begin by considering a simple society composed of three people
+(industries)
+\begin{itemize}
+\item a farmer who grows all the food
+\item a tailor who makes all the clothing,
+\item and a carpenter who builds all the housing. 
+\end{itemize}
+We assume that each person \emph{sells to and buys from a central pool} and that \textbf{everything produced is consumed}.
+Since no commodities either enter or leave the system, this case is referred to as the \textbf{closed model}.
+
+Each of these three individuals \emph{consumes all} three of the commodities \emph{produced} in the society.
+Suppose that the \emph{proportion} of each of the commodities consumed by each person is given in the following table.
+\[
+    \begin{array}{lccc}
+        \hline & \text { Food } & \text { Clothing } & \text { Housing } \\
+        \hline \text { Farmer } & 0.40 & 0.20 & 0.20 \\
+        \text { Tailor } & 0.10 & 0.70 & 0.20 \\
+        \text { Carpenter } & 0.50 & 0.10 & 0.60 \\
+        \hline
+    \end{array}
+\]
+Notice that each of the columns of the table must sum to \(1\).
+Let \(p_1, p_2\), and \(p_3\) denote the \textbf{incomes} of the farmer, tailor. and carpenter, respectively.
+To ensure that this society survives, \emph{we require that the \textbf{consumption} of each individual equals his or her income}.
+Note that the farmer consumes \(20\)\% of the clothing.
+Because the total cost of all clothing is \(p_2\), the tailor's income, the amount spent by the farmer on clothing is \(0.20 p_2\).
+Moreover, \emph{the amount spent} by the farmer on food, clothing, and housing \emph{must equal} the \emph{farmer's income}, and so we obtain the equation
+\[
+    0.40 p_1 + 0.20 p_2 + 0.20 p_3 = p_1.
+\]
+Similar equations describing the expenditures of the tailor and carpenter produce the following system of linear equations:
+\[
+    \sysdelim..\systeme{
+        0.40 p_1 + 0.20 p_2 + 0.20 p_3 = p_1,
+        0.10 p_1 + 0.70 p_2 + 0.20 p_3 = p_2,
+        0.50 p_1 + 0.10 p_2 + 0.60 p_3 = p_3.
+    }
+\]
+This system can be written as \(Ap = p\), where
+\[
+    p = \begin{pmatrix} p_1 \\ p_2 \\ p_3 \end{pmatrix}
+\]
+and \(A\) is the coefficient matrix of the system.
+(You can see the more general form like \(Ax = x\), which is related the concept called Diagonalization, see \CH{5}.)
+In this context, \(A\) is called the \textbf{input-output (or consumption) matrix}, and \(Ap = p\) is called the \textbf{equilibrium condition}.
+For vectors \(b = (b_1, b_2, ..., b_n)\) and \(c = (c_1, c_2, ..., c_n)\) in \(\SET{R}^n\), we use the notation \(b \ge c\) [\(b > c\)] to mean \(b_i \le c_i\) [\(b_i > c_i\)] for all \(i\).
+The vector \(b\) is called \textbf{nonnegative} [\textbf{positive}) if \(b \ge 0 \in \SET{R}^n\) [\(b > 0 \in \SET{R}^n\)].
+
+At first, it may seem reasonable to replace the equilibrium condition by the inequality \(Ap \le p\), that is, the requirement that consumption \emph{not exceed} production.
+(Or more concretely,
+\begin{align*}
+    0.40 p_1 + 0.20 p_2 + 0.20 p_3 & \RED{\le} p_1,
+    0.10 p_1 + 0.70 p_2 + 0.20 p_3 & \RED{\le} p_2,
+    0.50 p_1 + 0.10 p_2 + 0.60 p_3 & \RED{\le} p_3.
+\end{align*}
+)
+But, in fact, \(Ap \le p\) \textbf{implies that} \(Ap = p\) \textbf{in the closed model}.
+(That is, \(Ap < p\) will never be true.)
+For otherwise, there exists a \(k\) s.t. the \(k\)'s people's consumption is \emph{less than} its income;
+that is,
+\[
+    A_{k1} p_{1} + A_{k2} p_{2} + ... + A_{kn} p_n < p_k.
+\]
+But, since the \emph{columns} of \(A\) sum to \(1\),
+\begin{align*}
+    \sum_{i = 1}^n p_i & > \sum_{i = 1}^n (\sum_{j = 1}^n A_{ij} p_j) & \text{since \(p_k > \sum_{j = 1}^n A_{kj} p_j\)}\\
+                       & = \sum_{j = 1}^n (\sum_{i = 1}^n A_{ij} p_j) & \text{change order of finite summations} \\
+                       & = \sum_{j = 1}^n (\sum_{i = 1}^n A_{ij}) p_j & \text{of course} \\
+                       & = \sum_{j = 1}^n \RED{1} p_j & \text{since the \(i\)th column of \(A\) sums to \(1\)} \\
+                       & = \sum_{j = 1}^n p_j, & \text{of course}
+\end{align*}
+which is a contradiction.
+
+One solution to the \emph{homogeneous system} \((I - A)x = 0\), which is equivalent\RED{*} to the equilibrium condition, is
+\[
+    p = \begin{pmatrix} 0.25 \\ 0.35 \\ 0.40 \end{pmatrix}.
+\]
+We may interpret this to mean that the society \emph{survives} if the farmer, tailor, and carpenter have incomes in the \emph{proportions} \(25 : 35 : 40\) (or \(5 : 7 : 8\)).
+\begin{note}
+\RED{*}, the meaning of the ``equivalent'' is really the \DEF{3.6}, which is in the next section.
+And we have \(s\) is a solution of \((I - A)x = 0\), iff \((I - A)s = 0 \iff Is - As = 0 \iff s - As = 0 \iff As = s\), iff \(s\) is a solution of \(Ap = p\).
+\end{note}
+Notice that we are not simply interested in any nonzero solution to the system, but in one that is \emph{nonnegative}.
+(The meaning of ``negative'' solution in this model makes no sense.)
+Thus we must consider the question of whether the system \((I - A)x = 0\) has a nonnegative solution, where \(A\) is a matrix with nonnegative entries whose columns sum to \(1\).
+A useful theorem(whose proof may be found in ``Applications of Matrices to Economic Models and Social Science Relationships,'' by Ben Noble, Proceedings of the Summer Conference for College Teachers on Applied Mathematics, 1971, CUPM, Berkeley, California) in this direction is stated below.
+
+\begin{theorem} \label{thm 3.12}
+Let \(A\) be an \(n \X n\) input output matrix(So the columns of \(A\) sum to \(1\)) having the form
+\[
+    A = \begin{pmatrix} B & C \\ D & E \end{pmatrix}
+\]
+where \(D\) is a \(1 \X (n - 1)\) positive vector and \(C\) is an \((n - 1) \X 1\) positive vector.
+(So \(B\) is \((n - 1) \X (n - 1)\) square and \(E\) is a single entry.)
+Then \((I - A)x = 0\) has a \emph{one-dimensional} solution set that is \emph{generated by a nonnegative vector}.
+\end{theorem}
+
+Observe that any input-output matrix with all positive entries satisfies the hypothesis of this theorem. The following matrix does also:
+\[
+    \begin{pmatrix}
+        0.75 & 0.50 & 0.65 \\
+        0    & 0.25 & 0.35 \\
+        0.25 & 0.25 & 0
+    \end{pmatrix}.
+\]
+
+\TODOREF{}
+\begin{note}
+Currently the open model below does not make any sense to me.
+I will go back when finishing \CH{5}.
+\end{note}
+
+In the \textbf{open model}, we assume that there is an \emph{outside demand} for each of the commodities produced.
+Returning to our simple society, let \(x_1, x_2\), and \(x_3\) be the monetary values of food, clothing, and housing \emph{produced with respective outside demands} \(d_1, d_2\), and \(d_3\).
+Let \(A\) be the \(3 \X 3\) matrix such that \(A_{ij}\) represents the amount (in a fixed monetary unit such as the dollar) of commodity \(i\) required to produce one monetary unit of commodity \(j\).
+Then the value of the surplus of \emph{food} in the society is
+\[
+    x_1 - (A_{11} x_1 + A_{12} x_2 + A_{13} x_3),
+\]
+that is, the value of food produced minus the value of food consumed while producing the three commodities.
+
+\begin{note}
+這邊\ \(A_{ij}\) 的意思是，生產價值一元的\ \(j\) 商品要耗掉多少元的\ \(i\) 商品。
+然後\ open model 的結果是，外部對每種商品的需求等於該商品的剩餘價值。
+\end{note}
+
+The assumption that everything produced is consumed gives us a similar equilibrium condition for the open model, namely,
+that \emph{the surplus of each of the three commodities must equal the corresponding outside demands}.
+Hence
+\[
+    x_i - \sum_{j = 1}^3 A_{ij} x_j = d_i \text{ for } i = 1, 2, 3.
+\]
+In general, we must find a \emph{nonnegative} solution to \((I - A)x = d\), where \(A\) is a matrix \emph{with nonnegative entries} such that the sum of the entries of each column of \(A\) \emph{does not exceed one}, and \(d \ge 0\).
+It is easy to see that if \((I - A)^{-1}\) exists and is nonnegative, then the desired solution is \((I - A)^{-1}d\).
+
+Recall that for a real number \(a\), (by Calculus,) the series \(1 + a + a^2 + ...\) \emph{converges} to \((1 - a)^{-1}\) if \(\abs{a} < 1\).
+Similarly, it can be shown (using the concept of convergence of matrices developed in \SEC{5.3}) that the series \(I + A + A^2 + ...\) converges to \((I - A)^{-1}\) if \(A^n\) converges to the zero matrix.
+In this case, \((I - A)^{-1}\) is nonnegative since the matrices \(I, A, A^2, ...\) are nonnegative.
+
+To illustrate the open model, suppose that \(30\) cents worth of food, \(10\) cents worth of clothing, and \(30\) cents worth of housing are required for the production of \$\(1\) worth of food.
+Similarly, suppose that \(20\) cents worth of food, \(40\) cents worth of clothing, and \(20\) cents worth of housing are required for the production of \$\(1\) of clothing.
+Finally, suppose that \(30\) cents worth of food, \(10\) cents worth of clothing, and \(30\) cents worth of housing are required
+for the production of \$\(1\) worth of housing. 
+Then the input-output matrix is
+\[
+    A = \begin{pmatrix}
+        0.30 & 0.20 & 0.30 \\
+        0.10 & 0.40 & 0.10 \\
+        0.30 & 0.20 & 0.30
+    \end{pmatrix}.
+\]
+so
+\[
+    I - A = \left(\begin{array}{rrr}
+        0.70 & -0.20 & -0.30 \\
+        -0.10 & 0.60 & -0.10 \\
+        -0.30 & -0.20 & 0.70
+    \end{array}\right)
+    \text { and }
+    (I - A)^{-1} = \left(\begin{array}{lll}
+        2.0 & 1.0 & 1.0 \\
+        0.5 & 2.0 & 0.5 \\
+        1.0 & 1.0 & 2.0
+    \end{array}\right).
+\]
+
+Since \((I - A)^{-1}\) is nonnegative, we can find a (unique) nonnegative solution to \((I - A)x = d\) for any demand \(d\).
+For example, suppose that there are outside demands for \$\(30\) billion in food, \$\(20\) billion in clothing, and \$\(10\) billion in housing.
+If we set
+\[
+    d = \begin{pmatrix} 30 \\ 20 \\ 10 \end{pmatrix}.
+\]
+then
+\[
+    x = (I - A)^{-1}d = \begin{pmatrix} 90 \\ 60 \\ 70 \end{pmatrix}.
+\]
+So a gross production of \$\(90\) billion of food, \$\(60\) billion of clothing, and \$\(70\) billion of housing is necessary to meet the required demands.
+
+\exercisesection
+
+\begin{exercise} \label{exercise 3.3.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item Any system of linear equations has at least one solution.
+\item Any system of linear equations has at most one solution.
+\item Any \emph{homogeneous} system of linear equations has at least one solution.
+\item Any system of \(n\) linear equations in \(n\) unknowns has at most one solution.
+\item Any system of \(n\) linear equations in \(n\) unknowns has at least one solution.
+\item If the homogeneous system corresponding to a given system of linear equations has a solution, then the given system has a solution.
+\item If the coefficient matrix of a homogeneous system of \(n\) linear equations in \(n\) unknowns is invertible, then the system has no nonzero solutions.
+\item The solution set of any system of \(m\) linear equations in \(n\) unknowns is a subspace of \(F^n\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+(Counterexamples for (a), (b) can be found in this section.)
+\begin{enumerate}
+\item False.
+\item False.
+\item True, the zero vector is the trivial solution.
+\item False. Counterexample: \(\begin{pmatrix} 1 & 1 \\ 2 & 2 \end{pmatrix}\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}\) has the solution of the form \(\begin{pmatrix} -t \\ t \end{pmatrix}\) for any \(t \in \SET{R}\).
+    More generally, when \(\NULL(\LMTRAN_A) > 0\) where \(A\) is the coefficient matrix of the system, the system has multiple solutions.
+\item False. Counterexample: \(\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}\) has no solutions.
+\item False. The system \(0x = 1\) has no solution but the corresponding homogeneous system \(0x = 0\) has a lot of solutions.
+\item True. By \THM{3.10} the system has exactly one solution, but we know zero vector is the trivial solution, hence zero vector is that unique solution, hence the system has no nonzero solutions.
+\item False. Counterexample is easy to find.
+    In particular, by \THM{3.8} if the system is \emph{homogeneous}, the solution set of any system is a subspace of \(F^n\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.3.2}
+For each of the following homogeneous systems of linear equations, find the dimension of and a basis for the solution set.
+
+\[
+    (a) \sysdelim..\systeme{x_1 + 3 x_2 = 0, 2 x_1 + 6 x_2 = 0},
+    (b) \sysdelim..\systeme{x_1 + x_2 - x_3 = 0, 4 x_1 + x_2 - 2 x_3 = 0},
+    (c) \sysdelim..\systeme{x_1 + 2 x_2 - x_3 = 0, 2 x_1 + x_2 + x_3 = 0}
+\]
+
+\[
+    (d) \sysdelim..\systeme{2 x_1 + x_2 - x_3 = 0, x_1 - x_2 + x_3 = 0, x_1 + 2 x_2 - 2 x_3 = 0},
+    (e) \sysdelim..\systeme{x_1 + 2 x_2 - 3 x_3 + x_4 = 0},
+    (f) \sysdelim..\systeme{x_1 + 2 x_2 = 0, x_1 - x_2 = 0}
+\]
+\[
+    (g) \sysdelim..\systeme{x_1 + 2 x_2 + x_3 + x_4 = 0, x_2 - x_3 + x_4 = 0}
+\]
+\end{exercise}
+
+\begin{proof} Calculation problem, skip. \end{proof}
+
+\begin{exercise} \label{exercise 3.3.3}
+Using the results of previous exercise, find all solutions to the following systems.
+\[
+    (a) \sysdelim..\systeme{x_1 + 3 x_2 = 5, 2 x_1 + 6 x_2 = 10},
+    (b) \sysdelim..\systeme{x_1 + x_2 - x_3 = 1, 4 x_1 + x_2 - 2 x_3 = 3},
+    (c) \sysdelim..\systeme{x_1 + 2 x_2 - x_3 = 3, 2 x_1 + x_2 + x_3 = 6}
+\]
+
+\[
+    (d) \sysdelim..\systeme{2 x_1 + x_2 - x_3 = 5, x_1 - x_2 + x_3 = 1, x_1 + 2 x_2 - 2 x_3 = 4},
+    (e) \sysdelim..\systeme{x_1 + 2 x_2 - 3 x_3 + x_4 = 1},
+    (f) \sysdelim..\systeme{x_1 + 2 x_2 = 5, x_1 - x_2 = -1}
+\]
+\[
+    (g) \sysdelim..\systeme{x_1 + 2 x_2 + x_3 + x_4 = 1, x_2 - x_3 + x_4 = 1}
+\]
+\end{exercise}
+
+\begin{proof} Calculation problem, skip. \end{proof}
+
+\begin{exercise} \label{exercise 3.3.4}
+For each system of linear equations with the \emph{invertible} coefficient matrix \(A\),
+\begin{enumerate}
+\item[(1)] Compute \(A^{-1}\).
+\item[(2)] Use \(A^{-1}\) to solve the system.
+
+\[
+    (a) \sysdelim..\systeme{x_1 + 3 x_2 = 4, 2 x_1 + 5 x_2 = 3},
+    (b) \sysdelim..\systeme{x_1 + x_2 - x_3 = 5, x_1 + x_2 + x_3 = 1, 2 x_1 - 2 x_2 + x_3 = 4}
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} Calculation problem, skip. \end{proof}
+
+\begin{exercise} \label{exercise 3.3.5}
+Give an example of a system of \(n\) linear equations in \(n\) unknowns with \emph{infinitely many} solutions.
+\end{exercise}
+
+\begin{proof}
+See \EXEC{3.3.1}(d).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.3.6}
+Let \(\T: \SET{R}^3 \to \SET{R}^2\) be defined by \(\T(a, b, c) = (a + b, 2a - c)\).
+Determine \(\T^{-1}(1, 11)\).
+\end{exercise}
+
+\begin{note}
+Precisely, \(\T^{-1}(1, 11)\) is really \(\T^{-1}(\{ (1, 11) \})\), the set \(\{x \in \SET{R}^3: \T(x) \in \{ (1, 11) \}\).
+In this context, the symbol \(\T^{-1}\) \emph{alone} dose not have any meaning since \(\T\) has no inverse.
+\end{note}
+
+\begin{proof}
+The problem is equivalent to solve the system
+\[
+    \sysdelim..\systeme{
+        a + b = 1,
+        2a - c = 11
+    }.
+\]
+But if we let \(a\) be a free variable, then we have \(b = 1 - a\) and \(c = 2a - 11\).
+So the solution set is
+\[
+    \left\{ (a, 1 - a, 2a - 11) : a \in \SET{R} \right\}.
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 3.3.7}
+Calculation problem, skip.
+But we can use \THM{3.11} to determine whether each system in this problem has a solution.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.8}
+Let \(\T: \SET{R}^3 \to \SET{R}^3\) be defined by \(\T(a, b, c) = (a + b, b - 2c, a + 2c)\).
+For each vector \(v \in \SET{R}^3\), determine whether \(v \in \RANGET\).
+
+(a) \(v = (1, 3, -2)\) (b) \(v = (2, 1, 1)\).
+\end{exercise}
+
+\begin{proof}
+Calculation problem, skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.3.9}
+Prove that the system of linear equations \(Ax = b\) has a solution if and only if \(b \in \RANGE(\LMTRAN_A)\).
+\end{exercise}
+
+\begin{proof}
+\(Ax = b\) has a solution \(s\), if and only if (by def of left multiplication) we can find \(s\) in the domain of \(\LMTRAN_A\) s.t. \(\LMTRAN_A(s) = b\), if and only if (by def of range) \(b \in \RANGE(\LMTRAN_A)\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.3.10}
+Prove or give a counterexample to the following statement:
+If the coefficient matrix of a system of \(m\) linear equations in \(n\) unknowns has rank \(m\), then the system has a solution.
+\end{exercise}
+
+\begin{proof}
+By the similar argument in \ATHM{3.11}(or \EXEC{3.2.19}), given any system of \(m\) equations and \(n\) unknowns s.t. the coefficient matrix \(A\) has rank \(m\), we have \(\LMTRAN_A : F^n \to F^m\) is onto.
+And since \(\LMTRAN_A\) is onto, given \(b \in F^m\) we can find \(x \in F^n\) s.t. \(\LMTRAN_A(x) = b\).
+That is, \(Ax = b\), hence the system has a solution.
+\end{proof}
+
+\TODOREF{} Skip exercise 11 to exercise 14.
+Complete these exercises when finishing \CH{5}.
+
+\begin{additional theorem} \label{athm 3.13}
+This is the placeholder theorem for \EXEC{3.3.9}: The system of linear equations \(Ax = b\) has a solution if and only if \(b \in \RANGE(\LMTRAN_A)\).
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.14}
+This is the placeholder theorem for \EXEC{3.3.10}:
+If the coefficient matrix of a system of \(m\) linear equations in \(n\) unknowns has rank \(m\), then the system has a solution.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.15}
+This is the placeholder theorem for exercise 11 to exercise 14, which are not done yet.
+\end{additional theorem}

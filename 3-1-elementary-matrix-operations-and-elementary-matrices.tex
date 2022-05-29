@@ -1,0 +1,593 @@
+\section{Elementary Matrix Operations and Elementary Matrices} \label{sec 3.1}
+
+In this section, we define the elementary operations that are used throughout the chapter.
+In subsequent sections, we use these operations to obtain simple computational methods for determining the rank of a linear transformation and the solution of a system of linear equations.
+There are two types of elementary matrix operations -- row operations and column operations.
+As we will see, the \emph{row} operations are more useful;
+they \emph{arise from} the three operations that can be \emph{used to eliminate variables} in a system of linear equations.
+
+\begin{definition} \label{def 3.1}
+Let \(A\) be an \(m \X n\) matrix.
+Any one of the following three operations on the rows [columns] of \(A\) is called an \textbf{elementary row [column] operation}:
+\begin{enumerate}
+\item[(1)] interchanging any two rows [columns] of \(A\);
+\item[(2)] multiplying any row [column] of \(A\) by a \emph{nonzero} scalar;
+\item[(3)] adding any scalar multiple of a row [column] of \(A\) to \emph{other} row [column].
+\end{enumerate}
+
+Any of these three operations is called an \textbf{elementary operation}.
+Elementary operations are of \textbf{type 1}, \textbf{type 2} or \textbf{type 3} depending on whether they are obtained by (1), (2), or (3).
+\end{definition}
+
+\begin{note}
+I use abbreviations e.r.o. and e.c.o. to represent elementary row operation and elementary column operation, respectively.
+\end{note}
+
+\begin{example} \label{example 3.1.1}
+Let
+\[
+    A = \begin{pmatrix}
+        1 & 2 & 3 & 4 \\
+        2 & 1 & -1 & 3 \\
+        4 & 0 & 1 & 2
+    \end{pmatrix}.
+\]
+Interchanging the second row of \(A\) with the first row is an example of an e.r.o. of type 1. 
+The resulting matrix is
+\[
+    B = \begin{pmatrix}
+        2 & 1 & -1 & 3 \\
+        1 & 2 & 3 & 4 \\
+        4 & 0 & 1 & 2
+    \end{pmatrix}.
+\]
+Multiplying the second column of \(A\) by \(3\) is an example of an e.c.o. of type 2.
+The resulting matrix is
+\[
+    C = \begin{pmatrix}
+        1 & 6 & 3 & 4 \\
+        2 & 3 & -1 & 3 \\
+        4 & 0 & 1 & 2
+    \end{pmatrix}.
+\]
+Adding \(4\) times the third row of \(A\) to the first row is an example of an e.r.o. of type 3.
+In this case, the resulting matrix is
+\[
+    M = \begin{pmatrix}
+        17 & 2 & 7 & 12 \\
+        2 & 1 & -1 & 3 \\
+        4 & 0 & 1 & 2
+    \end{pmatrix}.
+\]
+\end{example}
+
+\begin{remark} \label{remark 3.1.1}
+Notice that if a matrix \(Q\) can be obtained from a matrix \(P\) by means of an e.r.o., 
+then \(P\) can be obtained from \(Q\) by an e.r.o. \textbf{of the same type}.
+(See \EXEC{3.1.8}.)
+So, in \EXAMPLE{3.1.1}, \(A\) can be obtained from \(M\) by adding \(-4\) times the third row of \(M\) to the first row of \(M\).
+\end{remark}
+
+\begin{definition} \label{def 3.2}
+An \(n \X n\) \textbf{elementary matrix} is a matrix obtained by performing an(one) elementary operation on \(I_n\).
+The elementary matrix is said to be of \textbf{type 1}, \textbf{2}, or \textbf{3} according to whether the elementary operation
+performed on \(I_n\) is a type 1, 2, or 3 operation, respectively.
+\end{definition}
+
+For example, interchanging the first two \emph{rows} of \(I_3\) produces the elementary matrix
+\[
+    E = \begin{pmatrix}
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\]
+
+\begin{remark} \label{remark 3.1.2}
+Note that \(E\) can also be obtained by interchanging the first two \emph{columns} of \(I_3\).
+In fact, any elementary matrix can be obtained in \emph{at least two ways} -- either by performing an elementary \emph{row} operation on \(I_n\) or by performing an elementary \emph{column} operation on \(I_n\).
+(See \EXEC{3.1.4}.)
+Similarly,
+\[
+    \begin{pmatrix}
+        1 & 0 & -2 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\]
+is an elementary matrix since it can be obtained from \(I_3\) by an e.c.o. of type 3
+(adding \(-2\) times the first \emph{column} of \(I_3\) to the third \emph{column})
+or by an e.r.o. of type 3 (adding \(-2\) times the third \emph{row} to the first \emph{row}).
+\end{remark}
+
+Our first theorem shows that \emph{performing an e.r.o. on a matrix is equivalent to multiplying the matrix by an elementary matrix}.
+
+\begin{theorem} \label{thm 3.1}
+Let \(A \in M_{m \X n}(F)\), and suppose that \(B\) is obtained from \(A\) by performing an elementary row [column] operation.
+Then there exists an \(m \X m\) [\(n \X n\)] elementary matrix \(E\) such that \(B = EA\) [\(B = AE\)].
+In fact, \(E\) is obtained from \(I_m\) [\(I_n\)] by \textbf{performing the same} elementary row [column] operation \textbf{as} that which was performed on \(A\) to obtain \(B\).
+
+Conversely, if \(E\) is an elementary \(m \X m\) [\(n \X n\)] matrix, then \(EA\) [\(AE\)] is the matrix obtained from \(A\) by \textbf{performing the same} elementary row [column] operation \textbf{as} that which produces \(E\) from \(I_m\) [\(I_n\)].
+\end{theorem}
+
+\begin{proof}
+See \EXEC{3.1.7}.
+\end{proof}
+
+\begin{example} \label{example 3.1.2}
+Consider the matrices \(A\) and \(B\) in \EXAMPLE{3.1.1}.
+In this case, \(B\) is obtained from \(A\) by interchanging the first two rows of \(A\).
+Performing this \emph{same} operation on \(I_{3}\), we obtain the elementary matrix
+\[
+    E = \begin{pmatrix}
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\]
+Note that \(EA = B\).
+
+In the second part of \EXAMPLE{3.1.1}, \(C\) is obtained from \(A\) by multiplying the second column of \(A\) by \(3\).
+Performing this same operation on \(I_{4}\), we obtain the elementary matrix
+
+\[
+    E = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 3 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+\]
+Observe that \(AE = C\).
+\end{example}
+
+It is a useful fact that the \emph{inverse} of an elementary matrix is \emph{also} an elementary matrix.
+
+\begin{theorem} \label{theorem} \label{thm 3.2}
+Elementary matrices are \emph{invertible}, and the inverse of an elementary matrix is an elementary matrix \emph{of the same type}.
+\end{theorem}
+
+\begin{proof}
+Let \(E\) be an elementary \(n \X n\) matrix.
+Then (by \DEF{3.1}) \(E\) can be obtained by an e.r.o. on \(I_n\).
+By \emph{reversing the steps} used to transform \(I_n\) into \(E\), we can transform \(E\) back into \(I_n\).
+The result is that \(I_n\) can be obtained from \(E\) by an e.r.o. of the same type.
+By \THM{3.1}, there is an elementary matrix \(\overline{E}\) such that \(\overline{E}E = I_n\).
+Therefore, by \ATHM{2.38}(``one-sided'' inverse is a ``two-sided'' inverse), \(E\) is invertible and \(E^{-1} = \overline{E}\).
+\end{proof}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 3.1.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item An elementary matrix is always square.
+\item The only entries of an elementary matrix are zeros and ones. \item The \(n \X n\) identity matrix is an elementary matrix.
+\item The product of two \(n \X n\) elementary matrices is an elementary matrix.
+\item The inverse of an elementary matrix is an elementary matrix.
+\item The sum of two \(n \X n\) elementary matrices is an elementary matrix.
+\item The transpose of an elementary matrix is an elementary matrix.
+\item If \(B\) is a matrix that can be obtained by performing an e.r.o. on a matrix \(A\), then \(B\) can also be obtained by performing an e.\textbf{\RED{c}}.o. on \(A\).
+\item If \(B\) is a matrix that can be obtained by performing an e.r.o. on a matrix \(A\), then \(A\) can be obtained by performing an e.r.o. on \(B\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item True. Since every elementary matrix is obtained from \(I_n\) by an elementary operation that does not change the size of the matrix, and \(I_n\) is square.
+\item False. \(\begin{pmatrix} 2 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\) is elementary of type 2.
+\item True. \(I_n\) can be considered as a type 2 elementary matrix with the first row multiplied by \(1\).
+\item False. \(\begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}\), which needs ``two'' elementary operations to obtain from \(I_2\).
+\item True by \THM{3.2}.
+\item False. \(\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} + \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}\), which is not elementary by part(d).
+\item True by \EXEC{3.1.5}.
+\item False. The matrix \(\begin{pmatrix} 5 & 5 \\ 1 & 1 \end{pmatrix}\) can be obtained from \(\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\) by a single e.r.o. of type 3, but not by any number of \emph{column} operations, since any e.c.o. on \(\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\) will still leave columns that are multiple of \(\begin{pmatrix} 1 \\ 1 \end{pmatrix}\).
+\item True by \EXEC{3.1.8}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.2}
+Let
+\[
+    A = \left(\begin{array}{rrr}
+        1 & 2 & 3 \\
+        1 & 0 & 1 \\
+        1 & -1 & 1
+    \end{array}\right),
+    B = \left(\begin{array}{rrr}
+        1 & 0 & 3 \\
+        1 & -2 & 1 \\
+        1 & -3 & 1
+    \end{array}\right), \text { and }
+    C = \left(\begin{array}{rrr}
+        1 & 0 & 3 \\
+        0 & -2 & -2 \\
+        1 & -3 & 1
+    \end{array}\right)
+\]
+Find an elementary operation that transforms \(A\) into \(B\) and an elementary operation that transforms \(B\) into \(C\).
+\emph{By means of several additional operations}, transform \(C\) into \(I_3\).
+\end{exercise}
+
+\begin{proof}
+Using type 3 e.c.o., we add column \(1\) of \(A\) times \(-2\) to column \(2\) of \(A\) to obtain \(B\);
+and using type 3. e.r.o., we add row \(1\) of \(B\) times \(-1\) to row \(2\) of \(B\) to obtain \(C\);
+
+Finally, the process of obtaining \(I_3\) from \(C\) is:
+\[
+    \begin{aligned}
+    C & =\left(\begin{array}{ccc}
+        1 & 0 & 3 \\
+        0 & -2 & -2 \\
+        1 & -3 & 1
+    \end{array}\right)
+    \rightsquigarrow
+    \left(\begin{array}{ccc}
+        1 & 0 & 3 \\
+        0 & \RED{1} & \RED{1} \\
+        1 & -3 & 1
+    \end{array}\right) \\
+      & \rightsquigarrow
+    \left(\begin{array}{ccc}
+        1 & 0 & 3 \\
+        0 & 1 & 1 \\
+        \RED{0} & -3 & \RED{-2}
+    \end{array}\right)
+    \rightsquigarrow
+    \left(\begin{array}{ccc}
+        1 & 0 & 3 \\
+        0 & 1 & 1 \\
+        0 & \RED{0} & \RED{1}
+    \end{array}\right) \\
+    & \rightsquigarrow
+    \left(\begin{array}{ccc}
+        1 & 0 & \RED{0} \\
+        0 & 1 & 1 \\
+        0 & 0 & 1
+    \end{array}\right)
+    \rightsquigarrow\left(\begin{array}{ccc}
+        1 & 0 & 0 \\
+        0 & 1 & \RED{0} \\
+        0 & 0 & 1
+    \end{array}\right)
+\end{aligned}
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.3}
+Use the proof of \THM{3.2} to obtain the \emph{inverse} of each of the following elementary matrices.
+\[
+    \text{(a)} \left(\begin{array}{lll}0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0\end{array}\right)
+    \text{ (b) } \left(\begin{array}{lll}1 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 1\end{array}\right)
+    \text{ (c) } \left(\begin{array}{rrr}1 & 0 & 0 \\ 0 & 1 & 0 \\ -2 & 0 & 1\end{array}\right)
+\]
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item This is type 1 e.r.o. by changing row \(1, 3\).
+So the inverse is also type 1 e.r.o. by changing row \(1, 3\) back;
+that is, the inverse is \(\begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\) itself.
+
+\item This is type 2 e.r.o. by multiplying row \(2\) by \(3\).
+So the inverse is type 2 e.r.o. by multiplying row \(2\) by \(\frac1{3}\);
+that is, \(\begin{pmatrix} 1 & 0 & 0 \\ 0 & \frac1{3} & 0 \\ 0 & 0 & 1 \end{pmatrix}\).
+
+\item This is type 3 e.r.o. by adding row \(1\) times \(-2\) to row \(3\).
+So the inverse is type 3 e.r.o. by add row \(1\) time \(2\) to row \(3\).
+that is,\(\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 2 & 0 & 1 \end{pmatrix}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.4}
+Prove the assertion made on \RMK{3.1.2}:
+Any elementary \(n \X n\) matrix can be obtained in at least two ways -- either by performing an e.r.o. on \(I_n\) or by performing an e.c.o. on \(I_n\).
+\end{exercise}
+
+\begin{proof}
+Let \(E\) be an \(n \X n\) elementary matrix.
+There are three types of elementary operations:
+\begin{enumerate}
+\item[1.] Interchange two columns or two rows.
+\item[2.] Multiply any row or any column of \(E\) by a nonzero scalar.
+\item[3.] Add any scalar multiple of a row of \(E\) to another row, or add any scalar multiple of a column of \(E\) to another column.
+\end{enumerate}
+
+We say that an elementary matrix is type (1), (2) or (3) if it is obtained performing an elementary operation type 1, 2 or 3, respectively, on \(I_n\).
+
+If we suppose that \(E\) is type (1) and suppose that an elementary operation is performed on rows \(i\) and \(j\) of  \(I_n\),
+then by interchanging \emph{columns} \(i\) and \(j\) of \(I_n\) we get the same matrix.
+
+If we suppose that \(E\) is type (2) by multiplying row \(i\) of \(I_n\) using a nonzero scalar \(a\), than \(E\) is a matrix where all entries are same as in \(I_n\), except an item on a position \((i, i)\) in \(E\), which is equal \(a\).
+If we multiply a \emph{column} \(i\) by a nonzero scalar \(a\) on \(I_n\), we can get the same matrix \(E\).
+
+Finally, suppose that \(E\) is type (3) by multiplying row \(i\) of \(I_n\) by a nonzero scalar \(a\) and adding to row \(j\) of \(I_n\),
+then \(E\) is a matrix where all entries are same as in \(I_n\), except an item on a position \((j, i)\), which is equal to \(a\).
+If we multiply the \emph{column} \(j\) of \(I_n\) by the scalar \(a\) and add to the column \(i\) of \(I_n\) we can get the same matrix \(E\).
+
+In all cases, we can find the second way to create matrix \(E\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.5}
+Prove that \(E\) is an elementary matrix if and only if \(E^\top\) is.
+\end{exercise}
+
+\begin{proof}
+We can easily check that type 1 and type 2 elementary matrices are symmetric, hence the transpose of them are also elementary matrices.
+
+For type 3, suppose \(E\) is obtained from adding row \(i\) of \(I_n\) times scalar \(c\) to row \(j\) of \(I_n\).
+Then \(E\) can be considered as \(I_n\) except that the position \((j, i)\) is equal to \(c\).
+In particular, \(E^\top\) can be considered as \(I_n\) except that the position \((i, j)\) is equal to \(c\).
+Then it's obvious that \(E^\top\) is obtained from adding row \(j\) of \(I_n\) times scalar \(c\) to row \(i\) of \(I_n\), so \(E^\top\) is also an elementary matrix.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.6}
+Let \(A\) be an \(m \X n\) matrix.
+Prove that if \(B\) can be obtained from \(A\) by an elementary row [column] operation, then \(B^\top\) can be obtained from
+\(A^\top\) by the corresponding elementary \emph{column} [row] operation.
+\end{exercise}
+
+\begin{proof}
+Let
+\[
+    A = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_m \end{pmatrix}
+\]
+where \(a_i\) are rows of \(A\).
+Then in particular
+\[
+    A^\top = \begin{pmatrix} a_1^\top a_2^\top ... a_m^\top \end{pmatrix}
+\]
+
+Suppose \(B\) is obtain from \(A\) with a type 1 e.r.o., that is, changing row \(i\) and row \(j\) of \(A\) (and WLOG where \(i \le j\)).
+Then \(B\) can be considered as
+\[
+    B = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{a_j} \\ \vdots \\ \RED{a_i} \\ \vdots \\ a_m \end{pmatrix}
+\]
+Then in particular
+\[
+    B^\top = \begin{pmatrix} a_1^\top a_2^\top ... \RED{a_j^\top} ... \RED{a_i^\top} ... a_m^\top \end{pmatrix}
+\]
+which can be obtain from \(A^\top\) with a type 1 e.\RED{c}.o., that is, changing column \(i\) and column \(i\) of \(A^\top\).
+
+Suppose \(B\) is obtain from \(A\) with a type 2 e.r.o., that is, multiplying row \(i\) of \(A\) by a nonzero scalar \(c\).
+Then \(B\) can be considered as
+\[
+    B = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{ca_i} \\ \vdots \\ a_m \end{pmatrix}
+\]
+Then in particular
+\[
+    B^\top = \begin{pmatrix} a_1^\top a_2^\top ... \RED{ca_i^\top} ... a_m^\top \end{pmatrix}
+\]
+which can be obtain from \(A^\top\) with a type 2 e.\RED{c}.o., that is, multiplying column \(i\) of \(A^\top\) by the nonzero scalar \(c\).
+
+Finally, suppose \(B\) is obtain from \(A\) with a type 3 e.r.o., that is, adding row \(i\) of \(A\) times a scalar \(c\) to row \(j\) of \(A\).
+Then \(B\) can be considered as
+\[
+    B = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{ca_i + a_j} \\ \vdots \\ a_m \end{pmatrix}
+\]
+Then in particular
+\[
+    B^\top = \begin{pmatrix} a_1^\top a_2^\top ... \RED{(ca_i + a_j)^\top} ... a_m^\top \end{pmatrix} = \begin{pmatrix} a_1^\top a_2^\top ... \RED{(ca_i^\top + a_j^\top)} ... a_m^\top \end{pmatrix}
+\]
+(where the last equal sign is from \ATHM{1.2}(1)) which can be obtain from \(A^\top\) with a type 3 e.\RED{c}.o., that is, adding column \(i\) of \(A^\top\) times a scalar \(c\) to column \(j\) of \(A^\top\).
+
+The case of e.c.o.s is similar to prove.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.7}
+Prove \THM{3.1}.
+\end{exercise}
+
+\begin{proof}
+Let
+\[
+    A=\left[\begin{array}{cccc}
+        a_{11} & a_{12} & \cdots & a_{1 n} \\
+        a_{21} & a_{22} & \cdots & a_{2 n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m 1} & a_{m 2} & \cdots & a_{m n}
+    \end{array}\right] \in M_{m \X n}(F)
+\]
+
+\begin{enumerate}
+\item 
+Suppose \(B\) is obtained from \(A\) with a type 1 e.r.o., that is, changing row \(i\) and row \(j\) of \(A\).
+And if we let \(E\) be the same type of elementary matrix that changes row \(i\) and row \(j\) of \(I_n\);
+that is,
+\[
+    E=\left[\begin{array}{cccccccc}
+        1 & 0 & \cdots & 0 & \cdots & 0 & \cdots & 0 \\
+        0 & 1 & \cdots & 0 & \cdots & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & & \vdots & & \vdots \\
+        0 & 0 & \cdots & 0 & \cdots & \RED{1} & \cdots & 0 \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        0 & 0 & \cdots & \RED{1} & \cdots & 0 & \cdots & 0 \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        0 & 0 & \cdots & 0 & \cdots & 0 & \cdots & 1
+    \end{array}\right] \in M_{m \X m}(F)
+\]
+(where the top-right \RED{\(1\)} appears in position \((i, j)\), the bottom-left \RED{\(1\)} appears in position \((j, i)\).)
+Then
+\[
+    E A=\left[\begin{array}{cccccccc}
+        a_{11} & a_{12} & \cdots & a_{1 i} & \cdots & a_{1 j} & \cdots & a_{1 n} \\
+        a_{21} & a_{22} & \cdots & a_{2 i} & \cdots & a_{2 j} & \cdots & a_{2 n} \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        \RED{a_{j 1}} & \RED{a_{j 2}} & \RED{\cdots} & \RED{a_{j i}} & \RED{\cdots} & \RED{a_{j j}} & \RED{\cdots} & \RED{a_{j n}} \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        \RED{a_{i 1}} & \RED{a_{i 2}} & \RED{\cdots} & \RED{a_{i i}} & \RED{\cdots} & \RED{a_{i j}} & \RED{\cdots} & \RED{a_{i n}} \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        a_{m 1} & a_{m 2} & \cdots & a_{m i} & \cdots & a_{m j} & \cdots & a_{m n}
+    \end{array}\right]
+\]
+is exactly the matrix obtained from changing row \(i\) and row \(j\) of \(A\); that is, \(B\).
+
+\item
+Suppose \(B\) is obtained from \(A\) with a type 2 e.r.o., that is, multiplying row \(i\) by scalar \(c\).
+And if we let \(E\) be the same type of elementary matrix that multiplies row \(i\) by scalar \(c\),
+that is,
+\[
+    E = \left[\begin{array}{ccccccc}
+        1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
+        0 & 1 & \cdots & 0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots & & \vdots \\
+        0 & 0 & \cdots & \RED{c} & 0 & \cdots & 0 \\
+        0 & 0 & \cdots & 0 & 1 & \cdots & 0 \\
+        \vdots & \vdots & & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 0 & 0 & \cdots & 1
+    \end{array}\right] \in M_{m \X m}(F)
+\]
+(where that red \(\RED{c}\) appears on position \((i, i)\).)
+Then
+\[
+    E \cdot A=\left[\begin{array}{cccccc}
+        a_{11} & a_{12} & \cdots & a_{1 i} & \cdots & a_{1 n} \\
+        a_{21} & a_{22} & \cdots & a_{2 i} & \cdots & a_{2 n} \\
+        \vdots & \vdots & & \vdots & & \vdots \\
+        \RED{c a_{i 1}} &  \RED{c a_{i 2}} & \RED{\cdots} & \RED{c a_{i i}} & \RED{\cdots} & \RED{c a_{i n}} \\
+        \vdots & \vdots & & \vdots & & \vdots \\
+        a_{m 1} & a_{m 2} & \cdots & a_{m i} & \cdots & a_{m n}
+    \end{array}\right]
+\]
+is exactly the matrix obtained from multiplying row \(i\) of \(A\) by scalar \(c\), that is, \(B\).
+
+\item 
+Suppose \(B\) is obtained from \(A\) with a type 3 e.r.o., that is, add row \(i\) of \(A\) times scalar \(c\) to row \(j\) of \(A\).
+And if we let \(E\) be the same type of elementary matrix that adds row \(i\) of \(I_n\) times \(c\) to row \(j\) of \(I_n\);
+that is,
+\[
+    E=\left[\begin{array}{cccccccc}
+        1 & 0 & \cdots & 0 & \cdots & 0 & \cdots & 0 \\
+        0 & 1 & \cdots & 0 & \cdots & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots & & \vdots & & \vdots \\
+        0 & 0 & \cdots & 1 & \cdots & 0 & \cdots & 0 \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        0 & 0 & \cdots & \RED{c} & \cdots & 1 & \cdots & 0 \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        0 & 0 & \cdots & 0 & \cdots & 0 & \cdots & 1
+    \end{array}\right] \in M_{m \X m}(F)
+\]
+(where \RED{\(c\)} appears in position \((j, i)\).)
+Then
+\[
+    E A= \left[\begin{array}{cccccccc}
+        a_{11} & a_{12} & \cdots & a_{1 i} & \cdots & a_{1 j} & \cdots & a_{1 n} \\
+        a_{21} & a_{22} & \cdots & a_{2 i} & \cdots & a_{2 j} & \cdots & a_{2 n} \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        a_{i 1} & a_{i 2} & \cdots & a_{i i} & \cdots & a_{i j} & \cdots & a_{i n} \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        \RED{a_{j 1} + c a_{i 1}} & \RED{a_{j 2} + c a_{i 2}} & \RED{\cdots} & \RED{a_{j i}+ c a_{i i}} & \RED{\cdots} & \RED{a_{j j} + c a_{i j}} & \RED{\cdots} & \RED{a_{j n}+ c a_{i n}} \\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots \\
+        a_{m 1} & a_{m 2} & \cdots & a_{m i} & \cdots & a_{m j} & \cdots & a_{m n}
+\end{array}\right]
+\]
+is exactly the matrix obtained from add row \(i\) of \(A\) times scalar \(c\) to row \(j\) of \(A\), that is, \(B\).
+\end{enumerate}
+
+For elementary \emph{column} operations, if \(B \in M_{m \X n}\) is obtained from \(A \in M_{m \X n}\) by performing any type of e.c.o.,
+then from \EXEC{3.1.6}, \(B^\top \in M_{n \X m}\) is obtained from \(A^\top \in M_{n \X m}\) by performing the corresponding type of e.\RED{r}.o..
+Then by the previous case, we have \(B^\top = EA^\top\) \MAROON{(1)} for some elementary matrix \(E\), and
+\begin{align*}
+    B & = (B^\top)^\top & \text{by \ATHM{1.2}(2)} \\
+      & = (EA^\top)^\top & \text{by \MAROON{(1)}} \\
+      & = (A^\top)^\top E^\top & \text{by \ATHM{2.24}} \\
+      & = A E^\top & \text{by \ATHM{1.2}(2)}
+\end{align*}
+And by \EXEC{3.1.5}, \(E^\top\) is also elementary, so we have found a elementary matrix \(E^\top\) s.t. \(B = A E^\top\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.8}
+Prove that if a matrix \(Q\) can be obtained from a matrix \(P\) by an e.r.o., then \(P\) can be obtained from \(Q\) by an e.r.o. of the same type.
+Hint: Treat each type of e.r.o. separately.
+\end{exercise}
+
+\begin{proof}
+If we interchange the \(i\)th and \(j\)th rows of \(P\) to get \(Q\), we can change the \(i\)th and \(j\)th rows \(Q\) again to get \(P\), and the operation is type 1 e.r.o..
+
+If we multiply the \(i\)th row of \(P\) by nonzero scalar \(c\) to get \(Q\), we can multiply the \(i\)th row of \(Q\) by nonzero scalar \(\frac1{c}\) to get \(P\), and the operation is type 2 e.r.o..
+
+If we add the \(i\)th row of \(P\) times scalar \(c\), to the \(j\)th row of \(P\), to get \(Q\), then we can add the \(i\)th row of \(Q\) times scalar \(-c\), to the \(j\)th row of \(Q\), to get \(P\), and the operation is type 3 e.r.o..
+\end{proof}
+
+\begin{proof} [Another proof for \EXEC{3.1.8}]
+By \THM{3.1}, we can write \(EP = Q\) where \(E\) corresponds to an e.r.o..
+And by \THM{3.2}, \(E^{-1}\) is also elementary of the same type.
+And
+\[
+    E^{-1} Q = E^{-1} E P = P.
+\]
+So by \THM{3.1}, \(P\) can be obtained from \(Q\) by an e.r.o. of the same type as \(E^{-1}\), which is the same type as \(E\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.9}
+Prove that any elementary row [column] operation of type 1 can be obtained by a succession of three elementary row [column] operations of type 3 followed by one elementary row [column] operation of type 2.
+\end{exercise}
+
+\begin{proof}
+Let \[A = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_m \end{pmatrix}\].
+Then if \(B\) can be obtain from \(A\) by performing a type 1 e.r.o., that is,
+\[
+    B = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{a_j} \\ \vdots \\ \RED{a_i} \\ \vdots \\ a_m \end{pmatrix}
+\]
+Then
+\[
+    A = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{a_i} \\ \vdots \\ \RED{a_j} \\ \vdots \\ a_m \end{pmatrix}
+    \text{\RED{(*1)}} \to \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{a_i + a_j} \\ \vdots \\ \RED{a_j} \\ \vdots \\ a_m \end{pmatrix}
+    \text{\RED{(*2)}} \to \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{a_i + a_j} \\ \vdots \\ \RED{-a_i} \\ \vdots \\ a_m \end{pmatrix}
+    \text{\RED{(*3)}} \to \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{a_j} \\ \vdots \\ \RED{-a_i} \\ \vdots \\ a_m \end{pmatrix}
+    \text{\RED{(*4)}} \to \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ \RED{a_j} \\ \vdots \\ \RED{a_i} \\ \vdots \\ a_m \end{pmatrix}
+    = B
+\]
+where \RED{(*1)} is e.r.o. type 3 by adding row \(j\) to row \(i\);
+\RED{(*2)} is e.r.o. type 3 by adding \(-1 \X\) row \(i\) to row \(j\);
+\RED{(*3)} is e.r.o. type 3 by adding row \(j\) to row \(i\);
+\RED{(*4)} is e.r.o. type 2 by multiplying row \(j\) by \(-1\).
+
+The case of e.r.c. is very similar to prove.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.10}
+Prove that any elementary row [column] operation of type 2 can be obtained by dividing some row [column] by a nonzero scalar.
+\end{exercise}
+
+\begin{proof}
+Well, multiplying nonzero scalar \(c\) is equal to dividing scalar \(\frac1{c}\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.11}
+Prove that any elementary row [column] operation of type 3 can be obtained by subtracting a multiple of some row [column] from another row [column].
+\end{exercise}
+
+\begin{proof}
+Well, adding a row times scalar \(c\) is equal to subtracting a row times \(c\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.1.12}
+Let \(A\) be an \(m \X n\) matrix.
+Prove that there exists a sequence of e.r.o.s of types 1 and 3 that transforms \(A\) into an upper triangular matrix.
+\end{exercise}
+
+\begin{proof}
+The \emph{forward pass} of Gaussian elimination(see \THM{3.14}) give a sequence of e.r.o.s of type 1, 2, and 3 that transform any matrix into upper triangular.
+In particular, the forward pass only uses type 2 e.r.o.s to transforms the leading term of each row into \(1\).
+So if we remove type 2 e.r.o.s in the sequence, then we have found a sequence of e.r.o.s of type 1 and 3 that transforms \(A\) into an upper triangular matrix.
+\end{proof}
+
+\begin{additional theorem} \label{athm 3.1}
+This is the placeholder theorem for \EXEC{3.1.5}: \(E\) is an elementary matrix if and only if \(E^\top\) is.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.2}
+This is the placeholder theorem for \EXEC{3.1.6}: Let \(A\) be an \(m \X n\) matrix.
+If \(B\) can be obtained from \(A\) by an e.r.o. [e.c.o.], then \(B^\top\) can be obtained from \(A^\top\) by the corresponding e.c.o. [e.r.o.].
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.3}
+This is the placeholder theorem for \EXEC{3.1.8}: If a matrix \(Q\) can be obtained from a matrix \(P\) by an e.r.o., then \(P\) can be obtained from \(Q\) by an e.r.o. of the same type.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.4}
+This is the placeholder theorem for \EXEC{3.1.5}: \(E\) is an elementary matrix if and only if \(E^\top\) is.
+\end{additional theorem}

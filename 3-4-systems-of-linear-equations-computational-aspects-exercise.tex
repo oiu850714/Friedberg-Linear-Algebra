@@ -1,0 +1,464 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 3.4.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item If \((A'|b')\) is obtained from \((A|b)\) by a finite sequence of elementary \emph{column} operations, then the systems \(Ax = b\) and \(A'x = b'\) are equivalent.
+\item If \((A'|b')\) is obtained from \((A|b)\) by a finite sequence of e.r.o.s, then the systems \(Ax = b\) and \(A' x\) are equivalent.
+\item If \(A\) is an \(n \X n\) matrix with rank \(n\), then the reduced row echelon form of \(A\) is \(I_n\).
+\item Any matrix can be put in reduced row echelon form by means of a finite sequence of elementary row operations.
+\item If \((A|b)\) is in reduced row echelon form, then the system \(Ax = b\) is consistent.
+\item Let \(Ax = b\) be a system of \(m\) linear equations in \(n\) unknowns for which the augmented matrix is in reduced row echelon form.
+If this system is consistent, then the dimension of the solution set of \(Ax = 0\) is \(n - r\), where \(r\) equals the number of nonzero rows in \(A\).
+\item If a matrix \(A\) is transformed by elementary row operations into a matrix \(A'\) in reduced row echelon form, then the number of nonzero rows in \(A'\) equals the rank of \(A\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item False. Counterexample is easy to find.
+\item True by \CORO{3.13.1}.
+\item True. Let \(B\) be the r.r.e.f. of \(A\), by \THM{3.16}(b), we have that the \(i\)th column of is \(e_i\) for \(1 \le i \le \RED{n}\), which implies \(B = I_n\).
+\item True by \THM{3.14}.
+\item False by \EXEC{3.4.3}.
+\item True.
+    \(A\) has \(r\) nonzero rows, so \(Ax = b\) is a system of \(r\) nonzero equations of \(n\) unknowns.
+    And \((A|b)\) is in r.r.e.f..
+    Also \(Ax = b\) is consistent.
+    So the requirements of \THM{3.15} are satisfied.
+    So by \THM{3.15}(b), the dimension of the corresponding homogeneous system \(Ax = 0\) is \(n - r\), as desired.
+\item True by \RMK{3.4.2} and \CORO{3.4.1}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.2}
+Calculation problem, skip.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.4.3}
+Suppose that the augmented matrix of a system \(Ax = b\) is transformed into a matrix \((A'|b')\) in reduced row echelon form by a finite sequence of elementary row operations.
+\begin{enumerate}
+\item Prove that \(\rank(A') \ne \rank(A'|b')\) if and only if \((A'|b')\) contains a row in which the only nonzero entry lies in the last column.
+
+\item Deduce that \(Ax = b\) is consistent if and only if \((A'|b')\) contains no row in which the only nonzero entry lies in the last column.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+WLOG, suppose \(A\) is of size \(m \X n\).
+\begin{enumerate}
+\item
+\(\Longrightarrow\): For the sake of contradiction, suppose \(r = \rank(A') \ne \rank(A'|b')\), \RED{but} \((A'|b')\) does not contain a row in which the only nonzero entry lies in the last column.
+Then (by \RMK{3.4.2}) since \(A'\) only contains \(r\) nonzero rows, \((A|b')\) must be in the form
+\[
+    (A|b') =
+    \left(\begin{array}{rrr|r}
+             A'_{11} &       ... &      A'_{1n} & b'_1 \\
+              \vdots &           &       \vdots & \vdots \\
+             A'_{r1} &       ... &      A'_{rn} & b'_r \\
+             \RED{0} & \RED{...} &      \RED{0} & \RED{0} \\
+        \RED{\vdots} &           & \RED{\vdots} & \RED{\vdots} \\
+             \RED{0} & \RED{...} &      \RED{0} & \RED{0}
+    \end{array}\right),
+\]
+that is, the \(r + 1, ..., m\) components of \(b'\) must be zero. (Otherwise \((A'|b')\) \emph{does} contain a row in which the only nonzero entry lies in the last column.)
+But then since by \THM{3.16}(b) we know \(e_1, e_2, ..., e_r\) are columns of \(A'\), we have \(b' = b_1 e_1 + b_2 e_2 + ... + b_r e_r\), so \(b'\) is in the column space of \(A'\).
+But that implies \(\rank(A') = \rank(A'|b')\), which is also a contradiction!
+So \((A'|b')\) \textbf{must contain} a row in which the only nonzero entry lies in the last column.
+
+\(\Longleftarrow\):
+If \((A'|b')\) contains a row in which the only nonzero entry lies in the last column, then by the structure of r.r.e.f., the last column is of course \LID{} to the remaining columns of \((A'|b')\), that is, the last column is \LID{} to the columns of \(A'\).
+Hence \(\rank(A') \ne \rank(A'|b')\).
+
+\item \(Ax = b\) is consistent, if and only if (by \THM{3.13}) \(A'x = b'\) is consistent, if and only if (by part(a)) \((A'|b')\) does \emph{not} contain a row in which the only nonzero entry lies in the last column.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.4}
+Calculation problem, skip.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.4.5}
+Let the reduced row echelon form of \(A\) be
+\[
+    B = \left(\begin{array}{rrrrr}
+        \RED{1} & \RED{0} & 2 & \RED{0} & -2 \\
+        \RED{0} & \RED{1} & -5 & \RED{0} & -3 \\
+        \RED{0} & \RED{0} & 0 & \RED{1} & 6
+    \end{array}\right)
+\]
+Determine \(A\) if the first, second, and fourth columns of \(A\) are
+\[
+    \begin{pmatrix} 1 \\ -1 \\ 3 \end{pmatrix},
+    \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix},
+    \text { and }
+    \begin{pmatrix} 1 \\ -2 \\ 0 \end{pmatrix}
+\]
+respectively.
+\end{exercise}
+
+\begin{proof}
+Let \(a_i\) be the \(i\)th column of \(A\), and \(b_i\) be the \(i\)th column of \(B\).
+Since \(b_3 = 2 e_1 + (-5) e_2 = 2 b_1 + (-5) b_2\), by \THM{3.16}(d), \(a_3 = 2 a_1 + (-5) a_2\).
+So
+\[
+    a_3 = 2 \begin{pmatrix} 1 \\ -1 \\ 3 \end{pmatrix}
+        + (-5) \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix}
+        = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix}.
+\]
+Similarly, since \(b_5 = (-2) e_1 + (-3) e_2 + 6 e_3 = (-2) b_1 + (-3) b_2 + 6 b_4\), by \THM{3.16}(d), \(a_5 = (-2) a_1 + (-3) a_2 + 6 a_4\).
+So
+\[
+    a_5 = (-2) \begin{pmatrix} 1 \\ -1 \\ 3 \end{pmatrix}
+        + (-3) \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix}
+        + (6) \begin{pmatrix} 1 \\ -2 \\ 0 \end{pmatrix}
+        = \begin{pmatrix} 4 \\ -7 \\ -9 \end{pmatrix}.
+\]
+Hence
+\[
+    A = \left(\begin{array}{ccccc}
+        1 & 0 & 2 & 1 & 4 \\
+        -1 & -1 & 3 & -2 & -7 \\
+        3 & 1 & 1 & 0 & -9
+    \end{array}\right)
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.6}
+Let the reduced row echelon form of \(A\) be
+\[
+    B = \left(\begin{array}{rrrrrr}
+        \RED{1} & -3 & \RED{0} & 4 & \RED{0} & \GREEN{5} \\
+        \RED{0} & 0 & \RED{1} & 3  & \RED{0} & \GREEN{2} \\
+        \RED{0} & 0 & \RED{0} & 0  & \RED{1} & \GREEN{-1} \\
+        \RED{0} & 0 & \RED{0} & 0  & \RED{0} & \GREEN{0}
+    \end{array}\right)
+\]
+Determine \(A\) if the \RED{first}, \RED{third}, and \GREEN{six} columns of \(A\) are
+\[
+    \begin{pmatrix} 1 \\ -2 \\ -1 \\ 3 \end{pmatrix},
+    \begin{pmatrix} -1 \\ 1 \\ 2 \\ -4 \end{pmatrix},
+    \text { and }
+    \begin{pmatrix} 3 \\ -9 \\ 2 \\ 5 \end{pmatrix},
+\]
+respectively.
+\end{exercise}
+
+\begin{proof}
+This problem is a variation of \EXEC{3.4.5}.
+
+Let \(a_i\) be the \(i\)th column of \(A\), and \(b_i\) be the \(i\)th column of \(B\).
+We should solve \(\RED{a_5}\) first, since (by \THM{3.16}(c)) it is the corresponding \LID{} vector of \(b_5\).
+
+Since \(b_6 = 5 e_1 + 2 e_2 + (-1) e_3 = 5 b_1 + 2 b_3 + (-1) b_5\), by \THM{3.16}(d), \(a_6 = 5 a_1 + 2 a_3 + (-1) a_5\).
+That is, \(a_5 = 5 a_1 + 2 a_3 + (-1) a_6\).
+So
+\[
+    a_5 = 5 \begin{pmatrix} 1 \\ -2 \\ -1 \\ 3 \end{pmatrix}
+        + 2 \begin{pmatrix} -1 \\ 1 \\ 2 \\ -4 \end{pmatrix}
+        + (-1) \begin{pmatrix} 3 \\ -9 \\ 2 \\ 5 \end{pmatrix}
+        = \begin{pmatrix} 0 \\ 1 \\ -3 \\ 2 \end{pmatrix}.
+\]
+And Since \(b_2 = (-3) e_1 = (-3) b_1\), by \THM{3.16}(d), \(a_2 = (-3) a_1\).
+So
+\[
+    a_2 = (-3) \begin{pmatrix} 1 \\ -2 \\ -1 \\ 3 \end{pmatrix}
+        = \begin{pmatrix} -3 \\ 6 \\ 3 \\ -9 \end{pmatrix}.
+\]
+Finally, since \(b_4 = 4 e_1 + 3 e_2 = 4 b_1 + 3 b_3\), by \THM{3.16}(d), \(a_4 = 4 a_1 + 3 a_3\).
+So
+\[
+    a_4 = 4 \begin{pmatrix} 1 \\ -2 \\ -1 \\ 3 \end{pmatrix}
+        + 3 \begin{pmatrix} -1 \\ 1 \\ 2 \\ -4 \end{pmatrix}
+        = \begin{pmatrix} 1 \\ -5 \\ 2 \\ 0 \end{pmatrix}.
+\]
+Hence
+\[
+    A = \left(\begin{array}{cccccc}
+        1 & -3 & -1 & 1 & 0 & 3 \\
+        -2 & 6 & 1 & -5 & 1 & -9 \\
+        -1 & 3 & 2 & 2 & -3 & 2 \\
+        3 & -9 & -4 & 0 & 2 & 5
+    \end{array}\right).
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.7}
+\sloppy It can be shown that the vectors \(u_1 = (2, -3, 1), u_2 = (1, 4, -2), u_3 = (-8, 12, -4), u_4 = (1, 37, -17)\), and \(u_5 = (-3, -5, -8)\) generate \(\SET{R}^3\).
+Find a subset of \(\{ u_1, u_2, u_3, u_4, u_5 \}\) that is a basis for \(\SET{R}^3\).
+\end{exercise}
+
+\begin{proof}
+We mimic the procedure described after \EXAMPLE{3.4.2}.
+We first find the nonzero solution \((c_1, c_2, c_3, c_4, c_5)\) s.t. \(c_1 u_1 + ... + c_5 u_5 = 0\).
+That is,
+\[
+    \sysdelim..\systeme{
+         2 c_1 + 1 c_2 -  8 c_3 +  1 c_4 - 3 c_5 = 0,
+        -3 c_1 + 4 c_2 + 12 c_3 + 37 c_4 - 5 c_5 = 0,
+         1 c_1 - 2 c_2 -  4 c_3 - 17 c_4 - 8 c_5 = 0
+    }
+\]
+Then the corresponding r.r.e.f. system (by calculation) is,
+\[
+    \sysdelim..\systeme{
+         1 c_1 + 0 c_2 - 4 c_3 - 3 c_4 -           11 c_5 = 0,
+         0 c_1 + 1 c_2 + 0 c_3 + 7 c_4 - \frac{2}{19} c_5 = 0,
+         0 c_1 + 0 c_2 + 0 c_3 + 0 c_4 +            1 c_5 = 0
+    }
+\]
+\sloppy Then by \THM{3.16}(c), \(\{ u_1, u_2, u_5 \}\) is \LID{}.
+And since \(\dim(\SET{R}^3 = 3\), \(\{ u_1, u_2, u_5 \}\) is a basis for \(\SET{R}^3\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.8}
+Let \(W\) denote the subspace of \(\SET{R}^5\) consisting of all vectors having coordinates that \emph{sum to zero}.
+The vectors
+\begin{align*}
+    u_1 = (2, -3, 4, -5, 2), &\ u_2 = (-6, 9, -12, 15, -6), \\
+    u_3 = (3, -2, 7, -9, 1), &\ u_4 = (2, -8, 2, -2, 6), \\
+    u_5 = (-1, 1, 2, 1, -3), &\ u_6 = (0. -3, -18, 9, 12), \\
+    u_7 = (1, 0, -2, 3, -2), &\ u_8 = (2, -1, 1, -9, 7),
+\end{align*}
+generate \(W\).
+Find a subset of \(\{ u_1, u_2, ..., u_8 \}\) that is a basis for \(W\).
+\end{exercise}
+
+\begin{proof}
+(BTW, it's trivial that \(W\) has dimension \(4\).)
+(And BTW, the vectors \(u_1\) to \(u_8\) are the same as \EXEC{1.6.8}.)
+Similar to previous exercise, we reduce the problem to the system
+\[
+    A = [u_1\ u_2\ ... u_8] =
+    \left[\begin{array}{cccccccc}
+        2 & -6 & 3 & 2 & -1 & 0 & 1 & 2 \\
+        -3 & 9 & -2 & -8 & 1 & -3 & 0 & -1 \\
+        4 & -12 & 7 & 2 & 2 & -18 & -2 & 1 \\
+        -5 & 15 & -9 & -2 & 1 & 9 & 3 & -9 \\
+        2 & -6 & 1 & 6 & -3 & 12 & 2 & 7
+    \end{array}\right]
+\]
+And a equivalent system (by calculation) is
+\[
+    B = \left(\begin{array}{cccccccc}
+        1 & -3 & \frac{3}{2} & 1 & -\frac{1}{2} & 0 & \frac{1}{2} & 1 \\
+        0 & 0 & 1 & -2 & -\frac{1}{5} & -\frac{6}{5} & \frac{3}{5} & \frac{4}{5} \\
+        0 & 0 & 0 & 0 & 1 & -4 & -\frac{23}{21} & -\frac{19}{21} \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 & -1 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+    \end{array}\right)
+\]
+If we continue to transform \(B'\) into r.r.e.f., then it's trivial that the \(1, 3, 5, 7\)th column of the r.r.e.f. is \LID{}.
+By \THM{3.16}(c), \(\{ a_1, a_3, a_5, a_7 \} =\{ u_1, u_3, u_5, u_7 \}\) is \LID{}.
+And since \(\dim(W) = 4\), \(\{ u_1, u_3, u_5, u_7 \}\) is a basis for \(W\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.9}
+Let \(W\) be the subspace of \(M_{2 \X 2}(\SET{R})\) consisting of the \emph{symmetric} \(2 \X 2\) matrices.
+The set
+\[
+    S= \left\{
+        \left(\begin{array}{rr}
+            0 & -1 \\
+            -1 & 1
+        \end{array}\right),
+        \left(\begin{array}{ll}
+            1 & 2 \\
+            2 & 3
+        \end{array}\right),
+        \left(\begin{array}{ll}
+            2 & 1 \\
+            1 & 9
+        \end{array}\right),
+        \left(\begin{array}{rr}
+            1 & -2 \\
+            -2 & 4
+        \end{array}\right),
+        \left(\begin{array}{rr}
+            -1 & 2 \\
+            2 & -1
+        \end{array}\right)
+    \right\}
+\]
+generates \(W\).
+Find a subset of \(S\) that is a basis for \(W\).
+\end{exercise}
+
+\begin{proof}
+We use the \emph{standard representation} of each vector of \(S\) to make the system
+\[
+    A = \left(\begin{array}{ccccc}
+        0 & 1 & 2 & 1 & -1 \\
+        -1 & 2 & 1 & -2 & 2 \\
+        -1 & 2 & 1 & -2 & 2 \\
+        1 & 3 & 9 & 4 & -1
+    \end{array}\right)
+\]
+And the r.r.e.f. (by calculation) is
+\[
+    B = \left(\begin{array}{ccccc}
+        1 & -2 & -1 & 2 & -2 \\
+        0 & 1 & 2 & 1 & -1 \\
+        0 & 0 & 0 & 1 & -2 \\
+        0 & 0 & 0 & 0 & 0
+    \end{array}\right)
+\]
+So by \THM{3.16}(c), \(a_1, a_2, a_4\) are \emph{\LID{}} vectors in \(F^4\).
+That is, the corresponding matrices
+\[
+    S' = \left\{
+        \left(\begin{array}{rr}
+            0 & -1 \\
+            -1 & 1
+        \end{array}\right),
+        \left(\begin{array}{ll}
+            1 & 2 \\
+            2 & 3
+        \end{array}\right),
+        \left(\begin{array}{rr}
+            1 & -2 \\
+            -2 & 4
+        \end{array}\right),
+    \right\}
+\]
+are \LID{} in \(M_{2 \X 2}(\SET{R})\).
+And since \(\dim(M_{2 \X 2}(\SET{R})) = 4\), \(S'\) is a basis of the set consisting of the symmetric \(2 \X 2\) matrices.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.10}
+Let
+\[
+    V = \{(x_1, x_2, x_3, x_4, x_5) \in \SET{R}^5 : x_1 - 2x_2 + 3x_3 - x_4 + 2x_5 = 0
+ \}.
+\]
+\begin{enumerate}
+\item Show that \(S = \{(0, 1, 1, 1, 0)\}\) is a \LID{} subset of \(V\).
+\item Extend \(S\) to a basis for \(V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+part(a) is a really stupid question; singleton nonzero set is \LID{}, and \(x_1 - 2x_2 + 3x_3 - x_4 + 2x_5 = 0 - 2 + 3 - 1 + 0 = 0\), hence \(S\) is a \LID{} subset of \(V\).
+
+For part(b), the procedure is exactly the same as \EXAMPLE{3.4.4}. Skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.11}
+Let \(V\) be as in \EXEC{3.4.10}.
+\begin{enumerate}
+\item Show that \(S = \{ (1 , 2, 1, 0, 0) \}\) is a \LID{} subset of \(V\).
+\item Extend \(S\) to a basis for \(V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Calculation problem which is similar to \EXEC{3.4.10}. Skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.12}
+Let \(V\) denote the set of all solutions to the system of linear equations
+\[
+    \sysdelim..\systeme{
+        x_1 - x_2 + 2x_4 - 3x_5 + x_6 = 0,
+        2x_1 - x_2 - x_3 + 3x_4 - 4x_5 + 4x_6 = 0
+    }
+\]
+\begin{enumerate}
+\item Show that \(S = \{ (0,-1,0,1,1,0), (1,0,1,1,1,0) \}\) is a \LID{} subset of \(V\).
+\item Extend \(S\) to a basis for \(V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Calculation problem which is similar to \EXEC{3.4.10}. Skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.13}
+Let \(V\) be as in \EXEC{3.4.12}.
+\begin{enumerate}
+\item Show that \(S = \{ (1,0,1,1,1,0), (0,2,1,1,0,0) \}\) is a \LID{} subset of \(V\).
+\item Extend \(S\) to a basis for \(V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Calculation problem which is similar to \EXEC{3.4.10}. Skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.14}
+If \((A|b)\) is in reduced row echelon form, prove that \(A\) is also in reduced row echelon form.
+\end{exercise}
+
+\begin{proof}
+Suppose \((A|b)\) is in r.r.e.f..
+It's enough to check that \(A\) still satisfies the definition of reduced row echelon form(\DEF{3.7}).
+Given any row number \(i\) s.t. row \(i\) of \(A\) is zero row, there are two cases:
+\begin{enumerate}
+\item Zero row \(i\) of \(A\) is also zero row of \((A|b)\).
+    Then given any nonzero row \(j\) of \(A\), of course row \(j\) of \((A|b)\) is nonzero, hence by condition \(1\) of \((A|b)\),
+    row \(j\) of \((A|b)\) is above row \(i\) of \((A|b)\), and that implies row \(j\) of \(A\) is above row \(i\) of \(A\).
+    Hence condition 1 of \(A\) is satisfied.
+\item Zero row \(i\) of \(A\) is a nonzero row of \((A|b)\).
+    Then given any nonzero row \(j\) of \(A\), of course row \(j\) of \((A|b)\) is nonzero.
+    But by the \textbf{condition 3 for \((A|b)\)}, row \(j\) of \((A|b)\) must be \emph{above} row \(i\) of \((A|b)\), and that implies row \(j\) of \(A\) is above row \(i\) of \(A\).
+    Hence condition 1 of \(A\) is again satisfied.
+\end{enumerate}
+So in all cases, the condition 1 of \(A\) is satisfied.
+
+The second condition for \(A\) is really, automatically, implied by the second condition for \((A|b)\).
+The third condition for \(A\) is also automatically satisfied.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.15}
+Prove the \CORO{3.16.1}:
+The reduced row echelon form of a matrix \textbf{is unique}.
+\end{exercise}
+
+\begin{proof}
+Note that if \(A\) is a zero matrix, then every elementary row operation performed on \(A\) leaves \(A\) \emph{unchanged}.
+Thus the r.r.e.f. of a zero matrix is the matrix itself, and hence is unique.
+
+Suppose then that \(A\) is an \(m \X n\) matrix of rank \(r > 0\) whose r.r.e.f. is \(B\).
+Then there is an invertible \(m \X m\) matrix \(M\) representing the sequence of e.r.o.s, such that \(MA = B\).
+For \(j = 1, 2, ..., n\), let \(a_j\) denote the \(j\)th column of \(A\) and \(b_j\) denote the \(j\)th column of \(B\).
+By \THM{3.16}(b), \(e_i\) is ``a'' column of \(B\) for \(i = 1, 2, ..., r\).
+Now let \(j_i\) denote the column number of the \emph{leftmost column} of \(B\) s.t. \(b_{j_i} = e_i\) \MAROON{(1)}.
+Then by \THM{3.16}(c), \(\{ a_{j_1}, a_{j_2}, ..., a_{j_r} \}\) is \LID{}, and (since the dimension of column space of \(A\) is \(r\)) therefore is a basis for the column space of \(A\).
+So, for \(k = 1, 2, ..., n\), \(a_k = c_1 a_{j_1} + c_2 a_{j_2} + ... + c_r a_{j_r}\) for \textbf{unique} scalars \(c_1, c_2, ..., c_r\).
+
+\RED{
+But then, by \ATHM{2.29}(or \EXEC{2.3.15}), we have \(b_k = M a_k = c_1 b_{j_1} + c_2 b_{j_2} + ... + c_r b_{j_r}\).
+}
+(Nasty, nasty, nasty.)
+That is, by \MAROON{(1)}, we have \(b_k = c_1 e_1 + c_2 e_2 + ... + c_r e_r\).
+Since \(c_1, c_2, ..., c_r\) are \emph{unique} and completed determined by \(A\), \(b_k\) is completely determined by \(A\).
+Hence each column of \(B\) is completely determined by \(A\), hence \(B\) is unique.
+\end{proof}
+
+\begin{note}
+There is \href{https://www.youtube.com/watch?v=EcgaeUUYV1U&ab_channel=DrPeyam}{Another proof}, which is more humble.
+\end{note}
+
+\begin{note}
+只用噁心的\ \ATHM{2.29} 還不夠，必須要靠\ \(c_1, ..., c_r\) 是\ unique 才能唯一決定\ \(B\)。
+\end{note}
+
+\begin{additional theorem} \label{athm 3.16}
+This is the placeholder theorem for \EXEC{3.4.3}:
+Suppose that the augmented matrix of a system \(Ax = b\) is transformed into a matrix \((A'|b')\) in reduced row echelon form by a finite sequence of elementary row operations.
+\begin{enumerate}
+\item \(\rank(A') \ne \rank(A'|b')\) if and only if \((A'|b')\) contains a row in which the only nonzero entry lies in the last column.
+\item \(Ax = b\) is consistent if and only if \((A'|b')\) contains no row in which the only nonzero entry lies in the last column.
+\end{enumerate}
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.17}
+This is the placeholder theorem for \EXEC{3.4.14}:
+If \((A|b)\) is in reduced row echelon form, then \(A\) is also in reduced row echelon form.
+\end{additional theorem}
+
+\begin{additional theorem} \label{athm 3.18}
+This is the placeholder theorem for \EXEC{3.4.15}:
+r.r.e.f. is \textbf{unique}.
+\end{additional theorem}

@@ -3,6 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[margin=2cm]{geometry}
 \usepackage{amsthm}
+\usepackage{thmtools}
 \usepackage{amssymb}
 \usepackage{systeme,mathtools}
 \usepackage{dirtytalk}
@@ -29,27 +30,26 @@
 \DeclareMathOperator{\spann}{span}
 \newcommand\spanset[1]{\ensuremath\spann(#1)}
 
+
+\theoremstyle{definition}
+\newtheorem{additional corollary}{Additional Corollary}[section]
+\declaretheorem[style=definition,qed=$\blacksquare$,numberwithin=chapter]{theorem}
+\newtheorem{additional theorem}{Additional Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{additional definition}{Additional Definition}[chapter]
+\declaretheorem[style=definition,qed=$\blacksquare$,numberwithin=section]{example}
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{note}{Note}
+
 \begin{document}
 \begin{CJK*}{UTF8}{bsmi}
 
 \maketitle
 
 \tableofcontents{}
-
-\theoremstyle{definition}
-\newtheorem{additional corollary}{Additional Corollary}[section]
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{additional theorem}{Additional Theorem}[chapter]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{additional definition}{Additional Definition}[chapter]
-\newtheorem{example}{Example}[section]
-\newtheorem{lemma}{Lemma}[chapter]
-\newtheorem{exercise}{Exercise}[section]
-\newtheorem{remark}{Remark}[section]
-\newtheorem*{note}{Note}
-
-\theoremstyle{remark}
 
 \renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
 
@@ -124,6 +124,7 @@
 \input{0-precautions.tex}
 \input{1-vector-spaces.tex}
 \input{2-linear-transformations-and-matrices}
+\input{3-elementary-matrix-operations-and-systems-of-linear-equations}
 
 \end{CJK*}
 \end{document}

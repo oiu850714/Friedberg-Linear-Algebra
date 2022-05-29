@@ -203,7 +203,7 @@ It can be verified by matrix multiplication that each matrix is the inverse of t
 
 \begin{corollary} \label{corollary 2.18.1}
 Let \(V\) be a \emph{finite}-dimensional vector space with an ordered basis \(\beta\), and let \(\T : V \to V\) be linear.
-Then \(\T\) is invertible if and only if \([T]_\beta\)
+Then \(\T\) is invertible if and only if \([\T]_\beta\)
 is invertible.
 Furthermore, \([\T^{-1}]_{\beta} = ([\T]_{\beta})^{-1}\).
 \end{corollary}
@@ -429,6 +429,7 @@ Notice that there are two \emph{composites} of \LTRAN{}s that map \(V\) into \(F
 \item[2.] Map \(V\) into \(W\) with \(\T\) and follow it by \(\phi_{\gamma}\) to obtain the composite \(\phi_{\gamma} \T\).
 \end{enumerate}
 
+\begin{remark} \label{remark 2.4.5}
 These two composites are depicted by the dashed arrows in the diagram.
 By a simple reformulation of \THM{2.14}, we may conclude that for all \(v \in V\),
 \begin{align*}
@@ -448,6 +449,7 @@ that is. the diagram ``commutes.'' (It seems that the terminology is from abstra
 Heuristically, this relationship indicates that after \(V\) and \(W\) are \emph{identified} with \(F^n\) and \(F^m\) via if \(\phi_{\beta}\) and \(\phi_{\gamma}\), respectively,
 we may ``identify'' \(\T\) with \(\LMTRAN_A\).
 \textbf{This diagram allows us to transfer operations on abstract vector spaces to ones on \(F^n\) and \(F^m\)}.
+\end{remark}
 
 \begin{example} \label{example 2.4.7}
 Recall the \LTRAN{} \(\T : \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) defined in \EXAMPLE{2.2.4} (\(\T(f(x)) = f'(x)\)).
