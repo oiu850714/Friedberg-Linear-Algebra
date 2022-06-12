@@ -1,0 +1,44 @@
+\section{Summary - Important Facts about Determinants} \label{sec 4.4}
+
+This section is a summary of \SEC{4.1} to \SEC{4.3}.
+Skip the text.
+
+\exercisesection
+
+\begin{exercise} \label{exercise 4.4.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item The determinant of a square matrix may be computed by expanding the matrix along any row or column.
+\item In evaluating the determinant of a matrix, it is wise to expand along a row or column containing the largest number of zero entries.
+\item If two rows or columns of \(A\) are identical, then \(\det(A) = 0\).
+\item If \(B\) is a matrix obtained by interchanging two rows or two columns of \(A\), then \(\det(B) = \det(A)\).
+\item If \(B\) is a matrix obtained by multiplying each entry of some row or column of \(A\) by a scalar \(k\), then \(\det(B) = \det(A)\).
+\item If \(B\) is a matrix obtained from \(A\) by adding a multiple of some row to a different row, then \(\det(B) = \det(A)\).
+\item The determinant of an upper triangular \(n \X n\) matrix is the product of its diagonal entries.
+\item For every \(A \in M_{n \X n}(F)\), \(\det(A^\top) = -\det(A)\).
+\item If \(A, B \in M_{n \X n}(F)\), then \(\det(AB) = \det(A) \cdot \det(B)\).
+\item If \(Q\) is an invertible matrix, then \(\det(Q^{-1}) = [\det(Q)]^{-1}\).
+\item A matrix \(Q\) is invertible if and only if \(\det(Q) \ne 0\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item True.
+\item True.
+\item True.
+\item False, \(\det(B) = -\det(A)\).
+\item False. The scalar \(k\) need to be nonzero, and if that is true, then \(\det(B) = k \cdot \det(A)\).
+\item True.
+\item True.
+\item False. \(\det(A^\top) = \det(A)\).
+\item True.
+\item True.
+\item True.
+\end{enumerate}
+\end{proof}
+
+Exercise 2 to Exercise 4 are calculation problems. Skip.
+
+Exercise 5 and Exercise 6 are the same as \EXEC{4.3.20}, \EXEC{4.3.21}, respectively.

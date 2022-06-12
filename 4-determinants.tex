@@ -1,0 +1,27 @@
+\chapter{Determinants} \label{ch 4}
+
+The \emph{determinant}, which has played a prominent role in the theory of linear algebra, is a special \emph{scalar-valued function} defined \emph{on} the set of \emph{square matrices}.
+Although it still has a place in the study of linear algebra and its applications, its role is less central than in former times.
+Yet no linear algebra book would be complete without a systematic treatment of the determinant, and we present one here.
+However, \emph{the main use of determinants in this book is to compute and establish the properties of \textbf{eigenvalues}}, which we discuss in \CH{5}.
+
+Although the determinant is \emph{not} a linear transformation on \(M_{n x n}(F)\) for \(n > 1\),
+(see \RMK{4.1.1})
+it does \textbf{possess a kind of linearity} (called \(n\)-linearity) as well as other properties that are examined in this chapter.
+In \SEC{4.1}, we consider the determinant on the set of \(2 \X 2\) matrices and derive its important properties and develop an efficient computational procedure.
+To illustrate the important role that determinants play \textbf{in geometry}, we also include optional material that explores the applications of the determinant to the study of \textbf{area and orientation}.
+In \SEC{4.2} and \SEC{4.3}, we extend the definition of the determinant to all square matrices and derive its important properties and develop an efficient computational procedure.
+For the reader who prefers to treat determinants lightly, \SEC{4.4} contains the essential properties that are needed in later chapters.
+Finally, \SEC{4.5}, which is optional, offers an \textbf{axiomatic approach} to determinants by showing how to characterize the determinant in terms of \emph{three key properties}.
+
+\begin{note}
+上面最後一點我們會看到，一個從\ square matrices 打到對應\ field 的函數，只要滿足三個性質，他就是行列式函數。
+\end{note}
+
+\input{4-1-determinants-of-order-2}
+\input{4-1-determinants-of-order-2-exercise}
+\input{4-2-determinants-of-order-n}
+\input{4-2-determinants-of-order-n-exercise}
+\input{4-3-properties-of-determinants}
+\input{4-4-summary-important-facts-about-determinants}
+\input{4-5-a-characterization-of-the-determinant}

@@ -1,0 +1,886 @@
+\section{A Characterization of the Determinant} \label{sec 4.5}
+
+In \SEC{4.2} and \SEC{4.3}, we showed that the determinant \emph{possesses} three properties.
+In this section, we show that \textbf{three of these properties completely characterize the determinant};
+that is: the only function \(\delta: M_{n \X n}(F) \to F\) having these three properties is the determinant.
+This characterization of the determinant is the one used in \SEC{4.1} (in particular, using \EXEC{4.1.11},)
+to establish the relationship between \(\det \begin{pmatrix} u \\ v \end{pmatrix}\) and the area of the parallelogram determined by \(u\) and \(v\).
+The first of these properties that characterize the determinant is the one
+described in \THM{4.3}.
+
+\begin{definition} \label{def 4.3}
+A function \(\delta: M_{n \X n}(F) \to F\) is called an \textbf{\(n\)-linear} function if it is a linear function of each row of an \(n \X n\) matrix when the remaining \(n - 1\) rows are held fixed,
+that is, \(\delta\) is \(n\)-linear if, for every \(r = 1, 2, ..., n\), we have
+\[
+    \delta\left(\begin{array}{c} a_1 \\ \vdots \\ a_{r - 1} \\ \RED{u + kv} \\ a_{r + 1} \\ \vdots \\ a_n \end{array}\right)
+    = \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r - 1} \\ \RED{u} \\ a_{r + 1} \\ \vdots \\ a_n \end{array}\right)
+    + \RED{k} \delta\left(\begin{array}{c} a_1 \\ \vdots \\ a_{r - 1} \\ \RED{v} \\ a_{r + 1} \\ \vdots \\ a_n \end{array}\right)
+\]
+whenever \(k\) is a scalar and \(u, v\), and each \(a_i\) are vectors in \(F^n\).
+\end{definition}
+
+\begin{example} \label{example 4.5.1}
+The function \(\delta: M_{n \X n}(F) \to F\) defined by \(\delta(A) = 0\) for each \(A \in M_{n \X n}(F)\) is an \(n\)-linear function.
+(That is, the zero function (from matrix to field) is \(n\)-linear).
+\end{example}
+
+\begin{example} \label{example 4.5.2}
+For \(1 \le j \le n\), define \(\delta_{\RED{j}}: M_{n \X n}(F) \to F\) by \(\delta_j(A) = A_{1\RED{j}} A_{2\RED{j}} ... A_{n\RED{j}}\) for each \(A \in M_{n \X n}(F)\);
+that is, \(\delta_j(A)\) equals the product of the entries of column \(j\) of \(A\).
+Let \(A \in M_{n \X n}(F), a_i = (A_{i1}, A_{i2}, ..., A_{in})\), and \(v = (b_1, b_2, ..., b_n) \in F^n\).
+Then each \(\delta_j\) \emph{is} an \(n\)-linear function because, for any scalar \(k\), we have
+\begin{align*}
+    \delta_j \begin{pmatrix} a_1 \\ \vdots \\ a_{r - 1} \\ a_r + kv \\ a_{r + 1} \\ \vdots \\ a_n \end{pmatrix}
+        & = A_{1j} ... A_{(r-1)j} \RED{(A_{rj} + k b_j)} A_{(r+1)j} ... A_{nj} \\
+        & = A_{1j} ... A_{(r-1)j} \RED{A_{rj}} A_{(r+1)j} ... A_{nj} + A_{1j} ... A_{(r-1)j} \RED{(k b_j)} A_{(r+1)j} ... A_{nj} \\
+        & = A_{1j} ... A_{(r-1)j} \RED{A_{rj}} A_{(r+1)j} ... A_{nj} + \RED{k}(A_{1j} ... A_{(r-1)j} \RED{b_j} A_{(r+1)j} ... A_{nj}) \\
+        & = \delta_j \begin{pmatrix} a_1 \\ \vdots \\ a_{r - 1} \\ a_r \\ a_{r + 1} \\ \vdots \\ a_n \end{pmatrix}
+          + k \delta_j \begin{pmatrix} a_1 \\ \vdots \\ a_{r - 1} \\ v \\ a_{r + 1} \\ \vdots \\ a_n \end{pmatrix}.
+\end{align*}
+\end{example}
+
+\begin{example} \label{example 4.5.3}
+Similar to the previous example, the function \(\delta: M_{n \X n}(F) \to F\) defined for each \(A \in M_{n \X n}(F)\) by \(\delta(A) = A_{11}A_{22} ... A_{nn}\) (i.e., \(\delta(A)\) equals the product of the diagonal entries of \(A\)) is an \(n\)-linear function.
+\end{example}
+
+\begin{example} \label{example 4.5.4}
+The function \(\delta: M_{n \X n}(\SET{R}) \to \SET{R}\) defined for each \(A \in M_{n \X n}(\SET{R})\) by \(\delta(A) = \TRACE(A)\) is \textbf{not} an \(n\)-linear function for \(n \ge 2\).
+For if \(I\) is the \(n \X n\) identity matrix and \(A\) is the matrix obtained by multiplying the first row of \(I\) by \(2\), then \(\delta(A) = n + 1 \ne 2n = 2 \cdot \delta(I)\).
+\end{example}
+
+From \THM{4.3} we know that the determinant is an \(n\)-linear function.
+For our purposes this is the \emph{most important} example of an \(n\)-linear function.
+Now we introduce the second of the properties used in the characterization of the determinant.
+
+\begin{definition} \label{def 4.4}
+An \(n\)-linear function \(\delta: M_{n \X n}(F) \to F\) is called \textbf{alternating} if, for each \(A \in M_{n \X n}(F)\), we have \(\delta(A) = 0\) whenever two \textbf{adjacent} rows of A are identical.
+\end{definition}
+
+\begin{theorem} \label{thm 4.10}
+Let \(\delta: M_{n \X n}(F) \to F\) be an \emph{alternating} \(n\)-linear function.
+Then
+\begin{enumerate}
+\item If \(A \in M_{n \X n}(F)\) and \(B\) is a matrix obtained from \(A\) by \emph{interchanging any two rows} of \(A\), then \(\delta(B) = -\delta(A)\).
+\item If \(A \in M_{n \X n}(F)\) has two identical rows(\emph{not necessarily adjacent}), then \(\delta(A) = 0\).
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+We just show \THM{4.10} at this point, which implies \THM{4.10} only requires the \emph{first two properties} of the determinant.
+That is, currently we do not care the corresponding value of the identity matrix.
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Let \(A \in M_{n \X n}(F)\), and let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r\) and \(s\), where WLOG \(r < s\).
+We first establish the result in the case that \(s = r + 1\) (i.e. adjacent).
+Because \(\delta: M_{n \X n}(F) \to F\) is \(n-linear\) and alternating, we have
+\begin{align*}
+    0 & = \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r}+a_{r+1} \\ a_{r}+a_{r+1} \\ \vdots \\ a_{n} \end{array}\right) & \text{since \(\delta\) is adjacent} \\
+      & = \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r} \\ a_{r} + a_{r+1} \\ \vdots \\ a_{n} \end{array}\right)
+        + \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r+1} \\ a_{r} + a_{r+1} \\ \vdots \\ a_{n} \end{array}\right) & \text{\(n\)-linear, changing row \(r\)} \\
+      & = \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r} \\ a_{r} \\ \vdots \\ a_{n} \end{array}\right)
+        + \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r} \\ a_{r+1} \\ \vdots \\ a_{n} \end{array}\right)
+        + \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r+1} \\ a_{r} \\ \vdots \\ a_{n} \end{array}\right)
+        + \delta\left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r+1} \\ a_{r+1} \\ \vdots \\ a_{n} \end{array}\right) & \text{\(n\)-linear, changing row \(r+1\)} \\
+      & = 0 + \delta(A) + \delta(B) + 0 & \text{since \(\delta\) is adjacent}.
+\end{align*}
+Thus \(\delta(B) = -\delta(A)\).
+Next suppose that \(s > r + 1\)(i.e. the two identical rows are \emph{not} adjacent),
+and let the rows of \(A\) be \(a_1, a_2, ..., a_n\).
+Beginning with \(a_r\) and \(a_{r + 1}\), \textbf{successively interchange} (which is ok by induction) \(a_r\) with the row that follows it until the rows are in the sequence
+\[
+    a_1, a_2, ..., \RED{a_{r - 1}}, a_{r + 1}, ..., \BLUE{a_s}, \GREEN{a_r}, a_{s + 1}, ..., a_n.
+\]
+Now \(\RED{a_{r - 1}}\) is in row \(r\), \(\BLUE{a_s}\) is in row \(s - 1\), and \(\GREEN{a_r}\) is in row \(s\).
+In all, \(s - r\) interchanges of adjacent rows are needed to produce this sequence.
+Then successively interchange \(a_s\) with the row that \emph{precedes} it until the rows
+are in the order
+\[
+    a_1, a_2, ..., a_{r-1}, \RED{a_s}, a_{r + 1}, ..., a_{s-1}, \RED{a_r}, a_{s+1}, ..., a_n.
+\]
+This process requires an additional \(s - r \RED{- 1}\) interchanges of adjacent rows and produces the matrix \(B\).
+It follows from the preceding paragraph that
+\[
+    \delta(B) = (-1)^{(s-r)+(s-r-1)}\delta(A) = -\delta(A).
+\]
+
+\item Suppose that rows \(r\) and \(s\) of \(A \in M_{n \X n}(F)\) are identical, where WLOG \(r < s\).
+If \(s = r + 1\), that is, \(r\) and \(s\) are adjacent, then \(\delta(A) = 0\) because \(\delta\) is alternating and two adjacent rows of \(A\) are identical.
+
+If \(s > r + 1\), let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r + 1\) and \(s\).
+Then the row \(r\), row \(r+1\) of \(B\) are identical, so by definition of alternating function, \(\delta(B) = 0\).
+But by part(a), \(\delta(B ) = -\delta(A)\). Hence \(\delta(A) = 0\).
+\end{enumerate}
+\end{proof}
+
+\begin{corollary} \label{corollary 4.10.1}
+Let \(\delta: M_{n \X n}(F) \to F\) be an alternating \(n\)-linear function.
+If \(B\) is a matrix obtained from \(A \in M_{n \X n}(F)\) by adding a multiple of some row of \(A\) to another row, then \(\delta(B) = \delta(A)\).
+\end{corollary}
+
+\begin{proof}
+Let \(B\) be obtained from \(A \in M_{n \X n}(F)\) by adding \(k\) times row \(i\) of \(A\) to row \(j\), where \(i \ne j\), and let \(C\) be obtained from \(A\) by replacing row \(j\) of \(A\) by row \(i\) of \(A\).
+That is (in the case of \(i < j\)),
+\[
+    A = \left(\begin{array}{c} a_1 \\ \vdots \\ a_i \\ \vdots \\ a_j \\ \vdots \\ a_n \end{array}\right), \quad
+    B = \left(\begin{array}{c} a_1 \\ \vdots \\ a_i \\ \vdots \\ \RED{k a_i + a_j} \\ \vdots \\ a_n \end{array}\right), \quad
+    C = \left(\begin{array}{c} a_1 \\ \vdots \\ a_i \\ \vdots \\ \RED{a_i} \\ \vdots \\ a_n \end{array}\right)
+\]
+Then the rows of \(A, B\), and \(C\) are identical except for row \(j\).
+Moreover, row \(j\) of \(B\) is the sum of row \(j\) of \(A\) and \(k\) times row \(j\) of \(C\).
+Since \(\delta\) is an \(n\)-linear function and \(C\) has two identical rows, it follows that
+\begin{align*}
+    \delta(B) & = \delta(A) + k \cdot \delta(C) & \text{since \(\delta\) is \(n\)-linear} \\
+              & = \delta(A) + k \cdot 0 & \text{by \THM{4.10}(b)} \\
+              & = \delta(A).
+\end{align*}
+\end{proof}
+
+The next result now follows as in the proof of \CORO{4.6.1}. (See \EXEC{4.5.11}.)
+
+\begin{corollary} \label{corollary 4.10.2}
+Let \(\delta: M_{n \X n}(F) \to F\) be an alternating \(n\)-linear function.
+If \(A \in M_{n \X n}(F)\) has rank less than \(n\), then \(\delta(A) = 0\).
+\end{corollary}
+
+\begin{proof}
+First, if \(\delta\) is \(n\)-linear, then given a matrix \(M\) with a zero row, \(\delta(M) = 0\);
+the proof is exactly the same as \CORO{4.3.1}.
+
+Now, if the rank of \(A\) is less than \(n\), then the rows \(a_1, a_2, ..., a_n\) of \(A\) are \LDP{}.
+Then of course, some row of \(A\), say, row \(r\), is a linear combination of the other rows.
+So there exist scalars \(c_i\) such that
+\[
+    a_r = c_1 a_1 + ... + c_{r - 1} a_{r - 1} + c_{r + 1} a_{r + 1} + ... + c_n a_n.
+\]
+Let \(B\) be the matrix obtained from \(A\) by adding \(-c_i\) times row \(i\) to row \(r\) \textbf{for each} \(i \ne r\).
+Then row \(r\) of \(B\) consists entirely of zeros, so \(\det(B) = 0\).
+But by \CORO{4.10.1}, \(\det(B) = \det(A)\).
+Hence \(\det(A) = 0\).
+\end{proof}
+
+\begin{corollary} \label{corollary 4.10.3}
+Let \(\delta: M_{n \X n}(F) \to F\) be an alternating \(n\)-linear function,
+and let \(E_1, E_2\), and \(E_3\) in \(M_{n \X n}(F)\) be arbitrary elementary matrices of types 1, 2, and 3, respectively.
+Suppose that \(E_2\) is obtained by multiplying some row of \(I\) by the nonzero scalar \(k\).
+Then \(\delta(E_1) = -\delta(I), \delta(E_2) = k \cdot \delta(I)\), and
+\(\delta(E_3) = \delta(I)\).
+\end{corollary}
+
+\begin{proof}
+For type 1 matrix, the statement \(\delta(E_1) = -\delta(I)\) follows directly from \THM{4.10}(a).
+For type 2 matrix, the statement \(\delta(E_2) = k \cdot \delta(I)\) follows directly from \DEF{4.3}.
+For type 3 matrix, the statement \(\delta(E_3) = \delta(I)\) follows directly from \CORO{4.10.1}.
+\end{proof}
+
+\begin{remark} \label{remark 4.5.1}
+Again, up to this point, we have \emph{not} specified the value of the function for the identity matrix.
+\end{remark}
+
+We wish to show that under certain circumstances, the only alternating \(n\)-linear function \(\delta: M_{n \X n}(F) \to F\) \emph{is} the determinant,
+that is, \(\delta(A) = \det(A)\) for all \(A \in M_{n \X n}(F)\).
+Because (it's of course that) any \emph{scalar multiple} of an alternating \(n\)-linear function is also an alternating \(n\)-linear function, we need a condition that distinguishes the determinant among its scalar multiples.
+
+Hence \textbf{the third condition} that is used in the characterization of the determinant is that \textbf{the determinant of the \(n \X n\) identity matrix is \(1\)}.
+Before we can establish the desired characterization of the determinant, we must first prove a result similar to \THM{4.7}.
+The proof of this result is also similar to that of \THM{4.7}. and so it is omitted.
+(See \EXEC{4.5.12}.)
+
+\begin{theorem} \label{thm 4.11}
+Let \(\delta: M_{n \X n}(F) \to F\) be an alternating \(n\)-linear function \textbf{such that} \(\delta(I) = 1\).
+Then for any \(A, B \in M_{n \X n}(F)\), we have \(\delta(AB) = \RED{\det(A)} \cdot \delta(B)\).
+\end{theorem}
+
+\begin{proof}
+See \EXEC{4.5.12}.
+\end{proof}
+
+\begin{note}
+Notice that we say the product equals to \(\RED{\det(A)} \cdot \delta(B)\), not \(\delta(A) \cdot \delta(B)\).
+The fourth edition in fact wrote the product as \(\delta(A) \cdot \delta(B)\).
+This is intentional by the author.
+\end{note}
+
+\begin{theorem} \label{thm 4.12}
+If \(\delta: M_{n \X n}(F) \to F\) is an alternating \(n\)-linear function \emph{such that} \(\delta(I) = 1\), then \(\delta(A) = \det(A)\) for every \(A \in M_{n \X n}(F)\).
+\end{theorem}
+
+\begin{proof}
+Well,
+\begin{align*}
+    \delta(A) & = \delta(AI) & \text{of course} \\
+              & = \RED{\det}(A) \cdot \delta(I) & \text{by \THM{4.11}} \\
+              & = \det(A) \cdot 1 & \text{by supposition} \\
+              & = \det(A).
+\end{align*}
+\end{proof}
+
+\begin{remark} \label{remark 4.5.2}
+\THM{4.12} provides the desired \emph{characterization} of the determinant, instead of the (recursive and tedious) formula given in \DEF{4.2}:
+It is the \textbf{unique function} \(\delta: M_{n \X n}(F) \to F\) that is \(n\)-linear, is alternating, and has the property that \(\delta(I) = 1\).
+\end{remark}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 4.5.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item Any \(n\)-linear function \(\delta: M_{n \X n}(F) \to F\) is a linear transformation.
+\item Any \(n\)-linear function \(\delta: M_{n \X n}(F) \to F\) is a linear function of each row of an \(n \X n\) matrix when the other \(n - 1\) rows are held fixed.
+\item If \(\delta: M_{n \X n}(F) \to F\) is an alternating \(n\)-linear function and the matrix \(A \in M_{n \X n}(F)\) has two identical rows, then \(\delta(A) = 0\).
+\item If \(\delta: M_{n \X n}(F) \to F\) is an alternating \(n\)-linear function and \(B\) is obtained from \(A \in M_{n \X n}(F)\) by interchanging two rows of \(A\), then \(\delta(B) = \delta(A)\).
+\item There is a \emph{unique} alternating \(n\)-linear function \(\delta: M_{n \X n}(F) \to F\).
+\item The function \(\delta: M_{n \X n}(F ) \to F\) defined by \(\det(A) = 0\) for every \(A \in M_{n \X n}(F)\) is an alternating \(n\)-linear function.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item False, the determinant is a counterexample.
+\item True by \DEF{4.3}.
+\item True by \THM{4.10}(b).
+\item False by \THM{4.10}(a).
+\item False. Given any alternating \(n\)-linear functions, its scalar multiple is also alternating \(n\)-linear.
+\item True. Trivially true.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.2}
+Determine \emph{all} the \(1\)-linear functions \(\delta: M_{1 \X 1}(F) \to F\).
+\end{exercise}
+
+\begin{proof}
+We claim that all functions \(\delta: M_{1 \X 1}(F) \to F\) where \(\delta(M) = c \cdot M_{11}\) for some scalar \(c \in F\) are all \(1\)-linear functions,
+since \emph{any \(1\)-linear function is actually a \LTRAN{}}.
+\end{proof}
+
+Determine which of the functions \(\delta : M_{3 \X 3}(F) \to F\) in Exercises 3 to Exercise 10 are \(3\)-linear functions.
+Justify each answer.
+
+\begin{exercise} \label{exercise 4.5.3}
+\(\delta(A) = k\), where \(k\) is any nonzero scalar.
+\end{exercise}
+
+\begin{proof}
+\(\delta\) is not \(3\)-linear. Example:
+\[
+    \delta \begin{pmatrix}
+        \MAROON{2} & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix} = k \ne 2 \cdot k
+    = \MAROON{2} \cdot \delta \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.4}
+\(\delta(A)= A_{22}\).
+\end{exercise}
+
+\begin{proof}
+\(\delta\) is not \(3\)-linear. Example:
+\[
+    \delta \begin{pmatrix}
+        \MAROON{2} & 0 & 0 \\
+        0 & \RED{1} & 0 \\
+        0 & 0 & 1
+    \end{pmatrix} = \RED{1} \ne 2 \cdot \RED{1} = 2 \cdot \delta
+    \begin{pmatrix}
+        \MAROON{1} & 0 & 0 \\
+        0 & \RED{1} & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.5}
+\(\delta(A)= A_{11}A_{23}A_{32}\).
+\end{exercise}
+
+\begin{proof}
+To show \(\delta\) is \(3\)-linear, we need to show that \(\delta\) is a linear function of each row when the remaining \(2\) rows are held fixed.
+
+\begin{itemize}
+\item The first row: When the second and third rows are held fixed, we have
+\begin{align*}
+    \delta\begin{pmatrix}
+        A_{11}+c B_{11} & A_{12}+c B_{12} & A_{13}+c B_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    & = \left(A_{11}+c B_{11}\right) \cdot A_{23} \cdot A_{32} \\
+    & = A_{11} \cdot A_{23} \cdot A_{32} + c \cdot B_{11} \cdot A_{23} \cdot A_{32} \\
+    & = \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    + c \cdot \delta\begin{pmatrix}
+        B_{11} & B_{12} & B_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+\end{align*}
+
+\item The second row: When the first and third rows are held fixed, we have
+\begin{align*}
+    \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21}+c B_{21} & A_{22}+c B_{22} & A_{23}+c B_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    & = A_{11} \cdot \left( A_{23} + c B_{23} \right) \cdot A_{32} \\
+    & = A_{11} \cdot A_{23} \cdot A_{32} + c \cdot A_{11} \cdot B_{23} \cdot A_{32} \\
+    & = \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    + c \cdot \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        B_{21} & B_{22} & B_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+\end{align*}
+
+\item The third row: When the first and second rows are held fixed, we have
+\begin{align*}
+    \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31}+c B_{31} & A_{32}+c B_{32} & A_{33}+c B_{33}
+    \end{pmatrix}
+    & = A_{11} \cdot A_{23} \cdot \left( A_{32} + c B_{32} \right) \\
+    & = A_{11} \cdot A_{23} \cdot A_{32} + c \cdot A_{11} \cdot A_{23} \cdot B_{32} \\
+    & = \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    + c \cdot \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        B_{31} & B_{32} & B_{33}
+    \end{pmatrix}
+\end{align*}
+\end{itemize}
+Hence \(\delta\) is \(3\)-linear.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.6}
+\(\delta(A) = A_{11} + A_{23} + A_{32}\).
+\end{exercise}
+
+\begin{proof}
+\(\delta\) is not \(3\)-linear. Example:
+\begin{align*}
+    \delta \begin{pmatrix}
+        \RED{1} & 0 & 0 \\
+        0 & \MAROON{5} & \RED{0} \\
+        0 & \RED{0} & 1
+    \end{pmatrix}
+        & = 1 + 0 + 0 = 1 \\
+        & \neq 5 = 5 \cdot 1 = 5 \cdot (1 + 0 + 0) \\
+        & = \MAROON{5} \cdot \delta \begin{pmatrix}
+            \RED{1} & 0 & 0 \\
+            0 & 1 & \RED{0} \\
+            0 & \RED{0} & 1
+        \end{pmatrix}
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.7}
+\(\delta(A) = A_{11} A_{21} A_{32}\).
+\end{exercise}
+
+\begin{proof}
+To show \(\delta\) is \(3\)-linear, we need to show that \(\delta\) is a linear function of each row when the remaining \(2\) rows are held fixed.
+
+\begin{itemize}
+\item The first row: When the second and third rows are held fixed, we have
+\begin{align*}
+    \delta\begin{pmatrix}
+        A_{11}+c B_{11} & A_{12}+c B_{12} & A_{13}+c B_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    & = \left(A_{11}+c B_{11}\right) \cdot A_{21} \cdot A_{32} \\
+    & = A_{11} \cdot A_{21} \cdot A_{32} + c \cdot B_{11} \cdot A_{21} \cdot A_{32} \\
+    & = \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    + c \cdot \delta\begin{pmatrix}
+        B_{11} & B_{12} & B_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+\end{align*}
+
+\item The second row: When the first and third rows are held fixed, we have
+\begin{align*}
+    \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21}+c B_{21} & A_{22}+c B_{22} & A_{23}+c B_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    & = A_{11} \cdot \left( A_{21} + c B_{21} \right) \cdot A_{32} \\
+    & = A_{11} \cdot A_{21} \cdot A_{32} + c \cdot A_{11} \cdot B_{21} \cdot A_{32} \\
+    & = \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    + c \cdot \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        B_{21} & B_{22} & B_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+\end{align*}
+
+\item The third row: When the first and second rows are held fixed, we have
+\begin{align*}
+    \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31}+c B_{31} & A_{32}+c B_{32} & A_{33}+c B_{33}
+    \end{pmatrix}
+    & = A_{11} \cdot A_{21} \cdot \left( A_{32} + c B_{32} \right) \\
+    & = A_{11} \cdot A_{21} \cdot A_{32} + c \cdot A_{11} \cdot A_{21} \cdot B_{32} \\
+    & = \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        A_{31} & A_{32} & A_{33}
+    \end{pmatrix}
+    + c \cdot \delta\begin{pmatrix}
+        A_{11} & A_{12} & A_{13} \\
+        A_{21} & A_{22} & A_{23} \\
+        B_{31} & B_{32} & B_{33}
+    \end{pmatrix}
+\end{align*}
+\end{itemize}
+Hence \(\delta\) is \(3\)-linear.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.8}
+\(\delta(A)= A_{11}A_{31}A_{32}\).
+\end{exercise}
+
+\begin{proof}
+\(\delta\) is not \(3\)-linear. Example:
+\begin{align*}
+    \delta \begin{pmatrix}
+        \RED{1} & 0 & 0 \\
+        0 & \MAROON{2} & 0 \\
+        \RED{1} & \RED{1} & 1
+    \end{pmatrix}
+        & = 1 \cdot 1 \cdot 1 = 1 \\
+        & \neq 2 = 2 \cdot 1 = 2 \cdot (1 \cdot 1 \cdot 1) \\
+        & = \MAROON{2} \cdot \delta \begin{pmatrix}
+            \RED{1} & 0 & 0 \\
+            0 & 1 & 0 \\
+            \RED{1} & \RED{1} & 1
+        \end{pmatrix}
+\end{align*}
+\end{proof}
+
+\begin{note}
+\EXEC{4.5.5}, \EXEC{4.5.7} and \EXEC{4.5.8} have similar form, but \emph{not} all of them are \(n\)-linear.
+The necessary and sufficient condition is in \EXEC{4.5.15}, although it's for \(2\X2\) matrices.
+\end{note}
+
+\begin{exercise} \label{exercise 4.5.9}
+\(\delta(A)= A^2_{11} A^2_{22} A^2_{33}\).
+\end{exercise}
+
+\begin{proof}
+\(\delta\) is not a \(3\)-linear function. Example:
+\[
+    \delta\begin{pmatrix}
+        2 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+    = 2^2 \cdot 1 \cdot 1 = 4 \neq 2 = 2 \cdot (1^2 \cdot 1 \cdot 1)
+    = 2 \cdot \delta \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.10}
+\(\delta(A) = A_{11}A_{22}A_{33} - A_{11}A_{21}A_{32}\).
+\end{exercise}
+
+\begin{proof}
+It's a \(3\)-linear function. The (tedious) proof is similar to \EXEC{4.5.8}. Skip.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.11}
+Prove \CORO{4.10.2} and \CORO{4.10.3}.
+\end{exercise}
+
+\begin{proof}
+See the corresponding corollaries.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.12}
+Prove \THM{4.11}.
+\end{exercise}
+
+\begin{proof}
+If \(A\) is not full rank, then:
+\begin{itemize}
+\item By \CORO{4.10.2}, \(\delta(A) = 0\).
+\item By \CORO{4.6.1}, \(\det(A) = 0\).
+\item By \THM{3.7}(c), \(AB\) is also not full rank, so \(\delta(AB) = 0\).
+\end{itemize}
+Then we have \(\delta(AB) = 0 = 0 \cdot \delta(B) = \det(A) \cdot \delta(B)\).
+
+
+Now suppose \(A\) is full rank.
+(By \CORO{3.6.3}) We can write
+\[
+    A = E_m \cdot ... \cdot E_2 \cdot E_1. \quad \quad \MAROON{(1)}
+\]
+
+Now from \CORO{4.10.3} and the supposition that \(\delta(I) = 1\), we have \(\delta(E) = \RED{\det}(E)\) for any elementary matrix \(E\).
+
+Now we prove that \(\delta(EA) = \RED{\det}(E) \cdot \delta(A)\) for any elementary matrix \(E\):
+\begin{itemize}
+\item If \(E\) is type 1, then \(EA\) is obtained by interchanging two rows of \(A\).
+By \THM{4.10}(a), \(\delta(EA) = -\delta(A)\).
+But by \RMK{4.3.1}(a), \(\det(E) = -1\), so we have \(\delta(EA) = -\delta(A) = -1 \cdot \delta(A) = \det(E) \cdot \delta(A)\).
+
+\item If \(E\) is type 2, then \(EA\) is obtained by multiplying row \(i\) of \(A\) by scalar \(k\).
+By \DEF{4.3}, \(n\)-linear, \(\delta(EA) = k \cdot \delta(A)\).
+But by \RMK{4.3.1}(b), \(\det(E) = k\), so we have \(\delta(EA) = k \cdot \delta(A) = \det(E) \cdot \delta(A)\).
+
+\item If \(E\) is type 3, then \(EA\) is obtained by adding \(k\) times row \(i\) of \(A\) to row \(j\).
+By \CORO{4.10.1}, \(\delta(EA) = \delta(A)\).
+But by \RMK{4.3.1}(c), \(\det(E) = 1\), so we have \(\delta(EA) = \delta(A) = 1 \cdot \delta(A) = \det(E) \cdot \delta(A)\).
+\end{itemize}
+
+So we have
+\begin{align*}
+    \delta(AB) & = \delta(E_m \cdot ... \cdot E_2 \cdot E_1 B) & \text{by \MAROON{(1)}} \\
+               & = \RED{\det}(E_m) \cdot \delta(E_{m - 1} \cdot ... \cdot E_1 B) & \text{by what have shown} \\
+               & = ... \\
+               & = \det(E_m) \cdot \det(E_{m - 1}) \cdot ... \cdot \det(E_1) \cdot \delta(B) & \text{inductively applying what have shown} \\
+               & = \det(E_m \cdot ... \cdot E_1) \cdot \delta(B) & \text{by \THM{4.7}} \\
+               & = \RED{\det}(A) \cdot \delta(B) & \text{by \MAROON{(1)}}
+\end{align*}
+
+So in all cases, we have \(\delta(AB) = \RED{\det(A)} \cdot \delta(B)\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.13}
+Prove that \(\det: M_{2 \X 2}(F) \to F\) is a \(2\)-linear function of the \emph{columns} of a matrix.
+\end{exercise}
+
+\begin{proof}
+This was proved in \EXEC{4.3.8}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.14}
+Let \(a, b, c, d \in F\).
+Prove that the function \(\delta: M_{2 \X 2}(F) \to F\) defined by \(\delta(A) = A_{11}A_{22}a + A_{11}A_{21}b + A_{12}A_{22}c + A_{12}A_{21}d\) is a \(2\)-linear function.
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+    & \delta \begin{pmatrix}
+        A_{11} + k B_{11} & A_{12} + k B_{12} \\
+        A_{21} & A_{22}
+    \end{pmatrix} \\
+    & = (A_{11} + k B_{11}) A_{22} a + (A_{11} + k B_{11}) A_{21} b + (A_{12} + k B_{12}) A_{22} c + (A_{12} + k B_{12}) A_{21} d \\
+    & = A_{11} A_{22} a + k B_{11} A_{22} a
+      + A_{11} A_{21} b + k B_{11} A_{21} b
+      + A_{12} A_{22} c + k B_{12} A_{22} c
+      + A_{12} A_{21} d + k B_{12} A_{21} d \\
+    & = A_{11} A_{12} a + A_{11} A_{21} b + A_{12} A_{22} c + A_{12} A_{21} d + k \left( B_{11} A_{22} a + B_{11} A_{21} b + B_{12} A_{22} c + B_{12} A_{21} d \right) \\
+    & = \delta \begin{pmatrix}
+        A_{11} & A_{12} \\
+        A_{21} & A_{22}
+    \end{pmatrix}
+      + k \delta \begin{pmatrix}
+        B_{11} & B_{12} \\
+        A_{21} & A_{22}
+    \end{pmatrix}
+\end{align*}
+The second row is similar.
+So \(\delta\) is \(2\)-linear.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.15}
+Prove that \(\delta: M_{2 \X 2}(F) \to F\) is a \(2\)-linear function if and only if it \emph{has the form}
+\[
+    \delta(A) = A_{11}A_{22}a + A_{11}A_{21}b + A_{12}A_{22}c + A_{12}A_{21}d
+\]
+for some scalars \(a, b, c, d \in F\).
+\end{exercise}
+
+\begin{proof} \ 
+
+\(\Longleftarrow\): This is \EXEC{4.5.14}.
+
+\(\Longrightarrow\): Suppose \(\delta\) is \(2\)-linear.
+Now let
+\[
+    a = \delta \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{pmatrix}, \quad
+    b = \delta \begin{pmatrix}
+        1 & 0 \\
+        1 & 0
+    \end{pmatrix}, \quad
+    c = \delta \begin{pmatrix}
+        0 & 1 \\
+        0 & 1
+    \end{pmatrix}, \quad
+    d = \delta \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}.
+\]
+Then given arbitrary \(2 \X 2\) matrix \(A\),
+\begin{align*}
+    \delta \begin{pmatrix}
+        A_{11} & A_{12} \\
+        A_{21} & A_{22}
+    \end{pmatrix}
+    & = \delta \begin{pmatrix}
+        A_{11} & 0 \\
+        A_{21} & A_{22}
+    \end{pmatrix}
+    + \delta \begin{pmatrix}
+        0 & A_{12} \\
+        A_{21} & A_{22}
+    \end{pmatrix} \\
+    & = \delta \begin{pmatrix}
+        A_{11} & 0 \\
+        0 & A_{22}
+    \end{pmatrix}
+    + \delta \begin{pmatrix}
+        A_{11} & 0 \\
+        A_{21} & 0
+    \end{pmatrix}
+    + \delta \begin{pmatrix}
+        0 & A_{12} \\
+        0 & A_{22}
+    \end{pmatrix}
+    + \delta \begin{pmatrix}
+        0 & A_{12} \\
+        A_{21} & 0
+    \end{pmatrix} \\
+    & = A_{11} A_{22} \cdot \delta \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{pmatrix}
+    + A_{11} A_{21} \cdot \delta \begin{pmatrix}
+        1 & 0 \\
+        1 & 0
+    \end{pmatrix}
+    + A_{12} A_{22} \delta \begin{pmatrix}
+        0 & 1 \\
+        0 & 1
+    \end{pmatrix}
+    + A_{12} A_{21} \delta \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix} \\
+    & = A_{11} A_{22} a + A_{11} A_{21} b + A_{12} A_{22} c + A_{12} A_{21} d,
+\end{align*}
+where each step except the last is guaranteed by the \(2\)-linear property.
+Hence \(\delta\) has the desired form.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.16}
+Prove that if \(\delta: M_{n \X n}(F) \to F\) is an alternating \(n\)-linear function, then there \emph{exists} a scalar \(k\) such that \(\delta(A) = k \cdot \RED{\det}(A)\) for all \(A \in M_{n \X n}(F)\).
+\end{exercise}
+
+\begin{proof}
+We can WLOG assume \(A\) is invertible, otherwise both \(\delta(A)\) and \(\det(A)\) are equal to zero, and \(k\) could be any scalar.
+
+So suppose \(A\) is invertible.
+We claim that \(k = \delta(I)\), since
+\begin{align*}
+    \delta(A) & = \delta(AI) & \text{of course} \\
+              & = \RED{\det}(A) \delta(I) & \text{by \THM{4.11}} \\
+              & = \det(A) \cdot k.
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.17}
+Prove that a linear combination of two \(n\)-linear functions is an \(n\)-linear function, where the sum and scalar product of \(n\)-linear functions are as \EXAMPLE{1.2.3}.
+\end{exercise}
+
+\begin{proof}
+Let \(f, g\) be 2 \(n\)-linear functions, and \(c\) be scalar.
+Then
+\begin{align*}
+    & (f + c \cdot g) \begin{pmatrix}
+        \vdots \\
+        u + kv \\
+        \vdots
+    \end{pmatrix} = f \begin{pmatrix}
+        \vdots \\
+        u + kv \\
+        \vdots
+    \end{pmatrix} + (c \cdot g) \begin{pmatrix}
+        \vdots \\
+        u + kv \\
+        \vdots
+    \end{pmatrix} & \text{by def of function \(+\)} \\
+    & = f \begin{pmatrix}
+        \vdots \\
+        u \\
+        \vdots
+    \end{pmatrix} + k \cdot f \begin{pmatrix}
+        \vdots \\
+        v \\
+        \vdots
+    \end{pmatrix} + (c \cdot g) \begin{pmatrix}
+        \vdots \\
+        u \\
+        \vdots
+    \end{pmatrix} +
+    k \cdot (c \cdot g) \begin{pmatrix}
+        \vdots \\
+        v \\
+        \vdots
+    \end{pmatrix} & \text{since \(f, g\) are \(n\)-linear} \\
+    & = f \begin{pmatrix}
+        \vdots \\
+        u \\
+        \vdots
+    \end{pmatrix} + (c \cdot g) \begin{pmatrix}
+        \vdots \\
+        u \\
+        \vdots
+    \end{pmatrix} + k \cdot \left( f \begin{pmatrix}
+        \vdots \\
+        v \\
+        \vdots
+    \end{pmatrix} +
+    (c \cdot g) \begin{pmatrix}
+        \vdots \\
+        v \\
+        \vdots
+    \end{pmatrix} \right) & \text{of course} \\
+    & = (f + c \cdot g) \begin{pmatrix}
+        \vdots \\
+        u \\
+        \vdots
+    \end{pmatrix} + k \cdot (f + c \cdot g) \begin{pmatrix}
+        \vdots \\
+        v \\
+        \vdots
+    \end{pmatrix} & \text{by def of function \(+\)}
+\end{align*}
+Hence \(f + c \cdot g\) is also \(n\)-linear.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.18}
+Prove that the set of all \(n\)-linear functions over a field \(F\) \emph{is a vector space over \(F\)} under the operations of function addition and scalar multiplication as defined in \EXAMPLE{1.2.3}.
+\end{exercise}
+
+\begin{proof}
+First, the set of all ``functions'' from \(M_{n \X n}(F)\) to \(F\), with function \(+, \cdot\), is of course a vector space.
+Now, the zero vector (zero function) \(\det : M_{n \X n}(F) \to F\) is \(n\)-linear by \EXAMPLE{4.5.1}.
+And by \EXEC{4.5.17}, the the set of all \(n\)-linear functions over a field \(F\) is closed under function addition and scalar multiplication.
+Hence by \THM{1.3}, the set of all \(n\)-linear function is a \emph{subspace} of the set of all function from \(M_{n \X n}(F)\) to \(F\),
+hence in particular is a vector space over \(F\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.19}
+Let \(\delta: M_{n \X n}(F) \to F\) be an \(n\)-linear function and \(F\) a field that does \textbf{not} have characteristic two.
+Prove that \emph{if} \(\delta(B) = -\delta(A)\) whenever \(B\) is obtained from \(A \in M_{n \X n}(F)\) by interchanging any two rows of \(A\), \emph{then}
+\(\delta(M) = 0\) whenever \(M \in M_{n \X n}(F)\) has two identical rows.
+\end{exercise}
+
+\begin{proof}
+By ``interchanging'' that two identical rows of \(M\), since the resulting matrix is \(M\) itself, we have \(\det(M) = -\det(M)\) or \(2 \det(M) = 0\) by the assumption.
+Since \(F\) does not have characteristic two, we have \(\det(M) = 0\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.5.20}
+Give an example to show that the implication in \EXEC{4.5.19} \emph{need not hold} if \(F\) has characteristic two.
+\end{exercise}
+
+\begin{proof}
+Let \(\delta : M_{2 \X 2}(F) \to F\) where \(F\) has characteristic \(2\) such that
+\[
+    \delta \begin{pmatrix}
+        a & b \\
+        c & d
+    \end{pmatrix}
+    = ac + ad + bc + bd.
+\]
+By \EXEC{4.5.15}, \(\delta\) is a \(2\)-linear function since it has the desired form.
+
+But we also have
+\[
+    ac + ad + bc + bd = ca + cb + da + db = \delta \begin{pmatrix}
+        c & d \\
+        a & b
+    \end{pmatrix}
+\]
+Hence
+\[
+    \delta \begin{pmatrix}
+        a & b \\
+        c & d
+    \end{pmatrix}
+    = \begin{pmatrix}
+        c & d \\
+        a & b
+    \end{pmatrix}.
+\]
+But \emph{since \(F\) has characteristic \(2\)},
+\[
+    \det \begin{pmatrix}
+        c & d \\
+        a & b
+    \end{pmatrix}
+    = - \det \begin{pmatrix}
+        c & d \\
+        a & b
+    \end{pmatrix}
+\]
+All in all, we have
+\[
+    \det \begin{pmatrix}
+        a & b \\
+        c & d
+    \end{pmatrix}
+    = - \det \begin{pmatrix}
+        c & d \\
+        a & b
+    \end{pmatrix},
+\]
+so \(\delta\) is a \(2\)-linear function that satisfies the condition in \EXEC{4.5.19}.
+
+But in particular we have
+\[
+    \det \begin{pmatrix}
+        \RED{1} & \BLUE{0} \\
+        \MAROON{1} & \GREEN{0}
+    \end{pmatrix}
+    = \RED{1} \cdot \MAROON{1} + \RED{1} \cdot \GREEN{0} + \BLUE{0} \cdot \MAROON{1} + \BLUE{0} \cdot \GREEN{0}
+    = 1 \ne 0,
+\]
+even though the matrix has two identical rows.
+So \EXEC{4.5.19} does \emph{not} apply.
+\end{proof}

@@ -1,0 +1,370 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 4.2.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item The function \(\det: M_{n \X n}(F) \to F\) is a linear transformation.
+\item The determinant of a square matrix can be evaluated by cofactor expansion along any row.
+\item If two rows of a square matrix \(A\) are identical, then \(\det(A) = 0\).
+\item If \(B\) is a matrix obtained from a square matrix \(A\) by interchanging any two rows, then \(\det(B) = -\det(A)\).
+\item If \(B\) is a matrix obtained from a square matrix \(A\) by multiplying a row of \(A\) by a scalar, then \(\det(B) = \det(A)\).
+\item If \(B\) is a matrix obtained from a square matrix \(A\) by adding \(k\) times row \(i\) to row \(j\), then \(\det(B) = k\det(A)\).
+\item If \(A \in M_{n \X n}(F)\) has rank \(n\), then \(\det(A) = 0\).
+\item The determinant of an upper triangular matrix equals the product of its diagonal entries.
+\end{enumerate} 
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item False. In particular by \RMK{4.1.1}.
+\item True by \THM{4.4}.
+\item True by \CORO{4.4.1}.
+\item True by \THM{4.5}.
+\item False by \THM{4.3}; \(\det(B) = c \det(A)\) where \(c\) is that scalar.
+\item False by \THM{4.6}; \(\det(B) = \det(A)\).
+\item False. Given any \(2 \X 2\) rank \(2\) matrix \(A\) we have \(\det(A) \ne 0\).
+\item True by \EXEC{4.2.23}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.2}
+Find the value of \(k\) that satisfies the following equation:
+\[
+    \det\left(\begin{array}{ccc}
+        3 a_{1} & 3 a_{2} & 3 a_{3} \\
+        3 b_{1} & 3 b_{2} & 3 b_{3} \\
+        3 c_{1} & 3 c_{2} & 3 c_{3}
+    \end{array}\right) = 
+    k \det\left(\begin{array}{ccc}
+        a_{1} & a_{2} & a_{3} \\
+        b_{1} & b_{2} & b_{3} \\
+        c_{1} & c_{2} & c_{3}
+    \end{array}\right)
+\]
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    \det\left(\begin{array}{ccc}
+        3 a_{1} & 3 a_{2} & 3 a_{3} \\
+        3 b_{1} & 3 b_{2} & 3 b_{3} \\
+        3 c_{1} & 3 c_{2} & 3 c_{3}
+    \end{array}\right)
+    & = 3 \det\left(\begin{array}{ccc}
+            a_{1} & a_{2} & a_{3} \\
+            3 b_{1} & 3 b_{2} & 3 b_{3} \\
+            3 c_{1} & 3 c_{2} & 3 c_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(1\)} \\
+    & = 9 \det\left(\begin{array}{ccc}
+            a_{1} & a_{2} & a_{3} \\
+            b_{1} & b_{2} & b_{3} \\
+            3 c_{1} & 3 c_{2} & 3 c_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(2\)} \\
+    & = 27 \det\left(\begin{array}{ccc}
+            a_{1} & a_{2} & a_{3} \\
+            b_{1} & b_{2} & b_{3} \\
+            c_{1} & c_{2} & c_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(3\)}
+\end{align*}
+So \(k = 27\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.3}
+Find the value of \(k\) that satisfies the following equation:
+\[
+    \det\left(\begin{array}{ccc}
+        2 a_{1} & 2 a_{2} & 2 a_{3} \\
+        3 b_{1}+5 c_{1} & 3 b_{2}+5 c_{2} & 3 b_{3}+5 c_{3} \\
+        7 c_{1} & 7 c_{2} & 7 c_{3}
+    \end{array}\right) =
+    k \det\left(\begin{array}{ccc}
+        a_{1} & a_{2} & a_{3} \\
+        b_{1} & b_{2} & b_{3} \\
+        c_{1} & c_{2} & c_{3}
+    \end{array}\right).
+\]
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    & \det\left(\begin{array}{ccc}
+        2 a_{1} & 2 a_{2} & 2 a_{3} \\
+        3 b_{1} + 5 c_1 & 3 b_{2} + 5 c_2 & 3 b_{3} + 5 c_3 \\
+        7 c_{1} & 7 c_{2} & 7 c_{3}
+    \end{array}\right) \\
+    & = 2 \det\left(\begin{array}{ccc}
+            a_{1} & a_{2} & a_{3} \\
+            3 b_{1} + 5 c_1 & 3 b_{2} + 5 c_2 & 3 b_{3} + 5 c_3 \\
+            7 c_{1} & 7 c_{2} & 7 c_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(1\)} \\
+    & = 2 \det\left(\begin{array}{ccc}
+            a_{1} & a_{2} & a_{3} \\
+            3 b_{1} & 3 b_{2} & 3 b_{3} \\
+            7 c_{1} & 7 c_{2} & 7 c_{3}
+        \end{array}\right) & \text{by \THM{4.6}, adding row \(3\) to row \(2\)} \\
+    & = 6 \det\left(\begin{array}{ccc}
+            a_{1} & a_{2} & a_{3} \\
+            b_{1} & b_{2} & b_{3} \\
+            7 c_{1} & 7 c_{2} & 7 c_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(2\)} \\
+    & = 42 \det\left(\begin{array}{ccc}
+            a_{1} & a_{2} & a_{3} \\
+            b_{1} & b_{2} & b_{3} \\
+            c_{1} & c_{2} & c_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(3\)}
+\end{align*}
+So \(k = 42\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.4}
+Find the value of \(k\) that satisfies the following equation:
+\[
+    \det\left(\begin{array}{lll}
+        b_{1}+c_{1} & b_{2}+c_{2} & b_{3}+c_{3} \\
+        a_{1}+c_{1} & a_{2}+c_{2} & a_{3}+c_{3} \\
+        a_{1}+b_{1} & a_{2}+b_{2} & a_{3}+b_{3}
+    \end{array}\right) =
+    k \det\left(\begin{array}{ccc}
+        a_{1} & a_{2} & a_{3} \\
+        b_{1} & b_{2} & b_{3} \\
+        c_{1} & c_{2} & c_{3}
+    \end{array}\right)
+\]
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    & \det\left(\begin{array}{lll}
+        b_{1}+c_{1} & b_{2}+c_{2} & b_{3}+c_{3} \\
+        a_{1}+c_{1} & a_{2}+c_{2} & a_{3}+c_{3} \\
+        a_{1}+b_{1} & a_{2}+b_{2} & a_{3}+b_{3}
+    \end{array}\right) \\
+    & = \det\left(\begin{array}{lll}
+            b_{1}+c_{1} & b_{2}+c_{2} & b_{3}+c_{3} \\
+            a_{1}-b_{1} & a_{2}-b_{2} & a_{3}-b_{3} \\
+            a_{1}+b_{1} & a_{2}+b_{2} & a_{3}+b_{3}
+        \end{array}\right) & \text{by \THM{4.6}, add \(-1 \X\) row \(1\) to row \(2\)} \\
+    & = \det\left(\begin{array}{lll}
+            b_{1}+c_{1} & b_{2}+c_{2} & b_{3}+c_{3} \\
+            a_{1}-b_{1} & a_{2}-b_{2} & a_{3}-b_{3} \\
+            2 a_{1} & 2 a_{2} & 2 a_{3}
+        \end{array}\right) & \text{by \THM{4.6}, add \(1 \X\) row \(2\) to row \(3\)} \\
+    & = \det\left(\begin{array}{lll}
+            b_{1}+c_{1} & b_{2}+c_{2} & b_{3}+c_{3} \\
+            -b_{1} & -b_{2} & -b_{3} \\
+            2 a_{1} & 2 a_{2} & 2 a_{3}
+        \end{array}\right) & \text{by \THM{4.6}, add \(-\frac1{2} \X\) row \(3\) to row \(2\)} \\
+    & = \det\left(\begin{array}{lll}
+            c_{1} & c_{2} & c_{3} \\
+            -b_{1} & -b_{2} & -b_{3} \\
+            2 a_{1} & 2 a_{2} & 2 a_{3}
+        \end{array}\right) & \text{by \THM{4.6}, add \(1 \X\) row \(2\) to row \(1\)} \\
+    & = -1 \det\left(\begin{array}{lll}
+            c_{1} & c_{2} & c_{3} \\
+            b_{1} & b_{2} & b_{3} \\
+            2 a_{1} & 2 a_{2} & 2 a_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(2\)} \\
+    & = -2 \det\left(\begin{array}{lll}
+            c_{1} & c_{2} & c_{3} \\
+            b_{1} & b_{2} & b_{3} \\
+            a_{1} & a_{2} & a_{3}
+        \end{array}\right) & \text{by \THM{4.3}, change row \(3\)} \\
+    & = 2 \det\left(\begin{array}{lll}
+            a_{1} & a_{2} & a_{3} \\
+            b_{1} & b_{2} & b_{3} \\
+            c_{1} & c_{2} & c_{3}
+        \end{array}\right) & \text{by \THM{4.5}, interchange row \(1\) and row \(3\)}
+\end{align*}
+So \(k = 2\).
+\end{proof}
+
+Exercise 5 to 12 are calculation problems.
+I just pick \EXEC{4.2.5} for real number field and \EXEC{4.2.9} for complex number field, respectively.
+The exercises require evaluating the determinant of the given matrix by cofactor expansion along the indicated row.
+
+\begin{exercise} \label{exercise 4.2.5}
+\[
+    A = \begin{pmatrix}
+        0 & 1 & 2 \\
+        -1 & 0 & -3 \\
+        2 & 3 & 0
+    \end{pmatrix}
+\]
+along the first row.
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+    \det(A) & = A_{11} \cdot (-1)^{1 + 1} \det(\tilde{A}_{11})
+              + A_{12} \cdot (-1)^{1 + 2} \det(\tilde{A}_{12})
+              + A_{13} \cdot (-1)^{1 + 3} \det(\tilde{A}_{13}) \\
+            & = 0 \cdot 1 \det \begin{pmatrix} 0 & -3 \\ 3 & 0 \end{pmatrix}
+              + 1 \cdot (-1) \det \begin{pmatrix} -1 & -3 \\ 2 & 0 \end{pmatrix}
+              + 2 \cdot 1 \det \begin{pmatrix} -1 & 0 \\ 2 & 3 \end{pmatrix} \\
+            & = 0 \cdot 1 \cdot 9 + 1 \cdot (-1) \cdot 6 + 2 \cdot 1 \cdot (-3) \\
+            & = 0 + (-6) + (-6) = -12.
+\end{align*}
+\end{proof}
+
+\setcounter{exercise}{8}
+\begin{exercise} \label{exercise 4.2.9}
+\[
+    A = \begin{pmatrix}
+        0     & 1 + \iu & 2 \\
+        -2\iu & 0       & 1 - \iu \\
+        3     & 4\iu    & 0
+    \end{pmatrix}
+\]
+along the third row.
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+    \det(A) & = A_{31} \cdot (-1)^{3 + 1} \det(\tilde{A}_{31})
+              + A_{32} \cdot (-1)^{3 + 2} \det(\tilde{A}_{32})
+              + A_{33} \cdot (-1)^{3 + 3} \det(\tilde{A}_{33}) \\
+            & = 3 \cdot 1 \cdot \begin{pmatrix} 1 + \iu & 2 \\ 0 & 1 - \iu \end{pmatrix}
+              + 4 \iu \cdot (-1) \cdot \begin{pmatrix} 0 & 2 \\ -2\iu & 1 - \iu \end{pmatrix}
+              + 0 \cdot 1 \cdot \begin{pmatrix} 0 & 1 + \iu \\ -2\iu & 0 \end{pmatrix} \\
+            & = 3 \cdot 1 \cdot (1 + \iu)(1 - \iu)
+              + 4 \iu \cdot (-1) \cdot 4 \iu
+              + 0 \\
+            & = 3 \cdot 2 + 16 = 22.
+\end{align*}
+\end{proof}
+
+Exercise 13 to 22 are calculation problems. Skip.
+
+\setcounter{exercise}{22}
+\begin{exercise} \label{exercise 4.2.23}
+Prove that the determinant of an upper triangular matrix is the product of its diagonal entries.
+\end{exercise}
+
+\begin{proof}
+Wanted \(P(n)\): Given \(n \X n\) upper triangular matrix \(A\), \(\det(A)\) is the product of \(A\)'s diagonal entries.
+
+We use induction on \(n\).
+\(n = 1\) is true by definition.
+So suppose inductively given any \(n \X n\) upper triangular matrix \(A\), \(\det(A)\) is the product of \(A\)'s diagonal entries.
+We have to show given \((n + 1) \X (n + 1)\) upper triangular matrix \(A\), \(\det(A)\) is the product of \(A\)'s diagonal entries.
+So let \(A\) be an arbitrary \((n + 1) \X (n + 1)\) matrix.
+We will calculate its determinant by expanding it \emph{along the last row}.
+So
+\begin{align*}
+    \det(A) & = A_{n+1, 1} \cdot (-1)^{(n+1) + 1} \det(\tilde{A}_{n+1, 1}) \\
+            & \quad + A_{n+1, 2} \cdot (-1)^{(n+1) + 2} \det(\tilde{A}_{n+1, 2}) \\
+            & \quad + ... \\
+            & \quad + A_{n+1, n} \cdot (-1)^{(n+1) + n} \det(\tilde{A}_{n+1, n}) \\
+            & \quad + A_{n+1, n+1} \cdot (-1)^{(n+1) + (n+1)} \det(\tilde{A}_{n+1, n+1}) \\
+            & = \RED{0} \cdot (-1)^{(n+1) + 1} \det(\tilde{A}_{n+1, 1}) \\
+            & \quad + \RED{0} \cdot (-1)^{(n+1) + 2} \det(\tilde{A}_{n+1, 2}) \\
+            & \quad + \RED{...} \\
+            & \quad + \RED{0} \cdot (-1)^{(n+1) + n} \det(\tilde{A}_{n+1, n}) \\
+            & \quad + A_{n+1, n+1} \cdot (-1)^{(n+1) + (n+1)} \det(\tilde{A}_{n+1, n+1}) & \text{since \(A\) is upper triangular} \\
+            & = A_{n+1, n+1} \cdot (-1)^{(n+1) + (n+1)} \det(\tilde{A}_{n+1, n+1}) \\
+            & = A_{n+1, n+1} \cdot \det(\tilde{A}_{n+1, n+1}). & \text{of course}
+\end{align*}
+But \(\tilde{A}_{n+1, n+1}\) is also an \(n \X n\) upper triangular matrix, so by inductive hypothesis, \(\det(\tilde{A}_{n+1, n+1}) = (\tilde{A}_{n+1, n+1})_{11} \cdot (\tilde{A}_{n+1, n+1})_{22} \cdot ... \cdot (\tilde{A}_{n+1, n+1})_{nn})\).
+That is, \(\det(\tilde{A}_{n+1, n+1}) = A_{11} \cdot A_{22} \cdot ... \cdot A_{nn}\).
+So
+\[
+    \det(A) = A_{n+1, n+1} \cdot (A_{11} \cdot A_{22} \cdot ... \cdot A_{nn}),
+\]
+which is the product of the diagonal entries of \(A\).
+This closes the induction.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.24}
+Prove the \CORO{4.3.1}.
+\end{exercise}
+
+\begin{proof}
+See \CORO{4.3.1}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.25}
+Prove that \(\det(kA) = k^n \det(A)\) for any \(A \in M_{n \X n}(F)\).
+\end{exercise}
+
+\begin{proof}
+This is of course, since by \THM{4.3},
+\[
+    \det(k A)=\det\left[\begin{array}{c} k \cdot a_1 \\ k \cdot a_2 \\ \vdots \\ k \cdot a_r \\ \vdots \\ k \cdot a_n \end{array}\right]
+    = \det k \cdot\left[\begin{array}{c} a_1 \\ k \cdot a_2 \\ \vdots \\ k \cdot a_r \\ \vdots \\ k \cdot a_n \end{array}\right]
+    = \ldots
+    = \det k^{n}\left[\begin{array}{c} a_1 \\ a_2 \\ \vdots \\ a_r \\ \vdots \\ a_n \end{array}\right]
+    = k^n \det(A)
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.26}
+Let \(A \in M_{n \X n}(F)\).
+Under what conditions is \(\det(-A) = \det(A)\)?
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    \det(-A) & = \det(-1 \cdot A) & \text{of course} \\
+             & = (-1)^n \det(A) & \text{by \EXEC{4.2.25}}
+\end{align*}
+Hence \(\det(-A) = \det(A)\) if and only if \((-1)^n = 1\).
+So the condition is \(n\) is even.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.27}
+Prove that if \(A \in M_{n \X n}(F)\) has two identical \emph{columns}, then \(\det(A) = 0\).
+\end{exercise}
+
+\begin{proof}
+If \(A\) has to identical columns, then (by \CH{3}) it has rank less then \(n\).
+And by \CORO{4.6.1}, \(\det(A) = 0\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.28}
+Compute \(\det(E_i)\) if \(E_i\) is an elementary matrix of type \(i\).
+\end{exercise}
+
+\begin{proof}
+First by \EXAMPLE{4.2.4}, \(\det(I) = 1\).
+For type 1 \(E_1\), it is obtained from interchanging any two rows of \(I\).
+So by \THM{4.5}, \(\det(E_1) = -\det(I) = -1\).
+For type 2 \(E_2\), it is obtained from multiplying a row of \(I\) by a scalar \(c\).
+So by \THM{4.3}, \(\det(E_2) = c\det(I) = c\).
+For type 3 \(E_3\), it is obtained from adding \(c\) times of a row of \(I\) to another row of \(I\).
+So by \THM{4.6}, \(\det(E_3) = \det(I) = 1\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.29}
+Prove that if \(E\) is an \emph{elementary} matrix, then \(\det(E^\top) = \det(E)\).
+\end{exercise}
+
+\begin{proof}
+Since type 1 and type 2 elementary matrices are symmetric, we have \(E^\top = E\), hence \(\det(E^\top) = \det(E)\).
+
+For any type 3 elementary matrix, by \EXEC{4.2.28} it has determinant \(1\);
+and by \ATHM{3.2}, the transpose is also type 3 elementary matrices, so by \EXEC{4.2.28} again, the transpose has determinant \(1\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.2.30}
+Let the rows of \(A \in M_{n \X n}(F)\) be \(a_1, a_2, ..., a_n\), and let \(B\) be the matrix in which the rows are \(a_n, a_{n - 1}, ..., a_1\).
+Calculate \(\det(B)\) in terms of \(\det(A)\).
+\end{exercise}
+
+\begin{proof}
+If \(n\) is even, then we can interchange rows of \(A\) \(\frac{n}{2}\) times to get \(B\) by such way:
+interchange row \(1\) and row \(n\), row \(2\) and row \(n - 1\), ..., row \(\frac{n}{2}\) and row \(\frac{n}{2} + 1\).
+So by \THM{4.5}, \(\det(B) = (-1)^{\frac{n}{2}} \det(A)\).
+In particular, since \(n\) is even, \(\frac{n}{2} = \floor{\frac{n}{2}}\), so \(\det(B) = (-1)^{\floor{\frac{n}{2}}} \det(A)\).
+
+Similarly, if \(n\) is odd, we can interchange rows of \(A\) \(\frac{n - 1}{2}\) times to get \(B\) by such way:
+interchange row \(1\) and row \(n\), row \(2\) and row \(n - 1\), ..., row \(\frac{n - 1}{2}\) and row \(\frac{n - 1}{2} + 2\), and leave row \(\frac{n - 1}{2} + 1\) unchanged.
+So by \THM{4.5}, \(\det(B) = (-1)^{\frac{n - 1}{2}} \det(A)\).
+In particular, since \(n\) is odd, \(\frac{n - 1}{2} = \floor{\frac{n}{2}}\), so \(\det(B) = (-1)^{\floor{\frac{n}{2}}} \det(A)\).
+
+So in all cases, we have \(\det(B) = (-1)^{\floor{\frac{n}{2}}} \det(A)\).
+\end{proof}

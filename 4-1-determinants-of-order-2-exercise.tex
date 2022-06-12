@@ -1,0 +1,517 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 4.1.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item The function \(\det : M_{2 \X 2}(F) \to F\) is a linear transformation.
+\item The determinant of a \(2 \X 2\) matrix is a linear function of each row of the matrix when the other row is held fixed.
+\item If \(A \in M_{2 \X 2}(F)\) and \(\det(A) = 0\), then \(A\) is invertible.
+\item If \(u\) and \(v\) are vectors in \(\SET{R}^2\) emanating from the origin, then the area of the parallelogram having \(u\) and \(v\) as adjacent sides is
+\[
+    \det \begin{pmatrix} u \\ v \end{pmatrix}.
+\]
+\item A coordinate system is \emph{right-handed} if and only if its orientation equals \(1\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item False by \RMK{4.1.1}.
+\item True by \THM{4.1}.
+\item False, by \THM{4.2}, \(A\) is \emph{not} invertible.
+\item False, by \ATHM{4.1}, the areas is
+\[
+    \left| \det \begin{pmatrix} u \\ v \end{pmatrix} \right|.
+\]
+\item True by \EXEC{4.1.13}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.2}
+Compute the determinants of the following matrices in  \(M_{2 \X 2}(\SET{R})\).
+
+(a) \(\left(\begin{array}{rr} 6 & -3 \\ 2 & 4 \end{array}\right)\)
+(b) \(\left(\begin{array}{rr} -5 & 2 \\ 6 & 1 \end{array}\right)\)
+(c) \(\left(\begin{array}{rr} 8 & 0 \\ 3 & -1 \end{array}\right)\)
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+\[
+    \det \left(\begin{array}{rr} 6 & -3 \\ 2 & 4 \end{array}\right) = 6 \cdot 4 - (-3) \cdot 2 = 30.
+\]
+\item
+\[
+    \det \left(\begin{array}{rr} -5 & 2 \\ 6 & 1 \end{array}\right) = -5 \cdot 1 - 2 \cdot 6 = -17.
+\]
+\item
+\[
+    \det \left(\begin{array}{rr} 8 & 0 \\ 3 & -1 \end{array}\right) = 8 \cdot (-1) - 0 \cdot 3 = -8.
+\]
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.3}
+Compute the determinants of the following matrices in  \(M_{2 \X 2}(\SET{C})\).
+
+(a) \(\left(\begin{array}{rr} -1 + \iu & 1 - 4\iu \\ 3 + 2\iu & 2 - 3\iu \end{array}\right)\)
+(b) \(\left(\begin{array}{rc} 5 - 2\iu & 6 + 4\iu \\ -3 + \iu & 7\iu \end{array}\right)\)
+(c) \(\left(\begin{array}{rr} 2\iu & 3 \\ 4 & 6\iu \end{array}\right)\)
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+\[
+    \det \left(\begin{array}{rr} -1 + \iu & 1 - 4\iu \\ 3 + 2\iu & 2 - 3\iu \end{array}\right)
+    = (-1 + \iu) \cdot (2 - 3\iu) - (1 - 4\iu) \cdot (3 + 2\iu)
+    = -10 + 15\iu.
+\]
+\item
+\[
+    \det \left(\begin{array}{rc} 5 - 2\iu & 6 + 4\iu \\ -3 + \iu & 7\iu \end{array}\right)
+    = (5 - 2\iu) \cdot (7\iu) - (6 + 4\iu) \cdot (-3 + \iu)
+    = -8 + 29\iu.
+\]
+\item
+\[
+    \det \left(\begin{array}{rr} 2\iu & 3 \\ 4 & 6\iu \end{array}\right)
+    = 2\iu \cdot 6\iu - 3 \cdot 4
+    = -24.
+\]
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.4}
+For each of the following pairs of vectors \(u\) and \(v\) in \(\SET{R}^2\), compute the area of the parallelogram determined by \(u\) and \(v\).
+\begin{enumerate}
+\item \(u = (3, -2)\) and \(v = (2, 5)\).
+\item \(u = (1, 3)\) and \(v = (-3, 1)\).
+\item \(u = (4, -1)\) and \(v = (-6, -2)\).
+\item \(u = (3, 4)\) and \(v = (2, -6)\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+\[
+    \left| \det \begin{pmatrix} 3 & -2 \\ 2 & 5
+\end{pmatrix} \right| = |3 \cdot 5 - (-2) \cdot 2| = 19.
+\]
+
+\item
+\[
+    \left| \det \begin{pmatrix} 1 & 3 \\ -3 & 1
+\end{pmatrix} \right| = |1 \cdot 1 - 3 \cdot (-3)| = 10.
+\]
+
+\item
+\[
+    \left| \det \begin{pmatrix} 4 & -1 \\ -6 & -2
+\end{pmatrix} \right| = |4 \cdot (-2) - (-1) \cdot (-6)| = 14.
+\]
+
+\item
+\[
+    \left| \det \begin{pmatrix} 3 & 4 \\ 2 & -6
+\end{pmatrix} \right| = |3 \cdot (-6) - 4 \cdot 2| = 26.
+\]
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.5}
+Prove that if \(B\) is the matrix obtained by \emph{interchanging} the rows of a \(2 \X 2\) matrix \(A\), then \(\det(B) = -\det(A)\).
+\end{exercise}
+
+\begin{proof}
+Let
+\[
+    A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}
+    \text{, then }
+    B = \begin{pmatrix} A_{21} & A_{22} \\ A_{11} & A_{12} \end{pmatrix}.
+\]
+So by \DEF{4.1}, \(\det(A) = A_{11} A_{22} - A_{12} A_{21}\), and \(\det(B) = A_{21} A_{12} - A_{22} A_{11} = A_{12} A_{21} - A_{11} A_{22} = -(A_{11} A_{22} - A_{12} A_{21}) = -\det(A)\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.6}
+Prove that if the two \emph{columns} of \(A \in M_{2 \X 2}(F)\) are identical, then \(\det(A) = 0\).
+\end{exercise}
+
+\begin{proof}
+If columns of \(A\) are identical, then (by \CH{3}) \(A\) is not invertible, and by \THM{4.2}, \(\det(A) = 0\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.7}
+Prove that \(\det(A^\top) = \det(A)\) for any \(A \in M_{2 \X 2}(F)\).
+\end{exercise}
+
+\begin{proof}
+Let
+\[
+    A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}
+\]
+then
+\[
+    A^\top = \begin{pmatrix} A_{11} & A_{21} \\ A_{12} & A_{22} \end{pmatrix}
+\]
+So by \DEF{4.1}, \(\det(A) = A_{11} A_{22} - A_{12} A_{21}\), and \(\det(A^\top) = A_{11} A_{22} - A_{21} A_{12} = A_{11} A_{22} - A_{12} A_{21} = \det(A)\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.8}
+Prove that if \(A \in M_{2 \X 2}(F)\) is \emph{upper triangular}, then \(\det(A)\) equals the \emph{product of the diagonal} entries of \(A\).
+\end{exercise}
+
+\begin{proof}
+Since \(A\) is upper triangular, \(A\) has the form
+\[
+    A^\top = \begin{pmatrix} A_{11} & A_{12} \\ \RED{0} & A_{22} \end{pmatrix}
+\]
+And by \DEF{4.1}, \(\det(A) = A_{11} A_{22} - A_{12} \cdot 0 = A_{11} A_{22}\), which is the product of the diagonal entries of \(A\).
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.9}
+Prove that \(\det(AB) = \det(A) \cdot \det(B)\) for any \(A, B \in M_{2 \X 2}(F)\).
+\end{exercise}
+
+\begin{proof}
+Let
+\[
+    A = \begin{pmatrix} a_1 & a_2 \\ a_3 & a_4 \end{pmatrix},
+    B = \begin{pmatrix} b_1 & b_2 \\ b_3 & b_4 \end{pmatrix}.
+\]
+Then (by calculation)
+\[
+    AB = \begin{pmatrix}
+        a_1 b_1 + a_2 b_3 & a_1 b_2 + a_2 b_4 \\
+        a_3 b_1 + a_4 b_3 & a_3 b_2 + a_4 b_4
+    \end{pmatrix}.
+\]
+So by \DEF{4.1},
+\begin{align*}
+    \det(A) & = a_1 a_4 - a_2 a_3, \\
+    \det(B) & = b_1 b_4 - b_2 b_3, \\
+    \det(A)\det(B) & = (a_1 a_4 - a_2 a_3)(b_1 b_4 - b_2 b_3) \\
+                   & = (a_1 a_4 b_1 b_4 - a_1 a_4 b_2 b_3 - a_2 a_3 b_1 b_4 + a_2 a_3 b_2 b_3) \text{ -- \MAROON{(1)}}, \\
+    \det(AB) & = (a_1 b_1 + a_2 b_3)(a_3 b_2 + a_4 b_4) - (a_1 b_2 + a_2 b_4)(a_3 b_1 + a_4 b_3) \\
+             & = (\GREEN{a_1 b_1 a_3 b_2} + a_1 b_1 a_4 b_4 + a_2 b_3 a_3 b_2 + \BLUE{a_2 b_3 a_4 b_4}) \\
+             & \ \ \ \  \RED{-} (\GREEN{a_1 b_2 a_3 b_1} + a_1 b_2 a_4 b_3 + a_2 b_4 a_3 b_1 + \BLUE{a_2 b_4 a_4 b_3}) \\
+             & = (a_1 b_1 a_4 b_4 + a_2 b_3 a_3 b_2) - (a_1 b_2 a_4 b_3 + a_2 b_4 a_3 b_1) \\
+             & = (a_1 a_4 b_1 b_4 + a_2 a_3 b_2 b_3) - (a_1 a_4 b_2 b_3 + a_2 a_3 b_1 b_4) \\
+             & = \MAROON{(1)} = \det(A)\det(B),
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.10}
+The \textbf{classical adjoint} of a \(2 \X 2\) matrix \(A \in M_{2 \X 2}(F)\) is the matrix
+\[
+    C = \begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11} \end{pmatrix}.
+\]
+Prove that
+\begin{enumerate}
+\item \(CA = AC = [\det(A)]I\).
+\item \(\det(C) = \det(A)\).
+\item The classical adjoint of \(A^\top\) is \(C^\top\).
+\item If \(A\) is invertible, then \(A^{-1} = [\det(A)]^{-1}C\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+\begin{align*}
+    AC & =
+        \begin{pmatrix}
+            A_{11} & A_{12} \\
+            A_{21} & A_{22}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_{22} & -A_{12} \\
+            -A_{21} & A_{11}
+        \end{pmatrix} \\
+      & = \begin{pmatrix}
+            A_{11} A_{22} - A_{12} A_{21} & -A_{11} A_{12} + A_{12} A_{11} \\
+            A_{21} A_{22} - A_{22} A_{21} & - A_{21} A_{12} + A_{22} A_{11}
+        \end{pmatrix}
+      & = \begin{pmatrix}
+          \det(A) & 0 \\
+          0 & \det(A)
+      \end{pmatrix}
+      & = \det(A) \cdot I_2.
+\end{align*}
+and
+\begin{align*}
+   CA & =
+        \begin{pmatrix}
+            A_{22} & -A_{12} \\
+            -A_{21} & A_{11}
+        \end{pmatrix}
+        \begin{pmatrix}
+            A_{11} & A_{12} \\
+            A_{21} & A_{22}
+        \end{pmatrix} \\
+      & = \begin{pmatrix}
+            A_{22} A_{11} - A_{12} A_{21} & A_{22} A_{12} - A_{12} A_{22} \\
+            -A_{21} A_{11} + A_{11} A_{21} & - A_{21} A_{12} + A_{11} A_{22}
+        \end{pmatrix}
+      & = \begin{pmatrix}
+          \det(A) & 0 \\
+          0 & \det(A)
+      \end{pmatrix}
+      & = \det(A) \cdot I_2. 
+\end{align*}
+
+\item
+We have
+\[
+    \det(C) = A_{22}A_{11} - (-A_{12})(-A_{21}) = A_{22} A_{11} - A_{12} A_{21} = \det(A).
+\]
+
+\item First,
+\[
+    A^\top = \begin{pmatrix}
+        A_{11} & A_{21} \\
+        A_{12} & A_{22}
+    \end{pmatrix}
+\]
+so by def, the adjoint matrix of \(A^\top\) is
+\[
+    \begin{pmatrix}
+        A_{22}^\top & -A_{12}^\top \\
+        -A_{21}^\top & A_{11}^\top    
+    \end{pmatrix}
+\]
+which by definition of transpose (of each entry) is
+\[
+    \begin{pmatrix}
+        A_{22} & -A_{21} \\
+        -A_{12} & A_{11}
+    \end{pmatrix}
+\]
+which by definition of transpose again is \(C^\top\).
+
+\item
+We have
+\begin{align*}
+    A ([\det(A)]^{-1} C)
+    & = [\det(A)]^{-1} (AC) & \text{of course, or by \THM{2.12}(b)} \\
+    & = [\det(A)]^{-1} [\det(A)] I & \text{by part(a)} \\
+    & = I.
+\end{align*}
+And by \ATHM{2.38}, ``one-sided'' inverse is a ``two-sided'' inverse, we have \(A^{-1} = [\det(A)]^{-1} C\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.11}
+Let \(\delta: M_{2 \X 2}(F) \to F\) be a function with the following three properties.
+\begin{enumerate}
+\item[(i)] \(\delta\) is a linear function of each row of the matrix when the other row is held fixed.
+\item[(ii)] If the two rows of \(A \in M_{2 \X 2}(F)\) are identical, then \(\delta(A) = 0\).
+\item[(iii)] If \(I\) is the \(2 \X 2\) identity matrix, then \(\delta(I) = 1\).
+\end{enumerate}
+
+Then
+\begin{enumerate}
+\item Prove that \(\delta(E) = \det(E)\) for all \textbf{elementary} matrices \(E \in M_{2 \X 2}(F)\).
+\item Prove that \(\delta(EA) = \delta(E)\delta(A)\) for all \(A \in M_{2 \X 2}(F)\) and all \textbf{elementary} matrices \(E \in M_{2 \X 2}(F)\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+We prove by cases of each type of elementary matrix.
+For type 1, there are only one matrix:
+\[
+    E_1 = \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}.
+\]
+It's clear that \(\det(E_1) = -1\).
+Now by definition(ii) of \(\delta\), we have
+\[
+    \delta \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix}
+    = \delta \begin{pmatrix} 0 & 1 \\ 0 & 1 \end{pmatrix}
+    = \delta \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}
+    = 0 \text{ -- \MAROON{(1)}}
+\]
+Since each matrix above has identical rows respectively.
+Then
+\begin{align*}
+    0 & = \delta \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} & \text{by \MAROON{(1)}} \\
+      & = \delta \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}
+          + \delta \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} & \text{by def (i) of \(\delta\), fix row \(2\)} \\
+      & = \left( \delta \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix} + \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \right)
+          + \delta \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} & \text{by def (i) of \(\delta\), fix row \(1\)} \\
+      & = (0 + 1) + \delta \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} & \text{by \MAROON{(1)} and by def (iii) of \(\delta\)} \\
+      & = 1 + \delta \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix} & \text{of course} \\
+      & = 1 + \left( \delta \begin{pmatrix} 0 & 1 \\ 0 & 1 \end{pmatrix} + \delta \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \right) & \text{by def (i) of \(\delta\), fix row \(1\)} \\
+      & = 1 + \left( 0 + \delta \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \right) & \text{by \MAROON{(1)}} \\
+      & = 1 + \delta \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \\
+      & = 1 + \delta(E_1)
+\end{align*}
+which implies \(\delta(E_1) = -1\) \MAROON{(a.1)}, which is equal to \(\det(E_1)\).
+
+Now if \(E_2\) is a type 2 elementary matrix, we can represent \(E_2\) as
+\[
+    E_2 = \begin{pmatrix} c & 0 \\ 0 & 1
+    \end{pmatrix}
+    \text{ or }
+    E_2 = \begin{pmatrix} 1 & 0 \\ 0 & c
+    \end{pmatrix}
+\]
+We show the case of the first form; the second form is similar.
+It's clear that \(\det(E_2) = c\).
+And
+\begin{align*}
+    \delta(E_2) & = \delta \begin{pmatrix} c & 0 \\ 0 & 1 \end{pmatrix} \\
+                & = c \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} & \text{by def (i) of \(\delta\), fix row \(2\)} \\
+                & = c 1 & \text{by def (iii) of \(\delta\)} \\
+                & = c = \det(E_2).
+\end{align*}
+
+Finally, if \(E_3\) is a type 3 elementary matrix, we can represent \(E_3\) as
+\[
+    E_2 = \begin{pmatrix} 1 & 0 \\ c & 1
+    \end{pmatrix}
+    \text{ or }
+    E_2 = \begin{pmatrix} 1 & c \\ 0 & 1
+    \end{pmatrix}
+\]
+We show the case of the first form; the second form is similar.
+It's clear that \(\det(E_3) = 1\).
+And
+\begin{align*}
+    \delta(E_3) & = \delta \begin{pmatrix} 1 & 0 \\ c & 1 \end{pmatrix} \\
+                & = \delta \begin{pmatrix} 1 & 0 \\ c & 0 \end{pmatrix} + \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} & \text{by def (i) of \(\delta\), fix row \(1\)} \\
+                & = c \delta \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix} + \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} & \text{by def (i) of \(\delta\), fix row \(1\)} \\
+                & = c \cdot 0 + \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} & \text{by def (ii) of \(\delta\)} \\
+                & = \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} & \text{of course} \\
+                & = 1 & \text{by def (iii) of \(\delta\)} \\
+                & = \det(E_3).
+\end{align*}
+So we have shown that \(\det(E) = \delta(E)\) for any \emph{elementary} matrix \(E\).
+
+\item
+Let arbitrary \(2 \X 2\) matrix
+\[
+    A = \begin{pmatrix}
+        a_1 & a_2 \\ a_3 & a_4
+    \end{pmatrix}.
+\]
+Then
+\begin{align*}
+    \delta(A) & = \delta \begin{pmatrix} a_1 & a_2 \\ a_3 & a_4 \end{pmatrix} \\
+              & = \delta \begin{pmatrix} a_1 & a_2 \\ a_3 & 0 \end{pmatrix}
+                + \delta \begin{pmatrix} a_1 & a_2 \\ 0 & a_4 \end{pmatrix} & \text{by (i), fix row \(1\)} \\
+              & = \left(
+                    \delta \begin{pmatrix} a_1 & 0 \\ a_3 & 0 \end{pmatrix}
+                    + \delta \begin{pmatrix} 0 & a_2 \\ a_3 & 0 \end{pmatrix}
+                \right)
+                + \left(
+                    \delta \begin{pmatrix} a_1 & 0 \\ 0 & a_4 \end{pmatrix}
+                    + \delta \begin{pmatrix} 0 & a_2 \\ 0 & a_4 \end{pmatrix}
+                \right) & \text{by (i), fix row \(1\)} \\
+              & = a_1 a_3 \delta \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix}
+                + a_2 a_3 \delta \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+                + a_1 a_4 \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+                + a_2 a_4 \delta \begin{pmatrix} 0 & 1 \\ 0 & 1 \end{pmatrix} \\
+              & \text{\ \ \ \ \  (by applying (i) multiple times)} \\
+              & = a_1 a_3 \cdot 0
+                + a_2 a_3 \delta \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+                + a_1 a_4 \delta \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+                + a_2 a_4 \cdot 0 & \text{by (ii)} \\
+              & = a_2 a_3 \cdot (-1) + a_1 a_4 \cdot 1 & \text{by \MAROON{(a.1)} and (iii)} \\
+              & = a_1 a_4 - a_2 a_3 \\
+              & = \det(A).
+\end{align*}
+So we have \(\delta(A) = \det(A)\) \MAROON{(b.1)}.
+And by \EXEC{4.1.9} we have \(\det(EA) = \det(E)\det(A)\).
+But
+\begin{align*}
+    \det(E)\det(A) & = \delta(E)\det(A) & \text{by part(a)} \\
+                   & = \delta(E)\delta(A) &  \text{by \MAROON{(b.1)}}
+\end{align*}
+So we have \(\det(EA) = \delta(E)\delta(A)\).
+And by \MAROON{(b.1)} again we have \(\det(EA) = \delta(EA)\), so all in all, we have \(\delta(EA) = \delta(E)\delta(A)\), as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.12}
+Let \(\delta: M_{2 \X 2}(F) \to F\) be a function with properties (i), (ii), and (iii) in \EXEC{4.1.11}.
+Use that exercise to prove that \(\delta(A) = \det(A)\) \textbf{for all} \(A \in M_{2 \X 2}(F)\).
+(That is, \(\delta = \det\).)
+(This result is generalized in \SEC{4.5}.)
+\end{exercise}
+
+\begin{proof}
+This has been shown in the \MAROON{(b.1)} of \EXEC{4.1.11}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.13}
+Let \(\{ u, v \}\) be an ordered basis for \(\SET{R}^2\).
+Prove that
+\[
+    \mathcal{O} \begin{pmatrix} u \\ v \end{pmatrix} = 1
+\]
+if and only if \(\{ u, v \}\) forms a \emph{right-handed} coordinate system.
+Hint: Recall the \emph{definition of a rotation} given in \EXAMPLE{2.1.2}.
+\end{exercise}
+
+\begin{proof}
+Since by \ADEF{4.1},
+\[
+    \mathcal{O} \begin{pmatrix} u \\ v \end{pmatrix}
+    = \frac
+        {\det \begin{pmatrix}
+            u \\ v
+        \end{pmatrix}}
+        {\left| \det \begin{pmatrix}
+            u \\ v
+        \end{pmatrix} \right|},
+\]
+clearly we have
+\begin{center}
+    \(\mathcal{O} \begin{pmatrix} u \\ v \end{pmatrix} = 1\) if and only if \(\det \begin{pmatrix} u \\ v \end{pmatrix} > 0\) -- \MAROON{(1)}.
+\end{center}
+
+On the other hand, (by the recall in \ADEF{4.2}) \( \{u, w \}\) forms a right-handed coordinate system if and only if \(u\) can be rotated by an angle \(\theta\) in a counterclockwise direction to coincide with \(w\).
+
+Now, let's recall the definition of the rotation given in the \EXAMPLE{2.1.2}.
+If \(u = (a_1, a_2)\), and \(w\) is obtained by \emph{rotating} \(u\) by an angle \(0 < \theta < \pi\) in a counterclockwise direction,
+then the vector \(w\) has coordinates \(w = (a_1 \cos \theta -  a_2 \sin \theta, a_1 \sin \theta + a_2 \cos \theta )\) \MAROON{(2)}.
+So we have
+\begin{align*}
+    \det \begin{pmatrix} u \\ w \end{pmatrix}
+        & = \det
+            \begin{pmatrix}
+                a_1 & a_2 \\
+                a_1 \cos \theta - a_2 \sin \theta & a_1 \sin \theta + a_2 \cos \theta
+            \end{pmatrix} & \text{by \MAROON{(2)}} \\
+        & = a_1(a_1 \sin \theta + a_2 \cos \theta) - a_2(a_1 \cos \theta - a_2 \sin \theta) \\
+        & = a_1^2 \sin \theta + a_1 a_2 \cos \theta - a_2 a_1 \cos \theta + a_2^2 \sin \theta \\
+        & = a_1^2 \sin \theta + a_2^2 \sin \theta \\
+        & = (a_1^2 + a_2^2) \sin \theta.
+\end{align*}
+since \(\{ u, w \}\) is a basis, \(u\) cannot be zero vector, that is, \(a_1, a_2\) cannot be both zero;
+and of course \(a_1^2 \ge 0\) and \(a_2^2 \ge 0\), so we have \(a_1^2 + a_2^2 > 0\).
+And since \(0 < \theta < 2\pi\), we have \(\sin \theta > 0\), so all in all, we have \((a_1^2 + a_2^2) \sin \theta > 0\).
+So \(\det \begin{pmatrix} u \\ w \end{pmatrix} > 0\).
+
+So we have \(\{ u, v \}\) forms a right-handed side coordinate system if and only if \(\det \begin{pmatrix} u \\ w \end{pmatrix} > 0\) \MAROON{(1)}.
+
+Hence by \MAROON{(1)(2)}, we have \(\mathcal{O} \begin{pmatrix} u \\ v \end{pmatrix} = 1\) if and only if \(\{ u, v \}\) forms a right-handed coordinate system.
+\end{proof}
+
+\begin{remark} \label{remark 4.1.5}
+Since this section deals with \(2 \X 2\) matrices in particular, I do not list the exercises as additional theorems.
+\end{remark}

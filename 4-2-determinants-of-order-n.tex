@@ -1,0 +1,719 @@
+\section{Determinants of Order \(n\)} \label{sec 4.2}
+
+In this section, we extend the definition of the determinant to \(n \X n\) matrices for \(n \le 3\).
+For this definition, it is convenient to \emph{introduce the following notation}:
+Given \(A \in M_{n \X n}(F)\), for \(n \ge 2\), denote \(\tilde{A}_{ij}\) as the \((n - 1) \X (n - 1)\) matrix obtained from \(A\) by \textbf{deleting} row \(i\) and column \(j\).
+Thus for
+\[
+    A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix} \in M_{3 \X 3}(\SET{R}),
+\]
+we have
+\[
+    \tilde{A}_{11} = \left(\begin{array}{cc}
+        5 & 6 \\
+        8 & 9
+    \end{array}\right), \quad \tilde{A}_{13} = \left(\begin{array}{ll}
+        4 & 5 \\
+        7 & 8
+    \end{array}\right),
+    \quad \text { and } \quad \tilde{A}_{32} = \left(\begin{array}{ll}
+        1 & 3 \\
+        4 & 6
+    \end{array}\right),
+\]
+and for
+\[
+    B = \left(\begin{array}{rrrr}
+        1 & -1 & 2 & -1 \\
+        -3 & 4 & 1 & -1 \\
+        2 & -5 & -3 & 8 \\
+        -2 & 6 & -4 & 1
+    \end{array}\right) \in M_{4 \X 4}(\SET{R})
+\]
+we have
+\[
+    \tilde{B}_{23} = \left(\begin{array}{rrr}
+        1 & -1 & -1 \\
+        2 & -5 & 8 \\
+        -2 & 6 & 1
+    \end{array}\right)
+    \quad \text { and } \quad
+    \tilde{B}_{42} = \left(\begin{array}{rrr}
+        1 & 2 & -1 \\
+        -3 & 1 & -1 \\
+        2 & -3 & 8
+    \end{array}\right).
+\]
+
+\begin{definition} \label{def 4.2}
+Let \(A \in M_{n \X n}(F)\).
+If \(n = 1\), so that \(A = (A_{11})\), we define \(\det(A) = A_{11}\).
+For \(n \ge 2\), we define \(\det(A)\) \emph{recursively} as
+\[
+    \det(A) = \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \cdot \det( \tilde{A}_{1j}).
+\]
+The scalar \(\det(A)\) is called the \textbf{determinant} of \(A\) and is also denoted by \(\abs{A}\).
+The scalar
+\[
+    (-1)^{i + j} \det(\tilde{A}_{ij})
+\]
+is called the \textbf{cofactor} of the entry of \(A\) in row \(i\), column \(j\).
+\end{definition}
+
+\begin{remark} \label{remark 4.2.1}
+Letting
+\[
+    c_{ij} = (-1)^{i + j} \det(\tilde{A}_{ij})
+\]
+denote the cofactor of the row \(i\), column \(j\) entry of \(A\),
+we can express the formula for the determinant of \(A\) as
+\[
+    \det(A) = A_{11}c_{11} + A_{12}c_{12} + ... + A_{1n}c_{1n}.
+\]
+Thus the determinant of \(A\) equals the sum of the products of each entry in \RED{row \(1\)} of \(A\) multiplied by its cofactor.
+This formula is called \textbf{cofactor expansion along the first row of \(A\)}.
+Note that, for \(2 \X 2\) matrices, this definition of the determinant of \(A\) \emph{agrees with} the one given in \SEC{4.1}(\DEF{4.1}) because
+\[
+    \det(A)= A_{11} (-1)^{1 + 1} \det(\tilde{A}_{11}) + A_{12}(-1)^{1 + 2} \det(\tilde{A}_{12}) = A_{11}A_{22} - A_{12}A_{21}.
+\]
+\end{remark}
+
+\begin{example} \label{example 4.2.1}
+Let
+\[
+    A = \begin{pmatrix}
+        1 & 3 & -3 \\
+        -3 & -5 & 2 \\
+        -4 & 4 & -6
+    \end{pmatrix} \in M_{3 \X 3}(\SET{R}).
+\]
+Using cofactor expansion along the first row of \(A\), we obtain
+\begin{align*}
+    \det(A) & = (-1)^{1 + 1} A_{11} \cdot \det(\tilde{A}_{11}) + (-1)^{1 + 2} A_{12} \cdot \det(\tilde{A}_{12}) + (-1)^{1 + 3} A_{13} \cdot \det(\tilde{A}_{13}) \\
+            & = (-1)^2 \cdot (1) \cdot
+                    \det \begin{pmatrix}
+                        -5 & 2 \\ 4 & -6
+                    \end{pmatrix}
+	          + (-1)^3 \cdot 3 \cdot
+	                \det \begin{pmatrix}
+                        -3 & 2 \\ -4 & -6
+                    \end{pmatrix}
+              + (-1)^4 \cdot (-3) \cdot
+                    \det \begin{pmatrix}
+                        -3 & -5 \\ -4 & 4
+                    \end{pmatrix} \\
+            & = 1 [-5(-6) - 2(4)] - 3[-3(-6) - 2(-4)] - 3[-3(4) - (-5)(-4)] \\
+            & = 1(22) - 3(26) - 3(-32) \\
+            & = 40.
+\end{align*}
+\end{example}
+
+\begin{example} \label{example 4.2.2}
+Let
+\[
+    B= \begin{pmatrix}
+        \RED{0} & 1 & 3 \\
+        -2 & -3 & -5 \\
+        4 & -4 & 4
+    \end{pmatrix} \in M_{3 \X 3}(\SET{R}).
+\]
+Using cofactor expansion along the first row of \(B\), we obtain
+\begin{align*}
+    \det(B) & = (-1)^{1+1} B_{11} \cdot \det(\tilde{B}_{11}) + (-1)^{1+2} B_{12} \cdot \det(\tilde{B}_{12}) \\
+            & \quad + (-1)^{1+3} B_{13} \cdot \det(\tilde{B}_{13}) \\
+            & = (-1)^{2}(\RED{0}) \cdot
+                \det \begin{pmatrix}
+                    -3 & -5 \\
+                    -4 & 4
+                \end{pmatrix}
+              + (-1)^{3}(1) \cdot
+                \det\begin{pmatrix}
+                    -2 & -5 \\
+                    4 & 4
+                \end{pmatrix} \\
+            & \quad + (-1)^{4}(3) \cdot
+                \det\begin{pmatrix}
+                    -2 & -3 \\
+                    4 & -4
+                \end{pmatrix} \\
+            & = 0 - 1[-2(4)-(-5)(4)] + 3[-2(-4)-(-3)(4)] \\
+            & = 0 - 1(12) + 3(20) \\
+            & = 48.
+\end{align*}
+\end{example}
+
+\begin{example} \label{example 4.2.3}
+Let
+\[
+    C = \begin{pmatrix}
+        2 & \RED{0} & \RED{0} & 1 \\
+        0 & 1 & 3 & -3 \\
+        -2 & -3 & -5 & 2 \\
+        4 & -4 & 4 & -6
+    \end{pmatrix} \in M_{4 \X 4}(\SET{R}).
+\]
+Using cofactor expansion along the first row of \(C\) and the results of \EXAMPLE{4.2.1} and \EXAMPLE{4.2.2}, we obtain
+
+\begin{align*}
+    \det(C) & = (-1)^{2}(2) \cdot
+                \det(\tilde{C}_{11}) + (-1)^{3}(\RED{0}) \cdot \det(\tilde{C}_{12}) \\
+            & + (-1)^{4}(\RED{0}) \cdot
+                \det(\tilde{C}_{13}) + (-1)^{5}(1) \cdot \det(\tilde{C}_{14}) \\
+            & = (-1)^{2}(2) \cdot \det \begin{pmatrix}
+                    1 & 3 & -3 \\
+                    -3 & -5 & 2 \\
+                    -4 & 4 & -6
+                \end{pmatrix} + 0 + 0 \\
+            & + (-1)^{5}(1) \cdot \det \begin{pmatrix}
+                    0 & 1 & 3 \\
+                    -2 & -3 & -5 \\
+                    4 & -4 & 4
+                \end{pmatrix} \\
+            & = 2(40) + 0 + 0 - 1(48) & \text{by previous two examples} \\
+            & = 32
+\end{align*}
+\end{example}
+
+\begin{example} \label{example 4.2.4}
+The determinant of the \(n \X n\) identity matrix is \(1\).
+We prove this assertion by mathematical induction on \(n\).
+The result is clearly true for the \(1 \X 1\) identity matrix.
+Assume that the determinant of the \((n - 1) \X (n - 1)\) identity matrix is \(1\) for some \(n \ge 2\), and let \(I\) denote the \(n \X n\) identity matrix.
+Using cofactor expansion along the first row of \(I\), we obtain
+\begin{align*}
+    \det(I) & = (-1)^2(1) \det (\RED{\tilde{I}_{11}}) + (-1)^3(0) \det (\tilde{I}_{12}) + ... \\
+            & + (-1)^{1 + n} (0) \det(\tilde{I}_{1n}) \\
+            & = 1 \cdot \RED{1} + 0 + ... + 0 \\
+            & = 1
+\end{align*}
+because \(\tilde{I}_{11}\) is the \((n - 1) \X (n - 1)\) identity matrix.
+This shows that the determinant of the \(n \X n\) identity matrix is \(1\), and so the determinant of any identity matrix is \(1\) by the principle of mathematical induction.
+\end{example}
+
+\begin{remark} \label{remark 4.2.2}
+As is illustrated in \EXAMPLE{4.2.3}, the calculation of a determinant using the recursive definition is extremely tedious, even for matrices as small as \(4 \X 4\).
+Later in this section, we present a more efficient method for evaluating determinants, but we must first learn more about them.
+\end{remark}
+
+\begin{theorem} \label{thm 4.3}
+The determinant of an \(n \X n\) matrix is a \emph{linear} function of each row \emph{when the remaining rows are held fixed}.
+That is, for \(1 \le r \le n\), we have
+\[
+    \det \begin{pmatrix} a_1 \\ \vdots \\ a_{r-1} \\ u + kv \\ a_{r+1} \\ \vdots \\ a_n \end{pmatrix}
+    = \det \begin{pmatrix} a_1 \\ \vdots \\ a_{r-1} \\ u \\ a_{r+1} \\ \vdots \\ a_n \end{pmatrix}
+    + k \det \begin{pmatrix} a_1 \\ \vdots \\ a_{r-1} \\ v \\ a_{r+1} \\ \vdots \\ a_n \end{pmatrix}.
+\]
+whenever \(k\) is a scalar and \(u\), \(v\), and each \(a_i\) are row vectors in \(F^n\).
+\end{theorem}
+
+\begin{proof}
+The proof is by mathematical induction on \(n\).
+The result is immediate if \(n = 1\).
+Assume that for some integer \(n \ge 2\) the determinant of any \((n - 1) \X (n - 1)\) matrix is a linear function of each row when the remaining rows are held fixed.
+Let \(A\) be an arbitrary \(n \X n\) matrix with rows \(a_1, a_2, ..., a_n\), respectively.
+And suppose that \emph{for some} \(r\) (\(1 \le r \le n\)), we have
+\begin{center}
+    \(a_r = u + kv\) for some \(u, v \in F^n\) and some scalar \(k\). -- \MAROON{(1)}
+\end{center}
+Let \(u = (b_1, b_2, ..., b_n)\) and \(v = (c_1, c_2, ..., c_n)\), and \emph{let \(B\) and \(C\) be the matrices obtained from \(A\) by replacing row \(r\) of \(A\) by \(u\) and \(v\), respectively}.
+That is,
+\[
+    A = \begin{pmatrix} a_1 \\ \vdots \\ a_{r-1} \\ u + kv \\ a_{r+1} \\ \vdots \\ a_n \end{pmatrix},
+    B = \begin{pmatrix} a_1 \\ \vdots \\ a_{r-1} \\ u \\ a_{r+1} \\ \vdots \\ a_n \end{pmatrix}
+    \text{ and }
+    C = \begin{pmatrix} a_1 \\ \vdots \\ a_{r-1} \\ v \\ a_{r+1} \\ \vdots \\ a_n \end{pmatrix}.
+\]
+Then we must prove that \(\det(A) = \det(B) + k\det(C)\).
+We prove this by splitting into two cases: \(r = 1\) or \(r > 1\).
+\begin{itemize}
+\item 
+If \(r = 1\), then in particular,
+\[
+    A = \begin{pmatrix} u + kv \\ a_2 \\ \vdots \\ a_n \end{pmatrix},
+    B = \begin{pmatrix} u \\ a_2 \\ \vdots \\ a_n \end{pmatrix}
+    \text{ and }
+    C = \begin{pmatrix} v \\ a_2 \\ \vdots \\ a_n \end{pmatrix}. \text{ -- \MAROON{(2)}}
+\]
+And
+\begin{align*}
+    \det(A) & = \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \cdot \tilde{A}_{1j} & \text{by \DEF{4.2}} \\
+            & = \sum_{j = 1}^n (-1)^{1 + j} (B_{1j} + k C_{1j}) \cdot \tilde{A}_{1j} & \text{by observation on \MAROON{(2)}} \\
+            & = \sum_{j = 1}^n (-1)^{1 + j} B_{1j} \cdot \tilde{A}_{1j} + k \sum_{j = 1}^n (-1)^{1 + j} C_{1j} \cdot \tilde{A}_{1j} & \text{by splitting summation} \\
+            & = \sum_{j = 1}^n (-1)^{1 + j} B_{1j} \cdot \tilde{B}_{1j} + k \sum_{j = 1}^n (-1)^{1 + j} C_{1j} \cdot \tilde{C}_{1j} & \text{again by observation on \MAROON{(2)},} \\
+            & & \text{we have \(\tilde{A}_{1j} = \tilde{B}_{1j} = \tilde{C}_{1j}\)} \\
+            & = \det(B) + \det(C) & \text{by \DEF{4.2}}
+\end{align*}
+
+\item
+If \(r > 1\), for \(1 \le j \le n\), the rows of \(\tilde{A}_{1j}, \tilde{B}_{1j}\), and \(\tilde{C}_{1j}\) are the same except for the \((r \RED{ - 1})\)th row.
+(The index is \(r \RED{ - 1}\) since the \(r\)th row in each original matrix corresponds to the \((r - 1)\)th rows in each cofactor matrix).
+However, by \MAROON{(1)}, the \((r - 1)\)th row of \(\tilde{A}_{1\RED{j}}\) is
+\[
+    (b_1 + k c_1, ..., b_{j \RED{- 1}} + k c_{j \RED{- 1}}, b_{j \RED{+ 1}} + k c_{j \RED{+ 1}}, ..., b_n + k c_n).
+\]
+(Note that the index \(j\) is ``skipped'' since the cofactor matrix \(\tilde{A}_{1j}\) removes (the \(1\)st row and) the \(j\)th column.)
+And it is the sum of \((r - 1)\)th row of \(\tilde{B}_{1j}\) and \(k\) times \((r - 1)\)th row of \(\tilde{C}_{1j}\).
+
+Now, since \(\tilde{B}_{1j}\) and \(\tilde{C}_{1j}\) are \((n - 1) \X (n - 1)\) matrices, \emph{by inductive hypothesis}, we have
+\[
+    \det(\tilde{A}_{1j}) = \det(\tilde{B}_{1j}) + k \det(\tilde{C}_{1j}).
+\]
+Thus since \(r > 1\), the first row of \(A, B, C\) are the same; in particular, \(A_{1j} = B_{1j} = C_{1j}\) \MAROON{(3)}, and we have
+\begin{align*}
+    \det(A) & = \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \cdot \det(\tilde{A}_{1j}) & \text{by \DEF{4.2}} \\
+            & = \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \cdot \left[ \det(\tilde{B}_{1j}) + k \det(\tilde{C}_{1j}) \right] & \text{by inductive hypothesis} \\
+            & = \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \cdot \det(\tilde{B}_{1j}) + k \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \det(\tilde{C}_{1j}) & \text{by splitting summation} \\
+            & = \sum_{j = 1}^n (-1)^{1 + j} B_{1j} \cdot \det(\tilde{B}_{1j}) + k \sum_{j = 1}^n (-1)^{1 + j} C_{1j} \det(\tilde{C}_{1j}) & \text{by \MAROON{(3)}} \\
+            & = \det(B) + k \det(C). & \text{by \DEF{4.2}}
+\end{align*}
+\end{itemize}
+This shows that the theorem is true for \(n \X n\) matrices, and so the theorem is true for all square matrices by mathematical induction.
+\end{proof}
+
+\begin{corollary} \label{corollary 4.3.1}
+If \(A \in M_{n \X n}(F)\) has a row consisting entirely of zeros, then \(\det(A) = 0\).
+\end{corollary}
+
+\begin{proof}
+WLOG, let given arbitrary \(n \X n\) matrix \(A\) with \(r\)th row \(a_r = \OV \in F^n\) for some \(1 \le r \le n\), we have
+\begin{align*}
+    \det(A) & = \det \begin{pmatrix} a_1 \\ \vdots \\ a_{r - 1} \\ \OV \\ a_{r + 1} \\ \vdots \\ a_n \end{pmatrix} = \det \begin{pmatrix} a_1 \\ \vdots \\ a_{r - 1} \\ \OV + \OV \\ a_{r + 1} \\ \vdots \\ a_n \end{pmatrix}
+    = \det \begin{pmatrix} a_1 \\ \vdots \\ a_{r - 1} \\ \OV \\ a_{r + 1} \\ \vdots \\ a_n \end{pmatrix}
+    + \det \begin{pmatrix} a_1 \\ \vdots \\ a_{r - 1} \\ \OV \\ a_{r + 1} \\ \vdots \\ a_n \end{pmatrix} & \text{by \THM{4.3}} \\
+            & = 2 \det(A) \\
+    \implies & \det(A) = 0.
+\end{align*}
+\end{proof}
+
+The \emph{definition} of a determinant requires that the determinant of a matrix be evaluated by cofactor expansion \emph{along the first row}.
+Our next theorem shows that the determinant of a square matrix can be evaluated by cofactor \textbf{expansion along any row}.
+Its proof requires the following (very, very, very) technical result.
+
+\begin{lemma} \label{lem 4.1}
+Let \(B \in M_{n \X n}(F)\), where \(n \ge 2\).
+If row \(\RED{i}\) of \(B\) equals \(e_k\) for some \(k\) (\(1 \le k \le n\)), then \(\det(B) = (-1)^{i + k} \det(\tilde{B}_{ik})\).
+
+That is, we can \emph{expand \(B\) along the \(i\)th row}:
+\begin{align*}
+    \det(B) & = B_{i1} \cdot (-1)^{i + 1} \det(\tilde{B}_{i1}) + B_{i2} \cdot (-1)^{i + 2} \det(\tilde{B}_{i2}) + ... \\
+            & \quad + B_{i\RED{k}} \cdot (-1)^{i + \RED{k}} \det(\tilde{B}_{i\RED{k}}) + ... + B_{in} \cdot (-1)^{i + n} \det(\tilde{B}_{in}) \\
+            & = \RED{0} \cdot (-1)^{i + 1} \det(\tilde{B}_{i1}) + \RED{0} \cdot (-1)^{i + 2} \det(\tilde{B}_{i2}) + ... \\
+            & \quad + \RED{1} \cdot (-1)^{i + \RED{k}} \det(\tilde{B}_{i\RED{k}}) + ... + \RED{0} \cdot (-1)^{i + n} \det(\tilde{B}_{in}) \\
+            & = \RED{1} \cdot (-1)^{i + \RED{k}} \det(\tilde{B}_{i\RED{k}}) \\
+            & = (-1)^{i + k} \det(\tilde{B}_{ik}).
+\end{align*}
+\end{lemma}
+
+\begin{note}
+I think the proof is just tedious and does not worth that much to understand.
+\end{note}
+
+\begin{proof}
+The proof is by mathematical induction on \(n\).
+The lemma is easily proved for \(n = 2\) by definition and by calculation.
+
+Assume that for some integer \(n \ge 3\), the lemma is true for \((n - 1) \X (n - 1)\) matrices, and let \(B\) be an arbitrary \(n \X n\) matrix in which row \(i\) of \(B\) equals \(e_k\) for some \(k\) (\(1 \le k \le n\)).
+
+The result follows immediately from the definition of the determinant if \(i = 1\).
+
+Suppose therefore that \(1 < i \le n\).
+And for convenience, we give the form of \(B\) below:
+\begin{equation} \label{lem.4.1.structure.of.B}
+    B = \begin{pmatrix} b_1 \\ \vdots \\ b_{i - 1} \\ \RED{e_k} \\ b_{i + 1} \\ \vdots \\ b_n
+    \end{pmatrix}
+    = \begin{blockarray}{cccccc}
+        1 & ... & \RED{k} & ... & n \\
+        \begin{block}{(ccccc)c}
+        B_{11} & ... & B_{1k}  & ... & B_{1n} & 1 \\
+        \vdots &     & \vdots  &     & \vdots & \vdots \\
+        B_{(1-1)1} & ... & B_{(i-1)k}  & ... & B_{(i-1)n} & i-1 \\
+        0      & ... & \RED{1} & ... & 0      & \RED{i} \\
+        B_{(1+1)1} & ... & B_{(i+1)k}  & ... & B_{(i+1)n} & i+1 \\
+        \vdots &     & \vdots  &     & \vdots & \vdots \\
+        B_{n1} & ... & B_{nk}  & ... & B_{nn} & n \\
+        \end{block}
+    \end{blockarray}
+\end{equation}
+For each \(j \ne k\) \((1 \le j \le n)\), let \(C_{ij}\) denote the \((n \RED{ - 2}) \X (n \RED{ - 2})\) matrix obtained from \(B\) by deleting row \(i\), column \(j\), \textbf{and} row \(1\), column \(k\).
+E.g., for the case of \(j < k\),
+\[
+    C_{ij}
+    = \left(\begin{array}{cccccccccc}
+        B_{21}     & ... & B_{2, j-1}   & B_{2,j+1}   & ... & B_{2,k-1}   & B_{2,k+1}   & ... & B_{2n}    \\
+        \vdots     &     & \vdots       & \vdots      &     & \vdots      & \vdots      &     & \vdots    \\
+        B_{i-1, 1} & ... & B_{i-1, j-1} & B_{i-1,j+1} & ... & B_{i-1,k-1} & B_{i-1,k+1} & ... & B_{i-1,n} \\
+        B_{i+1,1}  & ... & B_{i+1, j-1} & B_{i+1,j+1} & ... & B_{i+1,k-1} & B_{i+1,k+1} & ... & B_{i+1,n} \\
+        \vdots     &     & \vdots       & \vdots      &     & \vdots      & \vdots      &     & \vdots    \\
+        B_{n1}     & ... & B_{n, j-1}   & B_{n,j+1}   & ... & B_{n,k-1}   & B_{n,k+1}   & ... & B_{nn}
+        \end{array}
+    \right)
+\]
+
+Now let \(\tilde{B}_{ij}\) be the cofactor matrix of row \(i\), column \(j\), as before.
+Then since \(i > 1\), (similar to the proof in \THM{4.3},) the row \(i\) of \(B\) \emph{corresponds to} the row \RED{\(i - 1\)} of \(\tilde{B}_{ij}\).
+By observing from the form of \(B\) in \ref{lem.4.1.structure.of.B}, row \RED{\(i - 1\)} of \(\tilde{B}_{1j}\) is the following vector in \(F^{n \RED{-1}}\) (\emph{not} \(F^{n}\)):
+\begin{equation*}
+    \begin{cases}
+    e_{k - 1} & \text{ if } j < k \\
+    0 & \text{ if } j = k \\
+    e_k & \text{ if } j > k \\
+    \end{cases}.
+\end{equation*}
+
+In the first and third cases, \(\tilde{B}_{ij}\) is a \((n - 1) \X (n - 1)\) matrix with a row equal to a standard vector, and in the second case, \(\tilde{B}_{ij}\) has a row consisting entirely of zeros.
+Hence by inductive hypothesis, and \CORO{4.3.1}, respectively:
+\begin{equation} \label{lem.4.1.det.of.tilde.B.1j}
+    \det(\tilde{B}_{1 j}) =
+    \begin{cases}
+        (-1)^{\RED{(i-1)} + (k-1)} \det(\MAROON{C_{ij}}) & \text { if } j < k \text{(by inductive hypothesis)} \\
+        0 & \text { if } j = k \text{(by \CORO{4.3.1})} \\
+        (-1)^{\RED{(i-1)} + k} \det(\MAROON{C_{ij}}) & \text { if } j > k \text{(by inductive hypothesis)}.
+    \end{cases}
+\end{equation}
+\textbf{Note that we skipped a step} in this equation;
+for example, in the first case, if we let \(B' = \tilde{B}_{1j}\) to simplify symbol usage, then from inductive hypothesis we can only get that
+\[
+    \det(\tilde{B}_{1 j}) = (-1)^{\RED{(i-1)} + (k-1)} \det(\widetilde{B'}_{(i-1)(k-1)}).
+\]
+From the expression in the last determinant, I mean it is \emph{a cofactor matrix of a cofactor matrix}, that is,
+the cofactor matrix of row \(i-1\), column \(k-1\) \textbf{of} the cofactor matrix of row \(1\), column \(j\), of \(B\).
+But that cofactor matrix can be get from removing row \(1\), row \(i\) and column \(j\), column \(k\) of \(B\).
+\textbf{That is}, \(C_{ij}\).
+The third case is similar.
+Note that in some cases(e.g. when \(j < k\)) we need to ``recover'' the ``\(-1\) offset'' back.
+
+Therefore
+\begin{align*}
+    \det(B) = & \sum_{j=1}^{n} (-1)^{1+j} B_{1 j} \cdot \det(\tilde{B}_{1 j}) & \text{by \DEF{4.2}} \\
+            = & \sum_{j\RED{<}k} (-1)^{1+j} B_{1 j} \cdot \det(\tilde{B}_{1 j})
+              + (-1)^{1+\RED{k}} B_{1 \RED{k}} \cdot \det(\tilde{B}_{1 \RED{k}}) \\
+            & + \sum_{j\RED{>}k} (-1)^{1+j} B_{1 j} \cdot \det(\tilde{B}_{1 j}) & \text{by splitting \(\sum\)} \\
+            = & \sum_{j<k}(-1)^{1+j} B_{1j} \cdot\left[ (-1)^{(i-1)+(k-1)} \det\left(C_{i j}\right) \right] \\
+            & \quad + 0 \\
+            & \quad + \sum_{j>k}(-1)^{1+j} B_{1 j} \cdot\left[(-1)^{(i-1)+k} \det\left(C_{i j}\right)\right] & \text{by \ref{lem.4.1.det.of.tilde.B.1j}} \\
+            = & (-1)^{i+k}\left[
+                    \sum_{j<k}(-1)^{1+j} B_{1 j} \cdot \det\left(C_{i j}\right)
+                    + \sum_{j>k}(-1)^{1+(j-1)} B_{1 j} \cdot \det\left(C_{i j}\right)
+                \right]. & \text{just combine}
+\end{align*}
+Note that the expression inside the preceding bracket is \emph{in fact} the cofactor expansion of \(\tilde{B}_{ik}\) along the first row
+(since \(B_{1j}\) is in fact equal to \(\tilde{B}_{1j}\), and \(C_{ij}\) is in fact equal to the cofactor matrix of \(\tilde{B}_{1j}\) of row \(1\), column \(j\)),
+it follows that
+\[
+    \det(B) = (-1)^{i + k} \det(\tilde{B}_{ik}).
+\]
+This shows that the lemma is true for \(n \X n\) matrices, and so the lemma is true for all square matrices by mathematical induction.
+\end{proof}
+
+We are now able to prove that cofactor expansion along \emph{any row} can be used to evaluate the determinant of a square matrix.
+
+\begin{theorem} \label{thm 4.4}
+The determinant of a square matrix can be evaluated by cofactor expansion \textbf{along any row}.
+That is, if \(A \in M_{n \X n}(F)\), then for any integer \(i\) (\(1 \le i \le n\)),
+\[
+    \det(A) = \sum_{j = 1}^n (-1)^{\RED{i} + j} A_{\RED{i}j} \cdot \det(\tilde{A}_{\RED{i}j}).
+\]
+\end{theorem}
+
+\begin{proof}
+Cofactor expansion along the first row of \(A\) gives the determinant of \(A\) by definition.
+So the result is true if \(i = 1\).
+Fix \(i > 1\).
+First, row \(i\) of \(A\) can be written as \(\sum_{j = 1}^n A_{ij} e_j\) \MAROON{(1)}.
+For \(1 \le k \le n\), let \(B_k\) denote the matrix obtained
+from \(A\) by \emph{replacing} row \(i\) of \(A\) by \(e_k\).
+Then \textbf{its clear} that \((\widetilde{B_k})_{ij} = \tilde{A}_{ij}\) for any row \(i\) and column \(j\) \MAROON{(2)}.
+
+And by \THM{4.3} and \LEM{4.1}, we have
+\begin{align*}
+    \det(A) & = \det \begin{pmatrix}
+                    a_1 \\ a_2 \\ \vdots \\ a_i \\ \vdots \\ a_n
+                \end{pmatrix} 
+              = \det \begin{pmatrix}
+                    a_1 \\ a_2 \\ \vdots \\ \sum_{j = 1}^n A_{ij} e_j \\ \vdots \\ a_n
+                \end{pmatrix} & \text{by \MAROON{(1)}} \\
+            & = A_{i1} \cdot \det \begin{pmatrix}
+                    a_1 \\ a_2 \\ \vdots \\ e_1 \\ \vdots \\ a_n
+                \end{pmatrix}
+              + A_{i2} \cdot \det \begin{pmatrix}
+                    a_1 \\ a_2 \\ \vdots \\ e_2 \\ \vdots \\ a_n
+                \end{pmatrix}
+              + ...
+              + A_{in} \cdot \det \begin{pmatrix}
+                    a_1 \\ a_2 \\ \vdots \\ e_n \\ \vdots \\ a_n
+                \end{pmatrix} & \text{by \THM{4.3}} \\
+            & = A_{i1} \cdot \det(B_1) + A_{i2} \cdot \det(B_2) + ... + A_{in} \cdot \det(B_n) & \text{by def of \(B_k\)} \\
+            & = A_{i1} \cdot (-1)^{i + 1} \det((\widetilde{B_1})_{i1}) + A_{i2} \cdot (-1)^{i + 2} \det((\widetilde{B_2})_{i2}) \\
+            & \quad + ... + A_{in} \cdot (-1)^{i + n} \det((\widetilde{B_n})_{in}) & \text{by \LEM{4.1}} \\
+            & = A_{i1} (-1)^{i + 1} \cdot \det(\tilde{A}_{i1}) + A_{i2} \cdot (-1)^{i + 2} \det(\tilde{A}_{i2}) \\
+            & \quad + ... + A_{in} \cdot (-1)^{i + n} \det(\tilde{A}_{in}) & \text{by \MAROON{(2)}} \\
+            & = \sum_{j = 1}^n (-1)^{i + j} \det(\tilde{A}_{ij}).
+\end{align*}
+\end{proof}
+
+\begin{corollary} \label{corollary 4.4.1}
+If \(A \in M_{n \X n}(F)\) has two identical rows, then \(\det(A) = 0\).
+\end{corollary}
+
+\begin{proof}
+The proof is by mathematical induction on \(n\).
+The base case \(n = 2\) is immediately true from \SEC{4.1}.
+
+Assume that for some integer \(n \ge 3\), it is true for \((n - 1) \X (n - 1)\) matrices, and let rows \(r\) and \(s\) of \(A \in M_{n \X n}(F)\) be identical for \(r \ne s\).
+Because \(n \ge 3\), we can choose an integer \(i\) (\(1 \le i \le n\)) other than \(r\) and \(s\).
+Now by \THM{4.4},
+\[
+    \det(A) = \sum_{j = 1}^n (-1)^{i + j} \det(\tilde{A}_{ij}).
+\]
+Since each \(\tilde{A}_{ij}\) is an \((n - 1) \X (n - 1)\) matrix and \emph{still have} two identical rows, the induction hypothesis implies that each \(\det(A_{ij}) = 0\), and hence each term in the summation above is \(0\), hence \(\det(A) = 0\).
+This completes the proof for \(n \X n\) matrices, and so the lemma is true for all square matrices by mathematical induction.
+\end{proof}
+
+It is possible to evaluate determinants more efficiently by \emph{combining cofactor expansion with the use of elementary row operations}.
+Before such a process can be developed, we need to learn what happens to the determinant of a matrix if we perform an elementary row operation on that matrix.
+\THM{4.3} provides this information for elementary row operations of type 2 (those in which a row is multiplied by a nonzero scalar).
+Next we turn our attention to elementary row operations of type 1 (those in which two rows are interchanged).
+
+\begin{theorem} \label{thm 4.5}
+If \(A \in M_{n \X n}(F)\) and \(B\) is a matrix obtained from \(A\) by interchanging any two row of \(A\), then \(\det(B) = -\det(A)\).
+\end{theorem}
+
+\begin{proof}
+Let the rows of \(A \in M_{n \X n}(F)\) be \(a_1, a_2, ..., a_n\), and let \(B\) be the matrix obtained from \(A\) by interchanging rows \(r\) and \(s\), where WLOG \(r < s\).
+Thus
+\[
+    A = \left(\begin{array}{c} a_{1} \\ \vdots \\ a_{r} \\ \vdots \\ a_{s} \\ \vdots \\ a_{n} \end{array}\right)
+    \quad \text { and } \quad
+    B = \left(\begin{array}{c} a_{1} \\ \vdots \\ a_{s} \\ \vdots \\ a_{r} \\ \vdots \\ a_{n} \end{array}\right)
+\]
+Consider the matrix obtained from \(A\) by replacing rows \(r\) and \(s\) \emph{by} \(ar + as\).
+By the \CORO{4.4.1} and \THM{4.3}, we have
+\begin{align*}
+    0 & = \det \begin{pmatrix} a_{1} \\ \vdots \\ a_{r} + a_{s} \\ \vdots \\ a_{r}+a_{s} \\ \vdots \\ a_{n} \end{pmatrix} & \text{by \CORO{4.4.1}} \\
+      & = \det \begin{pmatrix} a_{1} \\ \vdots \\ a_{r} \\ \vdots \\ a_{r}+a_{s} \\ \vdots \\ a_{n} \end{pmatrix}
+        + \det\begin{pmatrix} a_{1} \\ \vdots \\ a_{s} \\ \vdots \\ a_{r}+a_{s} \\ \vdots \\ a_{n} \end{pmatrix} & \text{by \THM{4.3}, splitting row \(r\)} \\
+      & = \det\begin{pmatrix} a_{1} \\ \vdots \\ a_{r} \\ \vdots \\ a_{r} \\ \vdots \\ a_{n} \end{pmatrix}
+        + \det\begin{pmatrix} a_{1} \\ \vdots \\ a_{r} \\ \vdots \\ a_{s} \\ \vdots \\ a_{n} \end{pmatrix}
+        + \det\begin{pmatrix} a_{1} \\ \vdots \\ a_{s} \\ \vdots \\ a_{r} \\ \vdots \\ a_{n} \end{pmatrix}
+        + \det\begin{pmatrix} a_{1} \\ \vdots \\ a_{s} \\ \vdots \\ a_{s} \\ \vdots \\ a_{n} \end{pmatrix} & \text{by \THM{4.3}, splitting row \(s\)} \\
+      & = 0 + \det(A) + \det(B) + 0. & \text{by \CORO{4.4.1}}
+\end{align*}
+Therefore \(\det(B) = -\det(A)\).
+\end{proof}
+
+We now complete our investigation of how an elementary row operation affects the determinant of a matrix by showing that elementary row operations of type 3 \emph{do not change} the determinant of a matrix.
+
+\begin{theorem} \label{thm 4.6}
+Let \(A \in M_{n \X n}(F)\), and let \(B\) be a matrix obtained by adding a multiple of one row of \(A\) to another row of \(A\).
+Then \(\det(B) = \det(A)\).
+\end{theorem}
+
+\begin{proof}
+Suppose that \(B\) is the \(n \X n\) matrix obtained from \(A\) by adding \(k\) times row \(r\) to row \(s\), where \(r \ne s\).
+Let the rows of \(A\) be \(a_1, a_2, ..., a_n\), and the rows of \(B\) be \(b_1, b_2, ..., b_n\).
+Then \(b_i = a_i\) for \(i \ne s\) and \(b_s = a_s + k a_r\).
+Let \(C\) be the matrix obtained from \(A\) by replacing row \(s\) with \(a_r\)(hence row \(r\) and row \(s\) of \(C\) are the same).
+Applying \THM{4.3} to row \(s\) of \(B\), we obtain
+\begin{align*}
+    \det(B) & = \det(A) + k \det(C) & \text{by \THM{4.3}, splitting row \(s\)} \\ 
+            & = \det(A) + k \cdot 0 & \text{by \CORO{4.4.1}} \\
+            & = \det(A).
+\end{align*}
+\end{proof}
+
+In \THM{4.2} (p. 201), we proved that a \(2 \X 2\) matrix is invertible if and only if its determinant is nonzero.
+As a consequence of \THM{4.6}, we can prove \emph{half of} the promised generalization of this result in the following corollary.
+The converse is proved in the \CORO{4.7.1}.
+
+\begin{corollary} \label{corollary 4.6.1}
+If \(A \in M_{n \X n}(F)\) has rank \emph{less than} \(n\), then \(\det(A) = 0\).
+\end{corollary}
+
+\begin{proof}
+If the rank of \(A\) is less than \(n\), then the rows \(a_1, a_2, ..., a_n\) of \(A\) are \LDP{}.
+Then of course, some row of \(A\), say, row \(r\), is a linear combination of the other rows.
+So there exist scalars \(c_i\) such that
+\[
+    a_r = c_1 a_1 + ... + c_{r - 1} a_{r - 1} + c_{r + 1} a_{r + 1} + ... + c_n a_n.
+\]
+Let \(B\) be the matrix obtained from \(A\) by adding \(-c_i\) times row \(i\) to row \(r\) \textbf{for each} \(i \ne r\).
+Then row \(r\) of \(B\) consists entirely of zeros, and so by \CORO{4.3.1}, \(\det(B) = 0\).
+But by \THM{4.6}, \(\det(B) = \det(A)\).
+Hence \(\det(A) = 0\).
+\end{proof}
+
+\begin{remark} \label{remark 4.2.3}
+The following rules summarize the effect of an elementary row operation on the determinant of a matrix \(A \in M_{n \X n}(F)\).
+\begin{enumerate}
+\item If \(B\) is a matrix obtained by interchanging any two rows of \(A\), then \(\det(B) = -\det(A)\).
+\item If \(B\) is a matrix obtained by multiplying a row of \(A\) by a nonzero scalar \(k\), then \(\det(B) = k\det(A)\).
+\item If \(B\) is a matrix obtained by adding a multiple of one row of \(A\) to another row of \(A\), then \(\det(B) = \det(A)\).
+\end{enumerate}
+\end{remark}
+
+These facts can be used to \textbf{simplify the evaluation of a determinant}. (i.e. we don't need to use that nasty recursion in the definition.)
+
+Consider, for instance, the matrix in \EXAMPLE{4.2.1}:
+\[
+    A = \begin{pmatrix} 1 & 3 & -3 \\ -3 & -5 & 2 \\ -4 & 4 & 6 \end{pmatrix}.
+\]
+Adding \(3\) times row \(1\) of \(A\) to row \(2\) and \(4\) times row \(1\) to row \(3\), we obtain
+\[
+    M = \begin{pmatrix} 1 & 3 & -3 \\ 0 & 4 & -7 \\ 0 & 16 & -18 \end{pmatrix}.
+\]
+Since \(M\) was obtained by performing two type 3 elementary row operations on \(A\), we have \(\det(A) = \det(M)\).
+The cofactor expansion of \(M\) along the first
+row gives
+\[
+    \begin{array}{c} \det(M) = (-1)^{1+1}(1) \cdot \det\left(\tilde{M}_{11}\right)+(-1)^{1+2}(4) \cdot \det\left(\tilde{M}_{12}\right) \\
+    +(-1)^{1+3}(-3) \cdot \det\left(\tilde{M}_{13}\right)
+\end{array}
+\]
+Both \(\tilde{M}_{12}\) and \(\tilde{M}_{13}\) have a column consisting entirely of zeros, so \(\det( \tilde{M}_{12}) = \det(\tilde{M}_{13}) = 0\) by \CORO{4.3.1}.
+Hence
+\[
+    \begin{aligned}
+        \det(M) &=(-1)^{1+1}(1) \cdot \det\left(\tilde{M}_{11}\right) \\
+        &=(-1)^{1+1}(1) \cdot \det\left(\begin{array}{rr}
+        4 & -7 \\
+        16 & -18
+        \end{array}\right) \\
+        &=1[4(-18)-(-7)(16)]=40
+    \end{aligned}
+\]
+Thus with the use of two elementary row operations of type 3, we have reduced the computation of \(\det(A)\) to the evaluation of one determinant of a \(2 \X 2\) matrix.
+
+But we can do even better.
+If we add \(-4\) times row \(2\) of \(M\) to row \(3\) (another elementary row operation of type 3), we obtain
+\[
+    P = \left(\begin{array}{ccc}
+        \RED{1} & 4 & -3 \\
+        0 & \RED{4} & -7 \\
+        0 & 0 & \RED{10}
+    \end{array}\right)
+\]
+Evaluating \(\det(P)\) by cofactor expansion along the first row, we have
+\[
+    \begin{aligned}
+        \det(P)
+        & = (-1)^{1+1}(1) \cdot \det\left(\tilde{P}_{11}\right) \\
+        & = (-1)^{1+1}(1) \cdot \det\left(\begin{array}{cc}
+                4 & -7 \\
+                0 & 10
+            \end{array}\right) = 1 \cdot 4 \cdot 10=40
+    \end{aligned}
+\]
+as described earlier. Since \(\det(A) = \det(M) = \det(P)\), it follows that \(\det(A)=40\). 
+
+The preceding calculation of \(\det(P)\) illustrates an important general fact.
+The determinant of an \emph{upper triangular matrix} is the \emph{product of its diagonal entries}.
+(See \EXEC{4.2.23}.)
+By using elementary row operations of types 1 and 3 \textbf{only}, we can transform any square matrix into an upper triangular matrix, and so we can easily evaluate the determinant of any square matrix.
+The next two examples illustrate this technique.
+
+\begin{example} \label{example 4.2.5}
+To evaluate the determinant of the matrix
+\[
+    B=\left(\begin{array}{rrr}
+        0 & 1 & 3 \\
+        -2 & -3 & -5 \\
+        4 & -4 & 4
+    \end{array}\right)
+\]
+in \EXAMPLE{4.2.2}, we must begin with a row interchange(type 1). 
+Interchanging rows \(1\) and \(2\) of \(B\) produces
+\[
+    C=\left(\begin{array}{rrr}
+        -2 & -3 & -5 \\
+        0 & 1 & 3 \\
+        4 & -4 & 4
+    \end{array}\right)
+\]
+By means of a sequence of elementary row operations of type 3, we can transform \(C\) into an upper triangular matrix:
+\[
+    \left(\begin{array}{rrr}
+        -2 & -3 & -5 \\
+        0 & 1 & 3 \\
+        4 & -4 & 4
+    \end{array}\right)
+    \longrightarrow\left(\begin{array}{rrr}
+        -2 & -3 & -5 \\
+        0 & 1 & 3 \\
+        0 & -10 & -6
+    \end{array}\right)
+    \longrightarrow\left(\begin{array}{rrr}
+        -2 & -3 & -5 \\
+        0 & 1 & 3 \\
+        0 & 0 & 24
+    \end{array}\right)
+\]
+Thus \(\det(C) = -2 \cdot 1 \cdot 24 = -48\).
+Since \(C\) was obtained from \(B\) by \emph{an} interchange of rows, it follows that
+\[
+    \det(B) = -\det(C) = 48.
+\]
+\end{example}
+
+\begin{example} \label{example 4.2.6}
+The technique in \EXAMPLE{4.2.5} can be used to evaluate the determinant of the matrix
+\[
+    C = \left(\begin{array}{rrrr}
+        2 & 0 & 0 & 1 \\
+        0 & 1 & 3 & -3 \\
+        -2 & -3 & -5 & 2 \\
+        4 & -4 & 4 & -6
+    \end{array}\right)
+\]
+in \EXAMPLE{4.2.3}.
+This matrix can be transformed into an \emph{upper triangular} matrix by means of the following sequence of elementary row operations of \emph{type 3}:
+\[
+    \begin{aligned}
+    \left(\begin{array}{rrrr}
+        2 & 0 & 0 & 1 \\
+        0 & 1 & 3 & -3 \\
+        -2 & -3 & -5 & 2 \\
+        4 & -4 & 4 & -6
+    \end{array}\right)
+    \longrightarrow\left(\begin{array}{rrrr}
+        2 & 0 & 0 & 1 \\
+        0 & 1 & 3 & -3 \\
+        0 & -3 & -5 & 3 \\
+        0 & -4 & 4 & -8
+    \end{array}\right) \\
+    \longrightarrow\left(\begin{array}{rrrrr}
+        2 & 0 & 0 & 1 \\
+        0 & 1 & 3 & -3 \\
+        0 & 0 & 4 & -6 \\
+        0 & 0 & 16 & -20
+    \end{array}\right)
+    \longrightarrow\left(\begin{array}{rrrrrr}
+        2 & 0 & 0 & 1 \\
+        0 & 1 & 3 & -3 \\
+        0 & 0 & 4 & -6 \\
+        0 & 0 & 0 & 4
+    \end{array}\right)
+    \end{aligned}
+\]
+Thus (by \EXEC{4.2.23}) \(\det(C) = 2 \cdot 1 \cdot 4 \cdot 4 = 32\).
+\end{example}
+
+Using elementary row operations to evaluate the determinant of a matrix, as illustrated in \EXAMPLE{4.2.6}, is far more \emph{efficient} than using cofactor expansion.
+Consider first the evaluation of a \(2 \X 2\) matrix.
+Since
+\[
+    \det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc,
+\]
+the evaluation of the determinant of a \(2 \X 2\) matrix requires \(2\) multiplications (and \(1\) subtraction).
+For \(n \ge 3\), evaluating the determinant of an \(n \X n\) matrix by cofactor expansion along any row expresses the determinant as a sum of \(n\) products involving determinants of \((n - 1) \X (n - 1)\) matrices.
+Thus in all, the evaluation of the determinant of an \(n \X n\) matrix by cofactor expansion along any row requires over \(\RED{n!}\) multiplications,
+whereas evaluating the determinant of an \(n \X n\) matrix by elementary row operations as in \EXAMPLE{4.2.5} and \EXAMPLE{4.2.6} can be shown to require only \((n^3 + 2n - 3) / 3\) multiplications.
+To evaluate the determinant of a \(20 \X 20\) matrix, which is not large by present standards, cofactor expansion along a row requires over \(20! \approx 2.4 \X 10^{18}\) multiplications.
+Thus it would take a computer performing one billion multiplications per second over \(77\) years to evaluate the determinant of a \(20 \X 20\) matrix by this method.
+By contrast, the method using elementary row operations requires only \(2679\) multiplications for this calculation and would take the same computer less than three-millionths of a second!
+It is easy to see why most computer programs for evaluating the determinant of an arbitrary matrix do not use cofactor expansion.
+
+In this section, we have defined the determinant of a square matrix in terms of cofactor expansion along the first row.
+We then showed that the determinant of a square matrix can be evaluated using cofactor expansion along \emph{any} row.
+In addition, we showed that the determinant possesses a number of special properties, including properties that enable us to calculate \(\det(B)\) from \(\det(A)\) whenever \(B\) is a matrix obtained from \(A\) by means of an elementary row operation.
+These properties enable us to evaluate determinants much more efficiently.
+In the next section, we continue this approach to discover additional properties of determinants.

@@ -632,9 +632,9 @@ Now we prove by construction by defining \(\T\), using this scalars \emph{that d
 \[
     \T : V \to W \text{ by } \T(x) = \T\bigg(\sum_{i = 1}^n a_i v_i\bigg) = \sum_{i = 1}^n a_i w_i. \MAROON{(1)}
 \]
-Then of course \(\T\) is really a function, since
+Then of course \(\T\) is really a \emph{well-defined} function, since
 \BLUE{(1)} it's output is a linear combination of \(W\)'s vectors, which must be in \(W\);
-\BLUE{(2)} And since for any \(x\) in \(V\), the corresponding scalars \(a_1, ..., a_n\) are unique, hence the output of \(\T\) is also unique.
+\BLUE{(2)} And since for any \(x\) in \(V\), the corresponding scalars \(a_1, ..., a_n\) are \emph{unique}, hence the output of \(\T\) is also unique.
 Also note that \MAROON{(1)} is \textbf{not} actually a ``formula'' with ``constant scalars'' \(a_1, ..., a_n\), since \(a_1, ..., a_n\) are determined by (or dependent on) the given \(x\), so they are ``dynamic''.
 
 Then we have to show (a) \(\T\) is linear; (b) \(\T(v_i) = w_i\) for all \(i = 1, ..., n\):
@@ -690,6 +690,10 @@ But for each \(x \in V\), where again we represent \(x = \sum_{i = 1}^n a_i v_i\
 \end{align*}
 So \(\U = \T\), as desired.
 \end{proof}
+
+\begin{note}
+There is \href{https://www.youtube.com/watch?v=gAlUekIYKLA&ab_channel=DrPeyam}{another proof} for \THM{2.6}.
+\end{note}
 
 \begin{corollary} \label{corollary 2.6.1}
 \sloppy Let \(V\) and \(W\) be vector spaces, and suppose that \(V\) has a finite basis \(\{ v_1, v_2, ..., v_n \}\).
