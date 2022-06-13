@@ -43,7 +43,8 @@
 \declaretheorem[style=definition,qed=$\blacksquare$,numberwithin=section]{example}
 \newtheorem{lemma}{Lemma}[chapter]
 \newtheorem{exercise}{Exercise}[section]
-\newtheorem{remark}{Remark}[section]
+\declaretheorem[style=definition,qed=$\blacktriangleleft$,numberwithin=section]{remark}
+%\newtheorem{remark}{Remark}[section]
 \newtheorem*{note}{Note}
 
 \begin{document}
@@ -128,6 +129,8 @@
 \input{2-linear-transformations-and-matrices}
 \input{3-elementary-matrix-operations-and-systems-of-linear-equations}
 \input{4-determinants}
+\input{5-diagonalization}
+\input{6-inner-product-spaces}
 
 \end{CJK*}
 \end{document}
