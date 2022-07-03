@@ -7,9 +7,9 @@ In fact, we develop a \textbf{one-to-one correspondence between matrices and \LT
 We first need the concept of an \emph{ordered basis} for a vector space.
 
 \begin{definition} \label{def 2.4}
-Let \(V\) be a \emph{finite}-dimensional vector space.
-An \textbf{ordered basis} for \(V\) is a basis for \(V\) endowed \emph{with a specific order};
-that is, an ordered basis for \(V\) is a \emph{finite sequence} of \LID{} vectors in \(V\) that generates \(V\).
+Let \(\V\) be a \emph{finite}-dimensional vector space.
+An \textbf{ordered basis} for \(\V\) is a basis for \(\V\) endowed \emph{with a specific order};
+that is, an ordered basis for \(\V\) is a \emph{finite sequence} of \LID{} vectors in \(\V\) that generates \(\V\).
 \end{definition}
 
 \begin{example} \label{example 2.2.1}
@@ -28,8 +28,8 @@ This identification is provided through the use of \emph{coordinate vectors}, as
 \end{remark}
 
 \begin{definition} \label{def 2.5}
-Let \(\beta = \{ u_1, u_2, ..., u_n \}\) be an ordered basis for a \emph{finite}-dimensional vector space \(V\).
-For \(x \in V\), let \(a_1, a_2, ..., a_n\) be the \emph{unique} scalars such that
+Let \(\beta = \{ u_1, u_2, ..., u_n \}\) be an ordered basis for a \emph{finite}-dimensional vector space \(\V\).
+For \(x \in \V\), let \(a_1, a_2, ..., a_n\) be the \emph{unique} scalars such that
 \[
     x = \sum_{i = 1}^n a_i u_i.
 \]
@@ -42,14 +42,14 @@ We define the \textbf{coordinate vector of \(x\) relative to \(\beta\)}, denoted
 
 \begin{note}
 Since \(u_i = 0 u_1 + ... + 0 u_{i - 1} + 1 u_i + 0 u_{i + 1} + ... + 0 u_n\), \([u_i]_{\beta} = e_i\), where \(e_i\) is the \(i\)th vector in the standard ordered basis of \(F^{n}\).
-It is left as an exercise to show that the \emph{correspondence} \(x \to [x]_{\beta}\) provides us with a \LTRAN{} from \(V\) to \(F^n\).
-(Also notice that it's a \emph{bijection} from \(V\) to \(F^n\).)
+It is left as an exercise to show that the \emph{correspondence} \(x \to [x]_{\beta}\) provides us with a \LTRAN{} from \(\V\) to \(F^n\).
+(Also notice that it's a \emph{bijection} from \(\V\) to \(F^n\).)
 We study this transformation in \SEC{2.4} in more
 detail.
 \end{note}
 
 \begin{example} \label{example 2.2.2}
-Let \(V = \POLYRR\), and let \(\beta = \{ 1, x , x^2 \}\) be the standard ordered basis for \(V\).
+Let \(\V = \POLYRR\), and let \(\beta = \{ 1, x , x^2 \}\) be the standard ordered basis for \(\V\).
 If \(f(x) = 4 + 6x - 7x^2\), then
 \[
     [f]_{\beta} = \begin{pmatrix} 4 \\ 6 \\ 7 \end{pmatrix}.
@@ -57,8 +57,8 @@ If \(f(x) = 4 + 6x - 7x^2\), then
 \end{example}
 
 Let us now proceed with the promised \emph{matrix representation} of a \LTRAN{}.
-Suppose that \(V\) and \(W\) are \emph{finite}-dimensional vector spaces with ordered bases \(\beta = \{ v_1, v_2, ..., v_n \}\) and \(\gamma = \{ w_1, w_2, ..., w_m \}\), respectively.
-Let \(\T : V \to W\) be linear.
+Suppose that \(\V\) and \(\W\) are \emph{finite}-dimensional vector spaces with ordered bases \(\beta = \{ v_1, v_2, ..., v_n \}\) and \(\gamma = \{ w_1, w_2, ..., w_m \}\), respectively.
+Let \(\T : \V \to \W\) be linear.
 Then for each \(j = 1, 2, ..., n\), the output of \(\T(v_j)\) can be represented as a linear combination using \(\gamma = \{ w_1, w_2, ..., w_m \}\), with the \emph{unique} scalars \(a_{1j}, a_{2j}, ..., a_{mj}\);
 that is,
 \[
@@ -69,7 +69,7 @@ And we can use these \(a_{ij}\) for \(1 \le i \le m\), \(1 \le j \le n\), to def
 \begin{definition} \label{def 2.6}
 Continuing from the discussion above, we call the \(m \X n\) matrix \(A\) defined by \(A_{ij} = a_{ij}\) the \textbf{matrix representation of \(\T\) in the ordered bases \(\beta\)
 and \(\gamma\)} and write \(A = [\T]_{\beta}^{\gamma}\).
-If \(V = W\) and \(\beta = \gamma\), then we write \(A = [\T]_{\beta}\).
+If \(\V = \W\) and \(\beta = \gamma\), then we write \(A = [\T]_{\beta}\).
 \end{definition}
 
 \begin{remark} \label{remark 2.2.2}
@@ -80,7 +80,7 @@ Notice that the \(j\)th column of \(A\) is
 by the discussion above we know \(\T(v_j) = a_{1j} w_1 + a_{2j} w_2 + ... + a_{mj} w_m\),
 so indeed the \(j\)th columns of \(A\), by \DEF{2.5}, is equal to \([\T(v_j)]_{\gamma}\).
 
-\RED{Also observe that} if \(\U: V \to W\) is a \LTRAN{} such that \([\U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma}\),
+\RED{Also observe that} if \(\U: \V \to \W\) is a \LTRAN{} such that \([\U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma}\),
 then in particular for \(j = 1, 2, ..., n\), the \(j\)th column of \([\U]_{\beta}^{\gamma}\) is equal to the \(j\)th column of \([\T]_{\beta}^{\gamma}\),
 which (by what we have shown) implies \([\U(v_j)]_{\gamma} = [\T(v_j)]_{\gamma}\),
 which implies \(\U(v_j) = \T(v_j)\).
@@ -144,7 +144,7 @@ So
 \end{example}
 
 \begin{additional definition} \label{adef}
-Let \(V\) and \(W\) be finite-dimensional vector spaces with ordered bases \(\beta = \{ v_1, v_2, ..., v_n \}\) and \(\gamma = \{ w_1, w_2, ..., w_m \}\), respectively.
+Let \(\V\) and \(\W\) be finite-dimensional vector spaces with ordered bases \(\beta = \{ v_1, v_2, ..., v_n \}\) and \(\gamma = \{ w_1, w_2, ..., w_m \}\), respectively.
 Then for the \emph{zero transformation},
 \[
     \TZERO(v_j) = \OW = 0 w_1 + 0 w_2 + ... + 0 w_m.
@@ -182,12 +182,12 @@ Now that we have defined a procedure for \emph{associating} matrices with \LTRAN
 To make this more explicit, we need some preliminary discussion about the \emph{addition and scalar multiplication of \LTRAN{}s}.
 
 \begin{definition} \label{def 2.8}
-Let \(\T, \U: V \to W\) be arbitrary \emph{functions}, where \(V\) and \(W\) are vector spaces over \(F\), and let \(a \in F\).
+Let \(\T, \U: \V \to \W\) be arbitrary \emph{functions}, where \(\V\) and \(\W\) are vector spaces over \(F\), and let \(a \in F\).
 We define
 
-\BLUE{(1)} \(\T + \U : V \to W\) by \((\T + \U)(x) = \T(x) + \U(x)\) for all \(x \in V\), and
+\BLUE{(1)} \(\T + \U : \V \to \W\) by \((\T + \U)(x) = \T(x) + \U(x)\) for all \(x \in \V\), and
 
-\BLUE{(2)} \(a\T: V \to W\) by \((a\T)(x) = a\T(x)\) for all \(x \in V\).
+\BLUE{(2)} \(a\T: \V \to \W\) by \((a\T)(x) = a\T(x)\) for all \(x \in \V\).
 \end{definition}
 
 \begin{note}
@@ -196,23 +196,23 @@ We are fortunate, however, to have the result that \emph{both sums and scalar mu
 \end{note}
 
 \begin{theorem} \label{thm 2.7}
-Let \(V\) and \(W\) be vector spaces over a field \(F\), and let \(\T, \U: V \to W\) be \emph{linear}.
+Let \(\V\) and \(\W\) be vector spaces over a field \(F\), and let \(\T, \U: \V \to \W\) be \emph{linear}.
 \begin{enumerate}
 \item For all \(a \in F\), \(a\T + \U\) is linear.
-\item Using the operations of addition and scalar multiplication in the preceding definition, \textbf{the collection of all \LTRAN{}s from \(V\) to \(W\) is a vector space over F}.
+\item Using the operations of addition and scalar multiplication in the preceding definition, \textbf{the collection of all \LTRAN{}s from \(\V\) to \(\W\) is a vector space over F}.
 \end{enumerate}
 \end{theorem}
 
 \begin{proof} \ 
 \begin{enumerate}
 \item We need to show \(a\T + \U\) is still a \LTRAN{}.
-So let \(x, y \in V\) and \(a \in F\).
+So let \(x, y \in \V\) and \(a \in F\).
 Then
 \begin{align*}
     (a\T + \U)(cx + y) & = (a\T)(cx + y) + \U(cx + y) & \text{by \DEF{2.8}(1)} \\
                        & = a\T(cx + y) + \U(cx + y) & \text{by \DEF{2.8}(2)} \\
                        & = a\Big( c\T(x) + \T(y) \Big) + \Big( c\U(x) + \U(y) \Big) & \text{since \(\T, \U\) are linear} \\
-                       & = ac\T(x) + a\T(y) + c\U(x) + \U(y) & \text{by algebra on \(W\)} \\
+                       & = ac\T(x) + a\T(y) + c\U(x) + \U(y) & \text{by algebra on \(\W\)} \\
                        & = ca\T(x) + c\U(x) + a\T(y) + \U(y) & \text{same as above} \\
                        & = c(a\T(x) + \U(x)) + (a\T(y) + \U(y)) &
                        \text{same as above} \\
@@ -222,25 +222,25 @@ Then
 Hence by \ATHM{2.1}(b), \(a\T + \U\) is linear.
 
 \item
-Noting that \(\TZERO\), the zero transformation, plays the role of the zero vector, it is easy to verify that the axioms of a vector space are satisfied, and hence that the collection of all \LTRAN{}s from \(V\) into \(W\) is a vector space over \(F\).
+Noting that \(\TZERO\), the zero transformation, plays the role of the zero vector, it is easy to verify that the axioms of a vector space are satisfied, and hence that the collection of all \LTRAN{}s from \(\V\) into \(\W\) is a vector space over \(F\).
 (See \EXEC{2.1.6}.)
 \end{enumerate}
 \end{proof}
 
 \begin{definition} \label{def 2.9}
-Let \(V\) and \(W\) be vector spaces over \(F\).
-We denote the vector space of all \LTRAN{}s from \(V\) into \(W\) by \(\mathcal{L}(V, W)\).
-In the case that \(V = W\), we write \(\mathcal{L}(V)\) instead of \(\mathcal{L}(V, V)\).
+Let \(\V\) and \(\W\) be vector spaces over \(F\).
+We denote the vector space of all \LTRAN{}s from \(\V\) into \(\W\) by \(\mathcal{L}(\V, \W)\).
+In the case that \(\V = \W\), we write \(\mathcal{L}(\V)\) instead of \(\mathcal{L}(\V, \V)\).
 \end{definition}
 
 \begin{remark} \label{remark 2.2.3}
-In \SEC{2.4}, we see a \emph{complete identification} of \(\mathcal{L}(V, W)\) with the vector space \(M_{m \X n}(F)\), where \(n\) and \(m\) are the dimensions of \(V\) and \(W\), respectively.
-(``identification'' just means a one-to-one correspondence, that is, any \(m \X n\) matrix corresponds to one and only one \LTRAN{} from \(V\) to \(W\).)
+In \SEC{2.4}, we see a \emph{complete identification} of \(\mathcal{L}(\V, \W)\) with the vector space \(M_{m \X n}(F)\), where \(n\) and \(m\) are the dimensions of \(\V\) and \(\W\), respectively.
+(``identification'' just means a one-to-one correspondence, that is, any \(m \X n\) matrix corresponds to one and only one \LTRAN{} from \(\V\) to \(\W\).)
 This identification is easily established by the use of the next theorem.
 \end{remark}
 
 \begin{theorem} \label{thm 2.8}
-Let \(V\) and \(W\) be \emph{finite}-dimensional vector spaces with ordered bases \(\beta\) and \(\gamma\), respectively, and let \(\T, \U: V \to W\) be \LTRAN{}s.
+Let \(\V\) and \(\W\) be \emph{finite}-dimensional vector spaces with ordered bases \(\beta\) and \(\gamma\), respectively, and let \(\T, \U: \V \to \W\) be \LTRAN{}s.
 Then
 \begin{enumerate}
 \item \([\T + \U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma}\)
@@ -324,14 +324,14 @@ and by \THM{2.8}, this is simply equal to \([\T]_{\beta}^{\gamma} + [\U]_{\beta}
 
 \begin{exercise} \label{exercise 2.2.1}
 Label the following statements as true or false.
-Assume that \(V\) and \(W\) are \emph{finite}-dimensional vector spaces with ordered bases \(\beta\) and \(\gamma\), respectively, and \(\T, \U : V \to W\) are \LTRAN{}s.
+Assume that \(\V\) and \(\W\) are \emph{finite}-dimensional vector spaces with ordered bases \(\beta\) and \(\gamma\), respectively, and \(\T, \U : \V \to \W\) are \LTRAN{}s.
 \begin{enumerate}
-\item For any scalar \(a\), \(a\T + \U\) is a \LTRAN{} from \(V\) to \(W\).
+\item For any scalar \(a\), \(a\T + \U\) is a \LTRAN{} from \(\V\) to \(\W\).
 \item \([\T]_{\beta}^{\gamma} = [\U]_{\beta}^{\gamma}\) implies that \(\T = \U\).
-\item If \(m = \dim(V)\) and \(n = \dim(W)\), then \([\T]_{\beta}^{\gamma}\) is an \(m \X n\) matrix.
+\item If \(m = \dim(\V)\) and \(n = \dim(\W)\), then \([\T]_{\beta}^{\gamma}\) is an \(m \X n\) matrix.
 \item \([\T + \U]_{\beta}^{\gamma} = [\T]_{\beta}^{\gamma} + [\U]_{\beta}^{\gamma}\).
-\item \(\mathcal{L}(V, W)\) is a vector space.
-\item \(\mathcal{L}(V, W) = \mathcal{L}(W, V)\).
+\item \(\mathcal{L}(\V, \W)\) is a vector space.
+\item \(\mathcal{L}(\V, \W) = \mathcal{L}(\W, \V)\).
 \end{enumerate}
 \end{exercise}
 
@@ -342,7 +342,7 @@ Assume that \(V\) and \(W\) are \emph{finite}-dimensional vector spaces with ord
 \item True by \DEF{2.6}.
 \item True by \THM{2.8}(a).
 \item True by \THM{2.7}(b).
-\item False, the elements in \(\mathcal{L}(V, W)\) is \LTRAN{}s from \(V\) into \(W\), but the elements in \(\mathcal{L}(W, V)\) is \LTRAN{}s from \(W\) into \(V\).
+\item False, the elements in \(\mathcal{L}(\V, \W)\) is \LTRAN{}s from \(\V\) into \(\W\), but the elements in \(\mathcal{L}(\W, \V)\) is \LTRAN{}s from \(\W\) into \(\V\).
 \end{enumerate}
 \end{proof}
 
@@ -645,77 +645,77 @@ Complete the proof of part (b) of \THM{2.7}.
 \begin{proof}
 By \THM{2.7}(a), the addition and scalar multiplication in \DEF{2.8} is closed.
 
-Now let \(\T, \U, \U' \in \mathcal{L}(V, W)\) where \(V\) and \(W\) are \(n\)-dimensional and \(m\)-dimensional vector spaces, respectively.
+Now let \(\T, \U, \U' \in \mathcal{L}(\V, \W)\) where \(\V\) and \(\W\) are \(n\)-dimensional and \(m\)-dimensional vector spaces, respectively.
 
-(VS 1): For all \(x \in V\),
+(VS 1): For all \(x \in \V\),
 \begin{align*}
     (\T + \U)(x) & = \T(x) + \U(x) & \text{by \DEF{2.8}(1)} \\
-                 & = \U(x) + \T(x) & \text{by (VS 1) of \(W\)} \\
+                 & = \U(x) + \T(x) & \text{by (VS 1) of \(\W\)} \\
                  & = (\U + \T)(x), & \text{by \DEF{2.8}(1)}
 \end{align*}
 hence \(\T + \U = \U + \T\).
 
-(VS 2): For all \(x \in V\),
+(VS 2): For all \(x \in \V\),
 \begin{align*}
     ((\T + \U) + \U')(x) & = (\T + \U)(x) + \U(x') & \text{by \DEF{2.8}(1)} \\
                          & = (\T(x) + \U(x)) + \U'(x) & \text{by \DEF{2.8}(1)} \\
-                         & = \T(x) + (\U(x) + \U'(x)) & \text{by (VS 2) of \(W\)} \\
+                         & = \T(x) + (\U(x) + \U'(x)) & \text{by (VS 2) of \(\W\)} \\
                          & = \T(x) + (\U +\U')(x) & \text{by \DEF{2.8}(1)} \\
                          & = (\T + (\U +\U'))(x) & \text{by \DEF{2.8}(1)}
 \end{align*}
 hence \((\T + \U) + \U' = \T + (\U + \U')\).
 
-(VS 3): We claim the zero transformation \(\TZERO\) is the zero vector of \(\mathcal{L}(V, W)\) since for all \(x \in V\),
+(VS 3): We claim the zero transformation \(\TZERO\) is the zero vector of \(\mathcal{L}(\V, \W)\) since for all \(x \in \V\),
 \begin{align*}
     (\T + \TZERO)(x) & = \T(x) + \TZERO(x) & \text{by \DEF{2.8}(1)} \\
-                     & = \T(x), & \text{by (VS 3) of \(W\)}
+                     & = \T(x), & \text{by (VS 3) of \(\W\)}
 \end{align*}
 Hence \(\T = \T + \TZERO\).
 
-(VS 4): Given \(\T \in \mathcal{L}(V, W)\) we claim that \(-1 \cdot \T\) is the inverse of \(\T\) since for all \(x \in V\),
+(VS 4): Given \(\T \in \mathcal{L}(\V, \W)\) we claim that \(-1 \cdot \T\) is the inverse of \(\T\) since for all \(x \in \V\),
 \begin{align*}
     (\T + (-1 \cdot \T))(x) & = \T(x) + (-1 \cdot \T)(x) & \text{by \DEF{2.8}(1)} \\
                             & = \T(x) + (-1)\T(x) & \text{by \DEF{2.8}(2)} \\
-                            & = \OW & \text{by (VS 4) of \(W\)}
+                            & = \OW & \text{by (VS 4) of \(\W\)}
 \end{align*}
 Hence \(\T + (-1 \cdot \T) = \TZERO\).
 
-(VS 5) For all \(x \in V\),
+(VS 5) For all \(x \in \V\),
 \begin{align*}
     (1 \cdot \T)(x) & = 1 \T(x) & \text{by \DEF{2.8}(2)} \\
-                    & = \T(x) & \text{by (VS 5) of \(W\)}
+                    & = \T(x) & \text{by (VS 5) of \(\W\)}
 \end{align*}
 Hence \(1 \cdot \T = \T\).
 
-(VS 6) For all \(x \in V\),
+(VS 6) For all \(x \in \V\),
 \begin{align*}
     ((ab)\T)(x) & = (ab)\T(x) & \text{by \DEF{2.8}(2)} \\
-                & = a(b\T(x)) & \text{by (VS 6) of \(W\)} \\
+                & = a(b\T(x)) & \text{by (VS 6) of \(\W\)} \\
                 & = a\Big( (b\T)(x) \Big) & \text{by \DEF{2.8}(2)} \\
                 & = \Big( a(b\T) \Big)(x) & \text{by \DEF{2.8}(2)}
 \end{align*}
 Hence \((ab)\T = a(b\T)\).
 
-(VS 7) For all \(x \in V\),
+(VS 7) For all \(x \in \V\),
 \begin{align*}
     (a(\T + \U))(x) & = a((\T + \U)(x)) & \text{by \DEF{2.8}(2)} \\
                     & = a(\T(x) + \U(x)) & \text{by \DEF{2.8}(1)} \\
-                    & = a\T(x) + a\U(x) & \text{by (VS 7) of \(W\)} \\
+                    & = a\T(x) + a\U(x) & \text{by (VS 7) of \(\W\)} \\
                     & = (a\T)(x) + (a\U)(x) & \text{by \DEF{2.8}(2)} \\
                     & = (a\T + a\U)(x) & \text{by \DEF{2.8}(1)}
 \end{align*}
 Hence \(a(\T + \U) = a\T + a\U\).
 
-(VS 8) For all \(x \in V\),
+(VS 8) For all \(x \in \V\),
 \begin{align*}
     ((a + b)\T)(x) & = (a + b)\big( (\T)(x) \big) & \text{by \DEF{2.8}(2)} \\
-                    & = a\T(x) + b\T(x) & \text{by (VS 8) of \(W\)} \\
+                    & = a\T(x) + b\T(x) & \text{by (VS 8) of \(\W\)} \\
                     & = (a\T)(x) + (b\T)(x) & \text{by \DEF{2.8}(2)} \\
                     & = (a\T + b\T)(x) & \text{by \DEF{2.8}(1)}
 \end{align*}
 Hence \((a + b)\T = a\T + b\T\).
 
-Hence \(\mathcal{L}(V, W)\) with addition and scalar multiplication in \DEF{2.8} is a vector space.
+Hence \(\mathcal{L}(\V, \W)\) with addition and scalar multiplication in \DEF{2.8} is a vector space.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.7}
@@ -727,15 +727,15 @@ See \THM{2.8}.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.8}
-Let \(V\) be an \(n\)-dimensional vector space with an ordered basis \(\beta\).
-Define \(\T : V \to F^n\) by \(\T(x) = [x]_{\beta}\).
+Let \(\V\) be an \(n\)-dimensional vector space with an ordered basis \(\beta\).
+Define \(\T : \V \to F^n\) by \(\T(x) = [x]_{\beta}\).
 Prove that \(\T\) is linear.
 \end{exercise}
 
 \begin{proof}
 USEDINSEC2.4.
 
-Let arbitrary \(x, y \in V\), \(\beta = \{ v_1, v_2, ..., v_n \}\) be a basis for \(V\), and scalar \(c\).
+Let arbitrary \(x, y \in \V\), \(\beta = \{ v_1, v_2, ..., v_n \}\) be a basis for \(\V\), and scalar \(c\).
 Then (by discussion before \DEF{2.6}) there exist unique scalars \(a_1, a_2, ..., a_n\), \(b_1, b_2, ..., b_n\) such that
 \[
     x = \sum_{i = 1}^n a_i v_i \text{ and } y = \sum_{i = 1}^n b_i v_i.
@@ -765,10 +765,10 @@ Hence \(\T(cx + y) = c\T(x) + \T(y)\), so by \ATHM{2.1}(b), \(\T\) is linear.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.9}
-Let \(V\) be the vector space of complex numbers \textbf{over the field} \(\SET{R}\).
-Define \(\T : V \to V\) by \(\T(z) = \conjugatet{z}\), where \(\conjugatet{z}\) is the complex conjugate of \(z\).
+Let \(\V\) be the vector space of complex numbers \textbf{over the field} \(\SET{R}\).
+Define \(\T : \V \to \V\) by \(\T(z) = \conjugatet{z}\), where \(\conjugatet{z}\) is the complex conjugate of \(z\).
 Prove that \(\T\) \emph{is} linear, and compute \([\T]_{\beta}\), where \(\beta = \{ 1, \iu \}\).
-(Recall by \EXEC{2.1.39} that \(\T\) is \textbf{not linear} if \(V\) is regarded as a vector space \textbf{over the field} \(\SET{C}\).)
+(Recall by \EXEC{2.1.39} that \(\T\) is \textbf{not linear} if \(\V\) is regarded as a vector space \textbf{over the field} \(\SET{C}\).)
 \end{exercise}
 
 \begin{proof}
@@ -801,9 +801,9 @@ Hence
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.10}
-Let \(V\) be a vector space with the ordered basis \(\beta = \{ v_1, v_2, ..., v_n \}\).
+Let \(\V\) be a vector space with the ordered basis \(\beta = \{ v_1, v_2, ..., v_n \}\).
 Define \(v_0 = \OV\).
-By \THM{2.6}, there exists a \LTRAN{} \(\T: V \to V\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, ..., n\).
+By \THM{2.6}, there exists a \LTRAN{} \(\T: \V \to \V\) such that \(\T(v_j) = v_j + v_{j - 1}\) for \(j = 1, 2, ..., n\).
 Compute \([\T]_{\beta}\).
 \end{exercise}
 
@@ -830,9 +830,9 @@ Hence
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.11}
-Let \(V\) be an \(n\)-dimensional vector space, and let \(\T : V \to V\) be a \LTRAN{}.
-Suppose that \(W\) is a \(\T\)-invariant subspace of \(V\) (see \ADEF{2.3}) having dimension \(k\).
-Show that there is an ordered basis \(\beta\) for \(V\) such that \([\T]_{\beta}\) has the form
+Let \(\V\) be an \(n\)-dimensional vector space, and let \(\T : \V \to \V\) be a \LTRAN{}.
+Suppose that \(\W\) is a \(\T\)-invariant subspace of \(\V\) (see \ADEF{2.3}) having dimension \(k\).
+Show that there is an ordered basis \(\beta\) for \(\V\) such that \([\T]_{\beta}\) has the form
 \[
     \begin{pmatrix} A & B \\ O & C \end{pmatrix},
 \]
@@ -840,9 +840,9 @@ where \(A\) is a \(k \X k\) matrix and \(O\) is the \((n - k) \X k\) zero matrix
 \end{exercise}
 
 \begin{proof}
-Let \(\beta' = \{ v_1, v_2, ..., v_k \}\) be an ordered basis for \(W\).
-Then (by \CORO{1.11.1}) we can extend \(\beta'\) to get \(\beta = \{ v_1, v_2, ..., v_k, v_{k + 1}, ..., v_n \}\) to get a basis for \(V\).
-Since \(W\) is \(\T\)-invariant, we have \(\T(v_1), \T(v_2), ..., \T(v_k) \in W\).
+Let \(\beta' = \{ v_1, v_2, ..., v_k \}\) be an ordered basis for \(\W\).
+Then (by \CORO{1.11.1}) we can extend \(\beta'\) to get \(\beta = \{ v_1, v_2, ..., v_k, v_{k + 1}, ..., v_n \}\) to get a basis for \(\V\).
+Since \(\W\) is \(\T\)-invariant, we have \(\T(v_1), \T(v_2), ..., \T(v_k) \in \W\).
 So for \(j = 1, ..., k\), \(\T(v_j)\) can be represented using \(\beta'\), that is,
 \[
     \T(v_j) = \sum_{i = 1}^k a_{ij} v_i.
@@ -877,7 +877,7 @@ which has the form
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.12}
-Let \(\beta = \{ v_1, v_2, ..., v_n \}\) be a basis for a vector space \(V\) and \(\T : V \to V\) be a \LTRAN{}.
+Let \(\beta = \{ v_1, v_2, ..., v_n \}\) be a basis for a vector space \(\V\) and \(\T : \V \to \V\) be a \LTRAN{}.
 Prove that \([\T]_{\beta}\) is \textbf{upper triangular} if and only if \(\T(v_j) \in \spann(\{ v_1, v_2, ..., v_j \})\) for \(j = 1, 2, ..., n\).
 \end{exercise}
 
@@ -920,24 +920,24 @@ Then \([\T]_{\beta}\) has the form like \MAROON{(1)}, and that representation ju
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.13}
-Let \(V\) be a finite-dimensional vector space and \(\T\) be the \textbf{projection} on \(W\) along \(W'\), where \(W\) and \(W'\) are subspaces of \(V\). (See \ADEF{2.2}.)
-Find an ordered basis \(\beta\) for \(V\) such that \([\T]_{\beta}\) is a \emph{diagonal} matrix.
+Let \(\V\) be a finite-dimensional vector space and \(\T\) be the \textbf{projection} on \(\W\) along \(\W'\), where \(\W\) and \(\W'\) are subspaces of \(\V\). (See \ADEF{2.2}.)
+Find an ordered basis \(\beta\) for \(\V\) such that \([\T]_{\beta}\) is a \emph{diagonal} matrix.
 \end{exercise}
 
 \begin{proof}
-\(\T\) is a projection on \(W\) along \(W'\) implies \(V = W \oplus W'\).
-Now let \(\alpha = \{ v_1, v_2, ..., v_k \}\) be a basis for \(W\), \(\beta = \{ v_{k + 1}, v_{k + 2}, ..., v_n \}\) be a basis for \(W'\).
-Then from \ATHM{1.27}(3.1), \(\alpha \cup \beta\) is a basis for \(V\).
+\(\T\) is a projection on \(\W\) along \(\W'\) implies \(\V = \W \oplus \W'\).
+Now let \(\alpha = \{ v_1, v_2, ..., v_k \}\) be a basis for \(\W\), \(\beta = \{ v_{k + 1}, v_{k + 2}, ..., v_n \}\) be a basis for \(\W'\).
+Then from \ATHM{1.27}(3.1), \(\alpha \cup \beta\) is a basis for \(\V\).
 
 Now for \(i = \RED{1, ..., k}\),
 \begin{align*}
-    \T(v_i) & = \T(v_i + \OV) & \text{where \(v_i \in W, \OV \in W'\)} \\
+    \T(v_i) & = \T(v_i + \OV) & \text{where \(v_i \in \W, \OV \in \W'\)} \\
             & = v_i & \text{by def of projection} \\
             & = \RED{0} v_1 + ... + \RED{0} v_{i - 1} + \RED{1} v_i + \RED{0} v_{i + 1} + ... + \RED{0} v_n
 \end{align*}
 and for \(i = k + 1, ..., n\),
 \begin{align*}
-    \T(v_i) & = \T(\OV + v_i) & \text{where \(\OV \in W, v_i \in W'\)} \\
+    \T(v_i) & = \T(\OV + v_i) & \text{where \(\OV \in \W, v_i \in \W'\)} \\
             & = \OV & \text{by def of projection} \\
             & = 0 v_1 + ... + 0 v_i + ... + 0 v_n
 \end{align*}
@@ -958,15 +958,15 @@ in particular \([\T]_{\beta}\) is diagonal.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.14}
-Let \(V\) and \(W\) be vector spaces, and let \(\T\) and \(\U\) be \emph{nonzero} \LTRAN{}s from \(V\) into \(W\).
+Let \(\V\) and \(\W\) be vector spaces, and let \(\T\) and \(\U\) be \emph{nonzero} \LTRAN{}s from \(\V\) into \(\W\).
 If \(\RANGET \cap \RANGE(\U) = \{ \OW \}\), prove that
-\(\{ \T, \U \}\) is a \emph{linearly independent} subset of \(\mathcal{L}(V, W)\).
+\(\{ \T, \U \}\) is a \emph{linearly independent} subset of \(\mathcal{L}(\V, \W)\).
 \end{exercise}
 
 \begin{proof}
 For the sake of contradiction, suppose \(\T, \U\) are not \LID{}.
 Then (by \ATHM{1.16}) we have \(\T = c\U\) for \(c \in F\).
-Since both \(\T, \U\) are not equal to \(\TZERO\), that implies \(c \ne 0\), and there exists \(v \in V\) such that \(\U(v) \ne \OW\).
+Since both \(\T, \U\) are not equal to \(\TZERO\), that implies \(c \ne 0\), and there exists \(v \in \V\) such that \(\U(v) \ne \OW\).
 Let \(w = \U(v)\).
 Then
 \begin{align*}
@@ -981,9 +981,9 @@ So \(\T, \U\) are \LID{}.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.15}
-Let \(V = \mathcal{P}(\SET{R})\), and for \(j \ge 1\) define \(\T_j(f) = f^{(j)}\), where \(f^{(j)}\) is the \(j\)th derivative of \(f\).
+Let \(\V = \mathcal{P}(\SET{R})\), and for \(j \ge 1\) define \(\T_j(f) = f^{(j)}\), where \(f^{(j)}\) is the \(j\)th derivative of \(f\).
 Prove that the set \(\{ \T_1, \T_2, ..., \T_n \}\) is a
-linearly independent subset of \(\mathcal{L}(V)\) for any positive integer \(n\).
+linearly independent subset of \(\mathcal{L}(\V)\) for any positive integer \(n\).
 \end{exercise}
 
 \begin{proof}
@@ -991,7 +991,7 @@ Given positive integer \(n\), suppose
 \[
     a_1\T_1 + a_2\T_2 + ... + a_n\T_n = \TZERO \MAROON{(1)},
 \]
-where \(\TZERO\) is the zero transformation (from \(V\) to \(V\)).
+where \(\TZERO\) is the zero transformation (from \(\V\) to \(\V\)).
 we have to show \(a_1 = a_2 = ... = a_n\) to show \(\T_1, \T_2, ..., \T_n\) are \LID{}.
 
 So in particular given a polynomial \(x^n \in \mathcal{P}(\SET{R})\), from \MAROON{(1)}
@@ -1019,22 +1019,22 @@ Hence from \MAROON{(1)}, \(\T_1, \T_2, ..., \T_n\) is \LID{}.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.16}
-Let \(V\) and \(W\) be vector spaces, and let \(S\) be a \emph{subset} of \(V\).
+Let \(\V\) and \(\W\) be vector spaces, and let \(S\) be a \emph{subset} of \(\V\).
 Define
 \[
-    S^0 = \{ \T \in \mathcal{L}(V, W) : \T(x) = \OW \text{ for all } x \in S \}.
+    S^0 = \{ \T \in \mathcal{L}(\V, \W) : \T(x) = \OW \text{ for all } x \in S \}.
 \]
 Prove the following statements.
 \begin{enumerate}
-\item \(S^0\) is a subspace of \(\mathcal{L}(V, W)\).
-\item If \(S_1\) and \(S_2\) are \emph{subsets} of \(V\) and \(S_1 \subseteq S_2\), then \(S_2^0 \subseteq S_1^0\).
-\item If \(V_1\) and \(V_2\) are \emph{subspaces} of \(V\), then \((V_1 \cup V_2)^0 = (V_1 + V_2)^0 = V_1^0 \cap V_2^0\).
+\item \(S^0\) is a subspace of \(\mathcal{L}(\V, \W)\).
+\item If \(S_1\) and \(S_2\) are \emph{subsets} of \(\V\) and \(S_1 \subseteq S_2\), then \(S_2^0 \subseteq S_1^0\).
+\item If \(V_1\) and \(V_2\) are \emph{subspaces} of \(\V\), then \((V_1 \cup V_2)^0 = (V_1 + V_2)^0 = V_1^0 \cap V_2^0\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof} \ 
 \begin{enumerate}
-\item Since \(\TZERO(x) = \OW\) for all \(x \in V\), in particular \(\TZERO(x) = \OW\) for all \(x \in S \subseteq V\), so \(\TZERO \in S^0\).
+\item Since \(\TZERO(x) = \OW\) for all \(x \in \V\), in particular \(\TZERO(x) = \OW\) for all \(x \in S \subseteq \V\), so \(\TZERO \in S^0\).
     Now suppose \(\T, \U \in S^0\).
     So \(\T(x) = \OW\) and \(\U(x) = \OW\) for all \(x \in S\).
     And for all \(x \in S\),
@@ -1051,14 +1051,14 @@ Prove the following statements.
                      & = \OW,
     \end{align*}
     hence \(c\T\in S^0\).
-    So by \THM{1.3}, \(S^0\) is a subspace of \(\mathcal{L}(V, W)\).
+    So by \THM{1.3}, \(S^0\) is a subspace of \(\mathcal{L}(\V, \W)\).
 
 \item Suppose arbitrary \(\T \in S^0_2\), we have to show \(\T \in S^0_1\) to show \(S^0_2 \subseteq S^0_1\).
 Then by definition of \(S^0_2\), for all \(x \in S_2\), \(\T(x) = \OW\).
 But since \(S_1 \subseteq S_2\), in particular for all \(x \in S_1\), \(\T(x) = \OW\).
 So by definition of \(S^0_1\), \(\T \in S^0_1\), as desired.
 
-\item Note that now \(V_1, V_2\) are not only subsets but also subspaces of \(V\).
+\item Note that now \(V_1, V_2\) are not only subsets but also subspaces of \(\V\).
 So we have some set inclusion:
 \begin{itemize}
     \item \(V_1 \cup V_2 \subseteq V_1 + V_2\).
@@ -1112,20 +1112,20 @@ With these four set inclusions, we have \((V_1 \cup V_2)^0 = (V_1 + V_2)^0 = V_1
 \end{proof}
 
 \begin{exercise} \label{exercise 2.2.17}
-Let \(V\) and \(W\) be vector spaces such that \(\dim(V) = \dim(W)\), and let \(\T : V \to W\) be linear.
-(And by \DEF{1.9}, using notation \(\dim\) implies \(V, W\) have \emph{finite} dimensions.)
+Let \(\V\) and \(\W\) be vector spaces such that \(\dim(\V) = \dim(\W)\), and let \(\T : \V \to \W\) be linear.
+(And by \DEF{1.9}, using notation \(\dim\) implies \(\V, \W\) have \emph{finite} dimensions.)
 Show that there exist ordered bases \(\beta\) and \(\gamma\) for
-\(V\) and \(W\), respectively, such that \([T]_{\beta}^{\gamma}\) is a \emph{diagonal} matrix.
+\(\V\) and \(\W\), respectively, such that \([T]_{\beta}^{\gamma}\) is a \emph{diagonal} matrix.
 \end{exercise}
 
 \begin{proof}
-Let \(\{ v_1, ..., v_n \}\) be a basis of \(\NULLT\) in \(V\).
-By \CORO{1.11.1}, we extend it to an ordered basis \(\beta = \{ v_1, ..., v_n, w_1, ..., w_m \}\) for \(V\).
+Let \(\{ v_1, ..., v_n \}\) be a basis of \(\NULLT\) in \(\V\).
+By \CORO{1.11.1}, we extend it to an ordered basis \(\beta = \{ v_1, ..., v_n, w_1, ..., w_m \}\) for \(\V\).
 
-By the proof in \THM{2.3} we have shown that \(\{ \T(w_1), ..., \T(w_m) \}\) is an (ordered) basis for \(\RANGET\) in \(W\).
-Again we extend it to an ordered basis \(\gamma = \{ u_1, ..., u_n, \T(w_1), ..., \T(w_m) \}\) for \(W\).
+By the proof in \THM{2.3} we have shown that \(\{ \T(w_1), ..., \T(w_m) \}\) is an (ordered) basis for \(\RANGET\) in \(\W\).
+Again we extend it to an ordered basis \(\gamma = \{ u_1, ..., u_n, \T(w_1), ..., \T(w_m) \}\) for \(\W\).
 
-Then for the vectors \(v_1, ..., v_n, w_1, ..., w_m\) in the ordered basis \(\beta\) for \(V\), we have
+Then for the vectors \(v_1, ..., v_n, w_1, ..., w_m\) in the ordered basis \(\beta\) for \(\V\), we have
 \begin{align*}
          \T(v_1) = \OW & = 0 u_1 + ... + 0 u_n + 0 \T(w_1) + 0 \T(w_2) + ... + 0 \T(w_m) \\
          \T(v_2) = \OW & = 0 u_1 + ... + 0 u_n + 0 \T(w_1) + 0 \T(w_2) + ... + 0 \T(w_m) \\
@@ -1139,7 +1139,7 @@ Then for the vectors \(v_1, ..., v_n, w_1, ..., w_m\) in the ordered basis \(\be
 
 Then from the equations above it's clear that \([\T]_{\beta}^{\gamma}\) is diagonal, and in fact simply has lower right block \(I_m\), and \(0\) elsewhere.
 
-In particular, if \(\T\) is one-to-one, then \(m\) is equal to \(\dim(V) = \dim(W)\), and \([\T]_{\beta}^{\gamma}\) is equal to \(I_m\);
+In particular, if \(\T\) is one-to-one, then \(m\) is equal to \(\dim(\V) = \dim(\W)\), and \([\T]_{\beta}^{\gamma}\) is equal to \(I_m\);
 that is, \([\T]_{\beta}^{\gamma}\) is the identity matrix.
 \end{proof}
 
@@ -1148,22 +1148,22 @@ that is, \([\T]_{\beta}^{\gamma}\) is the identity matrix.
 \end{note}
 
 \begin{additional theorem} \label{athm 2.16}
-This is the placeholder theorem for \EXEC{2.2.8}: Given \(n\)-dimensional \(V\), \(\T : V \to F^n\) by \(\T(v) = [v]_{\beta}\), where \(\beta\) is a basis for \(V\), is linear.
+This is the placeholder theorem for \EXEC{2.2.8}: Given \(n\)-dimensional \(\V\), \(\T : \V \to F^n\) by \(\T(v) = [v]_{\beta}\), where \(\beta\) is a basis for \(\V\), is linear.
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.17}
 This is the placeholder theorem for \EXEC{2.2.9}:
-If \(V\) be the vector space of complex numbers \textbf{over the field} \(\SET{R}\).
-Then \(\T : V \to V\) by \(\T(z) = \conjugatet{z}\), then \(\T\) \emph{is} linear.
-But by \EXEC{2.1.39}, that \(\T\) is \textbf{not linear} if \(V\) is regarded as a vector space \textbf{over the field} \(\SET{C}\).
+If \(\V\) be the vector space of complex numbers \textbf{over the field} \(\SET{R}\).
+Then \(\T : \V \to \V\) by \(\T(z) = \conjugatet{z}\), then \(\T\) \emph{is} linear.
+But by \EXEC{2.1.39}, that \(\T\) is \textbf{not linear} if \(\V\) is regarded as a vector space \textbf{over the field} \(\SET{C}\).
 
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.18}
 This is the placeholder theorem for \EXEC{2.2.11}:
 
-Let \(V\) be an \(n\)-dimensional vector space, and let \(\T : V \to V\) be a \LTRAN{}.
-If \(W\) is a \(\T\)-invariant subspace of \(V\) (see \ADEF{2.3}) having dimension \(k\), then there is an ordered basis \(\beta\) for \(V\) such that \([\T]_{\beta}\) has the form
+Let \(\V\) be an \(n\)-dimensional vector space, and let \(\T : \V \to \V\) be a \LTRAN{}.
+If \(\W\) is a \(\T\)-invariant subspace of \(\V\) (see \ADEF{2.3}) having dimension \(k\), then there is an ordered basis \(\beta\) for \(\V\) such that \([\T]_{\beta}\) has the form
 \[
     \begin{pmatrix} A & B \\ O & C \end{pmatrix},
 \]
@@ -1174,38 +1174,38 @@ where \(A\) is a \(k \X k\) matrix and \(O\) is the \((n - k) \X k\) zero matrix
 This is the placeholder theorem for
 
 \BLUE{(1)}: \EXEC{2.2.12}: 
-Let \(\beta = \{ v_1, v_2, ..., v_n \}\) be a basis for a vector space \(V\) and \(\T : V \to V\) be a \LTRAN{}.
+Let \(\beta = \{ v_1, v_2, ..., v_n \}\) be a basis for a vector space \(\V\) and \(\T : \V \to \V\) be a \LTRAN{}.
 Then \([\T]_{\beta}\) is \textbf{upper triangular} if and only if \(\T(v_j) \in \spann(\{ v_1, v_2, ..., v_j \})\) for \(j = 1, 2, ..., n\).
 
 \BLUE{(2)}: \EXEC{2.2.13}:
-Let \(V\) be a finite-dimensional vector space and \(\T\) be the \textbf{projection} on \(W\) along \(W'\), where \(W\) and \(W'\) are subspaces of \(V\).
-Then we can find an ordered basis \(\beta\) for \(V\) such that \([\T]_{\beta}\) is a \emph{diagonal} matrix.
+Let \(\V\) be a finite-dimensional vector space and \(\T\) be the \textbf{projection} on \(\W\) along \(\W'\), where \(\W\) and \(\W'\) are subspaces of \(\V\).
+Then we can find an ordered basis \(\beta\) for \(\V\) such that \([\T]_{\beta}\) is a \emph{diagonal} matrix.
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.20}
 This is the placeholder theorem for \EXEC{2.2.14}:
 
-Let \(V\) and \(W\) be vector spaces, and let \(\T\) and \(\U\) be \emph{nonzero} \LTRAN{}s from \(V\) into \(W\).
+Let \(\V\) and \(\W\) be vector spaces, and let \(\T\) and \(\U\) be \emph{nonzero} \LTRAN{}s from \(\V\) into \(\W\).
 If \(\RANGET \cap \RANGE(\U) = \{ \OW \}\), then
-\(\{ \T, \U \}\) is a \emph{linearly independent} subset of \(\mathcal{L}(V, W)\).
+\(\{ \T, \U \}\) is a \emph{linearly independent} subset of \(\mathcal{L}(\V, \W)\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.21}
 This is the placeholder theorem for \EXEC{2.2.15}:
 
-Let \(V = \mathcal{P}(\SET{R})\), and for \(j \ge 1\) define \(\T_j(f) = f^{(j)}\), where \(f^{(j)}\) is the \(j\)th derivative of \(f\).
+Let \(\V = \mathcal{P}(\SET{R})\), and for \(j \ge 1\) define \(\T_j(f) = f^{(j)}\), where \(f^{(j)}\) is the \(j\)th derivative of \(f\).
 Then \(\{ \T_1, \T_2, ..., \T_n \}\) is a
-linearly independent subset of \(\mathcal{L}(V)\) for any positive integer \(n\).
+linearly independent subset of \(\mathcal{L}(\V)\) for any positive integer \(n\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.22}
 This is the placeholder theorem for \EXEC{2.2.16}:
 
-Some properties of \(S^0\) of \(\mathcal{L}(V, W)\).
+Some properties of \(S^0\) of \(\mathcal{L}(\V, \W)\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.23}
 This is the placeholder theorem for \EXEC{2.2.17}:
 
-Given \(V, W\) having same finite-dimensions, and given any linear \(\T : V \to W\), we can find ordered bases \(\beta, \gamma\) of \(V, W\) respectively, such that any \([\T]_{\beta}^{\gamma}\) is diagonal. 
+Given \(\V, \W\) having same finite-dimensions, and given any linear \(\T : \V \to \W\), we can find ordered bases \(\beta, \gamma\) of \(\V, \W\) respectively, such that any \([\T]_{\beta}^{\gamma}\) is diagonal. 
 \end{additional theorem}

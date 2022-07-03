@@ -295,8 +295,8 @@ If \(\T\) is a linear operator on a finite-dimensional vector space \(V\), and i
 \end{remark}
 
 \begin{remark} \label{remark 2.5.4}
-\THM{2.23} can be \emph{generalized} to allow \(\T : V \to W\), where \(V\) is distinct from \(W\).
-In this case, we can change bases in \(V\) as well as in \(W\) (see \EXEC{2.5.8}).
+\THM{2.23} can be \emph{generalized} to allow \(\T : V \to \W\), where \(V\) is distinct from \(\W\).
+In this case, we can change bases in \(V\) as well as in \(\W\) (see \EXEC{2.5.8}).
 \end{remark}
 
 \exercisesection
@@ -539,8 +539,8 @@ So
 
 \begin{exercise} \label{exercise 2.5.8}
 Prove the following \emph{generalization} of \THM{2.23}.
-Let \(\T : V \to W\) be a \LTRAN{} from a finite-dimensional vector space \(V\) to a finite-dimensional vector space \(W\).
-Let \(\beta\) and \(\beta'\) be ordered bases for \(V\), and let \(\gamma\) and \(\gamma'\) be ordered bases for \(W\).
+Let \(\T : V \to \W\) be a \LTRAN{} from a finite-dimensional vector space \(V\) to a finite-dimensional vector space \(\W\).
+Let \(\beta\) and \(\beta'\) be ordered bases for \(V\), and let \(\gamma\) and \(\gamma'\) be ordered bases for \(\W\).
 Then \([\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q\), where \(Q\) is the matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates and \(P\) is the matrix that changes \(\gamma'\)-coordinates into \(\gamma\)-coordinates.
 \end{exercise}
 
@@ -691,7 +691,7 @@ The exercise with highly related concept: \EXEC{2.4.15}.
 
 \begin{note}
 這題背後的意義就是，若\ \(\beta\) 是\ basis，\(\T\) 是可逆變換(所以對應的矩陣也是可逆)，則\ \(\T(\beta)\) 也是一個\ basis。
-相關練習有\ \EXEC{2.4.15}，不過這題是那個練習的\ special case，也就是\ codomain \(W = V\) 的情況。
+相關練習有\ \EXEC{2.4.15}，不過這題是那個練習的\ special case，也就是\ codomain \(\W = V\) 的情況。
 \end{note}
 
 \begin{proof}
@@ -738,20 +738,20 @@ That is, \(Q\) is the coordinate matrix that changes \(\beta'\)-coordinates into
 \begin{exercise} \label{exercise 2.5.14}
 Prove the \emph{converse} of \EXEC{2.5.8}:
 If \(A\) and \(B\) are each \(m \X n\) matrices with entries from a field \(F\), and if there exist \emph{invertible} \(m \X m\) and \(n \X n\) matrices \(P\) and \(Q\), respectively,
-such that \(B = P^{-1} A Q\) \MAROON{(1)}, then there exist an \(n\)-dimensional vector space \(V\) and an \(m\)-dimensional vector space \(W\) (both over \(F\)), ordered bases \(\beta\) and \(\beta'\) for \(V\) and \(\gamma\) and \(\gamma'\) for \(W\),
-and a \LTRAN{} \(\T : V \to W\) such that
+such that \(B = P^{-1} A Q\) \MAROON{(1)}, then there exist an \(n\)-dimensional vector space \(V\) and an \(m\)-dimensional vector space \(\W\) (both over \(F\)), ordered bases \(\beta\) and \(\beta'\) for \(V\) and \(\gamma\) and \(\gamma'\) for \(\W\),
+and a \LTRAN{} \(\T : V \to \W\) such that
 \[
     A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}.
 \]
-Hints: Let \(V = F^n\), \(W = F^m\), \(\T = \LMTRAN_A\), and \(\beta\) and \(\gamma\) be the \emph{standard} ordered bases for \(F^n\) and \(F^m\), respectively.
+Hints: Let \(V = F^n\), \(\W = F^m\), \(\T = \LMTRAN_A\), and \(\beta\) and \(\gamma\) be the \emph{standard} ordered bases for \(F^n\) and \(F^m\), respectively.
 Now apply the results of \EXEC{2.5.13} to obtain ordered bases \(\beta'\) and \(\gamma'\) from \(\beta\) and \(\gamma\) via \(Q\) and \(P\), respectively.
 \end{exercise}
 
 \begin{proof}
-Let \(V = F^n\), \(W = F^m\), \(\T = \LMTRAN_A\), \(\beta = \{ e_1, e_2, ..., e_n \}\) be the standard ordered basis for \(F^n\), \(\gamma = \{ f_1, f_2, ..., f_m \}\) be the standard ordered basis for \(F^m\).
+Let \(V = F^n\), \(\W = F^m\), \(\T = \LMTRAN_A\), \(\beta = \{ e_1, e_2, ..., e_n \}\) be the standard ordered basis for \(F^n\), \(\gamma = \{ f_1, f_2, ..., f_m \}\) be the standard ordered basis for \(F^m\).
 
 Then let \(\beta' = \{ v_1, v_2, ..., v_n \}\), where \(v_j = \sum_{i = 1}^n Q_{ij} e_i\) and \(\gamma' = \{ w_1, w_2, ..., w_m \}\), where \(w_j = \sum_{i = 1}^m P_{ij} f_i\).
-Then by \EXEC{2.5.13}, \(\beta', \gamma'\) are also bases for \(V\) and \(W\), respectively;
+Then by \EXEC{2.5.13}, \(\beta', \gamma'\) are also bases for \(V\) and \(\W\), respectively;
 furthermore, \(Q\) is the coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\) coordinates,
 and \(P\) is the coordinate matrix that changes \(\gamma'\)-coordinates into \(\gamma\) coordinates.
 
@@ -766,7 +766,7 @@ And
         & = B & \text{by \MAROON{(1)}}
 \end{align*}
 
-So we have found \(V, W\), a \LTRAN{} \(\T : V \to W\), and bases \(\beta, \beta', \gamma, \gamma'\), such that \(A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}\), as desired.
+So we have found \(\V, \W\), a \LTRAN{} \(\T : \V \to \W\), and bases \(\beta, \beta', \gamma, \gamma'\), such that \(A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}\), as desired.
 \end{proof}
 
 \begin{additional theorem} \label{athm 2.46} \ 

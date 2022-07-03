@@ -63,14 +63,14 @@ This closes the induction.
 \end{proof}
 
 \begin{corollary} \label{corollary 5.5.1}
-Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(V\).
+Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\).
 If \(\T\) has \(n\) \emph{distinct} eigenvalues, then \(\T\) is diagonalizable.
 \end{corollary}
 
 \begin{proof}
 Suppose that \(\T\) has \(n\) distinct eigenvalues \(\lambda_1, \lambda_2, ..., \lambda_n\).
 For each \(i\) choose \emph{an} eigenvector \(v_i\) corresponding to \(\lambda_i\).
-By \THM{5.5}, \(\{v_1, ..., v_n \}\) is \LID{} having \(n\) eigenvectors, and since \(\dim(V) = n\), this set is a basis for \(V\) and consists eigenvectors for \(\T\).
+By \THM{5.5}, \(\{v_1, ..., v_n \}\) is \LID{} having \(n\) eigenvectors, and since \(\dim(\V) = n\), this set is a basis for \(\V\) and consists eigenvectors for \(\T\).
 Thus, by \THM{5.1}, \(\T\) is diagonalizable.
 \end{proof}
 
@@ -108,7 +108,7 @@ That is, the corresponding field is very important.
 \end{remark}
 
 \begin{theorem} \label{thm 5.6}
-The \CPOLY{} of any \emph{diagonalizable} linear operator on a vector space \(V\) over a field \(F\) splits over \(F\).
+The \CPOLY{} of any \emph{diagonalizable} linear operator on a vector space \(\V\) over a field \(F\) splits over \(F\).
 \end{theorem}
 
 \begin{note}
@@ -116,7 +116,7 @@ The \emph{contrapositive} is useful: If the \CPOLY{} of a linear operator does n
 \end{note}
 
 \begin{proof}
-Let \(\T\) be a diagonalizable linear operator on the \(n\)-dimensional vector space \(V\), and let \(\beta\) be an ordered basis for \(V\) such that \([\T]_{\beta} = D\) is a diagonal matrix.
+Let \(\T\) be a diagonalizable linear operator on the \(n\)-dimensional vector space \(\V\), and let \(\beta\) be an ordered basis for \(\V\) such that \([\T]_{\beta} = D\) is a diagonal matrix.
 Suppose that
 \[
     D = \begin{pmatrix}
@@ -165,7 +165,7 @@ Hence \(\lambda = 3\) is an eigenvalue of \(A\) with algebraic multiplicity \(2\
 \end{example}
 
 \begin{remark} \label{remark 5.2.4}
-If \(\T\) is a diagonalizable linear operator on a \emph{finite}-dimensional vector space \(V\), then by \THM{5.1}, there is an ordered basis \(\beta\) for \(V\) consisting of eigenvectors of \(\T\).
+If \(\T\) is a diagonalizable linear operator on a \emph{finite}-dimensional vector space \(\V\), then by \THM{5.1}, there is an ordered basis \(\beta\) for \(\V\) consisting of eigenvectors of \(\T\).
 And by \THM{5.1} again, \([\T]_{\beta}\) is a diagonal matrix in which the diagonal entries are the eigenvalues of \(\T\).
 
 Since the \CPOLY{} of \(\T\) is \(\det([\T]_{\beta} - tI)\), \textbf{it is easily seen that each eigenvalue of \(\T\) must occur as a diagonal entry of \([\T]_{\beta}\), exactly as many times as its algebraic multiplicity.}
@@ -176,8 +176,8 @@ Recalling from \THM{5.4} that the eigenvectors of \(\T\) corresponding to the ei
 \end{remark}
 
 \begin{definition} \label{def 5.7}
-Let \(\T\) be a linear operator on a vector space \(V\), and let \(\lambda\) be an eigenvalue of \(\T\).
-Define \(E_{\lambda} = \{x \in V : \T(x) = \lambda x \} = \NULL(\T - \lambda \ITRANV{})\).
+Let \(\T\) be a linear operator on a vector space \(\V\), and let \(\lambda\) be an eigenvalue of \(\T\).
+Define \(E_{\lambda} = \{x \in \V : \T(x) = \lambda x \} = \NULL(\T - \lambda \ITRANV{})\).
 The set \(E_{\lambda}\) is called the \textbf{eigenspace of \(\T\) corresponding to the eigenvalue \(\lambda\)}.
 Analogously, we define the \textbf{eigenspace} of a square matrix \(A\) corresponding to the eigenvalue \(\lambda\) to be the eigenspace of \(\LMTRAN_A\) corresponding to \(\lambda\).
 Finally, we define the \textbf{geometric multiplicity} of \(\lambda\) is the \emph{dimension} of the corresponding \textbf{eigenspace} \(E_{\lambda}\).
@@ -186,20 +186,20 @@ Finally, we define the \textbf{geometric multiplicity} of \(\lambda\) is the \em
 \begin{note}
 The definition of geometric multiplicity is given in many literature, so I give the definition here.
 
-And clearly, \(E_{\lambda}\) is a \emph{subspace} of \(V\) consisting of the zero vector and the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\).
+And clearly, \(E_{\lambda}\) is a \emph{subspace} of \(\V\) consisting of the zero vector and the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\).
 \end{note}
 
 \begin{theorem} \label{thm 5.7}
-Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(V\), and let \(\lambda\) be an eigenvalue of \(\T\) having algebraic multiplicity \(m\).
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(\V\), and let \(\lambda\) be an eigenvalue of \(\T\) having algebraic multiplicity \(m\).
 Then \(1 \le \dim(E_{\lambda}) \le m\).
 (That is, by \DEF{5.7}, the geometric multiplicity of \(\lambda\) is less than or equal to the algebraic multiplicity of \(\lambda\).)
 \end{theorem}
 
 \begin{proof}
-First, since \(E_{\lambda} \ne \{ \OV \}\) and is a subspace of \(V\), we have \(\dim(E_{\lambda}) \ge 1\). \BLUE{(1)}.
+First, since \(E_{\lambda} \ne \{ \OV \}\) and is a subspace of \(\V\), we have \(\dim(E_{\lambda}) \ge 1\). \BLUE{(1)}.
 
 \sloppy Now choose an ordered basis \(\{ v_1, v_2, ..., v_p \}\) for \(E_{\lambda}\), (hence \(\dim(E_{\lambda} = p\),)
-and extend it to an ordered basis \(\beta = \{ v_1, v_2, ..., v_p, v_{p + 1}, ..., v_n \}\) for \(V\), and let \(A = [\T]_{\beta}\).
+and extend it to an ordered basis \(\beta = \{ v_1, v_2, ..., v_p, v_{p + 1}, ..., v_n \}\) for \(\V\), and let \(A = [\T]_{\beta}\).
 Observe that \(v_i (1 \le i \le p)\) is an eigenvector of \(\T\) corresponding to \(\lambda\),
 that is,
 \begin{align*}
@@ -323,17 +323,17 @@ is \LID{} by \THM{5.5} and have \(\RED{3}\) elements hence is a basis for \(\SET
 Consequently, \(\T\) is diagonalizable.
 \end{example}
 
-\EXAMPLE{5.2.3} and \EXAMPLE{5.2.4} suggest that an operator on \(V\) whose \CPOLY{} splits is diagonalizable \emph{if and only if} the dimension of \emph{each} eigenspace is equal to the algebraic multiplicity of the corresponding eigenvalue.
+\EXAMPLE{5.2.3} and \EXAMPLE{5.2.4} suggest that an operator on \(\V\) whose \CPOLY{} splits is diagonalizable \emph{if and only if} the dimension of \emph{each} eigenspace is equal to the algebraic multiplicity of the corresponding eigenvalue.
 This is indeed true, as our next theorem shows.
-Moreover, when the operator is diagonalizable, we can use \THM{5.5} to construct a \emph{basis} for \(V\) consisting of eigenvectors of the operator by \emph{collecting bases for the individual eigenspaces}.
+Moreover, when the operator is diagonalizable, we can use \THM{5.5} to construct a \emph{basis} for \(\V\) consisting of eigenvectors of the operator by \emph{collecting bases for the individual eigenspaces}.
 
 \begin{theorem} \label{thm 5.8}
-Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(V\) such that the \CPOLY{} of \(\T\) splits.
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(\V\) such that the \CPOLY{} of \(\T\) splits.
 Let \(\lambda_1, \lambda_2, ..., \lambda_k\) be the \emph{distinct} eigenvalues of \(\T\).
 Then
 \begin{enumerate}
 \item \(\T\) is diagonalizable if and only if the algebraic multiplicity of \(\lambda_i\) is equal to \(\dim(E_{\lambda_i})\), the geometric multiplicity of \(\lambda_i\), for all \(i\).
-\item If \(\T\) is diagonalizable and \(\beta_i\) is an ordered basis for \(E_{\lambda_i}\) for each \(i\), then \(\beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_k\) is an ``ordered basis''\RED{*} for \(V\) consisting of eigenvectors of \(\T\).
+\item If \(\T\) is diagonalizable and \(\beta_i\) is an ordered basis for \(E_{\lambda_i}\) for each \(i\), then \(\beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_k\) is an ``ordered basis''\RED{*} for \(\V\) consisting of eigenvectors of \(\T\).
 \end{enumerate}
 \end{theorem}
 
@@ -346,10 +346,10 @@ We only consider the diagonalizability when the corresponding \CPOLY{} splits, s
 \end{remark}
 
 \begin{proof}
-For each \(i\), let \(m_i\) denote the algebraic multiplicity of \(\lambda_i\), \(d_i = \dim(E_{\lambda_i})\), and \(n = \dim(V)\).
+For each \(i\), let \(m_i\) denote the algebraic multiplicity of \(\lambda_i\), \(d_i = \dim(E_{\lambda_i})\), and \(n = \dim(\V)\).
 
 First, suppose that \(\T\) is diagonalizable.
-So there exists a basis \(\beta\) for \(V\) consisting of \emph{eigenvectors} of \(\T\).
+So there exists a basis \(\beta\) for \(\V\) consisting of \emph{eigenvectors} of \(\T\).
 Now for each \(i\), let \(\beta_i = \beta \cap E_{\lambda_i}\), the set of vectors in \(\beta\) that are eigenvectors corresponding to \(\lambda_i\),
 and let \(n_i\) denote the number of vectors in \(\beta_i\).
 Then
@@ -397,7 +397,7 @@ Furthermore, since \(d_i = m_i\) for all \(i\), \(\beta\) contains
         & = n
 \end{align*}
 vectors, where the last equal sign is similar to \MAROON{(4)}.
-Therefore \(\beta\) is an ordered basis for \(V\) consisting of eigenvectors of \(V\), and we conclude that \(\T\) is diagonalizable.
+Therefore \(\beta\) is an ordered basis for \(\V\) consisting of eigenvectors of \(\V\), and we conclude that \(\T\) is diagonalizable.
 \end{proof}
 
 This theorem completes our study of the diagonalization problem.
@@ -405,7 +405,7 @@ We summarize our results.
 
 \subsection{Test for Diagonalizability} \label{sec 5.2.1}
 
-Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(V\).
+Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(\V\).
 Then \(\T\) is diagonalizable if and only if both of the following conditions hold.
 \begin{enumerate}
 \item[1.] The \CPOLY{} of \(\T\) splits. 
@@ -414,15 +414,15 @@ that is, the algebraic multiplicity of \(\lambda\) equals \(n - \rank(\T - \lamb
 \end{enumerate}
 These same conditions can be used to test if a square \emph{matrix} \(A\) is diagonalizable because diagonalizability of \(A\), by \DEF{5.1}, is equivalent to diagonalizability of the operator \(\LMTRAN_A\).
 
-If \(\T\) is a diagonalizable operator and \(\beta_1, \beta_2, ..., \beta_k\) are ordered bases for the eigenspaces of \(\T\), then the union \(\beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_k\) is an ordered basis for \(V\) consisting of eigenvectors of \(\T\),
+If \(\T\) is a diagonalizable operator and \(\beta_1, \beta_2, ..., \beta_k\) are ordered bases for the eigenspaces of \(\T\), then the union \(\beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_k\) is an ordered basis for \(\V\) consisting of eigenvectors of \(\T\),
 and hence \([\T]_{\beta}\) is a diagonal matrix.
 
-When testing \(\T\) for diagonalizability, it is usually easiest to \emph{choose a convenient basis \(\alpha\)} for \(V\) and work with \(B = [\T]_{\alpha}\).
+When testing \(\T\) for diagonalizability, it is usually easiest to \emph{choose a convenient basis \(\alpha\)} for \(\V\) and work with \(B = [\T]_{\alpha}\).
 If the \CPOLY{} of \(B\) splits, then use condition 2 above to check if the algebraic multiplicity of each eigenvalue of \(B\) equals \(n - \rank(B - \lambda I)\).
 (Note that by \THM{5.7}, we can skip checking for condition 2, since condition 2 is \emph{automatically satisfied} for eigenvalues of algebraic multiplicity \(1\).)
 If so, then \(B\), and hence \(\T\), is diagonalizable.
 
-If \(\T\) is diagonalizable and a basis \(\beta\) for \(V\) consisting of eigenvectors of \(\T\) \emph{is} desired, then we first \emph{find a basis for each eigenspace} of \(B\).
+If \(\T\) is diagonalizable and a basis \(\beta\) for \(\V\) consisting of eigenvectors of \(\T\) \emph{is} desired, then we first \emph{find a basis for each eigenspace} of \(B\).
 The union of these bases is a basis \(\gamma\) \emph{for \(F^n\)} consisting of eigenvectors of \(B\).
 Each vector in \(\gamma\) is the \emph{coordinate vector} relative to a of an eigenvector of \(\T\).
 The set consisting of these \(n\) eigenvectors of \(\T\) is the desired basis \(\beta\).
@@ -732,13 +732,13 @@ This result is generalized in \EXEC{5.2.16}.
 The concept of direct sum has occurred in many previous exercises.
 \end{note}
 
-Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(V\).
-There is a way of \emph{decomposing} \(V\) into \emph{simpler subspaces} that \emph{offers insight} into the behavior of \(\T\).
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(\V\).
+There is a way of \emph{decomposing} \(\V\) into \emph{simpler subspaces} that \emph{offers insight} into the behavior of \(\T\).
 This approach is especially useful in \CH{7}, where we study non-diagonalizable linear operators.
 In the case of diagonalizable operators, the simpler subspaces are the eigenspaces of the operator.
 
 \begin{definition} \label{def 5.8}
-Let \(W_1, W_2, ..., W_k\) be subspaces of a vector space \(V\). we define the \textbf{sum} of these subspaces to be the set
+Let \(W_1, W_2, ..., W_k\) be subspaces of a vector space \(\V\). we define the \textbf{sum} of these subspaces to be the set
 \[
     \{ v_1 + v_2 + ... + v_k : v_i \in W_i \text{ for } 1 \le i \le k \},
 \]
@@ -747,7 +747,7 @@ It is a simple exercise (See \EXEC{1.3.23}) to show that the sum of subspaces of
 \end{definition}
 
 \begin{example} \label{example 5.2.8}
-Let \(V = \SET{R}^3\), let \(W_1\) denote the \(xy\)-plane, and let \(W_2\) denote the \(yz\)-plane.
+Let \(\V = \SET{R}^3\), let \(W_1\) denote the \(xy\)-plane, and let \(W_2\) denote the \(yz\)-plane.
 Then \(\SET{R}^3 = W_1 + W_2\) because, for any vector \((a, b, c) \in \SET{R}^3\),
 we have \((a, b, c) = (a, 0, 0) + (0, b, c)\), where \((a, 0, 0) \in W_1\) and \((0, b, c) \in W_2\).
 \end{example}
@@ -760,40 +760,40 @@ The definition of \emph{direct sum} that follows is a \emph{generalization} of t
 (See \ADEF{1.8}.)
 
 \begin{definition} \label{def 5.9}
-Let \(W, W_1, W_2, ..., W_k\) be subspaces of a vector space \(V\) such that \(W_1 \subseteq W\) for \(i = 1, 2, ..., k\).
-We call W the \textbf{direct sum} of the subspaces \(W_1, W_2, ..., W_k\), and write \(W = W_1 \oplus W_2 \oplus ... \oplus W_k\), if
+Let \(\W, W_1, W_2, ..., W_k\) be subspaces of a vector space \(\V\) such that \(W_1 \subseteq \W\) for \(i = 1, 2, ..., k\).
+We call \W the \textbf{direct sum} of the subspaces \(W_1, W_2, ..., W_k\), and write \(\W = W_1 \oplus W_2 \oplus ... \oplus W_k\), if
 \[
-    W = \sum_{i = 1}^k W_i \quad \text{ and } \quad W_j \cap \sum_{i \ne j} W_i = \{ \OV \} \text{ for each } j (1 \le j \le k).
+    \W = \sum_{i = 1}^k W_i \quad \text{ and } \quad W_j \cap \sum_{i \ne j} W_i = \{ \OV \} \text{ for each } j (1 \le j \le k).
 \]
 \end{definition}
 
 \begin{example} \label{example 5.2.9}
-In \(\SET{R}^5\), let \(W = \{(x_1, x_2, x_3, x_4, \RED{x_5}) : \RED{x_5} = 0 \}\),
+In \(\SET{R}^5\), let \(\W = \{(x_1, x_2, x_3, x_4, \RED{x_5}) : \RED{x_5} = 0 \}\),
 \(W_1 = \{(a, b, 0, 0, 0): a, b \in \SET{R} \}\), \(W_2 = \{ (0, 0, c, 0, 0): c \in \SET{R}\}\),
 and \(W_3 = \{(0, 0, 0, d, 0): d \in \SET{R} \}\).
-For any \((a, b, c, d, 0) \in W\),
+For any \((a, b, c, d, 0) \in \W\),
 \((a, b, c, d, 0) = (a, b, 0, 0, 0) + (0, 0, c, 0, 0) + (0, 0, 0, d, 0) \in W_1 + W_2 + W_3\).
 Thus
 \[
-    W = \sum_{i = 1}^3 W_i.
+    \W = \sum_{i = 1}^3 W_i.
 \]
-To show that \(W\) is the direct sum of \(W_1, W_2\), and \(W_3\), we must prove that \(W_1 \cap (W_2 + W_3) = W_2 \cap (W_1 + W_3) = W_3 \cap (W_1 + W_2) = \{ \OV \}\).
-But these equalities are obvious, and so \(W = W_1 \oplus W_2 \oplus W_3\).
+To show that \(\W\) is the direct sum of \(W_1, W_2\), and \(W_3\), we must prove that \(W_1 \cap (W_2 + W_3) = W_2 \cap (W_1 + W_3) = W_3 \cap (W_1 + W_2) = \{ \OV \}\).
+But these equalities are obvious, and so \(\W = W_1 \oplus W_2 \oplus W_3\).
 \end{example}
 
 Our next result contains several conditions that are \emph{equivalent} to the definition of a direct sum.
 
 \begin{theorem} \label{thm 5.9}
-Let \(W_1, W_2, ..., W_k\) be subspaces of a finite-dimensional vector space \(V\).
+Let \(W_1, W_2, ..., W_k\) be subspaces of a finite-dimensional vector space \(\V\).
 The following conditions are equivalent.
 
 \begin{enumerate}
 \item \(v = W_1 \oplus W_2 \oplus ... \oplus W_k\).
-\item \(V = \sum_{i = 1}^k W_i\) and, for any vectors \(v_1, v_2, ..., v_k\) such that \(v_i \in W_i
+\item \(\V = \sum_{i = 1}^k W_i\) and, for any vectors \(v_1, v_2, ..., v_k\) such that \(v_i \in W_i
 (1 \le i \le k)\), if \(v_1 + v_2 + ... + v_k = \OV\), then \(v_i = \OV\) for all \(i\).
-\item Each vector \(v \in V\) can be \emph{uniquely written} as \(v = v_1 + v_2 + ... + v_k\) where \(v_i \in W_i\).
-\item\RED{*} \emph{For any} set of ordered bases \(\gamma_1, \gamma_2, ..., \gamma_k\) for \(W_1, W_2, ..., W_k\), \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(V\).
-\item\RED{**} \emph{There exists} a set of ordered bases \(\gamma_1, \gamma_2, ..., \gamma_k\) for \(W_i (1 \le i \le k)\), such that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(V\).
+\item Each vector \(v \in \V\) can be \emph{uniquely written} as \(v = v_1 + v_2 + ... + v_k\) where \(v_i \in W_i\).
+\item\RED{*} \emph{For any} set of ordered bases \(\gamma_1, \gamma_2, ..., \gamma_k\) for \(W_1, W_2, ..., W_k\), \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(\V\).
+\item\RED{**} \emph{There exists} a set of ordered bases \(\gamma_1, \gamma_2, ..., \gamma_k\) for \(W_i (1 \le i \le k)\), such that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(\V\).
 \end{enumerate}
 \end{theorem}
 
@@ -809,7 +809,7 @@ We prove them by proving (a) \(\implies\) (b) \(\implies\) (c) \(\implies\) (d) 
 So assume (a).
 In particular by \DEF{5.9} we have
 \[
-    V = \sum_{i = 1}^k W_i. \quad \quad \MAROON{(a.1)}
+    \V = \sum_{i = 1}^k W_i. \quad \quad \MAROON{(a.1)}
 \]
 Now suppose that \(v_1, v_2, ..., v_k\) are any vectors such that \(v_i \in W_i\) for all \(i\) and \(v_1 + v_2 + ... + v_k = \OV\).
 Then for any \(j\),
@@ -825,8 +825,8 @@ But by the assumption of (a), that is, by the second condition of \DEF{5.9},
 Hence \(v_j = \OV\) for any \(j\), proving (b).
 
 Now assume (b). We prove (c).
-Let arbitrary \(v \in V\).
-By (b), since \(V = \sum_{i = 1}^k W_i\), there exist vectors \(v_1, v_2, ..., v_k\) such that \(v_i \in W_i\) and \(v = v_1 + v_2 + ... + v_k\).
+Let arbitrary \(v \in \V\).
+By (b), since \(\V = \sum_{i = 1}^k W_i\), there exist vectors \(v_1, v_2, ..., v_k\) such that \(v_i \in W_i\) and \(v = v_1 + v_2 + ... + v_k\).
 So the existence part is proved.
 Now we must show that this representation \emph{is unique}. Suppose also that \(v = w_1 + w_2 + ... + w_k\), where \(w_i \in W_i\) for all \(i\).
 Then
@@ -842,9 +842,9 @@ Now assume (c). We prove (d).
 For each \(i\), let \(\gamma_i\) be an ordered basis for \(W_i\).
 From the statement of (c), it's clear that
 \[
-    V = \sum_{i = 1}^k W_i,
+    \V = \sum_{i = 1}^k W_i,
 \]
-and it follows that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) \emph{generates} \(V\).
+and it follows that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) \emph{generates} \(\V\).
 So it suffices to show \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is \LID{}.
 Now let \(m_i\) be the number of elements of \(\gamma_i\), and consider vectors \(v_{ij}\), the \(j\)th vector in \(\gamma_i\), for \(1 \le i \le k\) and \(1 \le j \le m_i\), such that
 \[
@@ -868,15 +868,15 @@ Thus by \MAROON{(c.2)},
     \OV = w_i = \sum_{j = 1}^{\RED{m_i}} a_{ij} v_{ij} \text{ for each } i.
 \]
 But each \(\gamma_i\) is \LID{}, and \(v_{ij}\) are vectors in \(\gamma_i\), and hence for each \(i\), \(a_{ij} = 0\) for all \(j\).
-Consequently, by \MAROON{(c.1)}, \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is \LID{} and a generating set of \(V\) and therefore is a basis for \(V\).
+Consequently, by \MAROON{(c.1)}, \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is \LID{} and a generating set of \(\V\) and therefore is a basis for \(\V\).
 
 Now by \RMK{5.2.8}, (e) follows immediately from (d).
 
 Finally, we assume (e) and prove (a).
-For each \(i\), let \(\gamma_i\) be an ordered basis for \(W_i\) such that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(V\).
+For each \(i\), let \(\gamma_i\) be an ordered basis for \(W_i\) such that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(\V\).
 Then we use \EXEC{1.4.14} \emph{inductively}:
 \begin{align*}
-    V & = \spann(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k) & \text{of course} \\
+    \V & = \spann(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k) & \text{of course} \\
       & = \spann(\gamma_1) + \spann(\gamma_2 \cup ... \gamma_k) & \text{by \EXEC{1.4.14}} \\
       & \quad \vdots & \text{apply \EXEC{1.4.14} inductively} \\
       & = \spann(\gamma_1) + \spann(\gamma_2) + ... + \spann(\gamma_k) \\
@@ -897,28 +897,28 @@ Then
     \quad \text{ and } \quad
     v \in \sum_{i \ne j} W_i = \spann \left( \bigcup_{i \ne j} \gamma_i \right)
 \]
-where similar to the derivation of \(V = W_1 + ... + W_k\) before, the second equation is derived by applying \EXEC{1.4.14} inductively.
+where similar to the derivation of \(\V = W_1 + ... + W_k\) before, the second equation is derived by applying \EXEC{1.4.14} inductively.
 Then we have two \emph{different} linear combination of \(v \ne \OV\) of \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\): one is only using \(\gamma_j\) and the other is using \(\bigcup_{i \ne j} \gamma_i\).
-But since \(\gamma_1 \cup ... \cup \gamma_k\) is a \emph{basis} for \(V\) and \(v \in V\), by \THM{1.8}, \(v\) must only have unique representation using \(\gamma_1 \cup ... \cup \gamma_k\), so we have a contradiction.
+But since \(\gamma_1 \cup ... \cup \gamma_k\) is a \emph{basis} for \(\V\) and \(v \in \V\), by \THM{1.8}, \(v\) must only have unique representation using \(\gamma_1 \cup ... \cup \gamma_k\), so we have a contradiction.
 Hence \MAROON{(e.1)} is true, proving (a).
 \end{proof}
 
 With the aid of \THM{5.9}, we are able to characterize diagonalizability \emph{in terms of direct sums}.
 
 \begin{theorem} \label{thm 5.10}
-A linear operator \(\T\) on a finite-dimensional vector space \(V\) is diagonalizable if and only if \(V\) is \emph{the direct sum of the eigenspaces of \(\T\)}.
+A linear operator \(\T\) on a finite-dimensional vector space \(\V\) is diagonalizable if and only if \(\V\) is \emph{the direct sum of the eigenspaces of \(\T\)}.
 \end{theorem}
 
 \begin{proof}
 Let \(\lambda_1, \lambda_2, ..., \lambda_k\) be the distinct eigenvalues of \(\T\).
 
 First suppose that \(\T\) is diagonalizable, and for each \(i\) choose an ordered basis \(\gamma_i\) for the eigenspace \(E_{\lambda_i}\).
-By \THM{5.8}, \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is a basis for \(V\), satisfying \THM{5.9}(d), and hence by the equivalent \THM{5.9}(a), \(V\) is a direct sum of the \(E_{\lambda_i}\)'s.
+By \THM{5.8}, \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is a basis for \(\V\), satisfying \THM{5.9}(d), and hence by the equivalent \THM{5.9}(a), \(\V\) is a direct sum of the \(E_{\lambda_i}\)'s.
 
-Conversely, suppose that \(V\) is a direct sum of the eigenspaces of \(\T\).
+Conversely, suppose that \(\V\) is a direct sum of the eigenspaces of \(\T\).
 (That is, suppose \THM{5.9}(a) is satisfied.)
 For each \(i\), choose an ordered basis \(\gamma_i\) of \(E_{\lambda_i}\).
-Then by the equivalent \THM{5.9}(d) (of \THM{5.9}(a)), the union \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is a basis for \(V\).
+Then by the equivalent \THM{5.9}(d) (of \THM{5.9}(a)), the union \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is a basis for \(\V\).
 Since this basis \emph{consists of eigenvectors} of \(\T\), (by \THM{5.1}) we conclude that \(\T\) is diagonalizable.
 \end{proof}
 

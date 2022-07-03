@@ -1,15 +1,15 @@
 \section{Linear Combinations and System of Linear Equations} \label{sec 1.4}
 
 \begin{definition} \label{def 1.3}
-Let \(V\) be a vector space (over \(F\)) and \(S\) a nonempty \emph{subset}(not necessarily subspace) of \(V\).
-A vector \(v \in V\) is called a \textbf{linear combination} of vectors \emph{of \(S\)} if there exist a \emph{finite} number of vectors \(u_1, u_2, ..., u_n \in S\) and scalars \(a_1, a_2, ..., a_n \in F\) such that \(v = a_1 u_1 + a_2 u_2 + ... + a_n u_n\).
+Let \(\V\) be a vector space (over \(F\)) and \(S\) a nonempty \emph{subset}(not necessarily subspace) of \(\V\).
+A vector \(v \in \V\) is called a \textbf{linear combination} of vectors \emph{of \(S\)} if there exist a \emph{finite} number of vectors \(u_1, u_2, ..., u_n \in S\) and scalars \(a_1, a_2, ..., a_n \in F\) such that \(v = a_1 u_1 + a_2 u_2 + ... + a_n u_n\).
 In this case we also say that \(v\) is a linear combination of \(u_1, u_2, ..., u_n\) and call \(a_1, a_2, ..., a_n\) the \textbf{coefficients}
 of the linear combination.
 \end{definition}
 
 \begin{note}
-Observe that in any vector space \(V\), \(0v = \OV\) (by \THM{1.2}(a)) for each \(v \in V\).
-Thus the zero vector is a linear combination of any \emph{nonempty} subset of \(V\).
+Observe that in any vector space \(\V\), \(0v = \OV\) (by \THM{1.2}(a)) for each \(v \in \V\).
+Thus the zero vector is a linear combination of any \emph{nonempty} subset of \(\V\).
 \end{note}
 
 \begin{example}
@@ -92,7 +92,7 @@ Hence
 \end{example}
 
 \begin{definition} \label{def 1.4}
-Let \(S\) be a nonempty subset of a vector space \(V\).
+Let \(S\) be a nonempty subset of a vector space \(\V\).
 The \textbf{span} of \(S\), denoted \(\spann(S)\), is the set consisting of all linear combinations of the vectors in \(S\).
 For convenience, we \emph{define} \(\spann(\emptyset) = \{ \OV \}\).
 \end{definition}
@@ -103,9 +103,9 @@ In this case, the span of the set \emph{is a subspace} of \(\SET{R}^3\). This fa
 
 \begin{theorem} \label{thm 1.5}\ 
 
-\BLUE{(1)} The span of \emph{any} subset \(S\) of a vector space \(V\) is a \emph{subspace} of \(V\) that contains \(S\).
+\BLUE{(1)} The span of \emph{any} subset \(S\) of a vector space \(\V\) is a \emph{subspace} of \(\V\) that contains \(S\).
 
-\BLUE{(2)} Moreover, any \emph{subspace} of \(V\) that contains \(S\) must also contain the span of \(S\).
+\BLUE{(2)} Moreover, any \emph{subspace} of \(\V\) that contains \(S\) must also contain the span of \(S\).
 \end{theorem}
 
 \begin{note}
@@ -117,7 +117,7 @@ But it is well-defined by \THM{1.5} since we know it is \emph{the smallest} subs
 
 \begin{proof}
 For \BLUE{(1)} there are two cases: \(S = \emptyset\) or not.
-IF \(S\) is empty, then by \DEF{1.4}, \(\spann(S) = \{ \OV \}\), which is a subspace of \(V\).
+IF \(S\) is empty, then by \DEF{1.4}, \(\spann(S) = \{ \OV \}\), which is a subspace of \(\V\).
 If \(S\) is not empty, then we can pick a vector \(z\) in \(S\).
 Furthermore, by \DEF{1.4}, the linear combination \(0z\) is in \(\spann(S)\), that is, \(\OV \in S\).
 Suppose \(x, y \in \spann(S)\).
@@ -135,23 +135,23 @@ And
     cx = c(a_1 u_1 + a_2 u_2 + ... + a_m u_m) = (c a_1) u_1 + (c a_2) u_2 + ... + (c a_m) u_m,
 \]
 which is also a linear combination of the vector in \(S\), so \(cx \in \spann(S)\).
-So by \THM{1.3}, \(\spann(S)\) is a subspace of \(V\).
+So by \THM{1.3}, \(\spann(S)\) is a subspace of \(\V\).
 Furthermore given arbitrary \(s \in S\), \(1s = s\) is a linear combination of vector(s) in \(S\), so by \DEF{1.4}, \(s \in \spann(S)\).
 So since \(s\) is arbitrary, \(S \subseteq \spann(S)\).
 
 Now we prove \BLUE{(2)}.
-Let \(W\) be an arbitrary subspace that contains \(S\).
-We have to show \(\spann(S) \subseteq W\).
+Let \(\W\) be an arbitrary subspace that contains \(S\).
+We have to show \(\spann(S) \subseteq \W\).
 So let \(w \in \spann(S)\).
 Again by \DEF{1.4}, \(w = c_1 w_1 + c_2 w_2 + ... + c_k w_k\) for some vectors \(w_1, w_2, ..., w_k\) in \(S\) and some scalars \(c_1, c_2, ..., c_k\).
-Since \(S \subseteq W\), we have \(w_1, w_2, ..., w_k \in W\).
-Therefore \(w = c_1 w_1 + c_2 w_2 + ... + c_k w_k\) is in \(W\) by \EXEC{1.3.20}.
-Because \(w\), an arbitrary vector in \(\spann(S)\), belongs to \(W\), it follows that \(\spann(S) \subseteq W\).
+Since \(S \subseteq \W\), we have \(w_1, w_2, ..., w_k \in \W\).
+Therefore \(w = c_1 w_1 + c_2 w_2 + ... + c_k w_k\) is in \(\W\) by \EXEC{1.3.20}.
+Because \(w\), an arbitrary vector in \(\spann(S)\), belongs to \(\W\), it follows that \(\spann(S) \subseteq \W\).
 \end{proof}
 
 \begin{definition} \label{def 1.5}
-A subset \(S\) of a vector space \(V\) \textbf{generates} (or \textbf{spans}) \(V\) if \(\spann(S) = V\).
-In this case, we also say that the vectors of \(S\) generate (or span) \(V\).
+A subset \(S\) of a vector space \(\V\) \textbf{generates} (or \textbf{spans}) \(\V\) if \(\spann(S) = \V\).
+In this case, we also say that the vectors of \(S\) generate (or span) \(\V\).
 \end{definition}
 
 \begin{example} \label{example 1.4.3}
@@ -212,8 +212,8 @@ Hence not every \(2 \X 2\) matrix is a linear combination of these three matrice
 \end{example}
 
 \begin{remark} \label{remark 1.4.2}
-Usually there are many different subsets that generate a subspace \(W\). (See \EXEC{1.4.13}.)
-It is natural to seek a subset of \(W\) that generates \(W\) and is \textbf{as small as possible}.
+Usually there are many different subsets that generate a subspace \(\W\). (See \EXEC{1.4.13}.)
+It is natural to seek a subset of \(\W\) that generates \(\W\) and is \textbf{as small as possible}.
 In the next section we explore the circumstances under which a vector can be removed from a generating set to obtain a smaller generating set.
 \end{remark}
 
@@ -224,7 +224,7 @@ Label the following statements as true or false.
 \begin{enumerate}
 \item The zero vector is a linear combination of any nonempty set of vectors.
 \item The span of \(\emptyset\) is \(\emptyset\).
-\item If \(S\) is a subset of a vector space \(V\), then \(\spann(S)\) equals the \emph{intersection of all} subspaces of \(V\) that contain \(S\).
+\item If \(S\) is a subset of a vector space \(\V\), then \(\spann(S)\) equals the \emph{intersection of all} subspaces of \(\V\) that contain \(S\).
 \item In solving a system of linear equations, it is permissible to multiply an equation by \emph{any} constant.
 \item In solving a system of linear equations, it is permissible to add any multiple of one equation to another.
 \item Every system of linear equations has a solution. 
@@ -237,7 +237,7 @@ Label the following statements as true or false.
 \item True, see the proof of \THM{1.5}(1).
 \item False, by \DEF{1.3}, \(\spann(\emptyset) = \{ \OV \}\).
 \item True.
-      We show \(\spann(S) \subseteq \bigcap_{i = 0}^{\infty} W_i\) and \(\bigcap_{i = 0}^{\infty} W_i \subseteq \spann(S)\) where each \(W_i\) is a subspace of \(V\) that contains \(S\).
+      We show \(\spann(S) \subseteq \bigcap_{i = 0}^{\infty} W_i\) and \(\bigcap_{i = 0}^{\infty} W_i \subseteq \spann(S)\) where each \(W_i\) is a subspace of \(\V\) that contains \(S\).
       
       \(\spann(S) \subseteq \bigcap_{i = 0}^{\infty} W_i\): By \THM{1.5}, every subspace that contains \(S\) must also contain \(\spann(S)\), which implies the intersection of \emph{all} subspaces that contain \(S\) contain \(\spann(S)\).
       
@@ -383,11 +383,11 @@ then the span of \(\{M_1, M_2, M_3\}\) is the set of all \emph{symmetric} \(2 \X
 \end{exercise}
 
 \begin{proof}
-Let \(W\) be the set of all symmetric matrices.
-We have to show \(\spann(\{M_1, M_2, M_3\}) = W\).
-We show this by showing \(\spann(\{M_1, M_2, M_3\}) \subseteq W\) and \(W \subseteq \spann(\{M_1, M_2, M_3\})\).
+Let \(\W\) be the set of all symmetric matrices.
+We have to show \(\spann(\{M_1, M_2, M_3\}) = \W\).
+We show this by showing \(\spann(\{M_1, M_2, M_3\}) \subseteq \W\) and \(\W \subseteq \spann(\{M_1, M_2, M_3\})\).
 
-\(\spann(\{M_1, M_2, M_3\}) \subseteq W\): Suppose arbitrary \(M \in \spann(\{M_1, M_2, M_3\})\).
+\(\spann(\{M_1, M_2, M_3\}) \subseteq \W\): Suppose arbitrary \(M \in \spann(\{M_1, M_2, M_3\})\).
 Then by \DEF{1.5}, \(M = a_1 M_1 + a_2 M_2 + a_3 M_3\) for some coefficients \(a_1, a_2, a_3\).
 But
 \begin{align*}
@@ -422,10 +422,10 @@ But
         \end{pmatrix},
 \end{align*}
 which is of course a symmetric matrix.
-So \(M \in W\), so \(\spann(\{M_1, M_2, M_3\}) \subseteq W\).
+So \(M \in \W\), so \(\spann(\{M_1, M_2, M_3\}) \subseteq \W\).
 
-\(W \subseteq \spann(\{M_1, M_2, M_3\})\):
-Suppose arbitrary \(M \in W\).
+\(\W \subseteq \spann(\{M_1, M_2, M_3\})\):
+Suppose arbitrary \(M \in \W\).
 Then \(M\) must be in the form of
 \(
     \begin{pmatrix}
@@ -449,12 +449,12 @@ And \(M\) can be expressed as a linear combination
         \end{pmatrix}.
 \]
 Hence \(M \in \spann(\{M_1, M_2, M_3\})\).
-So \(W \subseteq \spann(\{M_1, M_2, M_3\})\).
+So \(\W \subseteq \spann(\{M_1, M_2, M_3\})\).
 \end{proof}
 
 \begin{note}
-Note that in the previous exercise, we must show the two subspaces contain each other, because we do not know one of them is the whole vector space \(V\).
-(If one of them is \(V\) then we can just show \(V\) is a subset of the other, since the other (subspace) is automatically a subset of \(V\).)
+Note that in the previous exercise, we must show the two subspaces contain each other, because we do not know one of them is the whole vector space \(\V\).
+(If one of them is \(\V\) then we can just show \(\V\) is a subset of the other, since the other (subspace) is automatically a subset of \(\V\).)
 \end{note}
 
 \begin{exercise} \label{exercise 1.4.11}
@@ -474,25 +474,25 @@ The span is just a zero vector space \emph{if} \(x = \OV\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.4.12}
-Show that a \emph{subset} \(W\) of a vector space \(V\) \emph{is a subspace} of \(V\) if and only if \(\spann(W) = W\).
+Show that a \emph{subset} \(\W\) of a vector space \(\V\) \emph{is a subspace} of \(\V\) if and only if \(\spann(\W) = \W\).
 \end{exercise}
 
 \begin{proof}
-\(\Longrightarrow\): Suppose \(W\) is a subspace of \(V\), we have to show \(\spann(W) = W\).
-But \(W \subseteq \spann(W)\) by \THM{1.5}(1), so we only need to show \(\spann(W) \subseteq W\).
-But by \THM{1.5}(2), since \BLUE{\(W\)} is a \textbf{subspace} that (of course) contains \GREEN{\(W\)}, \BLUE{\(W\)} contains \(\spann(\GREEN{W})\).
+\(\Longrightarrow\): Suppose \(\W\) is a subspace of \(\V\), we have to show \(\spann(\W) = \W\).
+But \(\W \subseteq \spann(\W)\) by \THM{1.5}(1), so we only need to show \(\spann(\W) \subseteq \W\).
+But by \THM{1.5}(2), since \BLUE{\(\W\)} is a \textbf{subspace} that (of course) contains \GREEN{\(\W\)}, \BLUE{\(\W\)} contains \(\spann(\GREEN{\W})\).
 
-\(\Longleftarrow\): Suppose \(W = \spann(W)\), we have to show \(W\) is a subspace of \(V\).
-Well, by \THM{1.5}(1), \(\spann(W)\) is a subspace of \(V\), and \(W = \spann(W)\), so \(W\) is a subspace of \(V\).
+\(\Longleftarrow\): Suppose \(\W = \spann(\W)\), we have to show \(\W\) is a subspace of \(\V\).
+Well, by \THM{1.5}(1), \(\spann(\W)\) is a subspace of \(\V\), and \(\W = \spann(\W)\), so \(\W\) is a subspace of \(\V\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.4.13}
-Show that if \(S_1\) and \(S_2\) are \emph{subsets} of a vector space \(V\) (over \(F\)) such that \(S_1 \subseteq S_2\), then \(\spann(S_1) \subseteq \spann(S_2)\).
-In particular, if \(S_1 \subseteq S_2\) and \(\spann(S_1) = V\), deduce that \(\spann(S_2) = V\).
+Show that if \(S_1\) and \(S_2\) are \emph{subsets} of a vector space \(\V\) (over \(F\)) such that \(S_1 \subseteq S_2\), then \(\spann(S_1) \subseteq \spann(S_2)\).
+In particular, if \(S_1 \subseteq S_2\) and \(\spann(S_1) = \V\), deduce that \(\spann(S_2) = \V\).
 \end{exercise}
 
 \begin{proof}
-Suppose \(S_1\) and \(S_2\) are \emph{subsets} of a vector space \(V\) such that \(S_1 \subseteq S_2\).
+Suppose \(S_1\) and \(S_2\) are \emph{subsets} of a vector space \(\V\) such that \(S_1 \subseteq S_2\).
 We have to show \(\spann(S_1) \subseteq \spann(S_2)\).
 So suppose arbitrary \(x \in \spann(S_1)\).
 Then \(x = a_1 v_1 + a_2 v_2 + ... + a_n v_n\), where \(a_1, a_2, ..., a_n \in F\) and \(v_1, v_2, ... v_n \in S_1\).
@@ -500,19 +500,19 @@ But since \(S_1 \subseteq S_2\), \(v_1, v_2, ..., v_n \in S_2\), so \(a_1 v_1 + 
 that is, \(x \in \spann(S_2)\).
 Since \(x\) is arbitrary, \(\spann(S_1) \subseteq \spann(S_2)\), as desired.
 
-In particular, suppose \(S_1 \subseteq S_2\) and \(\spann(S_1) = V\).
+In particular, suppose \(S_1 \subseteq S_2\) and \(\spann(S_1) = \V\).
 By previous case we have \(\spann(S_1) \subseteq \spann(S_2)\);
-that is, \(V \subseteq \spann(S_2)\).
-But since \(\spann(S_2)\) is just a subspace of \(V\), in particular it is a subset of \(V\), so \(\spann(S_2) \subseteq V\).
-So together we have \(\spann(S_2) = V\).
+that is, \(\V \subseteq \spann(S_2)\).
+But since \(\spann(S_2)\) is just a subspace of \(\V\), in particular it is a subset of \(\V\), so \(\spann(S_2) \subseteq \V\).
+So together we have \(\spann(S_2) = \V\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.4.14}
-Show that if \(S_1\) and \(S_2\) are arbitrary subsets of a vector space \(V\) (over \(F\)), then \(\spann(S_1 \cup S_2) = \spann(S_1) + \spann(S_2)\), where the sum uses \ADEF{1.8}.
+Show that if \(S_1\) and \(S_2\) are arbitrary subsets of a vector space \(\V\) (over \(F\)), then \(\spann(S_1 \cup S_2) = \spann(S_1) + \spann(S_2)\), where the sum uses \ADEF{1.8}.
 \end{exercise}
 
 \begin{proof}
-Given any vector space \(V\), let \(S_1\) and \(S_2\) be arbitrary subsets of \(V\).
+Given any vector space \(\V\), let \(S_1\) and \(S_2\) be arbitrary subsets of \(\V\).
 We have to show \(\spann(S_1 \cup S_2) = \spann(S_1) + \spann(S_2)\).
 
 \BLUE{\(\spann(S_1 \cup S_2) \subseteq \spann(S_1) + \spann(S_2)\)}:
@@ -541,7 +541,7 @@ Since \(x\) is arbitrary, \(\spann(S_1) + \spann(S_2) \subseteq \spann(S_1 \cup 
 \end{proof}
 
 \begin{exercise} \label{exercise 1.4.15}
-Let \(S_1\) and \(S_2\) be subsets of a vector space \(V\) (over \(F\)).
+Let \(S_1\) and \(S_2\) be subsets of a vector space \(\V\) (over \(F\)).
 Prove that \(\spann(S_1 \cap S_2) \subseteq \spann(S_1) \cap \spann(S_2)\).
 Give an example in which \(\spann(S1 \cap S_2)\) and
 \(\spann(S_1) \cap \spann(S_2)\) are equal and one in which they are unequal.
@@ -563,14 +563,14 @@ Now for the case of \(\spann(S1 \cap S_2) = \spann(S_1) \cap \spann(S_2)\), just
     & = \spann(S_1) & \text{since of course \(S_1 \cap S_1 = S_1\)} \\
     & = \spann(S_1) \cap \spann(S_1) & \text{since of course \(\spann(S_1) = \spann(S_1) \cap \spann(S_1)\)}
 \end{align*}
-For the case of \(\spann(S1 \cap S_2) \ne \spann(S_1) \cap \spann(S_2)\), let \(V = \SET{R}^2\), \(S_1 = \{(1, 0), (0, 1)\}\), \(S_2 = \{(-1, )\}\).
+For the case of \(\spann(S1 \cap S_2) \ne \spann(S_1) \cap \spann(S_2)\), let \(\V = \SET{R}^2\), \(S_1 = \{(1, 0), (0, 1)\}\), \(S_2 = \{(-1, )\}\).
 Then it's trivial that \(\spann(S_1 = R^2\), \(\spann(S_2)\) is \(x\)-axis, so the intersection is also \(x\)-axis.
 But \(S_1 \cap \S_2 = \emptyset\), so \(\spann(S_1 \cap S_2) = \{ (0, 0) \}\) by \DEF{1.4}.
 So \(\spann(S_1 \cap S_2) = \{ (0, 0) \}\), which does not equal to \(\spann(S_1) \cap \spann(S_2)\), the \(x\)-axis.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.4.16}
-Let \(V\) be a vector space (over \(F\)) and \(S\) a subset of \(V\) with the property that whenever \(v_1, v_2, ..., v_n \in S\) and \(a_1 v_1 + a_2 v_2 + ... + a_n v_n = \OV\), then \(a_1 = a_2 = ... = a_n = \OF\).
+Let \(\V\) be a vector space (over \(F\)) and \(S\) a subset of \(\V\) with the property that whenever \(v_1, v_2, ..., v_n \in S\) and \(a_1 v_1 + a_2 v_2 + ... + a_n v_n = \OV\), then \(a_1 = a_2 = ... = a_n = \OF\).
 Prove that every vector in the span of \(S\) can be \textbf{uniquely written} as a linear combination of vectors of \(S\).
 \end{exercise}
 
@@ -599,19 +599,19 @@ So any \(v \in \spann(S)\), can only uniquely be written as a linear combination
 \end{proof}
 
 \begin{exercise} \label{exercise 1.4.17}
-Let \(W\) be a subspace of a vector space \(V\).
-Under what conditions are there only a finite number of distinct subsets \(S\) of \(W\) such that \(S\) generates \(W\)?
+Let \(\W\) be a subspace of a vector space \(\V\).
+Under what conditions are there only a finite number of distinct subsets \(S\) of \(\W\) such that \(S\) generates \(\W\)?
 \end{exercise}
 
 \begin{proof}
-We claim that \(W\) can only have finite elements. (and \(F\) has characteristic zero, see textbook page 549.)
+We claim that \(\W\) can only have finite elements. (and \(F\) has characteristic zero, see textbook page 549.)
 
-If \(W\) has finite elements, then by set theory the number of distinct subsets of \(W\) is also finite;
-in particular, the number of subsets of \(W\) that can generate \(W\) is also finite.
+If \(\W\) has finite elements, then by set theory the number of distinct subsets of \(\W\) is also finite;
+in particular, the number of subsets of \(\W\) that can generate \(\W\) is also finite.
 
-But if \(W\) has infinite elements, and suppose \(S = \{v_1, v_2, ..., v_n\}\) generates \(W\);
-then in particular it's trivial that \(\{a v_1, a v_2, ..., a v_n\}\) also generates \(W\) for any \emph{nonzero} \(a \in F\).
-Since we can find infinite \(a \in F\)(since \(F\) has characteristic zero), the number of subset of \(W\) that can generate \(W\) is also infinite.
+But if \(\W\) has infinite elements, and suppose \(S = \{v_1, v_2, ..., v_n\}\) generates \(\W\);
+then in particular it's trivial that \(\{a v_1, a v_2, ..., a v_n\}\) also generates \(\W\) for any \emph{nonzero} \(a \in F\).
+Since we can find infinite \(a \in F\)(since \(F\) has characteristic zero), the number of subset of \(\W\) that can generate \(\W\) is also infinite.
 \end{proof}
 
 \begin{additional theorem} \label{athm 1.11}
@@ -623,7 +623,7 @@ This is the placeholder theorem for \EXEC{1.4.13}:
 
 \BLUE{(1)} Set inclusion implies span inclusion.
 
-\BLUE{(2)}: If the span of smaller set is already equal to \(V\), then the span of bigger set is also equal to \(V\).
+\BLUE{(2)}: If the span of smaller set is already equal to \(\V\), then the span of bigger set is also equal to \(\V\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.13}

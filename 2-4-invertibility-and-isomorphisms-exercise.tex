@@ -2,7 +2,7 @@
 
 \begin{exercise} \label{exercise 2.4.1}
 Label the following statements as true or false.
-In each part, \(V\) and \(W\) are vector spaces with ordered (finite) bases \(\alpha\) and \(\beta\), respectively, \(\T: V \to W\) is linear, and \(A\) and \(B\) are matrices.
+In each part, \(\V\) and \(\W\) are vector spaces with ordered (finite) bases \(\alpha\) and \(\beta\), respectively, \(\T: \V \to \W\) is linear, and \(A\) and \(B\) are matrices.
 \begin{enumerate}
 \item \(([\T]_{\alpha}^{\beta})^{-1} = [\T^{-1}]_{\alpha}^{\beta}\).
 \item \(\T\) is invertible if and only if \(\T\) is one-to-one and onto.
@@ -83,7 +83,7 @@ Justify your answers.
 \item \(F^3\) and \(\mathcal{P}_3(F)\).
 \item \(F^4\) and \(\mathcal{P}_3(F)\).
 \item \(M_{2 \X 2}(\SET{R})\) and \(\POLYRRR\).
-\item \(V = \{ A \in M_{2 \X 2}(\SET{R}) : \TRACE(A) = 0 \}\) and \(\SET{R}^4\).
+\item \(\V = \{ A \in M_{2 \X 2}(\SET{R}) : \TRACE(A) = 0 \}\) and \(\SET{R}^4\).
 \end{enumerate}
 \end{exercise}
 
@@ -92,7 +92,7 @@ Justify your answers.
 \item \(\dim(F^3) = 3\), \(\dim(\mathcal{P}_3(F)) = 4\), so \(F^3\) and \(\mathcal{P}_3(F)\) are not isomorphic by \THM{2.19}.
 \item \(\dim(F^4) = 4\), \(\dim(\mathcal{P}_3(F)) = 4\), so \(F^4\) and \(\mathcal{P}_3(F)\) are isomorphic by \THM{2.19}.
 \item \(\dim(M_{2 \X 2}(\SET{R})) = 4\), \(\dim(\mathcal{P}_3(F)) = 4\), so \(M_{2 \X 2}(\SET{R})\) and \(\mathcal{P}_3(F)\) are isomorphic by \THM{2.19}.
-\item \(\dim(V) = 2^2 - 1 = 3\) by \ATHM{1.19}(1), \(\dim(\SET{R}^4) = 4\), so \(V\) and \(\SET{R}^4\) are not isomorphic by \THM{2.19}.
+\item \(\dim(\V) = 2^2 - 1 = 3\) by \ATHM{1.19}(1), \(\dim(\SET{R}^4) = 4\), so \(\V\) and \(\SET{R}^4\) are not isomorphic by \THM{2.19}.
 \end{enumerate}
 \end{proof}
 
@@ -271,7 +271,7 @@ And by \DEF{2.13}, this implies \(AB = BA = I_n\).
 In particular, we have \(BA = AB = I_n\), so by \DEF{2.13} again, \(B^{-1} = A\).
 
 \item
-Statement: Let \(\T : V \to W\) and \(\U : W \to V\) where \(V, W\) have same (finite) dimensions and \(\U\T = \ITRANV\).
+Statement: Let \(\T : \V \to \W\) and \(\U : \W \to \V\) where \(\V, \W\) have same (finite) dimensions and \(\U\T = \ITRANV\).
 Then both \(\U, \T\) are invertible. and we have \((\T)^{-1} = \U\) (hence \(\U^{-1} = \T\)).
 
 First, similar to \EXEC{2.4.9}, by \ATHM{2.26}(1)(2), both \(\U, \T\) are invertible.
@@ -313,25 +313,25 @@ Prove that \(\sim\) is an equivalence relation on the class of vector spaces ove
 
 \begin{proof}\ 
 
-Reflexivity: \(V\) is isomorphic to \(V\) since \(\ITRANV\) is an isomorphism from \(V\) to \(V\) for any vector space \(V\).
+Reflexivity: \(\V\) is isomorphic to \(\V\) since \(\ITRANV\) is an isomorphism from \(\V\) to \(\V\) for any vector space \(\V\).
 
-Symmetry: Suppose \(V\) is isomorphic to \(W\), then there exists an isomorphism \(\T\) from \(V\) to \(W\).
-In particular, by \DEF{2.14}, \(\T\) is invertible, so \(\T^{-1} : W \to V\) exists, and also invertible.
+Symmetry: Suppose \(\V\) is isomorphic to \(\W\), then there exists an isomorphism \(\T\) from \(\V\) to \(\W\).
+In particular, by \DEF{2.14}, \(\T\) is invertible, so \(\T^{-1} : \W \to \V\) exists, and also invertible.
 And by \THM{2.17}, \(\T^{-1}\) is linear.
-Hence by \DEF{2.14} again, \(\T^{-1}\) is an isomorphism from \(W\) to \(V\).
-Hence \(W\) is isomorphic to \(V\).
+Hence by \DEF{2.14} again, \(\T^{-1}\) is an isomorphism from \(\W\) to \(\V\).
+Hence \(\W\) is isomorphic to \(\V\).
 
-Transitivity: Suppose \(V\) is isomorphic to \(W\) and \(W\) is isomorphic to \(Z\), then there exists an isomorphism \(\T\) from \(V\) to \(W\) and \(\U\) from \(W\) to \(Z\).
+Transitivity: Suppose \(\V\) is isomorphic to \(\W\) and \(\W\) is isomorphic to \(Z\), then there exists an isomorphism \(\T\) from \(\V\) to \(\W\) and \(\U\) from \(\W\) to \(Z\).
 Furthermore, by \ATHM{2.26}(c) \(\U\T\) is invertible, and by \THM{2.9}, since \(\U, \T\) are linear, \(\U\T\) is also linear, hence \(\U\T\) is an isomorphism by \DEF{2.14}.
-Hence \(V\) is isomorphic to \(Z\).
+Hence \(\V\) is isomorphic to \(Z\).
 \end{proof}
 
 \begin{exercise} \label{exercise 2.4.14}
 Let
 \[
-    V = \bigg\{ \begin{pmatrix} a & a + b \\ 0 & c \end{pmatrix} : a, b, c \in F \bigg\}.
+    \V = \bigg\{ \begin{pmatrix} a & a + b \\ 0 & c \end{pmatrix} : a, b, c \in F \bigg\}.
 \]
-Construct an isomorphism from \(V\) to \(F^3\).
+Construct an isomorphism from \(\V\) to \(F^3\).
 \end{exercise}
 
 \begin{proof}
@@ -341,25 +341,25 @@ Clearly,
     \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
     \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
 \bigg\}\]
-is a basis for \(V\).
-Then by \THM{2.21}, \(\phi_{\beta}\) is an isomorphism from \(V\) to \(F^3\).
+is a basis for \(\V\).
+Then by \THM{2.21}, \(\phi_{\beta}\) is an isomorphism from \(\V\) to \(F^3\).
 \end{proof}
 
 \begin{exercise} \label{exercise 2.4.15}
-Let \(V\) and \(W\) be \(n\)-dimensional vector spaces, and let \(\T : V \to W\) be a linear transformation.
-Suppose that \(\beta\) is a basis for \(V\).
-Prove that \(\T\) is an isomorphism \emph{if and only if} \(\T(\beta)\) is a basis for \(W\).
+Let \(\V\) and \(\W\) be \(n\)-dimensional vector spaces, and let \(\T : \V \to \W\) be a linear transformation.
+Suppose that \(\beta\) is a basis for \(\V\).
+Prove that \(\T\) is an isomorphism \emph{if and only if} \(\T(\beta)\) is a basis for \(\W\).
 \end{exercise}
 
 \begin{proof} \ 
 
 \(\Longrightarrow\): Suppose \(\T\) is an isomorphism.
 In particular, \(\T\) is one-to-one and onto.
-Then by \ATHM{2.2}(2.c), \(\T(\beta)\) is a basis for \(W\).
+Then by \ATHM{2.2}(2.c), \(\T(\beta)\) is a basis for \(\W\).
 
-\(\Longleftarrow\): Suppose \(\T(\beta)\) is a basis for \(W\).
-In particular, \(\spann(\T(\beta)) = W\).
-And by \THM{2.2}, \(\RANGET = \spann(\T(\beta)) = W\), hence \(\T\) is onto.
+\(\Longleftarrow\): Suppose \(\T(\beta)\) is a basis for \(\W\).
+In particular, \(\spann(\T(\beta)) = \W\).
+And by \THM{2.2}, \(\RANGET = \spann(\T(\beta)) = \W\), hence \(\T\) is onto.
 By \THM{2.5}, \(\T\) is one-to-one.
 Hence \(\T\) is an isomorphism.
 \end{proof}
@@ -389,13 +389,13 @@ So \(\Phi\) is onto, as desired.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.4.17}
-Let \(V\) and \(W\) be finite-dimensional vector spaces and \(\T : V \to W\) be an isomorphism.
-Let \(V_0\) be a \emph{subspace} of \(V\).
+Let \(\V\) and \(\W\) be finite-dimensional vector spaces and \(\T : \V \to \W\) be an isomorphism.
+Let \(V_0\) be a \emph{subspace} of \(\V\).
 \begin{enumerate}
-\item Prove that \(\T(V_0)\) is a subspace of \(W\).
+\item Prove that \(\T(V_0)\) is a subspace of \(\W\).
 \item Prove that \(\dim(V_0) = \dim(\T(V_0))\).
 \end{enumerate}
-And from part(b), we say that an isomorphism is \emph{rank-preserving}, since in particular \(\dim(V) = \dim(\T(V))\).
+And from part(b), we say that an isomorphism is \emph{rank-preserving}, since in particular \(\dim(\V) = \dim(\T(\V))\).
 \end{exercise}
 
 \begin{proof} \ 
@@ -413,7 +413,7 @@ For one-to-one, given \(v_1, v_2 \in V_0\),
     \implies & v_1 = v_2. & \text{since in particular \(\T\) is one-to-one}
 \end{align*}
 
-For onto, given \(w \in \T(V_0)\), then by definition of \(\T(V_0)\) we of course can find \(v \in V_0\) such that \(\T(v) = W\).
+For onto, given \(w \in \T(V_0)\), then by definition of \(\T(V_0)\) we of course can find \(v \in V_0\) such that \(\T(v) = \W\).
 But since \(v \in V_0\), \(\T'(v) = \T(v)\).
 Hence we have found \(v \in V_0\) such that \(\T'(v) = w\), so \(\T'\) is onto.
 
@@ -490,8 +490,8 @@ So \(\LMTRAN_A \phi_{\beta}(M) = \phi_{\beta}\T(M)\).
 \end{proof}
 
 \begin{exercise} \label{exercise 2.4.20}
-Let \(\T: V \to W\) be a \LTRAN{} from an \(n\)-dimensional vector space \(V\) to an \(m\)-dimensional vector space \(W\).
-Let \(\beta\) and \(\gamma\) be ordered bases for \(V\) and \(W\), respectively.
+Let \(\T: \V \to \W\) be a \LTRAN{} from an \(n\)-dimensional vector space \(\V\) to an \(m\)-dimensional vector space \(\W\).
+Let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\), respectively.
 Prove that \(\rankT = \rank(\LMTRAN_A)\) and that \(\nullityT = \nullity(\LMTRAN_A)\), where \(A = [\T]_{\beta}^{\gamma}\).
 Hint: Apply \EXEC{2.4.17} to Figure 2.2.
 \end{exercise}
@@ -499,19 +499,19 @@ Hint: Apply \EXEC{2.4.17} to Figure 2.2.
 \begin{proof} \ 
 
 \(\rankT = \rank(\LMTRAN_A)\):
-Since \(\LMTRAN_A \phi_{\beta} = \phi_{\gamma} \T \), in particular we have \(\LMTRAN_A \phi_{\beta}(V) = \phi_{\gamma} \T(V)\) \MAROON{(1)}.
+Since \(\LMTRAN_A \phi_{\beta} = \phi_{\gamma} \T \), in particular we have \(\LMTRAN_A \phi_{\beta}(\V) = \phi_{\gamma} \T(\V)\) \MAROON{(1)}.
 
 Now, for the dimension of RHS of \MAROON{(1)},
 \begin{align*}
-    & \dim(\phi_{\gamma} \T(V)) \\
-    & = \dim(\phi_{\gamma} (\T(V))) & \text{by def of composition} \\
-    & = \dim(\T(V)) & \text{since \(\phi_{\gamma}\) is an isomorphism, and by \EXEC{2.4.17}(b)} \\
+    & \dim(\phi_{\gamma} \T(\V)) \\
+    & = \dim(\phi_{\gamma} (\T(\V))) & \text{by def of composition} \\
+    & = \dim(\T(\V)) & \text{since \(\phi_{\gamma}\) is an isomorphism, and by \EXEC{2.4.17}(b)} \\
     & = \rankT, & \text{by definition}
 \end{align*}
 and for the dimension of LHS of \MAROON{(1)},
 \begin{align*}
-    & \dim(\LMTRAN_A \phi_{\beta}(V)) \\
-    & = \dim(\LMTRAN_A (\phi_{\beta}(V))) & \text{by def of composition} \\
+    & \dim(\LMTRAN_A \phi_{\beta}(\V)) \\
+    & = \dim(\LMTRAN_A (\phi_{\beta}(\V))) & \text{by def of composition} \\
     & = \dim(\LMTRAN_A (F^n)) & \text{since (in particular) \(\phi_{\beta}\) is onto} \\
     & = \dim(\RANGE(\LMTRAN_A)) & \text{by definition} \\
     & = \rank(\LMTRAN_A), & \text{by definition}
@@ -521,31 +521,31 @@ Hence we have \(\rankT = \rank(\LMTRAN_A)\), as desired.
 \(\nullityT = \nullity(\LMTRAN_A)\):
 We have
 \begin{align*}
-    \nullityT & = \dim(V) - \rankT & \text{by \THM{2.3}(dimension theorem)} \\
-              & = \dim(F^n) - \rankT & \text{of course, since \(\dim(V) = n\)} \\
+    \nullityT & = \dim(\V) - \rankT & \text{by \THM{2.3}(dimension theorem)} \\
+              & = \dim(F^n) - \rankT & \text{of course, since \(\dim(\V) = n\)} \\
               & = \dim(F^n) - \rank(\LMTRAN_A) & \text{by what we have shown} \\
               & = \nullity(\LMTRAN_A). & \text{again by \THM{2.3}}
 \end{align*}
 \end{proof}
 
 \begin{exercise} \label{exercise 2.4.21}
-Let \(V\) and \(W\) be \emph{finite}-dimensional vector spaces with ordered bases \(\beta = \{ v_1, v_2, ..., v_n \}\) and \(\gamma = \{ w_1, w_2, ..., w_m \}\), respectively.
-By \THM{2.6}, there exist unique linear transformations \(\T_{ij} : V \to W\) such that
+Let \(\V\) and \(\W\) be \emph{finite}-dimensional vector spaces with ordered bases \(\beta = \{ v_1, v_2, ..., v_n \}\) and \(\gamma = \{ w_1, w_2, ..., w_m \}\), respectively.
+By \THM{2.6}, there exist unique linear transformations \(\T_{ij} : \V \to \W\) such that
 \begin{equation*}
     \T_{ij}(v_k) = \begin{cases}
         w_i, \text{ if } k = j \\
         \OW, \text{ if } k \ne j
     \end{cases}
 \end{equation*}
-First prove that \(\alpha = \{ T_{ij} : 1 \le i \le m, 1 \le j \le n \}\) is a basis for \(\mathcal{L}(V, W)\).
+First prove that \(\alpha = \{ T_{ij} : 1 \le i \le m, 1 \le j \le n \}\) is a basis for \(\mathcal{L}(\V, \W)\).
 Then let \(M^{ij}\) be the \(m \X n\) matrix with \(1\) in the \(i\)th row and \(j\)th column and \(0\) elsewhere, and prove that \([\T_{ij}]_{\beta}^{\gamma} = M^{ij}\).
-Again by \THM{2.6}, there exists a unique linear transformation \(\Phi_{\beta}^{\gamma} : \mathcal{L}(V, W) \to M_{m \X n}(F)\) such that \(\Phi_{\beta}^{\gamma} (\T_{ij}) = M^{ij}\).
+Again by \THM{2.6}, there exists a unique linear transformation \(\Phi_{\beta}^{\gamma} : \mathcal{L}(\V, \W) \to M_{m \X n}(F)\) such that \(\Phi_{\beta}^{\gamma} (\T_{ij}) = M^{ij}\).
 Prove that \(\Phi_{\beta}^{\gamma}\) is an isomorphism.
 \end{exercise}
 
 \begin{proof}
-Since \(\#\alpha = \dim(\mathcal{L}(V, W)\) (where by \THM{2.20} we can conclude \(\dim(\mathcal{L}(V, W) = mn\)), (by \CORO{1.10.3}(b)) we only need to show \(\alpha\) is \LID{}.
-BTW, we use the symbol \(\TZERO\) to represent the zero vector, i.e. the zero transformation, of \(\mathcal{L}(V, W)\).
+Since \(\#\alpha = \dim(\mathcal{L}(\V, \W)\) (where by \THM{2.20} we can conclude \(\dim(\mathcal{L}(\V, \W) = mn\)), (by \CORO{1.10.3}(b)) we only need to show \(\alpha\) is \LID{}.
+BTW, we use the symbol \(\TZERO\) to represent the zero vector, i.e. the zero transformation, of \(\mathcal{L}(\V, \W)\).
 
 So suppose \(\sum_{i = 1}^{m} \sum_{j = 1}^n a_{ij} \T_{ij} = \TZERO\) \MAROON{(1)}, we have to show \(a_{ij} = 0\) for all \(1 \le i \le m\), \(1 \le j \le n\).
 But given arbitrary \(k\) such that \(1 \le k \le n\),
@@ -557,7 +557,7 @@ But given arbitrary \(k\) such that \(1 \le k \le n\),
         & = \sum_{i = 1}^{m} \bigg( a_{i1} \OV + ... + a_{ik} w_i + ... + a_{in} \OV \bigg) & \text{by definition of \(\T_{ij}\)} \\
         & = \sum_{i = 1}^m a_{ik} w_i,
 \end{align*}
-which implies \(a_{1k} = a_{2k} = ... = a_{mk} = 0\) since \(\gamma\) is a basis for \(W\).
+which implies \(a_{1k} = a_{2k} = ... = a_{mk} = 0\) since \(\gamma\) is a basis for \(\W\).
 Since \(k\) is arbitrary, we have \(a_{ik} = 1\) for all \(1 \le i \le m\), \(1 \le k \le n\), as desired.
 
 Now given arbitrary \(j\) such that \(1 \le j \le n\), it trivial that the \(j\)th column of \(M^{ij}\) is \(e_i\) where \(e_i\) is the \(i\)th standard vector of \(F^m\).
@@ -588,11 +588,11 @@ But by \RMK{1.6.6}, we know that \(f\) is zero polynomial, as desired.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.4.23}
-Let \(W\) denote the vector space of all \emph{sequences} in \(F\) that \emph{have only a finite number of nonzero terms} (defined in \EXEC{1.6.18}),
+Let \(\W\) denote the vector space of all \emph{sequences} in \(F\) that \emph{have only a finite number of nonzero terms} (defined in \EXEC{1.6.18}),
 and let \(Z = \POLYF\).
 Define
 \[
-    \T : W \to Z \text{ by } \T(\sigma) = \sum_{i = 0}^n \sigma(i)x^i,
+    \T : \W \to Z \text{ by } \T(\sigma) = \sum_{i = 0}^n \sigma(i)x^i,
 \]
 where \(n\) is the \emph{largest integer} such that \(\sigma(n) \ne 0\). Prove that \(\T\) is an isomorphism.
 \end{exercise}
@@ -600,7 +600,7 @@ where \(n\) is the \emph{largest integer} such that \(\sigma(n) \ne 0\). Prove t
 \begin{proof}
 Since the domain and codomain of \(\T\) are infinite-dimensional, we need to show that \(\T\) is linear, one-to-one, onto, respectively.
 
-First, given \(\sigma_1, \sigma_2 \in W\) and scalar \(c \in F\), where \(n_1\), \(n_2\) are the largest nonzero integers such that \(\sigma_1(n_1) \ne 0\) and \(\sigma_2(n_2) \ne 0\), respectively.
+First, given \(\sigma_1, \sigma_2 \in \W\) and scalar \(c \in F\), where \(n_1\), \(n_2\) are the largest nonzero integers such that \(\sigma_1(n_1) \ne 0\) and \(\sigma_2(n_2) \ne 0\), respectively.
 Then
 \begin{align*}
     & \T(\sigma_1 + c \sigma_2) \\
@@ -619,12 +619,12 @@ Now, by the property of polynomial, it's really clear that \(\T\) is one-to-one 
 \includegraphics[width=16cm]{images/figure-2-3.png}
 
 \begin{exercise} \label{exercise 2.4.24}
-Let \(V\) and \(Z\) be vector spaces and \(\T : V \to Z\) be a linear transformation \emph{that is onto}.
+Let \(\V\) and \(Z\) be vector spaces and \(\T : \V \to Z\) be a linear transformation \emph{that is onto}.
 Define the mapping
 \[
-    \overline{\T} : V / \NULLT \to Z \text{ by } \overline{\T}(v + \NULLT) = \T(v)
+    \overline{\T} : \V / \NULLT \to Z \text{ by } \overline{\T}(v + \NULLT) = \T(v)
 \]
-for any coset \(v + \NULLT\) in \(V / \NULLT\).
+for any coset \(v + \NULLT\) in \(\V / \NULLT\).
 \begin{enumerate}
 \item Prove that \(\overline{\T}\) is \emph{well-defined};
     that is, prove that if \(v + \NULLT = v' + \NULLT\), then \(\T(v) = \T(v')\).
@@ -634,7 +634,7 @@ for any coset \(v + \NULLT\) in \(V / \NULLT\).
     that is, prove that \(\T = \overline{\T} \eta\). (\(\eta\) is defined in \EXEC{2.1.42}.)
 \end{enumerate}
 
-Note that we do not say \(V\) and \(Z\) are finite dimensional.
+Note that we do not say \(\V\) and \(Z\) are finite dimensional.
 \end{exercise}
 
 \begin{proof} \ 
@@ -642,7 +642,7 @@ Note that we do not say \(V\) and \(Z\) are finite dimensional.
 \begin{enumerate}
 \item Suppose \(v + \NULLT = v' + \NULLT\), then by \ATHM{1.10}(b), \(v - v' \in \NULLT\), which implies \(\T(v - v') = 0_{_Z}\), that is, \(\T(v) - \T(v') = 0_{_Z}\), that is, \(\T(v) = \T(v')\).
 
-\item For any \(v_1 + \NULLT\) and \(v_2 + \NULLT\) in \(V/\NULLT\), and any scalar \(c\),
+\item For any \(v_1 + \NULLT\) and \(v_2 + \NULLT\) in \(\V/\NULLT\), and any scalar \(c\),
 \begin{align*}
     & \overline{\T}\bigg( \big( v_1 + \NULLT \big) + c \big(v_2 + \NULLT \big)  \bigg) \\
     & = \overline{\T}\big( (v_1 + cv_2) + \NULLT) \big) & \text{by def of coset \(+\) and scalar \(\cdot\), see \EXEC{1.3.31}} \\
@@ -658,14 +658,14 @@ Then by definition of \(\overline{\T}\), \(\overline{\T}(v + \NULLT) = \T(v) = 0
 And of course \(v - \OV \in \NULLT\), so by \ATHM{1.10}(b), \(v + \NULLT = \OV + \NULLT\), as desired.
 
 For onto, suppose arbitrary \(z \in Z\).
-\emph{Then since \(\T\) is onto}, we can find \(v \in V\) such that \(\T(v) = z\), and for such \(v\) of course we can find \(v + \NULLT \in V/\NULLT\) such that \(\overline{\T}(v + \NULLT) = \T(v) = z\).
+\emph{Then since \(\T\) is onto}, we can find \(v \in \V\) such that \(\T(v) = z\), and for such \(v\) of course we can find \(v + \NULLT \in \V/\NULLT\) such that \(\overline{\T}(v + \NULLT) = \T(v) = z\).
 Hence \(\overline{\T}\) is onto.
 
-Hence \(\overline{\T}\) is an isomorphism from \(V/\NULLT\) to \(Z\).
+Hence \(\overline{\T}\) is an isomorphism from \(\V/\NULLT\) to \(Z\).
 
-\item It's somewhat ambiguous that the exercise does not mention the corresponding \(W\) of the linear map \(\eta\).
-Anyway, we assume \(\eta : V \to V/\NULLT\) by \(\eta(v) = v + \NULLT\).
-Then for all \(v \in V\), we have
+\item It's somewhat ambiguous that the exercise does not mention the corresponding \(\W\) of the linear map \(\eta\).
+Anyway, we assume \(\eta : \V \to \V/\NULLT\) by \(\eta(v) = v + \NULLT\).
+Then for all \(v \in \V\), we have
 \begin{align*}
     \overline{\T}\eta(v) & = \overline{\T}(\eta(v)) & \text{by def of composition} \\
                          & = \overline{\T}(v + \NULLT) & \text{by def of \(\eta\)} \\
@@ -711,13 +711,13 @@ This is the placeholder theorem for \EXEC{2.4.10}:
 In fact, we do not need to check \(BA = I_n\), hence a ``one-sided'' inverse is a ``two-sided'' inverse.
 
 \BLUE{(2)}: Analogous result for \LTRAN{}:
-Let \(\T : V \to W\) and \(\U : W \to V\) where \(V, W\) have same (finite) dimensions and \(\U\T = \ITRANV\).
+Let \(\T : \V \to \W\) and \(\U : \W \to \V\) where \(\V, \W\) have same (finite) dimensions and \(\U\T = \ITRANV\).
 Then both \(\U, \T\) are invertible. and we have \((\T)^{-1} = \U\) (hence \(\U^{-1} = \T\)).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.39}
 This is the placeholder theorem for \EXEC{2.4.15}:
-If \(\T : V \to W\) is a \LTRAN{}, and \(\beta\) is a basis for \(V\), then \(\T\) is an isomorphism (from \(V\) to \(W\)) if and only if \(\T(\beta)\) is a basis for \(W\).
+If \(\T : \V \to \W\) is a \LTRAN{}, and \(\beta\) is a basis for \(\V\), then \(\T\) is an isomorphism (from \(\V\) to \(\W\)) if and only if \(\T(\beta)\) is a basis for \(\W\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.40}
@@ -728,25 +728,25 @@ Given \(n \X n\) invertible matrix \(B\),
 
 \begin{additional theorem} \label{athm 2.41}
 This is the placeholder theorem for \EXEC{2.4.17}:
-Let \(V\) and \(W\) be finite-dimensional vector spaces and \(\T : V \to W\) be an isomorphism.
-Let \(V_0\) be a \emph{subspace} of \(V\).
+Let \(\V\) and \(\W\) be finite-dimensional vector spaces and \(\T : \V \to \W\) be an isomorphism.
+Let \(V_0\) be a \emph{subspace} of \(\V\).
 Then
 
-\BLUE{(1)} \(\T(V_0)\) is a subspace of \(W\), and
+\BLUE{(1)} \(\T(V_0)\) is a subspace of \(\W\), and
 
 \BLUE{(2)} \(\dim(V_0) = \dim(\T(V_0))\);
-    we say that an isomorphism is \emph{rank-preserving}, since in particular \(\dim(V) = \dim(\T(V))\).
+    we say that an isomorphism is \emph{rank-preserving}, since in particular \(\dim(\V) = \dim(\T(\V))\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.42}
 This is the placeholder theorem for \EXEC{2.4.20}:
-Let \(\T: V \to W\) be a linear transformation from an \(n\)-dimensional vector space \(V\) to an \(m\)-dimensional vector space \(W\).
-Let \(\beta\) and \(\gamma\) be ordered bases for \(V\) and \(W\), respectively.
+Let \(\T: \V \to \W\) be a linear transformation from an \(n\)-dimensional vector space \(\V\) to an \(m\)-dimensional vector space \(\W\).
+Let \(\beta\) and \(\gamma\) be ordered bases for \(\V\) and \(\W\), respectively.
 Then \(\rankT = \rank(\LMTRAN_A)\) and that \(\nullityT = \nullity(\LMTRAN_A)\), where \(A = [\T]_{\beta}^{\gamma}\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.43}
-This is the placeholder theorem for \EXEC{2.4.21}, which gives an isomorphism \(\Phi_{\beta}^{\gamma} : \mathcal{L}(V, W) \to M_{m \X n}(F)\).
+This is the placeholder theorem for \EXEC{2.4.21}, which gives an isomorphism \(\Phi_{\beta}^{\gamma} : \mathcal{L}(\V, \W) \to M_{m \X n}(F)\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.44}
