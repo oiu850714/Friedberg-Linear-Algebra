@@ -8,7 +8,7 @@ In each part, \(V\) and \(W\) are vector spaces with ordered (finite) bases \(\a
 \item \(\T\) is invertible if and only if \(\T\) is one-to-one and onto.
 \item \(\T = \LMTRAN_A\), where \(A = [\T]_{\alpha}^{\beta}\).
 \item \(M_{2 \X 3}(F)\) is isomorphic to \(F^5\).
-\item \(\mathcal{P}_n(F)\) is isomorphic to \(\mathcal{P}_m(F)\) if and only if \(n = m\).
+\item \(\POLYNF\) is isomorphic to \(\mathcal{P}_m(F)\) if and only if \(n = m\).
 \item \(AB = I\) implies that \(A\) and \(B\) are invertible.
 \item If \(A\) is invertible, then \((A^{-1})^{-1} = A\).
 \item \(A\) is invertible if and only if \(\LMTRAN_A\) is invertible.
@@ -25,7 +25,7 @@ In each part, \(V\) and \(W\) are vector spaces with ordered (finite) bases \(\a
 \item True, this is just true for normal functions.
 \item False. the domain and codomain of \(\T\) and \(\LMTRAN_A\) are not necessarily the same.
 \item False, \(\dim(M_{2 \X 3}(F)) = 6 \ne 5 = \dim(F^5)\), so by \THM{2.19}, they are not isomorphic to each other.
-\item True, \(\mathcal{P}_n(F)\) is isomorphic to \(\mathcal{P}_m(F)\), if and only if (by \THM{2.19}) their dimension are equal, that is, if and only if \(n = m\).
+\item True, \(\POLYNF\) is isomorphic to \(\mathcal{P}_m(F)\), if and only if (by \THM{2.19}) their dimension are equal, that is, if and only if \(n = m\).
 \item False, by \DEF{2.13} we also need to check \(BA = I\); and \(A, B\) \emph{must be squares of the same size}.
     Counter example:
     \[
@@ -54,8 +54,8 @@ For each of the following linear transformations \(\T\), determine whether \(\T\
 \item \(\T : \SET{R}^2 \to \SET{R}^3\) defined by \(\T(a_1, a_2) = (a_1 - 2a_2, a_2, 3a_1 + 4a_2)\).
 \item \(\T : \SET{R}^2 \to \SET{R}^3\) defined by \(\T(a_1, a_2) = (3a_1 - a_2, a_2, 4a_1)\).
 \item \(\T : \SET{R}^3 \to \SET{R}^3\) defined by \(\T(a_1, a_2, a_3) = (3a_1 - 2a_3, a_2, 3a_1 + 4a_2)\).
-\item \(\T : \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) defined by \(\T(p(x)) = p'(x)\).
-\item \(\T: M_{2 \X 2}(\SET{R}) \to \mathcal{P}_2(\SET{R})\) defined by \(\T \begin{pmatrix} a & b \\ c & d \end{pmatrix} = a + 2bx + (c + d)x^2\).
+\item \(\T : \POLYRRR \to \POLYRR\) defined by \(\T(p(x)) = p'(x)\).
+\item \(\T: M_{2 \X 2}(\SET{R}) \to \POLYRR\) defined by \(\T \begin{pmatrix} a & b \\ c & d \end{pmatrix} = a + 2bx + (c + d)x^2\).
 \item \(\T : M_{2 \X 2}(\SET{R}) \to M_{2 \X 2}(\SET{R})\) defined by \(\T \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} a + b & a \\ c & c + d \end{pmatrix}\).
 \end{enumerate}
 \end{exercise}
@@ -82,7 +82,7 @@ Justify your answers.
 \begin{enumerate}
 \item \(F^3\) and \(\mathcal{P}_3(F)\).
 \item \(F^4\) and \(\mathcal{P}_3(F)\).
-\item \(M_{2 \X 2}(\SET{R})\) and \(\mathcal{P}_3(\SET{R})\).
+\item \(M_{2 \X 2}(\SET{R})\) and \(\POLYRRR\).
 \item \(V = \{ A \in M_{2 \X 2}(\SET{R}) : \TRACE(A) = 0 \}\) and \(\SET{R}^4\).
 \end{enumerate}
 \end{exercise}
@@ -378,7 +378,7 @@ This concept is introduced in the next section(\DEF{2.16}) and is used in \CH{5}
 \begin{proof}
 First, it's trivial that \(\Phi\) is linear since it only involves matrix multiplication and you can use \THM{2.10} to check linearity.
 Now to show that \(\Phi\) is invertible, since domain/codomain have the same dimensions, we only need to show \(\Phi\) is onto.
-But given \(D \in M_{n \X n}(F)\), we have \(B D B^{-1} \in M_{n \X n}(F)\) s.t.
+But given \(D \in M_{n \X n}(F)\), we have \(B D B^{-1} \in M_{n \X n}(F)\) such that
 \begin{align*}
     \Phi(B D B^{-1}) & = B^{-1} (B D B^{-1}) B & \text{by def of \(\Phi\)} \\
                      & = (B^{-1}B) D (B^{-1} B) & \text{of course} \\
@@ -413,9 +413,9 @@ For one-to-one, given \(v_1, v_2 \in V_0\),
     \implies & v_1 = v_2. & \text{since in particular \(\T\) is one-to-one}
 \end{align*}
 
-For onto, given \(w \in \T(V_0)\), then by definition of \(\T(V_0)\) we of course can find \(v \in V_0\) s.t. \(\T(v) = W\).
+For onto, given \(w \in \T(V_0)\), then by definition of \(\T(V_0)\) we of course can find \(v \in V_0\) such that \(\T(v) = W\).
 But since \(v \in V_0\), \(\T'(v) = \T(v)\).
-Hence we have found \(v \in V_0\) s.t. \(\T'(v) = w\), so \(\T'\) is onto.
+Hence we have found \(v \in V_0\) such that \(\T'(v) = w\), so \(\T'\) is onto.
 
 So \(\T'\) is an isomorphism from \(V_0\) to \(\T(V_0)\), as desired.
 \end{enumerate}
@@ -548,7 +548,7 @@ Since \(\#\alpha = \dim(\mathcal{L}(V, W)\) (where by \THM{2.20} we can conclude
 BTW, we use the symbol \(\TZERO\) to represent the zero vector, i.e. the zero transformation, of \(\mathcal{L}(V, W)\).
 
 So suppose \(\sum_{i = 1}^{m} \sum_{j = 1}^n a_{ij} \T_{ij} = \TZERO\) \MAROON{(1)}, we have to show \(a_{ij} = 0\) for all \(1 \le i \le m\), \(1 \le j \le n\).
-But given arbitrary \(k\) s.t. \(1 \le k \le n\),
+But given arbitrary \(k\) such that \(1 \le k \le n\),
 \begin{align*}
     \OW & = \TZERO(v_k) & \text{of course} \\
         & = \bigg( \sum_{i = 1}^{m} \sum_{j = 1}^n a_{ij} \T_{ij} \bigg) (v_k) & \text{by \MAROON{(1)}} \\
@@ -560,7 +560,7 @@ But given arbitrary \(k\) s.t. \(1 \le k \le n\),
 which implies \(a_{1k} = a_{2k} = ... = a_{mk} = 0\) since \(\gamma\) is a basis for \(W\).
 Since \(k\) is arbitrary, we have \(a_{ik} = 1\) for all \(1 \le i \le m\), \(1 \le k \le n\), as desired.
 
-Now given arbitrary \(j\) s.t. \(1 \le j \le n\), it trivial that the \(j\)th column of \(M^{ij}\) is \(e_i\) where \(e_i\) is the \(i\)th standard vector of \(F^m\).
+Now given arbitrary \(j\) such that \(1 \le j \le n\), it trivial that the \(j\)th column of \(M^{ij}\) is \(e_i\) where \(e_i\) is the \(i\)th standard vector of \(F^m\).
 And by definition, the \(j\)th column of \([\T_{ij}]_{\beta}^{\gamma}\) is \([\T_{ij}(v_j)]_{\gamma}\), but
 \begin{align*}
     [\T_{ij}(v_j)]_{\gamma} & = [w_i]_{\gamma} & \text{by definition of \(T^{ij}\)} \\
@@ -573,7 +573,7 @@ Finally, And since \(\alpha' = \{ M_{ij} : 1 \le i \le m, 1 \le j \le n \}\) is 
 
 \begin{exercise} \label{exercise 2.4.22}
 Let \(c_0, c_1, ..., c_n\) be \emph{distinct} scalars from an infinite field \(F\).
-Define \(\T: \mathcal{P}_n(F) \to F^{n + 1}\) by \(\T(f) = (f(c_0), f(c_1), ..., f(c_n))\).
+Define \(\T: \POLYNF \to F^{n + 1}\) by \(\T(f) = (f(c_0), f(c_1), ..., f(c_n))\).
 Prove that \(\T\) is an isomorphism.
 Hint: Use the Lagrange polynomials associated with \(c_0, c_1, ..., c_n\).
 \end{exercise}
@@ -581,7 +581,7 @@ Hint: Use the Lagrange polynomials associated with \(c_0, c_1, ..., c_n\).
 \begin{proof}
 (This exercise is similar to \EXEC{2.4.11}.)
 First it's of course that \(\T\) is linear.
-And since \(\dim(\mathcal{P}_n(F)) = \dim(F^{n + 1})\), we only have to show \(\T\) is one-to-one.
+And since \(\dim(\POLYNF) = \dim(F^{n + 1})\), we only have to show \(\T\) is one-to-one.
 So suppose \(f \in \NULLT\), we have to show \(f\) is zero polynomial to show \(\T\) is one-to-one.
 Then we have \(\T(f) = (f(c_0), f(c_1), ..., f(c_n)) = (0, 0, ..., 0)\).
 But by \RMK{1.6.6}, we know that \(f\) is zero polynomial, as desired.
@@ -589,7 +589,7 @@ But by \RMK{1.6.6}, we know that \(f\) is zero polynomial, as desired.
 
 \begin{exercise} \label{exercise 2.4.23}
 Let \(W\) denote the vector space of all \emph{sequences} in \(F\) that \emph{have only a finite number of nonzero terms} (defined in \EXEC{1.6.18}),
-and let \(Z = \mathcal{P}(F)\).
+and let \(Z = \POLYF\).
 Define
 \[
     \T : W \to Z \text{ by } \T(\sigma) = \sum_{i = 0}^n \sigma(i)x^i,
@@ -600,7 +600,7 @@ where \(n\) is the \emph{largest integer} such that \(\sigma(n) \ne 0\). Prove t
 \begin{proof}
 Since the domain and codomain of \(\T\) are infinite-dimensional, we need to show that \(\T\) is linear, one-to-one, onto, respectively.
 
-First, given \(\sigma_1, \sigma_2 \in W\) and scalar \(c \in F\), where \(n_1\), \(n_2\) are the largest nonzero integers s.t. \(\sigma_1(n_1) \ne 0\) and \(\sigma_2(n_2) \ne 0\), respectively.
+First, given \(\sigma_1, \sigma_2 \in W\) and scalar \(c \in F\), where \(n_1\), \(n_2\) are the largest nonzero integers such that \(\sigma_1(n_1) \ne 0\) and \(\sigma_2(n_2) \ne 0\), respectively.
 Then
 \begin{align*}
     & \T(\sigma_1 + c \sigma_2) \\
@@ -658,7 +658,7 @@ Then by definition of \(\overline{\T}\), \(\overline{\T}(v + \NULLT) = \T(v) = 0
 And of course \(v - \OV \in \NULLT\), so by \ATHM{1.10}(b), \(v + \NULLT = \OV + \NULLT\), as desired.
 
 For onto, suppose arbitrary \(z \in Z\).
-\emph{Then since \(\T\) is onto}, we can find \(v \in V\) s.t. \(\T(v) = z\), and for such \(v\) of course we can find \(v + \NULLT \in V/\NULLT\) s.t. \(\overline{\T}(v + \NULLT) = \T(v) = z\).
+\emph{Then since \(\T\) is onto}, we can find \(v \in V\) such that \(\T(v) = z\), and for such \(v\) of course we can find \(v + \NULLT \in V/\NULLT\) such that \(\overline{\T}(v + \NULLT) = \T(v) = z\).
 Hence \(\overline{\T}\) is onto.
 
 Hence \(\overline{\T}\) is an isomorphism from \(V/\NULLT\) to \(Z\).
@@ -750,7 +750,7 @@ This is the placeholder theorem for \EXEC{2.4.21}, which gives an isomorphism \(
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.44}
-This is the placeholder theorem for \EXEC{2.4.22}, which gives an isomorphism from \(\mathcal{P}_n(F)\) to \(F^{n + 1}\);
+This is the placeholder theorem for \EXEC{2.4.22}, which gives an isomorphism from \(\POLYNF\) to \(F^{n + 1}\);
 And this isomorphism is related to Lagrange polynomials(or \RMK{1.6.6}).
 \end{additional theorem}
 

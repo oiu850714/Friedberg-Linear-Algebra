@@ -25,7 +25,7 @@ spans \(V\).
 \begin{enumerate}
 \item False, the zero vector has \(\emptyset\) as basis.
 \item True, by \THM{1.9}.
-\item False, \(\mathcal{P}(F)\) has a infinite basis \(\{ 1, x, x^2, ... \}\).
+\item False, \(\POLYF\) has a infinite basis \(\{ 1, x, x^2, ... \}\).
 \item False, counterexample: \(\mathcal{P}_n(F)\) have \(\{ 1, x, x^2, ..., x^n \}\) and Lagrange polynomial as bases.
 \item True, by \CORO{1.10.1}.
 \item False, the dimension of \(\mathcal{P}_n(F)\) is \(n + 1\).
@@ -57,7 +57,7 @@ But since they all have \(3\) vectors which is equal to the dimension of \(\SET{
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.3}
-Determine which of the following sets are bases for \(\mathcal{P}_2(\SET{R})\).
+Determine which of the following sets are bases for \(\POLYRR\).
 \begin{enumerate}
 \item \(\{ -1 - x + 2x^2, 2 + x - 2x^2, 1 - 2x + 4x^2 \}\)
 \item \(\{ 1 + 2x + x^2, 3 + x^2, x + x^2 \}\)
@@ -73,12 +73,12 @@ But since they all have \(3\) vectors which is equal to the dimension of \(\math
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.4}
-Do the polynomials \(x^3 - 2x^2 + 1, 4x^2 - x + 3\), and \(3x - 2\) generate \(\mathcal{P}_3(\SET{R})\)?
+Do the polynomials \(x^3 - 2x^2 + 1, 4x^2 - x + 3\), and \(3x - 2\) generate \(\POLYRRR\)?
 Justify your answer.
 \end{exercise}
 
 \begin{proof}
-No, \(\mathcal{P}_3(\SET{R})\) has dimension \(4\), a subset with \(3\) vectors cannot generate it, by \CORO{1.10.3}(a).
+No, \(\POLYRRR\) has dimension \(4\), a subset with \(3\) vectors cannot generate it, by \CORO{1.10.3}(a).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.5}
@@ -227,7 +227,7 @@ Since \(\{ u, v, w \}\) is \LID{}, we have \(c_1 = 0\) and \(c_1 + c_2 = 0\) and
 \end{proof}
 
 \begin{note}
-\TODOREF{} Note that when we learn the \emph{elementary row operations} in \CH{3}, \EXEC{1.6.11}, \EXEC{1.6.12} are immediately true.
+Note that when we learn the \emph{elementary row operations} in \CH{3}, \EXEC{1.6.11}, \EXEC{1.6.12} are immediately true.
 Similarly to \EXEC{1.5.13}.
 \end{note}
 
@@ -315,7 +315,7 @@ Note that any skew-symmetric matrix \(A\) has the following properties:
 With these properties we claim that the set \(S = \{ E_{ij} - E_{ji} : 1 \le i\ \RED{<}\ j \le n \}\) is a basis for \(W\).
 
 First (informally) it's trivial that \(S\) is \LID{} since each vector in \(S\) is a combination of \emph{distinct} standard vectors,, and standard vectors are \LID{}.
-(\TODOREF{} This argument is immediately true when we learn the concept of elementary row operations in \CH{3}; or refer to \EXEC{1.6.11}, \EXEC{1.6.12}, which have the same spirit.)
+(This argument is immediately true when we learn the concept of \emph{elementary row operations} in \CH{3}; or refer to \EXEC{1.6.11}, \EXEC{1.6.12}, which have the same spirit.)
 
 Now we show \(\spann(S) = W\).
 First, it's trivial that any matrix in \(\spann(S)\) is skew-symmetric since it satisfies the properties above, so \(\spann(S) \subseteq W\).
@@ -374,7 +374,7 @@ If \(S\) is finite, then by \CORO{1.10.3}(a), it has at least \(n\) elements.
 So in all cases, \(S\) contains at least \(n\) vectors.
 
 Now we prove part(a).
-In fact, since at present we have known that the finite-dimensional vector space \(V\) has finite bases, we can use the similar process in \THM{1.9} s.t. we choose a subset of \(S\), \(\beta = \{ u_1, u_2, ..., u_k \}\) s.t. \(\beta\) is \LID{} and \textbf{\(k\) must not exceed \(n\)}, hence \(\beta\) is finite.
+In fact, since at present we have known that the finite-dimensional vector space \(V\) has finite bases, we can use the similar process in \THM{1.9} such that we choose a subset of \(S\), \(\beta = \{ u_1, u_2, ..., u_k \}\) such that \(\beta\) is \LID{} and \textbf{\(k\) must not exceed \(n\)}, hence \(\beta\) is finite.
 (otherwise we get a \LID{} subset with elements more than the dimension of the (finite) vector space, which is impossible.)
 And using the remaining argument after the choosing process of \THM{1.9}, we conclude that the (finite) \LID{} subset \(\beta\) of \(S\) is really a basis for \(V\).
 \end{proof}
@@ -387,7 +387,7 @@ Prove that a vector space \(V\) is infinite-dimensional if and only if it contai
 
 \(\Longleftarrow\): For the sake of contradiction, suppose \(V\) contains an infinite \LID{} subset \(S\) but \(V\) is finite-dimensional, say \(\dim(V) = n\).
 In particular we can find a basis \(\beta\) of \(V\) with \(n\) elements.
-And by \CORO{1.6.1}, given any finite subset \(S'\) of \(S\) s.t. \(S\) has \(n + 1\) elements, \(S'\) is also \LID{}.
+And by \CORO{1.6.1}, given any finite subset \(S'\) of \(S\) such that \(S\) has \(n + 1\) elements, \(S'\) is also \LID{}.
 By replacement theorem \THM{1.10}(1), since \(\beta\) generates \(V\), and \(S'\) is \LID{}, we have \(\#(S') \le \#(\beta)\);
 that is, \(n + 1 \le n\), which is impossible.
 So \(V\) must be infinite dimensional.
@@ -530,7 +530,7 @@ So \(\beta\) is a basis for \(W\), and that implies \(W\) has dimension \(n\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.27}
-Let \(W_1\) and \(W_2\) be the subspaces of \(\mathcal{P}(F)\) defined in \EXEC{1.3.25}.
+Let \(W_1\) and \(W_2\) be the subspaces of \(\POLYF\) defined in \EXEC{1.3.25}.
 Determine the dimensions of the subspaces \(W_1 \cap \mathcal{P}_n(F)\) and \(W_2 \cap \mathcal{P}_n(F)\).
 \end{exercise}
 
@@ -779,10 +779,10 @@ Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\) such that \(V = W_1
 
 We first show that \(\beta_1 \cap \beta_2 = \emptyset\).
 For the sake of contradiction, suppose not.
-Then there exists \(v\) s.t. \(v \in \beta_1\) and \(v \in \beta_2\).
+Then there exists \(v\) such that \(v \in \beta_1\) and \(v \in \beta_2\).
 Note that \(v\) must be nonzero vector since \(\beta_1, \beta_2\) are (basis, hence) \LID{}.
 But in particular, \(v \in \spann(\beta_1) = W_1\) and \(v \in \spann(\beta_2) = W_2\).
-So we have found a nonzero vector \(v\) s.t. \(v \in W_1 \cap W_2\), which contradicts that (\(V = W_1 \oplus W_2\), hence in particular we have) \(W_1 \cap W_2 = \{ \OV \}\).
+So we have found a nonzero vector \(v\) such that \(v \in W_1 \cap W_2\), which contradicts that (\(V = W_1 \oplus W_2\), hence in particular we have) \(W_1 \cap W_2 = \{ \OV \}\).
 Now we show that \(\beta_1 \cup \beta_2\) is a basis for \(V\).
 So we first show that \(\spann(\beta_1 \cup \beta_2) = V\).
 But it suffices to show this by showing \(V \subseteq \spann(\beta_1 \cup \beta_2)\) since the other direction is automatically true.

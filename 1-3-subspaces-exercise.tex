@@ -192,7 +192,7 @@ So by \THM{1.3}, \(W_1\) is a subspace of \(F^n\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.11}
-Is the set \(W = \{f(x) \in \mathcal{P}(F): f(x) = 0 \lor f(x) \text{ has degree } n\}\) a subspace of \(\mathcal{P}(F)\) if \(n \ge 1\)?
+Is the set \(W = \{f(x) \in \POLYF: f(x) = 0 \lor f(x) \text{ has degree } n\}\) a subspace of \(\POLYF\) if \(n \ge 1\)?
 Justify your answer.
 \end{exercise}
 
@@ -233,13 +233,13 @@ Prove that \(\mathcal{C}(S, F)\) is a subspace of \(\mathcal{F}(S, F)\).
 First the zero function is in \(\mathcal{C}(S, F)\) since there is \emph{no elements} (or ``zero'' elements, finite elements) such that the output of the zero function is nonzero.
 
 Now suppose \(f \in \mathcal{C}(S, F)\).
-That is, \(f\) is a function s.t. \(f(s) \ne 0\) for all elements \(s\) in a \emph{finite} set \(\{ s_1, s_2, ..., s_n \} \subseteq S\).
+That is, \(f\) is a function such that \(f(s) \ne 0\) for all elements \(s\) in a \emph{finite} set \(\{ s_1, s_2, ..., s_n \} \subseteq S\).
 Then if \(c \in F\) and \(c \ne 0\), \((cf)(s) = cf(s) \ne 0\) for all \(s \in \{ s_1, s_2, ..., s_n \} \).
 (for \(c = 0\) \(cf\), is the zero function and fallbacks to the previous case).
 By definition of \(\mathcal{C}(S, F)\), \(cf \in \mathcal{C}(S, F)\), so the scalar multiplication is closed  \(\mathcal{C}(S, F)\).
 
 Now suppose \(f, g \in \mathcal{C}(S, F)\).
-That is, \(f\) is a function s.t. \(f(s) \ne 0\) for all elements \(s\) in a \emph{finite} set \(S_n = \{ s_1, s_2, ..., s_n \} \subseteq S \) and \(g\) is a function s.t. \(g(t) \ne 0\) for all elements \(t\) in a \emph{finite} set \(T_m = \{ t_1, t_2, ..., t_m \} \subseteq S\).
+That is, \(f\) is a function such that \(f(s) \ne 0\) for all elements \(s\) in a \emph{finite} set \(S_n = \{ s_1, s_2, ..., s_n \} \subseteq S \) and \(g\) is a function such that \(g(t) \ne 0\) for all elements \(t\) in a \emph{finite} set \(T_m = \{ t_1, t_2, ..., t_m \} \subseteq S\).
 Then first \(S_n \cup T_m\) is still finite set.
 Also, only elements in \(u \in S_n \cup T_m\) may cause \((f + g)(u) = f(u) + g(u)\) to be \emph{not} equal to \(0\).
 So there are still finite elements which make the output of \(f + g\) nonzero.
@@ -328,7 +328,7 @@ In all cases, \(W_1 \cup W_2\) is a subspace of \(V\).
 Now suppose \(W_1 \cup W_2\) is a subspace of \(V\) \MAROON{(1)}.
 For the sake of contradiction suppose \(W_1 \not \subseteq W_2\) and \(W_2 \not \subseteq W_1\) \MAROON{(2)}.
 
-Then by definition of \(\not \subseteq\), we can find \(u\) s.t. \(u \in W_1 \land u \not \in W_2\) \MAROON{(3)} and \(v\) s.t. \(v \in W_2 \land u \not \in W_1\) \MAROON{(4)}.
+Then by definition of \(\not \subseteq\), we can find \(u\) such that \(u \in W_1 \land u \not \in W_2\) \MAROON{(3)} and \(v\) such that \(v \in W_2 \land u \not \in W_1\) \MAROON{(4)}.
 But in particular, both \(u, v\) are still belong to \(W_1 \cup W_2\).
 And by \MAROON{(1)}, \(u + v \in W_1 \cup W_2\) by closed addition.
 So in particular \(u + v \in W_1\) or \(u + v \in W_2\).
@@ -502,25 +502,25 @@ The other direction is automatically true, since \(W_1 + W_2\) is a subspace of 
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.25}
-Let \(W_1\) denote the set of all polynomials \(f(x)\) in \(\mathcal{P}(F)\) such that in the representation
+Let \(W_1\) denote the set of all polynomials \(f(x)\) in \(\POLYF\) such that in the representation
 \[
     f(x) = a_n x^n + a_{n - 1} x^{n - 1} + ... + a_1 x + a_0,
 \]
 we have \(a_i = 0\) whenever \(i\) is \emph{even}.
-Likewise let \(W_2\) denote the set of all polynomials \(g(x)\) in \(\mathcal{P}(F)\) such that in the representation
+Likewise let \(W_2\) denote the set of all polynomials \(g(x)\) in \(\POLYF\) such that in the representation
 \[
     g(x) = b_m x_m + b_{m - 1} x_{m - 1} + ... + b_1 x + b_0,
 \]
 we have \(b_i = 0\) whenever \(i\) is \emph{odd}.
-Prove that \(\mathcal{P}(F) = W_1 \oplus W_2\).
+Prove that \(\POLYF = W_1 \oplus W_2\).
 \end{exercise}
 
 \begin{proof}
 First, it's trivial that zero polynomial is the only polynomial satisfying the condition of \(W_1\) and \(W_2\) \MAROON{(1)},
 and given any polynomial we can split it into two polynomial, one having only terms of odd degrees and the other have only terms of even degree;
-and that implies \(\mathcal{P}(F) \subseteq W_1 + W_2\).
-And like previous exercise, \(W_1 + W_2 \subseteq \mathcal{P}(F)\) is automatically true, so we have \(\mathcal{P}(F) = W_1 + W_2\) \MAROON{(2)}.
-So by \ADEF{1.9} and \MAROON{(1)(2)}, \(\mathcal{P}(F) = W_1 \oplus W_2\).
+and that implies \(\POLYF \subseteq W_1 + W_2\).
+And like previous exercise, \(W_1 + W_2 \subseteq \POLYF\) is automatically true, so we have \(\POLYF = W_1 + W_2\) \MAROON{(2)}.
+So by \ADEF{1.9} and \MAROON{(1)(2)}, \(\POLYF = W_1 \oplus W_2\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.26}
@@ -574,7 +574,7 @@ So \(M = O_{n \X n}\).
 Now we show \(M_{n \X n}(F) \subseteq W_1 + W_2\) (again, the other direction is automatically true since \(W_1 + W_2\) is a subspace of \(M_{n \X n}(F)\)).
 So let \(A\) be arbitrary matrix in \(M_{n \X n}(F)\).
 (\RED{Now the tricky part.})
-In particular, there exists \(B\) in \(M_{n \X n}(F)\) s.t. \(B = \frac1{2} A\) \MAROON{(2)}.
+In particular, there exists \(B\) in \(M_{n \X n}(F)\) such that \(B = \frac1{2} A\) \MAROON{(2)}.
 Then
 \begin{align*}
     A & = \frac1{2} A + \frac1{2} A & \text{of course} \\
@@ -612,7 +612,7 @@ Compare this exercise with \EXEC{1.3.28}.
 \begin{proof}
 First we show \(W_1 \cap W_2 = \{ O_{n \X n} \}\).
 Suppose \(A \in W_1 \cap W_2\) but \(A \ne O_{n \X n}\).
-Then there exists \(1 \le i \le n\) and \(1 \le j \le n\) s.t. \(A_{ij} \ne 0\).
+Then there exists \(1 \le i \le n\) and \(1 \le j \le n\) such that \(A_{ij} \ne 0\).
 Also by definition of \(W_1\) and \(W_2\) we have \(A_{ij} = 0\) whenever \(i \le j\) \MAROON{(1)} and \(A^\top = A\) \MAROON{(2)}.
 So by \MAROON{(1)} we must have \(i > j\) \MAROON{(3)}.
 And by definition of transpose we have \((A^\top)_{ij} = A_{ji}\);
@@ -643,7 +643,7 @@ Prove that \(V\) is the direct sum of \(W_1\) and \(W_2\) if and only if each ve
 \begin{proof}\ 
 
 \(\Longrightarrow\): Suppose \(V = W_1 \oplus W_2\).
-Now suppose there is \(v \in V\) s.t. \(v = u_1 + u_2 = v_1 + v_2\) \MAROON{(1)} where \(u_1, v_1 \in W_1\) and \(u_2, v_2 \in W_2\).
+Now suppose there is \(v \in V\) such that \(v = u_1 + u_2 = v_1 + v_2\) \MAROON{(1)} where \(u_1, v_1 \in W_1\) and \(u_2, v_2 \in W_2\).
 We will show that \(u_1 = v_1\) and \(u_2 = v_2\).
 Then by rearranging equation in \MAROON{(1)}, we have \(u_1 - v_1 = u_2 - v_2\) \MAROON{(2)}.
 Since \(u_1, v_1 \in W_1\), we have \(u_1 - v_1 \in W_1\); similarly we get \(u_2 - v_2 \in W_2\).
@@ -888,19 +888,19 @@ For (VS 2),
                           & = (v_1 + W) + ((v_2 + W) + (v_3 + W)). & \text{by def of \(+\) of \(S\)}
 \end{align*}
 
-For (VS 3), there exists the zero vector \(\OV + W\) in \(S\), where \(\OV\) is the zero vector of \(V\), s.t.
+For (VS 3), there exists the zero vector \(\OV + W\) in \(S\), where \(\OV\) is the zero vector of \(V\), such that
 \begin{align*}
     (v_1 + W) + (\OV + W) & = (v_1 + \OV) + W & \text{by def of \(+\) of \(S\)} \\
                           & = v_1 + W. & \text{by (VS 3) of \(V\)}
 \end{align*}
 
-For (VS 4), given any \(v + W\) in \(S\), there exists the inverse \((-v) + W\), where \(-v\) is the inverse of \(v\) in the vector space \(V\), s.t.
+For (VS 4), given any \(v + W\) in \(S\), there exists the inverse \((-v) + W\), where \(-v\) is the inverse of \(v\) in the vector space \(V\), such that
 \begin{align*}
     (v + W) + ((-v) + W & = (v + (-v)) + W & \text{by def of \(+\) of \(S\)} \\
                         & = \OV + W. & \text{by (VS 4) of \(V\)}
 \end{align*}
 
-For (VS 5), there exists scalar \(\IF \in F\), the multiplicative identity of vector space \(V\), s.t. given any \(v + W \in S\),
+For (VS 5), there exists scalar \(\IF \in F\), the multiplicative identity of vector space \(V\), such that given any \(v + W \in S\),
 \begin{align*}
     \IF(v + W)& = \IF v + W & \text{by def of \(\cdot\) of \(S\)} \\
                           & = v + W. & \text{by (VS 5) of \(V\)}

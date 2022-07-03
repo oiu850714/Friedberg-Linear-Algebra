@@ -203,7 +203,7 @@ Note that the object in question is a \emph{rectangular} parallelepiped (see Fig
 Hence by the familiar formula for volume, its volume should be \(\sqrt{6} \cdot \sqrt{2} \cdot \sqrt{3} = 6\), as the determinant calculation shows.
 \end{example}
 
-\includegraphics[width=16cm]{images/figure-4.6.png}
+\includegraphics[width=16cm]{images/figure-4-6.png}
 
 (BTW the figure doesn't look like a \emph{rectangular} parallelepiped.)
 
@@ -427,8 +427,6 @@ Prove that if \(Q\) is a \emph{unitary} matrix, then \(\left| \det(Q) \right| = 
 \end{enumerate}
 \end{exercise}
 
-\TODOREF{Finish Appendix D.}
-
 \begin{proof} \ 
 
 \begin{enumerate}
@@ -593,8 +591,6 @@ Prove that if \(M \in M_{n \X n}(F)\) can be written in the form
 where \(A\) and \(C\) are square matrices, then \(\det(M) = \det(A) \cdot \det(C)\).
 \end{exercise}
 
-\TODOREF{This is used in p.265, eigenspace.}
-
 \begin{proof}
 There are two cases: \(C\) is invertible or not.
 
@@ -625,8 +621,8 @@ So in all cases, we have \(\det(M) = \det(A) \cdot \det(C)\).
 \end{proof}
 
 \begin{exercise} \label{exercise 4.3.22}
-Let \(\T : \mathcal{P}_n(F) \to F^{n + 1}\) be the \LTRAN{} defined in \EXEC{2.4.22} by \(\T(f) = (f(c_0), f(c_1), ..., f(c_n))\), where \(c_0, c_1, ..., c_n\) are \emph{distinct} scalars in an infinite field \(F\).
-Let \(\beta\) be the \emph{standard} ordered basis for \(\mathcal{P}_n(F)\) and \(\gamma\) be the \emph{standard} ordered basis for \(F^{n + 1}\).
+Let \(\T : \POLYNF \to F^{n + 1}\) be the \LTRAN{} defined in \EXEC{2.4.22} by \(\T(f) = (f(c_0), f(c_1), ..., f(c_n))\), where \(c_0, c_1, ..., c_n\) are \emph{distinct} scalars in an infinite field \(F\).
+Let \(\beta\) be the \emph{standard} ordered basis for \(\POLYNF\) and \(\gamma\) be the \emph{standard} ordered basis for \(F^{n + 1}\).
 \begin{enumerate}
 \item Show that the \((n + 1) \X (n + 1)\) matrix \(M = [\T]_{\beta}^{\gamma}\) has the form
 \[

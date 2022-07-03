@@ -298,14 +298,14 @@ It should be noted that \THM{2.2} is true even if \(\beta\) is infinite, that is
 \end{remark}
 
 \begin{example} \label{example 2.1.10}
-Define the linear(need to prove, but trivial) transformation \(T : \mathcal{P}_2(\SET{R}) \to M_{2 \X 2}(\SET{R})\) by
+Define the linear(need to prove, but trivial) transformation \(T : \POLYRR \to M_{2 \X 2}(\SET{R})\) by
 \[
     T(f) = \begin{pmatrix}
         f(1) - f(2) &    0 \\
         0           & f(0)
     \end{pmatrix}.
 \]
-Since \(\beta = \{1, x, x^2\}\) is a basis for \(\mathcal{P}_2(\SET{R})\), we have
+Since \(\beta = \{1, x, x^2\}\) is a basis for \(\POLYRR\), we have
 \begin{align*}
     \RANGET & = \spann(\T(\beta)) & \text{by \THM{2.2}} \\
             & = \spann(\{\T(1), \T(x), \T(x^2)\}) & \text{unwrap syntactic sugar} \\
@@ -359,7 +359,7 @@ Hence \(\NULLT = \{ c(-3x + x^2) : c \in \SET{R} \}\), and trivially the basis i
 \begin{remark} \label{remark 2.1.6}
 Note that in \EXAMPLE{2.1.10},
 \[
-    \dim(\NULLT) + \dim(\RANGET) = 1 + 2 = 3 = \dim(\mathcal{P}_2(\SET{R})).
+    \dim(\NULLT) + \dim(\RANGET) = 1 + 2 = 3 = \dim(\POLYRR).
 \]
 In \THM{2.3}, we see that a similar result is \emph{true in general}.
 \end{remark}
@@ -397,10 +397,10 @@ We claim that
 \]
 is a basis for \(\RANGET\).
 
-But first, we need to show that \(\T(v_{k + 1}), ..., \T(v_n)\) are all \textbf{distinct}. (s.t. \(S\) has \(n - k\) elements.)
+But first, we need to show that \(\T(v_{k + 1}), ..., \T(v_n)\) are all \textbf{distinct}. (such that \(S\) has \(n - k\) elements.)
 
 For the sake of contradiction, suppose not.
-Then there exists \(i \ne j\), \(k + 1 \le i \le n, k + 1 \le j \le n\), s.t. \(\T(v_i) = \T(v_j)\).
+Then there exists \(i \ne j\), \(k + 1 \le i \le n, k + 1 \le j \le n\), such that \(\T(v_i) = \T(v_j)\).
 And
 \begin{align*}
              & \T(v_i) = \T(v_j) \\
@@ -481,7 +481,7 @@ By definition of one-to-one, that implies \(x = \OV\).
 
 \(\Longleftarrow\):
 Suppose \(\NULLT = \{ \OV \}\), we have to show \(\T\) is one-to-one.
-So suppose arbitrary \(x_1, x_2\) s.t. \(\T(x_1) = \T(x_2)\), we have to show \(x_1 = x_2\).
+So suppose arbitrary \(x_1, x_2\) such that \(\T(x_1) = \T(x_2)\), we have to show \(x_1 = x_2\).
 Then we have
 \begin{align*}
              & \T(x_1) = \T(x_2) \\
@@ -543,7 +543,7 @@ are onto, and vice versa.
 \end{remark}
 
 \begin{example} \label{example 2.1.11}
-Let \(\T : \mathcal{P}_2(\SET{R}) \to \mathcal{P}_3(\SET{R})\) be the \LTRAN{} defined by
+Let \(\T : \POLYRR \to \POLYRR\) be the \LTRAN{} defined by
 \[
     \T(f(x)) = 2f'(x) + \int_0^x 3f(t) dt.
 \]
@@ -555,8 +555,8 @@ Now
             & = \spann(\{ 3x, 2 + \frac{3}{2} x^2, 4x + x^3 \}).
 \end{align*}
 Since \(\{ 3x, 2 + \frac{3}{2} x^2, 4x + x^3 \}\) is \LID{}, \(\rankT = 3\).
-Since the dimension of the codomain \(\dim(\mathcal{P}_3(\SET{R})) = 4\), \(\T\) is not onto.
-From the dimension theorem, \(3 = \dim(\mathcal{P}_2(\SET{R})) = \nullityT + \rankT = \nullityT + 3\).
+Since the dimension of the codomain \(\dim(\POLYRRR) = 4\), \(\T\) is not onto.
+From the dimension theorem, \(3 = \dim(\POLYRR) = \nullityT + \rankT = \nullityT + 3\).
 So \(\nullityT = 0\), and therefore, \(\NULLT = \{ \OV \}\).
 We conclude from \THM{2.4} that \(\T\) is one-to-one.
 \end{example}
@@ -577,13 +577,13 @@ The next example illustrates the use of this result.
 \end{note}
 
 \begin{example} \label{example 2.1.13}
-Let \(\T : \mathcal{P}_2(\SET{R}) \to \SET{R}^3\) be the \LTRAN{} defined by
+Let \(\T : \POLYRR \to \SET{R}^3\) be the \LTRAN{} defined by
 \[
     \T(a_0 + a_1 x + a_2 x^2) = (a_0, a_1, a_2).
 \]
 Clearly \(\T\) is linear and one-to-one(and onto).
 Let \(S = \{ 2 - x + 3x^2, x + x^2, 1 - 2x^2 \}\).
-Then \(S\) is \LID{} in \(\mathcal{P}_2(\SET{R})\) because (by \EXEC{2.1.14} and)
+Then \(S\) is \LID{} in \(\POLYRR\) because (by \EXEC{2.1.14} and)
 \[
     \T(S) = \{ (2, -1, 3), (0, 1, 1), (1, 0, -2) \}
 \]
@@ -676,7 +676,7 @@ For \(v_i\) where \(i = 1, ..., n\):
 Hence \(\T\) satisfies the two requirements, so the existent part is proved.
 
 Now we have to show \(\T\) is unique.
-So suppose \(\U\) is also linear s.t. \(\U(v_i) = w_i\) for \(i = 1, ..., n\).
+So suppose \(\U\) is also linear such that \(\U(v_i) = w_i\) for \(i = 1, ..., n\).
 We have to show \(\U = \T\);
 that is, (by definition of function equality,) we have to show \(\forall x \in V, \U(x) = \T(x)\).
 

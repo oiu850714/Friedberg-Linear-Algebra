@@ -47,6 +47,21 @@
 %\newtheorem{remark}{Remark}[section]
 \newtheorem*{note}{Note}
 
+% The numbering rule for the definition/theorem/corollary in the appendices are different from the main text.
+% Create new commands for them.
+\newtheorem{appendix theorem}{Theorem}[section] % theorem for appendix
+\newtheorem{appendix corollary}{Corollary}[appendix theorem] % corollary for appendix
+\newtheorem{appendix definition}{Definition}[section] % definition for the appendix
+
+% Colorful parenthesis; see https://tex.stackexchange.com/questions/195241/is-it-possible-to-give-colors-to-big-automatic-parenthesis-in-math-mode
+\newcommand{\cleft}[2][.]{%
+  \begingroup\colorlet{savedleftcolor}{.}%
+  \color{#1}\left#2\color{savedleftcolor}%
+}
+\newcommand{\cright}[2][.]{%
+  \color{#1}\right#2\endgroup
+}
+
 \begin{document}
 \begin{CJK*}{UTF8}{bsmi}
 
@@ -77,6 +92,7 @@
 \newcommand{\RMK}[1]{Remark \ref{remark #1}}
 \newcommand{\THM}[1]{Theorem \ref{thm #1}}
 \newcommand{\SEC}[1]{Section \ref{sec #1}}
+\newcommand{\APPSEC}[1]{Appendix \ref{sec #1}}
 \newcommand{\CH}[1]{Chapter \ref{ch #1}}
 
 \newcommand{\X}{\times}
@@ -88,7 +104,7 @@
 
 \newcommand{\TODOREF}{} % For the reference that has not been written.
 
-\newcommand{\CONTR}{\mathcal{C}(\SET{R})}
+\newcommand{\CONTR}{\textsf{C}(\SET{R})}
 \newcommand{\TRACE}{\textbf{tr}}
 \newcommand{\SET}[1]{\mathbf{#1}}%
 
@@ -97,32 +113,46 @@
 \newcommand{\OW}{0_{_W}}
 \newcommand{\IF}{1_{_F}}
 \newcommand{\IV}{1_{_V}}
-\newcommand{\ITRAN}[1]{\mathrm{I}_{_{#1}}}
-\newcommand{\ITRANV}{\mathrm{I}_{_V}} % "I"dentity "tran"sformation on "V"
-\newcommand{\ITRANW}{\mathrm{I}_{_W}} % "I"dentity "tran"sformation on "W"
-\newcommand{\TZERO}{\mathrm{T}_{_0}}
+\newcommand{\ITRAN}[1]{\textsf{I}_{_{#1}}}
+\newcommand{\ITRANV}{\textsf{I}_{_V}} % "I"dentity "tran"sformation on "V"
+\newcommand{\ITRANW}{\textsf{I}_{_W}} % "I"dentity "tran"sformation on "W"
+\newcommand{\TZERO}{\textsf{T}_{_0}}
 
 \newcommand{\FRR}{\mathcal{F}(\SET{R}, \SET{R})}
 \newcommand{\toINF}{\to \infty}
 
+\newcommand{\POLYF}{\textsf{P}(F)}
+\newcommand{\POLYNF}{\textsf{P}_n(F)}
+\newcommand{\POLYRR}{\textsf{P}_2(\SET{R})}
+\newcommand{\POLYRRR}{\textsf{P}_3(\SET{R})}
+\newcommand{\POLYRRRR}{\textsf{P}_4(\SET{R})}
+\newcommand{\POLYRINF}{\textsf{P}(\SET{R})}
+\newcommand{\POLYCC}{\textsf{P}_2(\SET{C})}
+\newcommand{\POLYCCC}{\textsf{P}_3(\SET{C})}
+\newcommand{\POLYCCCC}{\textsf{P}_4(\SET{C})}
+\newcommand{\POLYCINF}{\textsf{P}(\SET{C})}
+
 \newcommand{\me}{\mathrm{e}}
 \newcommand{\NULL}{\mathrm{N}}
-\newcommand{\T}{\mathrm{T}}
-\newcommand{\U}{\mathrm{U}}
-\newcommand{\LMTRAN}{\mathrm{L}}
-\newcommand{\NULLT}{\mathrm{N(T)}}
+\newcommand{\T}{\textsf{T}}
+\newcommand{\U}{\textsf{U}}
+\newcommand{\LMTRAN}{\textsf{L}}
+\newcommand{\NULLT}{\textsf{N(T)}}
 \newcommand{\RANGE}{\mathrm{R}}
-\newcommand{\RANGET}{\mathrm{R(T)}}
+\newcommand{\RANGET}{\textsf{R(T)}}
 \newcommand{\LDP}{linearly dependent}
 \newcommand{\LID}{linearly independent}
 \newcommand{\LTRAN}{linear transformation}
-\newcommand{\nullity}{\mathrm{nullity}}
+\newcommand{\nullity}{\textsf{nullity}}
 \newcommand{\nullityT}{\nullity(\T)}
 \newcommand{\rank}{\mathrm{rank}}
 \newcommand{\rankT}{\rank(\T)}
 
+\newcommand{\CPOLY}{characteristic polynomial}
+
 \let\conjugatet\overline
 \newcommand{\iu}{{i\mkern1mu}}
+
 
 \input{0-precautions.tex}
 \input{1-vector-spaces.tex}
@@ -131,6 +161,8 @@
 \input{4-determinants}
 \input{5-diagonalization}
 \input{6-inner-product-spaces}
+\input{7-canonical-forms}
+\input{appendices}
 
 \end{CJK*}
 \end{document}

@@ -19,7 +19,7 @@ Also \(\gamma = \{ e_2, e_1, e_3 \}\) is an ordered basis, but \(\beta \ne \gamm
 
 \begin{additional definition} \label{adef 2.4}
 For the vector space \(F^n\), we call \(\{ e_1, e_2, ..., e_n \}\) the \textbf{standard ordered basis} for \(F^n\).
-Similarly, for the vector space \(\mathcal{P}_n(F)\), we call \(\{ 1, x, ..., x^n \}\) the \textbf{standard ordered basis} for \(\mathcal{P}_n(F)\).
+Similarly, for the vector space \(\POLYNF\), we call \(\{ 1, x, ..., x^n \}\) the \textbf{standard ordered basis} for \(\POLYNF\).
 \end{additional definition}
 
 \begin{remark} \label{remark 2.2.1}
@@ -49,7 +49,7 @@ detail.
 \end{note}
 
 \begin{example} \label{example 2.2.2}
-Let \(V = \mathcal{P}_2(\SET{R})\), and let \(\beta = \{ 1, x , x^2 \}\) be the standard ordered basis for \(V\).
+Let \(V = \POLYRR\), and let \(\beta = \{ 1, x , x^2 \}\) be the standard ordered basis for \(V\).
 If \(f(x) = 4 + 6x - 7x^2\), then
 \[
     [f]_{\beta} = \begin{pmatrix} 4 \\ 6 \\ 7 \end{pmatrix}.
@@ -119,8 +119,8 @@ This implies the matrix representation of \(\T\) under \emph{different} ordered 
 \end{example}
 
 \begin{example} \label{example 2.2.4}
-Let \(\T : \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) be the \LTRAN{} defined by \(\T(f) = f'\).
-Let \(\beta = \{ 1, x, x^2, x^3 \}\) and \(\gamma = \{ 1, x, x^2 \}\) be the standard ordered bases for \(\mathcal{P}_3(\SET{R})\) and \(\mathcal{P}_2(\SET{R})\)
+Let \(\T : \POLYRRR \to \POLYRR\) be the \LTRAN{} defined by \(\T(f) = f'\).
+Let \(\beta = \{ 1, x, x^2, x^3 \}\) and \(\gamma = \{ 1, x, x^2 \}\) be the standard ordered bases for \(\POLYRRR\) and \(\POLYRR\)
 respectively.
 Then
 \begin{align*}
@@ -262,7 +262,7 @@ And
                    & = \sum_{i = 1}^m a_{ij} w_i + \sum_{i = 1}^m b_{ij} w_i & \text{by \MAROON{(1)}} \\
                    & = \sum_{i = 1}^m (a_{ij} + b_{ij}) w_i \MAROON{(3)} & \text{by rules of finite summation}
 \end{align*}
-Thus for all \(i, j\) s.t. \(1 \le i \le m\) and \(1 \le j \le n\),
+Thus for all \(i, j\) such that \(1 \le i \le m\) and \(1 \le j \le n\),
 \begin{align*}
     ([\T + \U]_{\beta}^{\gamma})_{ij} & = a_{ij} + b_{ij} & \text{by \MAROON{(3)}} \\
                                       & = ([\T]_{\beta}^{\gamma})_{ij} + ([\U]_{\beta}^{\gamma})_{ij} & \text{by \MAROON{(2)}} \\
@@ -276,7 +276,7 @@ Now given arbitrary scalar \(a\),
                    & = a\sum_{i = 1}^m a_{ij} w_i & \text{by \MAROON{(1)}} \\
                    & = \sum_{i = 1}^m (a a_{ij}) w_i \MAROON{(4)} & \text{by rules of finite summation}
 \end{align*}
-Thus for all \(i, j\) s.t. \(1 \le i \le m\) and \(1 \le j \le n\),
+Thus for all \(i, j\) such that \(1 \le i \le m\) and \(1 \le j \le n\),
 \begin{align*}
     ([a\T]_{\beta}^{\gamma})_{ij} & = a a_{ij} & \text{by \MAROON{(4)}} \\
                                   & = a([\T]_{\beta}^{\gamma})_{ij} & \text{by \MAROON{(2)}} \\
@@ -490,14 +490,14 @@ Let
 Compute \([\T]_{\alpha}\).
 \item Define
 \[
-    \T: \mathcal{P}_2(\SET{R}) \to M_{2 \X 2}(\SET{R}) \text{ by }
+    \T: \POLYRR \to M_{2 \X 2}(\SET{R}) \text{ by }
     \T(f) = \begin{pmatrix} f'(0) & 2f(1) \\ 0 & f''(3) \end{pmatrix},
 \]
 where \('\) denotes differentiation.
 Compute \([\T]_{\beta}^{\alpha}\).
 \item Define \(\T: M_{2 \X 2}(F) \to F\) by \(\T(A) = \TRACE(A)\).
 Compute \([\T]_{\alpha}^{\gamma}\).
-\item Define \(\T: \mathcal{P}_2(\SET{R}) \to \SET{R}\) by \(\T(f) = f(2)\). 
+\item Define \(\T: \POLYRR \to \SET{R}\) by \(\T(f) = f(2)\). 
 Compute \([\T]_{\beta}^{\gamma}\).
 \item If
 \[
@@ -736,7 +736,7 @@ Prove that \(\T\) is linear.
 USEDINSEC2.4.
 
 Let arbitrary \(x, y \in V\), \(\beta = \{ v_1, v_2, ..., v_n \}\) be a basis for \(V\), and scalar \(c\).
-Then (by discussion before \DEF{2.6}) there exist unique scalars \(a_1, a_2, ..., a_n\), \(b_1, b_2, ..., b_n\) s.t.
+Then (by discussion before \DEF{2.6}) there exist unique scalars \(a_1, a_2, ..., a_n\), \(b_1, b_2, ..., b_n\) such that
 \[
     x = \sum_{i = 1}^n a_i v_i \text{ and } y = \sum_{i = 1}^n b_i v_i.
 \]
@@ -966,7 +966,7 @@ If \(\RANGET \cap \RANGE(\U) = \{ \OW \}\), prove that
 \begin{proof}
 For the sake of contradiction, suppose \(\T, \U\) are not \LID{}.
 Then (by \ATHM{1.16}) we have \(\T = c\U\) for \(c \in F\).
-Since both \(\T, \U\) are not equal to \(\TZERO\), that implies \(c \ne 0\), and there exists \(v \in V\) s.t. \(\U(v) \ne \OW\).
+Since both \(\T, \U\) are not equal to \(\TZERO\), that implies \(c \ne 0\), and there exists \(v \in V\) such that \(\U(v) \ne \OW\).
 Let \(w = \U(v)\).
 Then
 \begin{align*}

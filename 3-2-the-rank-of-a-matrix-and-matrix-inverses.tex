@@ -846,10 +846,10 @@ to test for invertibility and \textbf{compute the inverse of a linear transforma
 The next example demonstrates this technique.
 
 \begin{example} \label{example 3.2.7}
-Let \(\T: \mathcal{P}_2(\SET{R}) \to \mathcal{P}_2(\SET{R})\) be defined by \(\T(f(x)) = f(x) + f'(x) + f''(x)\),
+Let \(\T: \POLYRR \to \POLYRR\) be defined by \(\T(f(x)) = f(x) + f'(x) + f''(x)\),
 where \(f(x)\) and \(f''(x)\) denote the first and second derivatives of \(f(x)\).
 We use \CORO{2.18.1} to test \(\T\) for invertibility and compute the inverse if \(\T\) is invertible.
-Taking \(\beta\) to be the \emph{standard} ordered basis of \(\mathcal{P}_2(\SET{R})\), we have
+Taking \(\beta\) to be the \emph{standard} ordered basis of \(\POLYRR\), we have
 \[
     [\T]_{\beta} = \begin{pmatrix}
         1 & 1 & 2 \\ 0 & 1 & 2 \\ 0 & 0 & 1

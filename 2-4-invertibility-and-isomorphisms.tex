@@ -24,7 +24,7 @@ The following facts hold for \emph{invertible} functions \(\T\) and \(\U\).
 \BLUE{(1)} \((\T\U)^{-1} = \U^{-1} \T^{-1}\).
 
 \BLUE{(2)} \((\T^{-1})^{-1} = \T\)
-(For \(\T^{-1}\), there exists \(\T\) s.t. \(\T^{-1}\T = \ITRANV\) and \(\T\T^{-1} = \ITRANW\),
+(For \(\T^{-1}\), there exists \(\T\) such that \(\T^{-1}\T = \ITRANV\) and \(\T\T^{-1} = \ITRANW\),
 hence by definition \(\T\) is the inverse of \(\T^{-1}\), that is, (since \((\T^{-1})^{-1}\) is unique,) \((\T^{-1})^{-1} = \T\));
 in particular, \(\T^{-1}\) is invertible.
 
@@ -156,12 +156,12 @@ Similarly,
         & = [\T\T^{-1}]_{\gamma} & \text{by \MAROON{(1.1)}} \\
         & = [\T]_{\beta}^{\gamma} [\T^{-1}]_{\gamma}^{\beta} & \text{by \THM{2.11}}
 \end{align*}
-So we have found a matrix \( \BLUE{[\T^{-1}]_{\gamma}^{\beta}}\) s.t. \([\T]_{\beta}^{\gamma} \BLUE{[\T^{-1}]_{\gamma}^{\beta}} = I_n = \BLUE{[\T^{-1}]_{\gamma}^{\beta}} [\T]_{\beta}^{\gamma}\),
+So we have found a matrix \( \BLUE{[\T^{-1}]_{\gamma}^{\beta}}\) such that \([\T]_{\beta}^{\gamma} \BLUE{[\T^{-1}]_{\gamma}^{\beta}} = I_n = \BLUE{[\T^{-1}]_{\gamma}^{\beta}} [\T]_{\beta}^{\gamma}\),
 hence by \DEF{2.13}, \([\T]_{\beta}^{\gamma}\) is invertible, and its (unique) inverse is \(\BLUE{[\T^{-1}]_{\gamma}^{\beta}}\);
 that is, \(([\T]_{\beta}^{\gamma})^{-1} = \BLUE{[\T^{-1}]_{\gamma}^{\beta}}\).
 
 \(\Longleftarrow\): Now suppose \(A = [\T]_{\beta}^{\gamma}\) \MAROON{(2.1)} is invertible.
-Then by \DEF{2.13} there exists \(B\) s.t. \(AB = BA = I_n\) \MAROON{(2.2)}.
+Then by \DEF{2.13} there exists \(B\) such that \(AB = BA = I_n\) \MAROON{(2.2)}.
 
 Now we first just label \(\gamma = \{ w_1, w_2, ... w_n \}\) and \(\beta = \{ v_1, v_2, ..., v_n \}\).
 Then by \THM{2.6}, we can find a unique \LTRAN{} \(\U : W \to V\) such that it satisfies
@@ -274,14 +274,14 @@ so \(F^n\) is isomorphic to \(\mathcal{P}_1(F)\).
 \begin{example} \label{example 2.4.5}
 Define
 \[
-    \T : \mathcal{P}_3(\SET{R}) \to M_{2 \X 2}(\SET{R}) \text{ by }
+    \T : \POLYRRR \to M_{2 \X 2}(\SET{R}) \text{ by }
     \T(f) = \begin{pmatrix} f(1) & f(2) \\ f(3) & f(4) \end{pmatrix}
 \]
 It is easily verified that \(\T\) is linear.
 By use of the Lagrange interpolation formula in \SEC{1.6}(in particular, \RMK{1.6.6}), it can be shown (compare with \EXEC{2.4.22}) that \(\T(f) = O_{2 \X 2}\) only when \(f\) is the zero polynomial.
 Thus \(\T\) is one-to-one (see \EXEC{2.4.11}).
-Moreover, because \(\dim(\mathcal{P}_3(\SET{R})) = \dim(M_{2 \X 2}(\SET{R}))\), it follows by \THM{2.5} that \(\T\) is also onto.
-Hence \(\T\) is linear, one-to-one and onto, so is invertible by \DEF{2.14}, so \(\mathcal{P}_3(\SET{R})\) is isomorphic to \(M_{2 \X 2}(\SET{R})\).
+Moreover, because \(\dim(\POLYRRR) = \dim(M_{2 \X 2}(\SET{R}))\), it follows by \THM{2.5} that \(\T\) is also onto.
+Hence \(\T\) is linear, one-to-one and onto, so is invertible by \DEF{2.14}, so \(\POLYRRR\) is isomorphic to \(M_{2 \X 2}(\SET{R})\).
 \end{example}
 
 In \EXAMPLE{2.4.4} and \EXAMPLE{2.4.5}, the reader may have observed that isomorphic vector spaces have \emph{equal dimensions}.
@@ -354,7 +354,7 @@ By \THM{2.6}, there \textbf{exists} a \textbf{unique} \LTRAN{} \(\T: V \to W\) s
     \T(v_j) = \sum_{i = 1}^{m} A_{ij} w_j \text{ for } 1 \le j \le n.
 \]
 But (by \DEF{2.6}) this implies \([\T]_{\beta}^{\gamma} = A\), or \(\Phi_{\beta}^{\gamma}(\T) = A\).
-So we have found a unique \(\T\) s.t. \(\Phi_{\beta}^{\gamma}(\T) = A\), hence \(\Phi_{\beta}^{\gamma}\) is an isomorphism.
+So we have found a unique \(\T\) such that \(\Phi_{\beta}^{\gamma}(\T) = A\), hence \(\Phi_{\beta}^{\gamma}\) is an isomorphism.
 \end{proof}
 
 \begin{corollary} \label{corollary 2.20.1}
@@ -403,7 +403,7 @@ For any finite-dimensional vector space \(V\) with dimension \(n\) and ordered b
 \begin{proof}
 Since we already know that \(\phi_{\beta}\) is linear, we only have to show \(\phi_{\beta}\) is one-to-one and onto.
 But since \(\dim(V) = n = \dim(F^n)\), (by \THM{2.5}) we only have to show \(\phi_{\beta}\) is one-to-one.
-So suppose arbitrary \(v_1, v_2 \in V\) s.t. \(\phi_{\beta}(v_1) = \phi_{\beta}(v_2)\).
+So suppose arbitrary \(v_1, v_2 \in V\) such that \(\phi_{\beta}(v_1) = \phi_{\beta}(v_2)\).
 Then by \DEF{2.15}, we have \([v_1]_{\beta} = [v_2]_{\beta}\).
 But (by \DEF{2.5}) that immediately implies \(v_1 = v_2\).
 Hence \(\phi_{\beta}\) is one-to-one, as desired.
@@ -452,9 +452,9 @@ we may ``identify'' \(\T\) with \(\LMTRAN_A\).
 \end{remark}
 
 \begin{example} \label{example 2.4.7}
-Recall the \LTRAN{} \(\T : \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) defined in \EXAMPLE{2.2.4} (\(\T(f(x)) = f'(x)\)).
-Let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\mathcal{P}_3(\SET{R})\) and \(\mathcal{P}_2(\SET{R})\), respectively,
-and let \(\phi_{\beta} : \mathcal{P}_3(\SET{R}) \to \SET{R}^4\) and \(\phi_{\gamma} : \mathcal{P}_2(\SET{R}) \to \SET{R}^3\) be the corresponding standard representations of \(\mathcal{P}_3(\SET{R})\) and \(\mathcal{P}_2(\SET{R})\).
+Recall the \LTRAN{} \(\T : \POLYRRR \to \POLYRR\) defined in \EXAMPLE{2.2.4} (\(\T(f(x)) = f'(x)\)).
+Let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\POLYRRR\) and \(\POLYRR\), respectively,
+and let \(\phi_{\beta} : \POLYRRR \to \SET{R}^4\) and \(\phi_{\gamma} : \POLYRR \to \SET{R}^3\) be the corresponding standard representations of \(\POLYRRR\) and \(\POLYRR\).
 If \(A = [\T]_{\beta}^{\gamma}\), then
 \[
     A = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 3 \end{pmatrix}

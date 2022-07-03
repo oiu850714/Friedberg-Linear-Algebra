@@ -1,1 +1,933 @@
 \section{Diagonalizability} \label{sec 5.2}
+
+In \SEC{5.1}, we presented the diagonalization problem and observed that \emph{not all} linear operators or matrices are diagonalizable.
+Although we are able to diagonalize operators and matrices and even obtain a \emph{necessary and sufficient condition} for diagonalizability (\THM{5.1}),
+we have not yet \emph{solved} the diagonalization problem.
+What is still needed is a \textbf{simple test} to determine whether an operator or a matrix can be diagonalized, as well as a \textbf{method for actually finding} a basis of eigenvectors.
+In this section, we develop such a test and method.
+
+In \EXAMPLE{5.1.6}, we \emph{accidentally} obtained a basis of eigenvectors by choosing \emph{one} eigenvector corresponding to each eigenvalue.
+In general, such a procedure does \emph{not} yield a basis, but the following theorem shows that any set constructed in this manner \emph{is \LID{}}.
+
+\begin{theorem} \label{thm 5.5}
+Let \(\T\) be a linear operator on a vector space, and let \(\lambda_1, \lambda_2, ..., \lambda_k\) be distinct eigenvalues of \(\T\).
+For each \(i = 1, 2, ..., k\), let \(S_i\) be a finite set of \emph{eigenvectors} of \(\T\) corresponding to \(\lambda_i\).
+If each \(S_i\) (\(i = 1, 2, ..., k\)), is \LID{}, then \(S_1 \cup S_2 \cup ... \cup S_k\) is \LID{}.
+\end{theorem}
+
+\begin{proof}
+The proof is by mathematical induction on \(k\).
+If \(k = 1\), there is nothing to prove.
+So assume that the theorem holds for \(k - 1\) distinct eigenvalues, where \(k > 1\), and that we have \(k\) distinct eigenvalues \(\lambda_1, \lambda_2, ..., \lambda_k\) of \(\T\).
+For each \(i = 1, 2, ..., k\), let \(S_{\RED{i}} = \{ v_{i1}, v_{i2}, ..., v_{i\RED{n_i}} \}\) be a \LID{} set of eigenvectors of \(\T\) corresponding to \(\lambda_i\).
+(So each \(S_i\) has \(n_i\) elements for \(1 \le i \le k\).)
+We wish to show that \(S = S_1 \cup S_2 \cup ... \cup S_k\) is \LID{}.
+
+That is, consider any set of scalars \(\{ a_{ij} \}\), where \(i = 1, 2, ... , k\) and \(j = 1, 2, ..., n_i\), such that
+\[
+    \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{ij} v_{ij} = \OV. \quad \quad \MAROON{(1)}
+\]
+It suffices to show \(a_{ij} = 0\) for all \(1 \le i \le k, 1 \le j \le n_i\).
+Then we apply a \emph{trick} on \MAROON{(1)}: Applying both sides by the linear operator \(\T - \lambda_k I\).
+By the derivation below, we will have
+\[
+    \sum_{i = 1}^{\RED{k - 1}} \sum_{j = 1}^{n_i} (\lambda_i - \lambda_k) a_{ij} v_{ij} = \OV. \quad \quad \MAROON{(2)}
+\]
+The heuristic is that by applying the trick, the term having \(\lambda_k\) in the coefficient will be \emph{removed}, and hence we can apply the inductive hypothesis.
+And the equation is derived by the steps:
+\begin{align*}
+             & \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{ij} v_{ij} = \OV & \text{by \MAROON{(1)}} \\
+    \implies & (\T - \lambda_k \ITRAN{})\left( \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{ij} v_{ij} \right) = (\T - \lambda_k \ITRAN{})(\OV) = \OV \\
+    \implies & \T \left( \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{ij} v_{ij} \right) - \lambda_k \ITRAN{} \left( \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{ij} v_{ij} \right) = \OV \\
+             & \quad \quad \text{(since function ``\(-\)'' is linear)} \\
+    \implies & \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{ij} \T \left( v_{ij} \right) - \lambda_k \ITRAN{} \left( \sum_{i = 1}^k \sum_{j = 1}^{n_i} a_{ij} v_{ij} \right) = \OV \\
+             & \quad \quad \text{(since \(\T\) is linear)} \\
+    \implies & \sum_{i = 1}^k \sum_{j = 1}^{n_i} \lambda_i a_{ij} v_{ij} - \sum_{i = 1}^k \sum_{j = 1}^{n_i} \lambda_{\RED{k}} a_{ij} v_{ij} = \OV \\
+             & \quad \quad \text{(of course)} \\
+    \implies & (\lambda_1 - \lambda_{\RED{k}}) \sum_{j = 1}^{n_1} a_{1j} v_{1j} + (\lambda_2 - \lambda_{\RED{k}}) \sum_{j = 1}^{n_1} a_{2j} v_{2j} + ... + (\lambda_{\RED{k}} - \lambda_{\RED{k}}) \sum_{j = 1}^{n_1} a_{kj} v_{kj} \\
+            & \quad \quad \text{(by rearranging finite summation)} \\
+    \implies & (\lambda_1 - \lambda_k) \sum_{j = 1}^{n_1} a_{1j} v_{1j} + (\lambda_2 - \lambda_k) \sum_{j = 1}^{n_1} a_{2j} v_{2j} + ... + (\lambda_{k - 1} - \lambda_k) \sum_{j = 1}^{n_{k - 1}} a_{(k - 1)j} v_{(k - 1)j} \\
+             & \quad \quad \text{(that is, the last sum has no effect)} \\
+    \implies & \sum_{i = 1}^{\RED{k - 1}} \sum_{j = 1}^{n_i} (\lambda_i - \lambda_k) a_{ij} v_{ij} = \OV.
+\end{align*}
+But \MAROON{(2)} is a linear combination from \(S_1 \cup S_2 \cup ... \cup S_{k - 1}\), so by the inductive hypothesis, \(v_{ij}\) are \LID{} for \(1 \le i \le k - 1\) and \(1 \le j \le n_i\), so \((\lambda_i - \lambda_k) a_{ij} = 0\) for \(1 \le i \le k - 1\) and \(1 \le j \le n_i\).
+But since \(\lambda_i\) are distinct, that implies \(\lambda_i - \lambda_k \ne 0\) for \(1 \le i \le k - 1\), so (by zero product property,) \(a_{ij} = 0\) for \(1 \le i \le k - 1\) and \(1 \le j \le n_i\).
+So \MAROON{(1)} can be reduced to
+\[
+    \sum_{j = 1}^{n_k} a_{ij} v_{ij} = \OV,
+\]
+which is a linear combination from \(S_k\).
+But \(S_k\) is also \LID{}, so \(a_{\RED{k}j} = 0\) for \(j = 1, 2, ... n_k\).
+Consequently \(a_{ij} = 0\) for \(i = 1, 2, ..., k\) and \(j = 1, 2, ..., n_i\), proving that \(S\) is \LID{}.
+This closes the induction.
+\end{proof}
+
+\begin{corollary} \label{corollary 5.5.1}
+Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(V\).
+If \(\T\) has \(n\) \emph{distinct} eigenvalues, then \(\T\) is diagonalizable.
+\end{corollary}
+
+\begin{proof}
+Suppose that \(\T\) has \(n\) distinct eigenvalues \(\lambda_1, \lambda_2, ..., \lambda_n\).
+For each \(i\) choose \emph{an} eigenvector \(v_i\) corresponding to \(\lambda_i\).
+By \THM{5.5}, \(\{v_1, ..., v_n \}\) is \LID{} having \(n\) eigenvectors, and since \(\dim(V) = n\), this set is a basis for \(V\) and consists eigenvectors for \(\T\).
+Thus, by \THM{5.1}, \(\T\) is diagonalizable.
+\end{proof}
+
+\begin{example} \label{example 5.2.1}
+Let
+\[
+    A = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \in M_{2 \X 2}(\SET{R}).
+\]
+The \CPOLY{} of \(A\) (and hence of \(\LMTRAN_A)\) is
+\[
+    \det(A - tI) = \det \begin{pmatrix} 1 - t & 1 \\ 1 & 1 - t \end{pmatrix} = t(t - 2),
+\]
+and thus the eigenvalues of \(\LMTRAN_A\) are \(0\) and \(2\).
+Since \(\LMTRAN_A\) is a linear operator on the \emph{two}-dimensional vector space \(\SET{R}^2\) and we have \emph{two} distinct eigenvalues, we conclude from \CORO{5.5.1} that \(\LMTRAN_A\) (and hence \(A\)) is diagonalizable.
+\end{example}
+
+\begin{remark} \label{remark 5.2.1}
+The \emph{converse} of the \CORO{5.5.1} is false.
+That is, it is not true that if \(\T\) is diagonalizable, then it has \(n\) distinct eigenvalues.
+For example, the identity operator is diagonalizable even though it has only one eigenvalue, namely, \(\lambda = 1\).
+\end{remark}
+
+We have seen that diagonalizability requires the existence of eigenvalues.
+Actually, diagonalizability \textbf{imposes a stronger condition} on the \CPOLY{}.
+
+\begin{definition} \label{def 5.5}
+A polynomial \(f(t)\) in \(\mathcal{P}(F)\) \textbf{splits over} \(F\) if there are scalars \(c, a_1, ..., a_n\) (\emph{not necessarily distinct}) in \(F\) such that \(f(t) = c(t - a_1)(t - a_2) ... (t - a_n)\).
+\end{definition}
+
+\begin{remark} \label{remark 5.2.2}
+For example, \(t^2 - 1 = (t + 1)(t - 1)\) splits over \(\SET{R}\), but \((t^2 + 1)(t - 2)\) does not split over \(\SET{R}\) because \(t^2 + 1\) cannot be factored into a product of linear factors.
+However, \((t^2 + 1)(t - 2)\) \textbf{does split} over \(\SET{C}\) because it factors into the product \((t + i)(t - i)(t - 2)\).
+If \(f(t)\) is the \CPOLY{} of a linear operator or a matrix over a field \(F\), then the statement that ``\(f(t)\) splits'' is understood to mean that ``it splits over \(F\)''.
+That is, the corresponding field is very important.
+\end{remark}
+
+\begin{theorem} \label{thm 5.6}
+The \CPOLY{} of any \emph{diagonalizable} linear operator on a vector space \(V\) over a field \(F\) splits over \(F\).
+\end{theorem}
+
+\begin{note}
+The \emph{contrapositive} is useful: If the \CPOLY{} of a linear operator does not split(over \(F\)), then the linear operator is not diagonalizable.
+\end{note}
+
+\begin{proof}
+Let \(\T\) be a diagonalizable linear operator on the \(n\)-dimensional vector space \(V\), and let \(\beta\) be an ordered basis for \(V\) such that \([\T]_{\beta} = D\) is a diagonal matrix.
+Suppose that
+\[
+    D = \begin{pmatrix}
+        \lambda_1 & 0         & ...    & 0 \\
+        0         & \lambda_2 & ...    & 0 \\
+        \vdots    & \vdots    & \ddots & \vdots \\
+        0         & ...       & 0      & \lambda_n
+    \end{pmatrix},
+\]
+and let \(f(t)\) be the \CPOLY{} of \(\T\).
+Then
+\begin{align*}
+    f(t) & = \det(D - tI) = \det \begin{pmatrix}
+                \lambda_{1}-t & 0 & \cdots & 0 \\
+                0 & \lambda_{2}-t & \cdots & 0 \\
+                \vdots & \vdots & & \vdots \\
+                0 & 0 & \cdots & \lambda_{n}-t
+            \end{pmatrix} \\
+         & = (\lambda_1 - t)(\lambda_2 - t) ... (\lambda_n - t) & \text{by \EXEC{4.2.23}} \\
+         & = (-1)^n (t - \lambda_1)(t - \lambda_2) ... (t - \lambda_n)
+\end{align*}
+which splits by \DEF{5.5}.
+\end{proof}
+
+\begin{remark} \label{remark 5.2.3}
+From \THM{5.6}, it is clear that if \(\T\) is a diagonalizable linear operator on an \(n\)-dimensional vector space that \emph{fails to have} \(n\) distinct eigenvalues, then (since the \CPOLY{} splits,) the \CPOLY{} of \(\T\) must have \emph{repeated zeros}.
+
+Also, the \emph{converse} of \THM{5.6} is false;
+that is, the \CPOLY{} of \(\T\) may split, but \(\T\) \emph{need not} be diagonalizable.
+(See \EXAMPLE{5.2.3}.)
+The following concept helps us determine when an operator whose \CPOLY{} splits is diagonalizable.
+\end{remark}
+
+\begin{definition} \label{def 5.6}
+Let \(\lambda\) be an eigenvalue of a linear operator or matrix with \CPOLY{} \(f(t)\).
+The \textbf{multiplicity} (sometimes called the \textbf{algebraic multiplicity}) of \(\lambda\) is the largest positive integer \(k\) for which \((t - \lambda)^k\) is a \emph{factor} of \(f(t)\).
+\end{definition}
+
+\begin{example} \label{example 5.2.2}
+Let
+\[
+    A = \begin{pmatrix} 3 & 1 & 0 \\ 0 & 3 & 4 \\ 0 & 0 & 4 \end{pmatrix},
+\]
+which has \CPOLY{} \(f(t) = -(t - 3)^2(t - 4)\).
+Hence \(\lambda = 3\) is an eigenvalue of \(A\) with algebraic multiplicity \(2\), and \(\lambda = 4\) is an eigenvalue of \(A\) with algebraic multiplicity \(1\).
+\end{example}
+
+\begin{remark} \label{remark 5.2.4}
+If \(\T\) is a diagonalizable linear operator on a \emph{finite}-dimensional vector space \(V\), then by \THM{5.1}, there is an ordered basis \(\beta\) for \(V\) consisting of eigenvectors of \(\T\).
+And by \THM{5.1} again, \([\T]_{\beta}\) is a diagonal matrix in which the diagonal entries are the eigenvalues of \(\T\).
+
+Since the \CPOLY{} of \(\T\) is \(\det([\T]_{\beta} - tI)\), \textbf{it is easily seen that each eigenvalue of \(\T\) must occur as a diagonal entry of \([\T]_{\beta}\), exactly as many times as its algebraic multiplicity.}
+Hence \(\beta\) contains \textbf{as many} (\LID{}) eigenvectors corresponding to an eigenvalue \textbf{as} the \textbf{algebraic multiplicity} of that eigenvalue.
+So \textbf{the number} of \LID{} eigenvectors corresponding to a given eigenvalue is \emph{of interest in determining whether an operator can be diagonalized}.
+
+Recalling from \THM{5.4} that the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\) are the \emph{nonzero} vectors in \(\NULL(\T - \lambda \ITRAN{})\), we are led naturally to the study of this set.
+\end{remark}
+
+\begin{definition} \label{def 5.7}
+Let \(\T\) be a linear operator on a vector space \(V\), and let \(\lambda\) be an eigenvalue of \(\T\).
+Define \(E_{\lambda} = \{x \in V : \T(x) = \lambda x \} = \NULL(\T - \lambda \ITRANV{})\).
+The set \(E_{\lambda}\) is called the \textbf{eigenspace of \(\T\) corresponding to the eigenvalue \(\lambda\)}.
+Analogously, we define the \textbf{eigenspace} of a square matrix \(A\) corresponding to the eigenvalue \(\lambda\) to be the eigenspace of \(\LMTRAN_A\) corresponding to \(\lambda\).
+Finally, we define the \textbf{geometric multiplicity} of \(\lambda\) is the \emph{dimension} of the corresponding \textbf{eigenspace} \(E_{\lambda}\).
+\end{definition}
+
+\begin{note}
+The definition of geometric multiplicity is given in many literature, so I give the definition here.
+
+And clearly, \(E_{\lambda}\) is a \emph{subspace} of \(V\) consisting of the zero vector and the eigenvectors of \(\T\) corresponding to the eigenvalue \(\lambda\).
+\end{note}
+
+\begin{theorem} \label{thm 5.7}
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(V\), and let \(\lambda\) be an eigenvalue of \(\T\) having algebraic multiplicity \(m\).
+Then \(1 \le \dim(E_{\lambda}) \le m\).
+(That is, by \DEF{5.7}, the geometric multiplicity of \(\lambda\) is less than or equal to the algebraic multiplicity of \(\lambda\).)
+\end{theorem}
+
+\begin{proof}
+First, since \(E_{\lambda} \ne \{ \OV \}\) and is a subspace of \(V\), we have \(\dim(E_{\lambda}) \ge 1\). \BLUE{(1)}.
+
+\sloppy Now choose an ordered basis \(\{ v_1, v_2, ..., v_p \}\) for \(E_{\lambda}\), (hence \(\dim(E_{\lambda} = p\),)
+and extend it to an ordered basis \(\beta = \{ v_1, v_2, ..., v_p, v_{p + 1}, ..., v_n \}\) for \(V\), and let \(A = [\T]_{\beta}\).
+Observe that \(v_i (1 \le i \le p)\) is an eigenvector of \(\T\) corresponding to \(\lambda\),
+that is,
+\begin{align*}
+    \T(v_1) & = \lambda v_1 = \lambda \cdot v_1 + 0 \cdot v_2 + ... + 0 \cdot v_p + \RED{0} \cdot v_{p + 1} + ... + \RED{0} \cdot v_n, \\
+    \T(v_2) & = \lambda v_2 = 0 \cdot v_1 + \lambda \cdot v_2 + 0 \lambda \cdot v_3 + ... + 0 \cdot v_{p - 1} + 0 \cdot v_p + \RED{0} \cdot v_{p + 1} + ... + \RED{0} \cdot v_n, \\
+    \vdots & \\
+    \T(v_p) & = \lambda v_p = 0 \cdot v_1 + 0 \cdot v_2 + ... + 0 \cdot v_{p - 1} + \lambda \cdot v_p + \RED{0} \cdot v_{p + 1} + ... + \RED{0} \cdot v_n,
+\end{align*}
+and therefore
+\[
+    A = \begin{pmatrix} \lambda I_p & B \\ \RED{O} & C \end{pmatrix}. \quad \quad \MAROON{(1)}
+\]
+By \EXEC{4.3.21}, the \CPOLY{} of \(\T\) is
+\begin{align*}
+    f(t) & = \det(A - tI_n) = \det \begin{pmatrix} (\lambda - t) I_p & B \\ \RED{O} & C - tI_{n - p} \end{pmatrix} & \text{by \MAROON{(1)}} \\
+         & = \det((\lambda - t) I_p) \cdot \det(C - tI_{n - p}) & \text{by \EXEC{4.3.21}} \\
+         & = (\lambda - t)^p \cdot \det(C - tI_{n - p}).
+\end{align*}
+Then by definition of \(m\), the algebraic multiplicity for \(\lambda\), \(m = p + q\) where \(q\) is the ``power'' of the factor \(\det(C - tI_{n - p})\), and that implies \(p \le m\).
+But \(p\) is equal to \(\dim(E_{\lambda})\), so we have \(\dim(E_{\lambda}) \le m\).
+
+With \BLUE{(1)}, we have \(1 \le \dim(E_{\lambda}) \le m\), as desired.
+\end{proof}
+
+\begin{example} \label{example 5.2.3}
+Let \(\T\) be the linear operator on \(\POLYRR\) defined by \(\T(f(x)) = f'(x)\).
+The matrix representation of \(\T\) with respect to the standard ordered basis \(\beta\) for \(\POLYRR\) is
+\[
+    [\T]_{\beta} = \begin{pmatrix} 0 & 1 & 2 \\ 0 & 0 & 2 \\ 0 & 0 & 0 \end{pmatrix}.
+\]
+Consequently, the \CPOLY{} of \(\T\) is
+\[
+    \det([\T]_{\beta} - tI) = \det \begin{pmatrix} -t & 1 & 2 \\ 0 & -t & 2 \\ 0 & 0 & -t \end{pmatrix} = -t^3.
+\]
+Thus the \CPOLY{} of \(\T\) \emph{splits}, and \(\T\) has only one eigenvalue \(\lambda = 0\) with algebraic multiplicity \(3\).
+Solving \(f'(x) = \T(f(x)) = \lambda f(x) = 0 \cdot f(x) = 0\) (zero function) shows that \(E_{\lambda} = \NULL(\T - \lambda \ITRAN{}) = \NULL(\T - 0 \cdot \ITRAN{}) = \NULL(\T)\) is the subspace of \(\POLYRR\) consisting of the constant polynomials.
+So \(\{ 1 \}\) is a basis for \(E_{\lambda}\), and therefore \(\dim(E_{\lambda}) = 1\).
+Consequently, there is \emph{no basis for \(\POLYRR\) consisting of eigenvectors of \(\T\)}, and therefore \(\T\) is not diagonalizable.
+(So this is an example that the converse of \THM{5.6} is false.)
+\end{example}
+
+\begin{remark} \label{remark 5.2.5}
+Even though \(\T\) is not diagonalizable, we will see in \CH{7} that \emph{its eigenvalue and eigenvectors are still useful for describing the behavior of \(\T\)}.
+\end{remark}
+
+\begin{example} \label{example 5.2.4}
+Let \(\T\) be the linear operator on \(\SET{R}^3\) defined by
+\[
+    \T \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix} = \begin{pmatrix} 4 a_1 + a_3 \\ 2 a_1 + 3 a_2 + 2 a_3 \\ a_1 + 4 a_3 \end{pmatrix}.
+\]
+We determine the eigenspace of \(\T\) corresponding to each eigenvalue.
+Let \(\beta\) be the standard ordered basis for \(\SET{R}^3\).
+Then
+\[
+    [\T]_{\beta} = \begin{pmatrix} 4 & 0 & 1 \\ 2 & 3 & 2 \\ 1 & 0 & 4 \end{pmatrix}.
+\]
+and hence the \CPOLY{} of \(\T\) is
+\[
+    \det([\T]_{\beta} - tI) = \begin{pmatrix} 4 - t & 0 & 1 \\ 2 & 3 - t & 2 \\ 1 & 0 & 4 - t \end{pmatrix} = -(t - 5)(t - 3)^2.
+\]
+So the eigenvalues of \(\T\) are \(\lambda_1 = 5\) and \(\lambda_2 = 3\) with algebraic multiplicities \(1\) and \(2\), respectively.
+
+Since
+\[
+    E_{\lambda_1} = \NULL(\T - \lambda_{1} \ITRAN{} )
+    = \left\{
+        \begin{pmatrix} x_{1} \\ x_{2} \\ x_{3} \end{pmatrix}
+        \in \SET{R}^3 : \begin{pmatrix} -1 & 0 & 1 \\ 2 & -2 & 2 \\ 1 & 0 & -1 \end{pmatrix}
+        \begin{pmatrix} x_{1} \\ x_{2} \\ x_{3} \end{pmatrix}
+        = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+    \right\}
+\]
+\(E_{\lambda_1}\) is the solution space of the system of linear equations
+\[
+    \sysdelim..\systeme{
+        -x_1 + x_3 = 0,
+        2x_1 - 2x_2 + 2x_3 = 0,
+        x_1 - x_3 = 0
+    }.
+\]
+It is easily seen (using the techniques of \CH{3}) that
+\[
+    \left\{ \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} \right\}
+\]
+is a basis for \(E_{\lambda_1}\).
+Hence \(\dim(E_{\lambda_1}) = 1\).
+Similarly, \(E_{\lambda_2} = \NULL(\T - \lambda_2 \ITRAN{})\) is the solution space of the system
+\[
+    \sysdelim..\systeme{
+        x_1 + x_3 = 0,
+        2x_1 + 2x_3 = 0,
+        x_1 + x_3 = 0
+    }.
+\]
+Since the unknown \(x_2\) does not appear in this system, we assign it a parametric value, say, \(x_2 = s\), and solve the system for \(x_1\) and \(x_3\), introducing another parameter \(t\).
+The result is the general solution to the system
+\[
+    \begin{pmatrix} x_{1} \\ x_{2} \\ x_{3} \end{pmatrix}
+    = s\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+    + t \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix},
+    \text { for } s, t \in \SET{R}.
+\]
+It follows that
+\[
+    \left\{
+        \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix},
+        \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
+    \right\}
+\]
+is a basis for \(E_{\lambda_2}\), and \(\dim(E_{\lambda_2}) = 2\).
+In this case, the algebraic multiplicity of each eigenvalue \(\lambda_2\) is equal to the dimension of the corresponding eigenspace \(E_{\lambda_i}\).
+Observe that the union of the two bases just derived, namely,
+\[
+    \left\{
+        \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix},
+        \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix},
+        \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
+    \right\},
+\]
+is \LID{} by \THM{5.5} and have \(\RED{3}\) elements hence is a basis for \(\SET{R}^{\RED{3}}\) consisting of eigenvectors of \(\T\).
+Consequently, \(\T\) is diagonalizable.
+\end{example}
+
+\EXAMPLE{5.2.3} and \EXAMPLE{5.2.4} suggest that an operator on \(V\) whose \CPOLY{} splits is diagonalizable \emph{if and only if} the dimension of \emph{each} eigenspace is equal to the algebraic multiplicity of the corresponding eigenvalue.
+This is indeed true, as our next theorem shows.
+Moreover, when the operator is diagonalizable, we can use \THM{5.5} to construct a \emph{basis} for \(V\) consisting of eigenvectors of the operator by \emph{collecting bases for the individual eigenspaces}.
+
+\begin{theorem} \label{thm 5.8}
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(V\) such that the \CPOLY{} of \(\T\) splits.
+Let \(\lambda_1, \lambda_2, ..., \lambda_k\) be the \emph{distinct} eigenvalues of \(\T\).
+Then
+\begin{enumerate}
+\item \(\T\) is diagonalizable if and only if the algebraic multiplicity of \(\lambda_i\) is equal to \(\dim(E_{\lambda_i})\), the geometric multiplicity of \(\lambda_i\), for all \(i\).
+\item If \(\T\) is diagonalizable and \(\beta_i\) is an ordered basis for \(E_{\lambda_i}\) for each \(i\), then \(\beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_k\) is an ``ordered basis''\RED{*} for \(V\) consisting of eigenvectors of \(\T\).
+\end{enumerate}
+\end{theorem}
+
+\begin{remark} \label{remark 5.2.6}
+We only consider the diagonalizability when the corresponding \CPOLY{} splits, since if it's not, then by (contrapositive of) \THM{5.6}, the operator is not diagonalizable.
+\end{remark}
+
+\begin{remark} \label{remark 5.2.7}
+\RED{*}We regard \(\beta_1 \cup \beta_2 \cup ... \cup \beta_k\) as an ordered basis in the \emph{natural way} -- the vectors in \(\beta_1\) are listed first (in the same order as in \(\beta_1\)), then the vectors in \(\beta_2\) (in the same order as in \(\beta_2\)), etc.
+\end{remark}
+
+\begin{proof}
+For each \(i\), let \(m_i\) denote the algebraic multiplicity of \(\lambda_i\), \(d_i = \dim(E_{\lambda_i})\), and \(n = \dim(V)\).
+
+First, suppose that \(\T\) is diagonalizable.
+So there exists a basis \(\beta\) for \(V\) consisting of \emph{eigenvectors} of \(\T\).
+Now for each \(i\), let \(\beta_i = \beta \cap E_{\lambda_i}\), the set of vectors in \(\beta\) that are eigenvectors corresponding to \(\lambda_i\),
+and let \(n_i\) denote the number of vectors in \(\beta_i\).
+Then
+\begin{center}
+    \(n_i \le d_i\) for each \(i\), \quad \quad \MAROON{(1)}
+\end{center}
+because \(\beta_i\) is a \LID{} subset of a subspace of \(E_{\lambda_i}\) having dimension \(d_i\), and
+\begin{center}
+    \(d_i \le m_i\) by \THM{5.7}. \quad \quad \MAROON{(2)}
+\end{center}
+
+Clearly, \(\beta_i\) are a \emph{partition} of \(\beta\).
+Hence
+\begin{center}
+    \(n_i\)'s sum to \(n\) because \(\beta\) contains \(n\) vectors. \quad \quad \MAROON{(3)}
+\end{center}
+\begin{center}
+    The \(m_i\)'s also sum to \(n\), \quad \quad \MAROON{(4)}
+\end{center}
+since \(m_i\)'s by definition sum to the degree of the \RED{\emph{splitting}} \CPOLY{}, and (by \THM{5.3}) the degree of the \CPOLY{} of \(\T\) is \(n\).
+(Note that if the \CPOLY{} does \emph{not} split, then \(\sum_{i = 1}^k m_i \ne n\).)
+Thus
+\begin{align*}
+    n & = \sum_{i = 1}^k n_i & \text{by \MAROON{(3)}} \\
+      & \le \sum_{i = 1}^k d_i & \text{by \MAROON{(1)}} \\
+      & \le \sum_{i = 1}^k m_i & \text{by \MAROON{(2)}} \\
+      & = n, & \text{by \MAROON{(4)}}
+\end{align*}
+which implies the ``less than or equal to sign'' is fact the ``equal'' sign
+So
+\[
+    \sum_{i = 1}^k d_i = \sum_{i = 1}^k m_i \text{ and } \sum_{i = 1}^k (m_i - d_i) = 0. \quad \quad \MAROON{(5)}
+\]
+But again since \(m_i \ge d_i\) by \MAROON{(3)}, \(m_i - d_i \ge 0\), which by \MAROON{(5)} implies \(m_i - d_i = 0\) for all \(i\).
+(If the sum of some \emph{nonnegative} numbers is zero, then all of them are equal to \(0\).)
+Hence \(m_i = d_i\) for all \(i\).
+
+Conversely, suppose that \(m_i = d_i\) for all \(i\).
+We simultaneously show that \(\T\) is diagonalizable and prove part(b).
+For each \(i\), let \(\beta_i\) be an ordered basis for \(E_{\lambda_i}\), and let \(\beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_k\).
+By \THM{5.5}, \(\beta\) is \LID{}.
+Furthermore, since \(d_i = m_i\) for all \(i\), \(\beta\) contains
+\begin{align*}
+    \sum_{i = 1}^k d_i & = \sum_{i = 1}^k m_i & \text{by supposition} \\
+        & = n
+\end{align*}
+vectors, where the last equal sign is similar to \MAROON{(4)}.
+Therefore \(\beta\) is an ordered basis for \(V\) consisting of eigenvectors of \(V\), and we conclude that \(\T\) is diagonalizable.
+\end{proof}
+
+This theorem completes our study of the diagonalization problem.
+We summarize our results.
+
+\subsection{Test for Diagonalizability} \label{sec 5.2.1}
+
+Let \(\T\) be a linear operator on an \(n\)-dimensional vector space \(V\).
+Then \(\T\) is diagonalizable if and only if both of the following conditions hold.
+\begin{enumerate}
+\item[1.] The \CPOLY{} of \(\T\) splits. 
+\item[2.] For each eigenvalue \(\lambda\) of \(\T\), the algebraic multiplicity of \(\lambda\) equals \(\nullity(\T - \lambda \ITRAN{})\), 
+that is, the algebraic multiplicity of \(\lambda\) equals \(n - \rank(\T - \lambda \ITRAN{})\).
+\end{enumerate}
+These same conditions can be used to test if a square \emph{matrix} \(A\) is diagonalizable because diagonalizability of \(A\), by \DEF{5.1}, is equivalent to diagonalizability of the operator \(\LMTRAN_A\).
+
+If \(\T\) is a diagonalizable operator and \(\beta_1, \beta_2, ..., \beta_k\) are ordered bases for the eigenspaces of \(\T\), then the union \(\beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_k\) is an ordered basis for \(V\) consisting of eigenvectors of \(\T\),
+and hence \([\T]_{\beta}\) is a diagonal matrix.
+
+When testing \(\T\) for diagonalizability, it is usually easiest to \emph{choose a convenient basis \(\alpha\)} for \(V\) and work with \(B = [\T]_{\alpha}\).
+If the \CPOLY{} of \(B\) splits, then use condition 2 above to check if the algebraic multiplicity of each eigenvalue of \(B\) equals \(n - \rank(B - \lambda I)\).
+(Note that by \THM{5.7}, we can skip checking for condition 2, since condition 2 is \emph{automatically satisfied} for eigenvalues of algebraic multiplicity \(1\).)
+If so, then \(B\), and hence \(\T\), is diagonalizable.
+
+If \(\T\) is diagonalizable and a basis \(\beta\) for \(V\) consisting of eigenvectors of \(\T\) \emph{is} desired, then we first \emph{find a basis for each eigenspace} of \(B\).
+The union of these bases is a basis \(\gamma\) \emph{for \(F^n\)} consisting of eigenvectors of \(B\).
+Each vector in \(\gamma\) is the \emph{coordinate vector} relative to a of an eigenvector of \(\T\).
+The set consisting of these \(n\) eigenvectors of \(\T\) is the desired basis \(\beta\).
+
+Furthermore, if \(A\) is an \(n \X n\) diagonalizable matrix, we can use the \CORO{2.23.1} to find an \emph{invertible} \(n \X n\) matrix \(Q\) and a diagonal \(n \X n\) matrix \(D\) such that \(Q^{-1} A Q = D\).
+The matrix \(Q\) has as its \emph{columns} the vectors in a basis of eigenvectors of \(A\), and \(D\) has as its \(j\)th diagonal entry the eigenvalue of \(A\) corresponding to the \(j\)th column of \(Q\).
+We now consider some examples illustrating the preceding ideas.
+
+\begin{example} \label{example 5.2.5}
+We test the matrix
+\[
+    A = \begin{pmatrix} 3 & 1 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 4 \end{pmatrix} \in M_{3 \X 3}(\SET{R})
+\]
+for diagonalizability.
+The \CPOLY{} of \(A\) is \(\det(A - t I) = -(t-4)(t-3)^2\), which splits, and so condition 1 of the the \ref{sec 5.2.1} is satisfied.
+Also \(A\) has eigenvalues \(\lambda_1 = 4\) and \(\lambda_2 = 3\) with algebraic multiplicities \(1\) and \(2\), respectively.
+Since \(\lambda_1\) has algebraic multiplicity \(1\), condition 2 is satisfied for \(\lambda_1\).
+Thus we need only test condition 2 for \(\lambda_2\).
+Because
+\[
+    A - \lambda_2 I = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+\]
+has rank \(2\), we see that \(3 - \rank(A - \lambda_2 I) = 1\), which is \emph{not} the algebraic multiplicity of \(\lambda_2\).
+Thus condition 2 fails for \(\lambda_2\), and \(A\) is therefore not diagonalizable.
+\end{example}
+
+\begin{example} \label{example 5.2.6}
+Let \(\T\) be the linear operator on \(\POLYRR\) defined by
+\[
+    \T(f(x)) = f(1) + f'(0)x + (f'(0) + f''(0))x^2.
+\]
+We first test \(\T\) for diagonalizability.
+Let \(\alpha\) denote the (convenient) standard ordered basis for \(\POLYRR\) and \(B = [\T]_{\alpha}\).
+Then
+\[
+    B = \begin{pmatrix} 1 & 1 & 1 \\ 0 & 1 & 0 \\ 0 & 1 & 2 \end{pmatrix}.
+\]
+The \CPOLY{} of \(B\), and hence of \(\T\), is \(-(t - 1)^2(t - 2)\), which splits.
+Hence condition 1 of the test for diagonalization is satisfied.
+Also \(B\) has the eigenvalues \(\lambda_1 = 1\) and \(\lambda_2 = 2\) with algebraic multiplicities \(2\) and \(1\), respectively.
+Condition 2 is satisfied for \(\lambda_2\) because it has algebraic multiplicity \(1\).
+So we need only verify condition 2 for \(\lambda_1 = 1\).
+For this case,
+\[
+    3 - \rank(B - \lambda_1 I) = 3 - \rank \begin{pmatrix} 0 & 1 & 1 \\ 0 & 0 & 0 \\ 0 & 1 & 1 \end{pmatrix} = 3 - 1 = 2,
+\]
+which is equal to the algebraic multiplicity of \(\lambda_1\).
+Therefore \(\T\) is diagonalizable.
+We now find an ordered basis \(\gamma\) for \(\SET{R}^3\) consisting of eigenvectors of \(B\).
+We consider each eigenvalue separately.
+The eigenspace corresponding to \(\lambda_1 = 1\) is
+\[
+    E_{\lambda_1} = \left\{ \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3
+    \end{pmatrix} \in \SET{R}^3 : \begin{pmatrix}
+        0 & 1 & 1 \\ 0 & 0 & 0 \\ 0 & 1 & 1
+    \end{pmatrix} \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3
+    \end{pmatrix} = 0
+    \right\},
+\]
+which is the solution space for the system
+\[
+    x_2 + x_3 = 0,
+\]
+and has
+\[
+    \gamma_1 = \left\{ \begin{pmatrix}
+        1 \\ 0 \\ 0
+    \end{pmatrix}, \begin{pmatrix}
+        0 \\ -1 \\ 1
+    \end{pmatrix} \right\}
+\]
+as a basis.
+The eigenspace corresponding to \(\lambda = 2\) is
+\[
+    E_{\lambda_2} = \left\{ \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3
+    \end{pmatrix} \in \SET{R}^3 : \begin{pmatrix}
+        -1 & 1 & 1 \\ 0 & -1 & 0 \\ 0 & 1 & 0
+    \end{pmatrix} \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3
+    \end{pmatrix} = 0
+    \right\},
+\]
+which is the solution space for the system
+\[
+    \sysdelim..\systeme{
+        -x_1 + x_2 + x_3 = 0,
+        x_2 = 0
+    },
+\]
+and has
+\[
+    \gamma_2 = \left\{ \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}\right\}
+\]
+as a basis.
+Let
+\[
+    \gamma = \gamma_1 \cup \gamma_2 = 
+    \left\{
+        \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
+    \right\}
+\]
+Then \(\gamma\) is an ordered basis for \(\SET{R}^3\) consisting of eigenvectors of \(B\).
+Finally, observe that the vectors in \(\gamma\) are the coordinate vectors relative to \(\alpha\) of the vectors in the set
+\[
+    \beta = \{ 1, -x + x^2, 1 + x^2 \},
+\]
+which is an ordered basis for \(\POLYRR\) consisting of eigenvectors of \(\T\).
+Thus
+\[
+    [\T]_{\beta} = \begin{pmatrix}
+        \lambda_1 &         0 & 0 \\
+                0 & \lambda_1 & 0 \\
+                0 &         0 & \lambda_2
+    \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}.
+\]
+\end{example}
+
+Our next example is an application of diagonalization that is of interest in \SEC{5.3}.
+
+\begin{example} \label{example 5.2.7}
+Let
+\[
+    A = \begin{pmatrix} 0 & -2 \\ 1 & 3 \end{pmatrix}.
+\]
+We show that \(A\) is diagonalizable and find a \(2 \X 2\) matrix \(Q\) such that \(Q^{-1} A Q\) is a diagonal matrix.
+We then show how to \emph{use this result to compute \(A^{n}\)
+for any positive integer \(n\)}.
+First observe that the \CPOLY{} of \(A\) is \((t - 1)(t- 2)\), and hence \(A\) has two distinct eigenvalues, \(\lambda_1 = 1\) and \(\lambda_2 = 2\).
+By applying the \CORO{5.5.1} to the operator \(\LMTRAN_A\), we see that \(A\) is diagonalizable.
+Moreover,
+\[
+    \gamma_1 = \left\{ \begin{pmatrix}
+        -2 \\ 1
+    \end{pmatrix} \right\}
+    \text{ and }
+    \gamma_2 = \left\{ \begin{pmatrix}
+        -1 \\ 1
+    \end{pmatrix} \right\}
+\]
+are bases for the eigenspaces \(E_{\lambda_1}\) and \(E_{\lambda_2}\), respectively. Therefore
+\[
+    \gamma = \gamma_1 \cup \gamma_2 = \left\{ \begin{pmatrix}
+        -2 \\ 1
+    \end{pmatrix}, \begin{pmatrix}
+        -1 \\ 1
+    \end{pmatrix} \right\}
+\]
+is an ordered basis for \(\SET{R}^2\) consisting of eigenvectors of \(A\).
+Let
+\[
+    Q = \begin{pmatrix}
+        -2 & -1 \\ 1 & 1
+    \end{pmatrix},
+\]
+the matrix whose \emph{columns} are the vectors in \(\gamma\).
+Then, by the \CORO{2.23.1},
+\[
+    D = Q^{-1} A Q = [\LMTRAN_A]_{\gamma} = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}.
+\]
+To find \(A^n\) for any positive integer \(n\), observe that \(A = QDQ^{-1}\).
+Therefore
+\begin{align*}
+    A^n & = (QDQ^{-1})^n \\
+        & = (QDQ^{-1})(QDQ^{-1}) ... (QDQ^{-1}) \\
+        & = QD^nQ^{-1} = Q \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}^n Q^{-1} \\
+        & =\RED{*} Q \begin{pmatrix} 1^n & 0 \\ 0 & 2^n \end{pmatrix} Q \\
+        & = \begin{pmatrix} -2 & 1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 2^n \end{pmatrix}\begin{pmatrix} -1 & -1 \\ 1 & 2 \end{pmatrix} \\
+        & = \begin{pmatrix} 2 - 2^n & 2 - 2^{n + 1} \\ -1 + 2^n & -1 + 2^{n + 1} \end{pmatrix}.
+\end{align*}
+\end{example}
+
+\begin{note}
+\RED{*}: The \(n\)th power of a diagonal matrix is equal to the diagonal matrix whose \(ii\)-entry is equal to the \(n\)th power of the \(ii\)-entry of the original matrix.
+Need to prove, but trivial.
+\end{note}
+
+We now consider an application that uses diagonalization to \emph{solve a system of differential equations}.
+
+\subsection{Systems of Differential Equations} \label{sec 5.2.2}
+
+Consider the system of differential equations
+\[
+    \sysdelim..\systeme{
+        x'_1 = 3 x_1 + x_2 + x_3,
+        x'_2 = 2 x_1 + 4 x_2 + 2 x_3,
+        x'_3 = - x_1 - x_2 + x_3
+    }
+\]
+where, for each \(i\), \(x_i = x_i(t)\) is a \emph{differentiable real-valued function of the real variable \(t\)}.
+Clearly, this system has a (trivial) solution, namely, the solution in which each \(x_i(t)\) is the zero function.
+We determine all of the solutions to this system
+Let \(x : \SET{R} \to \SET{R}^3\) be the function defined by
+\[
+    x(t) = \begin{pmatrix} x_1(t) \\ x_2(t) \\ x_3(t) \end{pmatrix}.
+\]
+The \textbf{derivative} of \(x\), denoted \(x'\), is \textbf{defined} by
+\[
+    x'(t) = \begin{pmatrix} x'_1(t) \\ x'_2(t) \\ x'_3(t) \end{pmatrix}.
+\]
+Let
+\[
+    A = \begin{pmatrix} 3 & 1 & 1 \\ 2 & 4 & 2 \\ -1 & -1 & 1 \end{pmatrix}
+\]
+be the \emph{coefficient matrix of} the given system, so that with these definitions, we can rewrite the system as the matrix equation \(x' = Ax\).
+Now we test whether \(A\) is diagonalizable.
+Then is can be verified that for
+\[
+    Q = \begin{pmatrix}
+        -1 & 0 & -1 \\ 0 & -1 & -2 \\ 1 & 1 & 1
+    \end{pmatrix}
+    \text{ and }
+    D = \begin{pmatrix}
+        2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 4
+    \end{pmatrix},
+\]
+we have \(Q^{-1}AQ = D\), so that \(A = Q D Q^{-1}\), and
+\begin{align*}
+             & A = Q D Q^{-1} \land x' = Ax \\
+    \implies & x' = QDQ^{-1} x \\
+    \implies & Q^{-1}x' = Q^{-1} Q D Q^{-1} x \\
+    \implies & Q^{-1}x' = D \RED{Q^{-1} x} \quad \quad \quad \MAROON{(1)}
+\end{align*}
+The function \(y = y(t) = \RED{Q^{-1} x}(t)\) can be shown to be differentiable, and \(y' = Q^{-1} x'\)
+(see \EXEC{5.2.17}.)
+Hence by replacing \(y\) and \(y'\) into \MAROON{(1)}, we have \(y' = Dy\).
+Since \(D\) is a diagonal matrix, the system \(y' = Dy\) is easy to solve;
+and after solving \(y\), since \(y = Q^{-1}x\), we have
+\[
+    x = Qy, \quad \quad \quad \MAROON{(2)}
+\]
+hence we can solve \(x\).
+
+Although we let \(y = Q^{-1}x\), we just denote \(y = y(t)\) as
+\[
+    y(t) = \begin{pmatrix}
+        y_1(t) \\ y_2(t) \\ y_3(t)
+    \end{pmatrix}.
+\]
+And we can rewrite \(y' = Dy\) as
+\[
+    \begin{pmatrix}
+        y_1'(t) \\ y_2'(t) \\ y_3'(t)
+    \end{pmatrix}
+    = \begin{pmatrix}
+        2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 4
+    \end{pmatrix}
+    \begin{pmatrix}
+        y_1(t) \\ y_2(t) \\ y_3(t)
+    \end{pmatrix}
+    = \begin{pmatrix}
+        2y_1(t) \\ 2y_2(t) \\ 4y_3(t)
+    \end{pmatrix}.
+\]
+So \(y' = Dy\) corresponds to the system
+\begin{align*}
+    y_1' = 2y_1 \\
+    y_2' = 2y_2 \\
+    y_3' = 4y_3.
+\end{align*}
+Each equation of the system is independent of each other, and thus can be solved individually.
+It is easily seen (as in \EXAMPLE{5.1.3}) that the general solution to these equations is \(y_1(t) = c_1e^{2t}, y_2(t) = c_2e^{2t}\), and \(y_3(t) = c_3e^{4t}\),
+where \(c_1, c_2\), and \(c_3\) are arbitrary constants.
+Finally,
+\begin{align*}
+    \begin{pmatrix} x_{1}(t) \\ x_{2}(t) \\ x_{3}(t)     \end{pmatrix}
+    & = x(t) = Q y(t) \quad \quad \quad \text{by \MAROON{(2)}} \\
+    & = \begin{pmatrix} -1 & 0 & -1 \\ 0 & -1 & -2 \\ 1 & 1 & 1 \end{pmatrix}
+    \begin{pmatrix} c_{1} e^{2 t} \\ c_{2} e^{2 t} \\ c_{3} e^{4 t} \end{pmatrix} \\
+    & = \begin{pmatrix}
+        -c_{1} e^{2 t}-c_{3} e^{4 t} \\
+        -c_{2} e^{2 t} - 2 c_3 e^{4 t} \\
+        c_{1} e^{2 t}+c_{2} e^{2 t} + c_{3} e^{4 t} \\
+    \end{pmatrix}
+\end{align*}
+
+yields the general solution of the original system.
+Note that this solution can be written as
+
+\begin{align*}
+    x(t) = e^{2 t} \cleft[red][
+        c_{1}\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
+        + c_{2} \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix}
+    \cright[red]]
+    + e^{4 t} \cleft[red][
+        c_{3} \begin{pmatrix} -1 \\ -2 \\ 1 \end{pmatrix}
+    \cright[red]]
+\end{align*}
+
+The expressions \emph{\RED{in brackets}} are arbitrary vectors in \(E_{\lambda_1}\) and \(E_{\lambda_2}\), respectively,
+where \(\lambda_1 = 2\) and \(\lambda_2 = 4\).
+Thus the general solution of the original system is \(x(t) = e^{2t} z_1 + e^{4t} z_2\),
+where \(z_1 \in E_{\lambda_1}\) and \(z_2 \in E_{\lambda_2}\).
+This result is generalized in \EXEC{5.2.16}.
+
+\begin{note}
+因為(我)沒學過微分方程，注意最後一段，雖然從\ \(x(t) = e^{2t} z_1 + e^{4t} z_2\) 這個\ equation 可看出來，但還是提醒一下，\(x(t)\) 是一個\ ``vector of functions''，而不是一個\ function。
+\end{note}
+
+\subsection{Direct Sums} \label{sec 5.2.3}
+
+\begin{note}
+The concept of direct sum has occurred in many previous exercises.
+\end{note}
+
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional vector space \(V\).
+There is a way of \emph{decomposing} \(V\) into \emph{simpler subspaces} that \emph{offers insight} into the behavior of \(\T\).
+This approach is especially useful in \CH{7}, where we study non-diagonalizable linear operators.
+In the case of diagonalizable operators, the simpler subspaces are the eigenspaces of the operator.
+
+\begin{definition} \label{def 5.8}
+Let \(W_1, W_2, ..., W_k\) be subspaces of a vector space \(V\). we define the \textbf{sum} of these subspaces to be the set
+\[
+    \{ v_1 + v_2 + ... + v_k : v_i \in W_i \text{ for } 1 \le i \le k \},
+\]
+which we denote by \(W_1 + W_2 + ... + W_k\) or \(\sum_{i = 1}^k W_i\).
+It is a simple exercise (See \EXEC{1.3.23}) to show that the sum of subspaces of a vector space is also a subspace.
+\end{definition}
+
+\begin{example} \label{example 5.2.8}
+Let \(V = \SET{R}^3\), let \(W_1\) denote the \(xy\)-plane, and let \(W_2\) denote the \(yz\)-plane.
+Then \(\SET{R}^3 = W_1 + W_2\) because, for any vector \((a, b, c) \in \SET{R}^3\),
+we have \((a, b, c) = (a, 0, 0) + (0, b, c)\), where \((a, 0, 0) \in W_1\) and \((0, b, c) \in W_2\).
+\end{example}
+
+Notice that in \EXAMPLE{5.2.8} the representation of \((a, b, c)\) as a sum of vectors in \(W_1\) and \(W_2\) \emph{is not unique}.
+For example, \((a, b, c) = (a, b, 0) + (0, 0, c)\) is
+another representation.
+Because we are often interested in sums for which representations are unique, we introduce a condition that assures this outcome.
+The definition of \emph{direct sum} that follows is a \emph{generalization} of the definition given in the exercises of \SEC{1.3}.
+(See \ADEF{1.8}.)
+
+\begin{definition} \label{def 5.9}
+Let \(W, W_1, W_2, ..., W_k\) be subspaces of a vector space \(V\) such that \(W_1 \subseteq W\) for \(i = 1, 2, ..., k\).
+We call W the \textbf{direct sum} of the subspaces \(W_1, W_2, ..., W_k\), and write \(W = W_1 \oplus W_2 \oplus ... \oplus W_k\), if
+\[
+    W = \sum_{i = 1}^k W_i \quad \text{ and } \quad W_j \cap \sum_{i \ne j} W_i = \{ \OV \} \text{ for each } j (1 \le j \le k).
+\]
+\end{definition}
+
+\begin{example} \label{example 5.2.9}
+In \(\SET{R}^5\), let \(W = \{(x_1, x_2, x_3, x_4, \RED{x_5}) : \RED{x_5} = 0 \}\),
+\(W_1 = \{(a, b, 0, 0, 0): a, b \in \SET{R} \}\), \(W_2 = \{ (0, 0, c, 0, 0): c \in \SET{R}\}\),
+and \(W_3 = \{(0, 0, 0, d, 0): d \in \SET{R} \}\).
+For any \((a, b, c, d, 0) \in W\),
+\((a, b, c, d, 0) = (a, b, 0, 0, 0) + (0, 0, c, 0, 0) + (0, 0, 0, d, 0) \in W_1 + W_2 + W_3\).
+Thus
+\[
+    W = \sum_{i = 1}^3 W_i.
+\]
+To show that \(W\) is the direct sum of \(W_1, W_2\), and \(W_3\), we must prove that \(W_1 \cap (W_2 + W_3) = W_2 \cap (W_1 + W_3) = W_3 \cap (W_1 + W_2) = \{ \OV \}\).
+But these equalities are obvious, and so \(W = W_1 \oplus W_2 \oplus W_3\).
+\end{example}
+
+Our next result contains several conditions that are \emph{equivalent} to the definition of a direct sum.
+
+\begin{theorem} \label{thm 5.9}
+Let \(W_1, W_2, ..., W_k\) be subspaces of a finite-dimensional vector space \(V\).
+The following conditions are equivalent.
+
+\begin{enumerate}
+\item \(v = W_1 \oplus W_2 \oplus ... \oplus W_k\).
+\item \(V = \sum_{i = 1}^k W_i\) and, for any vectors \(v_1, v_2, ..., v_k\) such that \(v_i \in W_i
+(1 \le i \le k)\), if \(v_1 + v_2 + ... + v_k = \OV\), then \(v_i = \OV\) for all \(i\).
+\item Each vector \(v \in V\) can be \emph{uniquely written} as \(v = v_1 + v_2 + ... + v_k\) where \(v_i \in W_i\).
+\item\RED{*} \emph{For any} set of ordered bases \(\gamma_1, \gamma_2, ..., \gamma_k\) for \(W_1, W_2, ..., W_k\), \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(V\).
+\item\RED{**} \emph{There exists} a set of ordered bases \(\gamma_1, \gamma_2, ..., \gamma_k\) for \(W_i (1 \le i \le k)\), such that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(V\).
+\end{enumerate}
+\end{theorem}
+
+\begin{remark} \label{remark 5.2.8}
+Note that I have modified the statements in part(d) and part(e).
+It seems that the modified statements is more clear(to me).
+And clearly, since each \(W_i\) of course \emph{exists} an ordered basis, this fact and part(d) imply part(e).
+\end{remark}
+
+\begin{proof}
+We prove them by proving (a) \(\implies\) (b) \(\implies\) (c) \(\implies\) (d) \(\implies\) (e) \(\implies\) (a).
+
+So assume (a).
+In particular by \DEF{5.9} we have
+\[
+    V = \sum_{i = 1}^k W_i. \quad \quad \MAROON{(a.1)}
+\]
+Now suppose that \(v_1, v_2, ..., v_k\) are any vectors such that \(v_i \in W_i\) for all \(i\) and \(v_1 + v_2 + ... + v_k = \OV\).
+Then for any \(j\),
+\begin{align*}
+    -v_j & = \sum_{i \RED{\ne} j} v_i & \text{of course} \\
+         & \in \sum_{i \RED{\ne} j} W_i \quad \quad \MAROON{(a.2)} & \text{by \MAROON{(a.1)}}
+\end{align*}
+But \(-v_j \in W_j\), so with \MAROON{(a.2)}, \(-v_j \in W_j \cap \sum_{i \ne j} W_i\).
+But by the assumption of (a), that is, by the second condition of \DEF{5.9},
+\[
+    -v_j \in W_j \cap \sum_{i \ne j} W_i = \{ \OV \}.
+\]
+Hence \(v_j = \OV\) for any \(j\), proving (b).
+
+Now assume (b). We prove (c).
+Let arbitrary \(v \in V\).
+By (b), since \(V = \sum_{i = 1}^k W_i\), there exist vectors \(v_1, v_2, ..., v_k\) such that \(v_i \in W_i\) and \(v = v_1 + v_2 + ... + v_k\).
+So the existence part is proved.
+Now we must show that this representation \emph{is unique}. Suppose also that \(v = w_1 + w_2 + ... + w_k\), where \(w_i \in W_i\) for all \(i\).
+Then
+\begin{align*}
+             & v_1 + v_2 + ... + v_k = v = w_1 + w_2 + ... + w_k \\
+    \implies & (v_1 - w_1) + (v_2 - w_2) + ... + (v_k - w_k) = \OV \quad \quad \MAROON{(b.1)}
+\end{align*}
+But \(v_i - w_i \in W_i\) for all \(i\), so with \MAROON{(b.1)} and assumption of (b), \(v_i - w_i = \OV\) for all \(i\).
+Thus \(v_i = w_i\) for all \(i\), proving the uniqueness of the representation.
+
+Now assume (c). We prove (d).
+
+For each \(i\), let \(\gamma_i\) be an ordered basis for \(W_i\).
+From the statement of (c), it's clear that
+\[
+    V = \sum_{i = 1}^k W_i,
+\]
+and it follows that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) \emph{generates} \(V\).
+So it suffices to show \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is \LID{}.
+Now let \(m_i\) be the number of elements of \(\gamma_i\), and consider vectors \(v_{ij}\), the \(j\)th vector in \(\gamma_i\), for \(1 \le i \le k\) and \(1 \le j \le m_i\), such that
+\[
+    \sum_{i, j} a_{ij} v_{ij} = \OV. \quad \quad \MAROON{(c.1)}
+\]
+For each \(i\), set
+\[
+    w_i = \sum_{j = 1}^{\RED{m_i}} a_{ij} v_{ij}. \quad \quad \MAROON{(c.2)}
+\]
+Then for each \(i\), \(w_i \in \spann(\gamma_i) = W_i\) and with \MAROON{(c.1)},
+\[
+    w_1 + w_2 + ... + w_k = \sum_{i, j} a_{ij} v_{ij} = \OV. \quad \quad \MAROON{(c.3)}
+\]
+But we already have the \emph{trivial} representation of \(\OV\) using \(W_i\)'s vector, that is
+\[
+    0 + 0 + ... + 0 = \OV \text{ for each } 0 \in W_i.
+\]
+So by the assumption of (c), \(0 + 0 + ... + 0\) where each \(0 \in W_i\) is \textbf{the unique} representation of \(\OV\), which (by \MAROON{(c.3)}) implies \(w_i = \OV\) for all \(i\).
+Thus by \MAROON{(c.2)},
+\[
+    \OV = w_i = \sum_{j = 1}^{\RED{m_i}} a_{ij} v_{ij} \text{ for each } i.
+\]
+But each \(\gamma_i\) is \LID{}, and \(v_{ij}\) are vectors in \(\gamma_i\), and hence for each \(i\), \(a_{ij} = 0\) for all \(j\).
+Consequently, by \MAROON{(c.1)}, \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is \LID{} and a generating set of \(V\) and therefore is a basis for \(V\).
+
+Now by \RMK{5.2.8}, (e) follows immediately from (d).
+
+Finally, we assume (e) and prove (a).
+For each \(i\), let \(\gamma_i\) be an ordered basis for \(W_i\) such that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is an ordered basis for \(V\).
+Then we use \EXEC{1.4.14} \emph{inductively}:
+\begin{align*}
+    V & = \spann(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k) & \text{of course} \\
+      & = \spann(\gamma_1) + \spann(\gamma_2 \cup ... \gamma_k) & \text{by \EXEC{1.4.14}} \\
+      & \quad \vdots & \text{apply \EXEC{1.4.14} inductively} \\
+      & = \spann(\gamma_1) + \spann(\gamma_2) + ... + \spann(\gamma_k) \\
+      & = W_1 + W_2 + ... + W_k & \text{since \(\gamma_i\) is a basis for \(W_i\)}
+\end{align*}
+Now it suffices to show that for all \(j\),
+\[
+    W_j \cap \sum_{i \ne j} W_{i} = \{ \OV \}. \quad \quad \MAROON{(e.1)}
+\]
+For the sake of contradiction, suppose not.
+So for some \(j\), there is a \emph{nonzero} vector \(v\) such that
+\[
+    v \in W_j \cap \sum_{i \ne j} W_i.
+\]
+Then
+\[
+    v \in W_j = \spann(\gamma_j)
+    \quad \text{ and } \quad
+    v \in \sum_{i \ne j} W_i = \spann \left( \bigcup_{i \ne j} \gamma_i \right)
+\]
+where similar to the derivation of \(V = W_1 + ... + W_k\) before, the second equation is derived by applying \EXEC{1.4.14} inductively.
+Then we have two \emph{different} linear combination of \(v \ne \OV\) of \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\): one is only using \(\gamma_j\) and the other is using \(\bigcup_{i \ne j} \gamma_i\).
+But since \(\gamma_1 \cup ... \cup \gamma_k\) is a \emph{basis} for \(V\) and \(v \in V\), by \THM{1.8}, \(v\) must only have unique representation using \(\gamma_1 \cup ... \cup \gamma_k\), so we have a contradiction.
+Hence \MAROON{(e.1)} is true, proving (a).
+\end{proof}
+
+With the aid of \THM{5.9}, we are able to characterize diagonalizability \emph{in terms of direct sums}.
+
+\begin{theorem} \label{thm 5.10}
+A linear operator \(\T\) on a finite-dimensional vector space \(V\) is diagonalizable if and only if \(V\) is \emph{the direct sum of the eigenspaces of \(\T\)}.
+\end{theorem}
+
+\begin{proof}
+Let \(\lambda_1, \lambda_2, ..., \lambda_k\) be the distinct eigenvalues of \(\T\).
+
+First suppose that \(\T\) is diagonalizable, and for each \(i\) choose an ordered basis \(\gamma_i\) for the eigenspace \(E_{\lambda_i}\).
+By \THM{5.8}, \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is a basis for \(V\), satisfying \THM{5.9}(d), and hence by the equivalent \THM{5.9}(a), \(V\) is a direct sum of the \(E_{\lambda_i}\)'s.
+
+Conversely, suppose that \(V\) is a direct sum of the eigenspaces of \(\T\).
+(That is, suppose \THM{5.9}(a) is satisfied.)
+For each \(i\), choose an ordered basis \(\gamma_i\) of \(E_{\lambda_i}\).
+Then by the equivalent \THM{5.9}(d) (of \THM{5.9}(a)), the union \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is a basis for \(V\).
+Since this basis \emph{consists of eigenvectors} of \(\T\), (by \THM{5.1}) we conclude that \(\T\) is diagonalizable.
+\end{proof}
+
+\begin{example} \label{example 5.2.10}
+Let \(\T\) be the linear operator on \(\SET{R}^4\) defined by
+\[
+    \T(a, b, c, d) = (a, b, 2c, 3d).
+\]
+It is easily seen that \(\T\) is diagonalizable with eigenvalues \(\lambda_1 = 1, \lambda_2 = 2\), and \(\lambda_3 = 3\).
+Furthermore, if we \RED{``remove the fifth component''} of the subspaces \(W_1, W_2\), and \(W_3\) of \EXAMPLE{5.2.9}, then \(W_1, W_2, W_3\) of that example coincide with the corresponding eigenspaces of \(\lambda_1, \lambda_2, \lambda_3\).
+Thus by \THM{5.10}, since \(\T\) is diagonalizable, \(\SET{R}^4 = W_1 \oplus W_2 \oplus W_3\).
+\end{example}

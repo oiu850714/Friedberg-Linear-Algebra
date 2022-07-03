@@ -92,7 +92,7 @@ The set
 \[
     \{ p_0(x), p_1(x), ..., p_n(x) \}
 \]
-is \LID{} in \(\mathcal{P}_n(F)\).
+is \LID{} in \(\POLYNF\).
 For if
 \[
     a_0 p_0(x) + a_1 p_1(x) + ... + a_n p_n(x) = 0
@@ -120,7 +120,7 @@ If \(S_1\) is \LDP{}, then \(S_2\) is \LDP{}.
 Suppose \(S_1\) is \LDP{}.
 Then we can find a nontrivial representation \(\OV = a_1 v_1 + a_2 v_2 + ... + a_n v_n\) where \(a_1, ..., a_2 \in F\) and are \emph{not all zero}, and \emph{distinct} \(v_1, ..., v_n \in S_1\).
 Since \(S_1 \subseteq S_2\), in particular \(v_1, ..., v_n \in S_2\).
-Hence we have found coefficients \(a_1, a_2, ..., a_n \in F\), not all zero, and distinct \(v_1, v_2, ..., v_n \in S_2\), s.t. \(\OV = a_1 v_1 + a_2 v_2 + ... + a_n v_n\).
+Hence we have found coefficients \(a_1, a_2, ..., a_n \in F\), not all zero, and distinct \(v_1, v_2, ..., v_n \in S_2\), such that \(\OV = a_1 v_1 + a_2 v_2 + ... + a_n v_n\).
 Then by \DEF{1.6}, \(S_2\) is \LDP{}.
 \end{proof}
 
@@ -137,7 +137,7 @@ Now suppose that \(S\) is any \LDP{} set containing two or more vectors
 (we have shown that a set with one(single) nonzero vector is \LID{}, in \ATHM{1.15}(b)).
 Then some vector \(v \in S\) can be written as a linear combination of the other vectors in \(S\), and the subset \emph{obtained by removing \(v\) from \(S\)} has the \emph{same span} as \(S\).
 It follows that, by contrapositive, if no proper subset of \(S\) generates the span of \(S\), then \(S\) must be \LID{}.
-(Informally, if \(S\) is \LDP{}, then we can remove some \(v \in S\) s.t. \(\spann(S) = \spann(S \setminus \{ v \})\).
+(Informally, if \(S\) is \LDP{}, then we can remove some \(v \in S\) such that \(\spann(S) = \spann(S \setminus \{ v \})\).
 Contrapositively, if for all element \(v \in S\), \(\spann(S) \ne \spann(S \setminus \{ v \})\), then \(S\) is \LID{}.)
 Another way to view these statements is given in \THM{1.7}.
 
@@ -309,7 +309,7 @@ So we only have trivial combination to represent \(\OV\), hence \( \{ e_1, e_2, 
 \end{proof}
 
 \begin{exercise} \label{exercise 1.5.5}
-Show that the set \(\{ 1, x, x^2, ..., x^n \}\) is \LID{} in \(\mathcal{P}_n(F)\).
+Show that the set \(\{ 1, x, x^2, ..., x^n \}\) is \LID{} in \(\POLYNF\).
 \end{exercise}
 
 \begin{proof}
@@ -502,7 +502,7 @@ Then
     \implies & a_1 v_1 = -(a_2 v_2 + ... + a_n v_n) \\
     \implies & v_1 = -a_1^{-1} a_2 v_2 - ... - a_1^{-1} a_n v_n.
 \end{align*}
-So we have found distinct vectors \(v_1, v_2, ..., v_n\) in \(S\) s.t. \(v_1\) is a linear combination of vectors \(v_2, ..., v_n\) is \(S\), as desired.
+So we have found distinct vectors \(v_1, v_2, ..., v_n\) in \(S\) such that \(v_1\) is a linear combination of vectors \(v_2, ..., v_n\) is \(S\), as desired.
 
 \(\Longleftarrow\):
 Now suppose there exist \emph{distinct} vectors \(v, u_1, u_2, ..., u_n\) in \(S\) such that \(v\) is a linear combination of \(u_1, u_2, ..., u_n\).
@@ -533,7 +533,7 @@ So in particular we can just relabel \(v\) as \(u_{k + 1}\) and \(v_1, v_2, ...,
 \(\Longleftarrow\):
 Suppose \(u_{k + 1} \in \spann(\{ u_1, u_2, ..., u_k \})\).
 
-Then in particular we have distinct vectors \(u_{k + 1}, u_1, u_2, ..., u_k\) in \(S\) s.t. \(u_{k + 1}\) is a linear combination of \(u_1, u_2, ..., u_k\).
+Then in particular we have distinct vectors \(u_{k + 1}, u_1, u_2, ..., u_k\) in \(S\) such that \(u_{k + 1}\) is a linear combination of \(u_1, u_2, ..., u_k\).
 Again by \EXEC{1.5.14}, \(S\) is \LDP{}{}.
 \end{proof}
 
@@ -586,7 +586,7 @@ Hence from \MAROON{(1)} the columns \(C_1, C_2, ..., C_n\) of \(M\) are \LID{}.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.5.18}
-Let \(S\) be a set of nonzero polynomials in \(\mathcal{P}(F)\) such that no two have the same degree. 
+Let \(S\) be a set of nonzero polynomials in \(\POLYF\) such that no two have the same degree. 
 Prove that \(S\) is \LID{}.
 \end{exercise}
 

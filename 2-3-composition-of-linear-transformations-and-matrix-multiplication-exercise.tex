@@ -112,7 +112,7 @@ Let  \(\beta\) and \(\gamma\) be the standard ordered bases of  \(\mathcal{P}_{2
 \begin{enumerate}
 \item
 First we calculate the formula for \(\U\T\).
-Given \(f(x) = a + bx + cx^2 \in \mathcal{P}_2(\SET{R})\),
+Given \(f(x) = a + bx + cx^2 \in \POLYRR\),
 \begin{align*}
     (\U\T)(f(x)) & = \U(\T(a + bx + cx^2)) \\
                  & = \U((a + bx + cx^2)'(3 + x) + 2(a + bx + cx^2)) \\
@@ -212,14 +212,14 @@ Let
 Compute \([\T]_{\alpha}\).
 \item Define
 \[
-    \T: \mathcal{P}_2(\SET{R}) \to M_{2 \X 2}(\SET{R}) \text{ by }
+    \T: \POLYRR \to M_{2 \X 2}(\SET{R}) \text{ by }
     \T(f) = \begin{pmatrix} f'(0) & 2f(1) \\ 0 & f''(3) \end{pmatrix},
 \]
 where \('\) denotes differentiation.
 Compute \([\T]_{\beta}^{\alpha}\).
 \item Define \(\T: M_{2 \X 2}(F) \to F\) by \(\T(A) = \TRACE(A)\).
 Compute \([\T]_{\alpha}^{\gamma}\).
-\item Define \(\T: \mathcal{P}_2(\SET{R}) \to \SET{R}\) by \(\T(f) = f(2)\). 
+\item Define \(\T: \POLYRR \to \SET{R}\) by \(\T(f) = f(2)\). 
 Compute \([\T]_{\beta}^{\gamma}\).
 \end{enumerate}
 \end{note}
@@ -387,7 +387,7 @@ Prove that \(\T^2 = \TZERO\) if and only if \(\RANGET \subseteq \NULLT\).
 \begin{proof} \ 
 \(\Longrightarrow\): Suppose \(\T^2 = \TZERO\), we have to show \(\RANGET \subseteq \NULLT\).
 So suppose arbitrary \(x \in \RANGET\).
-Then by definition of range, we can find \(v \in V\) s.t. \(\T(v) = x\).
+Then by definition of range, we can find \(v \in V\) such that \(\T(v) = x\).
 And in particular, \(\T(\T(v)) = \T(x)\).
 But LHS \(= \T(\T(v)) = \T^2(v) = \OV\) by supposition, so we have RHS \(= \T(x) = \OV\).
 So by definition of null space, \(x \in \NULLT\).
@@ -418,7 +418,7 @@ All these statements \textbf{do not require linearity} and are true for normal f
 \begin{proof} \ 
 \begin{enumerate}
 \item Suppose \(\U\T\) is one-to-one, we have to show \(\T\) is also.
-So suppose \(x, y \in \T\) s.t. \(\T(x) = \T(y)\) we have to show \(x = y\).
+So suppose \(x, y \in \T\) such that \(\T(x) = \T(y)\) we have to show \(x = y\).
 Then
 \begin{align*}
              & \T(x) = \T(y) \\
@@ -434,11 +434,11 @@ Then \((\U\T)(a, b) = \U(a, b, 0) = (a, b, 0)\), trivially \(\U\T\) is one-to-on
 
 \item
 Suppose \(\U\T\) is onto, we have to show \(\U\) is onto.
-So let arbitrary \(z \in Z\), we have to find a vector \(w \in W\) s.t. \(\U(w) = z\).
+So let arbitrary \(z \in Z\), we have to find a vector \(w \in W\) such that \(\U(w) = z\).
 
-But in particular, since \(\U\T\) is onto, we can find a vector \(v \in V\) s.t. \((\U\T)(v) = z\).
+But in particular, since \(\U\T\) is onto, we can find a vector \(v \in V\) such that \((\U\T)(v) = z\).
 By definition of function composition, \(\U(\T(v)) = z\).
-But \(\T(v)\) is in \(W\), so we have found a vector \(w = \T(v) \in W\) s.t. \(\U(w) = z\).
+But \(\T(v)\) is in \(W\), so we have found a vector \(w = \T(v) \in W\) such that \(\U(w) = z\).
 Since \(z\) is arbitrary, we have \(\U\) is onto.
 
 Note that \(\T\) is not necessarily onto.
@@ -458,11 +458,11 @@ Then
 So \(\U\T\) is one-to-one.
 
 Now we show \(\U\T\) is onto.
-So suppose \(z \in Z\), we have to find \(v \in V\) s.t. \((\U\T)(v) = z\).
-But since \(\U\) is onto, we can find \(w \in W\) s.t. \(\U(w) = z\).
-And since \(\T\) is onto, we can find \(v \in V\) s.t. \(\T(v) = w\).
+So suppose \(z \in Z\), we have to find \(v \in V\) such that \((\U\T)(v) = z\).
+But since \(\U\) is onto, we can find \(w \in W\) such that \(\U(w) = z\).
+And since \(\T\) is onto, we can find \(v \in V\) such that \(\T(v) = w\).
 Then \((\U\T)(v) = \U(\T(v)) = \U(w) = z\),
-hence we have found \(v \in V\) s.t. \((\U\T)(v) = z\).
+hence we have found \(v \in V\) such that \((\U\T)(v) = z\).
 So \(\U\T\) is onto.
 \end{enumerate}
 \end{proof}
@@ -634,7 +634,7 @@ Hence (by \THM{1.11},) we have shown that \(\NULLT = \NULL(\T^2)\) \MAROON{(a.2)
 Now we first show that \(\RANGET \cap \NULLT = \{ \OV \}\).
 So let arbitrary \(w \in \RANGET \cap \NULLT\), we have to show that \(w = \OV\).
 So in particular, \(w \in \RANGET\) and \(w \in \NULLT\).
-Since \(w \in \RANGET\), we have some \(v \in V\) s.t. \(\T(v) = w\) \MAROON{(a.3)}.
+Since \(w \in \RANGET\), we have some \(v \in V\) such that \(\T(v) = w\) \MAROON{(a.3)}.
 Since \(w \in \NULLT\), we have \(\T(w) = \OV\).
 Together, we have \(\T(\T(v)) = \T(w) = \OV\), hence \((\T^2)(v) = \OV\), hence \(v \in \NULL(\T^2)\).
 But by \MAROON{(a.2)}, \(v\) is also in \(\NULLT\), so \(\T(v) = \OV\), hence by \MAROON{(a.3)} we have \(w = \OV\), as desired.
@@ -644,9 +644,9 @@ Since we have shown \(\RANGET \cap \NULLT = \{ \OV \}\), by \ATHM{2.11}(1.2), \(
 
 \item
 First we show that given any linear \(\T : V \to V\), \(\RANGE(\T^{k + 1}) \subseteq \RANGE(\T^k)\) for some nonnegative integer \(k\).
-Suppose arbitrary \(v \in \RANGE(\T^{k + 1})\), then exists \(x \in V\) s.t. \(\T^{k + 1}(x) = v\);
+Suppose arbitrary \(v \in \RANGE(\T^{k + 1})\), then exists \(x \in V\) such that \(\T^{k + 1}(x) = v\);
 that is, \(\T^k(\BLUE{\T(x)}) = v\);
-so we have found \(\BLUE{\T(x)} \in V\) s.t. \(\T^k(\BLUE{\T(x)}) = v\), so \(v \in \RANGE(\T^k)\).
+so we have found \(\BLUE{\T(x)} \in V\) such that \(\T^k(\BLUE{\T(x)}) = v\), so \(v \in \RANGE(\T^k)\).
 Hence \(\RANGE(\T^{k + 1}) \subseteq \RANGE(\T^k)\).
 
 Now given arbitrary nonnegative integer \(k\), we have two cases:
@@ -668,8 +668,8 @@ Now given arbitrary nonnegative integer \(k\), we have two cases:
     \item \(\RANGE(\T^{k + 1}) \subset \RANGE(\T^k)\) (proper subset):
 
     Then (by \THM{1.11}(2)), \(\dim(\RANGE(\T^{k + 1}) < \dim(\RANGE)(\T^k))\).
-    And (informally by well-ordering principle) since the (finite) dimension of \(\RANGE(\T^{k + 1})\) can only be \(0\) to \(\dim(\RANGE(\T^k)) - 1\), we must have some integer \(k'\) s.t. \(\dim(\RANGE(\T^{k + \RED{k'} + 1}) = \dim(\RANGE(\T^{k + \RED{k'}}))\).
-    But then we have found \(k'' = k + k'\) s.t. \(\dim(\RANGE(\T^{k'' + 1}) = \dim(\RANGE(\T^{''}))\), and this falls back to the previous case.
+    And (informally by well-ordering principle) since the (finite) dimension of \(\RANGE(\T^{k + 1})\) can only be \(0\) to \(\dim(\RANGE(\T^k)) - 1\), we must have some integer \(k'\) such that \(\dim(\RANGE(\T^{k + \RED{k'} + 1}) = \dim(\RANGE(\T^{k + \RED{k'}}))\).
+    But then we have found \(k'' = k + k'\) such that \(\dim(\RANGE(\T^{k'' + 1}) = \dim(\RANGE(\T^{''}))\), and this falls back to the previous case.
 \end{itemize}
 \end{enumerate}
 \end{proof}
@@ -814,7 +814,7 @@ So we have \(B_{ip} B_{pq} B_{qi} = 1 \X 1 \X 1 = 1\), hence \(\sum_{k = 1}^n \s
 
 \(\Longleftarrow\): Suppose \((B^3)_{ii} > 0\) for some \(1 \le i \le n\).
 Then by the calculation in the previous case, some terms in \(\sum_{k = 1}^n \sum_{l = 1}^n B_{ik} B_{kl} B_{li}\) is equal to \(1\).
-That is, we can find three member \(i, p, q\) where \(1 \le p \le n\) and \(1 \le q \le n\) and \(i, p, q\) are distinct s.t. \(B_{ip} B_{pq} B_{qi} = 1\).
+That is, we can find three member \(i, p, q\) where \(1 \le p \le n\) and \(1 \le q \le n\) and \(i, p, q\) are distinct such that \(B_{ip} B_{pq} B_{qi} = 1\).
 And (by zero product property) this means all of \(B_{ip}, B_{pq}, B_{qi}\) are nonzero, and by definition of \(B\), are equal to \(1\).
 But by definition of \(B\), that implies \(i, p\) have relation with each other, \(p, q\) have relation with each other, and \(q, i\) have relation with each other;
 so (by permutations law,) \(i, p, q\) form a clique.
@@ -944,7 +944,7 @@ Since \(A\) is a dominant coincidence matrix, exactly one of the following happe
         For \(v_{a_1}, ..., v_{a_i}\), since we have \(v_{k + 1} \to v_1\) (from \MAROON{(1)}), \(v_{k + 1}\) can reach these vertices within two steps by \(v_{k + 1} \to v_1\) and \(v_1\) to \(v_{a_1}, ..., v_{a_i}\).
         
         For \(v_{b_1}, ..., v_{b_j}\), since these nodes are in (subgraph) \(G'\), and \(v_1\) can reach this nodes within two steps, but \(v_1\) does not connect to these nodes, this implies that \(v_1\) \textbf{must} reach these nodes by exactly two steps.
-        That is, for each \(v_b\) in \(v_{b_1}, ..., v_{b_k}\), we can find a vertices \(v'\) s.t. \(v_1 \to v'\) and \(v' \to v_b\) \MAROON{(3)}.
+        That is, for each \(v_b\) in \(v_{b_1}, ..., v_{b_k}\), we can find a vertices \(v'\) such that \(v_1 \to v'\) and \(v' \to v_b\) \MAROON{(3)}.
         But in particular, \(v_1\) connects to \(v'\), then by \MAROON{(2)}, \(v_{k + 1} \to v'\).
         Then we have \(v_{k + 1} \to v'\) and (by \MAROON{(3)}) \(v' \to v_b\).
         So \(v_{k + 1}\) can reach all \(v_{b_1}, ... v_{b_j}\) within two steps.

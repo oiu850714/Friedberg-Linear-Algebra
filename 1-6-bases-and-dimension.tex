@@ -32,21 +32,21 @@ Then \(\{ E_{ij} : 1 \le i \le m, 1 \le j \le n \}\) is a (standard?) basis for 
 \end{example}
 
 \begin{example} \label{example 1.6.4}
-In \(\mathcal{P}_n(F)\), the set \(\{ 1, x, x^2, ..., x^n \}\) is a basis.
-We call this basis the \textbf{standard basis} for \(\mathcal{P}_n(F)\).
+In \(\POLYNF\), the set \(\{ 1, x, x^2, ..., x^n \}\) is a basis.
+We call this basis the \textbf{standard basis} for \(\POLYNF\).
 \end{example}
 
 \begin{additional definition} \label{adef 1.11}
-A placeholder for the meaning of \textbf{standard basis} of various vector spaces, \(F^n\), \(M_{m \X n}(F)\), \(\mathcal{P}_n(F)\).
+A placeholder for the meaning of \textbf{standard basis} of various vector spaces, \(F^n\), \(M_{m \X n}(F)\), \(\POLYNF\).
 \end{additional definition}
 
 \begin{example} \label{example 1.6.5}
-In \(\mathcal{P}(F)\), the set \(\{1, x, x^2, ... \}\) is a basis.
+In \(\POLYF\), the set \(\{1, x, x^2, ... \}\) is a basis.
 \end{example}
 
 \begin{remark} \label{remark 1.6.1}
 Observe that \EXAMPLE{1.6.5} shows that a basis (set) \emph{need not be finite}.
-In fact, later in this section it is shown that no basis for \(\mathcal{P}(F)\) can be finite.
+In fact, later in this section it is shown that no basis for \(\POLYF\) can be finite.
 Hence \emph{not} every vector space has a finite basis.
 \end{remark}
 
@@ -284,7 +284,7 @@ So we have \(\spann(L' \cup H') = V\).
 Since we have shown that for the \LID{} set \(L'\) with \(m + 1\) elements,
 \begin{itemize}
     \item \(m + 1 \le n\),
-    \item \(H'\) is a subset of \(G\) that contains \((n - m) - 1 = n - (m + 1)\) vectors s.t. \(\spann(L' \cup H') = V\),
+    \item \(H'\) is a subset of \(G\) that contains \((n - m) - 1 = n - (m + 1)\) vectors such that \(\spann(L' \cup H') = V\),
 \end{itemize}
 the theorem is true for \(m + 1\).
 This completes the induction.
@@ -334,8 +334,8 @@ The vector space \(M_{m \X n}(F)\) has dimension \(mn\), since by \EXAMPLE{1.6.3
 \end{example}
 
 \begin{example} \label{example 1.6.10}
-The vector space \(\mathcal{P}_n(F)\) has dimension \(n + 1\), since by \EXAMPLE{1.6.4}, \\
-\(\{ 1, x, x^2, ..., x^n \}\), which has \(n + 1\) elements, is a basis for \(\mathcal{P}_n(F)\).
+The vector space \(\POLYNF\) has dimension \(n + 1\), since by \EXAMPLE{1.6.4}, \\
+\(\{ 1, x, x^2, ..., x^n \}\), which has \(n + 1\) elements, is a basis for \(\POLYNF\).
 \end{example}
 
 The following examples show that \textbf{the dimension} of a vector space \textbf{depends on its field of scalars}.
@@ -356,11 +356,11 @@ It's infinite dimensional, and even uncountable dimensional.
 \end{remark}
 
 \begin{example} \label{example 1.6.13}
-The vector space \(\mathcal{P}(F)\) is infinite-dimensional because, by \EXAMPLE{1.6.5}, it has an infinite \LID{} set, namely \(\{ 1, x, x^2, ... \}\).
-Hence by (contrapositive of) \CORO{1.10.2}, \(\mathcal{P}(F)\) is infinite-dimensional.
+The vector space \(\POLYF\) is infinite-dimensional because, by \EXAMPLE{1.6.5}, it has an infinite \LID{} set, namely \(\{ 1, x, x^2, ... \}\).
+Hence by (contrapositive of) \CORO{1.10.2}, \(\POLYF\) is infinite-dimensional.
 \end{example}
 
-In \EXAMPLE{1.6.13}, the \emph{infinite} \LID{} set \(\{1, x, x^2, ... \}\) is, in fact, a basis for \(\mathcal{P}(F)\).
+In \EXAMPLE{1.6.13}, the \emph{infinite} \LID{} set \(\{1, x, x^2, ... \}\) is, in fact, a basis for \(\POLYF\).
 Yet \textbf{nothing} that we have proved in this section guarantees an infinite-dimensional vector space must have a basis.
 In \SEC{1.7} it is shown, however, that \textbf{every} vector space has basis. (It in fact depends on \textbf{Axiom of Choice}.)
 
@@ -401,8 +401,8 @@ It follows from \EXAMPLE{1.4.4} that
 \[
     \{ x^2 + 3x - 2, 2x^2 + 5x - 3, -x^2 -4x + 4 \}
 \]
-generates \(\mathcal{P}_2(\SET{R})\) and has \(3\) elements, same as the dimension of \(\mathcal{P}_2(\SET{R})\).
-Hence by \CORO{1.10.3}(a) the set is a basis for \(\mathcal{P}_2(\SET{R})\).
+generates \(\POLYRR\) and has \(3\) elements, same as the dimension of \(\POLYRR\).
+Hence by \CORO{1.10.3}(a) the set is a basis for \(\POLYRR\).
 \end{example}
 
 \begin{example} \label{example 1.6.15}
@@ -446,7 +446,7 @@ It follows from \EXAMPLE{1.5.4} and \CORO{1.10.3}(b) that
 \(
     \{ p_0(x), p_1(x), ..., p_n(x) \}
 \)
-is a basis for \(\mathcal{P}_n(F)\).
+is a basis for \(\POLYNF\).
 \end{example}
 
 \begin{remark} \label{remark 1.6.5}
@@ -527,7 +527,7 @@ A basis for \(W\) is
 \[
     \{ A_{ij} : 1 \le i \le j \le n \},
 \]
-where \(A_{ij}\) is the \(n \X n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column. and \(0\) elsewhere.
+where \textbf{\(A_{ij}\) is the \(n \X n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column}, and \(0\) elsewhere.
 It follows that
 \[
     \dim(W) = n + (n - 1) + ... + 1 = \frac{1}{2}n(n + 1). 
@@ -578,7 +578,7 @@ The polynomials \(f_0(x), f_1(x), ..., f_n(x)\) defined by
 are called the \textbf{Lagrange polynomials} (associated with \(c_0, c_1, ..., c_n\)).
 Note that
 \begin{itemize}
-\item Each \(f_i(x)\) is a polynomial of degree \(n\) and hence is in \(\mathcal{P}_n(F)\).
+\item Each \(f_i(x)\) is a polynomial of degree \(n\) and hence is in \(\POLYNF\).
 \item If we regard \(f_i(x)\) as a polynomial function \(f_i : F \to F\), we see that
     \begin{equation*}
         f_{\RED{i}}(c_{\RED{j}}) =
@@ -591,7 +591,7 @@ Note that
 \end{itemize}
 
 
-This property of Lagrange polynomials can be used to show that \(\beta = \{ f_0, f_1, ..., f_n \}\) is a \emph{\LID{}} subset of \(\mathcal{P}_n(F)\):
+This property of Lagrange polynomials can be used to show that \(\beta = \{ f_0, f_1, ..., f_n \}\) is a \emph{\LID{}} subset of \(\POLYNF\):
 
 Suppose that
 \[
@@ -613,9 +613,9 @@ But also, by \MAROON{(3)}, for \(j = 0, 1, ..., n\),
 Hence \(a_0 = a_1 = ... = a_j = 0\).
 Hence by \MAROON{(2)} we see that \(\beta = \{ f_0, f_1, ..., f_n \}\) is \LID{}.
 
-Since \(\beta\) is \LID{} and has \(n + 1\) elements, which equals to the dimension of the parent vector space \(\mathcal{P}_n(F)\), by \CORO{1.10.3}(b), \(\beta\) is a basis for \(\mathcal{P}_n(F)\).
+Since \(\beta\) is \LID{} and has \(n + 1\) elements, which equals to the dimension of the parent vector space \(\POLYNF\), by \CORO{1.10.3}(b), \(\beta\) is a basis for \(\POLYNF\).
 
-Because \(\beta\) is a basis for \(\mathcal{P}_n(F)\), every polynomial function \(g\) in \(\mathcal{P}_n(F)\) is a linear combination of polynomial functions of \(\beta\), say,
+Because \(\beta\) is a basis for \(\POLYNF\), every polynomial function \(g\) in \(\POLYNF\) is a linear combination of polynomial functions of \(\beta\), say,
 \[
     g = \sum_{i = 0}^n b_i f_i \MAROON{(4)}
 \]
@@ -639,8 +639,8 @@ then using \(b_0, b_1, ..., b_n\) as the coefficients of linear combination of v
 \[
     h = \sum_{i = 0}^n b_i f_i
 \]
-is a polynomial in \(\mathcal{P}_n(F)\) s.t. \(h(c_i) = b_i\) for all \(i = 0, 1, ..., n\).
-Also \(h\) is \emph{the unique} polynomial in \(\mathcal{P}_n(F)\) satisfying this condition.
+is a polynomial in \(\POLYNF\) such that \(h(c_i) = b_i\) for all \(i = 0, 1, ..., n\).
+Also \(h\) is \emph{the unique} polynomial in \(\POLYNF\) satisfying this condition.
 (Suppose there exists another degree \(n\) polynomial \(p\) satisfying these points and show it is equal to \(h\).
 Then you can let \(q = p - h\), then we have \(q(c_i) = 0\) for \(i = 0, 1, ..., n\).
 But using \RMK{1.6.6} \RED{below}, \(q\) is in fact the zero function, which implies \(p = h\).)
@@ -664,12 +664,12 @@ Hence the desired polynomial is
 
 \begin{remark} \label{remark 1.6.6}
 An important consequence of the Lagrange interpolation formula is the following result:
-If \(f \in \mathcal{P}_n(F)\) and \(f(c_i) = 0\) for \(n + 1\) distinct scalars \(c_0, c_1, ..., c_n\) in \(F\),
+If \(f \in \POLYNF\) and \(f(c_i) = 0\) for \(n + 1\) distinct scalars \(c_0, c_1, ..., c_n\) in \(F\),
 then \(f\) is the zero function.
 Why? Since
 \begin{align*}
     f & = \sum_{i = 0}^n b_i f_i & \text{by the argument above} \\
       & = \sum_{i = 0}^n 0 f_i, & \text{since \(b_0 = b_1 = ... b_n = 0\)} \\
 \end{align*}
-which is the trivial representation of the zero vector(zero function) of \(\mathcal{P}_n(F)\).
+which is the trivial representation of the zero vector(zero function) of \(\POLYNF\).
 \end{remark}
