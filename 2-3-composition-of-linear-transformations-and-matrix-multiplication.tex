@@ -273,12 +273,12 @@ This is just a particular case of \THM{2.11} where \(V = W = Z\) and \(\alpha = 
 \end{corollary}
 
 \begin{example} \label{example 2.3.2}
-Let \(\U: \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) and \(\T: \mathcal{P}_2(\SET{R}) \to \mathcal{P}_3(\SET{R})\) be the linear transformations respectively defined by
+Let \(\U: \POLYRRR \to \POLYRR\) and \(\T: \POLYRR \to \POLYRRR\) be the linear transformations respectively defined by
 \[
     \U(f(x)) = f'(x) \text{ and } \T(f(x)) = \int_0^x f(t) dt.
 \]
-Let \(\alpha\) and \(\beta\) be the standard ordered bases of \(\mathcal{P}_3(\SET{R})\) and \(\mathcal{P}_2(\SET{R})\), respectively.
-From Calculus(fundamental theorem of calculus), it follows that \(\U\T = \mathrm{I}\), the \emph{identity transformation} on \(\mathcal{P}_2(\SET{R})\).
+Let \(\alpha\) and \(\beta\) be the standard ordered bases of \(\POLYRRR\) and \(\POLYRR\), respectively.
+From Calculus(fundamental theorem of calculus), it follows that \(\U\T = \mathrm{I}\), the \emph{identity transformation} on \(\POLYRR\).
 
 To illustrate \THM{2.11}, observe that
 
@@ -614,8 +614,8 @@ So again we have \([\T(u)]_{\gamma} = [\T]_{\beta}^{\gamma}[u]_{\beta}\) for all
 \end{proof}
 
 \begin{example} \label{example 2.3.3}
-Let \(\T: \mathcal{P}_3(\SET{R}) \to \mathcal{P}_2(\SET{R})\) be the linear transformation defined by \(\T(f(x)) = f'(x)\),
-and let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\mathcal{P}_3(\SET{R})\) and \(\mathcal{P}_2(\SET{R})\), respectively.
+Let \(\T: \POLYRRR \to \POLYRR\) be the linear transformation defined by \(\T(f(x)) = f'(x)\),
+and let \(\beta\) and \(\gamma\) be the standard ordered bases for \(\POLYRRR\) and \(\POLYRR\), respectively.
 If \(A = [\T]_{\beta}^{\gamma}\), then, from \EXAMPLE{2.2.4}, we have
 \[
     A = \begin{pmatrix}
@@ -625,7 +625,7 @@ If \(A = [\T]_{\beta}^{\gamma}\), then, from \EXAMPLE{2.2.4}, we have
     \end{pmatrix}.
 \]
 We illustrate \THM{2.14} by verifying that \([\T(p(x))_{\gamma} = [\T]_{\beta}^{\gamma}[p(x)]_{\beta}\),
-where \(p(x) \in \mathcal{P}_3(\SET{R})\) is the polynomial \(p(x) = 2 - 4x + x^2 + 3x^3\).
+where \(p(x) \in \POLYRRR\) is the polynomial \(p(x) = 2 - 4x + x^2 + 3x^3\).
 Let \(q(x) = \T(p(x))\);
 then \(q(x) = p'(x) = -4 + 2x + 9x^2\).
 Hence

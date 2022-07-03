@@ -509,7 +509,7 @@ At first, it may seem reasonable to replace the equilibrium condition by the ine
 )
 But, in fact, \(Ap \le p\) \textbf{implies that} \(Ap = p\) \textbf{in the closed model}.
 (That is, \(Ap < p\) will never be true.)
-For otherwise, there exists a \(k\) s.t. the \(k\)'s people's consumption is \emph{less than} its income;
+For otherwise, there exists a \(k\) such that the \(k\)'s people's consumption is \emph{less than} its income;
 that is,
 \[
     A_{k1} p_{1} + A_{k2} p_{2} + ... + A_{kn} p_n < p_k.
@@ -771,7 +771,7 @@ Prove that the system of linear equations \(Ax = b\) has a solution if and only 
 \end{exercise}
 
 \begin{proof}
-\(Ax = b\) has a solution \(s\), if and only if (by def of left multiplication) we can find \(s\) in the domain of \(\LMTRAN_A\) s.t. \(\LMTRAN_A(s) = b\), if and only if (by def of range) \(b \in \RANGE(\LMTRAN_A)\).
+\(Ax = b\) has a solution \(s\), if and only if (by def of left multiplication) we can find \(s\) in the domain of \(\LMTRAN_A\) such that \(\LMTRAN_A(s) = b\), if and only if (by def of range) \(b \in \RANGE(\LMTRAN_A)\).
 \end{proof}
 
 \begin{exercise} \label{exercise 3.3.10}
@@ -780,8 +780,8 @@ If the coefficient matrix of a system of \(m\) linear equations in \(n\) unknown
 \end{exercise}
 
 \begin{proof}
-By the similar argument in \ATHM{3.10}(or \EXEC{3.2.19}), given any system of \(m\) equations and \(n\) unknowns s.t. the coefficient matrix \(A\) has rank \(m\), we have \(\LMTRAN_A : F^n \to F^m\) is onto.
-And since \(\LMTRAN_A\) is onto, given \(b \in F^m\) we can find \(x \in F^n\) s.t. \(\LMTRAN_A(x) = b\).
+By the similar argument in \ATHM{3.10}(or \EXEC{3.2.19}), given any system of \(m\) equations and \(n\) unknowns such that the coefficient matrix \(A\) has rank \(m\), we have \(\LMTRAN_A : F^n \to F^m\) is onto.
+And since \(\LMTRAN_A\) is onto, given \(b \in F^m\) we can find \(x \in F^n\) such that \(\LMTRAN_A(x) = b\).
 That is, \(Ax = b\), hence the system has a solution.
 \end{proof}
 

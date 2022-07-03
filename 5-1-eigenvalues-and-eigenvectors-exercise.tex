@@ -1,0 +1,1464 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 5.1.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item  Every linear operator on an \(n\)-dimensional vector space has \(n\) distinct eigenvalues.
+\item If a real matrix has one eigenvector, then it has an infinite number of eigenvectors.
+\item There exists a square matrix with no eigenvectors.
+\item Eigenvalues must be nonzero scalars.
+\item Any two eigenvectors are \LID{}.
+\item The sum of two eigenvalues of a linear operator \(\T\) is also an eigenvalue of \(\T\).
+\item Linear operators on infinite-dimensional vector spaces never have eigenvalues.
+\item An \(n \X n\) matrix \(A\) with entries from a field \(F\) is similar to a diagonal matrix if and only if there is a basis for \(F^n\) consisting of eigenvectors of \(A\).
+\item Similar matrices always have the same eigenvalues.
+\item Similar matrices always have the same eigen\RED{vectors}.
+\item The sum of two eigenvectors of an operator \(\T\) is always an eigenvector of \(\T\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item False. Identity mapping on \(\SET{R}^{\RED{2}}\) has only \(\RED{1}\) eigenvalue \(\lambda = 1\).
+\item True. If \(\T(v) = \lambda v\), then given any scalar \(c \ne 0\), \(\T(cv) = c \T(v) = c (\lambda v) = \lambda (c v)\).
+\item True. Rotation on \(\SET{R}^2\) is an example.
+\item False. Zero transformation has \(0\) as eigenvalue.
+\item False. Part (b) is a counterexample.
+\item False. Counterexample: \(1\) is an eigenvalue of the identity transformation, but \(1 + 1 = 2\) is not an eigenvalue of the identity transformation.
+\item False. \EXAMPLE{5.1.3} is a counterexample.
+\item True. This is directly implied by \CORO{5.1.1}.
+\item True by \EXEC{5.1.13}: Having same \CPOLY{}s implies having same eigenvalues.
+\item False. Counterexample:
+    The matrices \(\left(\begin{array}{ll}1 & 1 \\ 0 & 2\end{array}\right)\) and \(\left(\begin{array}{ll}2 & 0 \\ 1 & 1\end{array}\right)\)  are similar since
+    \[
+        \left(\begin{array}{ll} 0 & 1 \\ 1 & 0 \end{array}\right)
+        \left(\begin{array}{ll} 1 & 1 \\ 0 & 2 \end{array}\right)
+        \left(\begin{array}{ll} 0 & 1 \\ 1 & 0 \end{array}\right)
+        = \left(\begin{array}{ll} 2 & 0 \\ 1 & 1 \end{array}\right).
+    \]
+    But the eigenvector \((1,0)\) of the first matrix is not a eigenvector of the second matrix.
+
+\item False. By part(b), if \(v\) is an eigenvector, then \(-1 \cdot v = -v\) is also an eigenvector, but \(v + -v = \OV\), which by definition is not an eigenvector.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.2}
+For each of the following linear operators \(\T\) on a vector space \(V\), compute the determinant of \(\T\) and the \CPOLY{} of \(\T\).
+\begin{enumerate}
+\item \(V = \SET{R}^2, \T\begin{pmatrix}a \\ b\end{pmatrix}=\begin{pmatrix}2 a-b \\ 5 a+3 b\end{pmatrix}\)
+\item \(V = \SET{R}^{3}, \T\begin{pmatrix}a \\ b \\ c\end{pmatrix}=\begin{pmatrix}a-3 b+2 c \\ -2 a+b+c \\ 4 a-c\end{pmatrix}\)
+\item \(V = \mathcal{P}_{3}(\SET{R}), \T\left(a+b x+c x^{2}+d x^{3}\right)=(a-c)+(-a+b+d) x+(a+b-d) x^{2}-c x^{3}\)
+\item \(V = M_{2 \X 2}(\SET{R}), \T(A) = 2 A^\top - A\)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Let \(\beta\) be standard ordered basis for \(\SET{R}^2\).
+Then
+\begin{align*}
+    \det(\T) & = \det([\T]_{\beta}) & \text{by \DEF{5.4}} \\
+             & = \det \begin{pmatrix} 2 & -1 \\ 5 & 3  \end{pmatrix} = 11.
+\end{align*}
+And the \CPOLY{} of \(\T\), by \DEF{5.4}, is
+\begin{align*}
+    \det([\T]_{\beta} - tI_2) & = \det \begin{pmatrix}
+        2-t & -1 \\ 5 & 3-t
+    \end{pmatrix} \\
+        & = (2 - t)(3 - t) + 5 = t^2 - 5t + 11.
+\end{align*}
+
+\item Let \(\beta\) be standard ordered basis for \(\SET{R}^3\).
+Then
+\begin{align*}
+    \det(\T) & = \det([\T]_{\beta}) & \text{by \DEF{5.4}} \\
+             & = \det \begin{pmatrix} 1 & -3 & 2 \\ -2 & 1 & 1 \\ 4 & 0 & -1 \end{pmatrix} = -15.
+\end{align*}
+And the \CPOLY{} of \(\T\), by \DEF{5.4}, is
+\begin{align*}
+    \det([\T]_{beta} - tI_3) & = \begin{pmatrix} 1-t & -3 & 2 \\ -2 & 1-t & 1 \\ 4 & 0 & -1-t \end{pmatrix} \\
+        & = -t^3 + t^2 + 15t - 15 & \text{by calculation}
+\end{align*}
+\item
+Let \(\beta = \{ 1, x, x^2, x^3 \}\) be standard ordered basis for \(\POLYRRR\).
+Then
+\begin{align*}
+    \T(1) & = 1 - x + x^2 + 0x^3, \\
+    \T(x) & = 0 + x + x^2 + 0x^3, \\
+    \T(x^2) & = -1 + 0x + 0x^2 - x^3, \\
+    \T(x^3) & = 0 + 0x - x^2 + 0x^3,
+\end{align*}
+Hence by \DEF{5.4},
+\[
+    \det(\T) = \det([\T]_{\beta}) = \begin{pmatrix}
+        1 & 0 & -1 & 0 \\
+        -1 & 1 & 0 & 1 \\
+        1 & 1 & 0 & -1 \\
+        0 & 0 & -1 & 0
+    \end{pmatrix} = -2.
+\]
+And the \CPOLY{} is
+\[
+    \det([\T]_{\beta} - tI_4) = \begin{pmatrix}
+        1 - t & 0 & -1 & 0 \\
+        -1 & 1 - t & 0 & 1 \\
+        1 & 1 & 0 - t & -1 \\
+        0 & 0 & -1 & 0 - t
+    \end{pmatrix}
+    = t^4 - 2t^3 + t^2 + t - 2.
+\]
+
+\item Let
+\[
+    \beta = \left\{
+        \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix},
+        \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+        \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},
+        \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+    \right\}
+\]
+be the standard ordered basis for \(M_{2 \X 2}(\SET{R})\).
+Then
+\begin{align*}
+    \T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} & = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} & = \begin{pmatrix} 0 & -1 \\ 2 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} & = \begin{pmatrix} 0 & 2 \\ -1 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} & = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+\end{align*}
+Then clearly, by \DEF{5.4},
+\[
+    \det(\T) = \det([\T]_{\beta}) = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 2 & 0 \\
+        0 & 2 & -1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix} = -3.
+\]
+And the \CPOLY{} is
+\[
+    \det([\T]_{\beta} - t I_4) = \begin{pmatrix}
+        1-t & 0 & 0 & 0 \\
+        0 & -1-t & 2 & 0 \\
+        0 & 2 & -1-t & 0 \\
+        0 & 0 & 0 & 1-t
+    \end{pmatrix} = t^4 - 6t^2 + 8t - 3.
+\]
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.3}
+For each of the following linear operators \(\T\) on a vector space \(V\) and an ordered basis \(\beta\), compute \([\T]_{\beta}\), and determine whether \(\beta\) is a basis
+consisting of eigenvectors of \(\T\).
+
+\begin{enumerate}
+\item
+\(
+    V = \mathrm{R}^{2}, \T\begin{pmatrix}a \\ b\end{pmatrix}=\begin{pmatrix}10 a-6 b \\ 17 a-10 b\end{pmatrix} , \text{ and } \beta=\left\{\begin{pmatrix}1 \\ 2\end{pmatrix},\begin{pmatrix}2 \\ 3\end{pmatrix}\right\}\)
+
+\item
+\(
+    V=\mathcal{P}_{1}(\SET{R}), \T(a+b x)=(6 a-6 b)+(12 a-11 b) x ,
+    \text{ and } \beta=\{3+4 x, 2+3 x\}
+\)
+
+\item
+\(
+    V=\mathrm{R}^{3}, \T\begin{pmatrix}a \\ b \\ c\end{pmatrix}=\begin{pmatrix}3 a+2 b-2 c \\ -4 a-3 b+2 c \\ -c\end{pmatrix},
+    \text{ and } \\
+    \beta=\left\{
+        \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix},
+        \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix},
+        \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}
+    \right\}
+\)
+
+\item
+\(
+    V=\mathcal{P}_{2}(\SET{R}), \T\left(a+b x+c x^{2}\right)=  (-4 a+2 b-2 c)-(7 a+3 b+7 c) x+(7 a+b+5 c) x^{2},
+    \text{ and } \\
+    \beta=\left\{ x-x^{2},-1+x^{2},-1-x+x^{2}\right\}
+\)
+
+\item
+\(
+    V=\mathcal{P}_{3}(\SET{R}), \\
+    \T\left(a+b x+c x^{2}+d x^{3}\right) = -d+(-c+d) x+(a+b-2 c) x^{2}+(-b+c-2 d) x^{3}, \\
+    \text{ and }
+    \beta=\left\{1-x+x^{3}, 1+x^{2}, 1, x+x^{2}\right\}
+\)
+
+\item
+\(
+    V=\mathrm{M}_{2 \times 2}(\SET{R}), \T\begin{pmatrix}a & b \\ c & d\end{pmatrix}=\begin{pmatrix}-7 a-4 b+4 c-4 d & b \\ -8 a-4 b+5 c-4 d & d\end{pmatrix}, \\
+    \text{ and }
+    \beta=\left\{
+        \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix},
+        \begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix},
+        \begin{pmatrix} 1 & 0 \\ 2 & 0 \end{pmatrix},
+        \begin{pmatrix} -1 & 0 \\ 0 & 2 \end{pmatrix}
+    \right\}
+\)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+I only calculate \([\T]_{\beta}\) when \(\beta\) is actually an eigenvector basis.
+
+\begin{enumerate}
+\item
+\[
+    \T \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \begin{pmatrix}
+        10 \cdot 1 - 6 \cdot 2 \\
+        17 \cdot 1 - 10 \cdot 2
+    \end{pmatrix}
+    = \begin{pmatrix}
+        -2 \\ -3
+    \end{pmatrix} \ne \lambda \begin{pmatrix} 1 \\ 2 \end{pmatrix} \text{ for any } \lambda \in \SET{R}.
+\]
+Hence \(\beta\) is not an eigenvector basis for \(\T\).
+
+\item
+\[
+    \T(3 + 4x) = (6 \cdot 3 - 6 \cdot 4) + (12 \cdot 3 - 11 \cdot 4)x = -6 + -8x = -2(3 + 4x),
+\]
+so \(3 + 4x\) is an eigenvector corresponding to \(-2\).
+Similarly, \(\T(2 + 3x) = -3(2 + 3x)\), so \(2 + 3x\) is an eigenvector corresponding to \(-3\).
+So \(\beta\) is an eigenvector basis, and \([\T]_{\beta} = \begin{pmatrix} -2 & 0 \\ 0 & -3 \end{pmatrix}\).
+
+\item
+\begin{align*}
+    \T \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} & = \begin{pmatrix} 0 \\ -1 \\ -1 \end{pmatrix} = -1 \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \\
+    \T \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} & = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = 1 \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix} & = \begin{pmatrix} -1 \\ 0 \\ -2 \end{pmatrix} = -1 \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}
+\end{align*}
+So \(\beta\) is an eigenvector basis with eigenvalues \(-1, 1\), and \([\T]_{\beta} = \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}\).
+
+\item
+\begin{align*}
+    \T(x - x^2) & = \T(0 + x - x^2) \\
+        & =(0 + 2 + 2) - (0 - 3 + 7)x + (0 + 1 - 5)x^2 \\
+        & = 4 + 4x - 4x^2
+        \ne \lambda (x - x^2) \text{ for any \(\lambda \in \SET{R}\)},
+\end{align*}
+Hence \(\beta\) is not an eigenvector basis for \(\T\).
+
+\item Skip, this is similar to part(d).
+
+\item
+\begin{align*}
+    \T \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix}
+        & = \begin{pmatrix} -7 - 0 + 4 - 0 & 0 \\ -8 - 0 + 5 - 0 & 0 \end{pmatrix}
+          = \begin{pmatrix} -3 & 0 \\ -3 & 0 \end{pmatrix} = -3 \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix}
+        & = \begin{pmatrix} 7 - 8 + 0 - 0 & 2 \\ 8 - 8 + 0 - 0 & 0 \end{pmatrix}
+          = \begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} = 1 \begin{pmatrix} -1 & 2 \\ 0 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 1 & 0 \\ 2 & 0 \end{pmatrix}
+        & = \begin{pmatrix} -7 - 0 + 8 - 0 & 0 \\ -8 - 0 + 10 - 0 & 0 \end{pmatrix}
+          = \begin{pmatrix} 1 & 0 \\ 2 & 0 \end{pmatrix} = 1 \begin{pmatrix} 1 & 0 \\ 2 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} -1 & 0 \\ 0 & 2 \end{pmatrix}
+        & = \begin{pmatrix} 7 - 0 + 0 - 8 & 0 \\ 8 - 0 + 0 - 8 & 2 \end{pmatrix}
+          = \begin{pmatrix} -1 & 0 \\ 0 & 2 \end{pmatrix} = 1 \begin{pmatrix} -1 & 0 \\ 0 & 2 \end{pmatrix},
+\end{align*}
+Hence \(\beta\) is an eigenvector basis for \(\T\), with eigenvalues \(-3, 1\),
+and \([\T]_{\beta} = \begin{pmatrix} -3 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.4}
+For each of the following matrices \(A \in M_{n \X n}(F)\),
+\begin{enumerate}
+\item[(i)] Determine all the eigenvalues of \(A\).
+\item[(ii)] For each eigenvalue \(\lambda\) of A, find the set of eigenvectors corresponding to \(\lambda\).
+\item[(iii)] If possible, find a basis for \(F^n\) consisting of eigenvectors of \(A\).
+\item[(iv)] If successful in finding such a basis, determine an invertible matrix \(Q\) and a diagonal matrix \(D\) such that \(Q^{-1} A Q = D\).
+\end{enumerate}
+
+\begin{enumerate}
+\item \(
+    A = \begin{pmatrix} 1 & 2 \\ 3 & 2 \end{pmatrix} \text{ for } F = \SET{R}. \)
+\item \(
+    A = \begin{pmatrix} 0 & -2 & -3 \\ -1 & 1 & -1 \\ 2 & 2 & 5 \end{pmatrix} \text{ for } F = \SET{R}. \)
+\item \(
+    A = \begin{pmatrix} \iu & 1 \\ 2 & -\iu \end{pmatrix} \text{ for } F = \SET{C}. \)
+\item \(
+    A = \begin{pmatrix} 2 & 0 & -1 \\ 4 & 1 & -4 \\ 2 & 0 & -1 \end{pmatrix} \text{ for } F = \SET{R}. \)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item The \CPOLY{} of \(A\) is
+\begin{align*}
+    \det(A - tI_2) & = \det \begin{pmatrix}
+        1-t & 2 \\ 3 & 2-t
+    \end{pmatrix} \\
+        & = (1 - t)(2 - t) - 6 = t^2 - 3t - 4 = (t - 4)(t + 1).
+\end{align*}
+So the eigenvalues are \(\lambda_1 = 4, \lambda_2 = -1\).
+Now we first find the eigenvectors corresponding to \(\lambda_1\).
+So let
+\[
+    B_1 = A - \lambda_1 I_2 = \begin{pmatrix}
+        -3 & 2 \\ 3 & 2
+    \end{pmatrix}.
+\]
+Clearly \(\NULL(B_1) = \left\{ t \begin{pmatrix} 1 \\ \frac{3}{2} \end{pmatrix} : t \in \SET{R} \right\}\).
+So in particular let \(t = 2\), then \(v_1 = \begin{pmatrix} 2 \\ 3 \end{pmatrix}\) is an eigenvector corresponding to \(\lambda_1\).
+
+Similarly, for \(\lambda_2\), let
+\[
+    B_2 = A - \lambda_2 I_2 = \begin{pmatrix}
+        2 & 2 \\ 3 & 3
+    \end{pmatrix}.
+\]
+Clearly \(\NULL(B_2) = \left\{ t \begin{pmatrix} 1 \\ -1 \end{pmatrix} : t \in \SET{R} \right\}\).
+So in particular let \(t = 1\), then \(v_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}\) is an eigenvector corresponding to \(\lambda_2\).
+And by \CORO{5.1.1},
+\[
+    Q = \begin{pmatrix} v_1 & v_2 \end{pmatrix}
+      = \begin{pmatrix}
+            2 & 1 \\
+            3 & -1
+        \end{pmatrix}
+\]
+is the invertible matrix such that \(Q^{-1} A Q = D = \begin{pmatrix}
+    \lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}\).
+
+\item Skip, similar to part(a).
+
+\item The \CPOLY{} of \(A\) is
+\begin{align*}
+    \det(A - tI_2) & = \det \begin{pmatrix}
+        \iu - t & 1 \\ 2 & -\iu - t
+    \end{pmatrix} \\
+        & = (\iu - t)(-\iu - t) - 2 = -\iu^2 + t\iu - t\iu + t^2 - 2 = t^2 - 1 = (t - 1)(t + 1)
+\end{align*}
+So the eigenvalues are \(\lambda_1 = 1, \lambda_2 = -1\).
+Now we first the eigenvectors corresponding to \(\lambda_1\).
+So let
+\[
+    B_1 = A - \lambda_1 I_2 = \begin{pmatrix}
+        \iu - 1 & 1 \\ 2 & -\iu - 1
+    \end{pmatrix}.
+\]
+Applying an elementary operation that adds row \(1\) \textbf{times \RED{\(\iu + 1\)}} to row \(2\), we have
+\[
+    B' = \lambda_1 I_2 = \begin{pmatrix}
+        \iu - 1 & 1 \\ 0 & 0
+    \end{pmatrix}.
+\]
+That implies we have the (equivalent) system
+\[
+    (\iu - 1) x_1 + x_2 = 0.
+\]
+Let \(x_1\) be the parametric variable \(t\), then \(x_2 = -(\iu - 1)t\).
+So
+\[
+    \NULL(B_1) = \left\{ t \begin{pmatrix} 1 \\ -(\iu - 1) \end{pmatrix} : t \in \SET{C} \right\}.
+\]
+So in particular let \(t = 1\), then \(v_1 = \begin{pmatrix} 1 \\ -\iu + 1 \end{pmatrix}\) is an eigenvector corresponding to \(\lambda_1\).
+
+Similarly, for \(\lambda_2\), let
+\[
+    B_2 = A - \lambda_2 I_2 = \begin{pmatrix}
+        \iu + 1 & 1 \\ 2 & -\iu + 1
+    \end{pmatrix}.
+\]
+Again the equivalent system, by adding row \(1\) \textbf{times \(\iu - 1\)} to row \(2\), is
+\[
+    B' = \lambda_1 I_2 = \begin{pmatrix}
+        \iu + 1 & 1 \\ 0 & 0
+    \end{pmatrix}.
+\]
+That implies we have the (equivalent) system
+\[
+    (\iu + 1) x_1 + x_2 = 0.
+\]
+Let \(x_1\) be the parametric variable \(t\), then \(x_2 = -(\iu + 1)t\).
+So
+\[
+    \NULL(B_2) = \left\{ t \begin{pmatrix} 1 \\ -(\iu + 1) \end{pmatrix} : t \in \SET{C} \right\}.
+\]
+So in particular let \(t = 1\), then \(v_2 = \begin{pmatrix} 1 \\ -\iu - 1 \end{pmatrix}\) is an eigenvector corresponding to \(\lambda_2\).
+
+And by \CORO{5.1.1},
+\[
+    Q = \begin{pmatrix} v_1 & v_2 \end{pmatrix}
+      = \begin{pmatrix}
+            1        & 1 \\
+            -\iu + 1 & -\iu - 1
+        \end{pmatrix}
+\]
+is the invertible matrix such that \(Q^{-1} A Q = D = \begin{pmatrix}
+    \lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}\).
+    
+\item The \CPOLY{} of \(A\) is
+\begin{align*}
+    \det(A - tI_3) & = \det \begin{pmatrix}
+        2 - t & 0 & -1 \\ 4 & 1-t & -4 \\ 2 & 0 & -1 - t
+    \end{pmatrix} \\
+        & = (1 - t) \cdot [(2 - t)(-1 - t) + 2] & \text{by expanding second column} \\
+        & = (1 - t) (t^2 - t + 0) = (1 - t)(t)(t - 1) \\
+        & = -t(1 - t)^2
+\end{align*}
+So the eigenvalues are \(\lambda_1 = 0, \lambda_2 = 1\).
+Now we first find the eigenvectors corresponding to \(\lambda_1\).
+So let
+\[
+    B_1 = A - \lambda_1 I_3 = \begin{pmatrix}
+        2 & 0 & -1 \\ 4 & 1 & -4 \\ 2 & 0 & -1
+    \end{pmatrix}.
+\]
+By solving the system, \(\NULL(B_1) = \left\{ t \begin{pmatrix} \frac1{2} \\ 2 \\ 1 \end{pmatrix} : t \in \SET{R} \right\}\).
+So in particular let \(t = 2\), then \(v_1 = \begin{pmatrix} 1 \\ 4 \\2 \end{pmatrix}\) is an eigenvector corresponding to \(\lambda_1\).
+
+Similarly, for \(\lambda_2\), let
+\[
+    B_2 = A - \lambda_2 I_3 = \begin{pmatrix}
+        1 & 0 & -1 \\ 4 & 0 & -4 \\ 2 & 0 & -2
+    \end{pmatrix}.
+\]
+By solving the system \(\NULL(B_2) = \left\{ t_1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + t_2 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} : t_1, t_2 \in \SET{R} \right\}\).
+
+Note that we have \emph{eigenspace} of dimension \(2\) for \(\lambda_2\) (see \DEF{5.7}), so we need to select two \LID{} eigenvectors from the space.
+So in particular let \(t_1 = 1, t_2 = 0\), then \(v_2 = 1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}\) is an eigenvector corresponding to \(\lambda_2\).
+And let \(t_1 = 0, t_2 = 1\), then \(v_3 = 0 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + 1 \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\) is \emph{another} eigenvector corresponding to \(\lambda_2\).
+And by \CORO{5.1.1},
+\[
+    Q = \begin{pmatrix} v_1 & v_2 & v_3 \end{pmatrix}
+      = \begin{pmatrix}
+            1 & 1 & 0 \\
+            4 & 0 & 1 \\
+            2 & 1 & 0
+        \end{pmatrix}
+\]
+is the invertible matrix such that \(Q^{-1} A Q = D = \begin{pmatrix}
+    \lambda_1 & 0 & 0 \\ 0 & \lambda_2 & 0 \\ 0 & 0 & \lambda_3 \end{pmatrix}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.5}
+For each linear operator \(\T\) on \(V\), find the eigenvalues of \(\T\) and an ordered basis \(\beta\) for \(V\) such that \([\T]_{\beta}\) is a diagonal matrix.
+\begin{enumerate}
+\item \(V = \SET{R}^2\) and \(\T(a, b) = (-2a + 3b, -10a + 9b)\)
+\item \(V = \SET{R}^3\) and \(\T(a, b, c) = (7a - 4b + 10c, 4a - 3b + 8c, -2a + b - 2c)\)
+\item \(V = \SET{R}^3\) and \(\T(a, b, c) = (-4a + 3b - 6c, 6a - 7b + 12c, 6a - 6b + 11c)\)
+\item \(V = \mathcal{P}_1(\SET{R})\) and \(\T(ax + b) = (-6a + 2b)x + (-6a + b)\)
+\item \(V = \POLYRR\) and \(\T(f(x)) = xf'(x) + f(2)x + f(3)\)
+\item \(V = \POLYRRR\) and \(\T(f(x)) = f(x) + f(2)x\)
+\item \(V = \POLYRRR\) and \(\T(f(x)) = xf'(x) + f''(x) - f(2)\)
+\item \(V = M_{2 \X 2}(\SET{R})\) and \(\T \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} d & b \\ c & a \end{pmatrix}\)
+\item \(V = M_{2 \X 2}(\SET{R})\) and \(\T \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} c & d \\ a & b \end{pmatrix}\)
+\item \(V = M_{2 \X 2}(\SET{R})\) and \(\T(A) = A^\top + 2 \cdot \TRACE(A) \cdot I_2\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Just pick some items.
+
+\begin{enumerate}
+\item[(e)] Let \(\beta'\) be the standard ordered basis for \(\POLYRR\).
+Then
+\begin{align*}
+    \T(1) & = x \cdot 0 + 1 \cdot x + 1 = 1 + x \\
+    \T(x) & = x \cdot 1 + 2 \cdot x + 3 = 3 + 3x \\
+    \T(x^2) & = x \cdot 2x + 4x + 9 = 9 + 4x + 2x^2 \\
+    \implies & [\T]_{\beta'} = \begin{pmatrix}
+        1 & 3 & 9 \\
+        1 & 3 & 4 \\
+        0 & 0 & 2
+    \end{pmatrix}
+\end{align*}
+So the \CPOLY{} is
+\begin{align*}
+    \det([\T]_{\beta'} - tI_3) & = \begin{pmatrix}
+        1-t & 3   & 9 \\
+        1   & 3-t & 4 \\
+        0   & 0   & 2-t
+    \end{pmatrix} \\
+    & = (2 - t)\left[ (1 - t)(3 - t) - 3 \right] & \text{by expanding last row} \\
+    & = (2 - t)\left[ 3 - 3t - t + t^2 -3 \right] \\
+    & = (2 - t)(-4t + t^2) \\
+    & = (2 - t)(t)(t - 4)
+\end{align*}
+So the eigenvalues are \(\lambda_1 = 0, \lambda_2 = 2, \lambda_3 = 4\).
+And by calculation, (or by WolframAlpha,) \(v_1 = (-3, 1, 0)\) is an eigenvector of \([\T]_{\beta'}\) with corresponding eigenvalue \(\lambda_1\),
+\(v_2 = (-3, -13, 4)\) is an eigenvector of \([\T]_{\beta'}\) with corresponding eigenvalue \(\lambda_2\),
+\(v_3 = (1, 1, 0)\) is an eigenvector of \([\T]_{\beta'}\) with corresponding eigenvalue \(\lambda_3\).
+
+And by applying \(\phi_{\beta'}^{-1}\),
+\(\phi_{\beta'}^{-1}(v_1) = -3 + x\) is an eigenvector of \(\T\) with corresponding eigenvalue  \(\lambda_1\),
+\(\phi_{\beta'}^{-1}(v_2) = -3 -13x + 4x^2\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda_2\),
+and \(\phi_{\beta'}^{-1}(v_3) = 1 + x\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda_3\),
+And by \THM{5.1}, \(\beta = \{ -3 + x, -3 - 13x + 4x^2, 1 + x \}\) is a eigenvector basis for \(\POLYRR\) such that \([\T]_{\beta}\) is a diagonal matrix.
+
+\item[(h)] Let \(\beta'\) be the standard ordered basis for \(M_{2 \X 2}(\SET{R})\).
+Then
+\begin{align*}
+    \T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} & = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} & = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} & = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} & = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+\end{align*}
+So
+\[
+    [\T]_{\beta'} = \begin{pmatrix}
+        0 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 0
+    \end{pmatrix}
+\]
+And the \CPOLY{} is
+\begin{align*}
+    \det([\T]_{\beta'} - t I_4)
+    & = \det \begin{pmatrix}
+        -t & 0 & 0 & 1 \\
+        0 & 1-t & 0 & 0 \\
+        0 & 0 & 1-t & 0 \\
+        1 & 0 & 0 & 0-t
+    \end{pmatrix} \\
+    & = (1+t)^2(1-t)^2 & \text{by calculation}
+\end{align*}
+So the eigenvalues are \(\lambda_1 = 1, \lambda_2 = -1\).
+For \(\lambda_1 = 1\), let
+\[
+    B_1 = [\T]_{\beta'} - \lambda_1 I_4
+    = \det \begin{pmatrix}
+        -1 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 1
+    \end{pmatrix}; \text{ the equivalent matrix is }
+    \begin{pmatrix}
+        1 & 0 & 0 & -1 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{pmatrix}
+\]
+which has the null space
+\[
+    \left\{ t_1 \begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix} + t_2 \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_3 \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix} : t_1, t_2, t_3 \in \SET{R} \right\}
+\]
+Again this implies the eigenspace of \(\lambda_1\) has dimension \(3\), so we need to pick \(3\) \LID{} vectors in the space.
+
+So if we let \(t_1 = 1, t_2 = 0, t_3 = 0\), we get eigenvector \(v_1 = \begin{pmatrix} 1 & 0 & 0 & 1 \end{pmatrix}^\top\) of \([\T]_{\beta'}\) with corresponding eigenvalue \(\lambda_1\);
+if we let \(t_1 = 0, t_2 = 1, t_3 = 0\), we get eigenvector \(v_2 = \begin{pmatrix} 0 & 1 & 0 & 0 \end{pmatrix}^\top\) of \([\T]_{\beta'}\) with corresponding eigenvalue \(\lambda_1\);
+if we let \(t_1 = 0, t_2 = 0, t_3 = 1\), we get eigenvector \(v_3 = \begin{pmatrix} 0 & 0 & 1 & 0 \end{pmatrix}^\top\) of \([\T]_{\beta'}\) with corresponding eigenvalue \(\lambda_1\);
+
+For \(\lambda_2 = -1\), let
+\[
+    B_1 = [\T]_{\beta'} - \lambda_2 I_4
+    = \det \begin{pmatrix}
+        1 & 0 & 0 & 1 \\
+        0 & 2 & 0 & 0 \\
+        0 & 0 & 2 & 0 \\
+        1 & 0 & 0 & 1
+    \end{pmatrix}; \text{ the equivalent matrix is }
+    \begin{pmatrix}
+        1 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0
+    \end{pmatrix}
+\]
+which has the null space
+\[
+    \left\{ t \begin{pmatrix} -1 \\ 0 \\ 0 \\ 1 \end{pmatrix} : t \in \SET{R} \right\}
+\]
+So in particular let \(t = 1\), then \(v_4 = \begin{pmatrix} -1 & 0 & 0 & 1 \end{pmatrix}^\top\) is an eigenvector of \([\T]_{\beta'}\) with corresponding eigenvalue \(\lambda_2\).
+
+And by applying \(\phi_{\beta'}^{-1}\),
+\begin{center}
+    \(\phi_{\beta'}^{-1}(v_1) = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda_1\), \\
+    \(\phi_{\beta'}^{-1}(v_2) = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda_1\), \\
+    \(\phi_{\beta'}^{-1}(v_3) = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda_1\), \\
+    \(\phi_{\beta'}^{-1}(v_4) = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda_2\).
+\end{center}
+And by \THM{5.1},
+\[
+    \beta = \left\{
+        \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix},
+        \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+        \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},
+        \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}
+    \right\}
+\]
+is an eigenvector basis for \(M_{2 \X 2}(\SET{R})\) such that \([\T]_{\beta}\) is a diagonal matrix.
+
+\item[(i)]
+Let \(\beta\) be the standard ordered basis for \(M_{2 \X 2}(\SET{R})\).
+Then
+\begin{align*}
+    \T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} & = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} & = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} & = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} & = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+\end{align*}
+So
+\[
+    [\T]_{\beta'} = \begin{pmatrix}
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0
+    \end{pmatrix}
+\]
+And the \CPOLY{} is
+\begin{align*}
+    \det([\T]_{\beta'} - t I_4)
+    & = \det \begin{pmatrix}
+        -t & 0 & 1 & 0 \\
+        0 & -t & 0 & 1 \\
+        1 & 0 & -t & 0 \\
+        0 & 1 & 0 & -t
+    \end{pmatrix} \\
+    & = (t - 1)^2(t + 1)^2 & \text{by calculation}
+\end{align*}
+So \(\lambda_1 = 1, \lambda_2\) are the eigenvectors of \([\T]_{\beta'}\).
+
+By the similar process in the previous item,
+for \(\lambda_1\), some corresponding two \LID{} eigenvectors are \(v_1 = (0, 1, 0, 1), v_2 = (1, 0, 1, 0)\);
+for \(\lambda_2\), some corresponding two \LID{} eigenvectors are \(v_3 = (-1, 0, 1, 0), v_4 = (0, -1, 0, 1)\);
+And
+\[
+    \beta = \{ \phi_{\beta'}^{-1}(v_1), \phi_{\beta'}^{-1}(v_2), \phi_{\beta'}^{-1}(v_3), \phi_{\beta'}^{-1}(v_4) \}
+    = \left\{
+        \begin{pmatrix} 0 & 1 \\ 0 & 1 \end{pmatrix},
+        \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix},
+        \begin{pmatrix} -1 & 0 \\ 1 & 0 \end{pmatrix},
+        \begin{pmatrix} 0 & -1 \\ 0 & 1 \end{pmatrix}
+    \right\}
+\]
+is an eigenvector basis for \(M_{2 \X 2}(\SET{R})\) such that \([\T]_{\beta}\) is a diagonal matrix.
+
+\item[(j)]
+Similarly as the previous item,
+\begin{align*}
+    \T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+        & = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} + 2 \cdot 1 \cdot I_2
+        = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+        & = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} + 2 \cdot 0 \cdot I_2
+        = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+        & = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} + 2 \cdot 0 \cdot I_2
+        = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\
+    \T \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+        & = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} + 2 \cdot 1 \cdot I_2
+        = \begin{pmatrix} 1 & 0 \\ 0 & 3 \end{pmatrix}
+\end{align*}
+So
+\[
+    [\T]_{\beta'} = \begin{pmatrix}
+        3 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 3
+    \end{pmatrix}
+\]
+And the \CPOLY{} is
+\begin{align*}
+    \det([\T]_{\beta'} - t I_4)
+    & = \det \begin{pmatrix}
+        3-t & 0   & 0   & 1 \\
+        0   & 0-t & 1   & 0 \\
+        0   & 1   & 0-t & 0 \\
+        1   & 0   & 0 & 3 -t
+    \end{pmatrix} \\
+    & = (t - 4)(t - 2)(t - 1)(t + 1) & \text{by calculation}
+\end{align*}
+So \(\lambda_1 = -1, \lambda_2 = 1, \lambda_3 = 2, \lambda_4 = 4\) are the eigenvectors of \([\T]_{\beta'}\).
+
+By the similar process in the previous item,
+for \(\lambda_1\), a corresponding eigenvector is \(v_1 = (0, -1, 1, 0)\);
+for \(\lambda_2\), a corresponding eigenvector is \(v_2 = (0, 1, 1, 0)\);
+for \(\lambda_3\), a corresponding eigenvector is \(v_3 = (-1, 0, 0, 1)\);
+for \(\lambda_4\), a corresponding eigenvector is \(v_4 = (1, 0, 0, 1)\);
+And
+\[
+    \beta = \{ \phi_{\beta'}^{-1}(v_1), \phi_{\beta'}^{-1}(v_2), \phi_{\beta'}^{-1}(v_3), \phi_{\beta'}^{-1}(v_4) \}
+    = \left\{
+        \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix},
+        \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix},
+        \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix},
+        \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    \right\}
+\]
+is an eigenvector basis for \(M_{2 \X 2}(\SET{R})\) such that \([\T]_{\beta}\) is a diagonal matrix.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.6}
+Prove \THM{5.4}.
+\end{exercise}
+
+\begin{proof}
+See \THM{5.4}.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.7}
+Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\), and let \(\beta\) be an ordered basis for \(V\).
+Prove that \(\lambda\) is an eigenvalue of \(\T\) if
+and only if \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
+\end{exercise}
+
+\begin{proof}
+This is described in \RMK{5.1.7} (Precisely, that remark uses \EXEC{5.1.13}.)
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.8}
+Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\).
+Refer to the definition of the determinant of \(\T\) (\DEF{5.4}) to prove the following results.
+\begin{enumerate}
+\item Prove that this definition is independent of the choice of an ordered basis for \(V\).
+That is, prove that if \(\beta\) and \(\gamma\) are two ordered bases for \(V\), then \(\det([\T]_{\beta}) = \det([\T]_{\gamma})\).
+\item Prove that \(\T\) is invertible if and only if \(\det(\T) \ne 0\).
+\item Prove that if \(\T\) is invertible, then \(\det(\T^{-1}) = [\det(\T)]^{-1}\).
+\item Prove that if \(\U\) is also a linear operator on \(V\), then \(\det(\T\U) = \det(\T) \cdot \det(\U)\).
+\item Prove that \(\det(\T - \lambda \ITRANV) = \det([\T]_{\beta} - \lambda I)\) for any scalar \(\lambda\) and any ordered basis \(\beta\) for \(V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item By \THM{2.23}, \([\T]_{\beta}\) and \([\T]_{\gamma}\) are similar and \([\T]_{\beta} = Q^{-1} [\T]_{\gamma} Q\) for some invertible \(Q\).
+And
+\begin{align*}
+    \det([\T]_{\beta}) & = \det(Q^{-1} [\T]_{\gamma} \det(Q)) \\
+        & = \det(Q^{-1}) \det([\T]_{\gamma}) \det(Q) & \text{by \THM{4.7}} \\
+        & = \det(Q^{-1}) \det(Q) \det([\T]_{\gamma}) & \text{of course} \\
+        & = 1 \cdot \det([\T]_{\gamma}) =  \det([\T]_{\gamma}) & \text{by \CORO{4.7.1}}
+\end{align*}
+
+\item Let \(\beta\) be arbitrary basis for \(V\).
+Then \(\T\) is invertible, iff (by \THM{2.18}) \([\T]_{\beta}\) is invertible, iff (by \CORO{4.7.1}) \(\det([\T]_{\beta}) \ne 0\), iff (by \DEF{5.4}) \(\det(\T) \ne 0\).
+
+\item Let \(\beta\) be arbitrary basis for \(V\).
+Then we have
+\begin{align*}
+    \det(\T^{-1}) & = \det([\T^{-1}]_{\beta}) & \text{by \DEF{5.4}} \\
+                  & = \det\left( ([\T]_{\beta})^{-1} \right) & \text{by \THM{2.18}} \\
+                  & = [\det([\T]_{\beta})]^{-1} & \text{by \CORO{4.7.1}} \\
+                  & = [\det(\T)]^{-1} & \text{by \DEF{5.4}}
+\end{align*}
+
+\item
+\begin{align*}
+    \det(\T\U) & = \det([\T\U]_{\beta}) & \text{by \DEF{5.4}} \\
+               & = \det([\T]_{\beta} [\U]_{\beta}) & \text{by \THM{2.11}} \\
+               & = \det([\T]_{\beta}) \cdot \det([\U]_{\beta}) & \text{by \THM{4.7}} \\
+               & = \det(\T) \det(\U) & \text{by \DEF{5.4}}
+\end{align*}
+
+\item
+Given any scalar \(\lambda\) and ordered basis \(\beta\) for \(V\),
+\begin{align*}
+    \det(\T - \lambda \ITRANV) & = \det([\T - \lambda \ITRANV]_{\beta}) & \text{by \DEF{5.4}} \\
+        & = \det([\T]_{\beta} - [\lambda \ITRANV]_{\beta}) & \text{by \THM{2.8}(a)} \\
+        & = \det([\T]_{\beta} - \lambda[\ITRANV]_{\beta}) & \text{by \THM{2.8}(b)} \\
+        & = \det([\T]_{\beta} - \lambda I_n) & \text{of course}
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.9} \ 
+
+\begin{enumerate}
+\item Prove that a linear operator \(\T\) on a finite-dimensional vector space is invertible if and only if zero is \textbf{not} an eigenvalue of \(\T\).
+
+\item Let \(\T\) be an invertible linear operator.
+Prove that a scalar \(\lambda\) is an eigenvalue of \(\T\) if and only if \(\lambda^{-1}\) is an eigenvalue of \(\T^{-1}\).
+\item State and prove results analogous to (a) and (b) for matrices.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item \(\Longrightarrow\): Suppose \(\T\) is invertible,
+then in particular \(\T\) is one-to-one, so \(\T\) can never send nonzero vector to zero vector,
+that is,
+\[
+    \T(v) \ne 0 = 0 \cdot v \text{ for all \emph{nonzero} \(v \in V\)}
+\]
+hence \(0\) cannot be an eigenvalue of \(\T\).
+
+\(\Longleftarrow\): Suppose \(0\) is not an eigenvalue of \(\T\), then for all nonzero vector \(v \in V\),
+\[
+    \T(v) \ne 0 \cdot v = 0.
+\]
+which implies \(\NULL(\T) = \{ \OV \}\), i.e., \(\T\) is one-to-one, i.e. (by \THM{2.5}) \(\T\) is onto hence invertible.
+
+\item We have
+\begin{align*}
+    \forall v \in V \land v \ne \OV, 
+         & \T(v) = \lambda v \\
+    \iff & v = \T^{-1}(\lambda v) & \text{by def of inverse} \\
+    \iff & \frac{1}{\lambda} (\lambda v) = \T^{-1}(\lambda v)
+\end{align*}
+Hence \(\lambda\) is an eigenvalue of \(\T\), if and only if \(\frac{1}{\lambda}\) is an eigenvalue of \(\T^{-1}\).
+
+\item We claim \(A\) is invertible if and only if \(0\) is not an eigenvalue of \(A\):
+
+\(A\) is invertible, if and only if (by \THM{2.18} and \THM{2.15}(a)) \(\LMTRAN_A\) is invertible, if and only if (by part(a)) \(0\) is not an eigenvalue of \(\LMTRAN_A\), if and only if (by \RMK{5.1.7}) \(0\) is not an eigenvalue of \([\LMTRAN_A]_{\beta}\) where \(\beta\) is the standard ordered basis, if and only if (by \THM{2.15}(a) again) \(0\) is not an eigenvalue of \(A\).
+
+And we have
+\begin{align*}
+    \forall \text{ nonzero } v \in F^n, 
+         & Av = \lambda v \\
+    \iff & A^{-1}(Av) = A^{-1}(\lambda v) & \text{\(\Rightarrow\) of course, \(\Leftarrow\) by one-to-one of \(\LMTRAN_{A^{-1}}\)} \\
+    \iff & v = A^{-1}(\lambda v) \\
+    \iff & \frac{1}{\lambda} (\lambda v) = A^{-1}(\lambda v)
+\end{align*}
+Hence \(\lambda\) is an eigenvalue of \(A\), if and only if \(\frac{1}{\lambda}\) is an eigenvalue of \(A^{-1}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.10}
+Prove that the eigenvalues of an \emph{upper triangular} matrix \(M\) are the diagonal entries of \(M\).
+\end{exercise}
+
+\begin{proof}
+Let \(M\) be an upper triangular matrix.
+Then the matrix in the \CPOLY{} of \(M\), that is, \(M - tI_n\), is also an upper triangular matrix:
+\[
+    \begin{pmatrix}
+        M_{11} - t & M_{12}     & ... & M_{1n} \\
+        0          & M_{22} - t & ... & M_{2n} \\
+        \vdots     & \vdots     & \ddots & M_{(n-1)n} \\
+        0          & 0          & ... & M_{nn} - t
+    \end{pmatrix}
+\]
+Hence by \EXEC{4.2.23}, \(\det(M - tI_n)\) is equal to the product of the diagonal entries of \(M - tI_n\);
+that is, the \CPOLY{} of \(M\) is equal to
+\[
+    \det(M - tI_n) = (M_{11} - t)(M_{22} - t)...(M_{nn} - t).
+\]
+Hence the eigenvalues of \(M\) is \(M_{11}, M_{22}, ..., M_{nn}\), (which may be duplicated).
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.11}
+Let \(V\) be a finite-dimensional vector space, and let \(A\) be \textbf{any} scalar.
+\begin{enumerate}
+\item For any ordered basis \(\beta\) for \(V\), prove that \([\lambda \ITRANV{}]_{\beta} = \lambda I_n\).
+\item Compute the \CPOLY{} of \(\lambda \ITRANV{}\).
+\item Show that \(\lambda \ITRANV{}\) is diagonalizable and has \emph{only one} eigenvalue.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item It's a weird question.
+Anyway, we have
+\begin{align*}
+    [\lambda I_v]_{\beta} & = \lambda [I_v]_{\beta} & \text{by \THM{2.8}(b)} \\
+        & = \lambda I_n & \text{of course}
+\end{align*}
+
+\item Since \([\lambda \ITRANV]_{\beta} = \lambda I_n\) (by part(a)), which is diagonal, and so is \(tI_n\), hence \([\lambda \ITRANV]_{\beta} - tI_n\) is also diagonal;
+by \EXEC{4.2.23}, the \CPOLY{} \(\det([\lambda \ITRANV]_{\beta} - tI_n)\) of \(\lambda \ITRANV\) is the product of the diagonals of the matrix
+\begin{align*}
+    [\lambda \ITRANV]_{\beta} - tI_n = \begin{pmatrix}
+        \lambda - t & 0           & ...    & 0 \\
+        0           & \lambda - t & ...    & 0 \\
+        \vdots      & 0           & \ddots & \vdots \\
+        0           & 0           & 0      & \lambda - t
+    \end{pmatrix}
+\end{align*}
+and is equal to \((\lambda - t)^n\).
+
+\item By part(a), we have shown \(\lambda \ITRANV\) is diagonalizable, and by part(b), the only one eigenvalue is \(\lambda\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.12}
+A \textbf{scalar matrix} is a square matrix of the form \(\lambda I\) for some scalar \(\lambda\);
+that is, a scalar matrix is a diagonal matrix in which all the diagonal entries \emph{are equal}.
+\begin{enumerate}
+\item Prove that if a square matrix \(A\) is \emph{similar} to a scalar matrix \(\lambda I\), then \(A = \lambda I\).
+\item Show that a diagonalizable matrix having only one eigenvalue is a scalar matrix.
+\item Prove that \(A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\) is not diagonalizable.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item If \(A\) is similar to \(\lambda I_n\), then \(A = Q^{-1} (\lambda I_n) Q\) for some invertible \(Q\).
+But that means
+\begin{align*}
+    A & = Q^{-1} (\lambda I_n) Q \\
+      & = \lambda Q^{-1} I_n Q & \text{by \THM{2.8}(b)} \\
+      & = \lambda Q^{-1} Q & \text{by \THM{2.12}(c)} \\
+      & = \lambda I
+\end{align*}
+
+\item If \(A\) is diagonalizable and has only one eigenvalue \(\lambda\), then by \CORO{5.1.1}, \(D = Q^{-1} A Q\) where
+\[
+    D = \begin{pmatrix}
+        \lambda & 0       & ...    & 0 \\
+        0       & \lambda & ...    & 0 \\
+        \vdots  & 0       & \ddots & \vdots \\
+        0       & 0       & 0      & \lambda
+    \end{pmatrix} = \lambda I
+\]
+So that means \(A\) is similar to \(\lambda I_n\).
+By part(a), \(A = \lambda I\), so \(A\) is a scalar matrix.
+
+\item
+For the sake of contradiction, suppose \(A\) is diagonalizable.
+Then trivially by calculation, \(A\) has only \emph{one} eigenvalue \(\lambda = 1\).
+So by part(b), \(A\) is a scalar matrix, which is of course false.
+So \(A\) is non diagonalizable.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.13} \ 
+
+\begin{enumerate}
+\item Prove that similar matrices have the same \CPOLY{}.
+\item Show that the definition of the \CPOLY{} of a linear operator on a finite-dimensional vector space \(V\) is \textbf{independent} of
+the choice of basis for \(V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+Suppose \(A, B\) are similar.
+Then by \THM{2.23} \(A = Q^{-1} B Q\) for some invertible \(Q\).
+And we have
+\begin{align*}
+    \det(A - \lambda I_n) & = \det(Q^{-1} B Q - \lambda I_n) \\
+        & = \det(Q^{-1} B Q - \lambda (Q^{-1} Q) I) & \text{just tricky} \\
+        & = \det(Q^{-1} B Q - Q^{-1} (\lambda Q I)) & \text{by \THM{2.12}(b)} \\
+        & = \det \left( Q^{-1} (BQ - \lambda Q I) \right) & \text{by \THM{2.12}(a)} \\
+        & = \det \left( Q^{-1} (BQ - \lambda I Q ) \right) & \text{by \THM{2.12}(c)} \\
+        & = \det \left( Q^{-1} (B - \lambda I ) Q \right) & \text{by \THM{2.12}(a)} \\
+        & = \det ( Q^{-1} ) \det (B - \lambda I ) \det (Q) & \text{by \THM{4.7}} \\
+        & = \det ( Q^{-1} ) \det (Q) \det (B - \lambda I) & \text{of course} \\
+        & = 1 \cdot \det(B - \lambda I) = \det(B - \lambda I) & \text{by \CORO{4.7.1}}
+\end{align*}
+
+\item
+Since given any basis \(\beta, \beta'\) for \(V\), again by \THM{2.23}, \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar, by part(a),
+\[
+    \det \left( [\T]_{\beta} - t I_n \right) = \det \left( [\T]_{\beta'} - t I_n \right),
+\]
+hence the definition of \CPOLY{} in \DEF{5.4} is well-defined, since the definition is independent of the choice of basis for \(V\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.14}
+Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\) over a field \(F\), let \(\beta\) be an ordered basis for \(V\), and let \(A = [\T]_{\beta}\).
+In reference to Figure 5.1, prove the following.
+\begin{enumerate}
+\item If \(v \in V\) and \(\phi_{\beta}(v)\) is an eigenvector of \(A\) with corresponding eigenvalue the eigenvalue \(\lambda\), then \(v\) is an eigenvector of \(\T\) with corresponding eigenvalue \(A\).
+\item If \(\lambda\) is an eigenvalue of \(A\) (and hence of \(\T\)), then a vector \(y \in F^n\) is an eigenvector of \(A\) with corresponding eigenvalue \(\lambda\) if and only if \(\phi_{\beta}^{-1}(y)\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+This is just \RMK{5.1.9}.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.15}
+For any square matrix \(A\), prove that \(A\) and \(A^\top\) have the same \CPOLY{} (and hence the same eigenvalues).
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    & \text{\CPOLY{} of \(A\)} \\
+    & = \det(A - tI_n) & \text{by \DEF{5.3}} \\
+    & = \det((A - tI_n)^\top) & \text{by \THM{4.8}} \\
+    & = \det(A^\top - tI_n^\top) & \text{by \ATHM{1.2}(1)} \\
+    & = \det(A^\top - tI_n) & \text{of course} \\
+    & = \text{\CPOLY{} of \(A^\top\)} & \text{by \DEF{5.3}}
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.16} \ 
+
+\begin{enumerate}
+\item Let \(\T\) be a linear operator on a vector space \(V\), and let \(x\) be an eigenvector of \(\T\) with corresponding eigenvalue the eigenvalue \(\lambda\).
+For any positive integer \(m\), prove that \(x\) is an eigenvector of \(\T^m\) with corresponding eigenvalue the eigenvalue \(\lambda^m\).
+\item State and prove the analogous result for matrices.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item By induction, for \(m = 2\),
+\begin{align*}
+    \T^2(x) & = \T(\T(x)) & \text{by def of composition} \\
+            & = \T(\lambda x) & \text{by supposition} \\
+            & = \lambda \T(x) & \text{since \(\T\) is linear} \\
+            & = \lambda (\lambda x) & \text{by supposition} \\
+            & = \lambda^2 x.
+\end{align*}
+Hence \(x\) is an eigenvector of \(\T^2\) with corresponding eigenvalue the eigenvalue \(\lambda^2\).
+
+For \(m = k + 1\),
+\begin{align*}
+    \T^{k + 1}(x) & = \T(\T^k(x)) & \text{by def of composition} \\
+            & = \T(\lambda^k x) & \text{by inductive hypothesis} \\
+            & = \lambda^k \T(x) & \text{since \(\T\) is linear} \\
+            & = \lambda^k (\lambda x) & \text{by supposition} \\
+            & = \lambda^{k + 1} x.
+\end{align*}
+Hence \(x\) is an eigenvector of \(\T^{k + 1}\) with corresponding eigenvalue the eigenvalue \(\lambda^{k + 1}\).
+This closes the induction.
+
+\item Statement:
+If \(A \in M_{n \X n}(F)\), and \(x\) is an eigenvector of \(A\) with corresponding eigenvalue \(\lambda\),
+then \(x\) is an eigenvector of \(A^m\) with corresponding eigenvalue the eigenvalue \(\lambda^m\).
+
+By induction, for \(m = 2\),
+\begin{align*}
+    A^2(x) & = A(A(x)) & \text{by def of matrix multiplication} \\
+            & = A(\lambda x) & \text{by supposition} \\
+            & = \lambda A(x) & \text{by \THM{2.12}(b)} \\
+            & = \lambda (\lambda x) & \text{by supposition} \\
+            & = \lambda^2 x.
+\end{align*}
+Hence \(x\) is an eigenvector of \(A^2\) with corresponding eigenvalue the eigenvalue \(\lambda^2\).
+
+For \(m = k + 1\),
+\begin{align*}
+    A^{k + 1}(x) & = A(A^k(x)) & \text{by def of matrix multiplication} \\
+            & = A(\lambda^k x) & \text{by inductive hypothesis} \\
+            & = \lambda^k A(x) & \text{by \THM{2.12}(b)} \\
+            & = \lambda^k (\lambda x) & \text{by supposition} \\
+            & = \lambda^{k + 1} x.
+\end{align*}
+Hence \(x\) is an eigenvector of \(A^{k + 1}\) with corresponding eigenvalue the eigenvalue \(\lambda^{k + 1}\).
+This closes the induction.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.17}
+Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\), and let \(c\) be any scalar.
+\begin{enumerate}
+\item Determine the relationship between the eigenvalues and eigenvectors of \(\T\) (if any) and the eigenvalues and eigenvectors of \(\U = \T - c \ITRANV{}\).
+Justify your answers.
+\item Prove that \(\T\) is diagonalizable if and only if \(\U\) is diagonalizable.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Suppose \(v\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\).
+Then
+\begin{align*}
+    \U(v) & = (\T - c \ITRANV)(v) & \text{by def} \\
+          & = \T(v) - c\ITRANV(v) & \text{by def of function \(+\)} \\
+          & = \lambda v - c v \\
+          & = (\lambda - c)v.
+\end{align*}
+Hence \(\lambda - c\) is an eigenvalue of \(\U\) with corresponding eigenvector \(v\).
+
+\item
+Let \(\beta\) be the standard ordered basis for \(V\).
+We have
+\begin{align*}
+         & \T \text{ is diagonalizable} \\
+    \iff & \exists \beta, [\T]_{\beta} \text{ is a diagonal matrix} & \text{by \DEF{5.1}} \\
+    \iff & [\T]_{\beta} - c I \text{ is a diagonal matrix} & \text{since \(c I\) is also diagonal} \\
+    \iff & [\T]_{\beta} - [c \ITRANV]_{\beta} \text{ is a diagonal matrix} & \text{of course} \\
+    \iff & [\T - c \ITRANV]_{\beta} \text{ is a diagonal matrix} & \text{by \THM{2.8}(a)} \\
+    \iff & [\U]_{\beta} \text{ is a diagonal matrix} & \text{by def} \\
+    \iff & \U \text{ is diagonalizable}. & \text{by \DEF{5.1}}
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.18}
+Let \(\T\) be the linear operator on \(M_{n \X n}(\SET{R})\) defined by \(\T(A) = A^\top\).
+\begin{enumerate}
+\item Show that \(\pm 1\) are the only eigenvalues of \(\T\).
+\item Describe the eigenvectors corresponding to each eigenvalue of \(\T\).
+\item Find an ordered basis \(\beta\) for \(M_{2 \X 2}(\SET{R})\) such that \([\T]_{\beta}\) is a diagonal matrix.
+\item Find an ordered basis \(\beta\) for \(M_{n \X n}(\SET{R})\) such that \([\T]_{\beta}\) is a diagonal
+matrix for \(n > 2\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item 
+Suppose that \(\lambda\) is an arbitrary eigenvalue of \(\T\) with corresponding eigen``vector' \(A\), so \(\T(A) = \lambda A\).
+But we also have \(\T(A) = A^\top\), so
+\[
+    A^\top = \lambda A. \quad \quad \MAROON{(1)}.
+\]
+Since \(A\) is an eigenvector, \(\lambda\) is nonzero scalar, the product, \(\lambda A\), is also an eigenvector corresponding to the same eigenvalue \(\lambda\).
+Hence we have
+\[
+    \T(\lambda A) = \lambda (\lambda A) = \lambda^2 A.
+\]
+That is, by \MAROON{(1)}, we have
+\[
+    \T(A^\top) = \lambda^2 A,
+\]
+or by def of \(\T\),
+\[
+    A = (A^\top)^\top = \lambda^2 A,
+\]
+which just implies \(\lambda\) can be only \(\pm 1\).
+
+Finally, \(\pm 1\) is really the eigenvalues of \(\T\), since for \(\lambda = 1\), the symmetric matrices are the corresponding eigenvectors, and for \(\lambda = -1\), the skew-symmetric  matrices (see definition in \EXEC{1.3.28}) are the corresponding eigenvectors.
+
+\item
+Continue from part(a), we claim the the eigenvectors corresponding to \(\lambda = 1\) are \emph{exactly} symmetric matrices, since if \(M\) is an eigenvector corresponding \(\lambda = 1\), then \(M^\top = \T(M) = \lambda \cdot M = 1 \cdot M = M\), which implies \(M\) is symmetric.
+
+Similarly, we claim the the eigenvectors corresponding to \(\lambda = -1\) are \emph{exactly} skew-symmetric matrices, since if \(M\) is an eigenvector corresponding \(\lambda = -1\), then \(M^\top = \T(M) = \lambda \cdot M = -1 \cdot M = -M\), which implies \(M\) is skew-symmetric.
+
+\item Again from \EXEC{1.3.28}, the subspace of \(2 \X 2\) symmetric matrices and the subspace of \(2 \X 2\) skew-symmetric matrices are the \textbf{direct sum} of the set of \(2 \X 2\) matrices.
+And we take the bases \(\beta\) and \(\beta'\) for them, respectively, for example:
+\[
+    \beta = \left\{
+        \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix},
+        \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix},
+        \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+    \right\},
+    \beta' = \left\{
+        \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+    \right\},
+\]
+Then by \ATHM{1.27}(3.1), \(\beta \cup \beta'\) is a basis for \(M_{2 \X 2}(\SET{R})\), and by part(b), \(\beta \cup \beta'\) is a basis consisting of eigenvectors, hence \([\T]_{\beta \cup \beta'}\) is a diagonal matrix.
+
+\item
+(Also see \EXAMPLE{1.6.20} and \EXEC{1.6.17}.)
+By \EXAMPLE{1.6.20}, we have
+\[
+    \beta = \{ A_{ij} : 1 \le i \le j \le n \},
+\]
+where \(A_{ij}\) is the \(n \X n\) matrix having \(1\) in the \(i\)th row and \(j\)th column, \(1\) in the \(j\)th row and \(i\)th column, and \(0\) elsewhere, is a basis for \(n \X n\) symmetric matrices.
+And by \EXEC{1.6.17}, we have
+\[
+    \beta' = \{ E_{ij} - E_{ji} : 1 \le i \RED{ < } j \le n \}
+\]
+is a basis for \(n \X n\) skew-symmetric matrices.
+So similar to part(c), \(\beta \cup \beta'\) is a basis for \(M_{n \X n}(\SET{R})\) such that \([\T]_{\beta \cup \beta'}\) is a diagonal matrix.
+
+(In fact \(\beta\) can also be written as \(\beta = \{ E_{ij} + E_{ji}, 1 \le i \RED{ < } j \le n \}\), to make it more ``symmetric'' with \(\beta'\).)
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.19}
+Let \(A, B \in M_{n \X n}(\SET{C})\).
+\begin{enumerate}
+\item Prove that if \(B\) is invertible, then there exists a scalar \(c \in \SET{C}\) such that \(A + cB\) is \emph{not} invertible.
+Hint: Examine \(\det(A + cB)\).
+\item Find nonzero \(2 \X 2\) matrices \(A\) and \(B\) such that both \(A\) and \(A + cB\) are invertible for all \(c \in \SET{C}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Suppose \(B\) is invertible.
+Then (by \CORO{4.7.1}) \(\det(B) \ne 0\).
+And
+\begin{align*}
+    \det(A + cB) & = \det(AB^{-1}B + cIB) & \text{tricky but true} \\
+        & = \det((AB^{-1} + cI)B) & \text{by \THM{2.12}(a)} \\
+        & = \det(AB^{-1} + cI) \cdot \det(B) & \text{by \THM{4.7}}
+\end{align*}
+So \(\det(A + cB) = 0\) if and only if \(\det(AB^{-1} + cI) = 0\).
+But \(\det(AB^{-1} + cI)\) is a polynomial of \(c\) where \(c \in \SET{C}\).
+By \emph{the fundamental theorem of algebra}, there exists \(c_0\) such that \(\det(AB^{-1} - c_0I) = 0\) and therefore \(\det(A + c_0 B) = 0\).
+Therefore, (by \CORO{4.7.1} again), \((A + c_0B)\) is \emph{not} invertible.
+
+\item
+Take
+\[
+    A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}
+    \quad \text{and} \quad
+    B = \begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}.
+\]
+(Note that \(B\) is \emph{not} invertible, so this is not the case of part(a).)
+Then for any \(c \in \SET{C}\),
+\[
+    A + cB = \begin{pmatrix} 1 & 1 \\ c & 1 + c \end{pmatrix}
+\]
+So \(\det(A + cB) = 1(1 + c) - 1(c) = 1 \ne 0\).
+Hence (by \CORO{4.7.1}) \(A + cB\) is invertible for any \(c \in \SET{C}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.20}
+Let \(A\) be an \(n \X n\) matrix with \CPOLY{}
+\[
+    f(t) = \RED{a_n} t^n + a_{n - 1}t^{n - 1} + ... + a_1 t + a_0.
+\]
+(Please also see the note below.)
+Prove that \(f(0) = a_0 = \det(A)\).
+Deduce that \(A\) is invertible if and only if \(a_0 \ne 0\).
+\end{exercise}
+
+\begin{note}
+Note that I have change the form of \(f(t)\) such that the coefficient of \(t^n\) is \RED{not} assumed to be \((-1)^n\).
+It's weird that \EXEC{5.1.20} asserts the \CPOLY{} \(f(t)\) has \emph{that} form such that the coefficient of \(t^n\) is \((-1)^n\).
+The fact is guaranteed by \THM{5.3}, but the proof is delayed until \EXEC{5.1.24}.
+\end{note}
+
+\begin{proof}
+By \DEF{5.3}, the \CPOLY{} of \(A\) is \(\det(A - tI)\), so with the supposition, we have
+\[
+    \det(A - tI) = a_n t^n + a_{n - 1}t^{n - 1} + ... + a_1 t + a_0.
+\]
+If we let \(t = 0\), then we have
+\[
+    \det(A) = \det(A - 0 \cdot I)= a_n \cdot 0^n + a_{n - 1} \cdot 0^{n - 1} + ... + a_1 \cdot 0 + a_0 = a_0.
+\]
+Hence \(A\) is invertible, if and only if (by \CORO{4.7.1}) \(\det(A) \ne 0\), if and only if, by what we have shown, \(a_0 \ne 0\).
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.21}
+Let \(A\) and \(f(t)\) be as in \EXEC{5.1.20}.
+\begin{enumerate}
+\item Prove that \(f(t) = (A_{11} - t)(A_{22} - t) \cdots (A_{nn} - t) + q(t)\),
+where \(q(t)\) is a polynomial of degree at most \(n - 2\).
+Hint: Apply mathematical induction to \(n\).
+\item Show that \(\TRACE(A) = (-1)^{n - 1} a_{n - 1}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item We prove by induction on \(n\) with the base case \(n = 2\).
+For \(n = 2\), let \(A\) be arbitrary \(2 \X 2\) matrix.
+Then
+\begin{align*}
+    f(t) & = \det \begin{pmatrix}
+        A_{11} - t & A_{12} \\
+        A_{21}     & A_{22} - t
+    \end{pmatrix} & \text{by \DEF{5.3}} \\
+    & = (A_{11} - t)(A_{22} - t) - A_{12} A_{21}, & \text{by \DEF{4.1}}
+\end{align*}
+where \(-A_{12} A_{21}\) is a polynomial with degree \(0 = 2 - 2 = (n - 2)\).
+
+Now suppose the statement holds for \(n - 1\) where \(n > 2\), that is,
+for any \((n - 1) \X (n - 1)\) matrix \(A\), \(f(t) = (A_{11} - t)(A_{22} - t) ... (A_{(n - 1)(n - 1)} - t) + q(t)\) where \(q(t)\) is a polynomial of degree at most \((n - 1) - 2 = n - 3\).
+We have to show that for any \(n \X n\) matrix \(A\), \(f(t) = (A_{11} - t)(A_{22} - t) ... (A_{nn} - t) + q(t)\) where \(q(t)\) is a polynomial of degree at most \(n - 2\).
+Then given \(n \X n\) matrix \(A\),
+\begin{align*}
+    f(t) & = \det \begin{pmatrix}
+        A_{11} - t & A_{12}     & ...        & A_{1n} \\
+        A_{21}     & A_{22} - t & ...        & A_{2n} \\
+        \vdots     & \vdots     & \ddots     & \vdots \\
+        A_{n1}     & A_{n2}     & ...        & A_{nn} - t
+    \end{pmatrix} \quad \quad \quad \text{by \DEF{5.3}} \\
+    & = (A_{11} - t) \det \begin{pmatrix}
+        A_{22} - t & A_{23}     & ...    & A_{2n} \\
+        A_{32} - t & A_{33} - t & ...    & A_{2n} \\
+        \vdots     & \vdots     & \ddots & \vdots \\
+        A_{n2}     & A_{n3}     & ...    & A_{nn} - t
+    \end{pmatrix}
+    + \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \det(B_j),
+\end{align*}
+where the last equation is by expanding the first row of \(A - tI\), and \(B_j\) is obtained by deleting the first row and \(j\)th column of \(A - tI\) for \(1 \le j \le n\).
+Since the matrix
+\[
+    \begin{pmatrix}
+        A_{22} - t & A_{23}     & ...    & A_{2n} \\
+        A_{32} - t & A_{33} - t & ...    & A_{2n} \\
+        \vdots     & \vdots     & \ddots & \vdots \\
+        A_{n2}     & A_{n3}     & ...    & A_{nn} - t
+    \end{pmatrix}
+\]
+has the form \(\tilde{A}_{11} - t I_{n - 1}\) where \(\tilde{A}_{11}\) has size \((n - 1) \X (n - 1)\),
+by inductive hypothesis, the determinant of it is \((A_{22} - t)(A_{33} - t) ... (A_{nn} - t) + \RED{q_1(t)}\) where \(\RED{q_1(t)}\) is a polynomial of degree at most \((n - 1) - 2 = n - 3\).
+And for \(B_j\), since it is obtained from deleting the first row and \(j\)th column of \(A - tI\), in particular, the \(11\)-entry of \(A - tI\), that is, \(A_{11} - t\), is deleted, and the \(jj\)-entry of \(A - tI\), that is, \(A_{jj} - t\), is deleted.
+Then of course \(\det(B_j)\) is a polynomial of degree at most \(n - 2\).
+Hence
+\begin{align*}
+    f(t) & = (A_{11} - t) \cdot \left[ (A_{22} - t)(A_{33} - t) ... (A_{nn} - t) + \RED{q_1(t)} \right] + \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \det(B_j) \\
+        & = (A_{11} - t)(A_{22} - t)(A_{33} - t) ... (A_{nn} - t) + (A_{11} - t)\RED{q_1(t)} + \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \det(B_j) \\
+        & = (A_{11} - t)(A_{22} - t)(A_{33} - t) ... (A_{nn} - t) + q(t),
+\end{align*}
+where \(q(t) = (A_{11} - t)\RED{q_1(t)} + \sum_{j = 1}^n (-1)^{1 + j} A_{1j} \det(B_{j})\) is a sum of polynomial having degree of degree at most \(n - 2\), hence has degree at most \(n - 2\).
+So the statement is true for \(n\).
+This closes the induction.
+
+\item By part(a), we have
+\[
+    a_n t^n + a_{n - 1}t^{n - 1} + ... + a_1 t + a_0 = (A_{11} - t)(A_{22} - t) \cdots (A_{nn} - t) + q(t)
+\]
+Since \(a_{n - 1}\) is the coefficient of \(t^{n - 1}\), and \(q(t)\) has degree at most \(n - 2\), that means the coefficient of \(t^{n - 1}\), \(a_{n - 1}\), only comes from \((\RED{A_{11}} \MAROON{- t})(\RED{A_{22}} \MAROON{- t}) \cdots (\RED{A_{nn}} \MAROON{- t})\).
+By observing the structure of this expression, (or by theory of combination and permutation,) the term of degree \(n - 1\) must be
+\begin{align*}
+    & \RED{A_{11}} \cdot \MAROON{(-t)} \cdot \MAROON{(-t)} \cdot ... \cdot \MAROON{(-t)} \\
+    & + \MAROON{(-t)} \cdot \RED{A_{22}} \cdot \MAROON{(-t)} \cdot ... \cdot \MAROON{(-t)} \\
+    & + ... \\
+    & + \MAROON{(-t)} \cdot ... \cdot \MAROON{(-t)} \RED{A_{nn}}
+\end{align*}
+which is equal to
+\begin{align*}
+    & (A_{11} + A_{22} + ... + A_{nn})(-t)^{n - 1} \\
+    & = \TRACE(A) \cdot (-t)^{n - 1} \\
+    & = (-1)^{n - 1} \TRACE(A) \cdot t^{n - 1}.
+\end{align*}
+Hence \(a_{n - 1} = (-1)^{n - 1} \TRACE(A)\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.22} \ 
+
+\begin{enumerate}
+\item Let \(\T\) be a linear operator on a vector space \(V\) over the field \(F\), and let \(g(t)\) be a polynomial with coefficients from \(F\).
+Prove that if \(x\) is an eigenvector of \(\T\) with corresponding eigenvalue \(\lambda\), then \(g(\T)(x) = g(\lambda)x\).
+That is, \(x\) is an eigenvector of \(g(\T)\) with corresponding eigenvalue \(g(\lambda)\).
+\item State and prove a comparable result for matrices.
+\item Verify (b) for the matrix \(A\) in \EXEC{5.1.4}(a) with polynomial \(g(t) = 2t^2 - t + 1\), eigenvector \(x = \begin{pmatrix} 2 \\ 3 \end{pmatrix}\), and corresponding eigenvalue \(\lambda = 4\).
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+The notation \(g(\T)\) is defined in the Appendix E of the book;
+this notation is used throughout \CH{5}, \CH{6} and \CH{7}:
+If \(g(t)\) is degree \(n\) and
+\[
+    g(t) = a_0 t^0 + a_1 t^1 + a_2 t^2 + ... + a_n t^n,
+\]
+then we can just treat \(g(\T)\), where as
+\[
+    g(\T) = a_0 \ITRAN{} + a_1 \T + a_2 \T^2 + ... + a_n \T^n.
+\]
+Similarly, if \(A\) is a matrix, then we can treat \(g(A)\) as
+\[
+    g(A) = a_0 I + a_1 A + a_2 A^2 + ... + a_n A^n.
+\]
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item 
+Let \(g(t)\) be as in the note.
+Suppose \(x\) is an eigenvalue of \(\T\) with corresponding eigenvalue \(\lambda\).
+Then \(\T(x) = \lambda x\).
+And
+\begin{align*}
+    g(\T)(x) & = (a_0 \ITRAN{} + a_1 \T + a_2 \T^2 + ... + a_n \T^n)(x) & \text{by the note} \\
+             & = a_0 \ITRAN{} (x) + a_1 \T (x) + a_2 \T^2 (x) + ... + a_n \T^n (x) & \text{by the def of function \(+, \cdot\)} \\
+             & = a_0 x + a_1 \lambda x + a_2 \lambda^2 x + ... + a_n \lambda^n x & \text{by \EXEC{5.1.16}(a)} \\
+             & = (a_0 + a_1 \lambda + a_2 \lambda^2 + ... + a_n \lambda^n) x & \text{of course} \\
+             & = g(\lambda) x
+\end{align*}
+
+\item
+Suppose \(x\) is an eigenvalue of \(A\) with corresponding eigenvalue \(\lambda\).
+Then \(A = \lambda x\).
+And
+\begin{align*}
+    g(A)(x) & = (a_0 I + a_1 A + a_2 A^2 + ... + a_n A^n)(x) & \text{by the note} \\
+             & = a_0 I x + a_1 A x + a_2 A^2 x + ... + a_n A^n x & \text{by \THM{2.12}(a)(b)} \\
+             & = a_0 x + a_1 \lambda x + a_2 \lambda^2 x + ... + a_n \lambda^n x & \text{by \EXEC{5.1.16}(b)} \\
+             & = (a_0 + a_1 \lambda + a_2 \lambda^2 + ... + a_n \lambda^n) x & \text{of course} \\
+             & = g(\lambda) x
+\end{align*}
+
+\item
+\(A = \begin{pmatrix} 1 & 2 \\ 3 & 2 \end{pmatrix}\), \(F = \SET{R}\).
+Then
+\begin{align*}
+    g(A) & = 2A^2 - A + I = \begin{pmatrix} 14 & 10 \\ 15 & 19 \end{pmatrix} & \text{by calculation}
+\end{align*}
+And \(g(\lambda) = g(4) = 2 \cdot 4^2 - 4 + 1 = 29\).
+So
+\begin{align*}
+    g(A)(x) = \begin{pmatrix} 14 & 10 \\ 15 & 19 \end{pmatrix}
+    \begin{pmatrix} 2 \\ 3 \end{pmatrix}
+    = \begin{pmatrix} 58 \\ 87 \end{pmatrix}
+    = 29 \begin{pmatrix} 2 \\ 3 \end{pmatrix}
+    = g(\lambda) x.
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.23}
+Use \EXEC{5.1.22} to prove that if \(f(t)\) is the \CPOLY{} of a diagonalizable linear operator \(\T\), then \(f(\T) = \T_0\), the zero operator.
+(In \SEC{5.4} we prove that this result does not depend on the diagonalizability of \(\T\).)
+\end{exercise}
+
+\begin{note}
+Since \(\T\) is diagonalizable, that implies the corresponding vector space \(V\) must be finite-dimensional, hence the basis of \(V\) is finite.
+And this is Cayley–Hamilton theorem(see \THM{5.22}).
+\end{note}
+
+\begin{proof}
+Suppose \(\T\) is diagonalizable, and \(f(t)\) is the \CPOLY{} of \(\T\).
+Then (by \DEF{5.1}) there exists a basis \(\beta = \{ v_1, v_2, ..., v_n \}\) consisting of eigenvectors of \(\T\).
+Then any \(v_i \in \beta\) corresponds to a eigenvalue \(\lambda_i\), and
+\begin{align*}
+    f(\T)(v_i) & = f(\lambda_i) v_i & \text{by \EXEC{5.1.22}(c)} \\
+               & = 0 \cdot v_i & \text{since \(\lambda_i\) is a zero of \(f(t)\)} \\
+               & = \OV.
+\end{align*}
+Then by \THM{2.6}, \(f(\T)\) must be equal zero transformation since it sends every vector in the basis \(\beta\) to zero vector.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.24}
+Use \EXEC{5.1.21}(a) to prove \THM{5.3}.
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item 
+From \EXEC{5.1.21}(a), the \CPOLY{} \(f(t)\) of any \(n \X n\) matrix has degree at most \(n\), since
+\[
+    f(t) = (A_{11} - t)(A_{22} - t) \cdots (A_{nn} - t) + q(t) \quad \quad \MAROON{(1)}
+\]
+is equal to sum of polynomial \((A_{11} - t)(A_{22} - t) \cdots (A_{nn} - t)\) of degree \(n\) and \(q(t)\) of degree at most \(n - 2\).
+And the coefficient of the term of degree \(n\) is, by observation from \MAROON{(1)}, \((-1)^{n}\).
+
+\item
+Since the eigenvalues of \(A\) are the zeroes of \(f(t)\) which has degree \(n\), hence (by fundamental theorem of algebra) \(f(t)\) has at most distinct \(n\) zeroes, hence \(A\) has at most \(n\) distinct eigenvalues.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.25}
+Determine the number of distinct \CPOLY{}s of matrices in \(M_{2 \X 2}(Z_2)\).
+\end{exercise}
+
+\begin{proof}
+We have
+\[
+    Z_2 = \{ 0 , 1\}
+\]
+where
+\[
+    \begin{array}{r}
+        0+0=0 \quad 1+1=0 \quad 0+1=1+0=1 \\
+        0 \cdot 0=0 \quad 1 \cdot 1=1 \quad 0 \cdot 1=1 \cdot 0=0
+    \end{array}
+\]
+So for any matrix
+\[
+    M = \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+\]
+in \(M_{2 \X 2}(Z_2)\), the \CPOLY{} is
+\begin{align*}
+    \det(M - tI) & = \det \begin{pmatrix} a - t & b \\ c & d - t \end{pmatrix} \\
+        & = t^2 + (-a + -d) t + (ad - bc) & \text{by calculation}
+\end{align*}
+From the operations defined above, both \((-a + -d)\) and \((ad - bc)\) can only be \(0\) or \(1\), so \(\det(M - tI)\) has only four possibilities:
+\begin{align*}
+    t^2 + t + 1, \quad \quad t^2 + 1, \quad \quad t^2 + t, \quad \quad t^2.
+\end{align*}
+\end{proof}

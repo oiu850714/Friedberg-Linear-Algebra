@@ -27,7 +27,7 @@ In each part, \(V\) and \(W\) are \textbf{finite}-dimensional vector spaces (ove
 \item True by \THM{2.6}(or \CORO{2.6.1}).
 \item False.
     We can easily find a counterexample when \(x_1, x_2\) are \LDP{}: Let \(V = W = \SET{R}^2\) and \(x_1 = (1, 0), x_2 = (2, 0), y_1 = (1, 0), y_2 = (0, 1)\).
-    Then suppose arbitrary \(\T : V \to W\) s.t. \(\T\) is linear, and suppose \(\T(1, 0) = (1, 0)\), that is, \(\T(x_1) = y_1\).
+    Then suppose arbitrary \(\T : V \to W\) such that \(\T\) is linear, and suppose \(\T(1, 0) = (1, 0)\), that is, \(\T(x_1) = y_1\).
     Then
     \begin{align*}
         \T(x_2) & = \T(2, 0) \\
@@ -235,7 +235,7 @@ Let \(V\) and \(W\) be vector spaces and \(\T : V \to W\) be linear.
 \begin{enumerate}
 \item
 \(\Longrightarrow\): Suppose \(\T\) is one-to-one, we have to show \(\T\) carries \LID{} subsets of \(V\) onto \LID{} subsets of \(W\).
-So let \(\beta = \{ v_1, v_2, ..., v_k \}\) be arbitrary subset of \(V\) s.t. \(\beta\) is \LID{}.
+So let \(\beta = \{ v_1, v_2, ..., v_k \}\) be arbitrary subset of \(V\) such that \(\beta\) is \LID{}.
 Then suppose \(a_1\T(v_1) + a_2\T(v_2) + ... + a_k\T(v_k) = \OW\), it suffices to show \(a_1 = a_2 = .. = a_k\) to show the corresponding subset \(\{ \T(v_1), \T(v_2), ..., \T(v_k) \}\) is \LID{}.
 Then
 \begin{align*}
@@ -316,7 +316,7 @@ Again note that now the domain(and codomain) of \(\T\) are infinite-dimensional,
 For some zero degree polynomial \(g(x) = 1\) and \(h(x) = 2\) where \(g \ne h\), the derivative of \(g\) and \(h\) is the zero function, so \(\T\) is not one-to-one.
 
 Now let \(p(x) = a_0 + a_1 x + ... + a_n x^n\) be an arbitrary polynomial in (the codomain of \(\T\)) \(\mathcal{P}(\SET{R})\).
-We can find a function in (the domain of \(\T\)) \(\mathcal{P}(\SET{R})\), \(q(x) = a_0 x + \frac{a_1}{2} x^2 + ... + \frac{a_n}{n + 1} x^{n + 1}\) s.t. \(\T(q) = q' = p\).
+We can find a function in (the domain of \(\T\)) \(\mathcal{P}(\SET{R})\), \(q(x) = a_0 x + \frac{a_1}{2} x^2 + ... + \frac{a_n}{n + 1} x^{n + 1}\) such that \(\T(q) = q' = p\).
 Hence \(\T\) is onto.
 \end{proof}
 
@@ -396,7 +396,7 @@ Since \(V_1\) is a subspace of \(V\), \(\OV \in V_1\), hence \(\T(\OV) \in \T(V_
 that is, by \ATHM{2.1}(a), \(\OW \in \T(V_1)\).
 
 Now suppose \(w_1, w_2 \in \T(V_1)\).
-Then there exist \(v_1, v_2 \in V_1\) s.t. \(\T(v_1) = w_1\) and \(\T(v_2) = w_2\), and
+Then there exist \(v_1, v_2 \in V_1\) such that \(\T(v_1) = w_1\) and \(\T(v_2) = w_2\), and
 \begin{align*}
              & \T(v_1) = w_1 \land \T(v_2) = w_2 \\
     \implies & \T(v_1) + \T(v_2) = w_1 + w_2 & \text{in particular} \\
@@ -405,7 +405,7 @@ Then there exist \(v_1, v_2 \in V_1\) s.t. \(\T(v_1) = w_1\) and \(\T(v_2) = w_2
 But since \(V_1\) is a subspace, \(v_1 + v_2 \in V_1\), which implies \(\T(v_1 + v_2) \in \T(V_1)\), that is, \(w_1 + w_2 \in \T(V_1)\).
 
 Now suppose \(w \in \T(V_1)\) and \(c \in F\).
-Then there exists \(v \in V_1\) s.t. \(\T(v) = w\) and
+Then there exists \(v \in V_1\) such that \(\T(v) = w\) and
 \begin{align*}
              & \T(v) = w \\
     \implies & c\T(v) = cw & \text{in particular} \\
@@ -420,22 +420,22 @@ Now we show that \(X = \{ x \in V: \T(x) \in W_1 \}\) is a subspace of \(V\).
 Since \(W_1\) is a subspace of \(W\), \(\OW \in W_1\), and by \ATHM{2.1}(a), \(\T(\OV) = \OW\), hence by definition of \(X\), \(\OV \in X\).
 
 Now suppose \(x_1, x_2 \in X\).
-Then by definition of \(X\) there exist \(w_1, w_2 \in W_1\) s.t. \(\T(x_1) = w_1\) and \(\T(x_2) = w_2\), and
+Then by definition of \(X\) there exist \(w_1, w_2 \in W_1\) such that \(\T(x_1) = w_1\) and \(\T(x_2) = w_2\), and
 \begin{align*}
              & \T(x_1) = w_1 \land \T(x_2) = w_2 \\
     \implies & \T(x_1) + \T(x_2) = w_1 + w_2 & \text{in particular} \\
     \implies & \T(x_1 + x_2) = w_1 + w_2. & \text{since \(\T\) is linear}
 \end{align*}
-But since \(W_1\) is a subspace, \(w_1 + w_2 \in W_1\), and we have found \(x_1 + x_2\) s.t. \(\T(x_1 + x_2) = w_1 + w_2\), so by definition of \(X\), \(x_1 + x_2 \in X\).
+But since \(W_1\) is a subspace, \(w_1 + w_2 \in W_1\), and we have found \(x_1 + x_2\) such that \(\T(x_1 + x_2) = w_1 + w_2\), so by definition of \(X\), \(x_1 + x_2 \in X\).
 
 Now suppose \(x \in X\) and \(c \in F\).
-Then by definition of \(X\), there exists \(w \in W_1\) s.t. \(\T(x) = w\) and
+Then by definition of \(X\), there exists \(w \in W_1\) such that \(\T(x) = w\) and
 \begin{align*}
              & \T(x) = w \\
     \implies & c\T(x) = cw & \text{in particular} \\
     \implies & \T(cx) = cw. & \text{since \(\T\) is linear}
 \end{align*}
-But since \(W_1\) is a subspace, \(cw \in W_1\), and we have found \(cx\) s.t. \(\T(cx) = cw\), so by definition of \(X\), \(cx \in X\).
+But since \(W_1\) is a subspace, \(cw \in W_1\), and we have found \(cx\) such that \(\T(cx) = cw\), so by definition of \(X\), \(cx \in X\).
 
 So by \THM{1.3}, all conditions are met, hence \(X = \{ x \in V: \T(x) \in W_1 \}\) is a subspace of \(V\).
 \end{proof}
@@ -475,7 +475,7 @@ Hence by \ATHM{2.1}(b) \(\T\) is linear.
 Hence by \ATHM{2.1}(b) \(\U\) is linear.
 
 \item
-Given any \((a_1, a_2, ...)\) in codomain of \(\T\), we can find \((0, a_1, a_2, ...)\) in domain of \(\T\) s.t. \\ 
+Given any \((a_1, a_2, ...)\) in codomain of \(\T\), we can find \((0, a_1, a_2, ...)\) in domain of \(\T\) such that \\ 
 \(\T((0, a_1, a_2, ...)) = (a_1, a_2, ...)\), so \(\T\) is onto.
 
 But we have \(\T((1, a_1, a_2, ...)) = (a_1, a_2, ...) = \T((2, a_1, a_2, ...))\) but \\
@@ -505,7 +505,7 @@ Then for any \((x, y, z) \in \SET{R}^3\),
                 & = x r_1 + y r_2 + z r_3 & \text{by \MAROON{(1)}} \\
                 & = r_1 x + r_2 y + r_3 z, & \text{of course}
 \end{align*}
-so we have found \(a = r_1, b = r_2, c = r_3\) s.t. \(\T(x, y, z) = ax + by + cz\) for all \((x, y, z) \in \SET{R}^3\).
+so we have found \(a = r_1, b = r_2, c = r_3\) such that \(\T(x, y, z) = ax + by + cz\) for all \((x, y, z) \in \SET{R}^3\).
 
 And in general, for \(\T: F_n \to F\), we again have \(\T(e_1) = r_1\), \(\T(e_2) = r_2\), ..., \(\T(e_n) = r_n\) \MAROON{(2)}.
 And for any \((x_1, x_2, ..., x_n) \in F^n\),
@@ -516,7 +516,7 @@ And for any \((x_1, x_2, ..., x_n) \in F^n\),
                 & = r_1 x_1 + r_2 x_2 + ... + r_n x_n, & \text{of course}
 \end{align*}
 
-For the generalization, given \(\T : F^n \to F^m\), (I think) we should find \(a_{ij}\) for \(1 \le i \le m\) and \(1 \le j \le n\) s.t.
+For the generalization, given \(\T : F^n \to F^m\), (I think) we should find \(a_{ij}\) for \(1 \le i \le m\) and \(1 \le j \le n\) such that
 \[
     \T(x_1, x_2, ..., x_n) = \bigg(\sum_{j = 1}^n a_{1 j} x_{j}, \sum_{j = 1}^n a_{2 j} x_{j}, ..., \sum_{j = 1}^n a_{m j} x_{j} \bigg)
 \]
@@ -578,7 +578,7 @@ The exercise says that given a solution \(s\), then the solution set can be repr
 \end{note}
 
 \begin{proof}
-Let \(K = \{ x \in V : \T(x) = b \}\) be \emph{nonempty} (so we can find \(s \in K\) s.t. \(\T(s) = b\).
+Let \(K = \{ x \in V : \T(x) = b \}\) be \emph{nonempty} (so we can find \(s \in K\) such that \(\T(s) = b\).
 Let \(s\) be a solution of \(\T(x) = b\), that is, \(\T(s) = b\) \MAROON{(1)}.
 We have to show that \(K = \{ s \} + \NULLT\).
 
@@ -633,7 +633,7 @@ See \EXEC{2.1.27}(a).
 \end{note}
 
 \begin{note}
-It seems that saying \(\T\) is the projection on \(W_1\) along \(W_2\) is more precise than just saying \(\T\) is the projection of \(V\) on \(W_1\), since you can use different subspaces \(W_2\) and \(W_2'\) s.t. both \(W_1 \oplus W_2\) and \(W_1 \oplus W_2'\) are equal to \(V\).
+It seems that saying \(\T\) is the projection on \(W_1\) along \(W_2\) is more precise than just saying \(\T\) is the projection of \(V\) on \(W_1\), since you can use different subspaces \(W_2\) and \(W_2'\) such that both \(W_1 \oplus W_2\) and \(W_1 \oplus W_2'\) are equal to \(V\).
 \EXEC{2.1.25} is a particular example.
 \end{note}
 
@@ -738,7 +738,7 @@ Then by def of \(\RANGET\), \(\GREEN{x} \in \RANGET\).
 So \(W_1 \subseteq \RANGET\).
 
 Now let arbitrary \(x \in \RANGET\).
-Then there exists \(v \in V\) s.t. \(\T(v) = x\).
+Then there exists \(v \in V\) such that \(\T(v) = x\).
 But by definition of \(\T\), that implies \(x \in W_1\).
 So we have \(\RANGET \subseteq W_1\).
 
@@ -789,9 +789,9 @@ Suppose that \(W\) is a subspace of a \emph{finite}-dimensional vector space \(V
 
 \begin{proof} \ 
 \begin{enumerate}
-\item First, by \ATHM{1.27}(4), there exists a subspace \(W'\) s.t. \(V = W \oplus W'\).
+\item First, by \ATHM{1.27}(4), there exists a subspace \(W'\) such that \(V = W \oplus W'\).
 Since \(V = W \oplus W'\), for any \(v \in V\) we can let \(v = w + w'\) where \(w \in W\) and \(w' \in W'\).
-And let \(\T : V \to V\) s.t. \(\T(v) = w'\).
+And let \(\T : V \to V\) such that \(\T(v) = w'\).
 Then by \ADEF{2.2}, \(\T\) is a projection on \(W\) along \(W'\).
 
 \item \EXEC{2.1.15}(a)(b) is a particular example.
@@ -811,7 +811,7 @@ be the function \(\T_W : \GREEN{W} \to \BLUE{W}\) defined by \(\T_W(x) = \T(x)\)
 
 \begin{note}
 Only if \(W\) is \(\T\)-is invariant makes the definition of \(\T\)-restriction well-defined.
-Otherwise there exists \(w \in \GREEN{W}\) s.t. \(\T(w) \notin \BLUE{W}\), which makes \(\T_W\) not well-defined(\(\T_W(w) = \T(w)\) does not exist in the codomain \(\BLUE{W}\)).
+Otherwise there exists \(w \in \GREEN{W}\) such that \(\T(w) \notin \BLUE{W}\), which makes \(\T_W\) not well-defined(\(\T_W(w) = \T(w)\) does not exist in the codomain \(\BLUE{W}\)).
 \end{note}
 
 \begin{note}
@@ -981,7 +981,7 @@ Then
     \implies & \exists v \in W, \T_W(v) = w & \text{by def of range} \\
     \implies & \exists v \in W, \T(v) = w & \text{since \(\T_W(v) = \T(v)\)},
 \end{align*}
-so we have found \(v \in W\) s.t. \(\T(v) = w\), hence \(w \in \T(W)\), as desired.
+so we have found \(v \in W\) such that \(\T(v) = w\), hence \(w \in \T(W)\), as desired.
 
 \(\T(W) \subseteq \RANGE(\T_W)\):
 Suppose arbitrary \(w \in \T(W)\), we have to show \(w \in \RANGE(\T_W)\).
@@ -1005,7 +1005,7 @@ One direction is easy, \(\spann(\{ \T(v) : v \in \beta \}) \subseteq \RANGET\), 
 
 So it remains to show \(\RANGET \subseteq \spann(\{ \T(v) : v \in \beta \})\).
 So suppose arbitrary \(y \in \RANGET\).
-Then there exists \(x \in V\) s.t. \(\T(x) = y\).
+Then there exists \(x \in V\) such that \(\T(x) = y\).
 But \(x\) is a linear combination of \textbf{finite}\RED{*} vectors in \(\beta\),
 That is, \(x = \sum_{i = 1}^k a_i v_i\) for some \(v_i \in \beta\).
 So we have
@@ -1031,7 +1031,7 @@ Then for any function \(f: \beta \to W\) there exists \emph{exactly one} \LTRAN{
 
 \begin{proof}
 If \(\beta = \{ v_1, v_2, ..., v_n \}\) is finite, then from the function \(f\) we can just find the corresponding vectors \(w_1, w_2, ..., w_n\) in \(W\),
-and this falls back to the case of \THM{2.6}, because there exists unique \LTRAN{} \(\T\) s.t. \(\T(v_i) = w_i\) for \(i = 1, ..., n\),
+and this falls back to the case of \THM{2.6}, because there exists unique \LTRAN{} \(\T\) such that \(\T(v_i) = w_i\) for \(i = 1, ..., n\),
 that is, \(\T(v_i) = f(w_i)\) for all \(w_i \in \beta\).
 
 So let \(\beta\) be an \emph{infinite} basis for \(V\), and let \(f\) be arbitrary function \(f: \beta \to W\).
@@ -1110,7 +1110,7 @@ For \(v \in \beta\):
 Hence \(\T\) satisfies the two requirements, so the existence part is proved.
 
 Now we have to show \(\T\) is unique.
-So suppose \(\U\) is also linear s.t. \(\U(v) = f(v)\) for \(v \in \beta\).
+So suppose \(\U\) is also linear such that \(\U(v) = f(v)\) for \(v \in \beta\).
 We have to show \(\U = \T\);
 that is, (by definition of function equality,) we have to show \(\forall x \in V, \U(x) = \T(x)\).
 
@@ -1372,7 +1372,7 @@ So \(\NULL(\eta) = W\).
 \item
 Since \(V\) is finite-dimensional, By \THM{2.3} We have \(\rank(\eta) = \dim(V) - \nullity(\eta)\), or \(\dim(\RANGE(\eta)) = \dim(V) - \dim(\MAROON{\NULL(\eta)})\), which implies, by part(a), \(\dim(\RANGE(\eta)) = \dim(V) - \dim(\MAROON{W})\) \MAROON{(2)}.
 
-But it's of course that \(\eta\) is \emph{onto} (given any \(v + W \in V/W\), we can just use that \(v\) s.t. \(\eta(v) = v + W\), hence \(\eta\) is onto),
+But it's of course that \(\eta\) is \emph{onto} (given any \(v + W \in V/W\), we can just use that \(v\) such that \(\eta(v) = v + W\), hence \(\eta\) is onto),
 hence \(\dim(\RANGE(\eta)) = \dim(V/W)\), so \MAROON{(2)} becomes \(\dim(V/W) = \dim(V) - \dim(W)\).
 
 \item Skip.
@@ -1385,7 +1385,7 @@ This is the placeholder theorem for
 
 \EXEC{2.1.13}: 
 
-\BLUE{(1)}: Given \(\T : V \to W\), and any \LID{} subset \(\{ w_1, w_2, ..., w_k \}\) of \(\RANGET\), then any subset \(\{ v_1, v_2, ..., v_k \} \in V\) s.t. \(\T(v_1) = w_1, ..., \T(v_k) = w_k\) is also \LID{}.
+\BLUE{(1)}: Given \(\T : V \to W\), and any \LID{} subset \(\{ w_1, w_2, ..., w_k \}\) of \(\RANGET\), then any subset \(\{ v_1, v_2, ..., v_k \} \in V\) such that \(\T(v_1) = w_1, ..., \T(v_k) = w_k\) is also \LID{}.
 
 \EXEC{2.1.14}: Given linear \(\T : V \to W\),
 
@@ -1445,9 +1445,9 @@ If \(W_1 = \{ \OV \}\), then \(\T\) is zero transformation.
 This is a placeholder theorem for \EXEC{2.1.28}:
 Given any subspace \(W\) of \emph{finite} space \(V\):
 
-\BLUE{(1)} We can find \(W'\) and a function \(\T\) s.t. \(\T\) is the projection on \(W\) along \(W'\).
+\BLUE{(1)} We can find \(W'\) and a function \(\T\) such that \(\T\) is the projection on \(W\) along \(W'\).
 
-\BLUE{(2)} We can find \emph{different} \(W'\) and \(W''\) s.t. \(T_1\) is the projection on \(W\) along \(W'\) and \(\T_2\) is the projection on \(W\) along \(W''\).
+\BLUE{(2)} We can find \emph{different} \(W'\) and \(W''\) such that \(T_1\) is the projection on \(W\) along \(W'\) and \(\T_2\) is the projection on \(W\) along \(W''\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.9}

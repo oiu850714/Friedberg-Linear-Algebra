@@ -1,0 +1,673 @@
+\section{Polynomials} \label{sec 8.e}
+
+In this appendix, we discuss some useful properties of the polynomials \emph{with coefficients from a field}.
+For the definition of a polynomial, refer to \SEC{1.2}.
+(See \ADEF{1.4}.)
+Throughout this appendix, we assume that all polynomials have coefficients from a fixed field \(F\).
+
+\begin{appendix definition} \label{def e.1}
+A polynomial \(f(x)\) \textbf{divides} a polynomial \(g(x)\) if there exists a polynomial \(q(x)\) such that \(g(x) = f(x)q(x)\).
+\end{appendix definition}
+
+Our first result shows that the familiar long division process for polynomials \emph{with real} coefficients \textbf{is valid for} polynomials with coefficients from an \textbf{arbitrary field}.
+
+\begin{appendix theorem} [The Division Algorithm for Polynomials] \label{thm e.1}
+Let \(f(x)\) be a polynomial of degree \(n\), and let \(g(x)\) be a polynomial of degree \(m \ge 0\).
+Then there \textbf{exist unique} polynomials \(q(x)\) and \(r(x)\) such that
+\[
+    f(x) = q(x)g(x) + r(x), \quad \quad \quad \MAROON{(1)}
+\]
+where the degree of \(r(x)\) is \emph{less than} \(m\).
+\end{appendix theorem}
+
+\begin{proof}
+We begin by establishing the \emph{existence} of \(q(x)\) and \(r(x)\) that satisfy \MAROON{(1)}.
+There are two cases:
+\begin{enumerate}
+\item[\BLUE{Case I}] If \(n < m\), take \(q(x) = 0\), having degree \(-1 < m\) by definition, and \(r(x) = f(x)\), then \MAROON{(1)} is satisfied.
+\item[Case II] Otherwise, if \(0 \le m \le n\), we apply mathematical induction on \(n\).
+\end{enumerate}
+
+First, for the base case, suppose that \(n = 0\).
+Then (since \(0 \le m \le n = 0\),) \(m = 0\), and it follows that \(f(x)\) and \(g(x)\) are \emph{nonzero} constants.
+Hence we may take \(q(x) = f(x)/g(x)\) and \(r(x) = 0\) to satisfy \MAROON{(1)}.
+(Note that \(q(x)\) is also a nonzero constant, and \(r(x)\) has degree \(-1 < 0 = m\).)
+
+Now suppose that the result is valid for all polynomials with degree \emph{less than or equal to} \(n - 1\) for some fixed \(n > 0\).
+And suppose \(f(x)\) is an arbitrary polynomial with degree \(n\), and let \(g(x)\) be a given arbitrary polynomial with degree \(0 \le m \le n\).
+Suppose that \(f(x), g(x)\) has the form
+\[
+    f(x) = a_n x^n + a_{n - 1} x^{n - 1} + ... + a_1 x + a_0
+\]
+and
+\[
+    g(x) = b_m x^m + b_{m - 1} x^{m - 1} + ... + b_1 x + b_0.
+\]
+Then we have
+\begin{align*}
+    & a_n b_m^{-1} x^{n - m} g(x) \\
+    & = (a_n b_m^{-1}) x^{n - m} (b_m x^m + b_{m - 1} x^{m - 1} + ... + b_1 x + b_0) \\
+    & = \RED{a_n} x^n + a_n b_m^{-1} b_{m - 1} x^{n - 1} + ... + a_n b_m^{-1} b_1 x^{n - m + 1} + a_n b_m^{-1} b_0 x^{n - m}.
+\end{align*}
+So let \(h(x)\) be the polynomial defined by
+\[
+    h(x) = f(x) - a_n b_m^{-1} x^{n - m} g(x). \quad \quad \quad \MAROON{(2)}
+\]
+Then from the nasty equation above, \(h(x)\) is a polynomial of degree \(k < n\), since the coefficient of \(x^n\) is cancelled.
+Now, if \(k\) is in fact also less than \(m\), then the relation between \(h(x)\) and \(g(x)\) again satisfies the \BLUE{Case I} in the beginning, so we can just take \(q_1(x) = 0\) and \(r(x) = h(x)\) such that \(h(x) = q_1(x)g(x) + r(x)\).
+Otherwise, since \(k < n\), we still can apply the induction hypothesis to obtain polynomials \(q_1(x)\) and \(r(x)\) such that \(r(x)\) has degree less than \(m\), and
+\[
+    h(x) = q_1(x)g(x) + r(x). \quad \quad \quad \MAROON{(3)}
+\]
+Combining \MAROON{(2)} and \MAROON{(3)} and solving for \(f(x)\) gives us
+\begin{align*}
+    f(x) & = h(x) + a_n b_m^{-1} x^{n - m} g(x) & \text{by \MAROON{(2)}} \\
+         & = q_1(x)g(x) + r(x) + a_n b_m^{-1} x^{n - m} g(x) & \text{by \MAROON{(3)}} \\
+         & = \left[ q_1(x) + a_n b_m^{-1} x^{n - m} \right] \cdot g(x) + r(x) & \text{of course} \\
+         & = q(x) \cdot g(x) + r(x),
+\end{align*}
+where \(q(x) = q_1(x) + a_n b_m^{-1} x^{n - m}\), and \(r(x)\) has degree less than \(m\), hence the existence of \(q(x)\) and \(r(x)\) by mathematical induction.
+
+We now show the \textbf{uniqueness} of \(q(x)\) and \(r(x)\).
+Suppose that \(q_1(x), q_2(x), r_1(x)\), and \(r_2(x)\) exist such that \(r_1(x)\) and \(r_2(x)\) each has degree less than \(m\) and
+\[
+    f(x) = q_1(x)g(x) + r_1(x) = q_2(x)g(x) + r_2(x).
+\]
+Then
+\[
+    [q_1(x)- q_2(x)]g(x) = r_2(x) - r_1(x). \quad \quad \quad \MAROON{(4)}
+\]
+Since both \(r_1(x)\) and \(r_2(x)\) have degree less than \(n\), \(r_2(x) - r_1(x)\) must have degree less than \(n\).
+But since \(g(x)\) has degree \(m\), it must follow that \(q_1(x) - q_2(x)\) is the zero polynomial.
+(Otherwise the product of \([q_1(x)- q_2(x)]g(x)\) has degree \(\ge m\) and is equal to \(r_2(x) - r_1(x)\) having degree less than \(m\), which is impossible.)
+Hence \(q_1(x) = q_2(x)\), and the LHS of \MAROON{(4)} is zero polynomial, hence the RHS of \MAROON{(4)} is also the zero polynomial, and thus \(r_1(x) = r_2(x)\).
+\end{proof}
+
+\begin{remark} \label{remark e.1}
+In the context of \THM{e.1}, we call \(q(x)\) and \(r(x)\) the \textbf{quotient} and \textbf{remainder}, respectively, for the division of \(f(x)\) by \(g(x)\).
+For example, suppose that \(F\) is the field of complex numbers.
+Then the quotient and remainder for the division of
+\[
+    f(x) = (3 + \iu)x^5 - (1 - \iu)x^4 + 6x^3 + (-6 + 2\iu)x^2 + (2 + \iu)x + 1
+\]
+by
+\[
+    g(x) = (3 + \iu)x^2 - 2\iu x + 4
+\]
+are, respectively,
+\[
+    q(x) = x^3 + \iu x^2 - 2 \quad \text{ and } \quad r(x) = (2 - 3\iu)x + 9.
+\]
+\end{remark}
+
+\begin{appendix corollary} \label{corollary e.1.1}
+Let \(f(x)\) be a polynomial of positive degree, and let \(a \in F\).
+Then \(f(a) = 0\) if and only if \(x - a\) divides \(f(x)\).
+\end{appendix corollary}
+
+\begin{proof}
+Suppose that \(x - a\) divides \(f(x)\).
+Then there exists a polynomial \(q(x)\) such that \(f(x) = (x - a)q(x)\).
+Thus \(f(a) = (a - a)q(a) = 0 \cdot q(a) = 0\).
+
+Conversely, suppose that \(f(a) = 0\).
+Then let \(g(x) = (x - a)\), having degree \RED{\(1\)}.
+By the division algorithm, \THM{e.1}, there exist polynomials \(q(x)\) and \(r(x)\) such that \(r(x)\) has degree less than \RED{\(1\)} and
+\[
+    f(x) = q(x)g(x) + r(x) = q(x)(x - a) + r(x).
+\]
+Substituting \(a\) for \(x\) in the equation above, we obtain
+\[
+    0 = f(a) = q(a)(a - a) + r(a) = q(a) \cdot 0 + r(a) = r(a).
+\]
+So \(r(a) = 0\).
+Since \(r(x)\) has degree less than \(1\), it must be the \emph{constant polynomial} \(r(x) = 0\).
+Thus \(f(x) = q(x)(x - a)\).
+\end{proof}
+
+\begin{remark} \label{remark e.2}
+For any polynomial \(f(x)\) with coefficients from a field \(F\), an element \(a \in F\) is called a \textbf{zero} of \(f(x)\) if \(f(a) = 0\).
+With this terminology, \CORO{e.1.1} states that \(a\) is a zero of \(f(x)\) if and only if \(x - a\) divides \(f(x)\).
+\end{remark}
+
+\begin{appendix corollary} \label{corollary e.1.2}
+Any polynomial of degree \(n \ge 1\) has at most \(n\) distinct zeros.
+\end{appendix corollary}
+
+\begin{proof}
+The proof is by mathematical induction on \(n\).
+The result is obvious if \(n = 1\).
+Now suppose that the result is true for some positive integer \(n\), and let \(f(x)\) be a polynomial of degree \(n + 1\).
+If \(f(x)\) \emph{has no} zeros, then there is nothing to prove.
+Otherwise, if \(a\) is a zero of \(f(x)\), then by \CORO{e.1.1} we may write \(f(x) = (x - a)q(x)\) for some polynomial \(q(x)\).
+Note that \(q(x)\) must be of degree \(n\);
+therefore, by the induction hypothesis, \(q(x)\) can have at most \(n\) distinct zeros.
+Since any zero of \(f(x)\) distinct from \(a\) is also a zero of \(q(x)\), it follows that \(f(x)\) can have at most \(n + 1\) distinct zeros.
+\end{proof}
+
+\begin{remark} \label{remark e.3}
+Polynomials \emph{having no common divisors} arise naturally in the study of \emph{canonical forms}.
+(See \CH{7}.)
+\end{remark}
+
+\begin{appendix definition} \label{def e.2}
+Polynomials \(f_1(x), f_2(x), ..., f_n(x)\) are called \textbf{relatively prime} if no polynomial of \textbf{positive} degree divides \textbf{all of} them.
+\end{appendix definition}
+
+\begin{remark} \label{remark e.4}
+Note that if \(f_1(x), f_2(x), ..., f_n(x)\) are relatively prime, it \textbf{does not} imply that any \(n - 1\) polynomials of them are relatively prime.
+Some trivial example: \(f_1(x) = x + 1, f_2(x) = (x + 1)(x + 3), f_3(x) = x + 2\), then all of them are relatively prime, but \(f_1(x)\) and \(f_2(x)\) are not.
+\end{remark}
+
+For example, the polynomials with \emph{real} coefficients \(f(x) = x^2(x - 1)\) and \(h(x) = (x - 1)(x - 2)\) are not relatively prime because \(x - 1\) divides each of them.
+On the other hand, consider \(f(x)\) and \(g(x) = (x - 2)(x - 3)\), which do not appear to have common factors.
+Could other factorizations of \(f(x)\) and \(g(x)\) reveal a hidden common factor?
+We will soon see (\THM{e.9}) that the preceding factors are \emph{the only ones}.
+Thus \(f(x)\) and \(g(x)\) are relatively prime because they have no common factors of positive degree.
+
+\begin{lemma} \label{lem e.1}
+If \(f_1(x)\) and \(f_2(x)\) are relatively prime polynomials, there exist polynomials \(q_1(x)\) and \(q_2(x)\) such that
+\[
+    q_1(x) f_1(x) + q_2(x) f_2(x) = 1,
+\]
+where \(1\) denotes the constant polynomial with value \(1\).
+\end{lemma}
+
+\begin{note}
+這個\ Lemma 有一個數論版本的。若\ \(a, b\) 互質，則存在整數\ \(x, y\) 使得\ \(ax + by = 1\)。
+See \href{https://www.wikiwand.com/en/Extended_Euclidean_algorithm}{Extended Euclidean algorithm}。
+\end{note}
+
+\begin{proof}
+Without loss of generality, assume that the degree of \(f_1(x)\) is greater than or equal to the degree of \(f_2(x)\).
+The proof is by mathematical induction on the \emph{degree of \(f_2(x)\)}.
+If \(f_2(x)\) has degree \(0\), then \(f_2(x)\) is a nonzero constant \(c\).
+In this case, we can take \(q_1(x) = 0\) and \(q_2(x) = 1/c\), then
+\[
+    f_1(x) q_1(x) + f_2(x) q_2(x) = f_1(x) \cdot 0 + c \cdot \frac{1}{c} = 1.
+\]
+
+Now suppose that the theorem holds whenever the polynomial of lesser degree has degree \emph{less than} \(n\) for some positive integer \(n\).
+We need to show the theorem holds for the case \(n\).
+
+So again without loss of generality, assume that the degree of \(f_1(x)\) is greater than or equal to the degree of \(f_2(x)\),
+and suppose that \(f_2(x)\) has degree \(n\).
+By the division algorithm, \THM{e.1}, for \(f_1(x)\) and \(f_2(x)\), there exist polynomials \(q(x)\) and \(r(x)\) such that \(r(x)\) has degree less than \(n\) and
+\[
+    f_1(x) = q(x)f_2(x) + r(x) \quad \quad \quad \MAROON{(1)}
+\]
+Since \(f_1(x)\) and \(f_2(x)\) are relatively prime, \(r(x)\) is \emph{not} the zero polynomial.
+We claim that \(f_2(x)\) and \(r(x)\) are relatively prime.
+Suppose otherwise; then (by \DEF{e.2}) there exists a polynomial \(g(x)\) of \emph{positive} degree that divides both \(f_2(x)\) and \(r(x)\).
+Hence, by \MAROON{(1)}, \(g(x)\) \emph{also divides} \(f_1(x)\), contradicting the fact that \(f_1(x)\) and \(f_2(x)\) are relatively prime.
+
+Since \(r(x)\) has degree less than \(n\) and \(r(x)\) and \(f_2(x)\) are relatively prime,
+we may apply the induction hypothesis to \(f_2(x)\) and \(r(x)\).
+Thus there exist polynomials \(g_1(x)\) and \(g_2(x)\) such that
+\[
+    g_1(x) f_2(x) + g_2(x) r(x) = 1. \quad \quad \quad \MAROON{(2)}
+\]
+Combining \MAROON{(1)} and \MAROON{(2)}, we have
+\begin{align*}
+    1 & = g_1(x)f_2(x) + g_2(x)r(x) & \text{by \MAROON{(2)}} \\
+      & = g_1(x)f_2(x) + g_2(x)[f_1(x) - q(x)f_2(x)] & \text{by \MAROON{(1)}} \\
+      & = g_2(x) f_1(x) + [g_1(x) - g_2(x)q(x)]f_2(x) & \text{of course}
+\end{align*}
+Thus, setting \(q_1(x) = g_2(x)\) and \(q_2(x) = g_1(x) - g_2(x)q(x)\), we obtain the desired result.
+\end{proof}
+
+\begin{appendix theorem} \label{thm e.2}
+If \(f_1(x), f_2(x), ..., f_n(x)\) are relatively prime polynomials, there exist polynomials \(q_1(x), q_2(x), ..., q_n(x)\) such that
+\[
+    q_1(x)f_1(x) + q_2(x)f_2(x) + ... + q_n(x)f_n(x) = 1,
+\]
+where \(1\) denotes the constant polynomial with value \(1\).
+\end{appendix theorem}
+
+\begin{proof}
+The proof is by mathematical induction on \(n\), the number of polynomials.
+And \LEM{e.1} establishes the case \(n = 2\).
+
+Now assume the result is true for fewer than \(n\) polynomials, for some \(n \ge 3\).
+
+So suppose we have \(n\) relatively prime polynomials \(f_1(x), f_2(x), ..., f_n(x)\).
+We will first consider the trivial case where the first \(n - 1\) polynomials are \emph{also} relatively prime.
+(Note that this may not necessarily true, see \RMK{e.4}.)
+By the induction hypothesis, there exist polynomials \(q_1(x), q_2(x), ..., q_{n - 1}(x)\) such that
+\[
+    q_1(x)f_1(x) + q_2(x)f_2(x) + ... + q_{n-1}(x)f_{n-1}(x) = 1.
+\]
+Then just setting \(q_n(x) = 0\), the zero polynomial, we have
+\[
+    q_1(x)f_1(x) + q_2(x)f_n(x) + ... + q_{n-1}(x)f_{n-1}(x) + \RED{q_n(x)}f_n(x) = 1.
+\]
+which proves the result if the first \(n - 1\) polynomials are relatively prime.
+
+Now suppose that the first \(n - 1\) polynomials are \textbf{not} relatively prime, and let \(g(x)\) be the \emph{monic polynomial}(see \DEF{e.4}) of maximum positive degree that \emph{divides} each of these polynomials \(f_1(x), ..., f_{n - 1}(x)\).
+For \(k = 1, 2, ..., n - 1\), let \(h_k(x)\) be the polynomial defined, such that,
+\[
+    f_k(x) = g(x)h_k(x). \quad \quad \quad \MAROON{(1)}
+\]
+Then the polynomials \(h_1(x), h_2(x), ..., h_{n - 1}(x)\) are relatively prime.
+(Otherwise \(g(x)\) does \emph{not} have the maximum positive degree, a contradiction!)
+So by the induction hypothesis, there exist polynomials \(\phi_1(x), \phi_2(x), ..., \phi_{n-1}(x)\) such that
+\[
+    \phi_1(x)h_1(x) + \phi_2(x)h_2(x) + ... + \phi_{n-1}(x)h_{n - 1}(x) = 1.
+\]
+Multiplying both sides of this equation by \(g(x)\), we obtain
+\begin{align*}
+             & \phi_1(x)h_1(x)g(x) + \phi_2(x)h_2(x)g(x) + ... + \phi_{n-1}(x)h_{n - 1}(x)g(x) = g(x). \\
+    \implies & \phi_1(x)f_1(x) + \phi_2(x)f_2(x) + ... + \phi_{n-1}(x)f_{n-1}(x) = g(x) \quad \quad \MAROON{(2)} & \text{by \MAROON{(1)}}
+\end{align*}
+Note that \(g(x)\) and \(f_n(x)\) are relatively prime.
+(If \(g(x)\) and \(f_n(x)\) are \emph{not} relatively prime, then all \(f_1(x), ..., f_{n-1}(x), f_n(x)\) have the factor \(g(x)\), which implies \(f_1, ..., f_n\) are not relatively prime, again a contradiction.)
+Hence (by \LEM{e.1}) there exist polynomials \(p(x)\) and \(q_n(x)\) such that
+\[
+    p(x)g(x) + q_n(x)f_n(x) = 1. \quad \quad \quad \MAROON{(3)}
+\]
+
+So finally, let \(q_i(x) = p(x)\phi_i(x)\) for \(i= 1, 2, ..., n \RED{- 1}\).
+Then from \MAROON{(2)} and \MAROON{(3)} we have
+\begin{align*}
+    & q_1(x)f_1(x) + q_2(x)f_2(x) + ... + q_{n-1}(x)f_{n-1}(x) + q_n(x)f_n(x) \\
+    & = p(x)\phi_1(x)f_1(x) + p(x)\phi_2(x)f_2(x) + ... + p(x)\phi_{n\RED{-1}}(x)f_{n\RED{-1}}(x) + q_n(x)f_n(x) \\
+    & = p(x) [\phi_1(x)f_1(x) + \phi_2(x)f_2(x) + ... + \phi_{n-1}(x)f_{n-1}(x)] + q_n(x)f_n(x) & \text{of course} \\
+    & = p(x) g(x) + q_n(x)f_n(x) & \text{by \MAROON{(2)}} \\
+    & = p(x) g(x) + 1 - p(x)g(x) & \text{by \MAROON{(3)}} \\
+    & = 1
+\end{align*}
+which completes the induction argument.
+\end{proof}
+
+\begin{example} \label{example e.1}
+Let \(f_1(x) = x - 1\), \(f_2(x) = x^2 + x - 2\), \(f_3(x) = x^2 - x - 1\), and \(f_4(x) = x + 1\).
+As polynomials \emph{with real} coefficients, \(f_1(x), f_2(x), f_3(x)\) and \(f_4(x)\) are relatively prime.
+It is easily verified that the polynomials \(q_1(x) = -x^2, q_2(x) = x, q_3(x) = -3\), and \(q_4(x) = x - 2\) satisfy
+\[
+    q_1(x)f_1(x) + q_2(x)f_2(x) + q_3(x)f_3(x) + q_4(x)f_4(x) = 1,
+\]
+and hence these polynomials satisfy the conclusion of \THM{e.2}.
+\end{example}
+
+Throughout \CH{5}, \CH{6}, and \CH{7}, we consider linear operators that are \emph{polynomials in a particular operator \(\T\)} and matrices that are \emph{polynomials in a particular matrix \(A\)}.
+For these operators and matrices, the following notation is convenient.
+
+\begin{appendix definition} \label{def e.3}
+Let
+\[
+    f(t) = a_0 + a_1 x + ... + a_n x^n
+\]
+be a polynomial with coefficients from a field \(F\).
+If \(\T\) is a linear operator on a vector space \(V\) \emph{over} \(F\), we define
+\[
+    f(\T) = a_0 \ITRAN{} + a_1 \T + ... + a_n \T^n.
+\]
+Similarly, if \(A\) is an \(n \X n\) matrix with entries from \(F\), we define
+\[
+    f(A) = a_0 I + a_1 A + ... + a_n A^n.
+\]
+\end{appendix definition}
+
+\begin{example} \label{example e.2}
+Let \(\T\) be the linear operator on \(\SET{R}^2\) defined by \(\T(a, b) = (2a + b, a - b)\), and let \(f(x) = x^2 + 2x - 3\).
+It is easily checked that \(\T^2(a, b) = (5a + b, a + 2b)\); so
+\begin{align*}
+    f(\T)(a, b) & = (\T^2 + 2\T - 3\ITRAN{})(a, b) \\
+        & = (5a + b, a + 2b) + (4a + 2b, 2a - 2b) - 3(a, b) = (6a + 3b, 3a - 3b).
+\end{align*}
+Similarly, if
+\[
+    A = \begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix},
+\]
+then
+\[
+    f(A) = A^2 + 2A - 3I = \begin{pmatrix} 5 & 1 \\ 1 & 2 \end{pmatrix} + 2 \begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix} - 3 \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 6 & 3 \\ 3 & -3 \end{pmatrix}.
+\]
+\end{example}
+
+The next three results use this notation.
+
+\begin{appendix theorem} \label{thm e.3}
+Let \(f(x)\) be a polynomial with coefficients from a field \(F\), and let \(\T\) be a linear operator on a vector space \(V\) over \(F\).
+Then the following statements are true.
+\begin{enumerate}
+\item \(f(\T)\) is a liner operator on \(V\).
+\item If \(\beta\) is a \emph{finite} ordered basis for \(V\) and \(A = [\T]_{\beta}\), then \([f(\T)]_{\beta} = f(A)\).
+\end{enumerate}
+\end{appendix theorem}
+
+\begin{proof}
+Let
+\[
+    f(x) = a_0 + a_1 x + ... + a_n x^n.
+\]
+\begin{enumerate}
+\item We have \(f(\T) = a_0 \ITRAN{} + a_1 \T + ... + a_n \T^n\) by \DEF{e.3}.
+But since \(\T^i\) is linear for nonnegative integer \(i\), (using induction and the fact that the composition of linear operators is linear), \(f(\T)\) is in fact a linear combination of linear functions hence is also linear.
+
+\item
+First, by \THM{2.11} and induction we have
+\[
+     [\T^n]_{\beta} = ([\T]_{\beta})^n. \quad \quad \quad \MAROON{(1)}
+\]
+And
+\begin{align*}
+    [f(\T)]_{\beta} & = [a_0 \ITRAN{} + a_1 \T + ... + a_n \T^n]_{\beta} & \text{by \DEF{e.3}} \\
+        & = a_0 [\ITRAN{}]_{\beta} + a_1 [\T]_{\beta} + ... + a_n [\T^n]_{\beta} & \text{by \THM{2.8}(a)(b)} \\
+        & = a_0 I + a_1 A + ... + a_n A^n & \text{by \MAROON{(1)}} \\
+        & = f(A) & \text{by \DEF{e.3}}
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{appendix theorem} \label{thm e.4}
+Let \(\T\) be a linear operator on a vector space \(V\) over a field \(F\), and let \(A\) be a square matrix with entries from \(F\).
+Then, for any polynomials \(f_1(x)\) and \(f_2(x)\) with coefficients from \(F\),
+\begin{enumerate}
+\item \(f_1(\T)f_2(\T) = f_2(\T)f_1(\T)\).
+\item \(f_1(A)f_2(A) = f_2(A)f_1(A)\).
+\end{enumerate}
+\end{appendix theorem}
+
+\begin{proof}
+Since \(f_1(x)f_2(x) = f_2(x)f_1(x)\), it's intuitively true that \DEF{e.3} is also commutative.
+Let
+\[
+    f_1(x) = \sum_{i = 0}^n a_i x^i \quad \text{ and } \quad f_2(x) = \sum_{j = 0}^m b_j x^j.
+\]
+Then since \(A^0 = I\) and \(\T^0 = \ITRAN{}\) by \ADEF{2.6} and \ADEF{2.7}, by \DEF{e.3} and these facts,
+\[
+    f_1(\T) = \sum_{i = 0}^n a_i \T^i \quad \text{ and } \quad f_2(\T) = \sum_{j = 0}^m b_j \T^j.
+\]
+and
+\[
+    f_1(A) = \sum_{i = 0}^n a_i A^i \quad \text{ and } \quad f_2(\T) = \sum_{j = 0}^m b_j A^j.
+\]
+Then
+\begin{align*}
+    f_1(\T) f_2(\T) & = \sum_{i = 0}^n a_i \T^i \sum_{j = 0}^m b_j \T^j \\
+                    & = \sum_{i = 0}^n \sum_{j = 0}^m (a_i \T^i) (b_j \T^j) & \text{move ``constant'' into summation} \\
+                    & = \sum_{j = 0}^m \sum_{i = 0}^n (a_i \T^i) (b_j \T^j) & \text{change order of finite summation} \\
+                    & = \sum_{j = 0}^m \sum_{i = 0}^n (b_j \T^j) (a_i \T^i) & \text{of course by \CH{2}} \\
+                    & = \sum_{j = 0}^m (b_j \T^j) \sum_{i = 0}^n (a_i \T^i) & \text{move ``constant'' out of summation} \\
+                    & = f_2(\T) f_1(\T),
+\end{align*}
+and
+\begin{align*}
+    f_1(A) f_2(A) & = \sum_{i = 0}^n a_i A^i \sum_{j = 0}^m b_j A^j \\
+                    & = \sum_{i = 0}^n \sum_{j = 0}^m (a_i A^i) (b_j A^j) & \text{move ``constant'' into summation} \\
+                    & = \sum_{j = 0}^m \sum_{i = 0}^n (a_i A^i) (b_j A^j) & \text{change order of finite summation} \\
+                    & = \sum_{j = 0}^m \sum_{i = 0}^n (b_j A^j) (a_i A^i) & \text{of course by \CH{2}} \\
+                    & = \sum_{j = 0}^m (b_j A^j) \sum_{i = 0}^n (a_i A^i) & \text{move ``constant'' out of summation} \\
+                    & = f_2(A) f_1(A),
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{appendix theorem} \label{thm e.5}
+Let \(\T\) be a linear operator on a vector space \(V\) over a field \(F\), and let \(A\) be an \(n \X n\) matrix with entries from \(F\).
+If \(f_1(x)\) and \(f_2(x)\) are \emph{relatively prime} polynomials with entries from \(F\), then there exist polynomials \(q_1(x)\) and \(q_2(x)\) with entries from \(F\) such that
+\begin{enumerate}
+\item \(q_1(\T)f_1(\T) + q_2(\T)f_2(\T) = \ITRAN{}\).
+\item \(q_1(A)f_1(A) + q_2(A)f_2(A) = I\).
+\end{enumerate}
+\end{appendix theorem}
+
+\begin{proof}
+By \LEM{e.1}, there exists polynomials \(q_1(x), q_2(x)\) such that
+\[
+    q_1(x)f_1(x) + q_2(x)f_2(x) = 1.
+\]
+Then by applying \DEF{e.3}, we have
+\[
+    q_1(\T)f_1(\T) + q_2(\T)f_2(\T) = 1 \cdot \ITRAN{} = \ITRAN{}
+\]
+and
+\[
+    q_1(A)f_1(A) + q_2(A)f_2(A) = 1 \cdot I = I,
+\]
+as desired.
+\end{proof}
+
+\begin{remark} \label{remark e.5}
+In \CH{5} and \CH{7}, we are concerned with determining when a linear operator \(\T\) on a finite-dimensional vector space can be \emph{diagonalized} and with finding a \emph{simple (canonical)} representation of \(\T\).
+Both of these problems are \emph{affected by the factorization of a certain polynomial determined by \(\T\)}
+(the \emph{\CPOLY{}} of \(\T\)).
+In this setting, particular types of polynomials play an important role.
+\end{remark}
+
+\begin{appendix definition} \label{def e.4}
+A polynomial \(f(x)\) With coefficients from a field \(F\) is called \textbf{monic} if its leading coefficient is \(1\).
+If \(f(x)\) has positive degree and \emph{cannot be expressed as a product of polynomials} with coefficients from \(F\) such that each \emph{has positive degree}, then \(f(x)\) is called \textbf{irreducible}.
+\end{appendix definition}
+
+\begin{note}
+這個定義就有點對應到質數在數論的定義。
+\end{note}
+
+\begin{remark} \label{remark e.6}
+Observe that whether a polynomial is irreducible \textbf{depends on the field \(F\)} from which its coefficients come.
+For example, \(f(x) = x^2 + 1\) is irreducible over the field of real numbers, but it is \emph{not} irreducible over the field of complex numbers since \(x^2 + 1 = (x + \iu)(x - \iu)\).
+\textbf{Clearly any polynomial of degree \(1\) is irreducible.}
+Moreover, for polynomials with coefficients from an \textbf{algebraically closed} field, the polynomials of degree \(1\) are \emph{the only} irreducible polynomials.
+The following facts are easily established.
+\end{remark}
+
+\begin{appendix theorem} \label{thm e.6}
+Let \(\phi(x)\) and \(f(x)\) be polynomials.
+If \(\phi(x)\) is irreducible and \(\phi(x)\) does not divide \(f(x)\), then \(\phi(x)\) and \(f(x)\) are relatively prime.
+\end{appendix theorem}
+
+\begin{proof}
+For the sake of contradiction, suppose \(\phi(x)\) is irreducible and \(\phi(x)\) does not divide \(f(x)\),
+\textbf{but} \(\phi(x)\) and \(f(x)\) are \emph{not} relatively prime.
+Then by \DEF{e.2} there exists \(g(x)\) with \emph{positive degree} s.t. \(g(x)\) divides both \(\phi(x)\) and \(f(x)\).
+That is,
+\[
+    \phi(x) = g(x)h_1(x) \quad \MAROON{(1)} \text{ and } \quad f(x) = g(x)h_2(x) \quad \MAROON{(2)}
+\]
+for some polynomials \(h_1(x), h_2(x), g(x)\), where \(g(x)\) has positive degree.
+Then we show a contradiction by splitting the cases of the degree of \(h_1(x)\).
+
+If \(h_1(x)\) has positive degree, than by \MAROON{(1)}, \(\phi(x)\) is equal to the product of polynomials having positive degree, hence by \DEF{e.4} is \emph{not} irreducible, a contradiction;
+
+If \(h_1(x)\) is the zero polynomial, then by \MAROON{(1)}, \(\phi(x)\) is also equal to zero polynomial, so by \DEF{e.4} again is \emph{not} irreducible, a contradiction;
+
+Finally, suppose \(h_1(x)\) has degree \(0\) and \(h_1(x) = c\) for some nonzero constant \(c\).
+Then from \MAROON{(1)}, we have \(\phi(x) = g(x) \cdot c\), hence \(g(x) = \phi(x) \cdot c^{-1}\) \quad \MAROON{(3)}.
+And
+\begin{align*}
+    f(x) & = g(x)h_2(x) & \text{by \MAROON{(2)}} \\
+         & = \phi(x) \cdot c^{-1} \cdot h_2(x), & \text{by \MAROON{(3)}}
+\end{align*}
+So \(\phi(x)\) \emph{divides} \(f(x)\), which again is a contradiction.
+
+So in all cases, we have a contradiction.
+So \(f(x)\) and \(\phi(x)\) must be relatively prime.
+\end{proof}
+
+\begin{appendix theorem} \label{thm e.7}
+Given any two irreducible \textbf{monic} polynomials, if they are distinct, then they are relatively prime.
+\end{appendix theorem}
+
+\begin{note}
+We need the polynomial to be monic, since if \(f(x)\) is irreducible, then \(2f(x)\) is also irreducible, and one of them cannot be monic;
+\emph{but} \(2f(x) = 2 \cdot f(x)\), where \(2\) is a (degree \(0\)) constant polynomial, so by \DEF{e.1}, \(f(x)\) divides \(2f(x)\).
+
+But this case is trivial and useless since \(f(x)\) and \(2f(x)\) still have the same degree, so we exclude it.
+\end{note}
+
+\begin{proof}
+Let \(f_1(x)\) and \(f_2(x)\) be two distinct monic irreducible polynomials.
+For the sake of contradiction, suppose they are \emph{not} relatively prime.
+Then there exists \(g(x), h_1(x), h_2(x)\), where \(g(x)\) has positive degree, such that
+\[
+    f_1(x) = g(x) h_1(x) \quad \text{ and } \quad f_2(x) = g(x) h_2(x).
+\]
+Then we split by cases on the degree of \(h_1(x)\) and \(h_2(x)\).
+If one of them has positive degree, then \(f_1(x)\) or \(f_2(x)\) is equal to the product of polynomials having positive degree, and is by definition not irreducible, a contradiction.
+
+Else, if one of them is zero polynomial, then \(f_1(x)\) or \(f_2(x)\) is also equal to the zero polynomial and is by definition not irreducible, again a contradiction.
+
+Finally, the remaining case is both \(h_1(x)\) and \(h_2(x)\) are degree-\(0\) polynomial and equal to constant \(c_1, c_2\) respectively, 
+So we have
+\[
+    f_1(x) = c_1 g(x) \quad \text{ and } \quad f_2(x) = c_2 g(x), \quad \quad \MAROON{(1)}
+\]
+But since \(f_1(x)\) and \(f_2(x)\) are \textbf{monic}, it must be the case that \(c_1 = c_2\), for if \(c_1 \ne c_2\), then from \MAROON{(1)}, the leading coefficient of \(f_1(x)\) [\(f_2(x)\)] is the product of \(c_1\) [\(c_2\)] and the leading coefficient of \(g(x)\), and one of \(f_1(x)\) and \(f_2(x)\) cannot be monic.
+But \MAROON{(1)} and \(c_1 = c_2\) imply \(f_1(x) = f_2(x)\), which contradicts that \(f_1(x)\) and \(f_2(x)\) are distinct.
+
+So in all cases we get a contradiction.
+Hence \(f_1(x)\) and \(f_2(x)\) must be relatively prime.
+\end{proof}
+
+\begin{appendix theorem} \label{thm e.8}
+Let \(f(x), g(x)\), and \(\phi(x)\) be polynomials.
+If \(\phi(x)\) is irreducible and divides the \emph{product} \(f(x)g(x)\) \BLUE{(1)}, \quad then \(\phi(x)\) divides \(f(x)\) or \(\phi(x)\) divides \(g(x)\).
+\end{appendix theorem}
+
+\begin{proof}
+Suppose that \(\phi(x)\) does \emph{not} divide \(f(x)\). \BLUE{(2)} \quad
+Then it suffices to show \(\phi(x)\) divides \(g(x)\).
+
+First since \(\phi(x)\) is irreducible, with the supposition \BLUE{(2)}, by \THM{e.6}, \(\phi(x)\) and \(f(x)\) are relatively prime, and so by \THM{e.2}, there exist polynomials \(q_1(x)\) and \(q_2(x)\) such that
+\[
+    1 = q_1(x)\phi(x) + q_2(x)f(x).
+\]
+Multiplying both sides of this equation by \(g(x)\) yields
+\[
+    g(x) = q_1(x)\phi(x)g(x) + q_2(x) \RED{f(x)g(x)}. \quad \quad \quad \MAROON{(1)}
+\]
+Since by supposition \BLUE{(1)}, \(\phi(x)\) divides \(f(x)g(x)\), there is a polynomial \(h(x)\) such that \(f(x)g(x) = \phi(x)h(x)\). \MAROON{(2)} \quad
+Thus
+\begin{align*}
+    g(x) & = q_1(x)\phi(x)g(x) + q_2(x) \RED{f(x)g(x)} & \text{by \MAROON{(1)}} \\
+         & = q_1(x)\phi(x)g(x) + q_2(x) \RED{\phi(x)h(x)} & \text{by \MAROON{(2)}} \\
+         & = \phi(x) [q_1(x)g(x) + q_2(x)h(x)] & \text{of course}
+\end{align*}
+So \(\phi(x)\) divides \(g(x)\).
+\end{proof}
+
+\begin{appendix corollary} \label{corollary e.8.1}
+Let \(\phi(x), \phi_1(x), \phi_2(x), ..., \phi_n(x)\) be irreducible monic polynomials.
+If \(\phi(x)\) divides the product \(\phi_1(x)\phi_2(x) ... \phi_n(x)\), then \(\phi(x) = \phi_i(x)\) for some \(i (i = 1, 2, ..., n)\).
+\end{appendix corollary}
+
+\begin{note}
+In this case we have \(\phi(x) \RED{=} \phi_i(x)\), not just \(\phi(x)\) divides \(\phi_i(x)\), this is because that all \(\phi_i(x)\) are irreducible.
+\end{note}
+
+\begin{proof}
+We prove the corollary by mathematical induction on \(n\).
+For \(n = 1\), we have two irreducible monic polynomials \(\phi(x)\) and \(\phi_1(x)\);
+and since \(\phi(x)\) divides \(\phi_1(x)\), they are \emph{not} relatively prime, so by (the contrapositive of) \THM{e.7}, \(\phi(x) = \phi_1(x)\).
+
+Suppose then that for some \(n > 1\), the corollary is true for any irreducible polynomial \(\phi(x)\) and any \(n - 1\) irreducible monic polynomials; now again let \(\phi(x)\) be arbitrary irreducible polynomial and \(\phi_1(x), \phi_2(x), ..., \phi_n(x)\) be any \(n\) irreducible polynomials.
+If \(\phi(x)\) divides
+\[
+    \phi_1(x)\phi_2(x)...\phi_n(x) = [\phi_1(x)\phi_2(x)...\phi_{n-1}(x)]\phi_n(x),
+\]
+then by \THM{e.8}, \(\phi(x)\) divides the product \(\phi_1(x)\phi_2(x) ... \phi_{n - 1}(x)\) or \(\phi(x)\) divides \(\phi_n(x)\).
+In the first case, \(\phi = \phi_i(x)\) for some \(i (i = 1, 2, ..., n - 1)\) by the induction hypothesis;
+in the second case, \(\phi(x) = \phi_n(x)\) again by (the contrapositive of) \THM{e.7}.
+So the induction is true for \(n\).
+\end{proof}
+
+We are now able to establish \emph{the unique factorization theorem}, which is used throughout \CH{5} and \CH{7}.
+This result states that every polynomial of positive degree is \emph{uniquely expressible} as a constant times a product of irreducible monic polynomials.
+
+\begin{note}
+就對應到數論的質因數分解。
+\end{note}
+
+\begin{appendix theorem} [Unique Factorization Theorem for Polynomials] \label{thm e.9}
+For any polynomial \(f(x)\) of positive degree, there exist a unique constant \(c\), unique distinct irreducible monic polynomials \(\phi_1(x), \phi_2(x), ..., \phi_l(x)\), and unique positive integers \(n_1, n_2, ..., n_k\) such that
+\[
+    f(x) = c[\phi_1(x)]^{n_1}[\phi_2(x)]^{n_2}...[\phi_k(x)]^{n_k}.
+\]
+\end{appendix theorem}
+
+\begin{proof}
+We begin by showing the \textbf{existence} of such a factorization using mathematical induction on the degree of \(f(x)\).
+If \(f(x)\) is of degree \(1\), then \(f(x) = ax + b\) for some constants \(a\) and \(b\) with \(a \ne 0\).
+Setting \(\phi(x) = x + b/a\), we have \(f(x) = a\phi(x)\).
+Since \(\phi(x)\) is an irreducible monic polynomial, the result is proved in this case.
+
+Now suppose that the conclusion is true for any polynomial with positive degree less than some integer \(n > 1\), and let \(f(x)\) be a polynomial of degree \(n\).
+Then
+\[
+    f(x) = a_n x^n + ... + a_1 x + a_0
+\]
+for some constants \(a_i\) with \(a_n \ne 0\).
+If \(f(x)\) is irreducible, then
+\[
+    f(x) = a_n \left( x^n + \frac{a_{n-1}}{a_n} x^{n - 1} + ... + \frac{a_1}{a_n} x +  \frac{a_0}{a_n} \right)
+\]
+is a representation of \(f(x)\) as a product of \(a_{n}\) and an irreducible \emph{monic} polynomial.
+If \(f(x)\) is not irreducible, then \(f(x) = g(x)h(x)\) for some polynomials \(g(x)\) and \(h(x)\), each of \emph{positive} degree \emph{less than} \(n\).
+The induction hypothesis guarantees that both \(g(x)\) and \(h(x)\) factor as products of a constant and powers of distinct irreducible monic polynomials.
+Consequently \(f(x) = g(x)h(x)\) also factors in this way.
+Thus, in either case, \(f(x)\) can be factored as a product of a constant and powers of distinct irreducible monic polynomials.
+
+It remains to establish the \textbf{uniqueness} of such a factorization.
+Suppose that
+\begin{align*}
+    f(x) & = c[\phi_1(x)]^{n_1}[\phi_2(x)]^{n_2}...[\phi_k(x)]^{n_k} \\
+         & = d[\psi_1(x)]^{m_1}[\psi_2(x)]^{m_2}...[\psi_r(x)]^{m_r}, \quad \quad \MAROON{(1)}
+\end{align*}
+where \(c\) and \(d\) are constants,
+\(\phi_i(x)\) and \(\psi_j(x)\) are \RED{distinct} (this will be used later) irreducible monic polynomials, respectively,
+and \(n_i\) and \(m_j\) are positive integers for \(i = 1, 2, ..., k\) and \(j = 1, 2, ..., r\).
+Clearly both \(c\) and \(d\) must be the leading coefficient of \(f(x)\); hence \(c = d\).
+Dividing by \(c\), we find that \MAROON{(1)} becomes
+\[
+    [\phi_1(x)]^{n_1}[\phi_2(x)]^{n_2}...[\phi_k(x)]^{n_k} = [\psi_1(x)]^{m_1}[\psi_2(x)]^{m_2}...[\psi_r(x)]^{m_r}. \quad \quad \MAROON{(2)}
+\]
+So \(\phi_i(x)\) divides the right side of \MAROON{(2)} for \(i = 1, 2, ..., k\).
+Consequently, by \CORO{e.8.1}, each \(\phi_i(x)\) equals some \(\psi_j(x)\), and similarly,
+each \(\psi_j(x)\) equals some \(\phi_j(x)\).
+We conclude that \(r = k\) and that, by \emph{renumbering} if necessary,
+\(\phi_i(x) = \psi_{\RED{i}}(x)\) for \(i = 1, 2, ..., k\). \MAROON{(3)}
+So now it suffices to show \(n_i = m_i\) for all \(i = 1, 2, ..., k\).
+For the sake of contradiction, suppose that \(n_i \ne m_i\) for some \(i\).
+Without loss of generality, we may suppose that \(i = 1\) and \(n_1 > m_1\).
+Then by \emph{canceling} \(\phi_1(x)^{m_1}\) from both sides of \MAROON{(2)}, and the fact \MAROON{(3)} that \(\phi_i(x) = \psi_(x)\), we obtain
+\begin{align*}
+    [\phi_1(x)]^{n_1 - m_1}[\phi_2(x)]^{n_2}...[\phi_k(x)]^{n_k} & = [\phi_1(x)]^{\RED{m_1 - m_1}}[\phi_2(x)]^{m_2}...[\phi_k(x)]^{m_k} \\
+    & = [\phi_{\RED{2}}(x)]^{m_2}...[\phi_{\RED{k}}(x)]^{m_k} \quad \quad \MAROON{(4)}
+\end{align*}
+Since \(n_1 - m_1 > 0\), \(\phi_1(x)\) (of course) divides the left side of \MAROON{(4)} and hence divides the right side also.
+So again by \CORO{e.8.1} \(\phi_1(x)\) is equal to one of the irreducible monic polynomial of the right side;
+that is \(\phi_1(x) = \phi_i(x)\) for some \(i = \RED{2, ... , k}\).
+But this contradicts that \(\phi_1(x), \phi_2(x), ..., \phi_k(x)\) are \RED{distinct}.
+Hence the factorizations of \(f(x)\) in \MAROON{(1)} are the same.
+\end{proof}
+
+\begin{remark} \label{remark e.7}
+It is often useful to regard a polynomial \(f(x) = a_n x^n + ... + a_1 x + a_0\) with coefficients from a field \(F\) \textbf{as a function} \(f: F \to F\).
+In this case, the value of \(f\) at \(c \in F\) is \(f(c) = a_n c^n + ... + a_1 c + a_0\).
+\emph{Unfortunately}, for \emph{arbitrary fields} there is not a one-to-one correspondence between polynomials and polynomial functions.
+For example, if \(f(x) = x^2\) and \(g(x) = x\) are two polynomials \RED{over the field \(Z_2\)} (defined in \EXAMPLE{c.4}),
+then \(f(x)\) and \(g(x)\) have different degrees and hence are \RED{not equal as polynomials}.
+But (trivially) \(f(a) = g(a)\) for all \(a \in Z_2\), so that \(f\) and \(g\) are \RED{equal polynomial \emph{functions}}.
+Our final result shows that \textbf{this anomaly cannot occur over an infinite field}.
+\end{remark}
+
+\begin{appendix theorem} \label{thm e.10}
+Let \(f(x)\) and \(g(x)\) be polynomials with coefficients from an \emph{infinite} field \(F\).
+If \(f(a) = g(a)\) for all \(a \in F\), then the polynomial \emph{functions} \(f(x)\) and \(g(x)\) are equal.
+\end{appendix theorem}
+
+\begin{proof}
+Suppose that \(f(a) = g(a)\) for all \(a \in F\).
+Define \(h(x) = f(x) - g(x)\), and suppose for the sake of contradiction that \(h(x)\) is of degree \(n \ge 1\).
+Since \(f(x) - g(x)\) can only be a polynomial with degree at most \(n\), it follows from \CORO{e.1.2} that \(h(x)\) can have at most \(n\) zeroes. \MAROON{(1)}.
+But
+\[
+    h(a) = f(a) - g(a) = 0
+\]
+for every \(a \in F\), hence \(h(x)\) has infinitely many zeroes, which contradicts \MAROON{(1)}.
+Thus the degree of \(h(x)\) \(<= 0\), so \(h(x)\) must be a constant polynomial.
+And since \(h(a) = 0\) for each \(a \in F\), it follows that \(h(x)\) is the zero polynomial.
+Hence \(f(x) = g(x)\).
+\end{proof}

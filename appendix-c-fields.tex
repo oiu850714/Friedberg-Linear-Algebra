@@ -1,0 +1,231 @@
+\section{Fields} \label{sec 8.c}
+
+The set of real numbers is an example of an \href{https://www.wikiwand.com/en/Algebraic_structure}{\emph{algebraic structure}} called a \textbf{field}.
+More precisely, a field is defined as follows.
+
+\begin{appendix definition} \label{def c.1}
+A Field \(F\) is a set on which two operations \(+\) and \(\cdot\) (called \textbf{addition} and \textbf{multiplication}. respectively) are defined so that, for each pair of elements \(x, y\) in \(F\), there \textbf{exist unique} elements in \(F\), denoted \(x + y\) and \(x \cdot y\).
+and such that the following conditions hold for all elements \(a, b, c \in F\).
+\begin{enumerate}
+\item [(F 1)] \(a + b = b + a\) and \(a \cdot b = b \cdot a\) \\
+    (\emph{commutativity} of addition and multiplication)
+\item [(F 2)] \((a + b) + c = a + (b + c)\) and \((a \cdot b) \cdot c = a \cdot (b \cdot c)\) \\
+    (\emph{associativity} of addition and multiplication)
+\item [(F 3)] There \emph{exist} \textbf{distinct} elements \(0\) and \(1\) in \(F\) such that \(0 + a = a\) and \(1 \cdot a = a\) \\
+    (existence of \emph{identity elements} for addition and multiplication)
+\item [(F 4)] For each element \(a\) in \(F\) and each \emph{nonzero} element \(b\) in \(F\), there exist elements \(c\) and \(d\) in \(F\) such that
+\[
+    a + c = 0 \quad \text{ and } \quad b \cdot d = 1
+\]
+    (existence of \emph{inverses} for addition and multiplication)
+\item [(F 5)] \(a \cdot (b + c) = a \cdot b + a \cdot c\) \\
+    (\emph{distributivity} of multiplication over addition)
+\end{enumerate}
+The elements \(x + y\) and \(x \cdot y\) are called the \textbf{sum} and \textbf{product}, respectively, of \(x\) and \(y\).
+The elements \(0\) (read ``\textbf{zero}'') and \(1\) (read ``\textbf{one}'') mentioned in (F 3) are called \textbf{identity elements} for addition and multiplication, respectively,
+and the elements \(c\) and \(d\) referred to in (F 4) are called an \textbf{additive inverse} for \(a\) and a \textbf{multiplicative inverse} for \(b\), respectively.
+
+Also note that the statements for \(+\) and \(\cdot\) implies these operations are required to be \emph{well-defined}.
+So given \(a, b\) in a field, if \(a = b\), then we have \(a + c = b + c\) for any element \(c\) in the field.
+Multiplication is similar.
+In some literature, (e.g. \href{https://terrytao.wordpress.com/books/analysis-i/}{Analysis by Terence Tao}), this property is called \textbf{Axiom of Substitution}.
+\end{appendix definition}
+
+\begin{example} \label{example c.1}
+(Precisely, from Calculus or Real Analysis, we can construct the set of real numbers, such that) The set of real numbers \(\SET{R}\) with the \emph{usual} definitions of addition and multiplication is a field.
+\end{example}
+
+\begin{example} \label{example c.2}
+(Again, precisely, from Calculus or Real Analysis, we can construct the set of \emph{rational} numbers, such that) The set of \emph{rational} numbers \(\SET{Q}\) with the \emph{usual} definitions of addition and multiplication is a field.
+\end{example}
+
+\begin{example} \label{example c.3}
+(It can be shown that, by using the definition and properties of \(\SET{R}\) and \(\SET{Q}\),)
+The set of all real numbers \textbf{of the form} \(a + b \sqrt{2}\), where \(a\) and \(b\) are \emph{rational} numbers, with addition and multiplication as in \(\SET{R}\) is a field.
+\end{example}
+
+\begin{example} \label{example c.4} It can be shown that the set \(Z_2\) consists of two elements \(0\) and \(1\) with the operations of addition
+and multiplication defined by the equations
+\[
+    \begin{array}{r}
+        0+0=0 \quad 1+1=0 \quad 0+1=1+0=1 \\
+        0 \cdot 0=0 \quad 1 \cdot 1=1 \quad 0 \cdot 1=1 \cdot 0=0
+    \end{array}
+\]
+satisfies \DEF{c.1} and hence is a field.
+\end{example}
+
+\begin{example} \label{example c.5}
+Neither the set of positive integers nor the set of integers with the usual definitions of addition and multiplication is a field, for in either case (F 4) does not hold.
+\end{example}
+
+The identity and inverse elements guaranteed by (F 3) and (F 4) are \textbf{unique}; this is a consequence of the following theorem.
+
+\begin{appendix theorem} [Cancellation Laws] \label{thm c.1}
+For arbitrary elements \(a, b\), and \(c\) in a field, the following statements are true.
+\begin{enumerate}
+\item If \(a + b = c + b\), then \(a = c\).
+\item If \(a \cdot b = c \cdot b\) \emph{and} \(b \ne 0\), then \(a = c\).
+\end{enumerate}
+\end{appendix theorem}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Suppose \(a + b = c + b\).
+First, by (F 4), there exists an element \(d\) in the given field such that \(b + d = 0\). \MAROON{(a.1)}
+And we have
+\begin{align*}
+             & a + b = c + b \\
+    \implies & (a + b) + d = (c + b) + d & \text{since \(+\) is well-defined} \\
+    \implies & a + (b + d) = c + (b + d) & \text{by (F 2), associativity of \(+\)} \\
+    \implies & a + 0 = b + 0 & \text{by \MAROON{(a.1)}} \\
+    \implies & 0 + a = a + 0 = b + 0 = 0 + b & \text{by (F 1)} \\
+    \implies & a = 0 + a = a + 0 = b + 0 = 0 + b = b & \text{by (F 3)} \\
+    \implies & a = b & \text{of course}
+\end{align*}
+
+\item If \(b \ne 0\), then (F 4) guarantees the existence of an element \(d\) in the field such that \(b \cdot d = 1\) \MAROON{(b.1)}.
+Multiply both sides of the equality \(a \cdot b = c \cdot b\) by \(d\) to obtain \((a \cdot b) \cdot d = (c \cdot b) \cdot d\).
+Consider the left side of this equality: By (F 2) and (F 3), we have
+\begin{align*}
+    (a \cdot b) \cdot d & = a \cdot (b \cdot d) & \text{by (F 2)} \\
+        & = a \cdot 1 & \text{by \MAROON{(b.1)}} \\
+        & = a. & \text{by (F 3)}
+\end{align*}
+Similarly, the right side of the equality reduces to \(c\).
+Thus \(a = c\).
+\end{enumerate}
+\end{proof}
+
+\begin{appendix corollary} \label{corollary c.1.1}
+The elements \(0\) and \(1\) mentioned in (F 3), are unique.
+And given any element \(a\) in \(F\) and nonzero element \(b\) in \(F\), the corresponding elements \(c\) and \(d\) mentioned in (F 4), are unique.
+\end{appendix corollary}
+
+\begin{proof}
+Suppose that \(0' \in F\) satisfies (F 3); that is, \(0' + a = a\) for each \(a \in F\).
+Since \(0 + a = a\) for each \(a \in F\), we have \(0' + a = 0 + a\) for each \(a \in F\).
+Thus \(0' = 0\) by \THM{c.1}(a).
+
+Suppose that \(1' \in F\) satisfies (F 3); that is, \(1' \cdot a = a\) for each \(a \in F\).
+First, we have \(1'\) is \emph{nonzero}, since by \DEF{c.1}, if \(1'\) satisfies (F 3), then it must be distinct to \(0\).
+And since \(1 \cdot a = a\) for each \(a \in F\), we have \(1' \cdot a = 1 \cdot a\) for each \(a \in F\).
+Thus the two conditions for \THM{c.1}(b) are satisfied, hence \(1' = 1\).
+
+Suppose that \(a + c = 0\).
+If we also have \(a + c' = 0\), then \(a + c = a + c'\), so by \THM{c.1}(a), \(c = c'\).
+So the additive inverse is unique.
+
+Suppose that \(b\) is nonzero, and \(b \cdot d = 1\).
+If we also have \(b \cdot d' = 1\), then \(b \cdot d = b \cdot d'\), so by \THM{c.1}(b), \(d = d'\).
+So the multiplicative inverse is unique.
+\end{proof}
+
+\begin{remark} \label{remark c.1}
+Thus each element \(b\) in a field has a \emph{unique} additive inverse and, if \(b \ne 0\), a \emph{unique} multiplicative inverse.
+(It is shown in the \CORO{c.2.1} that \(0\) has \emph{no} multiplicative inverse.)
+Hence we can \emph{denote} the inverse.
+The additive inverse and the multiplicative inverse of \(b\) are denoted by \(-b\) and \(b^{-1}\), respectively.
+Note that \(-(-b)= b\) and \((b^{-1})^{-1} = b\);
+We give the proof of \(-(-b) = b\) here, and left \((b^{-1})^{-1} = b\) \emph{after \THM{c.2}}:
+
+\(-(-b)\), by definition, is the inverse of \(-b\), so we have \(-b + (-(-b)) = 0\).
+But \(-b\) by definition is the inverse of \(b\), so we have \(b + (-b) = 0\).
+So we have
+\begin{align*}
+             & b + (-b) = 0 \land (-b) + (-(-b)) = 0 \\
+    \implies & b + (-b) = 0 \land (-(-b)) + (-b) = 0 & \text{by (F 1)} \\
+    \implies & b + (-b) = (-(-b)) + (-b) \\
+    \implies & b = (-(-b)) & \text{by \THM{c.1}(a)}
+\end{align*}
+\end{remark}
+
+\begin{remark} \label{remark c.2}
+\textbf{Subtraction} and \textbf{division} can be defined \emph{in terms of addition and multiplication} by using the additive and multiplicative inverses.
+Specifically, subtraction of \(b\) is defined to be addition of \(-b\) and division by \(b \ne 0\) is defined to be multiplication by \(b^{-1}\);
+that is,
+\[
+    a - b = a + (-b) \quad \text{ and } \quad \frac{a}{b} = a \cdot b^{-1}.
+\]
+In particular, the symbol \(\frac{1}{b}\) can just be denoted as \(b^{-1}\), since by definition \(\frac{1}{b} = 1 \cdot b^{-1}\), which by (F 3) is equal to \(b^{-1}\).
+
+Division by zero is (left) undefined, but, with this exception, the sum, product, difference, and quotient of any two elements of a field are defined.
+Many of the familiar properties of multiplication of real numbers are true in any field, as the next theorem shows.
+\end{remark}
+
+\begin{appendix theorem} \label{thm c.2}
+Let \(a\) and \(b\) be arbitrary elements of a field.
+Then the following statements are true.
+\begin{enumerate}
+\item \(a \cdot 0 = 0\).
+\item \((-a) \cdot b = a \cdot (-b) = -(a \cdot b)\).
+\item \((-a) \cdot (-b) = a \cdot b\).
+\end{enumerate}
+\end{appendix theorem}
+
+\begin{proof}
+Since by (F 3), \(\BLUE{0} + \RED{0} = \RED{0}\) \MAROON{(a.1)}, we have
+\begin{align*}
+    0 + a \cdot 0 & = a \cdot 0 & \text{by (F 3)} \\
+        & = a \cdot (0 + 0) & \text{by \MAROON{(a.1)}} \\
+        & = a \cdot 0 + a \cdot 0 & \text{by (F 5)}
+\end{align*}
+Thus \(0 = a \cdot 0\) by \THM{c.1}(a).
+
+\item By definition, \(-(a \cdot b)\) is the \emph{unique} element of \(F\) with the property \(a \cdot b + [-(a \cdot b)] = 0\).
+So in order to prove that \(\RED{(-a) \cdot b} = -(a \cdot b)\), it suffices to show that \(a \cdot b + \RED{(-a) \cdot b} = 0\).
+But \(-a\) is the element of \(F\) such that \(a + (-a) = 0\);
+so
+\begin{align*}
+    a \cdot b + (-a) \cdot b & = [a + (-a)] \cdot b & \text{by (F 5)} \\
+        & = 0 \cdot b & \text{by (F 4)} \\
+        & = b \cdot 0 & \text{by (F 1)} \\
+        & = 0 & \text{by part(a)}
+\end{align*}
+Thus \((-a) \cdot b = -(a \cdot b)\).
+Similarly, we have to show that \(a \cdot b + \RED{a \cdot (-b)} = 0\);
+so
+\begin{align*}
+    a \cdot b + a \cdot (-b) & = a \cdot [b + (-b)] & \text{by (F 5)} \\
+        & = a \cdot 0 & \text{by (F 4)} \\
+        & = 0 & \text{by part(a)}
+\end{align*}
+Thus \(a \cdot (-b) = -(a \cdot b)\).
+Hence \((-a) \cdot b = a \cdot (-b) = -(a \cdot b)\).
+
+\item Using part(b), we have
+\begin{align*}
+    & (-a) \cdot (-b) \\
+    & = -[a \cdot (-b)] & \text{by (b), ``exp 1'' of (b) equals ``exp 3'' of (b)} \\
+    & = -[-(a \cdot b)] & \text{by (b), ``exp 2'' of (b) equals ``exp 3'' of (b)} \\
+    & = a \cdot b & \text{by \RMK{c.1}}
+\end{align*}
+\end{proof}
+
+\begin{appendix corollary} \label{corollary c.2.1}
+By \THM{c.2}, the \emph{additive identity} of a field has no multiplicative inverse, since for any \(a\) in the field, \(a \cdot 0 = 0\), and \(0 \ne 1\) by (F 3).
+\end{appendix corollary}
+
+\begin{proof}[Proof of the second statement in \RMK{c.1}]
+We have to show that for any \(b \in 0\) in a field, \(b = (b^{-1})^{-1}\).
+
+So suppose \(b \ne 0\) so that by (F 4) we have \(b^{-1}\) such that \(b \cdot b^{-1} = 1\). \MAROON{(1)}.
+Note that \(b^{-1}\) must be \emph{nonzero}, otherwise \(1 = b \cdot b^{-1} = b \cdot 0 = 0\) by \THM{c.2} and we get \(1 = 0\), which contradicts with \DEF{c.1}(F 3) that \(1\) and \(0\) are distinct.
+Hence again by (F 4), we have \((b^{-1})^{-1}\), the multiplicative inverse of \(b^{-1}\), such that \(b^{-1} \cdot (b^{-1})^{-1} = 1\) \MAROON{(2)}.
+Combining \MAROON{(1)(2)}, we have \(b \cdot b^{-1} = b^{-1} \cdot (b^{-1})^{-1}\), and by (F 1) we have \(b \cdot b^{-1} = (b^{-1})^{-1} \cdot b^{-1}\), and by \THM{c.1}, \(b = (b^{-1})^{-1}\), as desired.
+\end{proof}
+
+\begin{remark} \label{remark c.3}
+In an arbitrary field \(F\), it \textbf{may happen} that a sum \(1 + 1 + ... + 1\) (\(p\) summands) equals \(0\) for some \emph{positive integer} \(p\).
+For example, in the field \(Z_2\) (defined in \EXAMPLE{c.4}), \(1 + 1 = 0\).
+In this case, the \emph{smallest positive integer} \(p\) for which a sum of \(p\) \(1'\)s equals \(0\) is called the \textbf{characteristic} of \(F\);
+if \emph{no such positive integer exists}, then \(F\) is said to have \textbf{characteristic zero}.
+Thus \(Z_2\) has characteristic two, and \(\SET{R}\) has characteristic zero.
+Observe that if \(F\) is a field of characteristic \(p \ne 0\), then \(x + x + ... + x\) (\(p\) summands) equals \(0\) for all \(x \in F\).
+In a field having nonzero characteristic (especially characteristic two), \textbf{many unexpected problems arise}.
+For this reason, some of the results about vector spaces stated in this book \textbf{require that the field over which the vector space is defined} be of characteristic zero (or, at least, of some characteristic \emph{other than two}).
+Finally, note that in other sections of this book, the product of two elements \(a\) and \(b\) in a field is usually denoted \(ab\) rather than \(a \cdot b\).
+
+Refer to abstract algebra course for these kind of fields.
+\end{remark}

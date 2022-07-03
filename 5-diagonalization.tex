@@ -1,6 +1,30 @@
 \chapter{Diagonalization} \label{ch 5}
 
+This chapter is concerned with the so-called \emph{diagonalization problem}.
+For a given linear operator \(\T\) on a \emph{finite}-dimensional vector space \(V\), we seek answers to the following questions.
+\begin{enumerate}
+\item[1.] Does there exist an ordered basis \(\beta\) for \(V\) such that \([\T]_{\beta}\) is a \emph{diagonal} matrix?
+\item[2.] If such a basis exists, how can it be found?
+\end{enumerate}
+
+Since computations involving diagonal matrices are simple, an affirmative answer to question 1 leads us to a \emph{clearer understanding of how the operator \(\T\) acts on \(V\)},
+and an answer to question 2 enables us to obtain easy solutions to many practical problems that can be formulated in a linear algebra context.
+We consider some of these problems and their solutions in this chapter;
+see, for example, \SEC{5.3}.
+
+We begin this chapter with the study of \emph{eigenvalues} and \emph{eigenvectors}(\DEF{5.2}), which not only play an essential role in the diagonalization problem, but also are \emph{important in their own right}.
+Some practical problems involving eigenvalues/eigenvectors are:
+\begin{itemize}
+    \item Vibration problems in mechanical systems,
+    \item face recognition,
+    \item fingerprint authentication, and
+    \item the statistical process called \emph{principal component analysis}.
+\end{itemize}
+
 \input{5-1-eigenvalues-and-eigenvectors}
+\input{5-1-eigenvalues-and-eigenvectors-exercise}
 \input{5-2-diagonalizability}
+\input{5-2-diagonalizability-exercise}
 \input{5-3-matrix-limits-and-markov-chains}
 \input{5-4-invariant-subspaces-and=the-cayley-hamilton-theorem}
+\input{5-4-invariant-subspaces-and=the-cayley-hamilton-theorem-exercise}

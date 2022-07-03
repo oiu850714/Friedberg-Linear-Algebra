@@ -278,7 +278,7 @@ So by \CORO{2.23.1},
 \end{example}
 
 \begin{remark} \label{remark 2.5.2}
-The relationship, defined immediately, between the matrices \([\T]_{\beta'}\) and \([\T]_{\beta}\) in \THM{2.23} \textbf{will be the subject of further study in Chapters 5, 6, and 7}.
+The relationship, defined immediately, between the matrices \([\T]_{\beta'}\) and \([\T]_{\beta}\) in \THM{2.23} \textbf{will be the subject of further study in \CH{5}, \CH{6}, and \CH{7}}.
 \end{remark}
 
 \begin{definition} \label{def 2.16}
@@ -573,7 +573,7 @@ Prove that "is similar to" is an equivalence relation on \(M_{n \X n}(F)\).
 \begin{proof}
 For any \(n \X n\) matrix \(A\), it is similar to itself since \(A = IAI\).
 
-Suppose \(A\) is similar to \(B\), then by \DEF{2.16} we have an invertible matrix \(Q\) s.t. \(A = Q^{-1}BQ\).
+Suppose \(A\) is similar to \(B\), then by \DEF{2.16} we have an invertible matrix \(Q\) such that \(A = Q^{-1}BQ\).
 Then
 \begin{align*}
              & A = Q^{-1}BQ \\
@@ -581,11 +581,11 @@ Then
     \implies & Q A Q^{-1} = B \\
     \implies & (Q^{-1})^{-1} A Q^{-1} = B.
 \end{align*}
-So we have an invertible matrix \(Q^{-1}\) s.t. \(B = (Q^{-1})^{-1} A Q^{-1}\).
+So we have an invertible matrix \(Q^{-1}\) such that \(B = (Q^{-1})^{-1} A Q^{-1}\).
 Then by \DEF{2.16}, \(B\) is similar to \(A\).
 
 Suppose \(A\) is similar to \(B\), \(B\) is similar to \(C\).
-Then by \DEF{2.16} we have an invertible matrix \(P\) s.t. \(A = P^{-1}BP\) and invertible matrix \(Q\) s.t. \(B = Q^{-1}CQ\)
+Then by \DEF{2.16} we have an invertible matrix \(P\) such that \(A = P^{-1}BP\) and invertible matrix \(Q\) such that \(B = Q^{-1}CQ\)
 Then by \ATHM{2.36}(2), \(QP\) is invertible and \((QP)^{-1} = P^{-1} Q^{-1}\) \MAROON{(1)}.
 And
 \begin{align*}
@@ -594,7 +594,7 @@ And
     \implies & A = (P^{-1} Q^{-1}) C (Q P) \\
     \implies & A = (Q P)^{-1} C (Q P) & \text{by \MAROON{(1)}}
 \end{align*}
-So we have an invertible matrix \(QP\) s.t. \(A = (QP)^{-1} C (QP)\).
+So we have an invertible matrix \(QP\) such that \(A = (QP)^{-1} C (QP)\).
 So by \DEF{2.16}, \(A\) is similar to \(C\).
 \end{proof}
 
@@ -766,7 +766,7 @@ And
         & = B & \text{by \MAROON{(1)}}
 \end{align*}
 
-So we have found \(V, W\), a \LTRAN{} \(\T : V \to W\), and bases \(\beta, \beta', \gamma, \gamma'\), s.t. \(A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}\), as desired.
+So we have found \(V, W\), a \LTRAN{} \(\T : V \to W\), and bases \(\beta, \beta', \gamma, \gamma'\), such that \(A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}\), as desired.
 \end{proof}
 
 \begin{additional theorem} \label{athm 2.46} \ 

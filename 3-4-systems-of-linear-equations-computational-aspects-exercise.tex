@@ -191,7 +191,7 @@ Find a subset of \(\{ u_1, u_2, u_3, u_4, u_5 \}\) that is a basis for \(\SET{R}
 
 \begin{proof}
 We mimic the procedure described after \EXAMPLE{3.4.2}.
-We first find the nonzero solution \((c_1, c_2, c_3, c_4, c_5)\) s.t. \(c_1 u_1 + ... + c_5 u_5 = 0\).
+We first find the nonzero solution \((c_1, c_2, c_3, c_4, c_5)\) such that \(c_1 u_1 + ... + c_5 u_5 = 0\).
 That is,
 \[
     \sysdelim..\systeme{
@@ -393,7 +393,7 @@ If \((A|b)\) is in reduced row echelon form, prove that \(A\) is also in reduced
 \begin{proof}
 Suppose \((A|b)\) is in r.r.e.f..
 It's enough to check that \(A\) still satisfies the definition of reduced row echelon form(\DEF{3.7}).
-Given any row number \(i\) s.t. row \(i\) of \(A\) is zero row, there are two cases:
+Given any row number \(i\) such that row \(i\) of \(A\) is zero row, there are two cases:
 \begin{enumerate}
 \item Zero row \(i\) of \(A\) is also zero row of \((A|b)\).
     Then given any nonzero row \(j\) of \(A\), of course row \(j\) of \((A|b)\) is nonzero, hence by condition \(1\) of \((A|b)\),
@@ -423,7 +423,7 @@ Suppose then that \(A\) is an \(m \X n\) matrix of rank \(r > 0\) whose r.r.e.f.
 Then there is an invertible \(m \X m\) matrix \(M\) representing the sequence of e.r.o.s, such that \(MA = B\).
 For \(j = 1, 2, ..., n\), let \(a_j\) denote the \(j\)th column of \(A\) and \(b_j\) denote the \(j\)th column of \(B\).
 By \THM{3.16}(b), \(e_i\) is ``a'' column of \(B\) for \(i = 1, 2, ..., r\).
-Now let \(j_i\) denote the column number of the \emph{leftmost column} of \(B\) s.t. \(b_{j_i} = e_i\) \MAROON{(1)}.
+Now let \(j_i\) denote the column number of the \emph{leftmost column} of \(B\) such that \(b_{j_i} = e_i\) \MAROON{(1)}.
 Then by \THM{3.16}(c), \(\{ a_{j_1}, a_{j_2}, ..., a_{j_r} \}\) is \LID{}, and (since the dimension of column space of \(A\) is \(r\)) therefore is a basis for the column space of \(A\).
 So, for \(k = 1, 2, ..., n\), \(a_k = c_1 a_{j_1} + c_2 a_{j_2} + ... + c_r a_{j_r}\) for \textbf{unique} scalars \(c_1, c_2, ..., c_r\).
 
