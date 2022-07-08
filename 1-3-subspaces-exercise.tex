@@ -4,33 +4,33 @@
 \begin{exercise} \label{exercise 1.3.1}
 Label the following statements as true or false.
 \begin{enumerate}
-    \item If \(V\) is a vector space and \(W\) is a subset of \(V\) that is a vector space, then \(W\) is a subspace of \(V\).
+    \item If \(\V\) is a vector space and \(\W\) is a subset of \(\V\) that is a vector space, then \(\W\) is a subspace of \(\V\).
     \item The empty set is a subspace of every vector space.
-    \item If \(V\) is a vector space other than the zero vector space, then \(V\) contains a subspace \(W\) such that \(W \ne V\).
-    \item The intersection of any two \emph{subsets} of \(V\) is a subspace of \(V\).
+    \item If \(\V\) is a vector space other than the zero vector space, then \(\V\) contains a subspace \(\W\) such that \(\W \ne \V\).
+    \item The intersection of any two \emph{subsets} of \(\V\) is a subspace of \(\V\).
     \item An \(n \X n\) diagonal matrix can never have more than \(n\) nonzero entries.
     \item The trace of a square matrix is the product of its diagonal entries.
-    \item Let \(W\) be the \(xy\)-plane in \(\SET{R}^3\);
-          that is, \(W = \{ (a_1, a_2, 0) : a_1, a_2 \in \SET{R}\}\).
-          Then \(W = \SET{R}^2\).
+    \item Let \(\W\) be the \(xy\)-plane in \(\SET{R}^3\);
+          that is, \(\W = \{ (a_1, a_2, 0) : a_1, a_2 \in \SET{R}\}\).
+          Then \(\W = \SET{R}^2\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof}\ 
 
 \begin{enumerate}
-    \item I think the statement is just not well-defined, because it does not say what \(+\),  \(\cdot\) of \(W\) actually are.
+    \item I think the statement is just not well-defined, because it does not say what \(+\),  \(\cdot\) of \(\W\) actually are.
     \item False.
-          Every vector space \(V\) needs to satisfy \DEF{1.1} (VS 3), which implies \(V\) contains at least a zero vector, so \(V\) is non-empty.
-          Contrapositively, if \(V\) is empty, then \(V\) is not a vector space, hence cannot be a subspace of any vector spaces.
-    \item True. Just let \(W = \{ 0 \}\). Since \(V \ne \{ 0 \}\) by supposition, we have \(W \ne V\).
+          Every vector space \(\V\) needs to satisfy \DEF{1.1} (VS 3), which implies \(\V\) contains at least a zero vector, so \(\V\) is non-empty.
+          Contrapositively, if \(\V\) is empty, then \(\V\) is not a vector space, hence cannot be a subspace of any vector spaces.
+    \item True. Just let \(\W = \{ 0 \}\). Since \(\V \ne \{ 0 \}\) by supposition, we have \(\W \ne \V\).
     \item False.
           Counterexample, \(\{ (1, 0) \} \subseteq \SET{R}^2\), \(\{ (0, 1) \} \subseteq \SET{R}^2\), but \(\{ (1, 0) \} \cap \{ (0, 1) \} = \emptyset\), which by part(b) is not a subspace of \(\SET{R}^2\).
     \item True.
           Any diagonal matrix can only have \(n\) entries \(a_{11}, a_{22}, ..., a_{nn}\) to be nonzero.
     \item False. By definition in \EXAMPLE{1.3.4} the trace is the \emph{sum} of the square matrix's diagonal entries.
     \item False. There is a ``type mismatch''.
-          \(\SET{R}^2 = \{ (a_1, a_2) : a_1, a_2 \in \SET{R}\}\), which does not equal to \(W\).
+          \(\SET{R}^2 = \{ (a_1, a_2) : a_1, a_2 \in \SET{R}\}\), which does not equal to \(\W\).
 \end{enumerate}
 \end{proof}
 
@@ -131,12 +131,12 @@ So in all cases we have \((D^\top)_{ij} = D_{ij}\), hence \(D^\top = D\), as des
 Determine whether the following sets are subspaces of \(\SET{R}^3\) under the operations of addition and scalar multiplication defined on \(\SET{R}^3\).
 Justify your answers.
 \begin{enumerate}
-    \item \(W_1 = \{(a_1, a_2, a_3) \in \SET{R}^3 : a_1 = 3 a_2 \land a_3 = -a_2\}\)
-    \item \(W_2 = \{(a_1, a_2, a_3) \in \SET{R}^3: a_1 = a_3 + 2\}\)
-    \item \(W_3 = \{(a_1, a_2, a_3) \in \SET{R}^3 : 2a_1 - 7a_2 + a_3 = 0\}\)
-    \item \(W_4 = \{(a_1, a_2, a_3) \in \SET{R}^3 : a_1 - 4a_2 - a_3 = 0\}\)
-    \item \(W_5 = \{(a_1, a_2, a_3) \in \SET{R}^3 : a_1 + 2a_2 - 3a_3 = 1\}\)
-    \item \(W_6 = \{(a_1, a_2, a_3) \in \SET{R}^3 : 5a_1^2 - 3a_2^2 + 6a_3^2 = 0\}\)
+    \item \(\W_1 = \{(a_1, a_2, a_3) \in \SET{R}^3 : a_1 = 3 a_2 \land a_3 = -a_2\}\)
+    \item \(\W_2 = \{(a_1, a_2, a_3) \in \SET{R}^3: a_1 = a_3 + 2\}\)
+    \item \(\W_3 = \{(a_1, a_2, a_3) \in \SET{R}^3 : 2a_1 - 7a_2 + a_3 = 0\}\)
+    \item \(\W_4 = \{(a_1, a_2, a_3) \in \SET{R}^3 : a_1 - 4a_2 - a_3 = 0\}\)
+    \item \(\W_5 = \{(a_1, a_2, a_3) \in \SET{R}^3 : a_1 + 2a_2 - 3a_3 = 1\}\)
+    \item \(\W_6 = \{(a_1, a_2, a_3) \in \SET{R}^3 : 5a_1^2 - 3a_2^2 + 6a_3^2 = 0\}\)
 \end{enumerate}
 \end{exercise}
 
@@ -145,59 +145,59 @@ I try not to write calculation questions because using \LaTeX\ for it is painful
 
 \begin{enumerate}
     \item It's an intersection of the two plane passing the origin, hence a subspace.
-    \item \((0, 0, 0)\) does not belong to \(W_2\) since \(a_1\) can never be equal to \(a_3\).
-          By \THM{1.3}(a), \(W_2\) is not a vector space.
+    \item \((0, 0, 0)\) does not belong to \(\W_2\) since \(a_1\) can never be equal to \(a_3\).
+          By \THM{1.3}(a), \(\W_2\) is not a vector space.
     \item It's a plane passing the origin, hence a subspace.
     \item Similarly as part(c), it's a plane passing the origin, hence a subspace.
-    \item It's a plane \emph{not} passing the origin, hence \((0, 0, 0)\) does not belong to \(W_5\), so by \THM{1.3}(a), \(W_5\) is not a vector space.
-    \item The equation does not form a point/line/plane/space passing the origin, so the \(W_6\) is not a vector space.
+    \item It's a plane \emph{not} passing the origin, hence \((0, 0, 0)\) does not belong to \(\W_5\), so by \THM{1.3}(a), \(\W_5\) is not a vector space.
+    \item The equation does not form a point/line/plane/space passing the origin, so the \(\W_6\) is not a vector space.
 \end{enumerate}
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.9}
-Let \(W_1, W_3\), and \(W_4\) be as in \EXEC{1.3.8}.
-Describe \(W_1 \cap W_3\), \(W_1 \cap W_4\), and \(W_3 \cap W_4\), and observe that each is a subspace of \(\SET{R}^3\).
+Let \(\W_1, \W_3\), and \(\W_4\) be as in \EXEC{1.3.8}.
+Describe \(\W_1 \cap \W_3\), \(\W_1 \cap \W_4\), and \(\W_3 \cap \W_4\), and observe that each is a subspace of \(\SET{R}^3\).
 \end{exercise}
 
 \begin{proof}
-Since \(W_1, W_3\), and \(W_4\) in \EXEC{1.3.8} are all subspaces, by \THM{1.4} their intersections are also subspaces.
+Since \(\W_1, \W_3\), and \(\W_4\) in \EXEC{1.3.8} are all subspaces, by \THM{1.4} their intersections are also subspaces.
 And their intersections geometrically are just point/line/plane passing the origin.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.10}
-Prove that \(W_1 = \{ (a_l, a_2, ..., a_n) \in F^n: a_1 + a_2 + ... + a_n = 0 \} \) is a subspace of \(F^n\), but \(W_2 = \{ (a_l, a_2, ..., a_n) \in F^n : a_1 + a_2 + ... + a_n = 1\} \)
+Prove that \(\W_1 = \{ (a_l, a_2, ..., a_n) \in F^n: a_1 + a_2 + ... + a_n = 0 \} \) is a subspace of \(F^n\), but \(\W_2 = \{ (a_l, a_2, ..., a_n) \in F^n : a_1 + a_2 + ... + a_n = 1\} \)
 is not.
 \end{exercise}
 
 \begin{proof}
-For \(W_2\) since the zero vector \((a_1, a_2, ..., a_n)\) where \(a_i = 0\) for all \(1 \le i \le n\) does not belong to \(W_2\) because \(\sum_{i = 1}^{n} a_i = 0 \ne 1\), by \THM{1.3}(a), \(W_2\) is not a vector space, hence is not a subspace of \(F^n\).
+For \(\W_2\) since the zero vector \((a_1, a_2, ..., a_n)\) where \(a_i = 0\) for all \(1 \le i \le n\) does not belong to \(\W_2\) because \(\sum_{i = 1}^{n} a_i = 0 \ne 1\), by \THM{1.3}(a), \(\W_2\) is not a vector space, hence is not a subspace of \(F^n\).
 
-For \(W_1\), the zero vector \((a_1, a_2, ..., a_n)\) where \(a_i = 0\) for all \(1 \le i \le n\) belongs to \(W_1\) since \(\sum_{i = 1}^{n} a_i = 0\).
-Also, given any \((a_1, a_2, ..., a_n)\) and \((b_1, b_2, ..., b_n)\) in \(W_1\), we have
+For \(\W_1\), the zero vector \((a_1, a_2, ..., a_n)\) where \(a_i = 0\) for all \(1 \le i \le n\) belongs to \(\W_1\) since \(\sum_{i = 1}^{n} a_i = 0\).
+Also, given any \((a_1, a_2, ..., a_n)\) and \((b_1, b_2, ..., b_n)\) in \(\W_1\), we have
 \begin{align*}
-             & \sum_{i = 1}^{n} a_i = 0 \land \sum_{i = 1}^{n} b_i = 0 & \text{by def of \(W_1\)} \\
+             & \sum_{i = 1}^{n} a_i = 0 \land \sum_{i = 1}^{n} b_i = 0 & \text{by def of \(\W_1\)} \\
     \implies & \sum_{i = 1}^{n} a_i + \sum_{i = 1}^{n} b_i = 0 + 0 = 0 & \text{of course} \\
     \implies & \sum_{i = 1}^{n} a_i + b_i = 0 & \text{combine finite summation} \\
-    \implies & (a_1 + b_1, a_2 + b_2, ..., a_n + b_n) \in W_1, & \text{by def of \(W_1\)}
+    \implies & (a_1 + b_1, a_2 + b_2, ..., a_n + b_n) \in \W_1, & \text{by def of \(\W_1\)}
 \end{align*}
-hence the addition is closed under \(W_1\).
+hence the addition is closed under \(\W_1\).
 And
 \begin{align*}
              & c \sum_{i = 1}^{n} a_i = c \X 0 = 0 \\
     \implies & \sum_{i = 1}^{n} c a_i = 0 & \text{put constant into summation} \\
-    \implies & (c a_1, c a_2, ..., c a_n) \in W_1, & \text{by def of \(W_1\)}
+    \implies & (c a_1, c a_2, ..., c a_n) \in \W_1, & \text{by def of \(\W_1\)}
 \end{align*}
-hence the scalar multiplication is closed under \(W_1\).
-So by \THM{1.3}, \(W_1\) is a subspace of \(F^n\).
+hence the scalar multiplication is closed under \(\W_1\).
+So by \THM{1.3}, \(\W_1\) is a subspace of \(F^n\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.11}
-Is the set \(W = \{f(x) \in \POLYF: f(x) = 0 \lor f(x) \text{ has degree } n\}\) a subspace of \(\POLYF\) if \(n \ge 1\)?
+Is the set \(\W = \{f(x) \in \POLYF: f(x) = 0 \lor f(x) \text{ has degree } n\}\) a subspace of \(\POLYF\) if \(n \ge 1\)?
 Justify your answer.
 \end{exercise}
 
 \begin{proof}
-No, since the sum of two degree \(n\) polynomial may have degree both not equal to \(-1\) and \(n\), so the result may not belong to \(W\).
+No, since the sum of two degree \(n\) polynomial may have degree both not equal to \(-1\) and \(n\), so the result may not belong to \(\W\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.12}
@@ -282,85 +282,85 @@ So by \THM{1.3}, \(\mathcal{C}^n(\SET{R})\) is a subspace of \(\FRR\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.17}
-Prove that a \emph{subset} \(W\) of a vector space \(V\) is a \emph{subspace} of \(V\) if and only if \(W \ne \emptyset\), and, whenever \(a \in F\) and \(x, y \in W\), then \(ax \in W\) and \(x + y \in W\).
+Prove that a \emph{subset} \(\W\) of a vector space \(\V\) is a \emph{subspace} of \(\V\) if and only if \(\W \ne \emptyset\), and, whenever \(a \in F\) and \(x, y \in \W\), then \(ax \in \W\) and \(x + y \in \W\).
 \end{exercise}
 
 \begin{proof}
-First suppose a subset \(W\) of \(V\) is a subspace of \(V\).
-Then by \DEF{1.1}(VS 3), \(W\) contains zero vector and so is not empty.
-Also, since \(W\) is a subspace, the addition and scalar multiplication are closed under \(W\), as desired.
+First suppose a subset \(\W\) of \(\V\) is a subspace of \(\V\).
+Then by \DEF{1.1}(VS 3), \(\W\) contains zero vector and so is not empty.
+Also, since \(\W\) is a subspace, the addition and scalar multiplication are closed under \(\W\), as desired.
 
-Now suppose \(W \ne \emptyset\) and the addition and scalar multiplication are closed under \(W\).
-Then in particular, we can pick a vector \(w \in W\) since \(W \ne \emptyset\).
-And of course \(w \in V\). \MAROON{(1)}.
-And by \MAROON{(1)} and \THM{1.2}(a)(of the \emph{vector space} \(V\)), given \(F\)'s additive identity \(\OF\), \(\OF w = \OV\). \MAROON{(2)}.
-And since scalar multiplication is closed under \(W\), \(\OF w \in W\), that is, by \MAROON{(2)}, \(\OV \in W\).
-So all conditions of \THM{1.3} are satisfied, hence \(W\) is a subspace of \(V\).
+Now suppose \(\W \ne \emptyset\) and the addition and scalar multiplication are closed under \(\W\).
+Then in particular, we can pick a vector \(w \in \W\) since \(\W \ne \emptyset\).
+And of course \(w \in \V\). \MAROON{(1)}.
+And by \MAROON{(1)} and \THM{1.2}(a)(of the \emph{vector space} \(\V\)), given \(F\)'s additive identity \(\OF\), \(\OF w = \OV\). \MAROON{(2)}.
+And since scalar multiplication is closed under \(\W\), \(\OF w \in \W\), that is, by \MAROON{(2)}, \(\OV \in \W\).
+So all conditions of \THM{1.3} are satisfied, hence \(\W\) is a subspace of \(\V\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.18}
-Prove that a subset \(W\) of a vector space \(V\) is a subspace of \(V\) if and only if \(\OV \in W\) and \(a x + y \in W\) whenever \(a \in F\) and \(x, y \in W\).
+Prove that a subset \(\W\) of a vector space \(\V\) is a subspace of \(\V\) if and only if \(\OV \in \W\) and \(a x + y \in \W\) whenever \(a \in F\) and \(x, y \in \W\).
 \end{exercise}
 
 \begin{proof}
 The forward direction is trivial by \DEF{1.1} (VS 3) and closure of addition and scalar multiplication.
 
-Now suppose \(\OV \in W\) and \(a x + y \in W\) whenever \(a \in F\) and \(x, y \in W\).
-Then given arbitrary \(x, y \in W\), given \(\IF \in F\), \(\IF x\ +\ y \in W\).
-But by (VS 5) of \(V\), \(\IF x = x\), so we have \(\IF x\ +\ y = x + y \in W\), hence addition is closed under \(W\).
-Also, given arbitrary \(x \in W\) and \(a \in F\), since \(\OV \in W\), we have \(ax + \OV \in W\).
-But by (VS 3) of \(V\), \(ax + \OV = ax\), so we have \(ax + \OV = ax \in W\), hence scalar multiplication is closed under \(W\).
-So all conditions of \THM{1.3} are satisfied, hen \(W\) is a subspace of \(V\).
+Now suppose \(\OV \in \W\) and \(a x + y \in \W\) whenever \(a \in F\) and \(x, y \in \W\).
+Then given arbitrary \(x, y \in \W\), given \(\IF \in F\), \(\IF x\ +\ y \in \W\).
+But by (VS 5) of \(\V\), \(\IF x = x\), so we have \(\IF x\ +\ y = x + y \in \W\), hence addition is closed under \(\W\).
+Also, given arbitrary \(x \in \W\) and \(a \in F\), since \(\OV \in \W\), we have \(ax + \OV \in \W\).
+But by (VS 3) of \(\V\), \(ax + \OV = ax\), so we have \(ax + \OV = ax \in \W\), hence scalar multiplication is closed under \(\W\).
+So all conditions of \THM{1.3} are satisfied, hen \(\W\) is a subspace of \(\V\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.19}
-Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\).
-Prove that \(W_1 \cup W_2\) is a subspace of \(V\) if and only if \(W_1 \subseteq W_2\) or \(W_2 \subseteq W_1\).
+Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\).
+Prove that \(\W_1 \cup \W_2\) is a subspace of \(\V\) if and only if \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\).
 \end{exercise}
 
 \begin{proof}
 We first prove the backward direction since it's trivial.
-Suppose \(W_1 \subseteq W_2\) or \(W_2 \subseteq W_1\).
-Then if \(W_1 \subseteq W_2\), \(W_1 \cup W_2 = W_2\), which is a subspace of \(V\).
-If \(W_2 \subseteq W_1\), \(W_1 \cup W_2 = W_1\), which is a subspace of \(V\).
-In all cases, \(W_1 \cup W_2\) is a subspace of \(V\).
+Suppose \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\).
+Then if \(\W_1 \subseteq \W_2\), \(\W_1 \cup \W_2 = \W_2\), which is a subspace of \(\V\).
+If \(\W_2 \subseteq \W_1\), \(\W_1 \cup \W_2 = \W_1\), which is a subspace of \(\V\).
+In all cases, \(\W_1 \cup \W_2\) is a subspace of \(\V\).
 
-Now suppose \(W_1 \cup W_2\) is a subspace of \(V\) \MAROON{(1)}.
-For the sake of contradiction suppose \(W_1 \not \subseteq W_2\) and \(W_2 \not \subseteq W_1\) \MAROON{(2)}.
+Now suppose \(\W_1 \cup \W_2\) is a subspace of \(\V\) \MAROON{(1)}.
+For the sake of contradiction suppose \(\W_1 \not \subseteq \W_2\) and \(\W_2 \not \subseteq \W_1\) \MAROON{(2)}.
 
-Then by definition of \(\not \subseteq\), we can find \(u\) such that \(u \in W_1 \land u \not \in W_2\) \MAROON{(3)} and \(v\) such that \(v \in W_2 \land u \not \in W_1\) \MAROON{(4)}.
-But in particular, both \(u, v\) are still belong to \(W_1 \cup W_2\).
-And by \MAROON{(1)}, \(u + v \in W_1 \cup W_2\) by closed addition.
-So in particular \(u + v \in W_1\) or \(u + v \in W_2\).
+Then by definition of \(\not \subseteq\), we can find \(u\) such that \(u \in \W_1 \land u \not \in \W_2\) \MAROON{(3)} and \(v\) such that \(v \in \W_2 \land u \not \in \W_1\) \MAROON{(4)}.
+But in particular, both \(u, v\) are still belong to \(\W_1 \cup \W_2\).
+And by \MAROON{(1)}, \(u + v \in \W_1 \cup \W_2\) by closed addition.
+So in particular \(u + v \in \W_1\) or \(u + v \in \W_2\).
 So there are two cases:
 \begin{itemize}
-    \item If \(u + v \in W_1\), then by \MAROON{(3)}, \(u \in W_1\), hence by closed scalar multiplication, \(-u \in W_1\), and we have \((u + v) + (-u) \in W_1\), that is, \(v \in W_1\), which contradicts \MAROON{(4)}.
-    \item If \(u + v \in W_2\), then by \MAROON{(4)}, \(v \in W_2\), hence by closed scalar multiplication, \(-v \in W_2\), and we have \((u + v) + (-v) \in W_2\), that is, \(u \in W_2\), which contradicts \MAROON{(3)}.
+    \item If \(u + v \in \W_1\), then by \MAROON{(3)}, \(u \in \W_1\), hence by closed scalar multiplication, \(-u \in \W_1\), and we have \((u + v) + (-u) \in \W_1\), that is, \(v \in \W_1\), which contradicts \MAROON{(4)}.
+    \item If \(u + v \in \W_2\), then by \MAROON{(4)}, \(v \in \W_2\), hence by closed scalar multiplication, \(-v \in \W_2\), and we have \((u + v) + (-v) \in \W_2\), that is, \(u \in \W_2\), which contradicts \MAROON{(3)}.
 \end{itemize}
 So in all cases we get a contradiction.
-So \MAROON{(2)} is false, hence \(W_1 \subseteq W_2\) or \(W_2 \subseteq W_1\), as desired.
+So \MAROON{(2)} is false, hence \(\W_1 \subseteq \W_2\) or \(\W_2 \subseteq \W_1\), as desired.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.20}
-Prove that if \(W\) is a subspace of a vector space \(V\) and \(w_1, w_2, ..., w_n\) are in \(W\), then \(a_1 w_1 + a_2 w_2 + ... + a_n w_n \in W\) for any scalars \(a_1, a_2, ... a_n\).
+Prove that if \(\W\) is a subspace of a vector space \(\V\) and \(w_1, w_2, ..., w_n\) are in \(\W\), then \(a_1 w_1 + a_2 w_2 + ... + a_n w_n \in \W\) for any scalars \(a_1, a_2, ... a_n\).
 \end{exercise}
 
 \begin{proof}
 We prove it by induction on the number of addition's operands, with base case \(= 2\).
 For the base case it is of course true by the closed addition and scalar multiplication.
 
-Now suppose given integer \(n \ge 2\), \(a_1 w_1 + a_2 w_2 + ... + a_n w_n \in W\) for any \(n\) scalars \(a_1, a_2, ... a_n\) and \(n\) vectors \(w_1, w_2, ..., w_n \in W\).
-We have to show \(a_1 w_1 + a_2 w_2 + ... + a_n w_n + a_{n + 1} w_{n + 1} \in W\) for any \(n + 1\) scalars \(a_1, a_2, ... a_n, a_{n + 1}\),
-and any \(n + 1\) vectors \(w_1, w_2, ..., w_n, w_{n + 1} \in W\).
-By the induction hypothesis, we have \(v = a_1 w_1 + a_2 w_2 + ... + a_n w_n \in W\).
-And again by closed addition and scalar multiplication, \(v + a_{n + 1} w_{n + 1} \in W\);
-that is, \(a_1 w_1 + a_2 w_2 + ... + a_n w_n + a_{n + 1} w_{n + 1} \in W\), as desired.
+Now suppose given integer \(n \ge 2\), \(a_1 w_1 + a_2 w_2 + ... + a_n w_n \in \W\) for any \(n\) scalars \(a_1, a_2, ... a_n\) and \(n\) vectors \(w_1, w_2, ..., w_n \in \W\).
+We have to show \(a_1 w_1 + a_2 w_2 + ... + a_n w_n + a_{n + 1} w_{n + 1} \in \W\) for any \(n + 1\) scalars \(a_1, a_2, ... a_n, a_{n + 1}\),
+and any \(n + 1\) vectors \(w_1, w_2, ..., w_n, w_{n + 1} \in \W\).
+By the induction hypothesis, we have \(v = a_1 w_1 + a_2 w_2 + ... + a_n w_n \in \W\).
+And again by closed addition and scalar multiplication, \(v + a_{n + 1} w_{n + 1} \in \W\);
+that is, \(a_1 w_1 + a_2 w_2 + ... + a_n w_n + a_{n + 1} w_{n + 1} \in \W\), as desired.
 So this closes the induction.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.21}
-Let \(V\) denote the vector space of sequences in \(\SET{R}\), as defined in \EXAMPLE{1.2.5}.
-Show that the set of \emph{convergent sequences} \((a_n)\) (that is, those for which \(\lim_{n \toINF} a_n\) exists) is a subspace of \(V\).
+Let \(\V\) denote the vector space of sequences in \(\SET{R}\), as defined in \EXAMPLE{1.2.5}.
+Show that the set of \emph{convergent sequences} \((a_n)\) (that is, those for which \(\lim_{n \toINF} a_n\) exists) is a subspace of \(\V\).
 \end{exercise}
 
 \begin{proof}
@@ -371,7 +371,7 @@ Also, by limit law of sequences, given two convergent sequences \((a_n)\) and \(
     \lim_{n \toINF} c a_n & = c \lim_{n \toINF} a_n,
 \end{align*}
 so both \((a_n + b_n)\) and \((c a_n)\) converge and hence belong to the set of convergent sequences, so addition and scalar multiplication is closed under the set of convergent sequences.
-So by \THM{1.3}, the set of convergent sequences is a subspace of \(V\).
+So by \THM{1.3}, the set of convergent sequences is a subspace of \(\V\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.22}
@@ -408,12 +408,12 @@ So these operations are closed, so by \THM{1.3}, the case of odd function is a s
 The following definitions are used in \EXEC{1.3.23} to \EXEC{1.3.30}.
 
 \begin{additional definition} \label{adef 1.8}
-If \(S_1\) and \(S_2\) are \emph{nonempty} \emph{subsets} (not necessarily subspaces) of a vector space \(V\), then the \textbf{sum} of \(S_1\) and \(S_2\), denoted \(S_1 + S_2\), is the set \( \{ x + y : x \in S_1 \land y \in S_2 \} \).
+If \(S_1\) and \(S_2\) are \emph{nonempty} \emph{subsets} (not necessarily subspaces) of a vector space \(\V\), then the \textbf{sum} of \(S_1\) and \(S_2\), denoted \(S_1 + S_2\), is the set \( \{ x + y : x \in S_1 \land y \in S_2 \} \).
 \end{additional definition}
 
 \begin{additional definition} \label{adef 1.9}
-A vector space \(V\) is called the \textbf{direct sum} of \(W_1\) and \(W_2\) if \(W_1\) and \(W_2\) are \emph{subspaces} of \(V\) such that \(W_1 \cap W_2 = \{\OV\}\) and \(W_1 + W_2 = V\).
-We denote that \(V\) is the direct sum of \(W_1\) and \(W_2\) by writing \(V = W_1 \oplus W_2\).
+A vector space \(\V\) is called the \textbf{direct sum} of \(\W_1\) and \(\W_2\) if \(\W_1\) and \(\W_2\) are \emph{subspaces} of \(\V\) such that \(\W_1 \cap \W_2 = \{\OV\}\) and \(\W_1 + \W_2 = \V\).
+We denote that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) by writing \(\V = \W_1 \oplus \W_2\).
 \end{additional definition}
 
 \begin{note}
@@ -425,57 +425,57 @@ A good introduction videos for these definitions:
 \end{note}
 
 \begin{exercise} \label{exercise 1.3.23}
-Let \(W_1\) and \(W_2\) be \emph{subspaces} of a vector space \(V\).
+Let \(\W_1\) and \(\W_2\) be \emph{subspaces} of a vector space \(\V\).
 \begin{enumerate}
-    \item Prove that \(W_1 + W_2\) is a subspace of \(V\) that contains both \(W_1\) and \(W_2\).
-    \item Prove that any \emph{subspace} of \(V\) that contains both \(W_1\) and \(W_2\) must also contain \(W_1 + W_2\). That is, \(W_1 + W_2\) is the ``smallest'' subspace that contains \(W_1 \cup W_2\).
+    \item Prove that \(\W_1 + \W_2\) is a subspace of \(\V\) that contains both \(\W_1\) and \(\W_2\).
+    \item Prove that any \emph{subspace} of \(\V\) that contains both \(\W_1\) and \(\W_2\) must also contain \(\W_1 + \W_2\). That is, \(\W_1 + \W_2\) is the ``smallest'' subspace that contains \(\W_1 \cup \W_2\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof}\ 
 
-For part(a), we first prove that given subspaces \(W_1, W_2 \subseteq V\), \(W_1 + W_2\) is also a subspace.
+For part(a), we first prove that given subspaces \(\W_1, \W_2 \subseteq \V\), \(\W_1 + \W_2\) is also a subspace.
 First, since \(\OV = \BLUE{\OV} + \GREEN{\OV}\) by \DEF{1.1}(VS 3);
-and \(\BLUE{\OV} \in W_1\) and \(\GREEN{\OV} \in W_2\) (since they are subspaces!), by definition of \(W_1 + W_2\), \(\OV = \BLUE{\OV} + \GREEN{\OV} \in W_1 + W_2\).
+and \(\BLUE{\OV} \in \W_1\) and \(\GREEN{\OV} \in \W_2\) (since they are subspaces!), by definition of \(\W_1 + \W_2\), \(\OV = \BLUE{\OV} + \GREEN{\OV} \in \W_1 + \W_2\).
 
-Now suppose \(u, v \in W_1 + W_2\).
-Then by definition of \(W_1 + W_2\), \(u = u_1 + u_2\) where \(u_1 \in W_1, u_2 \in W_2\) and \(v = v_1 + v_2\) where \(v_1 \in W_1, v_2 \in W_2\).
+Now suppose \(u, v \in \W_1 + \W_2\).
+Then by definition of \(\W_1 + \W_2\), \(u = u_1 + u_2\) where \(u_1 \in \W_1, u_2 \in \W_2\) and \(v = v_1 + v_2\) where \(v_1 \in \W_1, v_2 \in \W_2\).
 And
 \begin{align*}
     u + v & = (u_1 + u_2) + (v_1 + v_2) \\
-          & = (u_1 + v_1) + (u_2 + v_2), & \text{by \DEF{1.1}(VS 1), (VS 2) of \(V\)}
+          & = (u_1 + v_1) + (u_2 + v_2), & \text{by \DEF{1.1}(VS 1), (VS 2) of \(\V\)}
 \end{align*}
-But since \(u_1, v_1 \in W_1\) and \(W_1\) is a subspace, we have \(u_1 + v_1 \in W_1\).
-Similarly we have \(u_2 + v_2 \in W_2\).
-And again by definition of \(W_1 + W_2\), we have \((u_1 + v_1) + (u_2 + v_2) \in W_1 + W_2\), that is, \(u + v \in W_1 + W_2\), hence the addition is closed under \(W_1 + W_2\).
+But since \(u_1, v_1 \in \W_1\) and \(\W_1\) is a subspace, we have \(u_1 + v_1 \in \W_1\).
+Similarly we have \(u_2 + v_2 \in \W_2\).
+And again by definition of \(\W_1 + \W_2\), we have \((u_1 + v_1) + (u_2 + v_2) \in \W_1 + \W_2\), that is, \(u + v \in \W_1 + \W_2\), hence the addition is closed under \(\W_1 + \W_2\).
 
 Now given scalar \(c \in F\),
 \begin{align*}
     c u & = c(u_1 + u_2) \\
         & = c u_1 + c u_2 & \text{by (VS 7)}
 \end{align*}
-But since \(u_1 \in W_1\) and \(W_1\) is a subspace, we have \(c u_1 \in W_1\).
-Similarly we have \(c u_2 \in W_2\).
-And again by definition of \(W_1 + W_2\), we have \(c u_1 + c u_2 \in W_1 + W_2\), that is, \(c u \in W_1 + W_2\), hence the scalar multiplication is closed under \(W_1 + W_2\).
+But since \(u_1 \in \W_1\) and \(\W_1\) is a subspace, we have \(c u_1 \in \W_1\).
+Similarly we have \(c u_2 \in \W_2\).
+And again by definition of \(\W_1 + \W_2\), we have \(c u_1 + c u_2 \in \W_1 + \W_2\), that is, \(c u \in \W_1 + \W_2\), hence the scalar multiplication is closed under \(\W_1 + \W_2\).
 
-So by \THM{1.3}, \(W_1 + W_2\) is a subspace of \(V\).
+So by \THM{1.3}, \(\W_1 + \W_2\) is a subspace of \(\V\).
 
-Now we show \(W_1 \cup W_2 \subseteq W_1 + W_2\).
-So let arbitrary \(v \in W_1 \cup W_2\).
-If \(v \in W_1\), then since by (VS 3) \(v = v + \OV\) and \(\OV \in W_2\) (sine \(W_2\) is a subspace!), by definition of \(W_1 + W_2\), \(v + \OV \in W_1 + W_2\), that is, \(v \in W_1 + W_2\).
-If \(v \in W_2\), then since by (VS 3) (and (VS 1)) \(v = \OV + v\) and \(\OV \in W_1\) (since \(W_1\) is a subspace!), by definition of \(W_1 + W_2\), \(\OV + v \in W_1 + W_2\), that is, \(v \in W_1 + W_2\).
-So in all cases, \(v \in W_1 + W_2\).
-Since \(v\) is arbitrary, we have \(W_1 \cup W_2 \subseteq W_1 + W_2\).
+Now we show \(\W_1 \cup \W_2 \subseteq \W_1 + \W_2\).
+So let arbitrary \(v \in \W_1 \cup \W_2\).
+If \(v \in \W_1\), then since by (VS 3) \(v = v + \OV\) and \(\OV \in \W_2\) (sine \(\W_2\) is a subspace!), by definition of \(\W_1 + \W_2\), \(v + \OV \in \W_1 + \W_2\), that is, \(v \in \W_1 + \W_2\).
+If \(v \in \W_2\), then since by (VS 3) (and (VS 1)) \(v = \OV + v\) and \(\OV \in \W_1\) (since \(\W_1\) is a subspace!), by definition of \(\W_1 + \W_2\), \(\OV + v \in \W_1 + \W_2\), that is, \(v \in \W_1 + \W_2\).
+So in all cases, \(v \in \W_1 + \W_2\).
+Since \(v\) is arbitrary, we have \(\W_1 \cup \W_2 \subseteq \W_1 + \W_2\).
 
 Now we proved part(b).
-Suppose \(W\) is a subspace of \(V\) and contains \(W_1 \cup W_2\).
-We have to show \(W_1 + W_2 \subseteq W\).
-So let arbitrary \(v \in W_1 + W_2\), we have to show \(v \in W\).
-Then by definition of \(W_1 + W_2\), \(v = v_1 + v_2\) where \(v_1 \in W_1\) and \(v_2 \in W_2\).
-Since \(W_1 \cup W_2 \subseteq W\), we have \(v_1 \in W\) and \(v_2 \in W\).
-And since \(W\) is a subspace, we have \(v_1 + v_2 \in W\) by closed addition;
-that is, \(v \in W\).
-Since \(v\) is arbitrary, we have \(W_1 + W_2 \subseteq W\).
+Suppose \(\W\) is a subspace of \(\V\) and contains \(\W_1 \cup \W_2\).
+We have to show \(\W_1 + \W_2 \subseteq \W\).
+So let arbitrary \(v \in \W_1 + \W_2\), we have to show \(v \in \W\).
+Then by definition of \(\W_1 + \W_2\), \(v = v_1 + v_2\) where \(v_1 \in \W_1\) and \(v_2 \in \W_2\).
+Since \(\W_1 \cup \W_2 \subseteq \W\), we have \(v_1 \in \W\) and \(v_2 \in \W\).
+And since \(\W\) is a subspace, we have \(v_1 + v_2 \in \W\) by closed addition;
+that is, \(v \in \W\).
+Since \(v\) is arbitrary, we have \(\W_1 + \W_2 \subseteq \W\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.24}
@@ -491,36 +491,36 @@ Show that \(F^n\) is the direct sum of the subspaces
 \end{exercise}
 
 \begin{proof}
-First it's clear that \(W_1 \cap W_2 = \{ \OV \}\).
-And by \ADEF{1.9} we also need to show \(F^n = W_1 + W_2\).
-That is, \(F^n \subseteq W_1 + W_2 \land W_1 + W_2 \subseteq F^n\).
+First it's clear that \(\W_1 \cap \W_2 = \{ \OV \}\).
+And by \ADEF{1.9} we also need to show \(F^n = \W_1 + \W_2\).
+That is, \(F^n \subseteq \W_1 + \W_2 \land \W_1 + \W_2 \subseteq F^n\).
 So suppose \((a_1, a_2, ..., a_n) \in F^n\).
-Then \((a_1, a_2, ..., a_n) = (a_1, a_2, ..., a_{n - 1}, 0) + (0, 0, ..., a_n)\), so by definition of \(W_1 + W_2\), \((a_1, a_2, ..., a_n) \in W_1 + W_2\).
-So we have \(F^n \subseteq W_1 + W_2\).
+Then \((a_1, a_2, ..., a_n) = (a_1, a_2, ..., a_{n - 1}, 0) + (0, 0, ..., a_n)\), so by definition of \(\W_1 + \W_2\), \((a_1, a_2, ..., a_n) \in \W_1 + \W_2\).
+So we have \(F^n \subseteq \W_1 + \W_2\).
 
-The other direction is automatically true, since \(W_1 + W_2\) is a subspace of \(F^n\) (by \EXEC{1.3.23}(a)), hence a subset of \(F^n\).
+The other direction is automatically true, since \(\W_1 + \W_2\) is a subspace of \(F^n\) (by \EXEC{1.3.23}(a)), hence a subset of \(F^n\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.25}
-Let \(W_1\) denote the set of all polynomials \(f(x)\) in \(\POLYF\) such that in the representation
+Let \(\W_1\) denote the set of all polynomials \(f(x)\) in \(\POLYF\) such that in the representation
 \[
     f(x) = a_n x^n + a_{n - 1} x^{n - 1} + ... + a_1 x + a_0,
 \]
 we have \(a_i = 0\) whenever \(i\) is \emph{even}.
-Likewise let \(W_2\) denote the set of all polynomials \(g(x)\) in \(\POLYF\) such that in the representation
+Likewise let \(\W_2\) denote the set of all polynomials \(g(x)\) in \(\POLYF\) such that in the representation
 \[
     g(x) = b_m x_m + b_{m - 1} x_{m - 1} + ... + b_1 x + b_0,
 \]
 we have \(b_i = 0\) whenever \(i\) is \emph{odd}.
-Prove that \(\POLYF = W_1 \oplus W_2\).
+Prove that \(\POLYF = \W_1 \oplus \W_2\).
 \end{exercise}
 
 \begin{proof}
-First, it's trivial that zero polynomial is the only polynomial satisfying the condition of \(W_1\) and \(W_2\) \MAROON{(1)},
+First, it's trivial that zero polynomial is the only polynomial satisfying the condition of \(\W_1\) and \(\W_2\) \MAROON{(1)},
 and given any polynomial we can split it into two polynomial, one having only terms of odd degrees and the other have only terms of even degree;
-and that implies \(\POLYF \subseteq W_1 + W_2\).
-And like previous exercise, \(W_1 + W_2 \subseteq \POLYF\) is automatically true, so we have \(\POLYF = W_1 + W_2\) \MAROON{(2)}.
-So by \ADEF{1.9} and \MAROON{(1)(2)}, \(\POLYF = W_1 \oplus W_2\).
+and that implies \(\POLYF \subseteq \W_1 + \W_2\).
+And like previous exercise, \(\W_1 + \W_2 \subseteq \POLYF\) is automatically true, so we have \(\POLYF = \W_1 + \W_2\) \MAROON{(2)}.
+So by \ADEF{1.9} and \MAROON{(1)(2)}, \(\POLYF = \W_1 \oplus \W_2\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.26}
@@ -535,21 +535,21 @@ Skip, it's natural.
 A matrix \(M\) is called \textbf{skew-symmetric} if \(M^\top = -M\).
 Clearly, a skew-symmetric matrix is square.
 Let \(F\) be a field.
-Prove that the set \(W_1\) of all skew-symmetric \(n \X n\) matrices with entries from \(F\) is a subspace of \(M_{n \X n}(F)\).
-Now assume that \(F\) is not of characteristic two (see textbook page 549), and let \(W_2\) be the subspace(it is a subspace by \ATHM{1.1}) of \(M_{n \X n}(F)\) consisting of all symmetric \(n \X n\) matrices.
-Prove that \(M_{n \X n}(F) = W_1 \oplus W_2\).
+Prove that the set \(\W_1\) of all skew-symmetric \(n \X n\) matrices with entries from \(F\) is a subspace of \(M_{n \X n}(F)\).
+Now assume that \(F\) is not of characteristic two (see textbook page 549), and let \(\W_2\) be the subspace(it is a subspace by \ATHM{1.1}) of \(M_{n \X n}(F)\) consisting of all symmetric \(n \X n\) matrices.
+Prove that \(M_{n \X n}(F) = \W_1 \oplus \W_2\).
 \end{exercise}
 
 \begin{proof}
-We first show \(W_1\) is a subspace.
-Clearly zero matrix \(O_{n \X n}\) belongs to \(W_1\) since \(O^\top_{n \X n} = O_{n \X n}\) \MAROON{(1)} and \(O_{n \X n} = -O_{n \X n}\).
-Also given \(M_1, M_2 \in W_1\),
+We first show \(\W_1\) is a subspace.
+Clearly zero matrix \(O_{n \X n}\) belongs to \(\W_1\) since \(O^\top_{n \X n} = O_{n \X n}\) \MAROON{(1)} and \(O_{n \X n} = -O_{n \X n}\).
+Also given \(M_1, M_2 \in \W_1\),
 \begin{align*}
     (M_1 + M_2)^\top & = M_1^\top + M_2^\top & \text{by \ATHM{1.2}(1)} \\
                   & = -M_1 + -M_2 & \text{by def of skew-symmetric} \\
-                  & = -(M_1 + M_2), & \text{by \(W_1\)'s (VS 7)}
+                  & = -(M_1 + M_2), & \text{by \(\W_1\)'s (VS 7)}
 \end{align*}
-So addition is closed under \(W_1\).
+So addition is closed under \(\W_1\).
 And given \(c \in F\),
 \begin{align*}
     (cM_1)^\top & = (cM_1 + O_{n \X n})^\top & \text{by (VS 3) of \(M_{n \X n}(F)\)} \\
@@ -559,19 +559,19 @@ And given \(c \in F\),
              & = c(-M_1) & \text{by def of skew-symmetric} \\
              & = -(cM_1) & \text{by \(M_{n \X n}(F)\)'s (VS 6) and commutative property of \(F\)}
 \end{align*}
-So scalar multiplication is closed under \(W_1\).
-Hence by \THM{1.3}, \(W_1\) is a subspace of \(M_{n \X n}(F)\).
+So scalar multiplication is closed under \(\W_1\).
+Hence by \THM{1.3}, \(\W_1\) is a subspace of \(M_{n \X n}(F)\).
 
-Now we show that \(M_{n \X n}(F) = W_1 \oplus W_2\).
-First we show that \(W_1 \cap W_2 = \{ O_{n \X n} \}\);
-that is, if \(M \in W_1 \cap W_2\), then \(M = O_{n \X n}\).
-So suppose \(M \in W_1 \cap W_2\).
-By definition of \(W_1\) and \(W_2\), \(M\) is skew-symmetric and symmetric, so we have \(M^\top = -M\) and \(M^\top = M\).
+Now we show that \(M_{n \X n}(F) = \W_1 \oplus \W_2\).
+First we show that \(\W_1 \cap \W_2 = \{ O_{n \X n} \}\);
+that is, if \(M \in \W_1 \cap \W_2\), then \(M = O_{n \X n}\).
+So suppose \(M \in \W_1 \cap \W_2\).
+By definition of \(\W_1\) and \(\W_2\), \(M\) is skew-symmetric and symmetric, so we have \(M^\top = -M\) and \(M^\top = M\).
 That is, \(M = -M\).
 But that would be true only if \(M = O_{n \X n}\)(otherwise we trivially get some contradiction).
 So \(M = O_{n \X n}\).
 
-Now we show \(M_{n \X n}(F) \subseteq W_1 + W_2\) (again, the other direction is automatically true since \(W_1 + W_2\) is a subspace of \(M_{n \X n}(F)\)).
+Now we show \(M_{n \X n}(F) \subseteq \W_1 + \W_2\) (again, the other direction is automatically true since \(\W_1 + \W_2\) is a subspace of \(M_{n \X n}(F)\)).
 So let \(A\) be arbitrary matrix in \(M_{n \X n}(F)\).
 (\RED{Now the tricky part.})
 In particular, there exists \(B\) in \(M_{n \X n}(F)\) such that \(B = \frac1{2} A\) \MAROON{(2)}.
@@ -590,11 +590,11 @@ Now we claim that \(B + (-B^\top)\) is skew-symmetric, since
                    & = -(B + (-B^\top)), & \text{just trivial}
 \end{align*}
 and by \ATHM{1.2}(3), \(B + B^\top\) is symmetric.
-So by definition of \(W_1 + W_2\), \((B + (-B^\top)) + (B + B^\top) \in W_1 + W_2\).
-That is, by \MAROON{(3)}, \(A \in W_1 + W_2\).
-Since \(A\) is arbitrary, we have \(M_{n \X n}(F) \subseteq W_1 + W_2\).
+So by definition of \(\W_1 + \W_2\), \((B + (-B^\top)) + (B + B^\top) \in \W_1 + \W_2\).
+That is, by \MAROON{(3)}, \(A \in \W_1 + \W_2\).
+Since \(A\) is arbitrary, we have \(M_{n \X n}(F) \subseteq \W_1 + \W_2\).
 
-So we have \(W_1 \cap W_2 = \{ O_{n \X n} \}\) and \(M_{n \X n} = W_1 + W_2\), hence \(M_{n \X n} = W_1 \oplus W_2\), as desired.
+So we have \(\W_1 \cap \W_2 = \{ O_{n \X n} \}\) and \(M_{n \X n} = \W_1 + \W_2\), hence \(M_{n \X n} = \W_1 \oplus \W_2\), as desired.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.29}
@@ -603,87 +603,87 @@ Define
 \[
     W_1 = \{ A \in M_{n \X n}(F) : A_{ij} = 0 \text{ whenever } i \le j \}
 \]
-and \(W_2\) to be the set of all symmetric \(n \X n\) matrices with entries from \(F\).
-(It's trivial and already shown that) Both \(W_1\) and \(W_2\) are subspaces of \(M_{n \X n}(F)\).
-Prove that \(M_{n \X n}(F) = W_1 \oplus W_2\).
+and \(\W_2\) to be the set of all symmetric \(n \X n\) matrices with entries from \(F\).
+(It's trivial and already shown that) Both \(\W_1\) and \(\W_2\) are subspaces of \(M_{n \X n}(F)\).
+Prove that \(M_{n \X n}(F) = \W_1 \oplus \W_2\).
 Compare this exercise with \EXEC{1.3.28}.
 \end{exercise}
 
 \begin{proof}
-First we show \(W_1 \cap W_2 = \{ O_{n \X n} \}\).
-Suppose \(A \in W_1 \cap W_2\) but \(A \ne O_{n \X n}\).
+First we show \(\W_1 \cap \W_2 = \{ O_{n \X n} \}\).
+Suppose \(A \in \W_1 \cap \W_2\) but \(A \ne O_{n \X n}\).
 Then there exists \(1 \le i \le n\) and \(1 \le j \le n\) such that \(A_{ij} \ne 0\).
-Also by definition of \(W_1\) and \(W_2\) we have \(A_{ij} = 0\) whenever \(i \le j\) \MAROON{(1)} and \(A^\top = A\) \MAROON{(2)}.
+Also by definition of \(\W_1\) and \(\W_2\) we have \(A_{ij} = 0\) whenever \(i \le j\) \MAROON{(1)} and \(A^\top = A\) \MAROON{(2)}.
 So by \MAROON{(1)} we must have \(i > j\) \MAROON{(3)}.
 And by definition of transpose we have \((A^\top)_{ij} = A_{ji}\);
 but by \MAROON{(2)} that implies \(A_{ij} = A_{ji}\), so we have \(A_{ji} \ne 0\).
-But by \MAROON{(3)} we have \(j < i\), which implies \(A\) violates the condition of \(W_1\) so does not belong to \(W_1\), which is a contradiction.
+But by \MAROON{(3)} we have \(j < i\), which implies \(A\) violates the condition of \(\W_1\) so does not belong to \(\W_1\), which is a contradiction.
 Hence \(A\) must be equal to \(O_{n \X n}\).
 
-Now we show that \(M_{n \X n} \subseteq W_1 + W_2\).
-(Again the other direction is automatically satisfied since \(W_1 + W_2\) is a subspace).
+Now we show that \(M_{n \X n} \subseteq \W_1 + \W_2\).
+(Again the other direction is automatically satisfied since \(\W_1 + \W_2\) is a subspace).
 Suppose \(A\) is an arbitrary matrix in \(M_{n \X n}\).
 Then let \(B\) be a symmetric matrix such that \(B_{ij} = B_{ji} = A_{ij}\) when \(i \le j\).
-Then \(A - B\) is a matrix satisfying \(W_1\)'s condition, and \(B\) is a symmetric matrix.
-So by definition of \(W_1 + W_2\), \((A - B) + B \in W_1 + W_2\).
-That is, \(A \in W_1 + W_2\).
-Since \(A\) is arbitrary, we have \(M_{n \X n} \subseteq W_1 + W_2\).
+Then \(A - B\) is a matrix satisfying \(\W_1\)'s condition, and \(B\) is a symmetric matrix.
+So by definition of \(\W_1 + \W_2\), \((A - B) + B \in \W_1 + \W_2\).
+That is, \(A \in \W_1 + \W_2\).
+Since \(A\) is arbitrary, we have \(M_{n \X n} \subseteq \W_1 + \W_2\).
 
-So we have \(W_1 \cap W_2 = \{ O_{n \X n} \}\) and \(M_{n \X n} = W_1 + W_2\), hence \(M_{n \X n} = W_1 \oplus W_2\), as desired.
+So we have \(\W_1 \cap \W_2 = \{ O_{n \X n} \}\) and \(M_{n \X n} = \W_1 + \W_2\), hence \(M_{n \X n} = \W_1 \oplus \W_2\), as desired.
 
 Compared to \EXEC{1.3.28}, we can use \emph{different} pairs of subspaces to ``directly sum'' to the whole space.
-In general, the pair \((W_1, W_2)\) is \emph{not} necessarily unique.
+In general, the pair \((\W_1, \W_2)\) is \emph{not} necessarily unique.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.30}
-Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\).
-Prove that \(V\) is the direct sum of \(W_1\) and \(W_2\) if and only if each vector in \(V\) can be uniquely written as \(x_1 + x_2\), where \(x_1 \in W_1\) and \(x_2 \in W_2\).
+Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\).
+Prove that \(\V\) is the direct sum of \(\W_1\) and \(\W_2\) if and only if each vector in \(\V\) can be uniquely written as \(x_1 + x_2\), where \(x_1 \in \W_1\) and \(x_2 \in \W_2\).
 \end{exercise}
 
 \begin{proof}\ 
 
-\(\Longrightarrow\): Suppose \(V = W_1 \oplus W_2\).
-Now suppose there is \(v \in V\) such that \(v = u_1 + u_2 = v_1 + v_2\) \MAROON{(1)} where \(u_1, v_1 \in W_1\) and \(u_2, v_2 \in W_2\).
+\(\Longrightarrow\): Suppose \(\V = \W_1 \oplus \W_2\).
+Now suppose there is \(v \in \V\) such that \(v = u_1 + u_2 = v_1 + v_2\) \MAROON{(1)} where \(u_1, v_1 \in \W_1\) and \(u_2, v_2 \in \W_2\).
 We will show that \(u_1 = v_1\) and \(u_2 = v_2\).
 Then by rearranging equation in \MAROON{(1)}, we have \(u_1 - v_1 = u_2 - v_2\) \MAROON{(2)}.
-Since \(u_1, v_1 \in W_1\), we have \(u_1 - v_1 \in W_1\); similarly we get \(u_2 - v_2 \in W_2\).
-But by \MAROON{(2)}, we further get \(u_1 - v_1 \in W_2\) and \(u_2 - v_2 \in W_1\), hence we have \(u_1 - v_1 \in W_1 \cap W_2 = \{ \OV \}\) and \(u_2 - v_2 \in W_1 \cap W_2 = \{ \OV \}\).
+Since \(u_1, v_1 \in \W_1\), we have \(u_1 - v_1 \in \W_1\); similarly we get \(u_2 - v_2 \in \W_2\).
+But by \MAROON{(2)}, we further get \(u_1 - v_1 \in \W_2\) and \(u_2 - v_2 \in \W_1\), hence we have \(u_1 - v_1 \in \W_1 \cap \W_2 = \{ \OV \}\) and \(u_2 - v_2 \in \W_1 \cap \W_2 = \{ \OV \}\).
 That is, both \(u_1 - v_1 = \OV\) and \(u_2 - v_2 = \OV\) \MAROON{(3)}.
 So again by rearranging \MAROON{(3)}, we have \(u_1 = v_1\) and \(u_2 = v_2\), as desired.
 
-\(\Longleftarrow\): Now suppose any \(v \in V\) can be uniquely written as \(x_1 + x_2\), where \(x_1 \in W_1\) and \(x_2 \in W_2\).
-Will will show that \(V = W_1 \oplus W_2\).
-But the supposition directly implies \(V \subseteq W_1 + W_2\) (and the other direction is automatically implied since \(W_1 + W_2\) is a subspace) so we have \(V = W_1 + W_2\).
-So we only need to prove \(W_1 \cap W_2 = \{ \OV \}\).
-For the sake of contradiction, suppose \(v \in W_1 \cap W_2\) but \(v \ne \OV\).
-So in particular, \(v \in W_1\) and \(v \in W_2\).
+\(\Longleftarrow\): Now suppose any \(v \in \V\) can be uniquely written as \(x_1 + x_2\), where \(x_1 \in \W_1\) and \(x_2 \in \W_2\).
+Will will show that \(\V = \W_1 \oplus \W_2\).
+But the supposition directly implies \(\V \subseteq \W_1 + \W_2\) (and the other direction is automatically implied since \(\W_1 + \W_2\) is a subspace) so we have \(\V = \W_1 + \W_2\).
+So we only need to prove \(\W_1 \cap \W_2 = \{ \OV \}\).
+For the sake of contradiction, suppose \(v \in \W_1 \cap \W_2\) but \(v \ne \OV\).
+So in particular, \(v \in \W_1\) and \(v \in \W_2\).
 And by (VS 3) (VS 1), we have \(v = v + \OV = \OV + v\).
-But that implies \(v = v + \OV\) where \(v \in W_1\) and \(\OV \in W_2\)(since \(W_2\) is a subspace), and \(v = \OV + v\) where \(\OV \in W_1\)(since \(W_1\) is a subspace) and \(v \in W_2\).
-So \(v\) \emph{cannot} be uniquely written as \(x + y\) where \(x \in W_1\) and \(y \in W_2\), which is a contradiction.
-So \(W_1 \cap W_2 = \{ \OV \}\), so we have \(V = W_1 \oplus W_2\), as desired.
+But that implies \(v = v + \OV\) where \(v \in \W_1\) and \(\OV \in \W_2\)(since \(\W_2\) is a subspace), and \(v = \OV + v\) where \(\OV \in \W_1\)(since \(\W_1\) is a subspace) and \(v \in \W_2\).
+So \(v\) \emph{cannot} be uniquely written as \(x + y\) where \(x \in \W_1\) and \(y \in \W_2\), which is a contradiction.
+So \(\W_1 \cap \W_2 = \{ \OV \}\), so we have \(\V = \W_1 \oplus \W_2\), as desired.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.3.31}
-Let \(W\) be a subspace of a vector space \(V\) over a field \(F\).
-For any \(v \in V\) the set \(\{v\} + W = \{v + w : w \in W\}\) is called the \textbf{coset} of \(W\) \textbf{containing} \(v\).
-It is customary to \emph{denote} this coset by \(v + W\) rather than \(\{v\} + W\).
+Let \(\W\) be a subspace of a vector space \(\V\) over a field \(F\).
+For any \(v \in \V\) the set \(\{v\} + \W = \{v + w : w \in \W\}\) is called the \textbf{coset} of \(\W\) \textbf{containing} \(v\).
+It is customary to \emph{denote} this coset by \(v + \W\) rather than \(\{v\} + \W\).
 \begin{enumerate}
-    \item Prove that \(v + W\) is a \(subspace\) of \(V\) if and only if \(v \in W\).
-    \item Prove that \(v_1 + W = v_2 + W\) if and only if \(v_1 - v_2 \in W\).
+    \item Prove that \(v + \W\) is a \(subspace\) of \(\V\) if and only if \(v \in \W\).
+    \item Prove that \(v_1 + \W = v_2 + \W\) if and only if \(v_1 - v_2 \in \W\).
 \end{enumerate}
-Addition and scalar multiplication by scalars of \(F\) can be defined in the collection \(S = \{v + W: v \in V\}\) of all cosets of \(W\) as follows:
+Addition and scalar multiplication by scalars of \(F\) can be defined in the collection \(S = \{v + \W: v \in \V\}\) of all cosets of \(\W\) as follows:
 \[
     (v_1 + W) + (v_2 + W) = (v_1 + v_2) + W
 \]
-for all \(v_1, v_2 \in V\), and
+for all \(v_1, v_2 \in \V\), and
 \[
     a(v + W) = av + W
 \]
-for all \(v \in V\) and \(a \in F\).
+for all \(v \in \V\) and \(a \in F\).
 \begin{enumerate}
     \setcounter{enumi}{2}
     \item Prove that the preceding operations are \textbf{well defined};
-        that is, show that if \(v_1 + W = v_1' + W\) and \(v_2 + W = v_2' + W\), then
+        that is, show that if \(v_1 + \W = v_1' + \W\) and \(v_2 + \W = v_2' + \W\), then
         \[
             (v_1 + W) + (v_2 + W) = (v_1' + W) + (v_2' + W)
         \]
@@ -693,7 +693,7 @@ for all \(v \in V\) and \(a \in F\).
         \]
         for all \(a \in F\).
     \item Prove that the set \(S\) is \emph{a vector space} with the operations defined in (c).
-    This vector space is called the \textbf{quotient space \(V\) modulo \(W\)} and is denoted by \(V / W\).
+    This vector space is called the \textbf{quotient space \(\V\) modulo \(\W\)} and is denoted by \(\V / \W\).
 \end{enumerate}
 \end{exercise}
 
@@ -707,9 +707,9 @@ for all \(v \in V\) and \(a \in F\).
 \end{note}
 
 \begin{note}
-因為我們最終是要證明\ \(S\) 是一個\ vector space (with \(+, \cdot\) defined in part(c))，換句話說我們要「想像」 \(S\) 的\ element 是一個 vector，而\ \(S\) 的\ element 長的就像\ \(v_1 + W\)、\(v_2 + W\) 等等。
-所以根據前面提到的\ axiom of substitution，part(c) 的意思就是如果\ \(v_1 + W\) 「這個 vector」相等於\ \(v_1' + W\) 「這個\ vector」，且\ \(v_2 + W\)「這個\ vector」相等於\ \(v_2' + W\) 「這個\ vector」，則\ \((v_1 + W) + (v_2 + W)\)「這個\ vector」相等於 \((v_1' + W) + (v_2' + W)\) 「這個\ vector」。
-注意，\(v_1 + W = v_1' + W\) 不能得出\ \(v_1 = v_1'\) (可用\ part(a)(b) 舉出反例)；
+因為我們最終是要證明\ \(S\) 是一個\ vector space (with \(+, \cdot\) defined in part(c))，換句話說我們要「想像」 \(S\) 的\ element 是一個 vector，而\ \(S\) 的\ element 長的就像\ \(v_1 + \W\)、\(v_2 + \W\) 等等。
+所以根據前面提到的\ axiom of substitution，part(c) 的意思就是如果\ \(v_1 + \W\) 「這個 vector」相等於\ \(v_1' + \W\) 「這個\ vector」，且\ \(v_2 + \W\)「這個\ vector」相等於\ \(v_2' + \W\) 「這個\ vector」，則\ \((v_1 + \W) + (v_2 + \W)\)「這個\ vector」相等於 \((v_1' + \W) + (v_2' + \W)\) 「這個\ vector」。
+注意，\(v_1 + \W = v_1' + \W\) 不能得出\ \(v_1 = v_1'\) (可用\ part(a)(b) 舉出反例)；
 實際上在推導\ \(S\) 是個\ vector space 時，對於\ S 來說，\(v_1, v_1'\) 根本不是\ vector!
 \end{note}
 
@@ -717,70 +717,70 @@ for all \(v \in V\) and \(a \in F\).
 
 \begin{enumerate}
 \item
-\(\Longrightarrow\): Suppose \(v + W\) is a subspace of \(V\), we have to show \(v \in W\).
-Since \(v + W\) is a subspace of \(V\), we have \(\OV \in v + W\).
-But by (VS 4) of \(V\), \(\OV = v + (-v)\), so \(v + (-v)\) is also in \(v + W\).
-And by definition of \(v + W\) (or \(\{ v \} + W\), precisely), since we can only get \(v\) in the singleton set \(\{ v \}\), \(-v\) must be in \(W\).
-But since \(W\) is also a subspace of \(V\), by scalar multiplication we have \(-(-v) = v\) is also in \(W\), as desired.
+\(\Longrightarrow\): Suppose \(v + \W\) is a subspace of \(\V\), we have to show \(v \in \W\).
+Since \(v + \W\) is a subspace of \(\V\), we have \(\OV \in v + \W\).
+But by (VS 4) of \(\V\), \(\OV = v + (-v)\), so \(v + (-v)\) is also in \(v + \W\).
+And by definition of \(v + \W\) (or \(\{ v \} + \W\), precisely), since we can only get \(v\) in the singleton set \(\{ v \}\), \(-v\) must be in \(\W\).
+But since \(\W\) is also a subspace of \(\V\), by scalar multiplication we have \(-(-v) = v\) is also in \(\W\), as desired.
 
-\(\Longleftarrow\): Now suppose \(v \in W\), we have to show \(v + W\) is a subspace of \(V\).
-Since \(v \in W\) and \(W\) is a subspace, by (VS 4) of \(W\) we have \(-v \in W\).
-So we have \(v \in \{ v \}\) and \(-v \in W\), then by definition of \(v + W\), we have \(v + (-v) \in v + W\);
-that is, \(\OV = v + -v \in v + W\).
+\(\Longleftarrow\): Now suppose \(v \in \W\), we have to show \(v + \W\) is a subspace of \(\V\).
+Since \(v \in \W\) and \(\W\) is a subspace, by (VS 4) of \(\W\) we have \(-v \in \W\).
+So we have \(v \in \{ v \}\) and \(-v \in \W\), then by definition of \(v + \W\), we have \(v + (-v) \in v + \W\);
+that is, \(\OV = v + -v \in v + \W\).
 
-Now let arbitrary \(v_1, v_2 \in v + W\), we have to show \(v_1 + v_2 \in v + W\).
-By definition of \(v + W\), we have \(v_1 = v + w_1\) and \(v_2 = v + w_2\) where \(v\) is of course belongs to \(\{ v \}\) and \(w_1, w_2 \in W\).
+Now let arbitrary \(v_1, v_2 \in v + \W\), we have to show \(v_1 + v_2 \in v + \W\).
+By definition of \(v + \W\), we have \(v_1 = v + w_1\) and \(v_2 = v + w_2\) where \(v\) is of course belongs to \(\{ v \}\) and \(w_1, w_2 \in \W\).
 And trivially we have \(v_1 + v_2 = (v + w_1) + (v + w_2) = v + (v + w_1 + w_2)\) \MAROON{(1)}.
-But since \(v\) is also in \(W\) by supposition, by closed addition of the subspace \(W\), we have \(v + w_1 + w_2 \in W\).
-So all in all we have \(v \in \{ v \}\) and \(v + w_1 + w_2 \in W\), so by definition of \(v + W\) we have \(v + (v + w_1 + w_2) \in v + W\);
-that is, by \MAROON{(1)}, \(v_1 + v_2 \in v + W\), as desired.
+But since \(v\) is also in \(\W\) by supposition, by closed addition of the subspace \(\W\), we have \(v + w_1 + w_2 \in \W\).
+So all in all we have \(v \in \{ v \}\) and \(v + w_1 + w_2 \in \W\), so by definition of \(v + \W\) we have \(v + (v + w_1 + w_2) \in v + \W\);
+that is, by \MAROON{(1)}, \(v_1 + v_2 \in v + \W\), as desired.
 
-Now let \(w \in v + W\) and \(c\) be a scalar of \(F\), we have to show \(cw \in v + W\).
-Again similarly we have \(w = v + w'\) where \(v\) is of course in \(\{ v \}\) and \(w' \in W\).
+Now let \(w \in v + \W\) and \(c\) be a scalar of \(F\), we have to show \(cw \in v + \W\).
+Again similarly we have \(w = v + w'\) where \(v\) is of course in \(\{ v \}\) and \(w' \in \W\).
 
 And \(c w = c (v + w') = cv + cw' = (1 + (c - 1))v + cw' = v + ((c - 1)v + cw')\) \MAROON{(2)}.
 
-But since \(v \in W\), by closed scalar multiplication of \(W\) we have \((c - 1)v \in W\) and \(cw' \in W\), and by closed addition of \(W\) we have \((c - 1)v + cw' \in W\).
-So we have \(v \in \{ v \}\) and \((c - 1)v + cw' \in W\), by definition of \(v + W\), \(v + ((c - 1)v + cw') \in v + W\).
-That is, by \MAROON{(2)}, \(cw \in v + W\), as desired.
+But since \(v \in \W\), by closed scalar multiplication of \(\W\) we have \((c - 1)v \in \W\) and \(cw' \in \W\), and by closed addition of \(\W\) we have \((c - 1)v + cw' \in \W\).
+So we have \(v \in \{ v \}\) and \((c - 1)v + cw' \in \W\), by definition of \(v + \W\), \(v + ((c - 1)v + cw') \in v + \W\).
+That is, by \MAROON{(2)}, \(cw \in v + \W\), as desired.
 
-So by \THM{1.3}, \(v + W\) is a subspace of \(V\).
+So by \THM{1.3}, \(v + \W\) is a subspace of \(\V\).
 
 \item
-\(\Longrightarrow\): Suppose \(v_1 + W = v_2 + W\), we have to show \(v_1 - v_2 \in W\).
-So let \(w \in W\), by definition of \(v_1 + W\), \(v_1 + w \in v_1 + W\).
-Also, since \(v_1 + W = v_2 + W\), we have \(v_1 + w \in v_2 + W\).
-And by definition of \(v_2 + W\), \(v_1 + w = v_2 + w'\) \MAROON{(3)} where \(w' \in W\).
+\(\Longrightarrow\): Suppose \(v_1 + \W = v_2 + \W\), we have to show \(v_1 - v_2 \in \W\).
+So let \(w \in \W\), by definition of \(v_1 + \W\), \(v_1 + w \in v_1 + \W\).
+Also, since \(v_1 + \W = v_2 + \W\), we have \(v_1 + w \in v_2 + \W\).
+And by definition of \(v_2 + \W\), \(v_1 + w = v_2 + w'\) \MAROON{(3)} where \(w' \in \W\).
 And from \MAROON{(3)} we can derive \(v_1 - v_2 = w' - w\) \MAROON{(4)}.
-But since \(w \in W\) and \(w' \in W\), by closed addition and scalar multiplication, \(w' - w \in W\), and by \MAROON{(4)} that means \(v_1 - v_2 \in W\), as desired.
+But since \(w \in \W\) and \(w' \in \W\), by closed addition and scalar multiplication, \(w' - w \in \W\), and by \MAROON{(4)} that means \(v_1 - v_2 \in \W\), as desired.
 
-\(\Longleftarrow\): Now suppose \(v_1 - v_2 \in W\), we have to show \(v_1 + W = v_2 + W\).
-So we show this by showing \(v_1 + W \subseteq v_2 + W\) and \(v_2 + W \subseteq v_1 + W\).
+\(\Longleftarrow\): Now suppose \(v_1 - v_2 \in \W\), we have to show \(v_1 + \W = v_2 + \W\).
+So we show this by showing \(v_1 + \W \subseteq v_2 + \W\) and \(v_2 + \W \subseteq v_1 + \W\).
 
-So let \(v \in v_1 + W\).
-Then by definition of \(v_1 + W\), \(v = v_1 + w\) where \(w \in W\), and in particular \(w = v - v_1\) \MAROON{(5)}.
-Also, since \(v_1 - v_2 \in W\), by closed addition, \((v_1 - v_2) + w \in W\).
-That is, by \MAROON{(5)}, \((v_1 - v_2) + (v - v_1) \in W\);
-that is, \(v - v_2 \in W\) \MAROON{(6)}.
-But since \(v_2\) of course belongs to \(\{ v_2 \}\), then by \MAROON{(6)} and definition of \(v_2 + W\), \(v_2 + (v - v_2) \in v_2 + W\), which implies \(v \in v_2 + W\).
+So let \(v \in v_1 + \W\).
+Then by definition of \(v_1 + \W\), \(v = v_1 + w\) where \(w \in \W\), and in particular \(w = v - v_1\) \MAROON{(5)}.
+Also, since \(v_1 - v_2 \in \W\), by closed addition, \((v_1 - v_2) + w \in \W\).
+That is, by \MAROON{(5)}, \((v_1 - v_2) + (v - v_1) \in \W\);
+that is, \(v - v_2 \in \W\) \MAROON{(6)}.
+But since \(v_2\) of course belongs to \(\{ v_2 \}\), then by \MAROON{(6)} and definition of \(v_2 + \W\), \(v_2 + (v - v_2) \in v_2 + \W\), which implies \(v \in v_2 + \W\).
 
-Now let \(v \in v_2 + W\).
-Then by definition of \(v_2 + W\), \(v = v_2 + w\) where \(w \in W\), and in particular \(w = v - v_2\) \MAROON{(7)}.
-Also, since \(v_1 - v_2 \in W\), by closed scalar multiplication, \(-(v_1 - v_2) = v_2 - v_1 \in W\);
-and by closed addition, \((v_2 - v_1) + w \in W\).
-That is, by \MAROON{(7)}, \((v_2 - v_1) + (v - v_2) \in W\);
-that is, \(v - v_1 \in W\) \MAROON{(8)}.
-But since \(v_1\) of course belongs to \(\{ v_1 \}\), then by \MAROON{(8)} and definition of \(v_1 + W\), \(v_1 + (v - v_1) \in v_1 + W\), which implies \(v \in v_1 + W\).
+Now let \(v \in v_2 + \W\).
+Then by definition of \(v_2 + \W\), \(v = v_2 + w\) where \(w \in \W\), and in particular \(w = v - v_2\) \MAROON{(7)}.
+Also, since \(v_1 - v_2 \in \W\), by closed scalar multiplication, \(-(v_1 - v_2) = v_2 - v_1 \in \W\);
+and by closed addition, \((v_2 - v_1) + w \in \W\).
+That is, by \MAROON{(7)}, \((v_2 - v_1) + (v - v_2) \in \W\);
+that is, \(v - v_1 \in \W\) \MAROON{(8)}.
+But since \(v_1\) of course belongs to \(\{ v_1 \}\), then by \MAROON{(8)} and definition of \(v_1 + \W\), \(v_1 + (v - v_1) \in v_1 + \W\), which implies \(v \in v_1 + \W\).
 
-So we have shown \(v_1 + W = v_2 + W\), as desired.
+So we have shown \(v_1 + \W = v_2 + \W\), as desired.
 
 \item
-Suppose \(v_1 + W = v_1' + W\) \MAROON{(9)} and \(v_2 + W = v_2' + W\) \MAROON{(10)}.
+Suppose \(v_1 + \W = v_1' + \W\) \MAROON{(9)} and \(v_2 + \W = v_2' + \W\) \MAROON{(10)}.
 We have to show
 \[
     (v_1 + W) + (v_2 + W) = (v_1' + W) + (v_2' + W)
 \]
-for all \(v_1, v_2 \in V\), and
+for all \(v_1, v_2 \in \V\), and
 \[
     a(v_1 + W) = a(v_1' + W)
 \]
@@ -794,141 +794,141 @@ and
     av_1 + W = av_1' + W.
 \]
 
-We first show addition is well-defined by showing \((v_1 + v_2) + W \subseteq (v_1' + v_2' + W)\) and \((v_1' + v_2') + W \subseteq (v_1 + v_2 + W)\).
+We first show addition is well-defined by showing \((v_1 + v_2) + \W \subseteq (v_1' + v_2' + \W)\) and \((v_1' + v_2') + \W \subseteq (v_1 + v_2 + \W)\).
 
-So suppose \(v \in (v_1 + v_2) + W\);
-by definition of \((v_1 + v_2) + W\), \(v = (v_1 + v_2) + w\) where \(w \in W\).
+So suppose \(v \in (v_1 + v_2) + \W\);
+by definition of \((v_1 + v_2) + \W\), \(v = (v_1 + v_2) + w\) where \(w \in \W\).
 In particular, \(w = v - (v_1 + v_2)\) \MAROON{(11)}.
 
-Also, by \MAROON{(9)} and part(b), \(v_1 - v_1' \in W\) \MAROON{(12)}, and by \MAROON{(10)} and part(b), \(v_2 - v_2' \in W\) \MAROON{(13)}.
-With \(w \in W\) and \(\MAROON{(12)}\) and closed addition of \(W\), we have \(w + (v_1 - v_1') \in W\).
-That is, by \MAROON{(11)}, \((v - (v_1 + v_2)) + (v_1 - v_1') \in W\);
-that is, \(v - (v_1' + v_2) \in W\). \MAROON{(14)}.
+Also, by \MAROON{(9)} and part(b), \(v_1 - v_1' \in \W\) \MAROON{(12)}, and by \MAROON{(10)} and part(b), \(v_2 - v_2' \in \W\) \MAROON{(13)}.
+With \(w \in \W\) and \(\MAROON{(12)}\) and closed addition of \(\W\), we have \(w + (v_1 - v_1') \in \W\).
+That is, by \MAROON{(11)}, \((v - (v_1 + v_2)) + (v_1 - v_1') \in \W\);
+that is, \(v - (v_1' + v_2) \in \W\). \MAROON{(14)}.
 
-Similarly With \MAROON{(14)} and \(\MAROON{(13)}\) and closed addition of \(W\), we have \((v - (v_1' + v_2)) + (v_2 - v_2') \in W\);
-that is, \(v - (v_1' + v_2') \in W\) \MAROON{(15)}.
+Similarly With \MAROON{(14)} and \(\MAROON{(13)}\) and closed addition of \(\W\), we have \((v - (v_1' + v_2)) + (v_2 - v_2') \in \W\);
+that is, \(v - (v_1' + v_2') \in \W\) \MAROON{(15)}.
 
-So, since \(v_1' + v_2'\) of course belongs to \(\{ v_1' + v_2' \}\), and \MAROON{(15)}, by definition of \((v_1' + v_2') + W\), we have \((v_1' + v_2') + (v - (v_1' + v_2')) \in (v_1' + v_2') + W\).
-That is, \(v \in (v_1' + v_2') + W\), as desired.
+So, since \(v_1' + v_2'\) of course belongs to \(\{ v_1' + v_2' \}\), and \MAROON{(15)}, by definition of \((v_1' + v_2') + \W\), we have \((v_1' + v_2') + (v - (v_1' + v_2')) \in (v_1' + v_2') + \W\).
+That is, \(v \in (v_1' + v_2') + \W\), as desired.
 
-Now suppose \(v \in (v_1' + v_2') + W\);
-then by definition of \((v_1' + v_2') + W\), \(v = (v_1' + v_2') + w\) where \(w \in W\).
+Now suppose \(v \in (v_1' + v_2') + \W\);
+then by definition of \((v_1' + v_2') + \W\), \(v = (v_1' + v_2') + w\) where \(w \in \W\).
 In particular, \(w = v - (v_1' + v_2')\) \MAROON{(16)}.
 
-Also, by \MAROON{(9)} and part(b), \(v_1 - v_1' \in W\), and by \MAROON{(10)} and part(b), \(v_2 - v_2' \in W\).
-In particular, by closed scalar multiplication of \(W\), \(-(v_1 - v_1') = v_1' - v_1 \in W\) \MAROON{(17)} and \(-(v_2 - v_2') = v_2' - v_2 \in W\) \MAROON{(18)}.
-With \(w \in W\) and \(\MAROON{(17)}\) and closed addition of \(W\), we have \(w + (v_1' - v_1) \in W\).
-That is, by \MAROON{(16)}, \((v - (v_1' + v_2')) + (v_1' - v_1) \in W\);
-that is, \(v - (v_1 + v_2') \in W\). \MAROON{(19)}.
+Also, by \MAROON{(9)} and part(b), \(v_1 - v_1' \in \W\), and by \MAROON{(10)} and part(b), \(v_2 - v_2' \in \W\).
+In particular, by closed scalar multiplication of \(\W\), \(-(v_1 - v_1') = v_1' - v_1 \in \W\) \MAROON{(17)} and \(-(v_2 - v_2') = v_2' - v_2 \in \W\) \MAROON{(18)}.
+With \(w \in \W\) and \(\MAROON{(17)}\) and closed addition of \(\W\), we have \(w + (v_1' - v_1) \in \W\).
+That is, by \MAROON{(16)}, \((v - (v_1' + v_2')) + (v_1' - v_1) \in \W\);
+that is, \(v - (v_1 + v_2') \in \W\). \MAROON{(19)}.
 
-Similarly With \MAROON{(19)} and \(\MAROON{(18)}\) and closed addition of \(W\), we have \((v - (v_1 + v_2')) + (v_2' - v_2) \in W\);
-that is, \(v - (v_1 + v_2) \in W\) \MAROON{(20)}.
+Similarly With \MAROON{(19)} and \(\MAROON{(18)}\) and closed addition of \(\W\), we have \((v - (v_1 + v_2')) + (v_2' - v_2) \in \W\);
+that is, \(v - (v_1 + v_2) \in \W\) \MAROON{(20)}.
 
-So, since \(v_1 + v_2\) of course belongs to \(\{ v_1 + v_2 \}\), and \MAROON{(20)}, by definition of \((v_1 + v_2) + W\), we have \((v_1 + v_2) + (v - (v_1 + v_2)) \in (v_1 + v_2) + W\).
-That is, \(v \in (v_1 + v_2) + W\), as desired.
+So, since \(v_1 + v_2\) of course belongs to \(\{ v_1 + v_2 \}\), and \MAROON{(20)}, by definition of \((v_1 + v_2) + \W\), we have \((v_1 + v_2) + (v - (v_1 + v_2)) \in (v_1 + v_2) + \W\).
+That is, \(v \in (v_1 + v_2) + \W\), as desired.
 
-So we have shown \((v_1 + v_2) + W = (v_1' + v_2' + W)\), that is, \((v_1 + W) + (v_2 + W) = (v_1' + W) + (v_2' + W)\), so the definition of addition is well defined.
+So we have shown \((v_1 + v_2) + \W = (v_1' + v_2' + \W)\), that is, \((v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W)\), so the definition of addition is well defined.
 
-Now We show scalar multiplication is well-defined by showing \(av_1 + W \subseteq av_1' + W\) and \(av_1' + W \subseteq av_1 + W\) (given arbitrary \(a \in F\)).
+Now We show scalar multiplication is well-defined by showing \(av_1 + \W \subseteq av_1' + \W\) and \(av_1' + \W \subseteq av_1 + \W\) (given arbitrary \(a \in F\)).
 
-So suppose \(v \in av_1 + W\).
-Then \(v = av_1 + w\) where \(w \in W\).
+So suppose \(v \in av_1 + \W\).
+Then \(v = av_1 + w\) where \(w \in \W\).
 In particular \(w = v - av_1\).
-Again by part(b) we have \(v_1 - v_1' \in W\).
-And by closed scalar multiplication of \(W\), we have \((a(v_1 - v_1') = av_1 - av_1' \in W\).
-so we have \(w + (av_1 - av_1') \in W\);
-that is, \((v - av_1) + (av_1 - av_1') \in W\);
-that is, \(v - av_1' \in W\).
-So by definition of \(av_1' + W\), \(av_1' + (v - av_1') \in av_1' + W\);
-that is, \(v \in av_1' + W\), as desired.
+Again by part(b) we have \(v_1 - v_1' \in \W\).
+And by closed scalar multiplication of \(\W\), we have \((a(v_1 - v_1') = av_1 - av_1' \in \W\).
+so we have \(w + (av_1 - av_1') \in \W\);
+that is, \((v - av_1) + (av_1 - av_1') \in \W\);
+that is, \(v - av_1' \in \W\).
+So by definition of \(av_1' + \W\), \(av_1' + (v - av_1') \in av_1' + \W\);
+that is, \(v \in av_1' + \W\), as desired.
 
-Now suppose \(v \in av_1' + W\).
-Then \(v = av_1' + w\) where \(w \in W\).
+Now suppose \(v \in av_1' + \W\).
+Then \(v = av_1' + w\) where \(w \in \W\).
 In particular \(w = v - av_1'\).
-Again by part(b) we have \(v_1 - v_1' \in W\).
-And by closed scalar multiplication of \(W\), we have \(-(v_1 - v_1') = v_1' - v_1 \in W\) and \(a(v_1' - v_1) = av_1' - av_1 \in W\).
-so we have \(w + (av_1' - av_1) \in W\);
-that is, \((v - av_1') + (av_1' - av_1) \in W\);
-that is, \(v - av_1 \in W\).
-So by definition of \(av_1 + W\), \(av_1 + (v - av_1) \in av_1 + W\);
-that is, \(v \in av_1 + W\), as desired.
+Again by part(b) we have \(v_1 - v_1' \in \W\).
+And by closed scalar multiplication of \(\W\), we have \(-(v_1 - v_1') = v_1' - v_1 \in \W\) and \(a(v_1' - v_1) = av_1' - av_1 \in \W\).
+so we have \(w + (av_1' - av_1) \in \W\);
+that is, \((v - av_1') + (av_1' - av_1) \in \W\);
+that is, \(v - av_1 \in \W\).
+So by definition of \(av_1 + \W\), \(av_1 + (v - av_1) \in av_1 + \W\);
+that is, \(v \in av_1 + \W\), as desired.
 
-So we have shown \(av_1 + W = av_1' + W\), that is, \(a(v_1 + W) = a(v_1' + W)\), so the scalar multiplication is well defined.
+So we have shown \(av_1 + \W = av_1' + \W\), that is, \(a(v_1 + \W) = a(v_1' + \W)\), so the scalar multiplication is well defined.
 
 \item
 Since in this case we just directly construct \(S\), we cannot use something like \THM{1.3} to show that \(S\) is a vector space(a subsapce of some other vector space);
 instead, we have to show \(S\) satisfies all the conditions in \DEF{1.1}.
-BTW, it's in fact trivial by using (VS 1) to (VS 8) of \(V\), although tedious.
+BTW, it's in fact trivial by using (VS 1) to (VS 8) of \(\V\), although tedious.
 
 So first we show \(+\) and \(\cdot\) is closed under \(S\).
-So let \(v_1 + W\), \(v_2 + W\) and \(v_3 + W\) belong to \(S\).
-By definition of \(S\), \(v_1, v_2 \in V\).
-But since \(V\) is a vector space, \(v_1 + v_2 \in V\).
-So again by definition of \(S\), \((v_1 + v_2) + W \in S\).
-That is, by definition of \(+\) of \(S\), \((v_1 + W) + (v_2 + W) \in S\), so \(+\) is closed under \(S\).
+So let \(v_1 + \W\), \(v_2 + \W\) and \(v_3 + \W\) belong to \(S\).
+By definition of \(S\), \(v_1, v_2 \in \V\).
+But since \(\V\) is a vector space, \(v_1 + v_2 \in \V\).
+So again by definition of \(S\), \((v_1 + v_2) + \W \in S\).
+That is, by definition of \(+\) of \(S\), \((v_1 + \W) + (v_2 + \W) \in S\), so \(+\) is closed under \(S\).
 Now let \(c \in F\).
-Since \(v_1 \in V\), \(c v_1 \in V\).
-So again by definition of \(W\), \(c v_1 + W \in S\).
-That is, by definition of \(\cdot\) of \(S\), \(c(v_1 + W) \in S\), so \(\cdot\) is closed under \(S\).
+Since \(v_1 \in \V\), \(c v_1 \in \V\).
+So again by definition of \(\W\), \(c v_1 + \W \in S\).
+That is, by definition of \(\cdot\) of \(S\), \(c(v_1 + \W) \in S\), so \(\cdot\) is closed under \(S\).
 
 For (VS 1),
 \begin{align*}
-    (v_1 + W) + (v_2 + W) & = (v_1 + v_2) + W & \text{by def of \(+\) of \(S\)} \\
-                          & = (v_2 + v_1) + W & \text{by (VS 1) of \(V\)} \\
-                          & = (v_2 + W) + (v_1 + W). & \text{by def of \(+\) of \(S\)}
+    (v_1 + \W) + (v_2 + \W) & = (v_1 + v_2) + \W & \text{by def of \(+\) of \(S\)} \\
+                          & = (v_2 + v_1) + \W & \text{by (VS 1) of \(\V\)} \\
+                          & = (v_2 + \W) + (v_1 + \W). & \text{by def of \(+\) of \(S\)}
 \end{align*}
 
 For (VS 2),
 \begin{align*}
-    ((v_1 + W) + (v_2 + W)) + (v_3 + W) & = ((v_1 + v_2) + W) + (v_3 + W) & \text{by def of \(+\) of \(S\)} \\
-                          & = ((v_1 + v_2) + v_3) + W & \text{by def of \(+\) of \(S\)} \\
-                          & = (v_1 + (v_2 + v_3)) + W & \text{by (VS 2) of \(V\)} \\
-                          & = (v_1 + (v_2 + v_3)) + W & \text{by def of \(+\) of \(S\)} \\
-                          & = (v_1 + W) + ((v_2 + v_3) + W) & \text{by def of \(+\) of \(S\)} \\
-                          & = (v_1 + W) + ((v_2 + W) + (v_3 + W)). & \text{by def of \(+\) of \(S\)}
+    ((v_1 + \W) + (v_2 + \W)) + (v_3 + \W) & = ((v_1 + v_2) + \W) + (v_3 + \W) & \text{by def of \(+\) of \(S\)} \\
+                          & = ((v_1 + v_2) + v_3) + \W & \text{by def of \(+\) of \(S\)} \\
+                          & = (v_1 + (v_2 + v_3)) + \W & \text{by (VS 2) of \(\V\)} \\
+                          & = (v_1 + (v_2 + v_3)) + \W & \text{by def of \(+\) of \(S\)} \\
+                          & = (v_1 + \W) + ((v_2 + v_3) + \W) & \text{by def of \(+\) of \(S\)} \\
+                          & = (v_1 + \W) + ((v_2 + \W) + (v_3 + \W)). & \text{by def of \(+\) of \(S\)}
 \end{align*}
 
-For (VS 3), there exists the zero vector \(\OV + W\) in \(S\), where \(\OV\) is the zero vector of \(V\), such that
+For (VS 3), there exists the zero vector \(\OV + \W\) in \(S\), where \(\OV\) is the zero vector of \(\V\), such that
 \begin{align*}
-    (v_1 + W) + (\OV + W) & = (v_1 + \OV) + W & \text{by def of \(+\) of \(S\)} \\
-                          & = v_1 + W. & \text{by (VS 3) of \(V\)}
+    (v_1 + \W) + (\OV + \W) & = (v_1 + \OV) + \W & \text{by def of \(+\) of \(S\)} \\
+                          & = v_1 + \W. & \text{by (VS 3) of \(\V\)}
 \end{align*}
 
-For (VS 4), given any \(v + W\) in \(S\), there exists the inverse \((-v) + W\), where \(-v\) is the inverse of \(v\) in the vector space \(V\), such that
+For (VS 4), given any \(v + \W\) in \(S\), there exists the inverse \((-v) + \W\), where \(-v\) is the inverse of \(v\) in the vector space \(\V\), such that
 \begin{align*}
-    (v + W) + ((-v) + W & = (v + (-v)) + W & \text{by def of \(+\) of \(S\)} \\
-                        & = \OV + W. & \text{by (VS 4) of \(V\)}
+    (v + \W) + ((-v) + \W & = (v + (-v)) + \W & \text{by def of \(+\) of \(S\)} \\
+                        & = \OV + \W. & \text{by (VS 4) of \(\V\)}
 \end{align*}
 
-For (VS 5), there exists scalar \(\IF \in F\), the multiplicative identity of vector space \(V\), such that given any \(v + W \in S\),
+For (VS 5), there exists scalar \(\IF \in F\), the multiplicative identity of vector space \(\V\), such that given any \(v + \W \in S\),
 \begin{align*}
-    \IF(v + W)& = \IF v + W & \text{by def of \(\cdot\) of \(S\)} \\
-                          & = v + W. & \text{by (VS 5) of \(V\)}
+    \IF(v + \W)& = \IF v + \W & \text{by def of \(\cdot\) of \(S\)} \\
+                          & = v + \W. & \text{by (VS 5) of \(\V\)}
 \end{align*}
 
-For (VS 6), given \(a, b \in F\), and given any \(v + W \in S\),
+For (VS 6), given \(a, b \in F\), and given any \(v + \W \in S\),
 \begin{align*}
-    (ab)(v + W) & = (ab)v + W & \text{by def of \(\cdot\) of \(S\)} \\
-                & = a(bv) + W & \text{by (VS 6) of \(V\)} \\
-                & = a(bv + W) & \text{by def of \(\cdot\) of \(S\)} \\
+    (ab)(v + \W) & = (ab)v + \W & \text{by def of \(\cdot\) of \(S\)} \\
+                & = a(bv) + \W & \text{by (VS 6) of \(\V\)} \\
+                & = a(bv + \W) & \text{by def of \(\cdot\) of \(S\)} \\
                 & = a(b(v + W)). & \text{same}
 \end{align*}
 
 For (VS 7),
 \begin{align*}
-    a((v_1 + W) + (v_2 + W)) & = a((v_1 + v_2) + W) & \text{by def of \(+\) of \(S\)} \\
-                             & = a(v_1 + v_2) + W & \text{by def of \(\cdot\) of \(S\)} \\
-                             & = (av_1 + av_2) + W & \text{by (VS 7) of \(V\)} \\
-                             & = (av_1 + W) + (av_2 + W) & \text{by def of \(+\) of \(S\)} \\
-                             & = a(v_1 + W) + a(v_2 + W). & \text{by def of \(\cdot\) of \(S\)}
+    a((v_1 + \W) + (v_2 + \W)) & = a((v_1 + v_2) + \W) & \text{by def of \(+\) of \(S\)} \\
+                             & = a(v_1 + v_2) + \W & \text{by def of \(\cdot\) of \(S\)} \\
+                             & = (av_1 + av_2) + \W & \text{by (VS 7) of \(\V\)} \\
+                             & = (av_1 + \W) + (av_2 + \W) & \text{by def of \(+\) of \(S\)} \\
+                             & = a(v_1 + \W) + a(v_2 + \W). & \text{by def of \(\cdot\) of \(S\)}
 \end{align*}
 
 For (VS 8),
 \begin{align*}
-    (a + b)((v + W) & = ((a + b)v) + W & \text{by def of \(\cdot\) of \(S\)} \\
-                             & = (av + bv) + W & \text{by (VS 8) of \(V\)} \\
-                             & = (av + W) + (bv + W) & \text{by def of \(+\) of \(S\)} \\
-                             & = a(v + W) + b(v + W). & \text{by def of \(\cdot\) of \(S\)}
+    (a + b)((v + \W) & = ((a + b)v) + \W & \text{by def of \(\cdot\) of \(S\)} \\
+                             & = (av + bv) + \W & \text{by (VS 8) of \(\V\)} \\
+                             & = (av + \W) + (bv + \W) & \text{by def of \(+\) of \(S\)} \\
+                             & = a(v + \W) + b(v + \W). & \text{by def of \(\cdot\) of \(S\)}
 \end{align*}
 
 So all the conditions in \DEF{1.1} are satisfied, so \(S\) with the corresponding addition and scalar multiplication is a vector space.
@@ -966,7 +966,7 @@ This is the placeholder theorem for \EXEC{1.3.23}:
 
 \BLUE{(1)} the the \emph{sum} of any two subspaces is still a subspace.
 
-\BLUE{(2)} given two subspaces \(W_1, W_2\), \(W_1 + W_2\) is the \emph{smallest subspace} that contains \(W_1 \cup W_2\).
+\BLUE{(2)} given two subspaces \(\W_1, \W_2\), \(\W_1 + \W_2\) is the \emph{smallest subspace} that contains \(\W_1 \cup \W_2\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.8}

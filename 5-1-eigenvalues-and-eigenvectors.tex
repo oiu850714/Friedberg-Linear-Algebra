@@ -9,7 +9,7 @@ We now introduce the name for an (linear) operator or matrix that has such a bas
 \end{note}
 
 \begin{definition} \label{def 5.1}
-A linear operator \(\T\) on a \emph{fnite}-dimensional vector space \(V\) is called \textbf{diagonalizable} if there is an ordered basis \(\beta\) for \(V\) such that \([\T]_{\beta}\) is a \emph{diagonal matrix}.
+A linear operator \(\T\) on a \emph{fnite}-dimensional vector space \(\V\) is called \textbf{diagonalizable} if there is an ordered basis \(\beta\) for \(\V\) such that \([\T]_{\beta}\) is a \emph{diagonal matrix}.
 A square matrix \(A\) is called \textbf{diagonalizable} if \(\LMTRAN_A\) is diagonalizable.
 \end{definition}
 
@@ -21,8 +21,8 @@ However, as we will see, the definitions of eigenvalue and eigenvector (\DEF{5.2
 \end{remark}
 
 \begin{remark} \label{remark 5.1.2}
-We want to determine \emph{when} a linear operator \(\T\) on a finite-dimensional vector space \(V\) is diagonalizable and,
-if so, how to obtain an ordered basis \(\beta = \{ v_1, v_2, ..., v_n \}\) for \(V\) such that \([\T]_{\beta}\) is a diagonal matrix.
+We want to determine \emph{when} a linear operator \(\T\) on a finite-dimensional vector space \(\V\) is diagonalizable and,
+if so, how to obtain an ordered basis \(\beta = \{ v_1, v_2, ..., v_n \}\) for \(\V\) such that \([\T]_{\beta}\) is a diagonal matrix.
 Note that, if \(D = [\T]_{\beta}\) is a diagonal matrix, then for each vector \(v_j \in \beta\), we have
 \begin{align*}
     \T(v_j) & = \sum_{i = 1}^n D_{ij} v_i & \text{by \DEF{2.6}} \\
@@ -31,7 +31,7 @@ Note that, if \(D = [\T]_{\beta}\) is a diagonal matrix, then for each vector \(
 \end{align*}
 where \(\lambda_j = D_{jj}\).
 
-Conversely if \(\beta = \{ v_1, v_2, ..., v_n \}\) is an ordered basis for \(V\) such that \(\T(v_j) = \lambda_j v_j\) for some scalars \(\lambda_1, \lambda_2, ..., \lambda_n\), then clearly
+Conversely if \(\beta = \{ v_1, v_2, ..., v_n \}\) is an ordered basis for \(\V\) such that \(\T(v_j) = \lambda_j v_j\) for some scalars \(\lambda_1, \lambda_2, ..., \lambda_n\), then clearly
 \[
     [\T]_{\beta} = \begin{pmatrix}
         \lambda_{1} & 0 & \cdots & 0 \\
@@ -47,14 +47,14 @@ Moreover, because \(v\) lies in a \emph{basis}, \(v\) is \emph{nonzero}.
 These computations motivate the following definitions.
 
 \begin{definition} \label{def 5.2}
-Let \(\T\) be a linear operator on a vector space \(V\).
-A \emph{nonzero} vector \(v \in V\) is called an \textbf{eigenvector} of \(\T\) if there exists a scalar \(\lambda\), (which can be zero scalar, see \EXAMPLE{5.1.3}) such that \(\T(v) = \lambda v\).
+Let \(\T\) be a linear operator on a vector space \(\V\).
+A \emph{nonzero} vector \(v \in \V\) is called an \textbf{eigenvector} of \(\T\) if there exists a scalar \(\lambda\), (which can be zero scalar, see \EXAMPLE{5.1.3}) such that \(\T(v) = \lambda v\).
 The scalar is called the \textbf{eigenvalue} \emph{corresponding to} the eigenvector \(v\).
 Let \(A\) be in \(M_{n \X n}(F)\).
 A \emph{nonzero} vector \(v \in F^n\) is called an \textbf{eigenvector} of \(A\) if \(v\) is an eigenvector of \(\LMTRAN_A\);
 that is, if \(Av = \lambda v\) for some scalar \(\lambda\)(again which can be zero scalar).
 The scalar \(\lambda\) is called the \textbf{eigenvalue} of \(A\) \emph{corresponding to} the eigenvector \(v\).
-Note that \(V\) can be \emph{infinite}-dimensional;
+Note that \(\V\) can be \emph{infinite}-dimensional;
 also see \EXAMPLE{5.1.3}.
 \end{definition}
 
@@ -76,7 +76,7 @@ Likewise, a scalar \(\lambda\) is an eigenvalue of \(A\) if and only if it is an
 Using the terminology of eigenvectors and eigenvalues, we can summarize the preceding discussion as follows.
 
 \begin{theorem} \label{thm 5.1}
-A linear operator \(\T\) on a finite-dimensional vector space \(V\) is \emph{diagonalizable} if and only if (by \RMK{5.1.2},) there exists an ordered basis \(\beta\) for \(V\) consisting of eigenvectors of \(T\).
+A linear operator \(\T\) on a finite-dimensional vector space \(\V\) is \emph{diagonalizable} if and only if (by \RMK{5.1.2},) there exists an ordered basis \(\beta\) for \(\V\) consisting of eigenvectors of \(T\).
 Furthermore, if \(\T\) is diagonalizable, \(\beta = \{ v_1, v_2, ..., v_n \}\) is an ordered basis of eigenvectors of \(\T\), and \(D = [\T]_{\beta}\), then (by \RMK{5.1.2} again) \(D\) is a diagonal matrix and \(D_{jj}\) is the eigenvalue corresponding to \(v_j\) for \(1 \le j \le n\).
 \end{theorem}
 
@@ -216,8 +216,8 @@ This fact implies the next definition is \emph{well-defined}.
 \end{remark}
 
 \begin{definition} \label{def 5.4}
-Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\).
-Choose \textbf{any} ordered basis \(\beta\) for \(V\).
+Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\).
+Choose \textbf{any} ordered basis \(\beta\) for \(\V\).
 We define \textbf{the} \textbf{determinant} of \(\T\), denoted \(\det(\T)\), to be the determinant of \(A = [\T]_{\beta}\),
 and the \textbf{\CPOLY{}} \(f(t)\) of \(\T\) to be the \CPOLY{} of \(A\).
 That is,
@@ -228,7 +228,7 @@ That is,
 
 \begin{remark} \label{remark 5.1.7}
 The remark preceding \DEF{5.4} shows that they are \emph{independent} of the choice of ordered basis \(\beta\).
-Thus if \(\T\) is a linear operator on a finite-dimensional vector space \(V\) and \(\beta\) is an ordered basis for \(V\),
+Thus if \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) and \(\beta\) is an ordered basis for \(\V\),
 then \(\lambda\) is an eigenvalue of \(\T\) if and only if \(\lambda\) is an eigenvalue of \([\T]_{\beta}\).
 (Put it simply, similar matrices have the same eigenvalues, if exist.)
 
@@ -360,14 +360,14 @@ Of course, the diagonal entries of this matrix are the eigenvalues of \(A\) that
 \end{remark}
 
 \begin{remark} \label{remark 5.1.9}
-To find the eigenvectors of a linear operator \(\T\) on an \(n\)-dimensional vector space, select an ordered basis \(\beta\) for \(V\) and let \(A = [\T]_{\beta}\).
-Figure 5.1 is the \emph{special case} of Figure 2.2 in Section 2.4 in which \(V = W\) and \(\beta = \gamma\).
+To find the eigenvectors of a linear operator \(\T\) on an \(n\)-dimensional vector space, select an ordered basis \(\beta\) for \(\V\) and let \(A = [\T]_{\beta}\).
+Figure 5.1 is the \emph{special case} of Figure 2.2 in Section 2.4 in which \(\V = \W\) and \(\beta = \gamma\).
 
 \includegraphics[width=8cm]{images/figure-5-1.png}
 
-Recall that for \(v \in V\), (by \DEF{2.15}) \(\phi_{\beta}(v) = [v]_{\beta}\), the \emph{coordinate vector} of \(v\) \emph{relative to} \(\beta\).
+Recall that for \(v \in \V\), (by \DEF{2.15}) \(\phi_{\beta}(v) = [v]_{\beta}\), the \emph{coordinate vector} of \(v\) \emph{relative to} \(\beta\).
 
-We will show that \(v \in V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) if and only if \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
+We will show that \(v \in \V\) is an eigenvector of \(\T\) corresponding to \(\lambda\) if and only if \(\phi_{\beta}(v)\) is an eigenvector of \(A\) corresponding to \(\lambda\).
 
 Suppose that \(v\) is an eigenvector of \(\T\) corresponding to \(\lambda\).
 Then \(v \ne \OV\) and \(\T(v) = \lambda v\) \MAROON{(1)}.
@@ -490,28 +490,28 @@ Thus \(\T\) is diagonalizable, and
 \]
 \end{example}
 
-We close this section with a \textbf{geometric description} of how a linear operator \(\T\) acts on an eigenvector in the context of a vector space \(V\) over \(\SET{R}\).
+We close this section with a \textbf{geometric description} of how a linear operator \(\T\) acts on an eigenvector in the context of a vector space \(\V\) over \(\SET{R}\).
 (Also see this \href{https://www.youtube.com/watch?v=PFDu9oVAE-g&ab_channel=3Blue1Brown}{video}.)
 Let \(v\) be an eigenvector of \(\T\) and \(\lambda\) be the corresponding eigenvalue.
-We can think of \(W = \spann(\{ v \})\), the one-dimensional subspace of \(V\) spanned by \(v\), as a line in \(V\) that passes through \(\OV\) and \(v\).
-For any \(w \in W, w = cv\) for some scalar \(c\),
+We can think of \(\W = \spann(\{ v \})\), the one-dimensional subspace of \(\V\) spanned by \(v\), as a line in \(\V\) that passes through \(\OV\) and \(v\).
+For any \(w \in \W, w = cv\) for some scalar \(c\),
 and hence
 \[
     \T(w) = \T(cv) = c\T(v) = c (\lambda v) = \lambda (c v) = \lambda w;
 \]
-so \(\T\) acts on the vectors in \(W\) by \textbf{multiplying} each such vector by \(\lambda\).
+so \(\T\) acts on the vectors in \(\W\) by \textbf{multiplying} each such vector by \(\lambda\).
 
-There are several possible ways for \(\T\) to act on the vectors in \(W\), depending on the value of \(\lambda\).
+There are several possible ways for \(\T\) to act on the vectors in \(\W\), depending on the value of \(\lambda\).
 We consider several cases. (See Figure 5.2.)
 
 \includegraphics[width=17cm]{images/figure-5-2.png}
 
 \begin{enumerate}
-\item[CASE 1.] If \(\lambda > 1\), then \(\T\) moves vectors in \(W\) \emph{farther} from \(\OV\) by a factor of \(\lambda\).
-\item[CASE 2.] If \(\lambda = 1\), then \(\T\) acts as the \emph{identity operator} on \(W\).
-\item[CASE 3.] If \(\OF < \lambda < 1\), then \(\T\) moves vectors in \(W\) \emph{closer} to \(\OV\) by a factor of \(\lambda\).
-\item[CASE 4.] If \(\lambda = \OF\), then \(\T\) acts as the \emph{zero transformation} on \(W\).
-\item[CASE 5.] If \(\lambda < \OF\), then \(\T\) \emph{reverses the orientation} of \(W\); that is, \(\T\) moves vectors in \(W\) from one side of \(\OV\) to the other.
+\item[CASE 1.] If \(\lambda > 1\), then \(\T\) moves vectors in \(\W\) \emph{farther} from \(\OV\) by a factor of \(\lambda\).
+\item[CASE 2.] If \(\lambda = 1\), then \(\T\) acts as the \emph{identity operator} on \(\W\).
+\item[CASE 3.] If \(\OF < \lambda < 1\), then \(\T\) moves vectors in \(\W\) \emph{closer} to \(\OV\) by a factor of \(\lambda\).
+\item[CASE 4.] If \(\lambda = \OF\), then \(\T\) acts as the \emph{zero transformation} on \(\W\).
+\item[CASE 5.] If \(\lambda < \OF\), then \(\T\) \emph{reverses the orientation} of \(\W\); that is, \(\T\) moves vectors in \(\W\) from one side of \(\OV\) to the other.
 \end{enumerate}
 
 To illustrate these ideas, we consider the linear operators in \EXAMPLE{2.1.3}, \EXAMPLE{2.1.4}, and \EXAMPLE{2.1.2}.

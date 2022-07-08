@@ -1,29 +1,29 @@
 \section{Vectir Spaces} \label{sec 1.2}
 
 \begin{definition} \label{def 1.1}
-A \textbf{vector space} (or \textbf{linear space}) \(V\) over a \emph{field} \(F\) consists of a set on which two operations (called \textbf{addition} and \textbf{scalar multiplication}, respectively) are defined
-so that for each pair of elements \(x, y \in V\) there is a \emph{unique} element \(x + y \in V\),
-and for each element \(a \in F\) and each element \(x \in V\) there is a \emph{unique} element \(ax \in V\), such that the following conditions bold.
+A \textbf{vector space} (or \textbf{linear space}) \(\V\) over a \emph{field} \(F\) consists of a set on which two operations (called \textbf{addition} and \textbf{scalar multiplication}, respectively) are defined
+so that for each pair of elements \(x, y \in \V\) there is a \emph{unique} element \(x + y \in \V\),
+and for each element \(a \in F\) and each element \(x \in \V\) there is a \emph{unique} element \(ax \in \V\), such that the following conditions bold.
 \begin{itemize}
-    \item[(VS 1)] For all \(x, y \in V\), \(x + y = y + x\) (commutativity of addition).
-    \item[(VS 2)] For all \(x, y, z \in V\), \((x + y) + z = x + (y + z)\) (associativity of addition).
-    \item[(VS 3)] There exists an element in \(V\) \emph{denoted} by \(0\) (or \(\OV\), for disambiguation with the zero in \(F\)) such that \(x + 0 = x\) for each \(x \in V\).
-    \item[(VS 4)] For each element \(x \in V\) there exists an element \(y \in V\) such that \(x + y = 0\).
-    \item[(VS 5)] For each element \(x \in V\), \(1 x = x\) (where \(1 \in F\), the multiplicative identity in the field \(F\)).
-    \item[(VS 6)] For each pair of elements \(a, b \in F\) and each element \(x \in V\), \((ab)x = a(bx)\).
-    \item[(VS 7)] For each element \(a \in F\) and each pair of elements \(x, y \in V\), \(a(x + y) = ax + ay\).
-    \item[(VS 8)] For each pair of elements \(a, b \in F\) and each element \(x \in V\), \((a + b)x = ax+ bx\).
+    \item[(VS 1)] For all \(x, y \in \V\), \(x + y = y + x\) (commutativity of addition).
+    \item[(VS 2)] For all \(x, y, z \in \V\), \((x + y) + z = x + (y + z)\) (associativity of addition).
+    \item[(VS 3)] There exists an element in \(\V\) \emph{denoted} by \(0\) (or \(\OV\), for disambiguation with the zero in \(F\)) such that \(x + 0 = x\) for each \(x \in \V\).
+    \item[(VS 4)] For each element \(x \in \V\) there exists an element \(y \in \V\) such that \(x + y = 0\).
+    \item[(VS 5)] For each element \(x \in \V\), \(1 x = x\) (where \(1 \in F\), the multiplicative identity in the field \(F\)).
+    \item[(VS 6)] For each pair of elements \(a, b \in F\) and each element \(x \in \V\), \((ab)x = a(bx)\).
+    \item[(VS 7)] For each element \(a \in F\) and each pair of elements \(x, y \in \V\), \(a(x + y) = ax + ay\).
+    \item[(VS 8)] For each pair of elements \(a, b \in F\) and each element \(x \in \V\), \((a + b)x = ax+ bx\).
 \end{itemize}
 The elements \(x + y\) and \(ax\) are called the \textbf{sum} of \(x\) and \(y\) and the \textbf{product} of \(a\) (in \(F\)) and \(x\), respectively.
 \end{definition}
 
 \begin{remark}
-From the definition above, \(x + y\) and \(ax\) are unique actually implies the addition and scalar multiplication are \emph{functions} (\(+\) is from \((V, V)\) to \(V\) and \(\cdot\) is from \(V\) to \(V\)).
+From the definition above, \(x + y\) and \(ax\) are unique actually implies the addition and scalar multiplication are \emph{functions} (\(+\) is from \((\V, \V)\) to \(\V\) and \(\cdot\) is from \(\V\) to \(\V\)).
 And that also implies if \(x = x'\) and \(y = y'\), then \(x + y = x' + y'\) and \(ax = ax'\)
 \end{remark}
 
 \begin{note}
-The elements of the field \(F\) are called \textbf{scalars} and the elements of the vector space \(V\) are called \textbf{vectors}.
+The elements of the field \(F\) are called \textbf{scalars} and the elements of the vector space \(\V\) are called \textbf{vectors}.
 \end{note}
 
 \begin{remark}
@@ -210,12 +210,12 @@ With these operations of addition and scalar multiplication, the set of all poly
 Let \(F\) be any field.
 A \textbf{sequence} in \(F\) is a \emph{function} \(\sigma\) from the positive integers into \(F\).
 In this book, the sequence \(\sigma\) such that \(\sigma(n) = a_n\) for \(n = 1, 2, ...\) is denoted \((a_n)\).
-Let \(V\) consist of all the sequences \((a_n)\) in \(F\).
-For \((a_n)\) and \((b_n)\) in \(V\) and \(t \in F\), define
+Let \(\V\) consist of all the sequences \((a_n)\) in \(F\).
+For \((a_n)\) and \((b_n)\) in \(\V\) and \(t \in F\), define
 \[
     (a_n) + (b_n) = (a_n + b_n) \text{ and } t(a_n) = (t a_n).
 \]
-With these operations \(V\) is a vector space (over \(F\)).
+With these operations \(\V\) is a vector space (over \(F\)).
 \end{example}
 
 Our next two examples contain sets on which addition and scalar multiplication are defined, but which are \textbf{not} vector spaces.
@@ -259,12 +259,12 @@ Similarly for (VS 5).
 
 We conclude this section with a few of the elementary consequences of the definition of a vector space.
 \begin{theorem} [\emph{Cancellation Law} for Vector Addition] \label{thm 1.1}
-If \(x, y\), and \(z\) are vectors in a vector space \(V\) such that \(x + z = y + z\), then \(x = y\).
+If \(x, y\), and \(z\) are vectors in a vector space \(\V\) such that \(x + z = y + z\), then \(x = y\).
 \end{theorem}
 
 \begin{proof}
 (Using \DEF{1.1}.)
-By (VS 4), there exists a vector \(v \in V\) such that \(z + v = 0\) \MAROON{(1)}.
+By (VS 4), there exists a vector \(v \in \V\) such that \(z + v = 0\) \MAROON{(1)}.
 Thus
 \begin{align*}
     x & = x + 0 & \text{by (VS 3)} \\
@@ -282,8 +282,8 @@ The vector \(0\) described in \DEF{1.1} (VS 3) is unique.
 \end{corollary}
 
 \begin{proof}
-Suppose \(\exists 0' \in V\) such that \(0'\) also satisfies \DEF{1.1} (VS 3).
-Then given \(x \in V\), we have both \(x + 0 = x\) and \(x + 0' = x\).
+Suppose \(\exists 0' \in \V\) such that \(0'\) also satisfies \DEF{1.1} (VS 3).
+Then given \(x \in \V\), we have both \(x + 0 = x\) and \(x + 0' = x\).
 And
 \begin{align*}
              & x + 0 = x \land x + 0' = x \\
@@ -303,8 +303,8 @@ The vector y described in \DEF{1.1} (VS 4) is unique.
 \end{corollary}
 
 \begin{proof}
-Let arbitrary \(x \in V\).
-Now let both \(y, y' \in V\) such that \(x + y = 0\) and \(x + y' = 0\).
+Let arbitrary \(x \in \V\).
+Now let both \(y, y' \in \V\) such that \(x + y = 0\) and \(x + y' = 0\).
 Then
 \begin{align*}
              & x + y = 0 \land x + y' = 0 \\
@@ -315,18 +315,18 @@ Then
 \end{proof}
 
 \begin{note}
-給定任一\ \(y \in V\)，存在唯一的\ \(y\) 的加法反元素。
+給定任一\ \(y \in \V\)，存在唯一的\ \(y\) 的加法反元素。
 \end{note}
 
 \begin{additional definition} \label{adef 1.5}
-The vector \(0\) in \DEF{1.1} (VS 3) is called \emph{the} \textbf{zero vector} of \(V\), and the vector \(y\) in (VS 4) (that is, the unique vector such that \(x + y = 0\)) is called \emph{the} \textbf{additive inverse} of \(x\) and is \textbf{denoted} by \(-x\).
+The vector \(0\) in \DEF{1.1} (VS 3) is called \emph{the} \textbf{zero vector} of \(\V\), and the vector \(y\) in (VS 4) (that is, the unique vector such that \(x + y = 0\)) is called \emph{the} \textbf{additive inverse} of \(x\) and is \textbf{denoted} by \(-x\).
 \end{additional definition}
 
 \begin{theorem} \label{thm 1.2}
-Given any vector space \(V\) (over a field \(F\)), the following statements are true:
+Given any vector space \(\V\) (over a field \(F\)), the following statements are true:
 \begin{enumerate}
-    \item \(0x = 0\) (or \(\OF x = \OV\)) for each \(x \in V\).
-    \item \((-a)x = -(ax) = a(-x)\) for each \(a \in F\) and each \(x \in V\). (Note that sometimes ``\(-\)'' is denote the inverse of a vector, sometimes the inverse of a scalar.)
+    \item \(0x = 0\) (or \(\OF x = \OV\)) for each \(x \in \V\).
+    \item \((-a)x = -(ax) = a(-x)\) for each \(a \in F\) and each \(x \in \V\). (Note that sometimes ``\(-\)'' is denote the inverse of a vector, sometimes the inverse of a scalar.)
     \item \(a0 = 0\) (or \(a\OV = \OV\)) for each \(a \in F\).
 \end{enumerate}
 \end{theorem}
@@ -395,7 +395,7 @@ Label the following statements as true or false.
 \item True by \DEF{1.1}(VS 3).
 \item False by \CORO{1.1.1}.
 \item False; since for example \(5 \ne 6\) but \(5 \OV = \OV = 6 \OV\) by \THM{1.2}(c).
-\item False; since for example suppose \(v_1, v_2 \in V\) such that \(v_1 \ne v_2\).
+\item False; since for example suppose \(v_1, v_2 \in \V\) such that \(v_1 \ne v_2\).
     But by \THM{1.2}(a), \(\OF v_1 = \OV = \OF v_2\).
 \item True; see \ADEF{1.2}, \ADEF{1.3}.
 \item False; by \ADEF{1.3}, n \(m \X n\) matrix has \(m\) rows and \(n\) columns.
@@ -463,7 +463,7 @@ So for each element \(s \in S\), \((f + g)(s) = h(s)\), hence by definition in \
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.8}
-In any vector space \(V\) (over \(F\)), show that \((a + b)(x + y) = ax+ ay + bx + by\) for any \(x, y \in V\) and any \(a, b \in F\).
+In any vector space \(\V\) (over \(F\)), show that \((a + b)(x + y) = ax+ ay + bx + by\) for any \(x, y \in \V\) and any \(a, b \in F\).
 \end{exercise}
 
 \begin{proof}
@@ -483,28 +483,28 @@ See these \CORO{1.1.1}, \CORO{1.1.2} and \THM{1.2}.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.10}
-Let \(V\) denote the set of all \emph{differentiable} real-valued functions defined on the real line.
-Prove that \(V\) is a vector space with the operations of
+Let \(\V\) denote the set of all \emph{differentiable} real-valued functions defined on the real line.
+Prove that \(\V\) is a vector space with the operations of
 addition and scalar multiplication defined in \EXAMPLE{1.2.3}.
 \end{exercise}
 
 \begin{proof}
 In \EXAMPLE{1.2.3} we have shown that the set of \emph{all} functions from (in particular) \(\SET{R}\) to \(\SET{R}\) with the corresponding \(+\) and \(\cdot\) is a vector space.
-But if you go to \SEC{1.3} with \THM{1.3}, you will notice that we only need to verify that \emph{zero function} is in \(V\), and \(+\) and \(\cdot\) are \emph{closed}: \(f + g \in V\) and \(c f \in V\).
-But of course zero function is in \(V\) since zero function is differentiable.
+But if you go to \SEC{1.3} with \THM{1.3}, you will notice that we only need to verify that \emph{zero function} is in \(\V\), and \(+\) and \(\cdot\) are \emph{closed}: \(f + g \in \V\) and \(c f \in \V\).
+But of course zero function is in \(\V\) since zero function is differentiable.
 And by Calculus, given two differentiable \(f, g\) and scalar \(c \in \SET{R}\), \(f + g\) is still differentiable and \(c f\) is still differentiable, so we are done.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.11}
-Let \(V = \{ 0 \}\) consist of a \emph{single vector} \(0\), and define \(0 + 0 = 0\) \MAROON{(1)} and \(c0 = 0\) for each scalar \(c\) in \(F\) \MAROON{(2)}.
-Prove that \(V\) is a vector space over \(F\).
-(\(V\) is called the \textbf{zero vector space}.)
+Let \(\V = \{ 0 \}\) consist of a \emph{single vector} \(0\), and define \(0 + 0 = 0\) \MAROON{(1)} and \(c0 = 0\) for each scalar \(c\) in \(F\) \MAROON{(2)}.
+Prove that \(\V\) is a vector space over \(F\).
+(\(\V\) is called the \textbf{zero vector space}.)
 \end{exercise}
 
 \begin{proof}
-Since \(0\) is the only single element in \(V\), both \(x, y, z\) described in \DEF{1.1} can only be equal to \(0 \in V\).
+Since \(0\) is the only single element in \(\V\), both \(x, y, z\) described in \DEF{1.1} can only be equal to \(0 \in \V\).
 
-First, by definition \MAROON{(1)(2)}, \(+\) and \(\cdot\) is closed under \(V\).
+First, by definition \MAROON{(1)(2)}, \(+\) and \(\cdot\) is closed under \(\V\).
 
 For (VS 1), we only have to show that \(\BLUE{0} + \GREEN{0} = \GREEN{0} + \BLUE{0}\).
 But they are defined by \MAROON{(1)} to \(0\) so are equal to each other, so we are done.
@@ -524,10 +524,10 @@ and
 \end{align*}
 so we are done.
 
-For (VS 3), we only need to show given (the single) element \(\BLUE{0} \in V\), there exists \(\GREEN{0}\) such that \(\BLUE{0} + \GREEN{0}\).
+For (VS 3), we only need to show given (the single) element \(\BLUE{0} \in \V\), there exists \(\GREEN{0}\) such that \(\BLUE{0} + \GREEN{0}\).
 But that again is defined by \MAROON{(1)}, so we are done.
 
-For (VS 4), we only need to show given (the single) element \(\BLUE{0} \in V\), there exists \(\GREEN{v}\) such that \(\BLUE{0} + v\).
+For (VS 4), we only need to show given (the single) element \(\BLUE{0} \in \V\), there exists \(\GREEN{v}\) such that \(\BLUE{0} + v\).
 Just let \(v = 0\), then again by \MAROON{(1)}, \(0 + v = 0 + 0 = 0\), so we are done.
 
 For (VS 5), we only need to show that \(1 \GREEN{0} = 0\).
@@ -563,7 +563,7 @@ But
 \end{align*}
 So \((a + b)0 = a0 + b0\), so we are done.
 
-So all conditions in \DEF{1.1} are satisfied, so \(V\) with the operations defined in \MAROON{(1)} and \MAROON{(2)} is a vector space over \(F\).
+So all conditions in \DEF{1.1} are satisfied, so \(\V\) with the operations defined in \MAROON{(1)} and \MAROON{(2)} is a vector space over \(F\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.12}
@@ -592,12 +592,12 @@ So these operations are closed, so we are done.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.13}
-Let \(V\) denote the set of ordered pairs of real numbers.
-If \((a_1, a_2)\) and \((b_1, b_2)\) are elements of \(V\) and \(c \in \SET{R}\), define
+Let \(\V\) denote the set of ordered pairs of real numbers.
+If \((a_1, a_2)\) and \((b_1, b_2)\) are elements of \(\V\) and \(c \in \SET{R}\), define
 \[
     (a_1, a_2) + (b_1, b_2) = (a_1 + b_1, \BLUE{a_2 b_2}) \text{ and } c(a_1, a_2) = (c a_1, \BLUE{a_2}).
 \]
-Is \(V\) a vector space over \(\SET{R}\) with these operations?
+Is \(\V\) a vector space over \(\SET{R}\) with these operations?
 Justify your answer.
 \end{exercise}
 
@@ -616,9 +616,9 @@ In particular, given any \(a_2 \ne\) \(0\) and \(1\), \(a_2 \ne a_2^2\), so LHS 
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.14}
-Let \(V = \{(a_1, a_2, ..., a_n): a_i \in \SET{C} \text{ for } i = 1, 2, ..., n\}\);
-so \(V\) is a vector space \emph{over} \(\SET{C}\) by \EXAMPLE{1.2.1}.
-Is \(V\) a vector space \emph{over the field of real numbers} with the operations of coordinatewise addition and multiplication?
+Let \(\V = \{(a_1, a_2, ..., a_n): a_i \in \SET{C} \text{ for } i = 1, 2, ..., n\}\);
+so \(\V\) is a vector space \emph{over} \(\SET{C}\) by \EXAMPLE{1.2.1}.
+Is \(\V\) a vector space \emph{over the field of real numbers} with the operations of coordinatewise addition and multiplication?
 \end{exercise}
 
 \begin{proof}
@@ -635,9 +635,9 @@ So \((c a_1, c a_2, ..., c a_n) \in \SET{C}^n\), so the operation \(\cdot\) is c
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.15}
-Let \(V = \{ (a_1, a_2, ..., a_n): a_i \in \SET{R}^n \text{ for } i = 1, 2, ..., n \}\);
-so \(V\) is a vector space \emph{over} \(\SET{R}\) by \EXAMPLE{1.2.1}.
-Is \(V\) a vector space \emph{over the field of complex numbers} with the operations of coordinatewise addition and
+Let \(\V = \{ (a_1, a_2, ..., a_n): a_i \in \SET{R}^n \text{ for } i = 1, 2, ..., n \}\);
+so \(\V\) is a vector space \emph{over} \(\SET{R}\) by \EXAMPLE{1.2.1}.
+Is \(\V\) a vector space \emph{over the field of complex numbers} with the operations of coordinatewise addition and
 multiplication?
 \end{exercise}
 
@@ -650,10 +650,10 @@ where \(i a_1, ..., i a_n\) are not real numbers, so \((i a_1, i a_2, ..., i a_n
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.16}
-Let \(V\) denote the set of all \(m \X n\) matrices with real entries;
-so \(V\) is a vector space \emph{over} \(\SET{R}\) by \EXAMPLE{1.2.2}.
+Let \(\V\) denote the set of all \(m \X n\) matrices with real entries;
+so \(\V\) is a vector space \emph{over} \(\SET{R}\) by \EXAMPLE{1.2.2}.
 Let \(F\) be the field of \emph{rational numbers}.
-Is \(V\) a vector space over \(F\) with the usual definitions of matrix addition and scalar multiplication?
+Is \(\V\) a vector space over \(F\) with the usual definitions of matrix addition and scalar multiplication?
 \end{exercise}
 
 \begin{proof}
@@ -663,12 +663,12 @@ and the scalar multiplication is closed.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.17}
-Let \(V = \{ (a_1, a_2) : a_1, a_2 \in F \}\), where \(F\) is a field.
-Define addition of elements of \(V\) coordinatewise, and for \(c \in F\) and \((a_1, a_2) \in V\), define
+Let \(\V = \{ (a_1, a_2) : a_1, a_2 \in F \}\), where \(F\) is a field.
+Define addition of elements of \(\V\) coordinatewise, and for \(c \in F\) and \((a_1, a_2) \in \V\), define
 \[
     c(a_1, a_2) = (a_1, 0).
 \]
-Is \(V\) a vector space over \(F\) with these operations? Justify your answer.
+Is \(\V\) a vector space over \(F\) with these operations? Justify your answer.
 \end{exercise}
 
 \begin{proof}
@@ -678,12 +678,12 @@ So there is no multiplicative identity, hence \DEF{1.1}(VS 5) is not satisfied.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.18}
-Let \(V = \{(a_1, a_2) : a_1, a_2 \in \SET{R}\}\).
-For \((a_1, a_2), (b_1, b_2) \in V\) and \(c \in \SET{R}\), define
+Let \(\V = \{(a_1, a_2) : a_1, a_2 \in \SET{R}\}\).
+For \((a_1, a_2), (b_1, b_2) \in \V\) and \(c \in \SET{R}\), define
 \[
     (a_1, a_2) + (b_1, b_2) = (a_1 + 2b_1, a_2 + 3b_2) \text{ and } c(a_1, a_2) = (ca_1, ca_2).
 \]
-Is \(V\) a vector space over \(\SET{R}\) with these operations?
+Is \(\V\) a vector space over \(\SET{R}\) with these operations?
 Justify your answer.
 \end{exercise}
 
@@ -701,8 +701,8 @@ So the commutative law is not satisfied.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.19}
-Let \(V = \{(a_1, a_2 ) : a_1, a_2 \in \SET{R}\}\).
-Define addition of elements of \(V\) coordinatewise, and for \((a_1, a_2) \in V\) and \(c \in \SET{R}\), define
+Let \(\V = \{(a_1, a_2 ) : a_1, a_2 \in \SET{R}\}\).
+Define addition of elements of \(\V\) coordinatewise, and for \((a_1, a_2) \in \V\) and \(c \in \SET{R}\), define
 \begin{equation*}
     c(a_1, a_2) =
     \begin{cases}
@@ -710,7 +710,7 @@ Define addition of elements of \(V\) coordinatewise, and for \((a_1, a_2) \in V\
         \Big(c a_1, \frac{a_2}{c}\Big) & \text{ if } c \ne 0.
     \end{cases}
 \end{equation*}
-Is \(V\) a vector space over \(\SET{R}\) with these operations?
+Is \(\V\) a vector space over \(\SET{R}\) with these operations?
 Justify your answer.
 \end{exercise}
 
@@ -730,14 +730,14 @@ so we have \((a + b)(a_1, a_2) \ne a(a_1, a_2) + b(a_1, a_2)\), so (VS 8) is not
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.20}
-Let \(V\) denote the set of all real-valued functions \(f\) defined on the real line such that \(f(1) = 0\).
-Prove that \(V\) is a vector space with the operations
+Let \(\V\) denote the set of all real-valued functions \(f\) defined on the real line such that \(f(1) = 0\).
+Prove that \(\V\) is a vector space with the operations
 of addition and scalar multiplication defined in \EXAMPLE{1.2.3}.
 \end{exercise}
 
 \begin{proof}
-Similarly as \EXEC{1.2.10}, we only need to show that zero function is in \(V\) and the operations \(+\) and \(\cdot\) are closed.
-But since in particular, given real number \(1\), the output of the zero function is \(0\), so the zero function is in \(V\).
+Similarly as \EXEC{1.2.10}, we only need to show that zero function is in \(\V\) and the operations \(+\) and \(\cdot\) are closed.
+But since in particular, given real number \(1\), the output of the zero function is \(0\), so the zero function is in \(\V\).
 And given two function \(f, g\) such that \(f(1) = 0\) and \(g(1) = 0\), and scalar \(c \in \SET{R}\),
 \begin{align*}
     (f + g)(1) & = f(1) + g(1) & \text{by definition in \EXAMPLE{1.2.3}} \\
@@ -750,11 +750,11 @@ and
             & = c \X 0 & \text{by definition of \(f\)} \\
             & = 0, & \text{by property of \(\SET{R}\)}
 \end{align*}
-so \(f + g\) and \(cf\) are still in \(V\), so the addition and scalar multiplication are closed under \(V\), as desired.
+so \(f + g\) and \(cf\) are still in \(\V\), so the addition and scalar multiplication are closed under \(\V\), as desired.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.2.21}
-Let \(V\) and \(W\) be vector spaces over a field \(F\).
+Let \(\V\) and \(\W\) be vector spaces over a field \(F\).
 Let
 \[
     Z = \{ (v, w) : v \in V, w \in W \}.
@@ -766,7 +766,7 @@ Prove that \(Z\) is a vector space over \(F\) with the operations
 \end{exercise}
 
 \begin{proof}
-We denote \(\OV\) as \(V\)'s zero vector, \(\OW\) as \(W\)'s zero vector.
+We denote \(\OV\) as \(\V\)'s zero vector, \(\OW\) as \(\W\)'s zero vector.
 In particular, we denote \(0_{_Z}\) as zero vector of \(Z\) if \(Z\) in fact is a vector space.
 
 We first prove the defined operations are closed.
@@ -774,7 +774,7 @@ Given \((v_1, w_1), (v_2, w_2) \in Z\),
 \begin{align*}
     (v_1, w_1) + (v_2, w_2) & = (v_1 + v_2, w_1 + w_2) & \text{by def of \MAROON{(1)}}
 \end{align*}
-But \(v_1 + v_2 \in V\) since \(V\) is a vector space; similarly for \(w_1 + w_2 \in W\);
+But \(v_1 + v_2 \in \V\) since \(\V\) is a vector space; similarly for \(w_1 + w_2 \in \W\);
 hence by definition of \(Z\), \((v_1 + v_2, w_1 + w_2) \in Z\);
 that is, by \MAROON{(1)}, \((v_1, w_1) + (v_2, w_2) \in Z\).
 
@@ -782,7 +782,7 @@ Now given \((v, w) \in Z\), \(c \in F\),
 \begin{align*}
     c(v, w) & = (c v, c w) & \text{by def of \MAROON{(2)}}
 \end{align*}
-But \(c v \in V\) since \(V\) is a vector space over the field \(F\); similarly for \(c w \in W\);
+But \(c v \in \V\) since \(\V\) is a vector space over the field \(F\); similarly for \(c w \in \W\);
 hence by definition of \(Z\), \((c v, c w) \in Z\);
 that is, by \MAROON{(2)}, \(c(v, w) \in Z\).
 
@@ -790,8 +790,8 @@ For (VS 1),
 \begin{align*}
     & (v_1, w_1) + (v_2, w_2) \\
     & = (v_1 + v_2, w_1 + w_2) & \text{by def of \MAROON{(1)}} \\
-    & = (v_2 + v_1, w_1 + w_2) & \text{by def of \(V\)'s \(+\)} \\
-    & = (v_2 + v_1, w_2 + w_1) & \text{by def of \(W\)'s \(+\)} \\
+    & = (v_2 + v_1, w_1 + w_2) & \text{by def of \(\V\)'s \(+\)} \\
+    & = (v_2 + v_1, w_2 + w_1) & \text{by def of \(\W\)'s \(+\)} \\
     & = (v_2, w_2) + (v_1, w_1) & \text{by def of \MAROON{(1)}}.
 \end{align*}
 
@@ -800,7 +800,7 @@ For (VS 2),
     & ((v_1, w_1) + (v_2, w_2)) + (v_3, w_3) \\
     & = (v_1 + v_2, w_1 + w_2) + (v_3, w_3) & \text{by def of \MAROON{(1)}} \\
     & = ((v_1 + v_2) + v_3, (w_1 + w_2) + w_3) & \text{by def of \MAROON{(1)}} \\
-    & = (v_1 + (v_2 + v_3), w_1 + (w_2 + w_3)) & \text{by \(V\)'s and \(W\)'s (VS 2)} \\
+    & = (v_1 + (v_2 + v_3), w_1 + (w_2 + w_3)) & \text{by \(\V\)'s and \(\W\)'s (VS 2)} \\
     & = (v_1, w_1) + (v_2 + v_3, w_2 + w_3) & \text{by def of \MAROON{(1)}} \\
     & = (v_1, w_1) + ((v_2, w_2) + (v_3, w_3)) & \text{by def of \MAROON{(1)}}
 \end{align*}
@@ -809,10 +809,10 @@ For (VS 3), we claim that \(0_{_Z} = (\OV, \OW)\) \MAROON{(3)}, because:
 \begin{align*}
     & (v, w) + (\OV, \OW) \\
     & = (v + \OV, w + \OW) & \text{by def of \MAROON{(1)}} \\
-    & = (v, w) & \text{by \(V\)'s and \(W\)'s (VS 3)}
+    & = (v, w) & \text{by \(\V\)'s and \(\W\)'s (VS 3)}
 \end{align*}
 
-For (VS 4), given any \((v, w) \in Z\), by (VS 4) of \(V\) and (VS 4) of \(W\), we have \(-v\) and \(-w\) such that \(v + (-v) = \OV\) and \(w + (-w) = \OW\) \MAROON{(4)};
+For (VS 4), given any \((v, w) \in Z\), by (VS 4) of \(\V\) and (VS 4) of \(\W\), we have \(-v\) and \(-w\) such that \(v + (-v) = \OV\) and \(w + (-w) = \OW\) \MAROON{(4)};
 in particular,
 \begin{align*}
     (v, w) + (-v, -w) & = (v + (-v), w + (-w)) & \text{by def of \MAROON{(1)}} \\
@@ -823,13 +823,13 @@ in particular,
 For (VS 5),
 \begin{align*}
     1 (v, w) & = (1v, 1w) & \text{by def of \MAROON{(2)}} \\
-             & = (v, w) & \text{by \(V\)'s and \(W\)'s (VS 5)}
+             & = (v, w) & \text{by \(\V\)'s and \(\W\)'s (VS 5)}
 \end{align*}
 
 For (VS 6),
 \begin{align*}
     (ab) (v, w) & = ((ab) v, (ab) w) & \text{by def of \MAROON{(2)}} \\
-                & = (a(bv), a(bw)) & \text{by \(V\)'s and \(W\)'s (VS 6)} \\
+                & = (a(bv), a(bw)) & \text{by \(\V\)'s and \(\W\)'s (VS 6)} \\
                 & = a(bv, bw) & \text{by def of \MAROON{(2)}} \\
                 & = a(b(v, w)) & \text{by def of \MAROON{(2)}}
 \end{align*}
@@ -838,7 +838,7 @@ For (VS 7),
 \begin{align*}
     a((v_1, w_1) + (v_2, w_2)) & = a(v_1 + v_2, w_1 + w_2) & \text{by def of \MAROON{(1)}} \\
                                & = (a(v_1 + v_2), a(w_1 + w_2)) & \text{by def of \MAROON{(2)}} \\
-                               & = (a v_1 + a v_2, a w_1 + a w_2) & \text{by \(V\)'s and \(W\)'s (VS 7)} \\
+                               & = (a v_1 + a v_2, a w_1 + a w_2) & \text{by \(\V\)'s and \(\W\)'s (VS 7)} \\
                                & = (a v_1, a w_1) + (a v_2, a w_2) & \text{by def of \MAROON{(1)}} \\
                                & = a(v_1, w_1) + a(v_2, w_2) & \text{by def of \MAROON{(2)}}
 \end{align*}
@@ -846,7 +846,7 @@ For (VS 7),
 For (VS 8)
 \begin{align*}
     (a + b)(v, w) & = ((a + b)v , (a + b)w) & \text{by def of \MAROON{(2)}} \\
-                               & = (av + bv, aw + bw) & \text{by \(V\)'s and \(W\)'s (VS 8)} \\
+                               & = (av + bv, aw + bw) & \text{by \(\V\)'s and \(\W\)'s (VS 8)} \\
                                & = (av, aw) + (bv, bw) & \text{by def of \MAROON{(1)}} \\
                                & = a(v, w) + b(v, w) & \text{by def of \MAROON{(2)}}
 \end{align*}
@@ -855,7 +855,7 @@ So all conditions in \DEF{1.1} are satisfied, hence \(Z\) is a vector space (ove
 \end{proof}
 
 \begin{note}
-It seems that \(Z\) is called the \href{https://www.wikiwand.com/en/Direct_product}{direct product} of \(V\) and \(W\).
+It seems that \(Z\) is called the \href{https://www.wikiwand.com/en/Direct_product}{direct product} of \(\V\) and \(\W\).
 \end{note}
 
 \begin{exercise} \label{exercise 1.2.22}

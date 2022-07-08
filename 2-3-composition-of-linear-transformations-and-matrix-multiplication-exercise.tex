@@ -2,14 +2,14 @@
 
 \begin{exercise} \label{exercise 2.3.1}
 Label the following statements as true or false.
-In each part, \(V, W\), and \(Z\) denote vector spaces with ordered (finite) bases \(\alpha, \beta\), and \(\gamma\), respectively;
-\(\T : V \to W\) and \(\U : W \to Z\) denote linear transformations;
+In each part, \(\V, \W\), and \(Z\) denote vector spaces with ordered (finite) bases \(\alpha, \beta\), and \(\gamma\), respectively;
+\(\T : \V \to \W\) and \(\U : \W \to Z\) denote linear transformations;
 and \(A\) and \(B\) denote matrices.
 
 \begin{enumerate}
 \item \([\U\T]_{\alpha}^{\gamma} = [\T]_{\alpha}^{\beta}[\U]_{\beta}^{\gamma}\).
-\item \([\T(v)]_{\beta} = [\T]_{\alpha}^{\beta}[v]_{\alpha}\) for all \(v \in V\).
-\item \([\U(w)]_{\beta} = [\U]_{\alpha}^{\beta}[w]_{\beta}\) for all \(w \in W\).
+\item \([\T(v)]_{\beta} = [\T]_{\alpha}^{\beta}[v]_{\alpha}\) for all \(v \in \V\).
+\item \([\U(w)]_{\beta} = [\U]_{\alpha}^{\beta}[w]_{\beta}\) for all \(w \in \W\).
 \item \([\ITRANV]_{\alpha} = I\).
     Notice that LHS is the matrix representation (under the basis \(\alpha\)) of the identity transformation,
     and RHS is identity matrix.
@@ -380,28 +380,28 @@ Hence \(A\) has zero on non-diagonal entries, hence by definition \(A\) is a dia
 \end{proof}
 
 \begin{exercise} \label{exercise 2.3.11}
-Let \(V\) be a vector space, and let \(\T : V \to V\) be linear.
+Let \(\V\) be a vector space, and let \(\T : \V \to \V\) be linear.
 Prove that \(\T^2 = \TZERO\) if and only if \(\RANGET \subseteq \NULLT\).
 \end{exercise}
 
 \begin{proof} \ 
 \(\Longrightarrow\): Suppose \(\T^2 = \TZERO\), we have to show \(\RANGET \subseteq \NULLT\).
 So suppose arbitrary \(x \in \RANGET\).
-Then by definition of range, we can find \(v \in V\) such that \(\T(v) = x\).
+Then by definition of range, we can find \(v \in \V\) such that \(\T(v) = x\).
 And in particular, \(\T(\T(v)) = \T(x)\).
 But LHS \(= \T(\T(v)) = \T^2(v) = \OV\) by supposition, so we have RHS \(= \T(x) = \OV\).
 So by definition of null space, \(x \in \NULLT\).
 Since \(x\) is arbitrary, we have \(\RANGET \in \NULLT\).
 
 \(\Longleftarrow\): Suppose \(\RANGET \subseteq \NULLT\), we have to show \(\T^2 = \TZERO\).
-Then for all \(x \in V\), of course \(\BLUE{\T(x)} \in \RANGET\). but since \(\RANGET \subseteq \NULLT\), we have \(\BLUE{\T(x)} \in \NULLT\).
+Then for all \(x \in \V\), of course \(\BLUE{\T(x)} \in \RANGET\). but since \(\RANGET \subseteq \NULLT\), we have \(\BLUE{\T(x)} \in \NULLT\).
 Then by definition, \(\T(\BLUE{\T(x)}) = \OV\), that is, \(\T^2(x) = \OV\).
 
-So for all \(x \in V\), \(\T^2(x) = \OV\), hence \(\T^2 = \TZERO\).
+So for all \(x \in \V\), \(\T^2(x) = \OV\), hence \(\T^2 = \TZERO\).
 \end{proof}
 
 \begin{exercise} \label{exercise 2.3.12}
-Let \(V, W\), and \(Z\) be vector spaces, and let \(\T : V \to W\) and \(\U: W \to Z\) be linear.
+Let \(\V, \W\), and \(Z\) be vector spaces, and let \(\T : \V \to \W\) and \(\U: \W \to Z\) be linear.
 \begin{enumerate}
 \item Prove that if \(\U\T\) is one-to-one. then \(\T\) is one-to-one.
     Must \(\U\) also be one-to-one?
@@ -434,11 +434,11 @@ Then \((\U\T)(a, b) = \U(a, b, 0) = (a, b, 0)\), trivially \(\U\T\) is one-to-on
 
 \item
 Suppose \(\U\T\) is onto, we have to show \(\U\) is onto.
-So let arbitrary \(z \in Z\), we have to find a vector \(w \in W\) such that \(\U(w) = z\).
+So let arbitrary \(z \in Z\), we have to find a vector \(w \in \W\) such that \(\U(w) = z\).
 
-But in particular, since \(\U\T\) is onto, we can find a vector \(v \in V\) such that \((\U\T)(v) = z\).
+But in particular, since \(\U\T\) is onto, we can find a vector \(v \in \V\) such that \((\U\T)(v) = z\).
 By definition of function composition, \(\U(\T(v)) = z\).
-But \(\T(v)\) is in \(W\), so we have found a vector \(w = \T(v) \in W\) such that \(\U(w) = z\).
+But \(\T(v)\) is in \(\W\), so we have found a vector \(w = \T(v) \in \W\) such that \(\U(w) = z\).
 Since \(z\) is arbitrary, we have \(\U\) is onto.
 
 Note that \(\T\) is not necessarily onto.
@@ -458,11 +458,11 @@ Then
 So \(\U\T\) is one-to-one.
 
 Now we show \(\U\T\) is onto.
-So suppose \(z \in Z\), we have to find \(v \in V\) such that \((\U\T)(v) = z\).
-But since \(\U\) is onto, we can find \(w \in W\) such that \(\U(w) = z\).
-And since \(\T\) is onto, we can find \(v \in V\) such that \(\T(v) = w\).
+So suppose \(z \in Z\), we have to find \(v \in \V\) such that \((\U\T)(v) = z\).
+But since \(\U\) is onto, we can find \(w \in \W\) such that \(\U(w) = z\).
+And since \(\T\) is onto, we can find \(v \in \V\) such that \(\T(v) = w\).
 Then \((\U\T)(v) = \U(\T(v)) = \U(w) = z\),
-hence we have found \(v \in V\) such that \((\U\T)(v) = z\).
+hence we have found \(v \in \V\) such that \((\U\T)(v) = z\).
 So \(\U\T\) is onto.
 \end{enumerate}
 \end{proof}
@@ -594,11 +594,11 @@ and \textbf{also with the same} coefficients \(c_1, c_2, ..., c_k\).
 \end{note}
 
 \begin{exercise} \label{exercise 2.3.16}
-Let \(V\) be a \emph{finite}-dimensional vector space, and let \(\T : V \to V\) be linear.
+Let \(\V\) be a \emph{finite}-dimensional vector space, and let \(\T : \V \to \V\) be linear.
 \begin{enumerate}
 \item If \(\rankT = \rank(\T^2)\), prove that \(\RANGET \cap \NULLT = \{ \OV \}\).
-    Deduce that \(V = \RANGET \oplus \NULLT\).
-\item Prove that \(V = \RANGE(\T^k) \oplus \NULL(\T^k)\) for some positive integer \(k\).
+    Deduce that \(\V = \RANGET \oplus \NULLT\).
+\item Prove that \(\V = \RANGE(\T^k) \oplus \NULL(\T^k)\) for some positive integer \(k\).
 \end{enumerate}
 \end{exercise}
 
@@ -625,7 +625,7 @@ Since \(v\) is arbitrary, \(\NULLT \subseteq \NULL(\T^2)\).
 Now we show that \(\dim(\NULLT) = \dim(\NULL(\T^2))\).
 And
 \begin{align*}
-    \dim(\NULLT) & = \dim(V) - \dim(\RANGET) & \text{since \(V\) is finite, and by \THM{2.3}} \\
+    \dim(\NULLT) & = \dim(\V) - \dim(\RANGET) & \text{since \(\V\) is finite, and by \THM{2.3}} \\
                  & = \dim(V) - \dim(\RANGE(\T^2)) & \text{by \MAROON{(a.1)}} \\
                  & = \dim(\NULL(\T^2)) & \text{by \THM{2.3} again}
 \end{align*}
@@ -634,24 +634,24 @@ Hence (by \THM{1.11},) we have shown that \(\NULLT = \NULL(\T^2)\) \MAROON{(a.2)
 Now we first show that \(\RANGET \cap \NULLT = \{ \OV \}\).
 So let arbitrary \(w \in \RANGET \cap \NULLT\), we have to show that \(w = \OV\).
 So in particular, \(w \in \RANGET\) and \(w \in \NULLT\).
-Since \(w \in \RANGET\), we have some \(v \in V\) such that \(\T(v) = w\) \MAROON{(a.3)}.
+Since \(w \in \RANGET\), we have some \(v \in \V\) such that \(\T(v) = w\) \MAROON{(a.3)}.
 Since \(w \in \NULLT\), we have \(\T(w) = \OV\).
 Together, we have \(\T(\T(v)) = \T(w) = \OV\), hence \((\T^2)(v) = \OV\), hence \(v \in \NULL(\T^2)\).
 But by \MAROON{(a.2)}, \(v\) is also in \(\NULLT\), so \(\T(v) = \OV\), hence by \MAROON{(a.3)} we have \(w = \OV\), as desired.
 
-Now we show \(V = \RANGET \oplus \NULLT\).
-Since we have shown \(\RANGET \cap \NULLT = \{ \OV \}\), by \ATHM{2.11}(1.2), \(V = \RANGET \oplus \NULLT\) is true as desired.
+Now we show \(\V = \RANGET \oplus \NULLT\).
+Since we have shown \(\RANGET \cap \NULLT = \{ \OV \}\), by \ATHM{2.11}(1.2), \(\V = \RANGET \oplus \NULLT\) is true as desired.
 
 \item
-First we show that given any linear \(\T : V \to V\), \(\RANGE(\T^{k + 1}) \subseteq \RANGE(\T^k)\) for some nonnegative integer \(k\).
-Suppose arbitrary \(v \in \RANGE(\T^{k + 1})\), then exists \(x \in V\) such that \(\T^{k + 1}(x) = v\);
+First we show that given any linear \(\T : \V \to \V\), \(\RANGE(\T^{k + 1}) \subseteq \RANGE(\T^k)\) for some nonnegative integer \(k\).
+Suppose arbitrary \(v \in \RANGE(\T^{k + 1})\), then exists \(x \in \V\) such that \(\T^{k + 1}(x) = v\);
 that is, \(\T^k(\BLUE{\T(x)}) = v\);
-so we have found \(\BLUE{\T(x)} \in V\) such that \(\T^k(\BLUE{\T(x)}) = v\), so \(v \in \RANGE(\T^k)\).
+so we have found \(\BLUE{\T(x)} \in \V\) such that \(\T^k(\BLUE{\T(x)}) = v\), so \(v \in \RANGE(\T^k)\).
 Hence \(\RANGE(\T^{k + 1}) \subseteq \RANGE(\T^k)\).
 
 Now given arbitrary nonnegative integer \(k\), we have two cases:
 \begin{itemize}
-    \item \(\RANGE(\T^{k + 1}) = \RANGE(\T^k)\): Then by definition we have \(\T^{k + 1}(V) = \T^k(V)\) \MAROON{(b.1)}.
+    \item \(\RANGE(\T^{k + 1}) = \RANGE(\T^k)\): Then by definition we have \(\T^{k + 1}(\V) = \T^k(\V)\) \MAROON{(b.1)}.
     
     And furthermore,
     \begin{align*}
@@ -661,9 +661,9 @@ Now given arbitrary nonnegative integer \(k\), we have two cases:
                       & = \T^{k + 1}(V) & \text{of course} \\
                       & = \T^k(V) & \text{by \MAROON{(b.1)}}
     \end{align*}
-    and (informally) inductively, we have \(\T^{2k}(V) = \T(V)\).
+    and (informally) inductively, we have \(\T^{2k}(\V) = \T(\V)\).
     That is, \(\RANGE(\T^{2k}) = \RANGE(\T^k)\), and equivalently, \(\RANGE((\T^k)^2) = \RANGE(\T^k)\).
-    Hence by part(a), we have \(V = \RANGE(\T^k) \oplus \NULL(\T^k)\), as desired.
+    Hence by part(a), we have \(\V = \RANGE(\T^k) \oplus \NULL(\T^k)\), as desired.
     
     \item \(\RANGE(\T^{k + 1}) \subset \RANGE(\T^k)\) (proper subset):
 
@@ -676,23 +676,23 @@ Now given arbitrary nonnegative integer \(k\), we have two cases:
 
 \begin{exercise} \label{exercise 2.3.17}
 (Refer to \ADEF{2.2}.)
-Let \(V\) be a vector space and \(\T : V \to V\) be a linear transformation.
-Prove that \(\T = \T^2\) if and only if \(\T\) is a \textbf{projection} on \(W_1 = \{ y : \T(y) = y \}\)
+Let \(\V\) be a vector space and \(\T : \V \to \V\) be a linear transformation.
+Prove that \(\T = \T^2\) if and only if \(\T\) is a \textbf{projection} on \(\W_1 = \{ y : \T(y) = y \}\)
 along \(\NULLT\).
 \end{exercise}
 
 \begin{proof} \ 
 
-\(\Longrightarrow\): Suppose \(\T = \T^2\), we have to show \(\T\) is a projection on \(W_1\) along \(\NULLT\).
-But by \ADEF{2.2} we first need to show \(V = W_1 \oplus \NULLT\).
+\(\Longrightarrow\): Suppose \(\T = \T^2\), we have to show \(\T\) is a projection on \(\W_1\) along \(\NULLT\).
+But by \ADEF{2.2} we first need to show \(\V = \W_1 \oplus \NULLT\).
 
-Now (\RED{tricky part}) given arbitrary \(x \in V\), we have \(x = \T(x) + (x - \T(x))\) \MAROON{(1)}.
+Now (\RED{tricky part}) given arbitrary \(x \in \V\), we have \(x = \T(x) + (x - \T(x))\) \MAROON{(1)}.
 And
 \begin{align*}
              & \T(x) = \T^2(x) & \text{by supposition} \\
     \implies & \T(x) = \T(\T(x)) & \text{of course}
 \end{align*}
-Hence we have \(\T(\BLUE{\T(x)}) = \BLUE{\T(x)}\) \MAROON{(2)}, so by definition of \(W_1\), \(\T(x) \in W_1\) \MAROON{(3)}.
+Hence we have \(\T(\BLUE{\T(x)}) = \BLUE{\T(x)}\) \MAROON{(2)}, so by definition of \(\W_1\), \(\T(x) \in \W_1\) \MAROON{(3)}.
 And
 \begin{align*}
         \T(x - \T(x)) & = \T^2(x - \T(x)) & \text{by supposition} \\
@@ -704,41 +704,41 @@ And
                       & = \OV.
 \end{align*}
 Hence \(x - \T(x) \in \NULLT\) \MAROON{(4)}.
-So by \MAROON{(3)} and \MAROON{(4)}, we have \(x = \T(x) + (x - \T(x))\) where \(\T(x) \in W_1\) and \(x - \T(x) \in \NULLT\).
-Hence by definition, \(x \in W_1 + \NULLT\), so \(V \subseteq W_1 + \NULLT\), which implies \(V = W_1 + \NULLT\) since other direction is automatically true.
+So by \MAROON{(3)} and \MAROON{(4)}, we have \(x = \T(x) + (x - \T(x))\) where \(\T(x) \in \W_1\) and \(x - \T(x) \in \NULLT\).
+Hence by definition, \(x \in \W_1 + \NULLT\), so \(\V \subseteq \W_1 + \NULLT\), which implies \(\V = \W_1 + \NULLT\) since other direction is automatically true.
 
-Now, if \(x \in W_1 \cap \NULLT\), then by \(x \in W_1\) we have \(\T(x) = x\),
-and by \(x \in \NULLT\) we have \(\T(x) = \OV\), hence \(x = \OV\), hence \(W_1 \cap \NULLT = \{ \OV \}\).
+Now, if \(x \in \W_1 \cap \NULLT\), then by \(x \in \W_1\) we have \(\T(x) = x\),
+and by \(x \in \NULLT\) we have \(\T(x) = \OV\), hence \(x = \OV\), hence \(\W_1 \cap \NULLT = \{ \OV \}\).
 
-So together we have \(V = W_1 \oplus \NULLT\).
+So together we have \(\V = \W_1 \oplus \NULLT\).
 
-Finally, for all \(x \in V\),
+Finally, for all \(x \in \V\),
 \begin{align*}
-    \T(x) & = \T(\BLUE{\T(x)} + (x - \T(x))) & \text{where by \MAROON{(3)} \(\BLUE{\T(x)} \in W_1\) and by \MAROON{(4)} \(x - \T(x) \in \NULLT\)} \\
+    \T(x) & = \T(\BLUE{\T(x)} + (x - \T(x))) & \text{where by \MAROON{(3)} \(\BLUE{\T(x)} \in \W_1\) and by \MAROON{(4)} \(x - \T(x) \in \NULLT\)} \\
           & = \T(\T(x)) + \T(x - \T(x)) & \text{since \(\T\) is linear} \\
           & = \T(x) + \T(x - \T(x)) & \text{by supposition that \(\T = \T^2\)} \\
           & = \T(x) + \OV & \text{by \MAROON{(4)}} \\
           & = \BLUE{\T(x)},
 \end{align*}
-hence by \ADEF{2.2}, \(\T\) is a projection on \(W_1\) along \(\NULLT\).
+hence by \ADEF{2.2}, \(\T\) is a projection on \(\W_1\) along \(\NULLT\).
 
-\(\Longleftarrow\): Suppose \(\T\) is a projection on \(W_1\) along \(\NULLT\), we have to show \(\T = \T^2\).
-So by definition of projection, for all \(x \in V\), we have \(x = w_1 + w_2\) where \(w_1 \in W_1\) and \(w_2 \in \NULLT\), and \(\T(x) = w_1\).
+\(\Longleftarrow\): Suppose \(\T\) is a projection on \(\W_1\) along \(\NULLT\), we have to show \(\T = \T^2\).
+So by definition of projection, for all \(x \in \V\), we have \(x = w_1 + w_2\) where \(w_1 \in \W_1\) and \(w_2 \in \NULLT\), and \(\T(x) = w_1\).
 And
 \begin{align*}
     \T^2(x) & = \T(\T(x)) \\
             & = \T(\T(w_1 + w_2)) \\
             & = \T(\T(w_1) + \T(w_2)) & \text{since \(\T\) is linear} \\
-            & = \T(w_1 + \OV) & \text{since \(w_1 \in W_1\) and \(w_2 \in \OV\)} \\
+            & = \T(w_1 + \OV) & \text{since \(w_1 \in \W_1\) and \(w_2 \in \OV\)} \\
             & = \T(w_1) \\
-            & = w_1 & \text{since \(w_1 \in W_1\)}
+            & = w_1 & \text{since \(w_1 \in \W_1\)}
 \end{align*}
 Hence \(\T^2(x) = \T(x) = w_1\).
 So we have \(\T^2 = \T\).
 \end{proof}
 
 \begin{exercise} \label{exercise 2.3.18}
-Let \(\beta\) be an ordered basis for a finite-dimensional vector space \(V\), and let \(\T : V \to V\) be linear.
+Let \(\beta\) be an ordered basis for a finite-dimensional vector space \(\V\), and let \(\T : \V \to \V\) be linear.
 Prove that, for any nonnegative integer \(k\),
 \([\T^k]_{\beta} = ([\T]_{\beta})^k\).
 \end{exercise}
@@ -1007,7 +1007,7 @@ We can also consider the corresponding graph of \(A\), which is in fact a \emph{
 \begin{additional theorem} \label{athm 2.25}
 This is the placeholder theorem for \EXEC{2.3.11}:
 
-Given linear \(\T : V \to V\), then \(\T^2 = \TZERO\) if and only if \(\RANGET \subseteq \NULLT\).
+Given linear \(\T : \V \to \V\), then \(\T^2 = \TZERO\) if and only if \(\RANGET \subseteq \NULLT\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.26}
@@ -1046,18 +1046,18 @@ refer to the note in that exercise.
 \begin{additional theorem} \label{athm 2.30}
 This is the placeholder theorem for \EXEC{2.3.16}:
 
-Let \(V\) be finite, and let \(\T : V \to V\) be linear.
+Let \(\V\) be finite, and let \(\T : \V \to \V\) be linear.
 \begin{enumerate}
-\item If \(\rankT = \rank(\T^2)\), then \(\RANGET \cap \NULLT = \{ \OV \}\) and (by \ATHM{2.11}(1.2)) \(V = \RANGET \oplus \NULLT\).
-\item \(V = \RANGE(\T^k) \oplus \NULL(\T^k)\) for some positive integer \(k\).
+\item If \(\rankT = \rank(\T^2)\), then \(\RANGET \cap \NULLT = \{ \OV \}\) and (by \ATHM{2.11}(1.2)) \(\V = \RANGET \oplus \NULLT\).
+\item \(\V = \RANGE(\T^k) \oplus \NULL(\T^k)\) for some positive integer \(k\).
 \end{enumerate}
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.31}
 This is the placeholder theorem for \EXEC{2.3.17}:
 
-Let \(V\) be a vector space and \(\T : V \to V\) be a linear transformation.
-Then \(\T = \T^2\) if and only if \(\T\) is a \textbf{projection} on \(W_1 = \{ y : \T(y) = y \}\)
+Let \(\V\) be a vector space and \(\T : \V \to \V\) be a linear transformation.
+Then \(\T = \T^2\) if and only if \(\T\) is a \textbf{projection} on \(\W_1 = \{ y : \T(y) = y \}\)
 along \(\NULLT\).
 \end{additional theorem}
 

@@ -347,7 +347,7 @@ And that means \(r = \rank(B) = \dim(\spann(\{ \RED{b_1}, b_2, ..., b_n \})) \RE
 Now it suffices to show \(\rank(B') = \dim(\spann(\{ b_2, b_3, ..., b_n \}))\).
 (This is in fact very intuitive since the first \(0\) of each \(b_i\) ``does not contribute any linear independency'', and by removing the it the columns become the corresponding columns of \(B'\), hence \(B'\) and \(\spann(\{ b_2, b_3, ..., b_n \})\) have same dimensions.)
 
-To do this, we define \(\T : F^{m - 1} \to W\), where \(W\) is a subspace of \(F^m\) with elements having \(0\) as the first entry,
+To do this, we define \(\T : F^{m - 1} \to \W\), where \(\W\) is a subspace of \(F^m\) with elements having \(0\) as the first entry,
 and
 \[
     \T(a_1, a_2, ..., a_m) = (0, a_1, a_2, ..., a_m).
@@ -437,11 +437,11 @@ See \CORO{3.6.2}.
 \end{proof}
 
 \begin{exercise} \label{exercise 3.2.14}
-Let \(\T, \U: V \to W\) be linear transformations.
+Let \(\T, \U: \V \to \W\) be linear transformations.
 \begin{enumerate}
 \item Prove that \(\RANGE(\T + \U) \subseteq \RANGET + \RANGE(\U)\).
 (See the definition \ADEF{1.8} of the sum of subsets of a vector space.)
-\item Prove that if \(W\) is finite-dimensional, then \(\rank(\T + \U) \le \rankT + \rank(\U)\).
+\item Prove that if \(\W\) is finite-dimensional, then \(\rank(\T + \U) \le \rankT + \rank(\U)\).
 \item Deduce from (b) that \(\rank(A + B) \le \rank(A) + \rank(B)\) for any \(m \X n\) matrices \(A\) and \(B\).
 \end{enumerate}
 \end{exercise}
@@ -450,7 +450,7 @@ Let \(\T, \U: V \to W\) be linear transformations.
 
 \begin{enumerate}
 \item Suppose arbitrary \(w \in \RANGE(\T + \U)\).
-Then \(\exists v \in V such that (\T + \U)(v) = w\), or \(\T(v) + \U(v) = w\).
+Then \(\exists v \in \V such that (\T + \U)(v) = w\), or \(\T(v) + \U(v) = w\).
 Then by definition of sum, \(w \in \RANGET + \RANGE(\U)\) since \(w = \T(v) + \U(v)\) where \(\T(v) \in \RANGET\) and \(\U(v) \in \RANGE(\U)\).
 Hence \(\RANGE(\T + \U) \subseteq \RANGET + \RANGE(\U)\).
 
@@ -716,10 +716,10 @@ This is a placeholder theorem for \EXEC{3.2.11} and \EXEC{3.2.12}, which are int
 
 \begin{additional theorem} \label{athm 3.6}
 This is a placeholder theorem for \EXEC{3.2.14}:
-Let \(\T, \U: V \to W\) be linear transformations.
+Let \(\T, \U: \V \to \W\) be linear transformations.
 \begin{enumerate}
 \item \(\RANGE(\T + \U) \subseteq \RANGET + \RANGE(\U)\).
-\item If \(W\) is finite-dimensional, then \(\rank(\T + \U) \le \rankT + \rank(\U)\).
+\item If \(\W\) is finite-dimensional, then \(\rank(\T + \U) \le \rankT + \rank(\U)\).
 \item \(\rank(A + B) \le \rank(A) + \rank(B)\) for any \(m \X n\) matrices \(A\) and \(B\).
 \end{enumerate}
 \end{additional theorem}

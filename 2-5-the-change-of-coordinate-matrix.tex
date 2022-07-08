@@ -54,11 +54,11 @@ the matrix representation is from the basis we want to change into the basis we 
 A similar result is true in general.
 
 \begin{theorem} \label{thm 2.22}
-Let \(\beta\) and \(\beta'\) be two ordered bases for a finite-dimensional vector space \(V\), and let \(Q = [\ITRANV]_{\beta'}^{\beta}\).
+Let \(\beta\) and \(\beta'\) be two ordered bases for a finite-dimensional vector space \(\V\), and let \(Q = [\ITRANV]_{\beta'}^{\beta}\).
 Then
 \begin{enumerate}
 \item \(Q\) is invertible.
-\item For any \(v \in V\), \([v]_{\beta} = Q[v]_{\beta'}\).
+\item For any \(v \in \V\), \([v]_{\beta} = Q[v]_{\beta'}\).
 \end{enumerate}
 \end{theorem}
 
@@ -67,7 +67,7 @@ Then
 \begin{enumerate}
 \item Since \(\ITRANV\) is invertible, \(Q\) is invertible by \THM{2.18}.
 
-\item For any \(v \in V\),
+\item For any \(v \in \V\),
 \begin{align*}
     [v]_{\beta} & = [\ITRANV(v)]_{\beta} & \text{of course} \\
                 & = [\ITRANV]_{\beta'}^{\beta} [v]_{\beta'} & \text{by \THM{2.14}} \\
@@ -113,19 +113,19 @@ However, \(\begin{pmatrix} 3 \\ -1 \end{pmatrix}\) is a coordinate vector;
 if we consider a vector to be a coordinate vector, we write its components vertically, or horizontally but adding transpose to it.
 \end{note}
 
-For the remainder of this section, we consider only \LTRAN{}s that map a vector space \(V\) \emph{into itself}.
-Such a \LTRAN{} is called a \textbf{linear operator} on \(V\).
+For the remainder of this section, we consider only \LTRAN{}s that map a vector space \(\V\) \emph{into itself}.
+Such a \LTRAN{} is called a \textbf{linear operator} on \(\V\).
 (I have defined the term in \DEF{2.1}.)
 
-Now suppose now that \(\T\) is a linear operator on a finite-dimensional vector space \(V\) and that \(\beta\) and \(\beta'\) are ordered bases for \(V\).
-Then \(V\) can be represented by the matrices \([\T]_{\beta}\) and \([\T]_{\beta'}\).
+Now suppose now that \(\T\) is a linear operator on a finite-dimensional vector space \(\V\) and that \(\beta\) and \(\beta'\) are ordered bases for \(\V\).
+Then \(\V\) can be represented by the matrices \([\T]_{\beta}\) and \([\T]_{\beta'}\).
 What is the \emph{relationship} between these matrices?
 The next theorem provides a simple answer using a
 change of coordinate matrix.
 
 \begin{theorem} \label{thm 2.23}
-Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\),
-and let \(\beta\) and \(\beta'\) be ordered bases for \(V\).
+Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\),
+and let \(\beta\) and \(\beta'\) be ordered bases for \(\V\).
 Suppose that \(Q\) is the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
 Then
 \[
@@ -138,7 +138,7 @@ Related exercise: \EXEC{2.4.16}.
 \end{note}
 
 \begin{proof}
-Let \(\ITRANV\) be the identity transformation on \(V\).
+Let \(\ITRANV\) be the identity transformation on \(\V\).
 Then
 \begin{align*}
     Q [\T]_{\beta'} & = [\ITRANV]_{\beta'}^{\beta} [\T]_{\beta'} & \text{by def of \(Q\)} \\
@@ -291,12 +291,12 @@ Observe that the relation of similarity is an \textbf{equivalence relation} (see
 So we need only say that \(A\) and \(B\) are similar.
 
 Notice also that in this terminology \THM{2.23} can be stated as follows:
-If \(\T\) is a linear operator on a finite-dimensional vector space \(V\), and if \(\beta\) and \(\beta'\) are any ordered bases for \(V\), then \([\T]_{\beta'}\) is similar to \([\T]_{\beta}\).
+If \(\T\) is a linear operator on a finite-dimensional vector space \(\V\), and if \(\beta\) and \(\beta'\) are any ordered bases for \(\V\), then \([\T]_{\beta'}\) is similar to \([\T]_{\beta}\).
 \end{remark}
 
 \begin{remark} \label{remark 2.5.4}
-\THM{2.23} can be \emph{generalized} to allow \(\T : V \to W\), where \(V\) is distinct from \(W\).
-In this case, we can change bases in \(V\) as well as in \(W\) (see \EXEC{2.5.8}).
+\THM{2.23} can be \emph{generalized} to allow \(\T : \V \to \W\), where \(\V\) is distinct from \(\W\).
+In this case, we can change bases in \(\V\) as well as in \(\W\) (see \EXEC{2.5.8}).
 \end{remark}
 
 \exercisesection
@@ -310,14 +310,14 @@ Then the \(j\)th column of \(Q\) is \([x_j]_{\beta'}\).
 
 \item Every change of coordinate matrix is invertible. 
 
-\item Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\), let \(\beta\) and \(\beta'\) be ordered bases for \(V\),
+\item Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\), let \(\beta\) and \(\beta'\) be ordered bases for \(\V\),
 and let \(Q\) be the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
 Then \([\T]_{\beta} = Q [\T]_{\beta'} Q^{-1}\).
 
 \item The matrices \(A, B \in M_{n \X n}(F)\) are called similar if \(B = Q^\top A Q\) for some \(Q \in M_{n \X n}(F)\).
 
-\item Let \(\T\) be a linear operator on a finite-dimensional vector space \(V\).
-Then for any ordered bases \(\beta\) and \(\gamma\) for \(V\), \([\T]_{\beta}\) is similar to \([\T]_{\gamma}\).
+\item Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\).
+Then for any ordered bases \(\beta\) and \(\gamma\) for \(\V\), \([\T]_{\beta}\) is similar to \([\T]_{\gamma}\).
 \end{enumerate}
 \end{exercise}
 
@@ -539,8 +539,8 @@ So
 
 \begin{exercise} \label{exercise 2.5.8}
 Prove the following \emph{generalization} of \THM{2.23}.
-Let \(\T : V \to W\) be a \LTRAN{} from a finite-dimensional vector space \(V\) to a finite-dimensional vector space \(W\).
-Let \(\beta\) and \(\beta'\) be ordered bases for \(V\), and let \(\gamma\) and \(\gamma'\) be ordered bases for \(W\).
+Let \(\T : \V \to \W\) be a \LTRAN{} from a finite-dimensional vector space \(\V\) to a finite-dimensional vector space \(\W\).
+Let \(\beta\) and \(\beta'\) be ordered bases for \(\V\), and let \(\gamma\) and \(\gamma'\) be ordered bases for \(\W\).
 Then \([\T]_{\beta'}^{\gamma'} = P^{-1} [\T]_{\beta}^{\gamma} Q\), where \(Q\) is the matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates and \(P\) is the matrix that changes \(\gamma'\)-coordinates into \(\gamma\)-coordinates.
 \end{exercise}
 
@@ -620,13 +620,13 @@ Justify that your definition is well-defined.
               & = \TRACE(B) & \text{of course}
 \end{align*}
 
-\item Given finite-dimensional vector space \(V\) and linear operator \(\T : V \to V\), we define \(\TRACE(\T) = \TRACE([\T]_{\beta})\) where \(\beta\) is a basis for \(V\).
-The definition is well-defined because given arbitrary bases \(\beta, \beta'\) for \(V\), by \THM{2.23}, \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar, and by part(a), \(\TRACE([\T]_{\beta}) = \TRACE([\T]_{\beta'})\).
+\item Given finite-dimensional vector space \(\V\) and linear operator \(\T : \V \to \V\), we define \(\TRACE(\T) = \TRACE([\T]_{\beta})\) where \(\beta\) is a basis for \(\V\).
+The definition is well-defined because given arbitrary bases \(\beta, \beta'\) for \(\V\), by \THM{2.23}, \([\T]_{\beta}\) and \([\T]_{\beta'}\) are similar, and by part(a), \(\TRACE([\T]_{\beta}) = \TRACE([\T]_{\beta'})\).
 \end{enumerate}
 \end{proof}
 
 \begin{exercise} \label{exercise 2.5.11}
-Let \(V\) be a finite-dimensional vector space with ordered bases \(\alpha, \beta\), and \(\gamma\).
+Let \(\V\) be a finite-dimensional vector space with ordered bases \(\alpha, \beta\), and \(\gamma\).
 \begin{enumerate}
 \item Prove that if \(Q\) and \(R\) are the change of coordinate matrices that change \(\alpha\)-coordinates into \(\beta\)-coordinates and \(\beta\)-coordinates into \(\gamma\)-coordinates, respectively, then \(RQ\) is the change of coordinate matrix that changes \(\alpha\)-coordinates into \(\gamma\)-coordinates.
 
@@ -675,14 +675,14 @@ See \CORO{2.23.1}.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.5.13}
-\sloppy Let \(V\) be a finite-dimensional vector space over a field \(F\), and let \(\beta = \{ x_1, x_2, ..., x_n \}\) be an ordered basis for \(V\).
+\sloppy Let \(\V\) be a finite-dimensional vector space over a field \(F\), and let \(\beta = \{ x_1, x_2, ..., x_n \}\) be an ordered basis for \(\V\).
 Let \(Q\) be an \(n \X n\) \emph{invertible} matrix with entries from \(F\).
 Define
 \[
     x_j' = \sum_{i = 1}^n Q_{ij} x_i \text{ for } 1 \le j \le n,
 \]
 and set \(\beta' = \{ x_1', x_2', ..., x_n' \}\).
-Prove that \(\beta'\) is a basis for \(V\) and hence that \(Q\) is the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
+Prove that \(\beta'\) is a basis for \(\V\) and hence that \(Q\) is the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
 \end{exercise}
 
 \begin{note}
@@ -691,7 +691,7 @@ The exercise with highly related concept: \EXEC{2.4.15}.
 
 \begin{note}
 這題背後的意義就是，若\ \(\beta\) 是\ basis，\(\T\) 是可逆變換(所以對應的矩陣也是可逆)，則\ \(\T(\beta)\) 也是一個\ basis。
-相關練習有\ \EXEC{2.4.15}，不過這題是那個練習的\ special case，也就是\ codomain \(W = V\) 的情況。
+相關練習有\ \EXEC{2.4.15}，不過這題是那個練習的\ special case，也就是\ codomain \(\W = \V\) 的情況。
 \end{note}
 
 \begin{proof}
@@ -728,7 +728,7 @@ And since \(Q\) is invertible, we have
     \implies & a_1 = a_2 = ... = a_n = 0
 \end{align*}
 Hence \(\beta' = \{ x'_1, x'_2, ..., x'_n \}\) is \LID{}.
-Since \(\beta'\) has \(n\) vectors, it is a basis for \(V\).
+Since \(\beta'\) has \(n\) vectors, it is a basis for \(\V\).
 
 Now from the definition of \(x'_j\), we know \([x'_j]_{\beta}\) is equal to the \(j\)th column of \(Q\), but \([x'_j]_{\beta}\), which is equal to \([\mathrm{I}(x'_j)]_{\beta}\),
 is (by definition of matrix representation) also equal to the \(j\)th column of \([\mathrm{I}]_{\beta'}^{\beta}\), hence \(Q = [\mathrm{I}]_{\beta'}^{\beta}\).
@@ -738,20 +738,20 @@ That is, \(Q\) is the coordinate matrix that changes \(\beta'\)-coordinates into
 \begin{exercise} \label{exercise 2.5.14}
 Prove the \emph{converse} of \EXEC{2.5.8}:
 If \(A\) and \(B\) are each \(m \X n\) matrices with entries from a field \(F\), and if there exist \emph{invertible} \(m \X m\) and \(n \X n\) matrices \(P\) and \(Q\), respectively,
-such that \(B = P^{-1} A Q\) \MAROON{(1)}, then there exist an \(n\)-dimensional vector space \(V\) and an \(m\)-dimensional vector space \(W\) (both over \(F\)), ordered bases \(\beta\) and \(\beta'\) for \(V\) and \(\gamma\) and \(\gamma'\) for \(W\),
-and a \LTRAN{} \(\T : V \to W\) such that
+such that \(B = P^{-1} A Q\) \MAROON{(1)}, then there exist an \(n\)-dimensional vector space \(\V\) and an \(m\)-dimensional vector space \(\W\) (both over \(F\)), ordered bases \(\beta\) and \(\beta'\) for \(\V\) and \(\gamma\) and \(\gamma'\) for \(\W\),
+and a \LTRAN{} \(\T : \V \to \W\) such that
 \[
     A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}.
 \]
-Hints: Let \(V = F^n\), \(W = F^m\), \(\T = \LMTRAN_A\), and \(\beta\) and \(\gamma\) be the \emph{standard} ordered bases for \(F^n\) and \(F^m\), respectively.
+Hints: Let \(\V = F^n\), \(\W = F^m\), \(\T = \LMTRAN_A\), and \(\beta\) and \(\gamma\) be the \emph{standard} ordered bases for \(F^n\) and \(F^m\), respectively.
 Now apply the results of \EXEC{2.5.13} to obtain ordered bases \(\beta'\) and \(\gamma'\) from \(\beta\) and \(\gamma\) via \(Q\) and \(P\), respectively.
 \end{exercise}
 
 \begin{proof}
-Let \(V = F^n\), \(W = F^m\), \(\T = \LMTRAN_A\), \(\beta = \{ e_1, e_2, ..., e_n \}\) be the standard ordered basis for \(F^n\), \(\gamma = \{ f_1, f_2, ..., f_m \}\) be the standard ordered basis for \(F^m\).
+Let \(\V = F^n\), \(\W = F^m\), \(\T = \LMTRAN_A\), \(\beta = \{ e_1, e_2, ..., e_n \}\) be the standard ordered basis for \(F^n\), \(\gamma = \{ f_1, f_2, ..., f_m \}\) be the standard ordered basis for \(F^m\).
 
 Then let \(\beta' = \{ v_1, v_2, ..., v_n \}\), where \(v_j = \sum_{i = 1}^n Q_{ij} e_i\) and \(\gamma' = \{ w_1, w_2, ..., w_m \}\), where \(w_j = \sum_{i = 1}^m P_{ij} f_i\).
-Then by \EXEC{2.5.13}, \(\beta', \gamma'\) are also bases for \(V\) and \(W\), respectively;
+Then by \EXEC{2.5.13}, \(\beta', \gamma'\) are also bases for \(\V\) and \(\W\), respectively;
 furthermore, \(Q\) is the coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\) coordinates,
 and \(P\) is the coordinate matrix that changes \(\gamma'\)-coordinates into \(\gamma\) coordinates.
 
@@ -766,7 +766,7 @@ And
         & = B & \text{by \MAROON{(1)}}
 \end{align*}
 
-So we have found \(V, W\), a \LTRAN{} \(\T : V \to W\), and bases \(\beta, \beta', \gamma, \gamma'\), such that \(A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}\), as desired.
+So we have found \(\V, \W\), a \LTRAN{} \(\T : \V \to \W\), and bases \(\beta, \beta', \gamma, \gamma'\), such that \(A = [\T]_{\beta}^{\gamma} \text{ and } B = [\T]_{\beta'}^{\gamma'}\), as desired.
 \end{proof}
 
 \begin{additional theorem} \label{athm 2.46} \ 
@@ -785,7 +785,7 @@ This is the placeholder theorem for \EXEC{2.5.10}:
 
 \BLUE{(1)}: If \(A, B\) are similar \(n \X n\) matrices, then \(\TRACE(A) = \TRACE(B)\).
 
-\BLUE{(2)}: Given finite-dimensional vector space \(V\) and linear operator \(\T : V \to V\), we can define \(\TRACE(\T) = \TRACE([\T]_{\beta})\) where \(\beta\) is a basis for \(V\), and the definition is well-defined.
+\BLUE{(2)}: Given finite-dimensional vector space \(\V\) and linear operator \(\T : \V \to \V\), we can define \(\TRACE(\T) = \TRACE([\T]_{\beta})\) where \(\beta\) is a basis for \(\V\), and the definition is well-defined.
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.49}
@@ -799,12 +799,12 @@ This is the placeholder theorem for \EXEC{2.5.11}:
 \begin{additional theorem} \label{athm 2.50}
 This is the placeholder theorem for \EXEC{2.5.13}:
 
-\sloppy Let \(V\) be a finite-dimensional vector space over a field \(F\), and let \(\beta = \{ x_1, x_2, ..., x_n \}\) be an ordered basis for \(V\).
+\sloppy Let \(\V\) be a finite-dimensional vector space over a field \(F\), and let \(\beta = \{ x_1, x_2, ..., x_n \}\) be an ordered basis for \(\V\).
 Let \(Q\) be an \(n \X n\) \emph{invertible} matrix with entries from \(F\).
 Define
 \[
     x_j' = \sum_{i = 1}^n Q_{ij} x_i \text{ for } 1 \le j \le n,
 \]
 and set \(\beta' = \{ x_1', x_2', ..., x_n' \}\).
-Then \(\beta'\) is a basis for \(V\) and hence that \(Q\) is the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
+Then \(\beta'\) is a basis for \(\V\) and hence that \(Q\) is the change of coordinate matrix that changes \(\beta'\)-coordinates into \(\beta\)-coordinates.
 \end{additional theorem}
