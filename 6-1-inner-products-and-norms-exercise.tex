@@ -797,7 +797,7 @@ Regardless of whether \(\V\) is or is not an inner product space, \emph{we may s
 \begin{exercise} \label{exercise 6.1.26}
 Prove that the following are norms on the given vector spaces \(\V\).
 \begin{enumerate}
-\item \(\V = \SET{R}^2\); \quad \(\norm{(a, b)}_{\V} = \abs{a} + \abs{b}\) for all \(a, b \in V\)
+\item \(\V = \SET{R}^2\); \quad \(\norm{(a, b)}_{\V} = \abs{a} + \abs{b}\) for all \(a, b \in \V\)
 \item \(\V = \CONT([0, 1])\); \quad \(\norm{f}_{\V} = \max_{t \in [0, 1]} \abs{f(t)}\) for all \(f \in \V\)
 \item \(\V = \CONT([0, 1])\); \(\norm{f}_{\V} = \int_0^1 \abs{f(t)} dt\) for all \(f \in \V\)
 \item \(\V = M_{m \X n}(F)\); \(\norm{A}_{\V} = \max_{i, j} \abs{A_{ij}}\) for all \(A \in \V\)
@@ -850,7 +850,7 @@ Hints:
 \item Prove \(\LG rx, y \RG = r \LG x, y \RG\) for every \emph{rational} number rand every \(x, y \in \V\).
 \item Prove \(\abs{ \LG x, y \RG } \le \norm{x}_{\V} \norm{y}_{\V}\) for every \(x, y \in \V\).
 Hint: Condition (3) in the definition of norm can be helpful.
-\item Prove that for every \(c \in \SET{R}\), every rational number \(r\), and every \(x, y \in \SET{V}\),
+\item Prove that for every \(c \in \SET{R}\), every rational number \(r\), and every \(x, y \in \SET{\V}\),
 \[
     \abs{ c \LG x, y \RG - \LG cx, y \RG } = \abs{ (c - r) \LG x, y \RG - \LG(c - r)x, y \RG} \le 2\abs{c - r} \norm{x}_{\V} \norm{y}_{\V}.
 \]
