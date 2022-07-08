@@ -740,7 +740,7 @@ In the case of diagonalizable operators, the simpler subspaces are the eigenspac
 \begin{definition} \label{def 5.8}
 Let \(\W_1, \W_2, ..., \W_k\) be subspaces of a vector space \(\V\). we define the \textbf{sum} of these subspaces to be the set
 \[
-    \{ v_1 + v_2 + ... + v_k : v_i \in W_i \text{ for } 1 \le i \le k \},
+    \{ v_1 + v_2 + ... + v_k : v_i \in \W_i \text{ for } 1 \le i \le k \},
 \]
 which we denote by \(\W_1 + \W_2 + ... + \W_k\) or \(\sum_{i = 1}^k \W_i\).
 It is a simple exercise (See \EXEC{1.3.23}) to show that the sum of subspaces of a vector space is also a subspace.
@@ -763,7 +763,7 @@ The definition of \emph{direct sum} that follows is a \emph{generalization} of t
 Let \(\W, \W_1, \W_2, ..., \W_k\) be subspaces of a vector space \(\V\) such that \(\W_1 \subseteq \W\) for \(i = 1, 2, ..., k\).
 We call \W the \textbf{direct sum} of the subspaces \(\W_1, \W_2, ..., \W_k\), and write \(\W = \W_1 \oplus \W_2 \oplus ... \oplus \W_k\), if
 \[
-    W = \sum_{i = 1}^k W_i \quad \text{ and } \quad W_j \cap \sum_{i \ne j} W_i = \{ \OV \} \text{ for each } j (1 \le j \le k).
+    \W = \sum_{i = 1}^k \W_i \quad \text{ and } \quad \W_j \cap \sum_{i \ne j} \W_i = \{ \OV \} \text{ for each } j (1 \le j \le k).
 \]
 \end{definition}
 
@@ -775,7 +775,7 @@ For any \((a, b, c, d, 0) \in \W\),
 \((a, b, c, d, 0) = (a, b, 0, 0, 0) + (0, 0, c, 0, 0) + (0, 0, 0, d, 0) \in \W_1 + \W_2 + \W_3\).
 Thus
 \[
-    W = \sum_{i = 1}^3 W_i.
+    \W = \sum_{i = 1}^3 \W_i.
 \]
 To show that \(\W\) is the direct sum of \(\W_1, \W_2\), and \(\W_3\), we must prove that \(\W_1 \cap (\W_2 + \W_3) = \W_2 \cap (\W_1 + \W_3) = \W_3 \cap (\W_1 + \W_2) = \{ \OV \}\).
 But these equalities are obvious, and so \(\W = \W_1 \oplus \W_2 \oplus \W_3\).
@@ -809,7 +809,7 @@ We prove them by proving (a) \(\implies\) (b) \(\implies\) (c) \(\implies\) (d) 
 So assume (a).
 In particular by \DEF{5.9} we have
 \[
-    V = \sum_{i = 1}^k W_i. \quad \quad \MAROON{(a.1)}
+    \V = \sum_{i = 1}^k \W_i. \quad \quad \MAROON{(a.1)}
 \]
 Now suppose that \(v_1, v_2, ..., v_k\) are any vectors such that \(v_i \in \W_i\) for all \(i\) and \(v_1 + v_2 + ... + v_k = \OV\).
 Then for any \(j\),
@@ -820,7 +820,7 @@ Then for any \(j\),
 But \(-v_j \in \W_j\), so with \MAROON{(a.2)}, \(-v_j \in \W_j \cap \sum_{i \ne j} \W_i\).
 But by the assumption of (a), that is, by the second condition of \DEF{5.9},
 \[
-    -v_j \in W_j \cap \sum_{i \ne j} W_i = \{ \OV \}.
+    -v_j \in \W_j \cap \sum_{i \ne j} \W_i = \{ \OV \}.
 \]
 Hence \(v_j = \OV\) for any \(j\), proving (b).
 
@@ -842,7 +842,7 @@ Now assume (c). We prove (d).
 For each \(i\), let \(\gamma_i\) be an ordered basis for \(\W_i\).
 From the statement of (c), it's clear that
 \[
-    V = \sum_{i = 1}^k W_i,
+    \V = \sum_{i = 1}^k \W_i,
 \]
 and it follows that \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) \emph{generates} \(\V\).
 So it suffices to show \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\) is \LID{}.
@@ -860,7 +860,7 @@ Then for each \(i\), \(w_i \in \spann(\gamma_i) = \W_i\) and with \MAROON{(c.1)}
 \]
 But we already have the \emph{trivial} representation of \(\OV\) using \(\W_i\)'s vector, that is
 \[
-    0 + 0 + ... + 0 = \OV \text{ for each } 0 \in W_i.
+    0 + 0 + ... + 0 = \OV \text{ for each } 0 \in \W_i.
 \]
 So by the assumption of (c), \(0 + 0 + ... + 0\) where each \(0 \in \W_i\) is \textbf{the unique} representation of \(\OV\), which (by \MAROON{(c.3)}) implies \(w_i = \OV\) for all \(i\).
 Thus by \MAROON{(c.2)},
@@ -884,18 +884,18 @@ Then we use \EXEC{1.4.14} \emph{inductively}:
 \end{align*}
 Now it suffices to show that for all \(j\),
 \[
-    W_j \cap \sum_{i \ne j} W_{i} = \{ \OV \}. \quad \quad \MAROON{(e.1)}
+    \W_j \cap \sum_{i \ne j} \W_{i} = \{ \OV \}. \quad \quad \MAROON{(e.1)}
 \]
 For the sake of contradiction, suppose not.
 So for some \(j\), there is a \emph{nonzero} vector \(v\) such that
 \[
-    v \in W_j \cap \sum_{i \ne j} W_i.
+    v \in \W_j \cap \sum_{i \ne j} \W_i.
 \]
 Then
 \[
-    v \in W_j = \spann(\gamma_j)
+    v \in \W_j = \spann(\gamma_j)
     \quad \text{ and } \quad
-    v \in \sum_{i \ne j} W_i = \spann \left( \bigcup_{i \ne j} \gamma_i \right)
+    v \in \sum_{i \ne j} \W_i = \spann \left( \bigcup_{i \ne j} \gamma_i \right)
 \]
 where similar to the derivation of \(\V = \W_1 + ... + \W_k\) before, the second equation is derived by applying \EXEC{1.4.14} inductively.
 Then we have two \emph{different} linear combination of \(v \ne \OV\) of \(\gamma_1 \cup \gamma_2 \cup ... \cup \gamma_k\): one is only using \(\gamma_j\) and the other is using \(\bigcup_{i \ne j} \gamma_i\).

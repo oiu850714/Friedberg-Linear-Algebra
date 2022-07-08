@@ -481,11 +481,11 @@ Since \(v\) is arbitrary, we have \(\W_1 + \W_2 \subseteq \W\).
 \begin{exercise} \label{exercise 1.3.24}
 Show that \(F^n\) is the direct sum of the subspaces
 \[
-    W_1 = \{(a_1, a_2, ..., a_n) \in F^n : a_n = 0 \}
+    \W_1 = \{(a_1, a_2, ..., a_n) \in F^n : a_n = 0 \}
 \]
 (only the last component must equal to \(0\)) and
 \[
-    W_2 = \{(a_1, a_2, ..., a_n) \in F^n : a_1 = a_2 = ... = a_{n - 1} = 0 \}
+    \W_2 = \{(a_1, a_2, ..., a_n) \in F^n : a_1 = a_2 = ... = a_{n - 1} = 0 \}
 \]
 (only the last component can be nonzero).
 \end{exercise}
@@ -601,7 +601,7 @@ So we have \(\W_1 \cap \W_2 = \{ O_{n \X n} \}\) and \(M_{n \X n} = \W_1 + \W_2\
 Let \(F\) be a field that is not of characteristic two(textbook page 549).
 Define
 \[
-    W_1 = \{ A \in M_{n \X n}(F) : A_{ij} = 0 \text{ whenever } i \le j \}
+    \W_1 = \{ A \in M_{n \X n}(F) : A_{ij} = 0 \text{ whenever } i \le j \}
 \]
 and \(\W_2\) to be the set of all symmetric \(n \X n\) matrices with entries from \(F\).
 (It's trivial and already shown that) Both \(\W_1\) and \(\W_2\) are subspaces of \(M_{n \X n}(F)\).
@@ -673,11 +673,11 @@ It is customary to \emph{denote} this coset by \(v + \W\) rather than \(\{v\} + 
 \end{enumerate}
 Addition and scalar multiplication by scalars of \(F\) can be defined in the collection \(S = \{v + \W: v \in \V\}\) of all cosets of \(\W\) as follows:
 \[
-    (v_1 + W) + (v_2 + W) = (v_1 + v_2) + W
+    (v_1 + \W) + (v_2 + \W) = (v_1 + v_2) + \W
 \]
 for all \(v_1, v_2 \in \V\), and
 \[
-    a(v + W) = av + W
+    a(v + W) = av + \W
 \]
 for all \(v \in \V\) and \(a \in F\).
 \begin{enumerate}
@@ -685,11 +685,11 @@ for all \(v \in \V\) and \(a \in F\).
     \item Prove that the preceding operations are \textbf{well defined};
         that is, show that if \(v_1 + \W = v_1' + \W\) and \(v_2 + \W = v_2' + \W\), then
         \[
-            (v_1 + W) + (v_2 + W) = (v_1' + W) + (v_2' + W)
+            (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W)
         \]
         and
         \[
-            a(v_1 + W) = a(v_1' + W)
+            a(v_1 + \W) = a(v_1' + \W)
         \]
         for all \(a \in F\).
     \item Prove that the set \(S\) is \emph{a vector space} with the operations defined in (c).
@@ -778,20 +778,20 @@ So we have shown \(v_1 + \W = v_2 + \W\), as desired.
 Suppose \(v_1 + \W = v_1' + \W\) \MAROON{(9)} and \(v_2 + \W = v_2' + \W\) \MAROON{(10)}.
 We have to show
 \[
-    (v_1 + W) + (v_2 + W) = (v_1' + W) + (v_2' + W)
+    (v_1 + \W) + (v_2 + \W) = (v_1' + \W) + (v_2' + \W)
 \]
 for all \(v_1, v_2 \in \V\), and
 \[
-    a(v_1 + W) = a(v_1' + W)
+    a(v_1 + \W) = a(v_1' + \W)
 \]
 for all \(a \in F\).
 That is, by definition of these operations, we have to show
 \[
-    (v_1 + v_2) + W = (v_1' + v_2' + W)
+    (v_1 + v_2) + \W = (v_1' + v_2' + \W)
 \]
 and
-\[
-    av_1 + W = av_1' + W.
+\:w
+    av_1 + \W = av_1' + \W.
 \]
 
 We first show addition is well-defined by showing \((v_1 + v_2) + \W \subseteq (v_1' + v_2' + \W)\) and \((v_1' + v_2') + \W \subseteq (v_1 + v_2 + \W)\).
