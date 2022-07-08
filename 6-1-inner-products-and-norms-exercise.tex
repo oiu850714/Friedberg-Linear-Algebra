@@ -1,0 +1,1099 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 6.1.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item An inner product is a scalar-valued function on the set of ordered pairs of vectors.
+\item An inner product space must be over the field of real or complex numbers.
+\item An inner product is linear in both components.
+\item There is exactly one inner product on the vector space \(\SET{R}^n\).
+\item The triangle inequality only holds in finite-dimensional inner product spaces.
+\item Only square matrices have a conjugate-transpose.
+\item If \(x, y\), and \(z\) are vectors in an inner product space such that \((x, y) = (x, z)\), then \(y = z\).
+\item If \((x, y) = 0\) for all \(x\) in an inner product space, then \(y = \OV\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item True by \DEF{6.1}.
+\item It seems that it must be true; see some \href{https://math.stackexchange.com/questions/49348/inner-product-spaces-over-finite-fields}{reference1},
+\href{https://mathoverflow.net/questions/129413/what-fields-can-be-used-for-an-inner-product-space}{reference 2}.
+
+\item False; in general (by \RMK{6.1.8}) it is only \emph{conjugate linear} in the second component.
+\item False, any function that satisfies \DEF{6.1} is an inner product.
+\EXAMPLE{6.1.2} is a (counter)example.
+
+\item False. \THM{6.2}(d) does not require that the corresponding vector space need to be finite-dimensional.
+
+\item False. \DEF{6.2} does not require the corresponding matrix should be square.
+\item False. Counterexample can be found, e.g. \(x = \OV\).
+\item True. In this case we have \(\LG x, \RED{\OV} \RG = 0 = \LG x, \RED{y} \RG\) for all \(x\) in the inner product space.
+Then by \THM{6.1}(e), \(y = \OV\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.2}
+Let \(x = (2, 1 + \iu, \iu)\) and \(y = (2 - \iu, 2, 1 + 2\iu)\) be vectors in \(\SET{C}^3\).
+Compute \(\LG x, y \RG, \norm{x}, \norm{y}\), and \(\norm{x + y}\).
+Then verify both the Cauchy-Schwarz inequality and the triangle inequality.
+\end{exercise}
+We have
+\begin{align*}
+    \LG x, y \RG & = 2(\conjugatet{2-\iu}) + (1+\iu)(\conjugatet{2}) + (\iu) \conjugatet{(1 + 2 \iu}) \\
+    & = 2(2 + \iu) + (1 + \iu) 2 + (\iu)(1 - 2\iu) \\
+    & = 4 + 2\iu + 2 + 2\iu + \iu + 2 \\
+    & = 8 + 5\iu
+\end{align*}
+\begin{align*}
+    \norm{x} &= \sqrt{\LG x, x \RG} = \sqrt{2 \cdot 2 + (1+\iu)(1-\iu) + \iu(-\iu)} = \sqrt{4 + 2 + 1}= \sqrt{7} \\
+    \norm{y} &= \sqrt{\LG y, y \RG} = \sqrt{(2-\iu)(2+\iu) + 2(2) + (1 + 2\iu)(1 - 2\iu)} = \sqrt{5 + 4 + 5} = \sqrt{14} \\
+    x + y &= (4 - \iu, 3 + \iu, 1 + 3\iu) \\
+    \norm{x + y} & = \sqrt{(4-\iu)(4 + \iu) + (3 + \iu)(3 - \iu) + (1 + 3\iu)(1 - 3\iu)} = \sqrt{17 + 10 + 10} = \sqrt{37} \\
+    \text { For Cauchy,} & \norm{\LG x, y \RG} = \abs{8 + 5\iu} = \sqrt{89}, \norm{x} \cdot \norm{y} = \sqrt{98} \\
+    \text { So } & \norm{\LG x, y \RG} < \norm{x} \cdot \norm{y} \\
+    \text { For Triangular,} & \norm{x + y} = \sqrt{37}, \norm{x} + \norm{y} = \sqrt{7} + \sqrt{14} \\
+    \text{ So } & \norm{x + y} < \norm{x} + \norm{y}.
+\end{align*}
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.3}
+In \(\CONT([0, 1])\), let \(f(t) = t\) and \(g(t) = e^t\).
+Compute \(\LG f, g \RG\) (as defined in \EXAMPLE{6.1.3}), \(\norm{f}, \norm{g}\), and \(\norm{f + g}\). Then verify both the Cauchy-Schwarz inequality and the triangle inequality.
+\end{exercise}
+
+\begin{proof}
+We put the definition here:
+\[
+    \LG f, g \RG = \int_0^1 f(x)g(x) dx.
+\]
+Thus, for \(f(x) = x\) and \(g(x) = e^x\) we have
+\begin{align*}
+    \LG f, g \RG & = \LG x, e^x \RG = \int_0^1 x e^x dx & \text{by definition} \\
+    & = xe^x \Big|_0^1 - \int_0^1 e^x dx & \text{By Calculus, \emph{integration by parts}} \\
+    & = e - e^x \Big|_0^1 = e - e - (-1) = 1.
+\end{align*}
+And similarly,
+\begin{align*}
+    \norm{f}^2 & = \LG x, x \RG = \int_0^1 x^2 dx
+    = \frac{1}{3}x^3 \Big|_0^1
+    = \frac{1}{3} - 0 = \frac{1}{3} \\
+    \implies & \norm{f} = \frac{\sqrt{3}}{3}. \\
+    \norm{g}^2 & = \LG e^x, e^x \RG = \int_0^1 e^{2x} dx
+    = \frac{1}{2} e^{2x} \Big|_0^1
+    = \frac{1}{2} e^2 - \frac{1}{2} \\
+    \implies & \norm{g} = \sqrt{\frac{1}{2} e^2 - \frac{1}{2}}.
+\end{align*}
+Moreover:
+\begin{align*}
+    \norm{f + g}^2 & = \LG x + e^x, x + e^x \RG = \int_0^1 (x + e^x)^2 dx \\
+    & = \int_0^1 e^{2x} + x^2 + 2xe^x dx = ... = \frac{1}{2}e^2 + \frac{11}{6} \\
+    \implies & \norm{f + g} = \sqrt{\frac{1}{2}e^2 + \frac{11}{6}}.
+\end{align*}
+So Cauchy–Schwarz inequality is satisfied since:
+\begin{align*}
+    \norm{f} \cdot \norm{g} = \frac{\sqrt{3}}{3} \sqrt{\frac{1}{2} e^2 - \frac{1}{2}} = \sqrt{\frac{1}{6}e^2 - \frac{1}{6}} > \sqrt{1} = 1 = \abs{1} = \abs{\LG f, g \RG}.
+\end{align*}
+And triangular inequality is satisfied since (using calculator):
+\begin{align*}
+    \norm{f + g} & \approx 2.35114 \le 2.625404 
+    \approx \frac{\sqrt{3}}{3} + \sqrt{\frac{1}{2} e^2 - \frac{1}{2}} = \norm{f} + \norm{g}.
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.4} \ 
+
+\begin{enumerate}
+\item Complete the proof in \EXAMPLE{6.1.5} that \(\LG \cdot , \cdot \RG\) is an inner product (the Frobenius inner product) on \(M_{n \X n}(F)\).
+\item Use the Frobenius inner product to compute \(\norm{A}, \norm{B}\), and \(\LG A, B \RG\) for
+\[
+    A = \begin{pmatrix} 1 & 2 + \iu \\ 3 & \iu \end{pmatrix}
+    \quad \text{ and } \quad
+    B = \begin{pmatrix} 1 + \iu & 0 \\ \iu & -\iu \end{pmatrix}.
+\]
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item The example has shown the (a)(d) of \DEF{6.1}, so we show (b)(c).
+For (b), let \(c\) be a scalar, \(A, B\) be \(n \X n\) matrices,
+\begin{align*}
+    \LG cA, B \RG & = \TRACE(B^* cA) & \text{by def of \(\InnerOp\)} \\
+        & = \sum_{i = 1}^n (B^* cA)_{ii} & \text{by def of trace} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n (B^*)_{ik} (cA)_{ki} & \text{by def of matrix product} \\
+        & = c \sum_{i = 1}^n \sum_{k = 1}^n (B^*)_{ik} (A)_{ki} & \text{put constant out of (double) sum} \\
+        & = c \sum_{i = 1}^n (B^* A)_{ii} & \text{by def of matrix product} \\
+        & = c \cdot \TRACE(B^* A) & \text{by def of trace} \\
+        & = c \LG A, B \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+For (c),
+\begin{align*}
+    \conjugatet{\LG A, B \RG} & = \conjugatet{\TRACE(B^* A)} = \conjugatet{\sum_{i = 1}^n (B^* A)_{ii}} & \text{by def of trace} \\
+        & = \sum_{i = 1}^n \conjugatet{(B^* A)_{ii}} & \text{by \THM{d.2}(b)} \\
+        & = \sum_{i = 1}^n \conjugatet{\sum_{k = 1}^n (B^*)_{ik} A_{ki}} & \text{by def of matrix product} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n \conjugatet{(B^*)_{ik} A_{ki}} & \text{by \THM{d.2}(b)} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n \conjugatet{(B^*)_{ik}} \cdot \conjugatet{A_{ki}} & \text{by \THM{d.2}(c)} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n \conjugatet{\conjugatet{B_{ki}}} (A^*)_{ik} & \text{by \DEF{6.2}} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n B_{ki} (A^*)_{ik} & \text{by \THM{d.2}(a)} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n (A^*)_{ik} B_{ki} & \text{of course} \\
+        & = \sum_{i = 1}^n (A^* B)_{ii} & \text{by def of matrix product} \\
+        & = \TRACE(A^* B) & \text{by def of trace} \\
+        & = \LG B, A \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+So we proved \DEF{6.1}(b), (c) for Frobenius inner product, as desired.
+
+\item Just using the simpler way in \RMK{6.1.5} to calculate Frobenius inner product.
+\begin{align*}
+    \LG A, B \RG & = \sum_{i = 1}^2 \sum_{j = 1}^2 A_{ij} \conjugatet{B_{ij}} & \text{by \RMK{6.1.5}} \\
+        & = A_{11} \conjugatet{B_{11}} + A_{12} \conjugatet{B_{12}} + A_{21} \conjugatet{B_{21}} + A_{22} \conjugatet{B_{22}} \\
+        & = 1(1 - \iu) + (2 + \iu)(0) + 3(-\iu) + \iu(-(-\iu) \\
+        & = 1 - \iu - 3\iu - 1 = -4\iu.
+\end{align*}
+Similarly,
+\begin{align*}
+    \norm{A}^2 & = \LG A, A \RG = A_{11} \conjugatet{A_{11}} + A_{12} \conjugatet{A_{12}} + A_{21} \conjugatet{A_{21}} + A_{22} \conjugatet{A_{22}} \\
+        & = 1 \cdot 1 + (2 + \iu)(2 - \iu) + 3 \cdot 3 + \iu(-\iu) = 1 + 5 + 9 + 1 = 16. \\
+    \implies & \norm{A} = 4.
+\end{align*}
+And
+\begin{align*}
+    \norm{B}^2 & = \LG B, B \RG = B_{11} \conjugatet{B_{11}} + B_{12} \conjugatet{B_{12}} + B_{21} \conjugatet{B_{21}} + B_{22} \conjugatet{B_{22}} \\
+        & = (1 + \iu)(1 - \iu) + 0 + \iu(-\iu) + (-\iu)(-(-\iu)) = 2 + 1 + 1 = 4. \\
+    \implies & \norm{B} = 2.
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.5}
+In \(\SET{C}^2\), show that \(\LG x, y \RG = x A y^*\) is an inner product, where
+\[
+    A = \begin{pmatrix} 1 & \iu \\ -\iu & 2 \end{pmatrix}.
+\]
+Compute \(\LG x, y \RG\) for \(x = (1 - \iu, 2 + 3\iu)\) and \(y = (2 + \iu, 3 - 2\iu)\).
+\end{exercise}
+
+\begin{note}
+According to the context, I assume the elements \(x, y, z\) in \(\SET{C}^2\) are \emph{row} vectors (hence \(x^*, y^*, z^*\) are column vectors), and we can view them as \(1 \X 2\) or \(2 \X 1\) matrices as desired.
+
+We have said that \((A^*)^* = A\) in \DEF{6.2}, and from \CORO{6.11.1}(c), \((AB)^* = B^* A^*\); the prove is similar to \((AB)^\top = B^\top A^\top\), since adjoint also involves transpose operation.
+\end{note}
+
+\begin{proof}
+First,
+\begin{align*}
+    \LG x + z, y \RG & = (x + z) A y^* & \text{by def of \(\InnerOp\)} \\
+        & = x A y^* + z A y^* & \text{by \THM{2.12}(a)} \\
+        & = \LG x, y \RG + \LG z, y \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+Second, for any scalar \(c \in \SET{C}\),
+\begin{align*}
+    \LG cx, y \RG & = (cx) A y^* & \text{by def of \(\InnerOp\)} \\
+        & = c(x A y^*) & \text{by \THM{2.12}(b)} \\
+        & = c\LG x, y \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+Now note that
+\begin{align*}
+    A^* & = \conjugatet{A^\top} = \conjugatet{\begin{pmatrix} 1 & \iu \\ -\iu & 2 \end{pmatrix}^\top} \\
+        & = \conjugatet{\begin{pmatrix} 1 & -\iu \\ \iu & 2 \end{pmatrix}} \\
+        & = \begin{pmatrix} 1 & \iu \\ -\iu & 2 \end{pmatrix} = A.
+\end{align*}
+(That is, the adjoint of \(A\) is equal to \(A\).)
+
+Then we have
+\begin{align*}
+    \conjugatet{\LG x, y \RG} & = \conjugatet{x A y^*} & \text{by def of \(\InnerOp\)} \\
+        & = (y^*)^* A^* x^* = y A^* x^* & \text{by what we have said} \\
+        & = y A x^* & \text{\emph{since} \(A^* = A\)} \\
+        & = \LG y, x \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+
+Finally, if \(x = (x_1, x_2) \ne \OV\), then
+\begin{align*}
+    \LG x, x \RG & = x A x^*
+        = \begin{pmatrix} x_1 & x_2 \end{pmatrix}
+          \begin{pmatrix} 1 & \iu \\ -\iu & 2 \end{pmatrix}
+          \begin{pmatrix} \conjugatet{x_1} \\ \conjugatet{x_2} \end{pmatrix} \\
+        & = \begin{pmatrix} x_1 & x_2 \end{pmatrix}
+            \begin{pmatrix} \conjugatet{x_1} + \iu \conjugatet{x_2} \\ -\iu \conjugatet{x_1} + 2\conjugatet{x_2} \end{pmatrix} \\
+        & = (x_1 \conjugatet{x_1} + x_1 \iu \conjugatet{x_2} - x_2 \iu \conjugatet{x_1} + 2 x_2 \conjugatet{x_2}) \\
+        & = (\abs{x_1}^2 + x_1 \iu \conjugatet{x_2} - x_2 \iu \conjugatet{x_1} + 2 \abs{x_2}^2) & \text{by \RMK{d.5}}
+\end{align*}
+Now if we let \(x_1 = a + b \iu, x_2 = c + d \iu\), where \(a, b, c, d\) are real numbers, then by calculation, \(x_1 \iu \conjugatet{x_2} - x_2 \iu \conjugatet{x_1} = 2(ad - bc)\) and (as usual), \(\abs{x_1}^2 = a^2 + b^2\), \(2 \abs{x_2}^2 = 2c^2 + 2d^2\).
+Hence we have
+\begin{align*}
+    \LG x, x \RG & = a^2 + b^2 + 2(ad - bc) + 2c^2 + 2d^2 \\
+        & = a^2 + 2ad + d^2 + d^2 + b^2 - 2bc + c^2 + c^2 & \text{of course} \\
+        & = (a + d)^2 + d^2 + (b - c)^2 + c^2. \quad \MAROON{(1)}
+\end{align*}
+Of course \MAROON{(1)} is nonnegative, so we only need to show that is must be nonzero.
+For the sake of contradiction, suppose \(x \ne (0, 0)\) but \MAROON{(1)} is zero;
+then in particular, \(d^2 = c^2 = 0\) which implies \(d = c = 0\), which implies \(x_2 = c + d \iu = 0\).
+But since \(x = (x_1, x_2) \ne (0, 0)\), \(x_1\) must be nonzero, that is, \(a\) or \(b\) must be nonzero.
+If \(a \ne 0\), we get \((a + d)^2 = (a + 0)^2 = a^2 > 0\), and if \(b \ne 0\), then we get \((b - c)^2 = (b - 0)^2 = b^2 > 0\), hence in all cases, \MAROON{(1)} is positive, a contradiction.
+
+Hence \(\LG x, x \RG > 0\) for any nonzero vector \(x\).
+
+Now, for \(x = (1 - \iu, 2 + 3\iu)\) and \(y = (2 + \iu, 3 - 2\iu)\),
+\begin{align*}
+    \LG x, y \RG &
+    = \begin{pmatrix} 1 - \iu & 2 + 3\iu \end{pmatrix}
+        \begin{pmatrix} 1 & \iu \\ -\iu & 2 \end{pmatrix}
+        \begin{pmatrix} 2 - \iu \\ 3 + 2\iu \end{pmatrix} \\
+    & = \begin{pmatrix} 4 - 3\iu & 5 + 7\iu \end{pmatrix}
+        \begin{pmatrix} 2 - \iu \\ 3 + 2\iu \end{pmatrix}
+    = 6 + 21\iu
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.6}
+Complete the proof of \THM{6.1}.
+\end{exercise}
+
+\begin{proof}
+See \THM{6.1}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.7}
+Complete the proof of \THM{6.2}.
+\end{exercise}
+
+\begin{proof}
+See \THM{6.2}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.8}
+Provide reasons why each of the following is \emph{not} an inner product on the given vector spaces.
+\begin{enumerate}
+\item \(\LG (a , b), (c, d) \RG = ac - bd\) on \(\SET{R}^2\).
+\item \(\LG A, B \RG = \TRACE(A + B)\) on \(M_{2 \X 2}(\SET{R})\).
+\item \(\LG f(x), g(x) \RG = \int_0^1 f'(t)g(t) dt\) on \(\POLYRINF\), where \('\) denotes differentiation.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Since in particular there is a vector \((1, 2) \in \SET{R}^2\), a nonzero vector, such that \(\LG (1, 2), (1, 2) \RG = 1 \cdot 1 - 2 \cdot 2 = -3\), not a positive real number, violating \DEF{6.1}(d).
+
+\item Since in particular there is a matrix \(A = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} \in M_{2 \X 2}(\SET{R})\), a nonzero matrix, such that \(\LG A, A \RG = \TRACE \begin{pmatrix} -2 & 0 \\ 0 & -2 \end{pmatrix} = -4\), not a positive real number, violating \DEF{6.1}(d).
+
+\item Since in particular there is a (constant) nonzero polynomial \(f(t) = 1\), such that \(\LG f, f \RG = \int_0^1 f'(t)f(t) dt = \int_0^1 0 \cdot 5 dt = \int_0^1 0 dt = 0\), not a positive real number, violating \DEF{6.1}(d).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.9}
+Let \(\beta\) be a basis for a \emph{finite}-dimensional inner product space.
+\begin{enumerate}
+\item Prove that if \(\LG x, z \RG = 0\) for all \(z \in \beta\), then \(x = \OV\).
+\item Prove that if \(\LG x, z \RG = \LG y, z \RG\) for all \(z \in \beta\), then \(x = y\).
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+So we only need to check the ``behavior'' of inner product on a given basis, when the inner product space is finite-dimensional.
+\end{note}
+
+\begin{proof}
+We can use \EXEC{6.1.1}(h) to prove this exercise.
+Let \(\beta = \{ z_1, z_2, ..., z_n \}\) be a basis for the inner product space.
+\begin{enumerate}
+\item Let \(v = a_1 z_1 + a_2 z_2 + ... + a_n z_n\) be an arbitrary vector in the inner product space.
+Then Then we have
+\begin{align*}
+    \LG x, v \RG & = \LG x, a_1 z_1 + a_2 z_2 + ... + a_n z_n \RG \\
+        & = \conjugatet{a_1} \LG x, z_1 \RG + \conjugatet{a_2} \LG x, z_2 \RG + ... + \conjugatet{a_n} \LG x, z_n \RG & \text{by \THM{6.1}(a)(b)} \\
+        & = \conjugatet{a_1} \cdot 0 + \conjugatet{a_2} \cdot 0 + ... + \conjugatet{a_n} \cdot 0 & \text{by supposition} \\
+        & = 0
+\end{align*}
+But that implies
+\begin{align*}
+    \LG v, x \RG & = \conjugatet{\LG x, v \RG} & \text{by \DEF{6.1}(c)} \\
+        & = \conjugatet{0} = 0 & \text{by what we have shown}
+\end{align*}
+Hence \(\LG v, x \RG = 0\) for arbitrary \(v\) in the inner product space.
+Hence by \EXEC{6.1.1}(h), \(x = \OV\).
+
+\item For all \(z \in \beta\)
+\begin{align*}
+             & \LG x, z \RG = \LG y, z \RG & \text{by supposition} \\
+    \implies & \LG x, z \RG - \LG y, z \RG = 0 & \text{of course} \\
+    \implies & \LG x - y, z \RG = 0 & \text{by \DEF{6.1}(a)} \\
+\end{align*}
+So by part(a), \(x - y = \OV\), which implies \(x = y\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.10}
+Let \(\V\) be an inner product space, and suppose that \(x\) and \(y\) are \emph{orthogonal} vectors in \(\V\).
+Prove that \(\norm{x + y}^2 \RED{=} \norm{x}^2 + \norm{y}^2\).
+Deduce the \emph{Pythagorean theorem} in \(\SET{R}^2\).
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    \norm{x + y}^2 & = \LG x + y, x + y \RG & \text{by \DEF{6.3}} \\
+        & = \LG x, x \RG + \LG x, y \RG + \LG y, x \RG + \LG y, y \RG & \text{by \DEF{6.1}(a) and \THM{6.1}(a)} \\
+        & = \LG x, x \RG + 0 + 0 + \LG y, y \RG & \text{since \(x, y\) are orthogonal} \\
+        & = \norm{x}^2 + \norm{y}^2 & \text{by \DEF{6.3}}
+\end{align*}
+
+For \(\SET{R}^2\) with standard inner product, let \(v, w\) be orthogonal vectors in \(\SET{R}^2\).
+Then from the geometry, if we let \(v, w\) be the two sides of the right angle of the right triangle, then the length of these sides is \(\norm{v}\), \(\norm{w}\), respectively, and the length of hypotenuse is equal to the length(norm) of \(v + w\).
+And from what we have shown, since \(v, w\) are orthogonal, we have \(\norm{v + w}^2 = \norm{v}^2 + \norm{w}^2\).
+That is, the square of the length of hypotenuse is the sum of the square of length of the two sides, proving Pythagorean theorem.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.11}
+Prove the \emph{parallelogram law} on an inner product space \(\V\); that is , show that
+\[
+    \norm{x + y}^2 + \norm{x - y}^2 = 2\norm{x}^2 + 2\norm{y}^2 \text{ for all } x, y \in \V.
+\]
+What does this equation state about parallelograms in \(\SET{R}^2\)?
+\end{exercise}
+
+\begin{note}
+平行四邊形兩對角線的平方的和等於四個邊長的平方的和。
+高中通常用餘弦定理解釋。
+\end{note}
+
+\begin{proof}
+\begin{align*}
+    \norm{x + y}^2 + \norm{x - y}^2
+    & = \LG x + y, x + y \RG + \LG x - y, x - y \RG \\
+    & \quad \quad \text{(by \DEF{6.3})} \\
+    & = (\LG x, x \RG + \LG y, x \RG + \LG x, y \RG + \LG y, y \RG) + (\LG x, x \RG + \LG -y, x \RG + \LG x, -y \RG + \LG -y, -y \RG) \\
+    & \quad \quad \text{(by \DEF{6.1}(a) and \THM{6.1}(a))} \\
+    & = (\LG x, x \RG + \LG y, x \RG + \LG x, y \RG + \LG y, y \RG) + (\LG x, x \RG - \LG y, x \RG + (-\LG x, y \RG) + \LG y, y \RG) \\
+    & \quad \quad \text{(by \DEF{6.1}(b) and \THM{6.1}(b)} \\
+    & = 2 \LG x, x \RG + 2 \LG y, y \RG \\
+    & = 2 \norm{x}^2 + 2 \norm{y}^2 \\
+    & \quad \quad \text{(by \DEF{6.3})}
+\end{align*}
+
+This law says that given arbitrary parallelogram in \(\SET{R}^2\), the sum of the squares of the lengths of the four sides of the parallelogram equals the sum of the squares of the lengths of the two diagonals.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.12}
+Let \(\{ v_1, v_2, ..., v_k \}\) be an (arbitrary) orthogonal set in \(\V\), and let \(a_1, a_2, ..., a_k\) be (arbitrary) scalars.
+Prove that
+\[
+    \norm{\sum_{i = 1}^k a_i v_i}^2 \RED{=} \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2.
+\]
+\end{exercise}
+
+\begin{proof}
+Since \(\{ v_1, ..., v_k \}\) is an orthogonal set, it's of course that \(\{ a_1 v_1, ..., a_k v_k \}\) is also an orthogonal set.
+And by \EXEC{6.1.10} and induction, we have
+\[
+    \norm{\sum_{i = 1}^k a_i v_i}^2 = \sum_{i = 1}^k \norm{ a_i v_i }^2
+\]
+And
+\begin{align*}
+    \sum_{i = 1}^k \norm{ a_i v_i }^2 & = \sum_{i = 1}^k (\abs{a_i} \norm{v_i})^2
+    = \sum_{i = 1}^k \abs{a_i}^2 \norm{v_i}^2, & \text{by \THM{6.2}(a)}
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.13}
+Suppose that \(\InnerOp_1\) and \(\InnerOp_2\) are two inner products on a vector space \(\V\).
+Prove that \(\InnerOp = \InnerOp_1 + \InnerOp_2\) is another inner product on \(\V\).
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    \LG x + z, y \RG & = \LG x + z, y \RG_1 + \LG x + z, y \RG_2 & \text{by def of \(\InnerOp\)} \\
+        & = (\LG x, y \RG_1 + \LG z, y \RG_1) + (\LG x, y \RG_2 + \LG z, y \RG_2) & \text{by their \DEF{6.1}(a), respectively} \\
+        & = (\LG x, y \RG_1 + \LG x, y \RG_2) + (\LG z, y \RG_1 + \LG z, y \RG_2) & \text{of course} \\
+        & = \LG x, y \RG + \LG z, y \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+And
+\begin{align*}
+    \LG cx, y \RG & = \LG cx, y \RG_1 + \LG cx, y \RG_2 & \text{by def of \(\InnerOp\)} \\
+        & = c\LG x, y \RG_1 + c\LG x, y \RG_2 & \text{by their \DEF{6.1}(b), respectively} \\
+        & = c(\LG x, y \RG_1 + \LG x, y \RG_2) & \text{of course} \\
+        & = c\LG x, y \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+And
+\begin{align*}
+    \conjugatet{\LG x, y \RG} & = \conjugatet{\LG x, y \RG_1 + \LG x, y \RG_2} & \text{by def of \(\InnerOp\)} \\
+        & = \conjugatet{\LG x, y \RG_1} + \conjugatet{\LG x, y \RG_2} & \text{by \THM{d.2}(a)} \\
+        & = \LG y, x \RG_1 + \LG y, x \RG_2 & \text{by their \DEF{6.1}(c), respectively} \\
+        & = \LG y, x \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+Finally,
+\begin{align*}
+    \LG x, x \RG & = \LG x, x \RG_1 + \LG x, x \RG_2 & \text{by def of \(\InnerOp\)} \\
+        & > 0 + 0 & \text{by their \DEF{6.1}(d), respectively} \\
+        & = 0.
+\end{align*}
+So \(\InnerOp\) is also an inner product on \(\V\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.14}
+Let \(A\) and \(B\) be \(n \X n\) matrices, and let \(c\) be a scalar.
+Prove that \((A + cB)^* = A^* + \conjugatet{c}B^*\).
+\end{exercise}
+
+\begin{proof}
+For all \(i, j\), we have
+\begin{align*}
+    (A + cB)^*_{ij} & = \conjugatet{(A + cB)_{ji}} & \text{\DEF{6.2}} \\
+    & = \conjugatet{A_{ji} + cB_{ji}} & \text{by \THM{2.12}(a)(b)} \\
+    & = \conjugatet{A_{ji}} + \conjugatet{cB_{ji}} & \text{by \THM{d.2}(b)} \\
+    & = \conjugatet{A_{ji}} + \conjugatet{c}\conjugatet{B_{ji}} & \text{by \THM{d.2}(c)} \\
+    & = (A^*)_{ij} + \conjugatet{c}(B^*)_{ij} & \text{by \DEF{6.2}} \\
+    & = (A^* + \conjugatet{c}B^*)_{ij} & \text{by \THM{2.12}(a)(b)}
+\end{align*}
+Hence \((A + cB)^* = A^* + \conjugatet{c}B^*\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.15} \ 
+
+\begin{enumerate}
+\item Prove that if \(\V\) is an inner product space, then \(\abs{ \LG x, y \RG } = \norm{x} \cdot \norm{y}\) if and only if \emph{one of the vectors \(x\) or \(y\) is a multiple of the other}.
+Hint: If the identity holds and \(y \ne \OV\), let
+\[
+    a = \frac{\LG x, y \RG}{\norm{y}^2},
+\]
+and let \(z = x - ay\).
+Prove that \(y\) and \(z\) are \emph{orthogonal} and
+\[
+    \abs{a} = \frac{\norm{x}}{\norm{y}}.
+\]
+Then apply \EXEC{6.1.10} to \(\norm{x}^2 = \norm{ay + z}^2\) to obtain \(\norm{z} = 0\).
+
+\item Derive a similar result for the equality \(\norm{x + y} = \norm{x} + \norm{y}\), and generalize it to the case of \(n\) vectors.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+\(\Longleftarrow\):
+We first exclude the case that one of them is zero vector, since both sides of the equation is equal to zero.
+So without loss of generality we can assume \(x = cy\) where both \(x, y \ne \OV\) and \(c \ne 0\).
+Then
+\begin{align*}
+    \abs{\LG x, y \RG} & = \abs{\LG cy, y \RG} & \text{by supposition} \\
+        & = \abs{c \LG y, y \RG} & \text{by \DEF{6.1}(b)} \\
+        & = \abs{c} \abs{\LG y, y \RG} & \text{by \THM{d.2}(c)} \\
+        & = \abs{c} \LG y, y \RG & \text{since by \DEF{6.4} the operand is positive} \\
+        & = \abs{c} \norm{y}^2 = \abs{c} \norm{y} \norm{y} & \text{by \DEF{6.3}} \\
+        & = \norm{cy} \norm{y} = \norm{x} \norm{y} & \text{by \THM{6.2}(a)}
+\end{align*}
+
+\(\Longrightarrow\):
+Again we exclude the case that \(x\) or \(y\) is zero.
+Suppose \(\abs{ \LG x, y \RG } = \norm{x} \cdot \norm{y}\). \MAROON{(1)}
+
+Then let
+\[
+    a = \frac{\LG x, y \RG}{\norm{y}^2}, \quad \text{ and } \quad z = x - ay. \quad \quad \MAROON{(2)}
+\]
+We will show that \(z = \OV\) hence \(y = ax\).
+
+First we show that \(y\) and \(z\) are orthogonal:
+\begin{align*}
+    \LG z, y \RG & = \LG x - \frac{\LG x, y \RG}{\norm{y}^2}y , y \RG & \text{by def in \MAROON{(2)}} \\
+        & = \LG x, y \RG - \frac{\LG x, y \RG}{\norm{y}^2} \LG y, y \RG & \text{by \DEF{6.1}(a)(b)} \\
+        & = \LG x, y \RG - \frac{\LG x, y \RG}{\norm{y}^2} \norm{y}^2 & \text{by \DEF{6.3}} \\
+        & = \LG x, y \RG - \LG x, y \RG = 0 & \text{of course}
+\end{align*}
+And
+\begin{align*}
+    a & = \frac{\LG x, y \RG}{\norm{y}^2} & \text{by def in \MAROON{(2)}} \\
+      & = \frac{\norm{x} \cdot \norm{y}}{\norm{y}^2} & \text{by \MAROON{(1)}} \\
+      & = \frac{\norm{x}}{\norm{y}}. \quad \quad \MAROON{(3)}
+\end{align*}
+Finally, since \(z, y\) are orthogonal, \(z, ay\) are also orthogonal. \MAROON{(4)}
+
+And
+\begin{align*}
+    x & = z + ay & \text{by \MAROON{(2)}} \\
+    \implies \norm{x}^2 & = \norm{z + ay}^2 & \text{of course} \\
+        & = \norm{z}^2 + \norm{ay}^2& \text{by \MAROON{(4)} and \EXEC{6.1.10}} \\
+        & = \norm{z}^2 + \abs{a}^2 \norm{y}^2 & \text{by \THM{6.2}(a)} \\
+        & = \norm{z}^2 + \left| \frac{\norm{x}}{\norm{y}} \right|^2 \norm{y}^2 & \text{by \MAROON{(3)}} \\
+        & = \norm{z}^2 + \left(\frac{\norm{x}}{\norm{y}}\right)^2 \norm{y}^2 & \text{since the operand is nonnegative} \\
+        & = \norm{z}^2 + \norm{x}^2.
+\end{align*}
+Hence \(\norm{x}^2 = \norm{x}^2 + \norm{z}^2\), so \(\norm{z}^2 = 0\), hence by \THM{6.2}(b), \(z = \OV\), so by \MAROON{(2)}, \(x = ay\), as desired.
+
+\item The statement is: \(\norm{x + y} = \norm{x} + \norm{y}\) if and only if \(x = ay\) for some \textbf{nonnegative} scalar \(a\).
+
+\(\Longleftarrow\), suppose \(x = ay\) for some nonnegative scalar \(a\).
+Then
+\begin{align*}
+    \norm{x + y} & = \norm{ay + y} = \norm{(a + 1)y} & \text{of course} \\
+        & = \abs{a + 1}\norm{y} & \text{by \THM{6.2}(a)} \\
+        & = (\abs{a} + \abs{1})\norm{y} & \text{since \(a, 1\) are both nonnegative, \(\abs{a + 1} = \abs{a} + \abs{1}\)} \\
+        & = \abs{a}\norm{y} + \abs{1}\norm{y} & \text{of course} \\
+        & = \norm{ay} + \norm{1y} = \norm{ay} + \norm{y} & \text{by \THM{6.2}(a)} \\
+        & = \norm{x} + \norm{y}.
+\end{align*}
+
+\(\Longrightarrow\): Suppose \(\norm{x + y} = \norm{x} + \norm{y}\).
+Then this causes the ``\(\le\)'' sign in the proof of \THM{6.2}(d) to become ``\(=\)'' sign.
+That is,
+\begin{align*}
+    \norm{x + y}^2 & = \LG x + y, x + y \RG = \LG x, x \RG + \LG x, y \RG + \LG y, x \RG + \LG y, y \RG \\
+        & = \norm{x}^2 + 2 \cdot \mathcal{R}\LG x, y \RG + \norm{y}^2 \\
+        & \RED{=} \norm{x}^2 + 2 \cdot \left| \LG x, y \RG \right| + \norm{y}^2 \\
+        & \RED{=} \norm{x}^2 + 2 \cdot \norm{x} \norm{y} + \norm{y}^2 & \text{by part(c)} \\
+        & = \left(\norm{x} + \norm{y}\right)^2.
+\end{align*}
+So in particular,
+\[
+    2 \abs{\LG x, y \RG} = 2 \norm{x} \norm{y} \implies \abs{\LG x, y \RG} = \norm{x} \norm{y}.
+\]
+Then by the part(a) of the exercise, \(y = ax\) for \emph{some scalar} \(a\).
+We also need to show that \(a\) is nonnegative.
+Suppose for the sake of contradiction that \(a\) is negative, then similar to the \(\Longleftarrow\) direction of the proof, we have
+\begin{align*}
+    \norm{x + y} & = \norm{ay + y} = \norm{(a + 1)y} & \text{of course} \\
+        & = \abs{a + 1}\norm{y} & \text{by \THM{6.2}(a)} \\
+        &\ \RED{<}\ (\abs{a} + \abs{1})\norm{y} & \text{since \(a < 0\) but \(1 > 0\), \(\abs{a + 1} < \abs{a} + \abs{1}\)} \\
+        & = \abs{a}\norm{y} + \abs{1}\norm{y} & \text{of course} \\
+        & = \norm{ay} + \norm{1y} = \norm{ay} + \norm{y} & \text{by \THM{6.2}(a)} \\
+        & = \norm{x} + \norm{y}.
+\end{align*}
+So we have \(\norm{x + y} < \norm{x} + \norm{y}\), a contradiction.
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+所以柯西不等式只要求兩個向量是平行即可；三角不等式除了要求平行之外還要同方向。
+\end{note}
+
+\begin{exercise} \label{exercise 6.1.16} \ 
+
+\begin{enumerate}
+\item Show that the vector space \(\textsf{H}\) with \(\InnerOp\) defined on \RMK{6.1.8} is an inner product space.
+\item Let \(\V = \CONT([0, \RED{1}])\), and define
+\[
+    \LG f, g \RG = \int_0^{\RED{1/2}} f(t)g(t) dt.
+\]
+\emph{Is this an inner product on \(\V\)}?
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+Let \(f, g, h\) be functions in \(\textsf{H}\), \(c\) be a scalar.
+First,
+\begin{align*}
+    \LG f + h, g \RG & = \frac{1}{2\pi} \int_{0}^{2\pi} (f(t) + h(t)) \conjugatet{g(t)} d t & \text{by def of \(\InnerOp\)} \\
+    & = \frac{1}{2 \pi} \int_{0}^{2 \pi} f(t) \conjugatet{g(t)} d t + \frac{1}{2 \pi} \int_{0}^{2 \pi} h(t) \conjugatet{g(t)} d t & \text{since integration is linear} \\
+    & = \LG f, g \RG + \LG h, g \RG. & \text{by def of \(\InnerOp\)}
+\end{align*}
+And
+\begin{align*}
+    \LG c f, g \RG & = \frac{1}{2 \pi} \int_{0}^{2 \pi} c f(t) \conjugatet{g(t)} d t & \text{by def of \(\InnerOp\)} \\
+    & = c\left(\frac{1}{2 \pi} \int_{0}^{2 \pi} f(t) \conjugatet{g(t)} d t \right) & \text{again since integration is linear} \\
+    & = c \LG f, g \RG. & \text{by def of \(\InnerOp\)}
+\end{align*}
+And
+\begin{align*}
+    \conjugatet{\LG f, g \RG} & = \conjugatet{\frac{1}{2 \pi} \int_{0}^{2 \pi} f(t) \conjugatet{g(t)} d t} & \text{by def of \(\InnerOp\)} \\
+        & = \conjugatet{\frac{1}{2 \pi}} \conjugatet{\int_{0}^{2 \pi} f(t) \conjugatet{g(t)} d t} = \frac{1}{2 \pi} \conjugatet{\int_{0}^{2 \pi} f(t) \conjugatet{g(t)} d t} & \text{by \THM{d.2}(c)} \\
+        & = \frac{1}{2 \pi} \int_{0}^{2 \pi} \overline{f(t) \conjugatet{g(t)}} d t & \text{see \RMK{6.1.8}} \\
+        & = \frac{1}{2 \pi} \int_{0}^{2 \pi} g(t) \conjugatet{f(t)} d t & \text{by \THM{d.2}(a)(c)} \\
+        & = \LG g, f \RG. & \text{by def of \(\InnerOp\)}
+\end{align*}
+Finally, for any \(f\) that is not zero function,
+\begin{align*}
+    \LG f, f \RG & = \frac{1}{2 \pi} \int_{0}^{2 \pi} f(t) \conjugatet{f(t)} d t & \text{by def of \(\InnerOp\)} \\
+        & = \frac{1}{2 \pi} \int_{0}^{2 \pi} \abs{f(t)}^2 d t & \text{by \RMK{d.5}} \\
+        & > 0, &
+\end{align*}
+since \(f(t)^2\) is continuous and is bounded away from zero on some subinterval of \([0, 2\pi]\).
+Hence \(\textsf{H}\) with corresponding \(\InnerOp\) is an inner product space.
+
+\item
+We define \(f(t)\) as:
+\begin{equation*}
+    f(t) = \begin{cases}
+        0 & \text{if} \quad t < \frac{1}{2} \\
+        t - 1/2 & \text{if} \quad t \ge \frac{1}{2}
+    \end{cases}
+\end{equation*}
+Then \(f\) nonzero function, and is continuous on \([0, 1]\) hence is in \(\CONT([0, 1])\).
+But
+\begin{align*}
+    \LG f, f \RG & = \int_0^{1/2} f(t) f(t) dt & \text{by def of \(\InnerOp\)} \\
+        & = \int_0^{1/2} 0 \cdot 0 dt & \text{by def of \(f\)} \\
+        & = 0.
+\end{align*}
+Hence \DEF{6.1}(d) is not satisfied, hence \(\InnerOp\) is \emph{not} an inner product.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.17}
+Let \(\T\) be a linear operator on an inner product space \(\V\), and suppose that \(\norm{\T(x)} = \norm{x}\) for all \(x\).
+Prove that \(\T\) is one-to-one.
+\end{exercise}
+
+\begin{proof}
+We have to show that \(\NULLT = \{ \OV \}\).
+(So by \THM{2.4} \(\T\) is one-to-one.)
+That is, suppose \(\T(v) = \OV\), we have to show \(v = \OV\).
+Then since \(\T(v) = \OV\), by \THM{6.2}(b), \(\norm{\T(v)} = 0\), so by supposition that \(\norm{\T(x)} = \norm{v}\), we have \(\norm{v} = 0\).
+So by \THM{6.2}(b) again, \(v = \OV\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.18}
+Let \(\V\) be a vector space over \(F\), where \(F = \SET{R}\) or \(F = \SET{C}\), and let \(\W\) be an inner product space over \(F\) with inner product \(\InnerOp\).
+If \(\T : \V \to \W\) is linear, prove that \(\LG x, y \RG' = \LG \T(x), \T(y) \RG\) defines an inner product on \(\V\) if and only if \(\T\) is one-to-one.
+\end{exercise}
+
+\begin{note}
+Notice the exact meaning of every \(\InnerOp\) in the description.
+\(\InnerOp'\) now is a function defined on \(\V \X \V \to F\), and its definition depends on \BLUE{(1)} \(\InnerOp\), defined on \(\W \X \W \to F\), and \BLUE{(2)} \(\T\), since it needs to transform vectors in \(\V\) into vectors in \(\W\).
+\end{note}
+
+\begin{proof} \ 
+
+\(\Longleftarrow\): Suppose \(\T\) is one-to-one.
+Then for \DEF{6.1}(a)(b),
+\begin{align*}
+    \LG cx + z, y \RG' & = \LG \T(cx + z), \T(y) \RG & \text{by def of \(\InnerOp'\)} \\
+        & = \LG c\T(x) + \T(z), \T(y) \RG & \text{since \(\T\) is linear} \\
+        & = c \LG \T(x), \T(y) \RG + \LG \T(z), \T(y) \RG & \text{since \(\InnerOp\) is linear} \\
+        & = c \LG x, y \RG' + \LG z, y \RG' & \text{by def of \(\InnerOp'\)}
+\end{align*}
+For (c),
+\begin{align*}
+    \conjugatet{\LG y, x \RG'} & = \conjugatet{\LG \T(y), \T(x) \RG} & \text{by def of \(\InnerOp\)} \\
+        & = \conjugatet{\conjugatet{\LG \T(x), \T(y) \RG}} & \text{by \DEF{6.1}(c) of \(\InnerOp\)} \\
+        & = \LG \T(x), \T(y) \RG & \text{by \THM{d.2}(a)} \\
+        & = \LG x, y \RG' & \text{by def of \(\InnerOp\)}
+\end{align*}
+
+For (d), if \(v \in \V\) is nonzero vector, then \(\T(x)\) is also nonzero vector since \(\T\) is one-to-one.
+Hence by \DEF{6.1}(d) of \(\InnerOp\), \(\LG \T(x), \T(x) \RG\) is positive, and by definition of \(\InnerOp'\), \(\LG x, x \RG'\) is positive, as desired.
+
+Hence \(\InnerOp\) satisfies \DEF{6.1} and hence defines an inner product on \(\V\).
+
+\(\Longrightarrow\): We prove the equivalent contrapositive.
+That is, suppose \(\T\) is not one-to-one, then \(\InnerOp\) does not define an inner product on \(\V\).
+But in particular, since \(\T\) is not one-to-one, \(\T(v) = \OW\) for some nonzero vector \(v \in \V\), hence \(\LG \T(v), \T(v) \RG = \LG \OW, \OW \RG = 0\) by \THM{6.2}(c) of \(\InnerOp\).
+But that implies \(\LG v, v \RG' = \LG \T(v), \T(v) \RG = 0\).
+So \(\InnerOp'\) violates \DEF{6.1}(d) since there is a nonzero vector such that the result is \(0\), hence \(\InnerOp'\) does not define an inner product on \(\V\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.19}
+Let \(\V\) be an inner product space.
+Prove that
+\begin{enumerate}
+\item \(\norm{x \pm y}^2 = \norm{x}^2 \pm 2\mathcal{R}\LG x,y \RG + \norm{y}^2\) for all \(x, y \in \V\), where \(\mathcal{R}\LG x,y \RG\) denotes the \emph{real part} of the complex number \(\LG x, y \RG\).
+
+\item \(\left| \norm{x} - \norm{y} \right| \le \norm{x- y}\) for all \(x, y \in \V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Without loss of generality, let \(\LG x, y \RG = a + b\iu\) where \(a, b\) are real numbers.
+Then \(\mathcal{R}\LG x, y \RG = a\).
+\begin{enumerate}
+\item We have
+\begin{align*}
+    \norm{x + y}^2 & = \LG x + y, x + y \RG & \text{by \DEF{6.3}} \\
+        & = \LG x, x \RG + \LG x, y \RG + \LG y, x \RG + \LG y, y \RG & \text{by \DEF{6.1}(a) and \THM{6.1}(a)} \\
+        & = \norm{x}^2 + \LG x, y \RG + \LG y, x \RG + \norm{y}^2 & \text{by \DEF{6.3}} \\
+        & = \norm{x}^2 + \LG x, y \RG + \conjugatet{\LG x, y \RG} + \norm{y}^2 & \text{by \DEF{6.1}(c)} \\
+        & = \norm{x}^2 + (a + b\iu) + \conjugatet{a + b\iu} + \norm{y}^2 & \text{by supposition} \\
+        & = \norm{x}^2 + (a + b\iu) + a - b\iu + \norm{y}^2 & \text{of course} \\
+        & = \norm{x}^2 + 2a + \norm{y}^2 \\
+        & = \norm{x}^2 + 2\mathcal{R}\LG x, y \RG + \norm{y}^2 & \text{by supposition}
+\end{align*}
+
+\item
+By \THM{6.2}(d), we have
+\[
+    \norm{x} = \norm{(x - y) + y} \RED{\le} \norm{x - y} + \norm{y}
+\]
+which implies \(\norm{x} - \norm{y} \le \norm{x - y}\). \MAROON{(1)}
+
+Similarly,
+\[
+    \norm{y} = \norm{(y - x) + x} \RED{\le} \norm{y - x} + \norm{x}
+\]
+which implies \(\norm{y} - \norm{x} \le \norm{y - x}\), which by multiplying \(-1\) implies \(\norm{x} - \norm{y} \ge -\norm{y - x}\).
+But of course \(\norm{y - x} = \norm{(-1)(x - y)} = \abs{-1}\norm{x - y} = 1\norm{x - y} = \norm{x - y}\), so we have \(\norm{x} - \norm{y} \ge -\norm{x - y}\). \MAROON{(2)}
+
+So by \MAROON{(1)(2)} we have \(-\norm{x - y} \le \norm{x} - \norm{y} \le \norm{x - y}\), which (by the property of real number) is equivalent to \(\left| \norm{x} - \norm{y} \right| \le \norm{x- y}\), as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.20}
+Let \(\V\) be an inner product space over \(F\).
+Prove the \emph{\href{https://www.wikiwand.com/en/Polarization_identity}{polar identities}}:
+For all \(x, y \in \V\),
+\begin{enumerate}
+\item \(\LG x, y \RG = \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2\) if \(F = \SET{R}\);
+\item \(\LG x, y \RG = \frac{1}{4} \sum_{k = 1}^4 \iu^k \norm{x + \iu^k y}^2\) if \(F = \SET{C}\) where \(\iu^2 = -1\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item The heuristic is deriving the equation from right to left, but discard the fraction \(\frac{1}{4}\) first.
+That is
+\begin{align*}
+    & \norm{x + y}^2 - \norm{x - y}^2 \\
+    & = \LG x + y, x + y \RG - \LG x - y, x - y \RG & \text{by \DEF{6.3}} \\
+    & = \LG x, x \RG + \LG y, x \RG + \LG x, y \RG + \LG y, y \RG - (\LG x, x \RG - \LG y, x \RG - \LG x, y \RG + \LG y, y \RG) & \text{of course} \\
+    & = \LG x, x \RG + \LG x, y \RG + \LG x, y \RG + \LG y, y \RG - (\LG x, x \RG - \LG x, y \RG - \LG x, y \RG + \LG y, y \RG) & \text{since \(F = \SET{R}\)} \\
+    & = 4 \LG x, y \RG & \text{of course}
+\end{align*}
+Then by multiplying \(\frac{1}{4}\) to both side, we get \(\LG x, y \RG = \frac{1}{4} \norm{x + y}^2 - \frac{1}{4} \norm{x - y}^2\), as desired.
+
+\item Just use \emph{brute force}.
+We have
+\begin{align*}
+    \iu^1 \norm{x + \iu^1 y}^2
+        & = \iu \norm{x + \iu y}^2 = \iu \norm{x}^2 + \iu \norm{y}^2 + \LG x, y \RG - \LG y, x \RG \\
+    \iu^2 \norm{x - \iu^2 y}^2
+        & = -\norm{x - y}^2 = -\norm{x}^2 - \norm{y}^2 + \LG x, y \RG + \LG y, x \RG \\
+    \iu^3 \norm{x - \iu^3 y}^2
+        & = -\iu\norm{x - \iu y}^2 = -\iu\norm{x}^2 - \iu\norm{y}^2 + \LG x, y \RG - \LG y, x \RG \\
+    \iu^4 \norm{x + \iu^4 y}^2
+        & = \norm{x + y}^2 = \norm{x}^2 + \norm{y}^2 + \LG x, y \RG + \LG y, x \RG
+\end{align*}
+Adding both sides of this four equalities, we have
+\[
+    \sum_{k = 1}^4 \iu^k \norm{x + \iu^k y}^2 = 4 \LG x, y \RG.
+\]
+Then by multiplying \(\frac{1}{4}\) to both side, we get \(\LG x, y \RG = \frac{1}{4} \sum_{k = 1}^4 \iu^k \norm{x + \iu^k y}^2\), as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.21}
+Let \(A\) be an \(n \X n\) matrix.
+Define
+\[
+    A_1 = \frac{1}{2} (A + A^*) \quad \text{ and } \quad A_2 = \frac{1}{2\iu} (A - A^*).
+\]
+\begin{enumerate}
+\item Prove that \(A_1^* = A_1, A_2^* = A_2\), and \(A = A_1 + \iu A_2\).
+Would it be reasonable to define \(A_1\) and \(A_2\) to be the real and imaginary parts, respectively, of the matrix \(A\)?
+\item Let \(A\) be an \(n \X n\) matrix.
+Prove that the representation in (a) is \emph{unique}.
+That is, prove that if \(A = B_1 + \iu B_2\), where \(B_1^* = B_1\) and \(B_2^* = B_2\), then \(B_1 = A_1\) and \(B_2 = A_2\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item
+We have
+\begin{align*}
+    A_1^* & = \left( \frac{1}{2} A + \frac{1}{2} A^* \right)^* \\
+        & = (\frac{1}{2} A)^* + \conjugatet{\left(\frac{1}{2}\right)} (A^*)^* = (\frac{1}{2} A)^* + \frac{1}{2} (A^*)^* & \text{by \EXEC{6.1.14}} \\
+        & = \conjugatet{\left(\frac{1}{2}\right)} A^* + \frac{1}{2} (A^*)^* = \frac{1}{2} A^* + \frac{1}{2} (A^*)^* & \text{by \EXEC{6.1.14} again} \\
+        & = \frac{1}{2} A^* + \frac{1}{2} A & \text{of course} \\
+        & = A_1 & \text{by def of \(A_1\)}
+\end{align*}
+Similarly,
+\begin{align*}
+    A_2^* & = \left( \frac{1}{2\iu} A - \frac{1}{2\iu} A^* \right)^* \\
+        & = (\frac{1}{2\iu} A)^* - \conjugatet{\left(\frac{1}{2\iu}\right)} (A^*)^* = (\frac{1}{2\iu} A)^* + \frac{1}{2\iu} (A^*)^* & \text{by \EXEC{6.1.14}} \\
+        & = \conjugatet{\left(\frac{1}{2\iu}\right)} A^* + \frac{1}{2\iu} (A^*)^* = -\frac{1}{2\iu} A^* + \frac{1}{2\iu} (A^*)^* & \text{by \EXEC{6.1.14} again} \\
+        & = -\frac{1}{2\iu} A^* + \frac{1}{2\iu} A = \frac{1}{2\iu} A - \frac{1}{2\iu} A^* & \text{of course} \\
+        & = A_2 & \text{by def of \(A_2\)}
+\end{align*}
+Finally,
+\begin{align*}
+    A_1 + \iu A_2 & = \frac{1}{2} (A + A^*) + \iu \cdot \frac{1}{2\iu}(A - A^*) \\
+        & = \frac{1}{2} (A + A^*) - \frac{1}{2}(A - A^*) \\
+        & = A^*
+\end{align*}
+\RED{WARNING}, it seem that \(A_1 \RED{-} \iu A_2 = A\), not \(A_1 + \iu A_2 = A\).
+BTW, there is some \href{https://www.wikiwand.com/en/Hermitian_matrix#/Decomposition_into_Hermitian_and_skew-Hermitian_matrices}{related wiki} for this exercise.
+
+Skip part(b) because of the glitch of part(a).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.22}
+Let \(\V\) be a real or complex vector space (possibly infinite-dimensional), and let \(\beta\) be an \emph{arbitrary} basis for \(\V\).
+For \(x, y \in \V\) there exist \(v_1, v_2, ..., v_n \in \beta\) such that
+\[
+    x = \sum_{i = 1}^n a_i v_i \quad \text{ and } \quad y = \sum_{i = 1}^n b_i v_i.
+\]
+Define
+\[
+    \LG x, y \RG = \sum_{i = 1}^n a_i \conjugatet{b_i}.
+\]
+\begin{enumerate}
+\item Prove that \(\InnerOp\) is an inner product on \(\V\) and that \(\beta\) is an \textbf{ortho\RED{normal}} basis for \(\V\).
+Thus every real or complex vector space (i.e. every vector space over real or complex field) may be regarded as an inner product space, using this inner product.
+
+\item Prove that if \(\V = \SET{R}^n\) or \(\V = \SET{C}^n\) and \(\beta\) \emph{is} the \textbf{standard} ordered basis, then the inner product defined above is the standard inner product.
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+The \(\InnerOp\) defined by the exercise is \emph{depend on} the given basis \(\beta\).
+The meaning of this exercise is that, given a basis, if we define the ``inner product'' of the two vectors as the sum of component-wise inner product of the coordinates(of \(\beta\)) of these vectors,
+then it actually is an inner product, and this basis will automatically be an orthonormal basis on this inner product on \(\V\).
+
+This is the generalization of the standard inner product, on \emph{standard} ordered basis, on \(F^n\).
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Given any basis \(\beta\) for \(\V\), let \(c\) be a scalar, and for any \(x, y, z \in \V\), there exists \(v_1, v_2, ..., v_n \in \beta\) such that
+\[
+    x = \sum_{i = 1}^n a_i v_i \quad \text{ and } \quad y = \sum_{i = 1}^n b_i v_i \quad \text{ and } z = \sum_{i = 1}^n c_i v_i
+\]
+And in particular,
+\[
+    x + z = \sum_{i = 1}^n (a_i + c_i) v_i \quad \text{ and } \quad cx = \sum_{i = 1}^n c a_i v_i.
+\]
+So
+\begin{align*}
+    \LG x + z, y \RG & = \sum_{i = 1}^n (a_i + c_i) \conjugatet{b_i} & \text{by def of \(\InnerOp\)} \\
+    & = \sum_{i = 1}^n a_i \conjugatet{b_i} + \sum_{i = 1}^n c_i \conjugatet{b_i} & \text{split summation} \\
+    & = \LG x, y \RG + \LG z, y \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+And
+\begin{align*}
+    \LG cx, y \RG & = \sum_{i = 1}^n (ca_i) \conjugatet{b_i} & \text{by def of \(\InnerOp\)} \\
+    & = c\sum_{i = 1}^n a_i \conjugatet{b_i} & \text{move constant scalar out} \\
+    & = c\LG x, y \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+And
+\begin{align*}
+    \conjugatet{\LG y, x \RG} & = \conjugatet{\sum_{i = 1}^n b_i \conjugatet{a_i}} & \text{by def of \(\InnerOp\)} \\
+    & = \sum_{i = 1}^n \conjugatet{b_i \conjugatet{a_i}} & \text{by \THM{d.2}(b)} \\
+    & = \sum_{i = 1}^n \conjugatet{b_i} \cdot \conjugatet{\conjugatet{a_i}} & \text{by \THM{d.2}(c)} \\
+    & = \sum_{i = 1}^n \conjugatet{b_i} \cdot a_i = \sum_{i = 1}^n a_i \conjugatet{b_i} & \text{by \THM{d.2}(a)} \\
+    & = \LG x, y \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+Finally, Suppose \(x \ne \OV\), then one of the coefficient \(a_k\) must be nonzero for some \(1 \le k \le n\), hence \(\abs{a_k}^2 > 0\).
+And
+\begin{align*}
+    0 < \abs{a_k}^2 & = a_k \conjugatet{a_k} & \text{by \RMK{d.5}} \\
+    & \le \sum_{i = 1}^n a_i \conjugatet{a_i} & \text{of course} \\
+    & = \LG x, x \RG & \text{by def of \(\InnerOp\)}
+\end{align*}
+Therefore, \(\InnerOp\) is an inner product on \(\V\).
+
+Now we have to show \(\beta\) is an orthonormal basis for this inner product on \(\V\).
+But for any vector \(v \in \beta\), \(v = \sum_{i = 1}^1 1 \cdot v\), hence \(\LG v, v \RG = 1 \cdot \conjugatet{1} = 1\).
+And for any \(v, w \in \beta\) where \(v \ne w\), we have \(v = 1 \cdot v + 0 \cdot w\) and \(w = 0 \cdot v + 1 \cdot w\), so \(\LG v, w \RG = 1 \cdot 0 + 0 \cdot 1 = 0\).
+Hence \(\beta\) is an orthonormal basis for this inner product on \(\V\).
+
+\item If \(\beta = \{ e_1, e_2, ..., e_n \}\) is the standard ordered basis, then for any \(v, w \in \V\), we can write \(v = a_1 e_1 + ... + a_n e_n\) and \(w = b_1 e_1 + ... + b_n e_n\).
+By the definition of the standard inner product, the output of the product of \(v, w\) is \(\sum_{i = 1}^n a_i \conjugatet{b_i}\).
+But by the definition of the inner product defined in this exercise, the output is also equal to \(\sum_{i = 1}^n a_i \conjugatet{b_i}\).
+So the output of the inner product defined in this exercise is equal to the output of the standard inner product, for all \(v, w \in \V\), hence they are equal to each other.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.23}
+Let \(\V = F^n\) (so in particular \(\V\) is an inner product space and we use standard inner product), and let \(A\) be an arbitrary matrix in \(M_{n \X n}(F)\).
+\begin{enumerate}
+\item Prove that \(\LG x, Ay \RG = \LG A^*x, y \RG\) for all \(x, y \in \V\).
+\item Suppose that \emph{for some} \(B \in M_{n \X n}(F)\), we have \(\LG x, Ay \RG = \LG B x, y \RG\) for all \(x, y \in \V\).
+Prove that \(B = A^*\).
+\item Let \(\alpha\) be the \emph{standard} ordered basis for \(\V\).
+(In particular, \(\alpha\) is an orthonormal basis.)
+For any orthonormal basis \(\beta\) for \(\V\), let \(Q\) be the \(n \X n\) matrix whose columns are the vectors in \(\beta\).
+Prove that \(Q^* = Q^{-1}\).
+\item Define linear operators \(\T\) and \(\U\) on \(\V\) by \(\T(x) = Ax\) and \(\U(x) = A^* x\).
+Show that \([\U]_{\beta} = [\T]_{\beta}^*\) for any \emph{orthonormal} basis \(\beta\) for \(\V\).
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+(a) feels like the generalization of \(\LG x, cy \RG = \conjugatet{c} \LG x, y \RG = \LG \conjugatet{c}x, y \RG\).
+
+BTW, this exercise is highly related to \SEC{6.3}.
+
+\RED{Warning}: I use some fact in \SEC{6.2} to prove this exercise, since the definition and related properties of \emph{orthonormal basis} are given in \SEC{6.2}.
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Without loss of generality, let \(x = (x_1, x_2, ..., x_n)\) and \(y = (y_1, y_2, ..., y_n)\).
+We have
+\begin{align*}
+    & \LG x, Ay \RG \\
+    & = \LG (x_1, x_2, ..., x_n), \left( \sum_{j = 1}^n A_{1j} y_j, \sum_{j = 1}^n A_{2j} y_j, ..., \sum_{j = 1}^n A_{nj} y_j \right) \RG & \text{of course} \\
+    & = x_1 \conjugatet{\left( \sum_{j = 1}^n A_{1j} y_j \right)}
+      + x_2 \conjugatet{\left( \sum_{j = 1}^n A_{2j} y_j \right)}
+      + ...
+      + x_n \conjugatet{\left( \sum_{j = 1}^n A_{nj} y_j \right)} & \text{by def of std inner prod.} \\
+    & = \sum_{i = 1}^n x_i \conjugatet{\sum_{j = 1}^n A_{ij} y_j}
+      = \sum_{i = 1}^n x_i \sum_{j = 1}^n \conjugatet{A_{ij} y_j}
+      = \sum_{i = 1}^n x_i \sum_{j = 1}^n \conjugatet{A_{ij}} \conjugatet{y_j} & \text{combine the summation} \\
+    & = \sum_{i = 1}^n \sum_{j = 1}^n x_i \conjugatet{A_{ij}} \conjugatet{y_j} & \text{move in ``constant''} \\
+    & = \sum_{i = 1}^n \sum_{j = 1}^n x_i A^*_{ji} \conjugatet{y_j} & \text{by \DEF{6.2}} \\
+    & = \sum_{j = 1}^n \sum_{i = 1}^n x_i A^*_{ji} \conjugatet{y_j} & \text{change summation order} \\
+    & = \sum_{j = 1}^n \conjugatet{y_j} \sum_{i = 1}^n x_i A^*_{ji} & \text{move out ``constant''} \\
+    & = \conjugatet{y_1} \left( \sum_{i = 1}^n A^*_{1i} x_i \right)
+      + \conjugatet{y_2} \left( \sum_{i = 1}^n A^*_{2i} x_i \right)
+      + ...
+      + \conjugatet{y_n} \left( \sum_{i = 1}^n A^*_{ni} x_i \right) & \text{split the summation} \\
+    & = \left( \sum_{j = 1}^n A^*_{1j} x_j \right) \conjugatet{y_1}
+      + \left( \sum_{j = 1}^n A^*_{2j} x_j \right) \conjugatet{y_2}
+      + ...
+      + \left( \sum_{j = 1}^n A^*_{nj} x_j \right) \conjugatet{y_n} & \text{of course} \\
+    & = \LG \left( \sum_{j = 1}^n A^*_{1j} x_j, \sum_{j = 1}^n A^*_{2j} x_j, ..., \sum_{j = 1}^n A^*_{nj} x_j \right), (y_1, y_2, ..., y_n) \RG & \text{by def of std inner prod.} \\
+    & = \LG A^* x, y \RG & \text{of course}
+\end{align*}
+
+\item By part (a) we have \(\LG x, Ay \RG = \LG A^* x, y \RG\) for all \(x, y \in \V\), hence with the supposition we have \(\LG A^* x, y \RG = \LG B x, y \RG\) for all \(x, y \in \V\), and by \THM{6.1}(e) we have \(A^* x = B x\) for all \(x \in \V\), which implies \(A^* = B\) if we just view the matrices as linear operators on \(\V\).
+
+\item In fact, in \EXEC{6.2.11}, we will show the ``row version'' of this problem and the ``column version'' is similar;
+furthermore, that exercise does not depends on the previous exercises, so it's OK to forward reference that exercise.
+
+\item (Note that \THM{6.5} and \CORO{6.5.1} is in \SEC{6.2})
+Let \(\beta = \{ v_1, v_2, ..., v_n \}\) be an orthonormal basis for \(\V\).
+Then in particular for any \(x \in \V\), by \THM{6.5},
+\[
+    x = \sum_{i = 1}^n \LG x, v_i \RG v_i.
+\]
+And by \CORO{6.5.1}, \(([\T]_{\beta})_{ij} = \LG \T(v_j), v_i \RG\). \MAROON{(d.1)}
+Similarly, \(([\U]_{\beta})_{ij} = \LG \U(v_j), v_i \RG\). \MAROON{(d.2)}
+Finally,
+\begin{align*}
+    \LG \T(v_j), v_i \RG & = \LG A v_j, v_i \RG & \text{by supposition that \(\T(v) = Av\)} \\
+        & = \LG (A^*)^* v_j, v_i \RG & \text{of course} \\
+        & = \LG v_j, A^* v_i \RG & \text{by part(a)} \\
+        & = \conjugatet{\LG A^* v_i, v_j \RG} & \text{by \DEF{6.1}(c)} \\
+        & = \conjugatet{\LG \U(v_i), v_j \RG} & \text{by supposition that \(\U(v) = A^*v\)} \\
+        & = \conjugatet{([\U]_{\beta})_{ji}} & \text{by \MAROON{(d.2)}} \\
+        & = ([\U]_{\beta}^*)_{ij} & \text{by \DEF{6.2}}
+\end{align*}
+All in all, we have \(([\T]_{\beta})_{ij} = ([\U]_{\beta}^*)_{ij}\) for all \(i, j\).
+Hence \([\T]_{\beta} = [\U]_{\beta}^*\).
+In particular, \([\T]_{\beta}^* = ([\U]_{\beta}^*)^* = [\U]_{\beta}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.24}
+Let \(\V\) be a complex inner product space with an inner product \(\InnerOp\).
+Let \([ \cdot, \cdot ]\) be the real-valued function such that \([x, y]\) is the \emph{real part} of the complex number \(\LG x, y \RG\) for all \(x, y \in \V\).
+Prove that \([ \cdot, \cdot ]\) is an inner product for \(\V\), where \(\V\) is \textbf{regarded as a vector space \RED{over \(\SET{R}\)}}.
+Prove, furthermore, that \([x, \iu x] = 0\) for all \(x \in \V\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.25}
+Let \(\V\) be a vector space over \(\SET{C}\), and suppose that \([ \cdot, \cdot ]\) is a \emph{real} inner product on \(\V\), where \(\V\) is regarded as a vector space over \(\SET{R}\), such that \([x, \iu x] = 0\) for all \(x \in \V\).
+Let \(\InnerOp\) be the \emph{complex}-valued function defined by
+\[
+    \LG x, y \RG = [x, y] + \iu[x, \iu y] \text{ for } x, y \in \V.
+\]
+Prove that \(\InnerOp\) is a complex inner product on \(\V\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+The following definition is used in Exercises 26 -- 30.
+
+\begin{additional definition} \label{adef 6.2}
+Let \(\V\) be a vector space over \(F\), where \(F\) is either \(\SET{R}\) or \(\SET{C}\).
+Regardless of whether \(\V\) is or is not an inner product space, \emph{we may still define a norm} \(\norm{ \cdot }_{\V}\) as a \emph{real}-valued function on \(\V\) satisfying the following three conditions for all \(x, y \in \V\) and \(a \in F\):
+\begin{enumerate}
+\item[(1)] \(\norm{x}_{\V} \ge 0\), and \(\norm{x}_{\V} = 0\) if and only if \(x = \OV\).
+\item[(2)] \(\norm{ax}_{\V} = \abs{a} \cdot \norm{x}_{\OV}\).
+\item[(3)] \(\norm{x + y}_{\V} \le \norm{x}_{\V} + \norm{y}_{\V}\).
+\end{enumerate}
+\end{additional definition}
+
+\begin{exercise} \label{exercise 6.1.26}
+Prove that the following are norms on the given vector spaces \(\V\).
+\begin{enumerate}
+\item \(\V = \SET{R}^2\); \quad \(\norm{(a, b)}_{\V} = \abs{a} + \abs{b}\) for all \(a, b \in V\)
+\item \(\V = \CONT([0, 1])\); \quad \(\norm{f}_{\V} = \max_{t \in [0, 1]} \abs{f(t)}\) for all \(f \in \V\)
+\item \(\V = \CONT([0, 1])\); \(\norm{f}_{\V} = \int_0^1 \abs{f(t)} dt\) for all \(f \in \V\)
+\item \(\V = M_{m \X n}(F)\); \(\norm{A}_{\V} = \max_{i, j} \abs{A_{ij}}\) for all \(A \in \V\)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.27}
+Use \EXEC{6.1.11} to show that there is \emph{no} inner product \(\InnerOp\) on \(\SET{R}^2\) such that \(\norm{x}_{\V}^2 = \LG x, x \RG\) for all \(x \in \SET{R}^2\) if the norm \(\norm{\cdot}_{\V}\) is defined as in \EXEC{6.1.26}(a).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.28}
+Let \(\norm{\cdot}_{\V}\) be a norm on a vector space \(\V\), and define, for each ordered pair of vectors, the scalar \(d(x, y) = \norm{x - y}_{\V}\), called the \textbf{distance} between \(x\) and \(y\).
+Prove the following results for all \(x, y, z \in \V\).
+\begin{enumerate}
+\item \(d(x, y) \ge 0\).
+\item \(d(x, y) = d(y, x)\).
+\item \(d(x, y) \le d(x, z) + d(z, y)\).
+\item \RED* \(d(x, x) = 0\) if and only if \(x = 0\).
+\item \(d(x, y) \ne 0\) if \(x \ne y\).
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+(a), (b), (c), and (e) are the requirements for a \emph{metric} \(d\) defined on a set.
+But what about (d)?
+\end{note}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.29}
+Let \(\norm{ \cdot }_{\V}\) be a norm on a real vector space \(\V\) satisfying the parallelogram law given in \EXEC{6.1.11}.
+Define
+\[
+    \LG x, y \RG = \frac{1}{4} \left[ \norm{x + y}_{\V}^2 - \norm{x - y}_{\V}^2 \right].
+\]
+Prove that \(\InnerOp\) defines an inner product on \(\V\) such that \(\norm{x}_{\V} = \LG x, x \RG\) for all \(x \in \V\).
+Hints:
+\begin{enumerate}
+\item Prove \(\LG x, 2y \RG = 2 \LG x, y \RG\) for all \(x, y \in \V\).
+\item Prove \(\LG x + u, y \RG = \LG x, y \RG + \LG u, y \RG\) for all \(x, u, y \in \V\).
+\item Prove \(\LG nx, y \RG = n \LG x, y \RG\) for every \emph{positive integer} \(n\) and every \(x, y \in \V\).
+\item Prove \(m \LG \frac{1}{m} x, y \RG = \LG x, y \RG\) for every positive integer \(m\) and every \(x, y \in \V\).
+\item Prove \(\LG rx, y \RG = r \LG x, y \RG\) for every \emph{rational} number rand every \(x, y \in \V\).
+\item Prove \(\abs{ \LG x, y \RG } \le \norm{x}_{\V} \norm{y}_{\V}\) for every \(x, y \in \V\).
+Hint: Condition (3) in the definition of norm can be helpful.
+\item Prove that for every \(c \in \SET{R}\), every rational number \(r\), and every \(x, y \in \SET{V}\),
+\[
+    \abs{ c \LG x, y \RG - \LG cx, y \RG } = \abs{ (c - r) \LG x, y \RG - \LG(c - r)x, y \RG} \le 2\abs{c - r} \norm{x}_{\V} \norm{y}_{\V}.
+\]
+\item Use the fact that for any \(c \in \SET{R}\), \(\abs{c - r}\) can be made \textbf{arbitrarily small}, where \(r\) \emph{varies over the set of \textbf{rational} numbers}, to establish item (b) of the definition of inner product.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.30}
+Let \(\norm{\cdot}_{\V}\) be a norm (as defined with \ADEF{6.2}) on a complex vector space \(\V\) satisfying the parallelogram law given in \EXEC{6.1.11}.
+Prove that \emph{there is} an inner product \(\InnerOp\) on \(\V\) such that \(\norm{x}_{\V}^2 = \LG x, x \RG\) for all \(x \in \V\).
+Hint: Apply \EXEC{6.1.29} to \(\V\) regarded as a vector space over \(\SET{R}\).
+Then apply \EXEC{6.1.25}.
+\end{exercise}
+\begin{proof}
+\end{proof}

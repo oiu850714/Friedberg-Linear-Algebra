@@ -1,0 +1,704 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 6.2.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item The Gram-Schmidt orthogonalization process produces an ortho\textbf{normal} set from an arbitrary \emph{\LID{}} set.
+\item Every nonzero finite-dimensional inner product space has an orthonormal basis.
+\item The orthogonal complement of any \emph{set} is a subspace.
+\item If \(\{ v_1, v_2, ..., v_n \}\) is a basis for an inner product space \(\V\), then for any \(x \in \V\) the scalars \(\LG x, v_i \RG\) are the Fourier coefficients of \(x\).
+\item An orthonormal basis must be an ordered basis.
+\item Every orthogonal set is linearly independent.
+\item Every orthonormal set is linearly independent.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Strictly speaking, false, since the process only produces an ortho\RED{gonal} set from an arbitrary \LID{} set.
+But it also seems reasonable to add a normalization step as last step in the process.
+
+\item True by \THM{6.5}.
+
+\item True.
+Let \(S\) be any set of an inner product space, we have to show \(S^{\perp}\) is a subspace.
+We use \THM{1.3} to show \(S^{\perp}\) is a subspace.
+So first, \(\OV \in S^{\perp}\) since \(\LG \OV, s \RG = 0\) for all \(s \in S\).
+Now suppose \(c\) is a scalar and \(v_1, v_2 \in S^{\perp}\), we have to show \(c v_1 + v_2 \in S^{\perp}\).
+But for all \(s \in S\),
+\begin{align*}
+    \LG c v_1 + v_2, s \RG & = c \LG v_1, s \RG + \LG v_2, s \RG & \text{by \DEF{6.1}(a)(b)} \\
+        & = c \cdot 0 + 0 & \text{since \(v_1, v_2 \in S^{\perp}\)} \\
+        & = 0
+\end{align*}
+Hence \(c v_1 + v_2 \in S^{\perp}\).
+So by \THM{1.3}, \(S^{\perp}\) is a subspace.
+
+\item False, by \DEF{6.6}, the basis also need to be orthonormal.
+
+\item Weird question, but true by \DEF{6.5}.
+
+\item False, the set cannot have zero vector.
+
+\item True, since by definition any vector in the set has norm equal to \(1\) (so the vector is nonzero), and the set is orthogonal, by \CORO{6.3.2}, the set is \LID{}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.2}
+In each part, apply the Gram-Schmidt process to the given subset \(S\) of the inner product space \(\V\) to obtain an orthogonal basis for \(\spann(S)\).
+Then normalize the vectors in this basis to obtain an orthonormal basis \(\beta\) for \(\spann(S)\), and compute the Fourier coefficients of the given vector relative to \(\beta\).
+Finally, use \THM{6.5} to verify your result.
+
+\begin{enumerate}
+\item \(\V = \SET{R}^3, S = \{ (1, 0, 1), (0, 1, 1), (1, 3, 3) \}\), and \(x = (1, 1, 2)\)
+\item \(\V = \SET{R}^3, S = \{ (1, 1, 1), (0, 1, 1), (0, 0, 1) \}\), and \(x = (1, 0, 1)\)
+\item \(\V = \POLYRR\) with the inner product \(\LG f(x), g(x) \RG = \int_0^1 f(t) g(t) dt, S = \{1, x, x^2 \}\), and \(h(x) = 1 + x\)
+\item \(\V = \spann(S)\), where \(S = \{(1, \iu, 0), (1 - \iu, 2, 4\iu) \}\), and \(x = (3 + \iu, 4\iu, -4)\)
+\item \(\V = \SET{R}^4, S = \{ (2, -1, -2, 4), (-2, 1, -5, 5), (-1, 3, 7, 11) \}\), and \(x = (-11, 8, -4, 18)\)
+\item \(\V = \SET{R}^4, S = \{ (1, -2, -1, 3), (3, 6, 3, -1), (1, 4, 2, 8) \}\), and \(x = (-1, 2, 1, 1)\)
+\item \(\V = M_{2 \X 2}(\SET{R}),
+    S = \left\{
+        \begin{pmatrix}3 & 5 \\ -1 & 1\end{pmatrix},
+        \begin{pmatrix}-1 & 9 \\ 5 & -1\end{pmatrix},
+        \begin{pmatrix}7 & -17 \\ 2 & -6\end{pmatrix}\right
+    \}\),
+    and \(A = \begin{pmatrix}-1 & 27 \\ -4 & 8\end{pmatrix}\)
+\item \(\V = M_{2 \X 2}(\SET{R}),
+    S = \left\{
+        \begin{pmatrix}2 & 2 \\ 2 & 1\end{pmatrix},
+        \begin{pmatrix}11 & 4 \\ 2 & 5\end{pmatrix},
+        \begin{pmatrix}4 & -12 \\ 3 & -16\end{pmatrix}
+    \right\}\),
+    and \(A = \begin{pmatrix}8 & 6 \\ 25 & -13\end{pmatrix}\)
+\item \(\V = \spann(S)\) with the inner product \(\LG f, g \RG = \int_0^{\pi} f(t)g(t) dt, S = \{\sin t, \cos t, 1, t\}\), and \(h(t) = 2t + 1\)
+\item \(\V = \SET{C}^4,
+    S = \{ (1, i, 2 - \iu, -1), (2 + 3\iu, 3\iu, 1 - \iu, 2\iu), (-1 + 7\iu, 6 + 10\iu, 11 - 4\iu, 3 + 4\iu)\}\),
+    and \(x = (-2 + 7\iu, 6 + 9\iu, 9 - 3\iu, 4 + 4\iu)\)
+\item \(\V = \SET{C}^4, S = \{(-4, 3 - 2\iu, \iu, 1 - 4\iu), (-1 - 5\iu, 5 - 4\iu, -3 + 5\iu, 7 - 2\iu), (-27 - \iu, -7 - 6\iu, -15 + 25\iu, -7 - 6\iu)\}\), and \(x = (-13 - 7\iu, -12 + 3\iu, -39 - 11\iu, -26 + 5\iu)\)
+\item \(\V = M_{2 \X 2}(\SET{C})\),
+\[
+    S = \left\{
+        \begin{pmatrix} 1 - \iu & -2 - 3\iu \\ 2 + 2\iu & 4 + \iu \end{pmatrix},
+        \begin{pmatrix} 8\iu & 4 \\ -3 - 3\iu & -4 + 4\iu \end{pmatrix},
+        \begin{pmatrix} -25 - 38\iu & -2 - 13\iu \\ 12 - 78\iu & -7 + 24\iu \end{pmatrix}
+    \right\},
+\]
+and \(A=\begin{pmatrix} -2 + 8\iu & -13 + \iu \\ 10 - 10\iu & 9 - 9\iu \end{pmatrix}\)
+\item \(\V = M_{2 \X 2}(\SET{C})\),
+\[
+    S = \left\{
+        \begin{pmatrix} -1 + \iu & -\iu \\ 2 - \iu & 1 + 3\iu\end{pmatrix},
+        \begin{pmatrix} -1 - 7\iu & -9 - 8\iu \\ 1 + 10\iu & -6 - 2\iu\end{pmatrix},
+        \begin{pmatrix} -11 - 132\iu & -34 -31\iu \\ 7 - 126\iu & -71 - 5\iu \end{pmatrix}
+    \right\},
+\]
+and \(A=\begin{pmatrix} -7 + 5\iu & 3 + 18\iu \\ 9 - 6\iu & -3 + 7\iu \end{pmatrix}\)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Skip. Too painful using \LaTeX.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.3}
+In \(\SET{R}^2\), let
+\[
+    \beta = \left\{
+        \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right), \left( \frac{1}{\sqrt{2}}, \frac{-1}{\sqrt{2}} \right)
+    \right\}
+\]
+Find the Fourier coefficients of \((3, 4)\) relative to \(\beta\).
+\end{exercise}
+
+\begin{proof}
+We have
+\[
+    \LG (3, 4) , \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) \RG = \frac{7}{\sqrt{2}}
+\]
+and
+\[
+    \LG (3, 4) , \left( \frac{-1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) \RG = \frac{1}{\sqrt{2}}.
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.4}
+Let \(S = \{ (1, 0, \iu), (1, 2, 1) \}\) in \(\SET{C}^3\). Compute \(S^{\perp}\).
+\end{exercise}
+
+\begin{proof}
+We have to find all vectors \(v = (v_1, v_2, v_3) \in \SET{C}^3\) such that \(\LG v, (1, 0, \iu) \RG = \LG v, (1, 2, 1) \RG = 0\).
+Technically, this is equivalent to solving the system of equations
+\[
+    \sysdelim..\systeme{
+        1 v_1 + 0 v_2 + \iu v_3 = 0,
+        1 v_1 + 2 v_2 + 1 v_3 = 0
+    }.
+\]
+Then we have \(v_1 = -\iu v_3\) and \(v_2 = \frac{-1 v_1 - v_3}{2} = \frac{\iu v_3 - v_3}{2} = \frac{-1 + \iu}{2} v_3\).
+So let \(v_3\) be a parameter \(c\), then the solution set, which is equal to \(S^{\perp}\), is
+\[
+    \left\{ c (-\iu, \frac{-1 + \iu}{2}, 1) : c \in \SET{C} \right\}
+\]
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.5}
+Let \(S_0 = \{ x_0 \}\), where \(x_0\) is a nonzero vector in \(\SET{R}^3\).
+Describe \(S_0^{\perp}\) geometrically.
+Now suppose that \(S = \{ x_1, x_2 \}\) is a \LID{} subset of \(\SET{R}^3\).
+Describe \(S^{\perp}\) geometrically.
+\end{exercise}
+
+\begin{proof}
+\(S_0^{\perp}\) is the plane which has \(x_0\) as its normal.
+\(S^{\perp}\) is the line which is a normal of \(S\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.6}
+Let \(\V\) be an inner product space, and let \(\W\) be a \emph{finite}-dimensional subspace of \(\V\).
+If \(x \notin \W\), prove that there \emph{exists} \(y \in \V\) such that \(y \in \W^{\perp}\), but \(\LG x, y \RG \ne 0\).
+Hint: Use \THM{6.6}.
+\end{exercise}
+
+\begin{proof}
+From \THM{6.6}, \(x = u + z\) where \(u \in \W\) and \(z \in \W^{\perp}\).
+Notice that \(z \ne \OV\), otherwise \(x = u + z = u + \OV = u \in W\).
+Then we claim such \(z\), which is a ``normal'' of the subspace \(\W\), is what we want, since
+\begin{align*}
+    \LG x, z \RG & = \LG u + z, z \RG \\
+        & = \LG u, z \RG + \LG z, z \RG & \text{by \DEF{6.1}(a)} \\
+        & = 0 + \LG z, z \RG & \text{since \(z \in \W^{\perp}\) and \(u \in \W\)} \\
+        & > 0, & \text{since \(z \ne \OV\) and by \DEF{6.1}(d)}
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.7}
+Let \(\beta\) be a basis for a subspace \(\W\) of an inner product space \(\V\), and let \(z \in \V\).
+Prove that \(z \in \W^{\perp}\) if and only if \(\LG z, v \RG = 0\) for every \(v \in \beta\).
+\end{exercise}
+
+\begin{note}
+We do \emph{not} assume \(\W\) is finite-dimensional(hence \(\beta\) may not be finite).
+
+The purpose of this exercise is that we don't need to examine the orthogonality between \(z\) and all vectors in \(\W\);
+instead we can simply examine the relation of \(z\) and an arbitrary basis of \(\W\) to determine whether \(z \in \W^{\perp}\).
+\end{note}
+
+\begin{proof} \ 
+
+\(\Longrightarrow\): Suppose \(z \in \W^{\perp}\).
+Then \(\LG z, v \RG = 0\) for all \(v \in \W\), and in particular, \(\LG z, v \RG = 0\) for all \(v \in \beta\) where \(\beta\) is a basis(subset) of \(\W\).
+
+\(\Longleftarrow\): Suppose \(\LG z, v \RG = 0\) for every \(v \in \beta\).
+Then for every \(v \in \W\),
+\begin{align*}
+    \LG z, v \RG & = \LG z, \sum_{i = 1}^k a_i v_i \RG & \text{where \(v_i \in \beta\)} \\
+        & = \sum_{i = 1}^k \conjugatet{a_i} \LG z, v_i \RG & \text{by \THM{6.1}(a)(b)} \\
+        & = \sum_{i = 1}^k \conjugatet{a_i} 0 & \text{by supposition} \\
+        & = 0.
+\end{align*}
+So by definition \(z \in \W^{\perp}\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.8}
+Prove that if \(\{ w_1, w_2, ..., w_n \}\) is an \emph{orthogonal} set of nonzero vectors, then the vectors \(v_1, v_2, ..., v_n\) derived from the Gram-Schmidt process \emph{satisfy} \(v_i = w_i\) for \(i = 1, 2, ..., n\).
+Hint: Use mathematical induction.
+\end{exercise}
+
+\begin{proof}
+The base case \(n = 1\) is trivial since the process let \(v_1 = w_1\).
+
+Now suppose the case for \(k - 1\) is true where \(k > 1\), that is, suppose given any nonzero orthogonal set \(\{ w_1, w_2, ..., w_{k - 1} \}\) of \(k - 1\) vectors, the vectors \(\{ v_1, v_2, ..., v_{k - 1} \}\) derived from the process satisfy \(v_i = w_i\) for \(i = 1, 2, ..., k - 1\).
+We have to show the case for \(k\) is true.
+So let \(S = \{ w_1, w_2, ..., w_k \}\) be an arbitrary set of nonzero orthogonal vectors.
+And let \(S' = \{ v_1, v_2, ..., v_k \}\) be the vectors produced by the process.
+
+Note that the proper subset \(\{ w_1, w_2, ..., w_{k - 1} \}\) of \(S\) is a set of \(k - 1\) nonzero orthogonal vectors, hence we can apply the induction hypothesis on the subset.
+That is, if we apply the process on \(\{ w_1, w_2, ..., w_{k_1} \}\) to get \(S'' = \{ v'_1, v'_2, ... v'_{k - 1} \}\), then \(v'_i = w_i\) for \(i = 1, 2, ..., k - 1\). \MAROON{(1)}
+\textbf{But by the structure(or algorithm) of the process}, if we apply the process \emph{directly} on \(\{ w_1, w_2, ..., w_k \}\), the ``subprocess'' for producing the first \(k - 1\) vectors is exactly the same as the process we directly apply on \(\{ w_1, w_2, ..., w_{k - 1} \}\), so the derived vectors are also the same;
+that is, \(v_i = v'_i\) for \(i = 1, 2, ..., k - 1\). \MAROON{(2)}
+So by \MAROON{(1)(2)}, \(v_i = w_i\) for \(i = 1, 2, ..., k - 1\).
+
+And for \(v_k\),
+\begin{align*}
+    v_k & = w_k - \sum_{j = 1}^{\RED{k - 1}} \frac{\LG w_k, v_j \RG}{\norm{v_j}^2} v_j & \text{by the process in \THM{6.4}} \\
+        & = w_k - \sum_{j = 1}^{k - 1} \frac{\LG w_k, \RED{w_j} \RG}{\norm{\RED{w_j}}^2} \RED{w_j} & \text{we have shown \(v_i = w_k\) for \(i = 1, ..., k - 1\)} \\
+        & = w_k - \sum_{j = 1}^{k - 1} \frac{0}{\norm{w_j}^2} w_j & \text{since \(S = \{ w_1, ..., w_k \}\) are orthogonal} \\
+        & = w_k - 0 = w_k.
+\end{align*}
+So we have \(v_i = w_i\) for \(i = 1, 2, ..., k\), so the case for \(k\) is true.
+This closes the induction.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.9}
+Let \(\W = \spann(\{ (\iu, 0, 1) \})\) in \(\SET{C}^3\).
+Find orthonormal bases for \(\W\) and \(\W^{\perp}\).
+\end{exercise}
+
+\begin{proof}
+Since \(\{(\iu, 0, 1)\}\) is a singleton set, we only have to normalize it to get an orthonormal basis for \(\W\), so \(\{ \frac{\sqrt{2}}{2} (\iu, 0, 1) \}\) is an orthonormal basis for \(\W\).
+
+Now for finding orthonormal basis for \(\W^{\perp}\), we first get what \(\W^{\perp}\) actually is; but the process is similar to \EXEC{6.2.4}, and
+\[
+    \W^{\perp} = \{ a(1, 0, \iu) + b(0, 1, 0) : a, b \in \SET{C} \}
+\]
+hence \(\{ (1, 0, \iu), (0, 1, 0) \}\) is a basis for \(\W^{\perp}\);
+in particular, it happens to be orthogonal, so we only need to normalize it.
+So
+\[
+    \{ \frac{\sqrt{2}}{2} (1, 0, \iu), (0, 1, 0) \}
+\]
+is an orthonormal basis of \(\W^{\perp}\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.10}
+Let \(\W\) be a \emph{finite}-dimensional \textbf{subspace} of an inner product space \(\V\).
+Prove that \(\V = \W \oplus \W^{\perp}\).
+Using the \ADEF{2.2}, prove that there exists a \textbf{projection} \(\T\) on \(\W\) \textbf{along} \(\W^{\perp}\) that satisfies \(\NULLT = \W^{\perp}\).
+In addition, prove that \(\norm{\T(x)} \le \norm{x}\) for all \(x \in \V\).
+Hint: Use \THM{6.6} and \EXEC{6.1.10}.
+\end{exercise}
+
+\begin{proof}
+Since from \THM{6.6}, every vector \(v \in \V\) can be written as the \emph{unique} combination \(u + z\) where \(u \in \W\) and \(z \in \W^{\perp}\), we have \(\V = \W + \W^{\perp}\).
+Furthermore, from the discussion in \DEF{6.7}, we have \(\W \cap \W^{\perp} = \{ \OV \}\).
+So by definition of direct sum, \(\V = \W \oplus \W^{\perp}\).
+
+Then using the fact that \(\V = \W \oplus \W^{\perp}\) by \ADEF{2.2} we can define the \(\T\) such that \(\T\) is the projection on \(\W\) along \(\W^{\perp}\).
+And by \EXEC{2.1.27}(b), \(\W^{\perp} = \NULLT\).
+
+Finally, for all \(x \in \V\),
+\begin{align*}
+    \norm{x}^2 & = \norm{u + z}^2 & \text{where \(u \in \W\) and \(z \in \W^{\perp}\)} \\
+        & = \norm{u}^2 + \norm{z}^2 & \text{since \(u, z\) are orthogonal, and by \EXEC{6.1.10}} \\
+        & \ge \norm{u}^2 & \text{by \THM{6.2}(b), \(\norm{z}^2 \ge 0\)} \\
+        & = \norm{\T(x)}^2, & \text{by def of \(\T\)}
+\end{align*}
+which implies \(\norm{x} \ge \norm{\T(x)}\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.11}
+Let \(A\) be an \(n \X n\) matrix with \emph{complex} entries.
+Prove that \(A A^* = I\) if and only if the \emph{rows} of \(A\) form an \emph{orthonormal} basis for \(\SET{C}^n\).
+\end{exercise}
+
+\begin{proof}
+We define the notation \(A_i\) be the \(i\)th row of \(A\).
+First we have \(A A^* = I\) if and only if \((A A^*)_{ij} = \delta_{ij}\).
+But
+\begin{align*}
+    (A A^*)_{ij} & = \sum_{k = 1}^n A_{ik} (A^{*})_{kj} & \text{by def of matrix product} \\
+        & = \sum_{k = 1}^n A_{ik} \conjugatet{A_{jk}} & \text{by \DEF{6.2}} \\
+        & = \LG A_i, A_j \RG. & \text{by def of standard inner product on \(\SET{C}^n\)}
+\end{align*}
+So we have \(A A^* = I\) if and only if \(\LG A_i, A_j \RG = \delta_{ij}\).
+\emph{But this last equation is equivalent to the rows of \(A\) being an orthonormal set} of \(n\) vectors in \(\SET{C}^n\), and hence the rows of A form an orthonormal basis for \(\SET{C}^n\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.12}
+Prove that for any matrix \(A \in M_{m \X n}(F)\), \((\RANGE(\LMTRAN_{A^*}))^{\perp} = \NULL(\LMTRAN_A)\).
+\end{exercise}
+
+\begin{note}
+Try to speak the tedious equation precisely.
+The null space of \(\LMTRAN_A\) (hence \(A\)) is equal to the orthogonal complement of the range of \(\LMTRAN_{A^*}\) (hence \(A^*\)).
+\end{note}
+
+\begin{note}
+中文版，\(A\) 的零空間等於\ \(A\) 的伴隨矩陣的值域的正交補集。
+\end{note}
+
+\begin{proof}
+Note that by \EXEC{6.1.23}(a), \(\LG Ax, y \RG = \LG x, A^* y \RG\) for all \(x, y \in F^n\). \MAROON{(1)}
+We show the statement by showing \((\RANGE(\LMTRAN_{A^*}))^{\perp} \subseteq \NULL(\LMTRAN_A)\) and \(\NULL(\LMTRAN_A) \subseteq (\RANGE(\LMTRAN_{A^*}))^{\perp}\).
+
+So suppose \(x \in (\RANGE(\LMTRAN_{A^*}))^{\perp}\).
+Then by definition of orthogonal complement, \(\LG x, y \RG = 0\) for all \(y \in \RANGE(\LMTRAN_{A^*})\).
+Then by definition of range and \(\LMTRAN_{A^*}\), that implies \(\LG x, A^* y' \RG = 0\) for all \(y' \in F^n\).
+But by \MAROON{(1)}, that means \(\LG Ax, y' \RG = 0\) for all \(y' \in F^n\).
+Then by \THM{6.1}(e), \(Ax = \OV\), which means \(x \in \NULL(\LMTRAN_A)\).
+Hence \((\RANGE(\LMTRAN_{A^*}))^{\perp} \subseteq \NULL(\LMTRAN_A)\).
+
+Now suppose \(x \in \NULL(\LMTRAN_A)\).
+Then \(Ax = 0\), and \(\LG Ax, y' \RG = 0\) for all \(y' \in F^n\).
+And again by \MAROON{(1)}, that implies \(\LG x, A^* y' \RG = 0\) for all \(y' \in F^n\), which, again, by definition of range and \(\LMTRAN_{A^*}\), implies \(\LG x, y \RG = 0\) for all \(y \in \RANGE(\LMTRAN_{A^*})\).
+Then by definition of orthogonal complement, \(x \in (\RANGE(\LMTRAN_{A^*}))^{\perp}\).
+Hence \(\NULL(\LMTRAN_A) \subseteq (\RANGE(\LMTRAN_{A^*}))^{\perp}\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.13}
+Let \(\V\) be an inner product space, \(S\) and \(S_0\) be \emph{subsets} of \(\V\), and \(\W\) be a finite-dimensional \emph{subspace} of \(\V\).
+Prove the following results.
+\begin{enumerate}
+\item \(S_0 \subseteq S\) implies that \(S^{\perp} \subseteq S_0^{\perp}\).
+\item \(S \subseteq (S^{\perp})^{\perp}\); so \(\spann(S) \subseteq (S^{\perp})^{\perp}\).
+\item \(\W = (\W^{\perp})^{\perp}\). Hint: Use \EXEC{6.2.6}.
+\item \(\V = \W \oplus \W^{\perp}\). (See the exercises of \SEC{1.3}.)
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+For (a)(b), there is related \EXEC{2.2.16}.
+\end{note}
+
+\begin{note}
+直覺想法是，一個子集合越大，它的正交補集只會越小。
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Suppose \(S_0 \subseteq S\), we have to show \(S^{\perp} \subseteq S_0^{\perp}\).
+So suppose arbitrary \(v \in S^{\perp}\), we have to show \(v \in S_0^{\perp}\).
+Then by \DEF{6.7} of \(S^{\perp}\), \(\LG v, s \RG = 0\) for all \(s \in S\).
+Since \(S_0 \subseteq S\), we have \(\LG v, s \RG = 0\) for all \(s \in S_0\).
+Then again by \DEF{6.7}, \(s \in S_0^{\perp}\).
+
+\item Suppose \(x \in S\), we have to show \(x \in \MAROON{(S^{\perp})}^{\perp}\).
+For the sake of contradiction, suppose not.
+Then by \DEF{6.7}, there exists \(y \in \MAROON{S^{\perp}}\) such that \(\LG x, y \RG \ne 0\).
+Then in particular, \(\LG y, x \RG \ne 0\).
+Then that implies there exists \(x \in S\) such that \(\LG y, x \RG \ne 0\), which again by \DEF{6.7} implies \(y \notin S^{\perp}\).
+But we've already said \(y \in S^{\perp}\)! A contradiction.
+So \(x\) must in \((S^{\perp})^{\perp}\).
+
+\item By part(b), we have \(\W \subseteq (\W^{\perp})^{\perp}\), so we only need to show \((\W^{\perp})^{\perp} \subseteq \W\).
+From \EXEC{6.2.6}, if \(x \notin \W\), then there exists \(y \in \W^{\perp}\) but \(\LG x, y \RG \ne 0\).
+In particular, there exists \(y \in \W^{\perp}\) such that \(\LG x, y \RG \ne 0\), which again by \DEF{6.7} implies \(x \notin (\W^{\perp})^{\perp}\).
+
+The point is we have derived the statement: if \(x \notin \W\), then \(x \notin (\W^{\perp})^{\perp}\).
+And the equivalent \emph{contrapositive} is: if \(x \in (\W^{\perp})^{\perp}\), then \(x \in \W\), which is what we want.
+
+\item This has already been proved in \EXEC{6.2.10}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.14}
+Let \(\W_1\) and \(\W_2\) be subspaces of a \emph{finite}-dimensional inner product space.
+Prove that \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\) and \((\W_1 \cap \W_2)^{\perp} = \W_1^{\perp} + \W_2^{\perp}\).
+\emph{Hint for the second equation}: Apply \EXEC{6.2.13}(c) to the first equation.
+\end{exercise}
+
+\begin{proof} \ 
+
+\((\W_1 + \W_2)^{\perp} \subseteq \W_1^{\perp} \cap \W_2^{\perp}\):
+We have
+\begin{align*}
+    & x \in (\W_1 + \W_2)^{\perp} \\
+    \implies & \LG x, y \RG = 0 \quad \forall\ y \in \W_1 + \W_2 & \text{by \DEF{6.7}} \\
+    \implies & \LG x, w_1 + w_2 \RG = 0 \quad \forall\ w_1 \in \W_1 \land \forall w_2 \in \W_2 & \text{by def of sum} \\
+    \implies & \LG x, w_1 \RG + \LG x, w_2 \RG = 0 \quad \forall\ w_1 \in \W_1 \land \forall w_2 \in \W_2 & \text{by \THM{6.1}(a)}
+\end{align*}
+In particular, \(\LG x, w_1 \RG + \LG x, \RED{\OV} \RG = 0 \quad \forall w_1 \in \W_1\), that is, \(\LG x, w_1 \RG = 0 \quad \forall w_1 \in \W_1\).
+And by \DEF{6.7} again, \(x \in \W_1^{\perp}\).
+Similarly, \(\LG x, w_2 \RG = 0 \quad \forall w_2 \in \W_2\), hence \(x \in \W_2^{\perp}\).
+So \(x \in \W_1^{\perp} \cap \W_2^{\perp}\), as desired.
+
+\(\W_1^{\perp} \cap \W_2^{\perp} \subseteq (\W_1 + \W_2)^{\perp}\):
+Suppose \(x \in \W_1^{\perp} \cap \W_2^{\perp}\).
+In particular \(x \in \W_1^{\perp}\) and \(x \in \W_2^{\perp}\), hence by \DEF{6.7}, \(\LG x, w \RG = 0\) for all \(w \in \W_1\) \MAROON{(b.1)} and \(\LG x, w' \RG = 0\) for all \(w' \in \W_2\). \MAROON{(b.2)}
+Then for any \(w_1 + w_2 \in \W_1 + \W_2\) where \(w_1 \in \W_1\) and \(w_2 \in \W_2\),
+\begin{align*}
+    \LG x, v \RG & = \LG x, w_1 + w_2 \RG \\
+        & = \LG x, w_1 \RG + \LG x, w_2 \RG & \text{by \THM{6.1}(a)} \\
+        & = 0 + \LG x, w_2 \RG & \text{by \MAROON{(b.1)}} \\
+        & = 0 + 0 = 0 & \text{by \MAROON{(b.2)}}
+\end{align*}
+Hence by \DEF{6.7}, \(x \in (\W_1 + \W_2)^{\perp}\), as desired.
+
+For the second equality, we have
+\begin{align*}
+    (\W_1 \cap \W_2)^{\perp} & = (\MAROON{(\W_1^{\perp})^{\perp}} \cap \RED{(\W_2^{\perp})^{\perp}})^{\perp} & \text{by \EXEC{6.2.13}(c), although nasty} \\
+    & = (\MAROON{(\W_1^{\perp})^{\perp}})^{\perp} + (\RED{(\W_2^{\perp})^{\perp}})^{\perp} & \text{by applying the first equality, although nasty} \\
+    & = \W_1^{\perp} + \W_2^{\perp} & \text{by \EXEC{6.2.13}(c) again}
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.15}
+Let \(\V\) be a \emph{finite}-dimensional inner product space over \(F\).
+\begin{enumerate}
+\item \emph{Parseval's Identity}.
+Let \(\{ v_1, v_2, ..., v_n \}\) be an \emph{orthonormal} basis for \(\V\).
+For any \(x, y \in \V\) prove that
+\[
+    \LG x, y \RG = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG y, v_i \RG}.
+\]
+\item Use (a) to prove that if \(\beta\) is an orthonormal basis for \(\V\) with inner product \(\InnerOp\), then for any \(x, y \in \V\)
+\[
+    \LG \phi_{\beta}(x), \phi_{\beta}(y) \RG' = \LG [x]_{\beta}, [y]_{\beta} \RG' = \LG x, y \RG,
+\]
+where \(\InnerOp'\) is the \emph{standard} inner product on \(F^n\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item We have
+\begin{align*}
+    \LG x, y \RG & = \LG \sum_{i = 1}^n \LG x, v_i \RG v_i, \sum_{j = 1}^n \LG y, v_j \RG v_j \RG & \text{since \(v_i\)'s is orthonormal} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG \LG v_i, \sum_{j = 1}^n \LG y, v_j \RG v_j \RG & \text{by \DEF{6.1}(a)(b)} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG \sum_{j = 1}^n \conjugatet{\LG y, v_j \RG} \LG v_i, v_j \RG & \text{by \THM{6.1}(a)(b)} \\
+    & = \sum_{i = 1}^n \sum_{j = 1}^n \LG x, v_i \RG  \conjugatet{\LG y, v_j \RG} \LG v_i, v_j \RG & \text{move in ``constant''} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG  \conjugatet{\LG y, v_{\RED{i}} \RG} \LG v_i, v_{\RED{i}} \RG & \text{since \(v_i\)'s is orthonormal} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG y, v_i \RG} \cdot 1 & \text{again since \(v_i\)'s is orthonormal} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG y, v_i \RG} & \text{of course}
+\end{align*}
+
+\item We have
+\begin{align*}
+    \LG x, y \RG & = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG y, v_i \RG} \\
+    & \quad \quad \text{(by part(a))} \\
+    & = \LG \left( \LG x, v_1 \RG, \LG x, v_2 \RG, ..., \LG x, v_n \RG \right), \left(\LG y, v_1 \RG, \LG y, v_2 \RG, ..., \LG y, v_n \RG\right) \RG\RED{'} \\
+    & \quad \quad \text{(by definition of standard inner product)} \\
+    & = \LG [x]_{\beta}, [y]_{\beta} \RG\RED{'} \\
+    & \quad \quad \text{(since \(\beta\) is orthonormal, and by \THM{6.5})} \\
+    & = \LG \phi_{\beta}(x), \phi_{\beta}(y) \RG\RED{'}. \\
+    & \quad \quad \text{(by def of \(\phi_{\beta}\))}
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.16} \ 
+
+\begin{enumerate}
+\item \emph{Bessel's Inequality}.
+Let \(\V\) be an inner product space, and let \(S = \{ v_1, v_2, ..., v_n \}\) be an orthonormal subset of \(\V\).
+Prove that for any \(x \in \V\) we have
+\[
+    \norm{x}^2 \ge \sum_{i = 1}^n \abs{\LG x, v_i \RG}^2.
+\]
+Hint: Apply \THM{6.6} to \(x \in \V\) and \(\W = \spann(S)\).
+Then use \EXEC{6.1.10}.
+\item In the context of (a), prove that Bessel's inequality is an equality if and only if \(x \in \spann(S)\).
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+For (a), 不等式左邊就是向量的長度的平方，不等式右邊就是向量在\ \(\W = \spann(S)\) 的投影的長度的平方。
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Let arbitrary \(x \in \V\), and let \(\W = \spann(S)\).
+By \THM{6.6}, we have the unique combination \(x = u + z\) where \(u \in \W\) and \(z \in \W^{\perp}\).
+Furthermore, by \THM{6.6}, we have
+\[
+    u = \sum_{i = 1}^n \LG x, v_i \RG v_i. \quad \quad \MAROON{(1)}
+\]
+And in particular, \(u\) and \(z\) are perpendicular, so by \EXEC{6.1.10},
+\[
+    \norm{x}^2 = \norm{u + z}^2 = \norm{u}^2 + \norm{z}^2. \quad \quad \MAROON{(2)}
+\]
+Hence we have
+\begin{align*}
+    \norm{x}^2 & = \norm{u}^2 + \norm{z}^2 & \text{by \MAROON{(2)}} \\
+    & \ \RED{\ge} \norm{u}^2 & \text{by \THM{6.2}(b)} \\
+    & = \LG u, u \RG & \text{by \DEF{6.3}} \\
+    & = \LG \sum_{i = 1}^n \LG x, v_i \RG v_i, \sum_{j = 1}^n \LG x, v_j \RG v_j \RG & \text{by \MAROON{(1)}} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG \LG v_i, \sum_{j = 1}^n \LG x, v_j \RG v_j \RG & \text{by \DEF{6.1}(a)(b)} \\
+    & = \sum_{i = 1}^n \sum_{j = 1}^n \LG x, v_i \RG \conjugatet{\LG x, v_j \RG} \LG v_i, v_j \RG & \text{by \THM{6.1}(a)(b)} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG x, v_{\RED{i}} \RG} \LG v_i, v_{\RED{i}} \RG & \text{since \(S\) is orthonormal} \\
+    & = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG x, v_i \RG} \cdot 1 = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG x, v_i \RG} & \text{again since \(S\) is orthonormal} \\
+    & = \sum_{i = 1}^n \abs{\LG x, v_i \RG}^2 & \text{by \RMK{d.5}}
+\end{align*}
+
+\item
+From part(a), we have \(\norm{x}^2 = \norm{u}^2 + \norm{z}^2 \ge \norm{u}^2 = \sum_{i = 1}^n \abs{\LG x, v_i \RG}^2\), where \(x = u + z\), \(u \in \W\), and \(z \in \W^{\perp}\).
+And that inequality becomes equality, if and only if \(\norm{z}^2 = 0\), if and only if (by \THM{6.2}(b)) \(z = \OV\), if and only if \(x = u + z = u + \OV = u \in \W\), if and only if \(x \in \W = \spann(S)\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.17}
+Let \(\T\) be a linear operator on an inner product space \(\V\).
+If \(\LG \T(x), y \RG = 0\) for all \(x, y \in \V\), prove that \(\T = \TZERO\).
+In fact, prove this result if the equality holds for all \(x\) and \(y\) in some \emph{basis} for \(\V\).
+\end{exercise}
+
+\begin{proof}
+Suppose \(\LG \T(x), y \RG = 0\) for all \(x, y \in \V\).
+Then in particular let \(y = \T(x)\), we have \(\LG \T(x), \T(x) \RG = 0\) for all \(x \in \V\).
+Then by \THM{6.1}(d), \(\T(x) = \OV\) for all \(x \in \V\), which implies \(\T = \TZERO\).
+
+Now let \(\beta\) be a basis for \(\V\).
+And suppose that \(\LG \T(v), w \RG = 0\) for all \(v, w \in \beta\).
+Using the similar proof in the previous case, we will get \(\LG \T(x), \T(x) \RG = 0\) for all \(x \in \beta\), hence \(\T(x) = \OV\) for all \(x \in \beta\).
+Then \(\T\) sends all vectors of a basis to zero vector; by (infinite-dimensional version of) \THM{2.6} (or \EXEC{2.1.41}), \(\T = \TZERO\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.18}
+Let \(\V = \CONT([-1, 1])\).
+Suppose that \(\W_e\) and \(\W_o\) denote the subspaces of \(\V\) consisting of the \emph{even} and \emph{odd} functions, respectively.
+Prove that \(\W_e^{\perp} = \W_o\), where the inner product on \(\V\) is defined by
+\[
+    \LG f, g \RG = \int_{-1}^1 f(t) g(t) dt.
+\]
+\end{exercise}
+
+\begin{proof}
+We show the statement by showing \(\W_o \subseteq \W_e^{\perp}\) and \(\W_e^{\perp} \subseteq \W_o\).
+
+Note that the integral which has symmetric interval \([-1, 1]\) has the value zero if the integrand is an odd function.
+
+So first, suppose \(f \in \W_o\).
+But given any \(g \in \W_e\), by definition \(g\) is even function.
+And if we define \(f \cdot g\) as \(f \cdot g (t) = f(t)g(t)\), then
+\begin{align*}
+    f \cdot g(-t) & = f(-t)g(-t) \\
+        & = -f(t)g(-t) & \text{since \(f\) is odd function} \\
+        & = -f(t)g(t) & \text{since \(g\) is even function} \\
+        & = - f \cdot g(t).
+\end{align*}
+Hence \(f \cdot g\) is an odd function, which implies
+\[
+    \int_{-1}^1 f(t)g(t) dt = 0.
+\]
+Hence by \DEF{6.7}, \(f \in \W_e^{\perp}\), hence \(\W_o \subseteq \W_e^{\perp}\).
+
+Before we show the other set containment, notice that every function \(g\) can be written as \(g = g_1 + g_2\) where
+\[
+    g_1(t) = \frac{1}{2} (g(t) + g(-t)) \quad \text{ and } \quad g_2(t) = \frac{1}{2} (g(t) - g(-t))
+\]
+and it can be showed that \(g_1\) is an even function and \(g_2\) is an odd function:
+\begin{align*}
+    g_1(-t) & = \frac{1}{2} (g(-t) + g(-(-t))) \\
+        & = \frac{1}{2} (g(-t) + g(t))) = \frac{1}{2} (g(t) + g(-t)) = g_1(t),
+\end{align*}
+and
+\begin{align*}
+    g_2(-t) & = \frac{1}{2} (g(-t) - g(-(-t))) \\
+        & = \frac{1}{2} (g(-t) - g(t))) = \frac{1}{2} (-g(t) + g(-t)) = -\frac{1}{2} (g(t) - g(-t)) = -g_2(t),
+\end{align*}
+
+Now suppose \(g \in \W_e^{\perp}\).
+Then by definition, \(\LG g, f \RG = 0\) for all \(f \in \W_e\), that is, for all even function \(f\).
+In particular, we let \(g = g_1 + g_2\) where \(g_1, g_2\) are the even and odd functions discussed above.
+Also, since \(g_1\) is an even function, in particular \(\LG g, g_1 \RG = 0\).
+And we have
+\begin{align*}
+    0 = \LG g, g_1 \RG & = \LG g_1 + g_2, g_1 \RG \\
+        & = \LG g_1, g_1 \RG + \LG g_2, g_1 \RG & \text{by \DEF{6.1}(a)} \\
+        & = \LG g_1, g_1 \RG + 0 & \text{since \(g_1\) is even and \(g_2\) is odd,} \\
+        & & \text{we have shown that \(g_2(t)g_1(t)\) is an odd function} \\
+        & = \norm{g_1}^2, & \text{by \DEF{6.3}}
+\end{align*}
+which by \THM{6.2}(b) implies \(g_1\) is zero function, hence \(g = g_1 + g_2 = 0 + g_2 = g_2\), an odd function, and by definition \(g_1 \in \W_o\).
+Hence \(\W_e^{\perp} \in \W_o\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.19}
+In each of the following parts, find the orthogonal projection of the given vector on the given subspace \(\W\) of the inner product space \(\V\).
+\begin{enumerate}
+\item \(\V = \SET{R}^2, u = (2, 6)\), and \(\W = \{ (x, y): y = 4x \}\).
+\item \(\V = \SET{R}^3, u = (2, 1, 3)\), and \(\W = \{ (x, y, z): x + 3y - 2z = 0 \}\).
+\item \(\V = \POLYRINF\) with the inner product \(\LG f(x), g(x) \RG = \int_{\RED{0}}^1 f(t) g(t) dt, h(x) = 4 + 3x - 2x^2\), and \(\W = \POLYR\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+We skip the process of calculating the orthonormal basis for \(\W\) in each item.
+\begin{enumerate}
+\item By calculation, \(\beta = \{ \sqrt{\frac{1}{17}} (1, 4) \}\) is an orthonormal basis for \(\W\).
+And by \THM{6.6}, the orthogonal projection of \(u\) on \(\W\) is
+\[
+    \LG u, \frac{1}{\sqrt{17}} (1, 4) \RG \cdot \sqrt{\frac{1}{17}} (1, 4) = \frac{26}{\sqrt{17}} \sqrt{\frac{1}{17}} (1, 4). = \frac{26}{17} (1, 4).
+\]
+
+\item By calculation, \(\beta =  \left\{ \frac{1}{\sqrt{10}}(-3,1,0), \frac{1}{\sqrt{35}}(1,3,5) \right\}\) is a basis for \(\W\).
+Thus by \THM{6.6}, the orthogonal projection of \(u\) is
+\begin{align*}
+    & \LG u, \frac{1}{\sqrt{10}}(-3,1,0)\RG \frac{1}{\sqrt{10}}(-3,1,0)
+    + \LG u, \frac{1}{\sqrt{35}}(1,3,5)\RG \frac{1}{\sqrt{35}}(1,3,5) \\
+    & = -\frac{1}{2}(-3,1,0) + \frac{4}{7}(1,3,5) = \frac{1}{14}(29,17,40)
+\end{align*}
+
+\item Skip, tedious, \EXAMPLE{6.2.5} is enough.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.20}
+In each part of \EXEC{6.2.19}, find the distance from the given vector to the subspace \(\W\).
+\end{exercise}
+
+\begin{proof}
+By \THM{6.6}, the distance is \(\norm{u - u'}\) where \(u'\) is the orthogonal projection of \(u\) on \(\W\).
+\begin{enumerate}
+\item We have \(u - u' = (2, 6) - \frac{26}{17}(1, 4) = \left( \frac{8}{17}, -\frac{2}{17} \right)\).
+\begin{align*}
+    \norm{u - u'}^2 & = \LG u - u', u - u' \RG \\
+        & = \LG \left( \frac{8}{17}, -\frac{2}{17} \right), \left( \frac{8}{17}, -\frac{2}{17} \right) \RG \\
+        & = \frac{68}{289}
+\end{align*}
+hence \(\norm{u - u'} = 2 \frac{\sqrt{17}}{17}\).
+
+\item We have \(u - u' = (2, 1, 3) - \frac{1}{14}(29, 17, 40) = \left( \frac{8}{17}, -\frac{2}{17} \right)\).
+\begin{align*}
+    \norm{u - u'}^2 & = \LG u - u', u - u' \RG \\
+        & = ... = \frac{1}{14}
+\end{align*}
+hence \(\norm{u - u'} = \frac{1}{\sqrt{14}}\).
+
+\item Skip.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.21}
+Let \(\V = \CONT([-1, 1])\) with the inner product \(\LG f,g \RG = \int_{-1}^1 f(t)g(t) dt\), and let \(\W\) be the subspace \(\POLYRR\), viewed as a space \emph{of functions}.
+(See the difference between polynomial and polynomial \emph{functions} in \RMK{e.7}.)
+Use the orthonormal basis obtained in \EXAMPLE{6.2.5} to compute the ``best'' (closest) second-degree polynomial approximation of the function \(h(t) = e^t\) on the interval \([-1, 1]\).
+\end{exercise}
+
+\begin{proof} \ 
+By \EXAMPLE{6.2.5}, we have
+\[
+    \beta = \{ u_1, u_2, u_3 \} =
+    \left\{
+        \frac{1}{\sqrt{2}},
+        \sqrt{\frac{3}{2}} x,
+        \sqrt{\frac{5}{8}}(3x^2 - 1)
+    \right\}
+\]
+as an orthonormal basis for the subspace \(\POLYRR\).
+So by \THM{6.6}, the closest approximation is the orthogonal projection of \(h(t) = e^t\) on \(\POLYRR\), that is,
+\begin{align*}
+    & \LG u_1, h \RG h + \LG u_2, h \RG h + \LG u_3, h \RG h \\
+    & = ... \quad \quad \text{by tedious integral calculation, skip} \\
+    & = \frac{1}{4} \left[\left(15 e - 105 e^{-1}\right) t^2 + 12t - 3e^{2} + 33 \right]
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.22}
+Let \(\V = \CONT([0, 1])\) with the inner product \(\LG f, g \RG = \int_0^1 f(t)g(t) dt\).
+Let \(\W\) be the subspace spanned by the \LID{} set \(\{ t, \sqrt{t} \}\).
+\begin{enumerate}
+\item Find an orthonormal basis for \(\W\).
+\item Let \(h(t) = t^2\).
+Use the orthonormal basis obtained in (a) to obtain the ``best'' (closest) approximation of \(h\) in \(\W\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Skip. Similar to previous exercise.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.23}
+Let \(\V\) be the vector space defined in \EXAMPLE{1.2.5}, the space of all \emph{sequences} \(\sigma\) in \(F\) (where \(F = \SET{R}\) or \(F = \SET{C})\) such that \(\sigma(n) \ne 0\) for \emph{only finitely many} positive integers \(n\).
+For \(\sigma, \mu \in \V\), we define \(\LG \sigma, \mu \RG = \sum_{n = 1}^{\infty} \sigma(n) \conjugatet{\mu(n)}\).
+Since all but a finite number of terms of the series are zero, the series converges.
+\begin{enumerate}
+\item Prove that \(\InnerOp\) is an inner product on \(\V\), and hence \(\V\) is an inner product space.
+\item For each positive integer \(n\), let \(e_n\) be the sequence defined by \(e_n(k) = \delta_{nk}\), where \(\delta_{nk}\) is the Kronecker delta.
+Prove that \(\{ e_1, e_2, ... \}\) is an orthonormal basis for \(\V\).
+\item Let \(\sigma_n = e_1 + e_n\) and \(\W = \spann(\{ \sigma_n : n \ge 2 \})\).
+    \begin{enumerate}
+    \item[(i)] Prove that \(e_1 \notin \W\), so \(\W \ne \V\).
+    \item[(ii)] Prove that \(\W^{\perp} = \{ \OV \}\), and conclude that \(\W \ne (\W^{\perp})^{\perp}\).
+    Thus the assumption in \EXEC{6.2.13}(c) that \(\W\) is \emph{finite}-dimensional is essential.
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}

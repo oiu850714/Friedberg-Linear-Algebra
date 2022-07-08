@@ -654,13 +654,16 @@ This closes the induction.
 \end{proof}
 
 \begin{exercise} \label{exercise 5.4.24}
-Prove that the restriction of a diagonalizable linear operator \(\T\) to any nontrivial \(\T\)-invariant subspace is also diagonalizable.
+Prove that the restriction of a diagonalizable linear operator \(\T\) (on a \emph{finite}-dimensional vector space \(V\)) to any nontrivial \(\T\)-invariant subspace is also diagonalizable.
 \emph{Hint}: Use the result of \EXEC{5.4.23}.
 \end{exercise}
 
-\begin{proof}
-\RED{WARNING: this proof is not completed.}
+\begin{note}
+I've additional description that \(\V\) is finite-dimensional.
+Again, since we say \(\T\) is ``diagonalizable'', this implies the vector space on which \(\T\) transforms is finite-dimensional.
+\end{note}
 
+\begin{proof}
 Suppose \(\T\) is diagonalizable.
 Then by \THM{5.10}, \(V\) is the direct sum of the eigenspaces of \(\T\):
 \[
@@ -668,47 +671,33 @@ Then by \THM{5.10}, \(V\) is the direct sum of the eigenspaces of \(\T\):
 \]
 where \(\lambda_i\) are all distinct eigenvalues of \(\T\).
 
-Let \(\T_W\) be the restriction of \(\T\) on \(W\).
-Consider \(W_{\lambda_i} = W \cap E_{\lambda_i}\) for \(1 \le i \le k\).
-Then by definition, every vector \(w\) in \(W_{\lambda_i}\) is in \(W\) and satisfies \(\T_W(w) = \T(w) = \lambda_i w\).
-\textbf{There are two cases for the contents of \(W_{\lambda_i}\): it's trivial(i.e. \(W_{\lambda_i} = \{ \OV \}\)) or not:}
-\begin{itemize}
-\item If \(W_{\lambda_i}\) is not trivial, then \(\lambda_i\) is an eigenvalue of \(\T_W\) since there exists an nonzero vector \(w \in W\) such that \(\T_W(w) = \lambda_i w\).
-In this case, \(W_{\lambda_i}\) is an eigenspace of \(\T_W\) corresponding to \(\lambda_i\).
-\item If \(W_{\lambda_i}\) is trivial, then \(\lambda_i\) is not an eigenvalue of \(\T_W\), since there is \emph{no} nonzero vector \(w \in W\) satisfies \(\T_W(w) = \lambda_i w\).
-In this case, \(W_{\lambda_i}\) is not an eigenspace of \(\T_W\).
-\end{itemize}
+Now let \(W\) be a \(\T\)-invariant subspace of \(V\) and \(\T_W\) be the restriction of \(\T\) on \(W\).
+And we define \(W_{\lambda_i} = W \cap E_{\lambda_i}\) for \(1 \le i \le k\). \MAROON{(1)}
 
-Then we \emph{exclude} those \(\lambda_i\) which is an eigenvalue of \(\T\) but not an eigenvalue of \(\T_W\),
-and rearrange the remaining ones as \(\lambda'_1, \lambda'_2, ..., \lambda'_{k'}\), where \(k' \le k\), and the corresponding \(W_{\lambda'_{i}}\)'s are the eigenspaces of \(\T_W\).
+Then of course \(W_{\lambda_i}\) is a subspace of \(V\), so we can let \(\beta_i\) be a basis for \(W_{\lambda_i}\) for each \(1 \le i \le k\). \MAROON{(2)}
 
-Now for every \(w \in W\), of course \(w \in V\), so, by the equivalent of direct sum of \THM{5.9}(c), \(w\) can be expressed as a (unique) linear combination of vectors of distinct eigenvalues:
+Then in particular, since \(\beta_i\) is \LID{} and a subset of \(E_{\lambda_i}\), so from \THM{5.5}.
+\(\beta = \beta = \beta_1 \cup \beta_2 \cup ... \cup \beta_n\) is also \LID{}.
+Note that \(\beta\) is a set of eigenvectors of \(\T\), and is of course a set of eigenvector of \(\T_W\).
+
+Finally we claim that \(\beta\) generates \(W\), hence \(\beta\) is \LID{} and generates \(W\) hence is a basis for \(W\).
+Of course \(\spann(\beta) \subseteq W\) since each vector in \(\beta\) is in \(W\), so we only need to show \(W \subseteq \spann(\beta)\).
+
+So let \(v\) be an arbitrary vector in \(W\), we have to show that \(v \in \spann(\beta)\).
+In particular, \(v \in V\), so by \THM{5.9}(c), \(v = v_1 + ... + v_k\) where \(v_i \in E_{\lambda_i}\) and this combination is unique.
+But in this combination, some \(v_i\) may be zero vector, so we just exclude these zero vectors, and use the remaining nonzero \(k'\) vectors(where \(k'\) is the number of these nonzero vectors) to represent \(v\):
 \[
-    w = u_1 + u_2 + ... + u_k \text{ where } u_i \in E_{\lambda_i}.
+    v = v_{n_1} + v_{n_2} + ... + v_{n_{k'}}
 \]
-Then we claim that those \(u_i\)'s which correspond to \(\lambda_i\)'s that are \emph{not} eigenvalues of \(\T_W\) must be zero vector:
-If some of those are nonzero, then by definition they are eigenvectors of \(\T\).
-Hence we have \(w \in W\) is the summation of eigenvectors of \(\T\) corresponding to distinct eigenvalues (where some of these eigenvectors are those ``nonzero'' \(u_i\)'s corresponding to those \(\lambda_i\)'s that are not eigenvalues of \(\T_W\)),
-so by \EXEC{5.4.23}, all of these eigenvectors are in \(W\);
-in particular, those ``nonzero'' \(u_i\)'s are in \(W\), so they are in \(W\) and by definition in \(E_{\lambda_i}\), hence they are in \(W_{\lambda_i}\), so \(W_{\lambda_i}\) has nonzero vector hence is not trivial.
-But we have shown that if \(W_{\lambda_i}\) is not trivial, then \(\lambda_i\) is an eigenvalue of \(\T_W\), but we already said that \(\lambda_i\) are not eigenvalues of \(\T_W\)! A contradiction.
+where \(k' \le k\) , \(n_j\) is a finite sequence of increasing \(k'\) positive integers such that \(n_{k'} \le k\), and \(v_{n_j} \in E_{\lambda_{n_j}}\) for \(1 \le j \le k'\).
 
-So we \emph{exclude} those zero vectors \(u_i\)'s again and rearrange the remaining ones to get
-\[
-    w = u'_1 + u'_2 + ... + u'_{k'} \quad \text{ where } u'_i \in E_{\lambda'_i}.
-\]
-But some of these \(u'_i\)'s can \emph{still} be zero vectors, for example when \(w = \OV\); then just again exclude these zero vectors.
-Then we have \(W\) is \(\T\)-invariant, \(u'_1, u'_2, ..., u'_{k'}\) are eigenvectors \textbf{of \(\T\)} corresponding to distinct eigenvalues \(\lambda'_i\), and \(u'_1 + u'_2 + ... + u'_{k'} = w \in W\), hence by \EXEC{5.4.23}, \(u'_i \in W\) for all \(i\).
-Hence, \(u'_i \in W\) and \(u'_i \in E_{\lambda'_i}\), so \(u'_i \in W \cap E_{\lambda'_i} = W_{\lambda'_i}\).
+So currently we have that \(v_{n_1} + ... + v_{n_{k'}} = v \in W\) where \(W\) is a \(\T\) invariant subspace and \(v_{n_1}, ..., v_{n_{k'}}\) are eigenvectors corresponding to distinct eigenvalues \(\lambda_{n_j}\) for \(1 \le j \le k'\).
+So by \EXEC{5.4.23}, \(v_{n_j} \in W\), for \(1 \le j \le k'\).
+So by \MAROON{(1)}, \(v_{n_j} \in E_{\lambda_{n_j}} \cap W = W_{n_j}\), which by \MAROON{(2)} is equal to \(\spann(\beta_{n_j})\);
+therefore, \(v_{n_1} + ... + v_{n_{k'}}\) can be spanned by \(\beta_{n_1} \cup ... \cup \beta_{n_{k'}}\), which is a subset of \(\beta_1 \cup ... \cup \beta_k\).
+Hence \(v \in \spann(\beta_1 \cup ... \cup \beta_k)\), as desired.
 
-Since \(W_{\lambda'_i}\) is a \emph{subset} of \(E_{\lambda'_i}\), the linear combination \(w = u'_1 + u'_2 + ... + u'_{k'}\) is also unique with respect to \(W_{\lambda'_i}\).
-So every \(w \in W\) can be uniquely represented using \(W_{\lambda'_i}\)'s vectors.
-Hence, by \THM{5.9}(c) to \THM{5.9}(a) \(W\) is the direct sum of \(W_{\lambda'_i}\):
-\[
-    W = W_{\lambda'_1} \oplus W_{\lambda'_2} \oplus ... \oplus W_{\lambda'_{k'}}
-\]
-where \(W_{\lambda_i}\) by definition are eigenspaces of \(\T_W\) corresponding to \(\lambda'_i\).
-Hence \(W\) is the direct sum of eigenspaces of \(\T_W\), hence by \THM{5.10} \(\T_W\) is diagonalizable.
+So \(\beta\) is a basis of eigenvectors of \(\T_W\), hence (by \THM{5.1}) \(\T_W\) is diagonalizable.
 \end{proof}
 
 \begin{exercise} \label{exercise 5.4.25} \ 
@@ -935,7 +924,7 @@ Let
         n^2 - n + 1 & n^2 - n + 2 & ... & n^2
     \end{pmatrix}.
 \]
-Find the \CPOLY{} of \(A\).
+\sloppy Find the \CPOLY{} of \(A\).
 \emph{Hint}: First prove that \(A\) has rank \(21\) and that \(\spann(\{ (1, 1, ... , 1), (1, 2, ..., n) \})\) is \(\LMTRAN_A\)-invariant.
 \end{exercise}
 

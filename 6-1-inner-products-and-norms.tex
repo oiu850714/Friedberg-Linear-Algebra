@@ -1,1 +1,468 @@
 \section{Inner Products and Norms} \label{sec 6.1}
+
+Many geometric notions such as angle, length, and perpendicularity in \(\SET{R}^2\) and \(\SET{R}^3\) may be extended to more general real and complex vector spaces.
+All of these ideas are related to the concept of \emph{inner product}.
+
+\begin{definition} \label{def 6.1}
+Let \(\V\) be a vector space over \(F\).
+An \textbf{inner product} on \(\V\) is a \emph{function} that assigns, to every ordered pair of vectors \(x\) and \(y\) in \(\V\), a \textbf{scalar} in \(F\), denoted \(\LG x, y \RG\), such that for all \(x, y\), and \(z\) in \(\V\) and all \(c\) in \(F\), the following bold:
+\begin{enumerate}
+\item \(\LG x + z, y \RG = \LG x, y \RG + \LG z, y \RG\).
+\item \(\LG cx, y \RG = c \LG x, y \RG\).
+\item \(\conjugatet{\LG x, y \RG} = \LG y, x \RG\), where the bar denotes complex conjugation.
+\item If \(x \ne \OV\), then \(\LG x, x \RG\) is a positive real number.
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+For (d), in particular \(\LG x, x \RG\) cannot be a complex number, it must be a real number.
+\end{note}
+
+\begin{remark} \label{remark 6.1.1}
+Remember the assumption in the beginning of the chapter that we assume \(F\) to be either \(\SET{C}\) or \(\SET{R}\).
+Note that (c) reduces to \(\LG x, y \RG = \LG y, x \RG\) if \(F = \SET{R}\).
+Conditions (a) and (b) simply require that the inner product \emph{be linear in the first component}.
+
+It is easily shown that if \(a_1, a_2, ..., a_n \in F\) and \(y, v_1, v_2, ..., v_n \in \V\), then (by induction and \DEF{6.1}(a)(b))
+\[
+    \LG \sum_{i = 1}^n a_i v_i, y \RG = \sum_{i = 1}^n a_i \left< v_i, y \right>
+\]
+\end{remark}
+
+\begin{example} \label{example 6.1.1}
+For \(x = (a_1, a_2, ..., a_n)\) and \(y = (b_1, b_2, ..., b_n)\) in \(F^n\), define
+\[
+    \LG x, y \RG = \sum_{i = 1}^n a_i \conjugatet{b_i}.
+\]
+The verification that \(\InnerOp\) satisfies conditions \DEF{6.1}(a) through (d) is easy.
+For example, if \(z = (c_1, c_2, ..., c_n)\), we have for (a)
+\begin{align*}
+    \LG x + z, y \RG & = \sum_{i = 1}^n (a_i + c_i) \conjugatet{b_i} & \text{by def of the operation} \\
+    & = \sum_{i = 1}^n a_i \conjugatet{b_i} + \sum_{i = 1}^n c_i \conjugatet{b_i} & \text{by distributivity of field} \\
+    & = \LG x, y \RG + \LG z, y \RG.
+\end{align*}
+Thus, for \(x = (1 + \iu, 4)\) and \(y = (2 - 3\iu, 4 + 5\iu)\) in \(\SET{C}^2\),
+\[
+    \LG x, y \RG = (1 + \iu)\conjugatet{(2 - 3\iu)} + 4\conjugatet{(4 + 5\iu)} = (1 + \iu)(2 + 3\iu) + 4(4 - 5\iu) = 15 - 15\iu.
+\]
+\end{example}
+
+\begin{remark} \label{remark 6.1.2}
+The inner product in \EXAMPLE{6.1.1} is called the \textbf{standard inner product} on \(F^n\).
+When \(F = \SET{R}\), the conjugations are \emph{not needed}, and in early courses this standard inner product is usually called the \textbf{dot product} and is denoted by \(x \cdot y\) instead of \(\LG x,y \RG\).
+\end{remark}
+
+\begin{example} \label{example 6.1.2}
+If \(\LG x, y \RG\) is any inner product on a vector space \(\V\) and \(r > 0\), we may define \emph{another} inner product by the rule \(\LG x, y \RG' = r \LG x, y \RG\).
+If \(r \le 0\), then \DEF{6.1}(d) would \emph{not} hold.
+\end{example}
+
+\begin{example} \label{example 6.1.3}
+Let \(\V = \CONT([0, 1])\), the vector space of \emph{real-valued continuous functions} on \([0, 1]\).
+For \(f, g \in V\), define \(\LG f, g \RG = \int_0^1 f(t)g(t) dt\).
+Since the preceding \emph{integral is linear} in \(f\), \DEF{6.1}(a) and (b) are immediate, and (c) is trivial.
+(Again note that in this context (c) is only \(\LG f, g \RG = \LG g, f \RG\), and it's of course true since \(\int_0^1 f(t)g(t) dt = \int_0^1 g(t)f(t) dt\).)
+
+If \(f \ne 0\), then \(f^2\) is \textbf{bounded away from zero} on some \emph{subinterval} of \([0, 1]\) (\emph{continuity} is used here; refer to Calculus or Analysis course), and hence \(\LG f, f \RG = \int_0^1 [f(t)]^2 dt > 0\).
+\end{example}
+
+\begin{definition} \label{def 6.2}
+Let \(A \in M_{m \X n}(F)\).
+We define the \textbf{conjugate transpose} or \textbf{adjoint} of \(A\) to be the \(n \X m\) matrix \(A^*\) such that \((A^*)_{ij} = \conjugatet{A_{ji}}\) for all \(i, j\).
+
+(Also see \ADEF{4.4} and the corresponding exercises.)
+(And it's of course that \((A^*)^* = A\)).
+\end{definition}
+
+\begin{example} \label{example 6.1.4}
+Let
+\[
+    A = \begin{pmatrix} \iu & 1 + 2\iu \\ 2 & 3 + 4\iu \end{pmatrix}.
+\]
+Then
+\[
+    A^* = \begin{pmatrix} -\iu & 2 \\ 1 - 2\iu & 3 - 4\iu \end{pmatrix}.
+\]
+\end{example}
+
+\begin{remark} \label{remark 6.1.3}
+Notice that if \(x\) and \(y\) are viewed as column vectors in \(F^n\), and \(\InnerOp\) is the standard inner product, then we have \(\LG x, y \RG = y^* x\), since
+\begin{align*}
+    \LG x, y \RG & = \sum_{i = 1}^n x_i \conjugatet{y_i} & \text{by def of standard inner product} \\
+    & = \begin{pmatrix} \conjugatet{y_1} & \conjugatet{y_2} & ... & \conjugatet{y_n} \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} & \text{by def of ``matrix'' multiplication,} \\
+    & & \text{where the ``matrices'' are \(1 \X n\) and \(n \X 1\)} \\
+    & = y^* x & \text{by \DEF{6.2}}
+\end{align*}
+\end{remark}
+
+\begin{remark} \label{remark 6.1.4}
+The conjugate transpose of a matrix plays a \emph{very important role} in the remainder of this chapter. In the case that \(A\) has \emph{real} entries, \emph{\(A^*\) is simply the transpose of \(A\)}.
+\end{remark}
+
+\begin{example} \label{example 6.1.5}
+Let \(\V = M_{n \X n}(F)\), and define \(\LG A, B \RG = \TRACE(B^* A)\) for \(A, B \in V\).
+(Recall that the trace of a matrix \(A\) is defined by \(\TRACE(A) = \sum_{i = 1}^n A_{ii}\).)
+We verify that (a) and (d) of the definition of inner product hold and leave (b) and (c) to the reader. For this purpose, let \(A, B, C \in V\).
+Then
+\begin{align*}
+    \LG A + B, C \RG & = \TRACE(C^* (A + B)) & \text{by def of the operation} \\
+        & = \TRACE(C^* A + C^* B) & \text{by \THM{2.12}(a)} \\
+        & = \TRACE(C^* A) + \TRACE(C^* B) & \text{by \EXEC{1.3.6}} \\
+        & = \LG A, C \RG + \LG B, C \RG & \text{by def of the operation}
+\end{align*}
+Also
+\begin{align*}
+    \LG A, A \RG & = \TRACE(A^* A) & \text{by def of the operation} \\
+        & = \sum_{i = 1}^n (A^* A)_{ii} & \text{by def of trace} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n (A^*)_{ik} A_{ki} & \text{by def of matrix multiplication} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n \RED{\conjugatet{A}_{ki}} A_{ki} & \text{by \DEF{6.2}} \\
+        & = \sum_{i = 1}^n \sum_{k = 1}^n \abs{A_{ki}}^2 & \text{by \RMK{d.5}}
+\end{align*}
+Now if \(A \ne O\), the zero vector of \(M_{n \X n}\), then \(A_{ki} \ne 0\) for some \(k\) and \(i\) hence \(\abs{A_{ki}}^2 > 0\).
+So the double summation in the last equation is positive, that is, \(\LG A, A \RG > 0\).
+\end{example}
+
+\begin{additional definition} \label{adef 6.1}
+The inner product on \(M_{n \X n}(F)\) in \EXAMPLE{5.1.5} is called the \textbf{Frobenius inner product}.
+\end{additional definition}
+
+\begin{remark} \label{remark 6.1.5}
+In fact we can see the Frobenius inner product as a \emph{component-wise (standard) inner product of two matrices} \(A, B\) as though they are vectors.
+That is,
+\[
+    \LG A, B \RG = \sum_{i, j} A_{ij} \conjugatet{B_{ij}}.
+\]
+\end{remark}
+
+\begin{remark} \label{remark 6.1.6}
+A vector space \(\V\) over \(F\) endowed with a specific inner product is called an \textbf{inner product space}.
+(Again by the assumption in the beginning of the chapter that we assume \(F\) to be either \(\SET{C}\) or \(\SET{R}\).)
+If \(F = \SET{C}\), we call \(\V\) a \textbf{complex inner product space}, whereas if \(F = \SET{R}\), we call \(\V\) a \textbf{real inner product space}.
+
+Thus \EXAMPLE{6.1.1}, \EXAMPLE{6.1.3}, and \EXAMPLE{6.1.5} also provide examples of inner product spaces.
+\begin{center}\emph{
+    For the remainder of this chapter, \(F^n\) denotes the inner product space with the \textbf{standard} inner product as defined in \EXAMPLE{6.1.1}, and \(M_{n \X n}(F)\) denotes the inner product space with the \textbf{Frobenius} inner product as defined in \EXAMPLE{5.1.5}.
+}\end{center}
+\end{remark}
+
+\begin{remark} \label{remark 6.1.7}
+The reader is cautioned that \emph{two distinct inner products on a given vector space yield two distinct inner product spaces}.
+For instance, it can be shown that both
+\[
+    \LG f(x), g(x) \RG_1 = \int_0^1 f(t) g(t) d t
+    \quad \text { and } \quad
+    \LG f(x), g(x) \RG_{2} = \int_{\RED{-1}}^{1} f(t) g(t) d t
+\]
+are inner products on the vector space \(\POLYRINF\).
+Even though the underlying vector space is the same, however, these two inner products yield two different inner product spaces.
+For example, the polynomials \(f(x) = x\) and \(g(x) = x^2\) are \emph{orthogonal}(see \DEF{6.4}) in the second inner product space, but not in the first.
+\end{remark}
+
+\begin{remark} \label{remark 6.1.8}
+A very important inner product space that resembles \(\CONT([O, 1])\) is the space \(\textsf{H}\) of continuous \textbf{complex}-valued functions defined on the interval \([0, 2\pi]\) with the inner product
+\[
+    \LG f, g \RG = \frac{1}{2\pi} \int_0^{2\pi} f(t) \conjugatet{g(t)} dt.
+\]
+The reason for the constant \(1/2\pi\) will become evident later.
+This inner product space, which arises often \emph{in the context of physical situations}, is examined
+more closely in later sections.
+
+At this point, we mention a few facts about integration of complex-valued functions.
+First, the imaginary number \(\iu\) can be treated as a constant under the integration sign.
+Second, every complex-valued function \(f\) may be written as \(f = f_1 + i f_2\), where \(f_i\) and \(f_2\) are real-valued functions.
+Thus we have
+\[
+    \int f dt = \int f_1 dt + \iu \int f_2 dt \quad \text{ and } \quad \conjugatet{\int f} dt = \int \conjugatet{f} dt
+\]
+From these properties, as well as the assumption of continuity, it follows that \(\textsf{H}\) is an inner product space (see \EXEC{6.1.16}(a)).
+\end{remark}
+
+\begin{theorem} \label{thm 6.1}
+Let \(\V\) be an inner product space.
+Then for \(x, y, z \in \V\) and \(c \in F\), the following statements are true.
+\begin{enumerate}
+\item \(\LG x, y + z \RG = \LG x, y \RG + \LG x, z \RG\).
+\item \(\LG x, cy \RG = \conjugatet{c} \LG x, y \RG\).
+\item \(\LG x, \OV \RG = \LG \OV, x \RG = 0\).
+\item \(\LG x, x \RG = 0\) if and only if \(x = \OV\).
+\item If \(\LG x, y \RG = \LG x, z \RG\) \emph{for all} \(x \in \V\), then \(y = z\).
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+A particular consequence of (e) is \EXEC{6.1.1}(h), which is a way to check whether a given vector is zero vector.
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item We have
+\begin{align*}
+    \LG x, y + z \RG & = \conjugatet{\LG y + z, x \RG} & \text{by \DEF{6.1}(c)} \\
+        & = \conjugatet{\LG y, x \RG + \LG z, x \RG} & \text{by \DEF{6.1}(a)} \\
+        & = \conjugatet{\LG y, x \RG} + \conjugatet{\LG z, x \RG} & \text{by \THM{d.2}(b)} \\
+        & = \LG x, y \RG + \LG x, z \RG & \text{by \DEF{6.1}(c)}
+\end{align*}
+
+\item We have
+\begin{align*}
+    \LG x, cy \RG & = \conjugatet{\LG cy, x \RG} & \text{by \DEF{6.1}(c)} \\
+        & = \conjugatet{c \LG y, x \RG} & \text{by \DEF{6.1}(b)} \\
+        & = \conjugatet{c} \conjugatet{\LG y, x \RG} & \text{by \THM{d.2}(c)} \\
+        & = \conjugatet{c} \LG x, y \RG & \text{by \DEF{6.1}(c)}
+\end{align*}
+
+\item We have
+\begin{align*}
+    \LG x, \OV \RG & = \LG x, -1 \cdot \OV \RG & \text{since \(\OV = -1 \cdot \OV\)} \\
+        & = \conjugatet{-1} \LG x, \OV \RG = -1 \LG x, \OV \RG & \text{by part(b)} \\
+    \implies & 2 \LG x, \OV \RG = 0
+    \implies \LG x, \OV \RG = 0 & \text{since \(F = \SET{C}\) have characteristic zero}
+\end{align*}
+Similarly,
+\begin{align*}
+    \LG \OV, x \RG & = \LG -1 \cdot \OV, x \RG & \text{since \(\OV = -1 \cdot \OV\)} \\
+        & = -1 \LG \OV, x \RG & \text{by \DEF{6.1}(b)} \\
+    \implies & 2 \LG \OV, x \RG = 0
+    \implies \LG \OV, x \RG = 0 & \text{since \(F = \SET{C}\) have characteristic zero}
+\end{align*}
+
+\item
+\(\Longrightarrow\): Suppose \(\LG x, x \RG = 0\) but \(x \ne \OV\).
+But by \DEF{6.1}(d), \(\LG x, x \RG\) will be a positive real number, which is not zero, a contradiction.
+Hence \(x = \OV\).
+
+\(\Longleftarrow\): Suppose \(x = \OV\).
+Then in particular by part(c), \(\LG x, x \RG = \LG x, \OV \RG = 0\).
+
+\item Suppose \(\LG x, y \RG = \LG x, z \RG\) for all \(x \in \V\).
+Then for any \(x \in \V\),
+\begin{align*}
+             & \LG x, y \RG = \LG x, z \RG \\
+    \implies & \LG x, y \RG + (-1) \LG x, z \RG = 0 & \text{of course} \\
+    \implies & \LG x, y \RG + \LG x, \conjugatet{(-1)} z \RG = 0 & \text{by part(b)} \\
+    \implies & \LG x, y \RG + \LG x, (-1) z \RG = 0 & \text{of course} \\
+    \implies & \LG x, y - z \RG = 0 \quad \MAROON{(1)} & \text{by part(a)} \\
+\end{align*}
+In particular, for \(x = y - z\), from \MAROON{(1)} we have \(\LG x, y - z \RG = \LG y - z, y - z \RG = 0\).
+Then by part(d), \(y - z = \OV\), hence \(y = z\).
+\end{enumerate}
+\end{proof}
+
+\begin{remark} \label{remark 6.1.9}
+The reader should observe that (a) and (b) of \THM{6.1} show that the inner product is \textbf{conjugate linear} in the \emph{second} component.
+That is, for any inner product space \(\V\) and \(v, w_1, w_2 \in \V\) and scalar \(c \in F\),
+\[
+    \LG v, c w_1 + w_2 \RG = \RED{\conjugatet{c}} \LG v, w_1 \RG + \LG v, w_2 \RG.
+\]
+\end{remark}
+
+In order to generalize the notion of \textbf{length} in \(\SET{R}^3\) to arbitrary inner product spaces, we need only observe that the length of \(x = (a, b, c) \in \SET{R}^3\) is (conventionally) given by (the Euclidean distance) \( \sqrt{a^2 + b^2 + c^2} \), which is equal to \(\sqrt{\LG x, x\RG}\) (where \(\InnerOp\) again denotes the standard inner product here).
+This leads to the following definition.
+
+\begin{definition} \label{def 6.3}
+Let \(\V\) be an inner product space.
+For \(x \in \V\), we define the \textbf{norm} or \textbf{length} of \(x\) by \(\norm{x} = \sqrt{\LG x, x \RG}\).
+\end{definition}
+
+\begin{example} \label{example 6.1.6}
+Let \(\V = F^n\).
+(Hence we use the standard inner product.)
+If \(x = (a_1, a_2, ..., a_n)\), then
+\begin{align*}
+    \norm{x} & = \LG x, x \RG^{1/2} \\
+        & = \LG (a_1, a_2, ..., a_n), (a_1, a_2, ..., a_n) \RG^{1/2}
+        = \left[ \sum_{i = 1}^n \abs{a_n}^2 \right]^{1/2} & \text{by def of standard inner product.}
+\end{align*}
+\emph{is} the Euclidean definition of length.
+Note that if \(n = 1\), we have \(\norm{a} = \abs{a}\).
+\end{example}
+
+As we might expect, the well-known properties of Euclidean length in \(\SET{R}^3\) \emph{hold in general}, as shown next.
+
+\begin{theorem} \label{thm 6.2}
+Let \(\V\) be an inner product space over \(F\).
+Then for all \(x, y \in \V\) and \(c \in F\), the following statements are true.
+\begin{enumerate}
+\item \(\norm{c \cdot x} = \abs{c} \cdot \norm{x}\).
+\item \(\norm{x} = 0\) if and only if \(x = \OV\).
+In any case, \(\norm{x} \ge 0\).
+\item \emph{(Caucby-Schwarz Inequality)} \(\abs{\LG x, y \RG} \le \norm{x} \cdot \norm{y}\).
+\item \emph{(Triangle Inequality)} \(\norm{x + y} \le \norm{x} + \norm{y}\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item We have
+\begin{align*}
+    \norm{c \cdot x} & = \sqrt{\LG c \cdot x, c \cdot x \RG} & \text{by \DEF{6.3}} \\
+        & = \sqrt{c \conjugatet{c} \LG x, x \RG} & \text{by by \DEF{6.1}(b) and \THM{6.1}(b)} \\
+        & = \sqrt{\abs{c}^2 \LG x, x \RG} & \text{by \RMK{d.5}} \\
+        & = \abs{c} \sqrt{\LG x, x \RG} & \text{of course by complex field algebra} \\
+        & = \abs{c} \norm{x} & \text{by \DEF{6.3}}
+\end{align*}
+
+\item We have
+\begin{align*}
+         & \norm{x} = 0 \\
+    \iff & \sqrt{\LG x, x \RG} = 0 & \text{by \DEF{6.3}} \\
+    \iff & \LG x, x \RG = 0^2 = 0 & \text{of course} \\
+    \iff & x = \OV & \text{by \THM{6.1}(d)}
+\end{align*}
+And \(\norm{x} \ge 0\) is implied by \DEF{6.1}(d) and \THM{6.1}(d).
+
+\item We have to show \(\abs{\LG x, y \RG} \le \norm{x} \cdot \norm{y}\).
+If \(y = \OV\), then by part(b), \(\norm{y} = 0\), hence the right side of the equation is \(\norm{x} \cdot \norm{y} = \norm{x} \cdot 0 = 0\).
+And \(\LG x, y \RG = \LG x, \OV \RG = 0\) by \THM{6.1}(c), hence the left side of the equation is \(\abs{\LG x, y \RG} = \abs{0} = 0\).
+So the inequality holds when \(y = \OV\).
+
+Now assume that \(y \ne \OV\).
+For any \(c \in F\), we have
+\begin{align*}
+    0 & \le \LG x - cy, x - cy \RG & \text{by \DEF{6.1}(d) and \THM{6.1}(d)} \\
+      & = \LG x, x - cy \RG - c \LG y, x - cy \RG & \text{linear in the first component} \\
+      & = \LG x, x \RG - \conjugatet{c} \LG x, y \RG - c \LG y, x \RG - c \cdot \conjugatet{(-c)} \LG y, y \RG & \text{\emph{conjugate linear} in the second component} \\
+      & = \LG x, x \RG - \conjugatet{c} \LG x, y \RG - c \LG y, x \RG + c \cdot \conjugatet{c} \LG y, y \RG & \text{of course}
+\end{align*}
+In particular, if we set
+\[
+    c = \frac{\LG x, y \RG}{\LG y, y \RG},
+\]
+then each of \(\conjugatet{c} \LG x, y \RG, c \LG y, x \RG\), and \(c \cdot \conjugatet{c} \LG y, y \RG\) equals
+\[
+    \frac{\LG x, y \RG \LG y, x \RG}{\LG y, y \RG}
+    = \frac{\LG x, y \RG \conjugatet{\LG x, y \RG}}{\norm{y}^2}
+    = \frac{\abs{ \LG x, y \RG }^2}{\norm{y}^2}
+\]
+So the preceding inequality becomes
+\begin{align*}
+    0 & \le \LG x, x \RG - \conjugatet{c} \LG x, y \RG - c \LG y, x \RG + c \cdot \conjugatet{c} \LG y, y \RG \\
+      & = \LG x, x \RG - \frac{\abs{ \LG x, y \RG }^2}{\norm{y}^2} - \frac{\abs{ \LG x, y \RG }^2}{\norm{y}^2} + \frac{\abs{ \LG x, y \RG }^2}{\norm{y}^2} \\
+      & = \LG x, x \RG - \frac{\abs{ \LG x, y \RG }^2}{\norm{y}^2} \\
+      & = \norm{x}^2 - \frac{\abs{ \LG x, y \RG }^2}{\norm{y}^2},
+\end{align*}
+which implies \(\abs{ \LG x, y \RG }^2 \le \norm{x}^2 \cdot \norm{y}^2\), and since each of \(\LG x, y \RG, \norm{x}, \norm{y}\) is nonnegative, by taking square root, we get (c) as desired.
+
+\item We have
+\begin{align*}
+    \norm{x + y}^2 & = \LG x + y, x + y \RG & \text{by \DEF{6.3}} \\
+        & = \LG x, x + y \RG + \LG y, x + y \RG & \text{by \DEF{6.1}(a)} \\
+        & = \LG x, x \RG + \LG x, y \RG + \LG y, x \RG + \LG y, y \RG & \text{by \THM{6.1}(a)} \\
+        & = \norm{x}^2 + \LG x, y \RG + \LG y, x \RG + \norm{y}^2 & \text{by \DEF{6.3}} \\
+        & = \norm{x}^2 + \LG x, y \RG + \conjugatet{\LG x, y \RG} + \norm{y}^2 & \text{by \DEF{6.1}(c)} \\
+        & \RED{*}= \norm{x}^2 + 2 \cdot \mathcal{R}\LG x, y \RG + \norm{y}^2 \\
+        & \le \norm{x}^2 + 2 \cdot \left| \LG x, y \RG \right| + \norm{y}^2 \\
+        & \le \norm{x}^2 + 2 \cdot \norm{x} \norm{y} + \norm{y}^2 & \text{by part(c)} \\
+        & = \left(\norm{x} + \norm{y}\right)^2,
+\end{align*}
+\RED{*}where \(\mathcal{R}\LG x, y \RG\) denotes the \emph{real part} of the complex number \(\LG x, y \RG\), and hence \(\mathcal{R}\LG x, y \RG \le \left| \LG x, y \RG \right|\).
+(That is, let \(\LG x, y \RG = a + b \iu\), then \(\mathcal{R}\LG x, y \RG = a \le \sqrt{a^2 + b^2} = \abs{a + b\iu} = \abs{\LG x, y \RG}\).)
+And again since each term is nonnegative, by taking square root of the inequality, we get (d).
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+The case when \emph{equality} results in (c) and (d) is considered in \EXEC{6.1.15}.
+
+For (c), the condition is \(x = cy\) for some scalar \(c\).
+(That is, \(x, y\) are ``parallel''.)
+
+For (d), the condition is \(x = cy\) for some \emph{nonnegative} scalar \(c\).
+(That is, \(x, y\) are not only ``parallel'' but have the ``same direction''.)
+\end{note}
+
+\begin{example} \label{example 6.1.7}
+For \(F^n\), we may apply (c) and (d) of \THM{6.2} to the standard inner product to obtain the following \emph{well-known inequalities};
+That is, given \(a = (a_1, ..., a_n), b = (b_1, ..., b_n) \in F^n\), we have
+\begin{align*}
+    \left| \sum_{i = 1}^n a_i \conjugatet{b_i} \right|
+        & = \left| \LG a, b \RG \right| & \text{by def of standard inner product} \\
+        &\ \RED{\le} \norm{a} \cdot \norm{y} & \text{by \THM{6.1}(c)} \\
+        & = \left[ \sum_{i = 1}^n a_i\conjugatet{a_i} \right]^{1/2} \cdot \left[ \sum_{i = 1}^n b_i\conjugatet{b_i} \right]^{1/2} & \text{by \DEF{6.3} and standard inner product} \\
+        & = \left[ \sum_{i = 1}^n \abs{a_i}^2 \right]^{1/2} \cdot \left[ \sum_{i = 1}^n \abs{b_i}^2 \right]^{1/2} & \text{by \RMK{d.5}}
+\end{align*}
+Similarly, by \THM{6.2}(d) and the def of standard inner product,
+\[
+    \left[ \sum_{i = 1}^n \abs{a_i + b_i}^2 \right]^{1/2} \le \left[ \sum_{i = 1}^n \abs{a_i}^2 \right]^{1/2} + \left[ \sum_{i = 1}^n \abs{b_i}^2 \right]^{1/2}.
+\]
+\end{example}
+
+\begin{note}
+當然我們也可直接從實數或複數的定義推出柯西不等式，可參考分析課本。
+\end{note}
+
+The reader may recall from earlier courses that, for \(x\) and \(y\) in \(\SET{R}^3\) or \(\SET{R}^2\), we have that \(\LG x, y \RG = \norm{x} \cdot \norm{y} \cos \theta\), where \(\theta (0 \le \theta \le \pi)\) denotes the \emph{angle} between \(x\) and \(y\).
+This equation implies \THM{6.2}(c) immediately since \(\abs{ \cos \theta } \le 1\).
+Notice also that nonzero vectors \(x\) and \(y\) are \emph{perpendicular} if and only if \(\cos \theta = 0\), that is, if and only if \(\LG x, y \RG = 0\).
+We are now at the point where we can \textbf{generalize the notion of perpendicularity} to arbitrary inner product spaces.
+
+\begin{definition} \label{def 6.4}
+Let \(\V\) be an inner product space.
+
+\BLUE{(1)} Vectors \(x\) and \(y\) in \(\V\) are \textbf{orthogonal} (or \textbf{perpendicular}) if \(\LG x, y \RG = 0\).
+
+\BLUE{(2)} A subset \(S\) of \(\V\) is \textbf{orthogonal} if any two distinct vectors in \(S\) are orthogonal.
+
+\BLUE{(3)} A vector \(x\) in \(\V\) is a \textbf{unit vector} if \(\norm{x} = 1\).
+
+\BLUE{(4)} Finally, a subset \(S\) of \(\V\) is \textbf{ortho\RED{normal}} if \(S\) is orthogonal \emph{and} consists entirely of unit vectors.
+
+Note that we never assume \(\V\) to be finite-dimensional.
+
+And note that if \(S = \{ v_1, v_2, ... \}\), then \(S\) is orthonormal if and only if \(\LG v_i, v_i \RG = \delta_{ij}\), where \(\delta_{ij}\) denotes the Kronecker delta.
+Also, observe that multiplying vectors by \emph{nonzero} scalars does not affect their orthogonality and that if \(x\) is any nonzero vector, then \(\cfrac{1}{\norm{x}} x\) is a unit vector.
+The process of multiplying a nonzero vector by the reciprocal of its length is called \textbf{normalizing}.
+
+\end{definition}
+
+\begin{example} \label{example 6.1.8}
+In \(F^3\) (with standard inner product), \(\{ (1, 1, 0), (1, -1, 1), (-1, 1, 2) \}\) is an orthogonal set of nonzero vectors, but it is \emph{not} orthonormal;
+however, if we \emph{normalize} the vectors in the set, we obtain the orthonormal set
+\[
+    \left\{ \frac{1}{\sqrt{2}}(1, 1, 0), \frac{1}{\sqrt{3}}(1, -1, 1), \frac{1}{\sqrt{6}}(-1, 1, 2) \right\}
+\]
+\end{example}
+
+Our next example is of an \textbf{\emph{infinite} orthonormal set} that is \emph{important in (real and complex) analysis}.
+This set is used in later examples in this chapter.
+
+\begin{example} \label{example 6.1.9}
+Recall the inner product space \(\textsf{H}\) (defined in \RMK{6.1.8}).
+We introduce an important orthonormal subset \(S\) of \(\textsf{H}\).
+For what follows, \(\iu\) is the imaginary number such that \(\iu^2 = -1\).
+For any integer \(n\), let \(f_n(t) = e^{\iu n t}\), where \(0 \le t \le 2 \pi\).
+Now define \(S = \{ f_n : n \text{ is an integer} \}\).
+Clearly \(S\) is a subset of \(H\).
+
+Recall that \(e^{\iu nt} = \cos nt + \iu \sin nt\). \MAROON{(1)}
+And using the property that \(\conjugatet{e^{\iu t}} = e^{-\iu t}\) \MAROON{(2)}\RED{*} for every real number \(t\), we have, for \(m \ne n\),
+\begin{align*}
+    \LG f_m, f_n \RG & = \frac{1}{2\pi} \int_0^{2\pi} e^{\iu m t} \conjugatet{e^{\iu n t}} dt & \text{by def of inner prod. for \(\textsf{H}\)} \\
+        & = \frac{1}{2\pi} \int_0^{2\pi} e^{\iu m t} e^{-\iu n t} dt & \text{by \MAROON{(2)}} \\
+        & = \frac{1}{2\pi} \int_0^{2\pi} e^{\iu (m - n) t} dt & \text{by exponential algebra} \\
+        & = \frac{1}{2\pi \iu(m - n)} \left[ e^{\iu(m - n)t} \Big|_0^{2\pi} \right] & \text{by (complex) Calculus} \\
+        & = \frac{1}{2\pi \iu(m - n)} \left[ e^{\iu(m - n)2\pi} - e^0 \right] \\
+        & = \frac{1}{2\pi \iu(m - n)} \left[ \cos[(m - n)2\pi] + \iu \sin[(m - n)2\pi] - e^0 \right] & \text{by \MAROON{(1)}} \\
+        & = \frac{1}{2\pi \iu(m - n)} \left[ 1 + 0 - 1 \right] & \text{of course} \\
+        & = \frac{1}{2\pi \iu(m - n)} \cdot 0 = 0.
+\end{align*}
+Also,
+\[
+    \LG f_n, f_n \RG = \frac{1}{2\pi} \int_0^{2\pi} e^{\iu(n - n)t} dt = \frac{1}{2\pi} \int_0^{2\pi} 1 dt = 1. 
+\]
+Hence by \DEF{6.4}(4), \(S\) is an orthonormal set of \(\textsf{H}\).
+\end{example}
+
+\begin{note}
+For \MAROON{(2)}\RED{*} in \EXAMPLE{6.1.9}:
+\begin{align*}
+    \conjugatet{e^{\iu t}} & = \conjugatet{\cos(t) + \iu \sin(t)} & \text{by def of \(e^{\iu t}\)} \\
+        & = \cos(t) - \iu \sin(t) \\
+        & = \cos(-t) - \iu \sin(t) & \text{since \(\cos\) is even function} \\
+        & = \cos(-t) - \iu \cdot (-\sin(-t)) & \text{since \(\sin\) is odd function} \\
+        & = \cos(-t) + \iu \sin(-t) & \text{of course} \\
+        & = e^{\iu \cdot (-t)} = e^{-\iu t} & \text{by def of \(e^{\iu \cdot (-t)}\)}
+\end{align*}
+\end{note}
