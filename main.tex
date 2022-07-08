@@ -105,17 +105,20 @@
 \newcommand{\TODOREF}{} % For the reference that has not been written.
 
 \newcommand{\CONTR}{\textsf{C}(\SET{R})}
+\newcommand{\CONT}{\textsf{C}}
 \newcommand{\TRACE}{\textbf{tr}}
-\newcommand{\SET}[1]{\mathbf{#1}}%
+\newcommand{\SET}[1]{\textsf{#1}}
 
+\newcommand{\V}{\textsf{V}}
+\newcommand{\W}{\textsf{W}}
 \newcommand{\OF}{0_{_F}}
-\newcommand{\OV}{0_{_V}}
-\newcommand{\OW}{0_{_W}}
+\newcommand{\OV}{0_{_\V}}
+\newcommand{\OW}{0_{_\W}}
 \newcommand{\IF}{1_{_F}}
-\newcommand{\IV}{1_{_V}}
+\newcommand{\IV}{1_{_\V}}
 \newcommand{\ITRAN}[1]{\textsf{I}_{_{#1}}}
-\newcommand{\ITRANV}{\textsf{I}_{_V}} % "I"dentity "tran"sformation on "V"
-\newcommand{\ITRANW}{\textsf{I}_{_W}} % "I"dentity "tran"sformation on "W"
+\newcommand{\ITRANV}{\textsf{I}_{_\V}} % "I"dentity "tran"sformation on "V"
+\newcommand{\ITRANW}{\textsf{I}_{_\W}} % "I"dentity "tran"sformation on "W"
 \newcommand{\TZERO}{\textsf{T}_{_0}}
 
 \newcommand{\FRR}{\mathcal{F}(\SET{R}, \SET{R})}
@@ -123,6 +126,7 @@
 
 \newcommand{\POLYF}{\textsf{P}(F)}
 \newcommand{\POLYNF}{\textsf{P}_n(F)}
+\newcommand{\POLYR}{\textsf{P}_1(\SET{R})}
 \newcommand{\POLYRR}{\textsf{P}_2(\SET{R})}
 \newcommand{\POLYRRR}{\textsf{P}_3(\SET{R})}
 \newcommand{\POLYRRRR}{\textsf{P}_4(\SET{R})}
@@ -152,6 +156,14 @@
 
 \let\conjugatet\overline
 \newcommand{\iu}{{i\mkern1mu}}
+
+% angle bracket for notation of inner product
+\newcommand{\LG}{\left<}
+\newcommand{\RG}{\right>}
+
+% norm symbol for inner product
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand{\InnerOp}{\LG \cdot, \cdot \RG}
 
 
 \input{0-precautions.tex}

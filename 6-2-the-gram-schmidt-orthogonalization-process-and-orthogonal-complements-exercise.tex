@@ -1,0 +1,318 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 6.2.1}
+Label the following statements as true or false.
+\begin{enumerate}
+\item The Gram-Schmidt orthogonalization process produces an orthonormal set from an arbitrary \emph{\LID{}} set.
+\item Every nonzero finite-dimensional inner product space has an orthonormal basis.
+\item The orthogonal complement of any set is a subspace.
+\item If \(\{ v_1, v_2, ..., v_n \}\) is a basis for an inner product space \(\V\), then for any \(x \in \V\) the scalars \(\LG x, v_i \RG\) are the Fourier coefficients of \(x\).
+\item An orthonormal basis must be an ordered basis.
+\item Every orthogonal set is linearly independent.
+\item Every orthonormal set is linearly independent.
+\end{enumerate}
+process 那提很尷尬；gen 出來的嚴格來說是 orthogonal，但是把 process 多一步做 normalize 也可以吧
+Fourier coefficients 那個，basis 要 orthonormal ==
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.2}
+In each part, apply the Gram-Schmidt process to the given subset \(S\) of the inner product space \(\V\) to obtain an orthogonal basis for \(\spann(S)\).
+Then normalize the vectors in this basis to obtain an orthonormal basis \(\beta\) for \(\spann(S)\), and compute the Fourier coefficients of the given vector relative to \(\beta\).
+Finally, use \THM{6.5} to verify your result.
+
+\begin{enumerate}
+\item \(\V = \SET{R}^3, S = \{ (1, 0, 1), (0, 1, 1), (1, 3, 3) \}\), and \(x = (1, 1, 2)\)
+\item \(\V = \SET{R}^3, S = \{ (1, 1, 1), (0, 1, 1), (0, 0, 1) \}\), and \(x = (1, 0, 1)\)
+\item \(\V = \POLYRR\) with the inner product \(\LG f(x), g(x) \RG = \int_0^1 f(t) g(t) dt, S = \{1, x, x^2 \}\), and \(h(x) = 1 + x\)
+\item \(\V = \spann(S)\), where \(S = \{(1, \iu, 0), (1 - \iu, 2, 4\iu) \}\), and \(x = (3 + \iu, 4\iu, -4)\)
+\item \(\V = \SET{R}^4, S = \{ (2, -1, -2, 4), (-2, 1, -5, 5), (-1, 3, 7, 11) \}\), and \(x = (-11, 8, -4, 18)\)
+\item \(\V = \SET{R}^4, S = \{ (1, -2, -1, 3), (3, 6, 3, -1), (1, 4, 2, 8) \}\), and \(x = (-1, 2, 1, 1)\)
+\item \(\V = M_{2 \X 2}(\SET{R}),
+    S = \left\{
+        \begin{pmatrix}3 & 5 \\ -1 & 1\end{pmatrix},
+        \begin{pmatrix}-1 & 9 \\ 5 & -1\end{pmatrix},
+        \begin{pmatrix}7 & -17 \\ 2 & -6\end{pmatrix}\right
+    \}\),
+    and \(A = \begin{pmatrix}-1 & 27 \\ -4 & 8\end{pmatrix}\)
+\item \(\V = M_{2 \X 2}(\SET{R}),
+    S = \left\{
+        \begin{pmatrix}2 & 2 \\ 2 & 1\end{pmatrix},
+        \begin{pmatrix}11 & 4 \\ 2 & 5\end{pmatrix},
+        \begin{pmatrix}4 & -12 \\ 3 & -16\end{pmatrix}
+    \right\}\),
+    and \(A = \begin{pmatrix}8 & 6 \\ 25 & -13\end{pmatrix}\)
+\item \(\V = \spann(S)\) with the inner product \(\LG f, g \RG = \int_0^{\pi} f(t)g(t) dt, S = \{\sin t, \cos t, 1, t\}\), and \(h(t) = 2t + 1\)
+\item \(\V = \SET{C}^4,
+    S = \{ (1, i, 2 - \iu, -1), (2 + 3\iu, 3\iu, 1 - \iu, 2\iu), (-1 + 7\iu, 6 + 10\iu, 11 - 4\iu, 3 + 4\iu)\}\),
+    and \(x = (-2 + 7\iu, 6 + 9\iu, 9 - 3\iu, 4 + 4\iu)\)
+\item \(\V = \SET{C}^4, S = \{(-4, 3 - 2\iu, \iu, 1 - 4\iu), (-1 - 5\iu, 5 - 4\iu, -3 + 5\iu, 7 - 2\iu), (-27 - \iu, -7 - 6\iu, -15 + 25\iu, -7 - 6\iu)\}\), and \(x = (-13 - 7\iu, -12 + 3\iu, -39 - 11\iu, -26 + 5\iu)\)
+\item \(\V = M_{2 \X 2}(\SET{C})\),
+\[
+    S = \left\{
+        \begin{pmatrix} 1 - \iu & -2 - 3\iu \\ 2 + 2\iu & 4 + \iu \end{pmatrix},
+        \begin{pmatrix} 8\iu & 4 \\ -3 - 3\iu & -4 + 4\iu \end{pmatrix},
+        \begin{pmatrix} -25 - 38\iu & -2 - 13\iu \\ 12 - 78\iu & -7 + 24\iu \end{pmatrix}
+    \right\},
+\]
+and \(A=\begin{pmatrix} -2 + 8\iu & -13 + \iu \\ 10 - 10\iu & 9 - 9\iu \end{pmatrix}\)
+\item \(\V = M_{2 \X 2}(\SET{C})\),
+\[
+    S = \left\{
+        \begin{pmatrix} -1 + \iu & -\iu \\ 2 - \iu & 1 + 3\iu\end{pmatrix},
+        \begin{pmatrix} -1 - 7\iu & -9 - 8\iu \\ 1 + 10\iu & -6 - 2\iu\end{pmatrix},
+        \begin{pmatrix} -11 - 132\iu & -34 -31\iu \\ 7 - 126\iu & -71 - 5\iu \end{pmatrix}
+    \right\},
+\]
+and \(A=\begin{pmatrix} -7 + 5\iu & 3 + 18\iu \\ 9 - 6\iu & -3 + 7\iu \end{pmatrix}\)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+手寫吧... 跳過
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.3}
+In \(\SET{R}^2\), let
+\[
+    \beta = \left\{
+        \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right), \left( \frac{1}{\sqrt{2}}, \frac{-1}{\sqrt{2}} \right)
+    \right\}
+\]
+Find the Fourier coefficients of \((3, 4)\) relative to \(\beta\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.4}
+Let \(S = \{ (1, 0, \iu), (1, 2, 1) \}\) in \(\SET{C}^3\). Compute \(S^{\perp}\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.5}
+Let \(S_0 = \{ x_0 \}\), where \(x_0\) is a nonzero vector in \(\SET{R}^3\).
+Describe \(S_0^{\perp}\) geometrically.
+Now suppose that \(S = \{ x_1, x_2 \}\) is a \LID{} subset of \(\SET{R}^3\).
+Describe \(S^{\perp}\) geometrically.
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.6}
+Let \(\V\) be an inner product space, and let \(\W\) be a \emph{finite}-dimensional subspace of \(\V\).
+If \(x \notin \W\), prove that there \emph{exists} \(y \in \V\) such that \(y \in W^{\perp}\), but \(\LG x, y \RG \ne 0\).
+Hint: Use \THM{6.6}.
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.7}
+Let \(\beta\) be a basis for a subspace \(\W\) of an inner product space \(\V\), and let \(z \in \V\).
+Prove that \(z \in \W^{\perp}\) if and only if \(\LG z, v \RG = 0\) for every \(v \in \beta\).
+\end{exercise}
+
+\begin{note}
+又一題，只要檢查 basis 行為就可決定整體行為的。
+\end{note}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.8}
+Prove that if \(\{ w_1, w_2, ..., w_n \}\) is an \emph{orthogonal} set of nonzero vectors, then the vectors \(v_1, v_2, ..., v_n\) derived from the Gram-Schmidt process \emph{satisfy} \(v_i = w_i\) for \(i = 1, 2, ..., n\).
+Hint: Use mathematical induction.
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.9}
+Let \(\W = \spann(\{ ( \iu, 0, 1) \})\) in \(\SET{C}^3\).
+Find orthonormal bases for \(\W\) and \(\W^{\perp}\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.10}
+Let \(\W\) be a \emph{finite}-dimensional subspace of an inner product space \(\V\).
+Prove that \(\V = \W \oplus \W^{\perp}\).
+Using the \ADEF{2.2}, prove that there exists a projection \(\T\) on \(\W\) along \(\W^{\perp}\) that satisfies \(\NULLT = \W^{\perp}\).
+In addition, prove that \(\norm{\T(x)} \le \norm{x}\) for all \(x \in \V\).
+Hint: Use \THM{6.6} and \EXEC{6.1.10}.
+\end{exercise}
+
+\begin{proof}
+這感覺用 1.6 3x 題 dim v = dim w + dim w perp 可以吧?
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.11}
+Let \(A\) be an \(n \X n\) matrix with \emph{complex} entries.
+Prove that \(A A^* = I\) if and only if the \emph{rows} of \(A\) form an \emph{orthonormal} basis for \(\SET{C}^n\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.12}
+Prove that for any matrix \(A \in M_{m \X n}(F)\), \((\RANGE(\LMTRAN_{A^*}))^{\perp} = \NULL(\LMTRAN_A)\).
+\end{exercise}
+
+\begin{note}
+幹，怕
+A 的零空間會跟 A 的共軛轉置矩陣的 range 的正交補集一樣
+\end{note}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.13}
+Let \(\V\) be an inner product space, \(S\) and \(S_0\) be \emph{subsets} of \(\V\), and \(\W\) be a finite-dimensional \emph{subspace} of \(\V\).
+Prove the following results.
+\begin{enumerate}
+\item \(S_0 \subseteq S\) implies that \(S^{\perp} \subseteq S_0^{\perp}\).
+\item \(S \subseteq (S^{\perp})^{\perp}\); so \(\spann(S) \subseteq (S^{\perp})^{\perp}\).
+\item \(\W = (\W^{\perp})^{\perp}\). Hint: Use \EXEC{6.2.6}.
+\item \(\V = \W \oplus \W^{\perp}\). (See the exercises of \SEC{1.3}.)
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+(d) 在銃殺小? 第十題不就有了?
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.14}
+Let \(\W_1\) and \(\W_2\) be subspaces of a \emph{finite}-dimensional inner product space.
+Prove that \((\W_1 + \W_2)^{\perp} = \W_1^{\perp} \cap \W_2^{\perp}\) and \((\W_1 \cap \W_2)^{\perp} = \W_1^{\perp} + \W_2^{\perp}\).
+Hint for the second equation: Apply \EXEC{6.2.13}(c) to the first equation.
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.15}
+Let \(\V\) be a \emph{finite}-dimensional inner product space over \(F\).
+\begin{enumerate}
+\item \emph{Parseval's Identity}.
+Let \(\{ v_1, v_2, ..., v_n \}\) be an orthonormal basis for \(\V\).
+For any \(x, y \in \V\) prove that
+\[
+    \LG x, y \RG = \sum_{i = 1}^n \LG x, v_i \RG \conjugatet{\LG y, v_i \RG}.
+\]
+\item Use (a) to prove that if \(\beta\) is an orthonormal basis for \(\V\) with inner product \(\InnerOp\), then for any \(x, y \in \V\)
+\[
+    \LG \phi_{\beta}(x), \phi_{\beta}(y) \RG' = \LG [x]_{\beta}, [y]_{\beta} \RG' = \LG x, y \RG,
+\]
+where \(\InnerOp'\) is the \emph{standard} inner product on \(F^n\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.16} \ 
+
+\begin{enumerate}
+\item \emph{Bessel's Inequality}.
+Let \(\V\) be an inner product space, and let \(S = \{ v_1, v_2, ..., v_n \}\) be an orthonormal subset of \(\V\).
+Prove that for any \(x \in \V\) we have
+\[
+    \norm{x}^2 \ge \sum_{i = 1}^n \abs{\LG x, v_i \RG}^2.
+\]
+Hint: Apply \THM{6.6} to \(x \in \V\) and \(\W = \spann(S)\).
+Then use \EXEC{6.1.10}.
+\item In the context of (a), prove that Bessel's inequality is an equality if and only if \(x \in \spann(S)\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.17}
+Let \(\T\) be a linear operator on an inner product space \(\V\).
+If \(\LG \T(x), y \RG = 0\) for all \(x, y \in \V\), prove that \(\T = \TZERO\).
+In fact, prove this result if the equality holds for all \(x\) and \(y\) in some \emph{basis} for \(\V\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.18}
+Let \(\V = \CONT([-1, 1])\).
+Suppose that \(\W_e\) and \(\W_o\) denote the subspaces of \(\V\) consisting of the \emph{even} and \emph{odd} functions, respectively.
+Prove that \(\W_e^{\perp} = W_o\), where the inner product on \(\V\) is defined by
+\[
+    \LG f, g \RG = \int_{-1}^1 f(t) g(t) dt.
+\]
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.19}
+In each of the following parts, find the orthogonal projection of the given vector on the given subspace \(\W\) of the inner product space \(\V\).
+\begin{enumerate}
+\item \(\V = \SET{R}^2, u = (2, 6)\), and \(\W = \{ (x, y): y = 4x \}\).
+\item \(\V = \SET{R}^3, u = (2, 1, 3)\), and \(\W = \{ (x, y, z): x + 3y - 2z = 0 \}\).
+\item \(\V = \POLYRINF\) with the inner product \(\LG f(x), g(x) \RG = \int_0^1 f(t) g(t) dt, h(x) = 4 + 3x - 2x^2\), and \(\W = \POLYR\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.20}
+In each part of \EXEC{6.2.19}, find the distance from the given vector to the subspace \(\W\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.21}
+Let \(\V = \CONT([-1, 1])\) with the inner product \(\LG f,g \RG = \int_{-1}^1 f(t)g(t) dt\), and let \(\W\) be the subspace \(\POLYRR\), viewed as a space \emph{of functions}.
+(See the difference between polynomial and polynomial \emph{functions} in \RMK{e.7}.)
+Use the orthonormal basis obtained in \EXAMPLE{6.2.5} to compute the ``best'' (closest) second-degree polynomial approximation of the function \(h(t) = e^t\) on the interval \([-1, 1)\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.22}
+Let \(\V = \CONT([0, 1])\) with the inner product \(\LG f, g \RG = \int_0^1 f(t)g(t) dt\).
+Let \(\W\) be the subspace spanned by the \LID{} set \(\{ t, \sqrt{t} \}\).
+\begin{enumerate}
+\item Find an orthonormal basis for \(\W\).
+\item Let \(h(t) = t^2\).
+Use the orthonormal basis obtained in (a) to obtain the ``best'' (closest) approximation of \(h\) in \(\W\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.23}
+Let \(\V\) be the vector space defined in \EXAMPLE{1.2.5}, the space of all \emph{sequences} \(\sigma\) in \(F\) (where \(F = \SET{R}\) or \(F = \SET{C})\) such that \(\sigma(n) \ne 0\) for \emph{only finitely many} positive integers \(n\).
+For \(\sigma, \mu \in \V\), we define \(\LG \sigma, \mu \RG = \sum_{n = 1}^{\infty} \sigma(n) \conjugatet{\mu(n)}\).
+Since all but a finite number of terms of the series are zero, the series converges.
+\begin{enumerate}
+\item Prove that \(\InnerOp\) is an inner product on \(\V\), and hence \(\V\) is an inner product space.
+\item For each positive integer \(n\), let \(e_n\) be the sequence defined by \(e_n(k) = \delta_{nk}\), where \(\delta_{nk}\) is the Kronecker delta.
+Prove that \(\{ e_1, e_2, ... \}\) is an orthonormal basis for \(\V\).
+\item Let \(\sigma_n = e_1 + e_n\) and \(\W = \spann(\{ \sigma_n : n \ge 2 \})\).
+    \begin{enumerate}
+    \item[(i)] Prove that \(e_1 \notin \W\), so \(\W \ne \V\).
+    \item[(ii)] Prove that \(\W^{\perp} = \{ \OV \}\), and conclude that \(\W \ne (\W^{\perp})^{\perp}\).
+    Thus the assumption in \EXEC{6.2.13}(c) that \(\W\) is \emph{finite}-dimensional is essential.
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
