@@ -632,8 +632,8 @@ The set
         4 + x + 9x^3
     \}
 \]
-generates a subspace \(V\) of \(\mathcal{P}_{3}(\SET{R})\).
-To find a subset of \(S\) that is a basis for \(V\), we consider the subset
+generates a subspace \(\V\) of \(\mathcal{P}_{3}(\SET{R})\).
+To find a subset of \(S\) that is a basis for \(\V\), we consider the subset
 \[
     S' = \{(2,1,2,3),(4,2,4,6),(6,3,8,7),(2,1,0,5),(4,1,0,9)\}
 \]
@@ -654,17 +654,17 @@ It follows that
         4 + x + 9x^3
     \}
 \]
-is a basis for the subspace \(V\) of \(\mathcal{P}_{3}(\SET{R})\).
+is a basis for the subspace \(\V\) of \(\mathcal{P}_{3}(\SET{R})\).
 \end{example}
 
-We conclude this section by describing a method for \textbf{extending} a \LID{} subset \(S\) of a finite-dimensional vector space \(V\) to a basis for \(V\).
+We conclude this section by describing a method for \textbf{extending} a \LID{} subset \(S\) of a finite-dimensional vector space \(\V\) to a basis for \(\V\).
 Recall that this is always possible by \CORO{1.10.2}(c).
-Our approach is based on the replacement theorem and assumes that we can find an explicit basis \(\beta\) for \(V\).
+Our approach is based on the replacement theorem and assumes that we can find an explicit basis \(\beta\) for \(\V\).
 
 Let \(S'\) be the ordered set consisting of the vectors in \(S\) \textbf{followed by those in} \(\beta\).
-Since \(\beta \subseteq S'\), the set \(S'\) generates \(V\).
+Since \(\beta \subseteq S'\), the set \(S'\) generates \(\V\).
 We can then apply the technique described above to reduce
-this generating set to a basis for \(V\) containing \(S\).
+this generating set to a basis for \(\V\) containing \(S\).
 
 \begin{remark} \label{remark 3.4.6}
 Note that the order for putting \(S\) and \(\beta\) into \(S'\) is important,
@@ -687,20 +687,20 @@ Let
     \}.
 \]
 
-It is easily verified that \(V\) is a subspace of \(\SET{R}^{5}\) with dimension \(4\) and that
+It is easily verified that \(\V\) is a subspace of \(\SET{R}^{5}\) with dimension \(4\) and that
 \[
     S = \{(-2,0,0,-1,-1),(1,1,-2,-1,-1),(-5,1,0,1,1)\}
 \]
-is a \LID{} subset of \(V\).
+is a \LID{} subset of \(\V\).
 
-To extend \(S\) to a basis for \(V\), we first obtain a basis  \(\beta\) for \(V\).
-To do so, we solve the system of linear equations that defines \(V\).
-Since in this case \(V\) is defined by a single equation, we need only write the equation as
+To extend \(S\) to a basis for \(\V\), we first obtain a basis  \(\beta\) for \(\V\).
+To do so, we solve the system of linear equations that defines \(\V\).
+Since in this case \(\V\) is defined by a single equation, we need only write the equation as
 \[
     x_1 = -7 x_2 - 5 x_3 + 4 x_4 - 2 x_5
 \]
 and assign parametric values to \(x_2, x_3, x_4\), and \(x_5\).
-If \(x_2 = t_1, x_3 = t_2, x_4 = t_3\), and \(x_5 = t_4\), then the vectors in \(V\) have the form
+If \(x_2 = t_1, x_3 = t_2, x_4 = t_3\), and \(x_5 = t_4\), then the vectors in \(\V\) have the form
 \[
 \begin{array}{l}
     (x_1, x_2, x_3, x_4, x_5) = (-7 t_1 - 5 t_2 + 4 t_3 - 2 t_4, t_1, t_2, t_3, t_4) \\
@@ -712,7 +712,7 @@ Hence
     \beta = \{(-7,1,0,0,0),(-5,0,1,0,0),(4,0,0,1,0),(-2,0,0,0,1)\}
 \]
 
-is a basis for \(V\) by \THM{3.15}(b).
+is a basis for \(\V\) by \THM{3.15}(b).
 
 The matrix whose columns consist of the vectors in \(S\) \emph{followed by those in} \(\beta\) is
 \[
@@ -738,5 +738,5 @@ Thus (by \THM{3.16}(c))
 \[
     \{(-2,0,0,-1,-1),(1,1,-2,-1,-1),(-5,1,0,1,1),(4,0,0,1,0)\}
 \]
-(is \LID{}, hence) is a basis for \(V\) containing \(S\).
+(is \LID{}, hence) is a basis for \(\V\) containing \(S\).
 \end{example}

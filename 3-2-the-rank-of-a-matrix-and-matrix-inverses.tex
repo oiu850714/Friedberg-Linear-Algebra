@@ -24,7 +24,7 @@ The next theorem extends this fact to \RED{\textbf{any}} matrix representation o
 \end{remark}
 
 \begin{theorem} \label{thm 3.3}
-Let \(\T : V \to W\) be a \LTRAN{} between finite-dimensional vector spaces, and let \(\beta\) and \(\gamma\) be \emph{arbitrary} ordered bases for \(V\) and \(W\), respectively.
+Let \(\T : \V \to \W\) be a \LTRAN{} between finite-dimensional vector spaces, and let \(\beta\) and \(\gamma\) be \emph{arbitrary} ordered bases for \(\V\) and \(\W\), respectively.
 Then \(\rankT = \rank([\T]_{\beta}^{\gamma})\).
 \end{theorem}
 
@@ -535,7 +535,7 @@ We now use \CORO{3.6.2} to relate the rank of a matrix product to the rank of ea
 Notice how the proof exploits the \emph{relationship between the rank of a matrix and the rank of a \LTRAN{}}.
 
 \begin{theorem} \label{thm 3.7}
-Let \(\T : V \to W\) and \(\U : W \to Z\) be \LTRAN{}s on finite-dimensional vector spaces \(V, W\), and \(Z\), and let \(A\) and \(B\) be matrices such that the product \(AB\) is defined.
+Let \(\T : \V \to \W\) and \(\U : \W \to Z\) be \LTRAN{}s on finite-dimensional vector spaces \(\V, \W\), and \(Z\), and let \(A\) and \(B\) be matrices such that the product \(AB\) is defined.
 Then
 \begin{enumerate}
 \item \(\rank(\U\T) \le \rank(\U)\).
@@ -549,7 +549,7 @@ That is, the rank of the product [composition] of matrices [\LTRAN{}s] is less t
 \begin{proof}
 We prove these items in the order: (a), (c), (d), and (b).
 \begin{enumerate}
-\item[(a)] Clearly, \(\RANGET \subseteq W\) \MAROON{(a.1)}.
+\item[(a)] Clearly, \(\RANGET \subseteq \W\) \MAROON{(a.1)}.
 Hence
 \begin{align*}
     \RANGE(\U\T) & = \U\T(V) & \text{by def of range} \\
@@ -582,7 +582,7 @@ Thus
               & = \rank(B). & \text{by \CORO{3.6.2}}
 \end{align*}
 
-\item[(b)] Let \(\alpha, \beta\), and \(\gamma\) be ordered bases for \(V\), \(W\), and \(Z\), respectively,
+\item[(b)] Let \(\alpha, \beta\), and \(\gamma\) be ordered bases for \(\V\), \(\W\), and \(Z\), respectively,
 and let \(A' = [\U]_{\beta}^{\gamma}\) and \(B' = [\T]_{\alpha}^{\beta}\).
 Then \(A'B' = [\U\T]_{\alpha}^{\gamma}\) \MAROON{(b.1)} by \THM{2.11}.
 And 

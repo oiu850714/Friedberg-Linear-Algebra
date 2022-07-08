@@ -6,7 +6,7 @@
 \end{note}
 
 \begin{definition} \label{def 1.6}
-A subsets \(S\) of a vector space \(V\) (over \(F\)) is called \textbf{\LDP{}} if there exist a finite number of \emph{distinct} vectors \(u_1, u_2, ..., u_n\) in \(S\) and scalars \(a_1, a_2, ..., a_n\), \textbf{not all zero}, in \(F\), such that
+A subsets \(S\) of a vector space \(\V\) (over \(F\)) is called \textbf{\LDP{}} if there exist a finite number of \emph{distinct} vectors \(u_1, u_2, ..., u_n\) in \(S\) and scalars \(a_1, a_2, ..., a_n\), \textbf{not all zero}, in \(F\), such that
 \[
     a_1 u_1 + a_2 u_2 + ... + a_n u_n = \OV.
 \]
@@ -33,7 +33,7 @@ So by \DEF{1.6}, \(S\) is \LDP{}.
 \end{example}
 
 \begin{example}
-Similar to previous example, with vector space \(V = M_{2 \X 3}(\SET{R})\).
+Similar to previous example, with vector space \(\V = M_{2 \X 3}(\SET{R})\).
 \end{example}
 
 \begin{definition} \label{def 1.7}
@@ -112,7 +112,7 @@ Clearly the only solution to this system of linear equations is \(a_0 = a_1 = ..
 \end{example}
 
 \begin{theorem} \label{thm 1.6}
-Let \(V\) be a vector space (over \(F\)), and let \(S_1 \subseteq S_2 \subseteq V\).
+Let \(\V\) be a vector space (over \(F\)), and let \(S_1 \subseteq S_2 \subseteq \V\).
 If \(S_1\) is \LDP{}, then \(S_2\) is \LDP{}.
 \end{theorem}
 
@@ -125,7 +125,7 @@ Then by \DEF{1.6}, \(S_2\) is \LDP{}.
 \end{proof}
 
 \begin{corollary} \label{corollary 1.6.1}
-Let \(V\) be a vector space (over \(F\)), and let \(S_1 \subseteq S_2 \subseteq V\).
+Let \(\V\) be a vector space (over \(F\)), and let \(S_1 \subseteq S_2 \subseteq \V\).
 If \(S_2\) is \LID{}, then \(S_1\) is \LID{}.
 \end{corollary}
 
@@ -142,7 +142,7 @@ Contrapositively, if for all element \(v \in S\), \(\spann(S) \ne \spann(S \setm
 Another way to view these statements is given in \THM{1.7}.
 
 \begin{theorem} \label{thm 1.7}
-Let \(S\) be a \LID{} subset of a vector space \(V\) (over \(F\)), and let \(v\) be a vector in \(V\) that is \textbf{not} in \(S\) (or equivalently, \(v \in V \setminus S\)).
+Let \(S\) be a \LID{} subset of a vector space \(\V\) (over \(F\)), and let \(v\) be a vector in \(\V\) that is \textbf{not} in \(S\) (or equivalently, \(v \in \V \setminus S\)).
 Then \(S \cup \{v\}\) is \LDP{} if and only if \(v \in \spann(S)\).
 (Or equivalently, \(S \cup \{v\}\) is \LID{}{} if and only if \(v \notin \spann(S)\).)
 \end{theorem}
@@ -360,7 +360,7 @@ So we find a nontrivial combination of \((0, 0, 0)\), so the subset \(S = \{(1, 
 \end{proof}
 
 \begin{exercise} \label{exercise 1.5.9}
-Let \(u\) and \(v\) be \emph{distinct} vectors in a vector space \(V\). (over \(F\))
+Let \(u\) and \(v\) be \emph{distinct} vectors in a vector space \(\V\). (over \(F\))
 Show that \(\{ u, v \}\) is \LDP{} if and only if \(u\) (or \(v\)) is a multiple of the other.
 \end{exercise}
 
@@ -394,7 +394,7 @@ And we have that none of the three is a multiple of another and they are depende
 \end{proof}
 
 \begin{exercise} \label{exercise 1.5.11}
-Let \(S = \{ u_1, u_2, ..., u_n \}\) be a \LID{} subset of a vector space \(V\) over the field \(Z_2\).
+Let \(S = \{ u_1, u_2, ..., u_n \}\) be a \LID{} subset of a vector space \(\V\) over the field \(Z_2\).
 (See textbook page 549.)
 How many vectors are there in \(\spann(S)\)?
 Justify your answer.
@@ -416,11 +416,11 @@ See \THM{1.6} and \CORO{1.6.1}.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.5.13}
-Let \(V\) be a vector space over a field of characteristic not equal to two.
+Let \(\V\) be a vector space over a field of characteristic not equal to two.
 \begin{enumerate}
-\item Let \(u\) and \(v\) be distinct vectors in \(V\).
+\item Let \(u\) and \(v\) be distinct vectors in \(\V\).
       Prove that \(\{ u, v \}\) is \LID{} if and only if \(\{ u + v, u - v\}\) is \LID{}.
-\item Let \(u, v\), and \(w\) be \emph{distinct} vectors in \(V\).
+\item Let \(u, v\), and \(w\) be \emph{distinct} vectors in \(\V\).
       Prove that \(\{ u, v, w \}\) is \LID{} if and only if \(\{ u + v, u + w, v + w \}\) is \LID{}.
 \end{enumerate}
 \end{exercise}
@@ -632,7 +632,7 @@ So the supposition \MAROON{(1)} is false, so \(f, g\) are \LID{}.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.5.21}
-Let \(S_1\) and \(S_2\) be \emph{disjoint} subset of vector space \(V\) and \(S_1\), \(S_2\) are \LID{}. 
+Let \(S_1\) and \(S_2\) be \emph{disjoint} subset of vector space \(\V\) and \(S_1\), \(S_2\) are \LID{}. 
 Prove that \(S_1 \cup S_2\) is linearly \emph{dependent} if and only if \(\spann(S_1) \cap \spann(S_2) \ne \{ \OV \}\).
 \end{exercise}
 

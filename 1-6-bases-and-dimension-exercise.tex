@@ -10,14 +10,14 @@ Label the following statements as true or false.
 \item If a vector space has a finite basis, then the number of vectors in every basis is the same.
 \item The dimension of \(\mathcal{P}_n(F)\) is \(n\).
 \item The dimension of \(M_{m \X n}(F)\) is \(m + n\).
-\item Suppose that \(V\) is a finite-dimensional vector space, that \(S_1\) is a \LID{} subset of \(V\), and that \(S_2\) is a subset of \(v\) that
-generates \(V\).
+\item Suppose that \(\V\) is a finite-dimensional vector space, that \(S_1\) is a \LID{} subset of \(\V\), and that \(S_2\) is a subset of \(v\) that
+generates \(\V\).
     Then \(S_1\) cannot contain more vectors than \(S_2\).
-\item If \(S\) generates the vector space \(V\), then every vector in \(V\) can be written as a linear combination of vectors in \(S\) in only one way. 
+\item If \(S\) generates the vector space \(\V\), then every vector in \(\V\) can be written as a linear combination of vectors in \(S\) in only one way. 
 \item Every subpace of a finite-dimensional space is finite-dimensional.
-\item If \(V\) is a vector space having dimension \(n\), then \(V\) bas exactly one subspace with dimension \(0\) and exactly one subspace with dimension \(n\).
-\item If \(V\) is a vector space having dimension \(n\), and if \(S\) is a subset of \(V\) with \(n\) vectors, then \(S\) is \LID{} if and only if \(S\)
-spans \(V\).
+\item If \(\V\) is a vector space having dimension \(n\), then \(\V\) bas exactly one subspace with dimension \(0\) and exactly one subspace with dimension \(n\).
+\item If \(\V\) is a vector space having dimension \(n\), and if \(S\) is a subset of \(\V\) with \(n\) vectors, then \(S\) is \LID{} if and only if \(S\)
+spans \(\V\).
 \end{enumerate}
 \end{exercise}
 
@@ -33,10 +33,10 @@ spans \(V\).
 \item True by \THM{1.10}(1).
 \item False; \(S\) must also be \LID{}.
 \item True by \THM{1.11}(1).
-\item True. \(V\) has exactly one subspace \(\{ \OV \}\) with dimension \(0\) and by \THM{1.11}(2) exactly one subspace \(V\) with dimension \(n\).
+\item True. \(\V\) has exactly one subspace \(\{ \OV \}\) with dimension \(0\) and by \THM{1.11}(2) exactly one subspace \(\V\) with dimension \(n\).
 \item True.
-    If \(S\) is \LID{} and has \(n\) vectors, then by \CORO{1.10.3}(b) \(S\) is a basis so \(S\) spans \(V\).
-    If \(S\) spans \(V\) and has \(n\) vectors, then by \CORO{1.10.3}(a) \(S\) is a basis so \(S\) is \LID{}. 
+    If \(S\) is \LID{} and has \(n\) vectors, then by \CORO{1.10.3}(b) \(S\) is a basis so \(S\) spans \(\V\).
+    If \(S\) spans \(\V\) and has \(n\) vectors, then by \CORO{1.10.3}(a) \(S\) is a basis so \(S\) is \LID{}. 
 \end{enumerate}
 \end{proof}
 
@@ -112,7 +112,7 @@ Note that we can use the same choosing process in the proof of \THM{1.9}.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.8}
-Let \(W\) denote the subspace of \(\SET{R}^5\) consisting of all the vectors \emph{having coordinates that sum to zero}.
+Let \(\W\) denote the subspace of \(\SET{R}^5\) consisting of all the vectors \emph{having coordinates that sum to zero}.
 The vectors
 \begin{align*}
     u_1 & = (2, -3, 4, -5, 2), & u_2 & = (-6, 9, - 12, 15, -6), \\
@@ -120,12 +120,12 @@ The vectors
     u_5 & = (-1, 1, 2, 1, -3), & u_6 & = (0, -3, -18, 9, 12) , \\
     u_7 & = (1, 0, -2, 3, -2), & u_8 & = (2, -1, 1, -9, 7)
 \end{align*}
-\emph{generate} \(W\).
-Find a subset of the set \(\{ u_1, u_2, ..., u_8 \}\) that is a basis for \(W\).
+\emph{generate} \(\W\).
+Find a subset of the set \(\{ u_1, u_2, ..., u_8 \}\) that is a basis for \(\W\).
 \end{exercise}
 
 \begin{proof}
-Since we have known(by the statement in exercise) \(\{ u_1, u_2, ..., u_8 \}\) generates \(W\), we can use the technique in the proof of \THM{1.9} to find a subset of \(\{ u_1, ..., u_8 \}\) that is a basis of \(W\).
+Since we have known(by the statement in exercise) \(\{ u_1, u_2, ..., u_8 \}\) generates \(\W\), we can use the technique in the proof of \THM{1.9} to find a subset of \(\{ u_1, ..., u_8 \}\) that is a basis of \(\W\).
 
 So we first pick (nonzero vector) \(u_1\) into the resulting set \(\beta\).
 So currently \(\beta = \{ u_1 \}\).
@@ -139,8 +139,8 @@ and skip \(u_6\);
 and pick \(u_7\) so \(\beta = \{ u_1, u_3, u_5, u_7 \}\);
 and skip \(u_8\).
 
-Now by \THM{1.9}, the resulting set \(\beta = \{ u_1, u_3, u_5, u_7 \}\) by construction is a basis of \(W\).
-(And that also implies \(W\) has dimension \(4\)).
+Now by \THM{1.9}, the resulting set \(\beta = \{ u_1, u_3, u_5, u_7 \}\) by construction is a basis of \(\W\).
+(And that also implies \(\W\) has dimension \(4\)).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.9}
@@ -182,13 +182,13 @@ Skip other items.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.11}
-Let \(u\) and \(v\) be distinct vectors of a vector space \(V\).
-Show that if \(\{ u, v \}\) is a basis for \(V\) and \(a\) and \(b\) are \emph{nonzero} scalars,
-then both \(\{ u + v, au \}\) and \(\{ au, bv \}\) are also bases for \(V\).
+Let \(u\) and \(v\) be distinct vectors of a vector space \(\V\).
+Show that if \(\{ u, v \}\) is a basis for \(\V\) and \(a\) and \(b\) are \emph{nonzero} scalars,
+then both \(\{ u + v, au \}\) and \(\{ au, bv \}\) are also bases for \(\V\).
 \end{exercise}
 
 \begin{proof}
-Since \{ u, v \} has \(2\) elements and is a basis for \(V\), \(V\) has dimension \(2\).
+Since \{ u, v \} has \(2\) elements and is a basis for \(\V\), \(\V\) has dimension \(2\).
 And both \(\{ u + v, au \}\) and \(\{ au, bv \}\) have \(2\) elements, by \CORO{1.10.3}(b) it suffices to show these sets are \LID{}.
 
 So suppose \(c_1 (u + v) + c_2 (au) = \OV\), we have to show \(c_1 = c_2 = 0\).
@@ -210,8 +210,8 @@ Since \(\{ u, v \}\) is \LID{}, we have \(c_1 a = 0\) and \(c_2 b = 0\), which t
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.12}
-Let \(u, v\), and \(w\) be distinct vectors of a vector space \(V\).
-Show that if \(\{ u, v, w \}\) is a basis for \(V\), then \(\{ u + v + w, v + w, w \}\) is also a basis for \(V\).
+Let \(u, v\), and \(w\) be distinct vectors of a vector space \(\V\).
+Show that if \(\{ u, v, w \}\) is a basis for \(\V\), then \(\{ u + v + w, v + w, w \}\) is also a basis for \(\V\).
 \end{exercise}
 
 \begin{proof}
@@ -243,9 +243,9 @@ Find a basis for this subspace.
 
 \begin{proof}
 Solving the equation, if we let \(x_3\) as free variable \(t\), then all \((t, t, t)\) is the solution of the system.
-So the corresponding subspace is \(W = \{ (t, t, t) : t \in \SET{R} \}\).
-And it's trivial that \(\{ (1, 1, 1) \}\) is \LID{} and spans \(W\), so is a basis for \(W\).
-And that also implies \(W\) has dimension \(1\).
+So the corresponding subspace is \(\W = \{ (t, t, t) : t \in \SET{R} \}\).
+And it's trivial that \(\{ (1, 1, 1) \}\) is \LID{} and spans \(\W\), so is a basis for \(\W\).
+And that also implies \(\W\) has dimension \(1\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.14}
@@ -253,17 +253,17 @@ Similar to the previous exercise, skip.
 \end{exercise}
 
 \begin{exercise} \label{exercise 1.6.15}
-The set of all \(n \X n\) matrices having \textbf{trace} equal to zero is a subspace \(W\) of \(M_{n \X n}(F)\) (see \EXAMPLE{1.3.4}).
-Find a basis for \(W\).
-What is the dimension of \(W\)?
+The set of all \(n \X n\) matrices having \textbf{trace} equal to zero is a subspace \(\W\) of \(M_{n \X n}(F)\) (see \EXAMPLE{1.3.4}).
+Find a basis for \(\W\).
+What is the dimension of \(\W\)?
 \end{exercise}
 
 \begin{proof}
-We claim that the set \(S = \{ E_{ij} : 1 \le i \le n \land 1 \le j \le n \land \RED{i \ne j} \} \cup \{ E_{ii} - E_{11} : 2 \le i \le n \}\) is a basis for \(W\).
+We claim that the set \(S = \{ E_{ij} : 1 \le i \le n \land 1 \le j \le n \land \RED{i \ne j} \} \cup \{ E_{ii} - E_{11} : 2 \le i \le n \}\) is a basis for \(\W\).
 It's trivial that \(S\) is \LID{};
-so we have to show \(S\) generates \(W\).
+so we have to show \(S\) generates \(\W\).
 
-Now suppose \(A\) is an arbitrary matrix in \(W\), so we have \(\TRACE(A) = 0\): \(A_{11} + A_{22} + ... + A_{nn} = 0\);
+Now suppose \(A\) is an arbitrary matrix in \(\W\), so we have \(\TRACE(A) = 0\): \(A_{11} + A_{22} + ... + A_{nn} = 0\);
 that is, \(A_{11} = -(A_{22} + A_{33} + ... + A_{nn}\) \MAROON{(1)}.
 \begin{align*}
     A & = \sum_{i = 1}^n \sum_{j = 1}^n A_{ij} E_{ij} & \text{of course} \\
@@ -278,47 +278,47 @@ that is, \(A_{11} = -(A_{22} + A_{33} + ... + A_{nn}\) \MAROON{(1)}.
 \end{align*}
 which has the first component as a linear combination of the first union set of \(S\), and the second component as a linear combination of the second union set of \(S\).
 Hence \(A\) belongs to \(\spann(S)\).
-Since \(A\) is arbitrary, we have \(W \subseteq \spann(S)\).
+Since \(A\) is arbitrary, we have \(\W \subseteq \spann(S)\).
 
-Also, observing the second union set of \(S\), it's trivial that any matrix in \(\spann(S)\) has zero trace, so by definition is in \(W\), so \(\spann(S) \subseteq W\).
+Also, observing the second union set of \(S\), it's trivial that any matrix in \(\spann(S)\) has zero trace, so by definition is in \(\W\), so \(\spann(S) \subseteq \W\).
 
-So we have \(\spann(S) = W\).
-So \(S\) is a \LID{} set that spans \(W\), hence is a basis for \(W\).
+So we have \(\spann(S) = \W\).
+So \(S\) is a \LID{} set that spans \(\W\), hence is a basis for \(\W\).
 Since the first union set of \(S\) has \(n \X (n - 1)\) elements, the second union set of \(S\) has \(n - 1\) elements, \(S\) has \(n \X (n - 1) + (n - 1) = n^2 - 1\) elements.
-So \(W\) has dimension \(n^2 - 1\).
+So \(\W\) has dimension \(n^2 - 1\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.16}
-The set of all upper triangular \(n \X n\) matrices is a subspace \(W\) of \(M_{n \X n}(F)\) (see \EXEC{1.3.12}).
-Find a basis for \(W\).
-What is the dimension of \(W\)?
+The set of all upper triangular \(n \X n\) matrices is a subspace \(\W\) of \(M_{n \X n}(F)\) (see \EXEC{1.3.12}).
+Find a basis for \(\W\).
+What is the dimension of \(\W\)?
 \end{exercise}
 
 \begin{proof}
-It's trivial that \(\{ E_{ij} : 1 \le i \le j \le n \}\) is a basis for \(W\), and has \(n + (n - 1) + ... + 1 = \frac{n^2 + n}{2}\) elements, so \(W\) has dimension \(\frac{n^2 + n}{2}\).
+It's trivial that \(\{ E_{ij} : 1 \le i \le j \le n \}\) is a basis for \(\W\), and has \(n + (n - 1) + ... + 1 = \frac{n^2 + n}{2}\) elements, so \(\W\) has dimension \(\frac{n^2 + n}{2}\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.17}
-The set of all skew-symmetric \(n \X n\) matrices is a subspace \(W\) of \(M_{n \X n}(F)\) (see \EXEC{1.3.28}).
-Find a basis for \(W\).
-What is the dimension of \(W\)?
+The set of all skew-symmetric \(n \X n\) matrices is a subspace \(\W\) of \(M_{n \X n}(F)\) (see \EXEC{1.3.28}).
+Find a basis for \(\W\).
+What is the dimension of \(\W\)?
 \end{exercise}
 
 \begin{proof}
 First, WLOG, suppose \(n \ge 2\).
-(If \(n = 1\), then it's trivial that \(W\) is in fact has only zero vector, a ``\(1 \X 1\)'' zero matrix).
+(If \(n = 1\), then it's trivial that \(\W\) is in fact has only zero vector, a ``\(1 \X 1\)'' zero matrix).
 Note that any skew-symmetric matrix \(A\) has the following properties:
 \begin{enumerate}
     \item \(A_{ii} = 0\) for \(1 \le i \le n\), since \(A^\top = -A\) implies \((A^\top)_{ii} = -A_{ii}\), which implies \(A_{ii} = -A_{ii}\), which implies \(A_{ii} = 0\).
     \item Similarly, for \(i \ne j\), \(A_{ij} = -A_{ji}\), since \(A^\top = -A\) implies \((A^\top)_{ij} = -A_{ij}\), which implies \(A_{ji} = -A_{ij}\), that is, \(A_{ij} = -A_{ji}\).
 \end{enumerate}
-With these properties we claim that the set \(S = \{ E_{ij} - E_{ji} : 1 \le i\ \RED{<}\ j \le n \}\) is a basis for \(W\).
+With these properties we claim that the set \(S = \{ E_{ij} - E_{ji} : 1 \le i\ \RED{<}\ j \le n \}\) is a basis for \(\W\).
 
 First (informally) it's trivial that \(S\) is \LID{} since each vector in \(S\) is a combination of \emph{distinct} standard vectors,, and standard vectors are \LID{}.
 (This argument is immediately true when we learn the concept of \emph{elementary row operations} in \CH{3}; or refer to \EXEC{1.6.11}, \EXEC{1.6.12}, which have the same spirit.)
 
-Now we show \(\spann(S) = W\).
-First, it's trivial that any matrix in \(\spann(S)\) is skew-symmetric since it satisfies the properties above, so \(\spann(S) \subseteq W\).
+Now we show \(\spann(S) = \W\).
+First, it's trivial that any matrix in \(\spann(S)\) is skew-symmetric since it satisfies the properties above, so \(\spann(S) \subseteq \W\).
 Also, given any skew-symmetric matrix \(A\),
 \begin{align*}
     A & = \sum_{i = 1}^{n} \sum_{j = 1}^n A_{ij} E_{ij} & \text{of course} \\
@@ -333,15 +333,15 @@ Also, given any skew-symmetric matrix \(A\),
       & = \sum_{i = 1}^{n - 1} \sum_{j = i + 1}^n A_{ij} (E_{ij} - E_{ji}), & \text{combining summation}
 \end{align*}
 which is a linear combination of the vectors in \(S\), so \(A \in \spann(S)\).
-Since \(A\) is arbitrary, we have \(W \subseteq \spann(S)\).
+Since \(A\) is arbitrary, we have \(\W \subseteq \spann(S)\).
 
-So we have \(W = \spann(S)\) and \(S\) is \LID{}, hence \(S\) is a basis for \(W\).
-And \(S\) has \((n - 1) + (n - 2) + ... + 1 = n(n - 1)/2\) elements, hence \(W\) has dimension \(n(n - 1)/2\).
+So we have \(\W = \spann(S)\) and \(S\) is \LID{}, hence \(S\) is a basis for \(\W\).
+And \(S\) has \((n - 1) + (n - 2) + ... + 1 = n(n - 1)/2\) elements, hence \(\W\) has dimension \(n(n - 1)/2\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.18}
-Let \(V\) denote the vector space of all sequences in \(F\), as defined in \EXAMPLE{1.2.5}.
-Find a basis for the subspace \(W\) of \(V\) consisting of the sequences \((a_n)\) that have only a \emph{finite number of nonzero terms} \(a_n\)
+Let \(\V\) denote the vector space of all sequences in \(F\), as defined in \EXAMPLE{1.2.5}.
+Find a basis for the subspace \(\W\) of \(\V\) consisting of the sequences \((a_n)\) that have only a \emph{finite number of nonzero terms} \(a_n\)
 Justify your answer.
 \end{exercise}
 
@@ -359,87 +359,87 @@ See \THM{1.8}.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.20}
-Let \(V\) be a vector space having (finite) dimension \(n\), and let \(S\) be a subset of \(V\) that generates \(V\).
+Let \(\V\) be a vector space having (finite) dimension \(n\), and let \(S\) be a subset of \(\V\) that generates \(\V\).
 Note that we do \emph{not} say \(S\) is a finite set.
 \begin{enumerate}
-\item Prove that there is a subset of \(S\) that is a basis for \(V\). (Be careful not to assume that \(S\) is finite.)
+\item Prove that there is a subset of \(S\) that is a basis for \(\V\). (Be careful not to assume that \(S\) is finite.)
 \item Prove that \(S\) contains at least \(n\) vectors.
 \end{enumerate}
 \end{exercise}
 
 \begin{proof}
 We first prove part(b).
-If \(S\) is infinite set that generates \(V\), then in particular \(\#(S) > n\).
+If \(S\) is infinite set that generates \(\V\), then in particular \(\#(S) > n\).
 If \(S\) is finite, then by \CORO{1.10.3}(a), it has at least \(n\) elements.
 So in all cases, \(S\) contains at least \(n\) vectors.
 
 Now we prove part(a).
-In fact, since at present we have known that the finite-dimensional vector space \(V\) has finite bases, we can use the similar process in \THM{1.9} such that we choose a subset of \(S\), \(\beta = \{ u_1, u_2, ..., u_k \}\) such that \(\beta\) is \LID{} and \textbf{\(k\) must not exceed \(n\)}, hence \(\beta\) is finite.
+In fact, since at present we have known that the finite-dimensional vector space \(\V\) has finite bases, we can use the similar process in \THM{1.9} such that we choose a subset of \(S\), \(\beta = \{ u_1, u_2, ..., u_k \}\) such that \(\beta\) is \LID{} and \textbf{\(k\) must not exceed \(n\)}, hence \(\beta\) is finite.
 (otherwise we get a \LID{} subset with elements more than the dimension of the (finite) vector space, which is impossible.)
-And using the remaining argument after the choosing process of \THM{1.9}, we conclude that the (finite) \LID{} subset \(\beta\) of \(S\) is really a basis for \(V\).
+And using the remaining argument after the choosing process of \THM{1.9}, we conclude that the (finite) \LID{} subset \(\beta\) of \(S\) is really a basis for \(\V\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.21}
-Prove that a vector space \(V\) is infinite-dimensional if and only if it contains an infinite \LID{} subset.
+Prove that a vector space \(\V\) is infinite-dimensional if and only if it contains an infinite \LID{} subset.
 \end{exercise}
 
 \begin{proof} \ 
 
-\(\Longleftarrow\): For the sake of contradiction, suppose \(V\) contains an infinite \LID{} subset \(S\) but \(V\) is finite-dimensional, say \(\dim(V) = n\).
-In particular we can find a basis \(\beta\) of \(V\) with \(n\) elements.
+\(\Longleftarrow\): For the sake of contradiction, suppose \(\V\) contains an infinite \LID{} subset \(S\) but \(\V\) is finite-dimensional, say \(\dim(\V) = n\).
+In particular we can find a basis \(\beta\) of \(\V\) with \(n\) elements.
 And by \CORO{1.6.1}, given any finite subset \(S'\) of \(S\) such that \(S\) has \(n + 1\) elements, \(S'\) is also \LID{}.
-By replacement theorem \THM{1.10}(1), since \(\beta\) generates \(V\), and \(S'\) is \LID{}, we have \(\#(S') \le \#(\beta)\);
+By replacement theorem \THM{1.10}(1), since \(\beta\) generates \(\V\), and \(S'\) is \LID{}, we have \(\#(S') \le \#(\beta)\);
 that is, \(n + 1 \le n\), which is impossible.
-So \(V\) must be infinite dimensional.
+So \(\V\) must be infinite dimensional.
 
 \(\Longrightarrow\):
-Now suppose \(V\) is infinite-dimensional.
-Then (the \emph{subset}) \(\BLUE{V}\) (of \(\GREEN{V}\)) of course generates \(\GREEN{V}\).
-So we use the same choosing process in \EXEC{1.6.20}(a) to choose elements of the \emph{infinite} (subset) \(\BLUE{V}\) of \(\GREEN{V}\) to construct a \LID{} subset of \(\GREEN{V}\).
-Then the resulting set \emph{must be infinite}, otherwise if the resulting set is finite, by \EXEC{1.6.20}(a) it is a \textbf{finite} basis for \(V\), so now by \DEF{1.9}, \(V\) is finite-dimensional, which contradicts \(V\) is infinite-dimensional.
+Now suppose \(\V\) is infinite-dimensional.
+Then (the \emph{subset}) \(\BLUE{\V}\) (of \(\GREEN{\V}\)) of course generates \(\GREEN{\V}\).
+So we use the same choosing process in \EXEC{1.6.20}(a) to choose elements of the \emph{infinite} (subset) \(\BLUE{\V}\) of \(\GREEN{\V}\) to construct a \LID{} subset of \(\GREEN{\V}\).
+Then the resulting set \emph{must be infinite}, otherwise if the resulting set is finite, by \EXEC{1.6.20}(a) it is a \textbf{finite} basis for \(\V\), so now by \DEF{1.9}, \(\V\) is finite-dimensional, which contradicts \(\V\) is infinite-dimensional.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.22}
-Let \(W_1\) and \(W_2\) be \emph{subspaces} of a finite-dimensional vector space \(V\).
-Determine necessary and sufficient conditions on \(W_1\) and \(W_2\) so that \(\dim(W_1 \cap W_2) = \dim(W_1)\).
+Let \(\W_1\) and \(\W_2\) be \emph{subspaces} of a finite-dimensional vector space \(\V\).
+Determine necessary and sufficient conditions on \(\W_1\) and \(\W_2\) so that \(\dim(\W_1 \cap \W_2) = \dim(\W_1)\).
 \end{exercise}
 
 \begin{proof}
-We claim \(W_1 \subseteq W_2\) if and only if \(\dim(W_1 \cap W_2) = \dim(W_1)\).
+We claim \(\W_1 \subseteq \W_2\) if and only if \(\dim(\W_1 \cap \W_2) = \dim(\W_1)\).
 
-\(\Longrightarrow\): Suppose \(W_1 \subseteq W_2\).
-Then of course \(\dim(W_1 \cap W_2) = \dim(W_1)\) since \(W_1 \cap W_2 = W_1\).
+\(\Longrightarrow\): Suppose \(\W_1 \subseteq \W_2\).
+Then of course \(\dim(\W_1 \cap \W_2) = \dim(\W_1)\) since \(\W_1 \cap \W_2 = \W_1\).
 
 \(\Longleftarrow\):
-Suppose \(\dim(W_1 \cap W_2) = \dim(W_1) = n\). \MAROON{(1)}.
-Now let \(\beta = \{ v_1, v_2, ..., v_n \}\) be a bases for \(W_1 \cap W_2\); in particular \(\beta\) is of course a subset of \(W_1 \cap W_2\) \MAROON{(2)}, hence \(\beta \subseteq W_1\).
-So \(\beta\) is a \LID{} subset of \(W_1\) and has \(n\) vectors, which equals to the dimension of \(W_1\), so by \CORO{1.10.3}(b) \(\beta\) is also a basis of \(W_1\).
+Suppose \(\dim(\W_1 \cap \W_2) = \dim(\W_1) = n\). \MAROON{(1)}.
+Now let \(\beta = \{ v_1, v_2, ..., v_n \}\) be a bases for \(\W_1 \cap \W_2\); in particular \(\beta\) is of course a subset of \(\W_1 \cap \W_2\) \MAROON{(2)}, hence \(\beta \subseteq \W_1\).
+So \(\beta\) is a \LID{} subset of \(\W_1\) and has \(n\) vectors, which equals to the dimension of \(\W_1\), so by \CORO{1.10.3}(b) \(\beta\) is also a basis of \(\W_1\).
 
-Now finally, given arbitrary vector \(v \in W_1\), we have to show \(v \in W_2\) so that \(W_1 \subseteq W_2\).
-Since \(v \in W_1\), we can represent \(v\) as linear combination of the basis \(\beta\) of \(W_1\); in particular, \(v \in \spann(\beta)\) \MAROON{(3)}.
-In particular, from \MAROON{(2)}, we have \(\beta \subseteq W_2\), so by \THM{1.5}(2), \(\spann(\beta) \subseteq W_2\) \MAROON{(4)}.
-So by \MAROON{(3)(4)} we have \(v \in W_2\), as desired.
+Now finally, given arbitrary vector \(v \in \W_1\), we have to show \(v \in \W_2\) so that \(\W_1 \subseteq \W_2\).
+Since \(v \in \W_1\), we can represent \(v\) as linear combination of the basis \(\beta\) of \(\W_1\); in particular, \(v \in \spann(\beta)\) \MAROON{(3)}.
+In particular, from \MAROON{(2)}, we have \(\beta \subseteq \W_2\), so by \THM{1.5}(2), \(\spann(\beta) \subseteq \W_2\) \MAROON{(4)}.
+So by \MAROON{(3)(4)} we have \(v \in \W_2\), as desired.
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.23}
-\sloppy Let \(v_1, v_2, ..., v_k, v\) be vectors in a vector space \(V\), and define \(W_1 = \spann(\{v_1, v_2, ..., v_k\})\), and \(W_2 = \spann(\{ v_1, v_2, ..., v_k, v \})\).
+\sloppy Let \(v_1, v_2, ..., v_k, v\) be vectors in a vector space \(\V\), and define \(\W_1 = \spann(\{v_1, v_2, ..., v_k\})\), and \(\W_2 = \spann(\{ v_1, v_2, ..., v_k, v \})\).
 \begin{enumerate}
-\item Find necessary and sufficient conditions \RED{on \(v\)} such that \(\dim(W_1) = \dim(W_2)\).
-\item State and prove a relationship involving \(\dim(W_1)\) and \(\dim(W_2)\) in the case that \(\dim(W_1) \ne \dim(W_2)\).
+\item Find necessary and sufficient conditions \RED{on \(v\)} such that \(\dim(\W_1) = \dim(\W_2)\).
+\item State and prove a relationship involving \(\dim(\W_1)\) and \(\dim(\W_2)\) in the case that \(\dim(\W_1) \ne \dim(\W_2)\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof}\ 
 
 \begin{enumerate}
-\item We claim that \(v \in \spann(\{ v_1, v_2, ..., v_k \}\) if and only if \(\dim(W_1) = \dim(W_2)\).
+\item We claim that \(v \in \spann(\{ v_1, v_2, ..., v_k \}\) if and only if \(\dim(\W_1) = \dim(\W_2)\).
 
 \(\Longrightarrow\): Suppose \(v \in \spann(\{ v_1, v_2, ..., v_k \}\).
-To show \(\dim(W_1) = \dim(W_2)\), it suffices to show \(W_1 = W_2\).
+To show \(\dim(\W_1) = \dim(\W_2)\), it suffices to show \(\W_1 = \W_2\).
 But since \(\{ v_1, v_2, ..., v_k \} \subseteq \{ v_1, v_2, ..., v_k, v \}\), by \THM{1.6}, \(\spann(\{ v_1, v_2, ..., v_k \}) \subseteq \spann(\{ v_1, v_2, ..., v_k, v \})\).
-That is, \(W_1 \subseteq W_2\).
-So it suffices to show \(W_2 \subseteq W_1\).
-Now suppose arbitrary \(u \in W_2\).
+That is, \(\W_1 \subseteq \W_2\).
+So it suffices to show \(\W_2 \subseteq \W_1\).
+Now suppose arbitrary \(u \in \W_2\).
 Then
 \begin{align*}
              & u \in W_2 \\
@@ -449,17 +449,17 @@ Then
 \end{align*}
 So \(u\) is a linear combination of \(v_1, v_2, ..., v_k\).
 So \(u \in \spann(\{ v_1, v_2, ..., v_k \})\).
-That is, \(u \in W_1\).
-So we have \(W_2 \subseteq W_1\), as desired.
+That is, \(u \in \W_1\).
+So we have \(\W_2 \subseteq \W_1\), as desired.
 
-\(\Longleftarrow\): Now suppose \(\dim(W_1) = \dim(W_2) = n\).
+\(\Longleftarrow\): Now suppose \(\dim(\W_1) = \dim(\W_2) = n\).
 
 That is, \(\dim(\spann(\{ v_1, v_2, ..., v_k \})) = \dim(\spann(\{ v_1, v_2, ..., v_k, v \}))\) \MAROON{(1)}.
 But that implies \(\{ v_1, v_2, ..., v_k, v \}\) is \LDP{}, otherwise if \(\{ v_1, v_2, ..., v_k, v \}\), then by \CORO{1.6.1} \(\{ v_1, v_2, ..., v_k \}\) is also \LID{}.
 But the two sets have different elements, so the dimensions of span of them are different, which contradicts \MAROON{(1)}.
 And by \ATHM{1.17}(2), we have \(v \in \spann(\{ v_1, v_2, ..., v_k \})\), as desired.
 
-\item Equivalently, by taking the negation of both sides of the statement claimed in part(a), \(v \notin \spann(\{ v_1, v_2, ..., v_k \})\) if and only if \(\dim(W_1) \ne \dim(W_2)\).
+\item Equivalently, by taking the negation of both sides of the statement claimed in part(a), \(v \notin \spann(\{ v_1, v_2, ..., v_k \})\) if and only if \(\dim(\W_1) \ne \dim(\W_2)\).
 \end{enumerate}
 \end{proof}
 
@@ -482,25 +482,25 @@ Since we have known(by Calculus) that no two elements of \(\beta\) have the same
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.25}
-Let \(V\), \(W\), and \(Z\) be as in \EXEC{1.2.21}.
-If \(V\) and \(W\) are vector spaces over \(F\) of dimensions \(m\) and \(n\), determine the dimension of \(Z\).
+Let \(\V\), \(\W\), and \(Z\) be as in \EXEC{1.2.21}.
+If \(\V\) and \(\W\) are vector spaces over \(F\) of dimensions \(m\) and \(n\), determine the dimension of \(Z\).
 \end{exercise}
 
 \begin{proof}
 \sloppy Let \(\beta = \{ (v_1, \OW), (v_2, \OW), ..., (v_m, \OW) \} \cup \{ (\OV, w_1), (\OV, w_2), ..., (\OV, w_n) \}\),
-where \(\{ v_1, ..., v_m \}\) is a basis for \(V\), \(\{ w_1, ..., w_n \}\) is a basis for \(W\), \(\OW, \OV\) are zero vectors of \(W, V\), respectively.
+where \(\{ v_1, ..., v_m \}\) is a basis for \(\V\), \(\{ w_1, ..., w_n \}\) is a basis for \(\W\), \(\OW, \OV\) are zero vectors of \(\W, \V\), respectively.
 Then it's obvious that \(\beta\) is a basis for \(Z\), and has \(m + n\) elements, so \(Z\) has dimension \(m + n\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.26}
-For a fixed \(a \in \SET{R}\), determine the dimension of the subspace of \(\mathcal{P}_n(\SET{R})\) defined by \(W = \{ f \in \mathcal{P}_n(\SET{R}) : f(a) = 0 \}\).
+For a fixed \(a \in \SET{R}\), determine the dimension of the subspace of \(\mathcal{P}_n(\SET{R})\) defined by \(\W = \{ f \in \mathcal{P}_n(\SET{R}) : f(a) = 0 \}\).
 
 Related: \EXEC{1.3.13}.
 \end{exercise}
 
 \begin{proof}
-Let \(a \in \SET{R}\) and \(W = \{ f \in \mathcal{P}_n(\SET{R}) : f(a) = 0 \}\).
-Now let arbitrary \(f \in W\).
+Let \(a \in \SET{R}\) and \(\W = \{ f \in \mathcal{P}_n(\SET{R}) : f(a) = 0 \}\).
+Now let arbitrary \(f \in \W\).
 Then we have
 \[
     f(x) = p_0 + p_1 x + p_2 x^2 + ... + p_n x^n \MAROON{(1)}.
@@ -518,46 +518,46 @@ So from \MAROON{(1)(2)} we have
 \end{align*}
 Now we let \(\beta = \{ x - a, x^2 - a^2, ..., x^n - a^n \}\).
 Then \(f \in \spann(\beta)\).
-Since \(f\) is arbitrary, we have \(W \subseteq \spann(\beta)\).
+Since \(f\) is arbitrary, we have \(\W \subseteq \spann(\beta)\).
 
-Another direction \(\spann(\beta) \subseteq W\) is trivial since the output of any linear combination of \(\beta\) given \(x = a\) is \(0\).
+Another direction \(\spann(\beta) \subseteq \W\) is trivial since the output of any linear combination of \(\beta\) given \(x = a\) is \(0\).
 
-So we have \(W = \spann(\beta)\).
-Now to show \(\beta\) is a basis for \(W\), it suffices to show \(\beta\) is \LID{}.
+So we have \(\W = \spann(\beta)\).
+Now to show \(\beta\) is a basis for \(\W\), it suffices to show \(\beta\) is \LID{}.
 But since no two elements in \(\beta\) has the same degree, it follows from \EXEC{1.5.18} that \(\beta\) is \LID{}, as desired.
 
-So \(\beta\) is a basis for \(W\), and that implies \(W\) has dimension \(n\).
+So \(\beta\) is a basis for \(\W\), and that implies \(\W\) has dimension \(n\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.27}
-Let \(W_1\) and \(W_2\) be the subspaces of \(\POLYF\) defined in \EXEC{1.3.25}.
-Determine the dimensions of the subspaces \(W_1 \cap \mathcal{P}_n(F)\) and \(W_2 \cap \mathcal{P}_n(F)\).
+Let \(\W_1\) and \(\W_2\) be the subspaces of \(\POLYF\) defined in \EXEC{1.3.25}.
+Determine the dimensions of the subspaces \(\W_1 \cap \mathcal{P}_n(F)\) and \(\W_2 \cap \mathcal{P}_n(F)\).
 \end{exercise}
 
 \begin{proof}
-\(W_1 \cap \mathcal{P}_n(F)\) is the set of all polynomials of degree \(\le n\) and having only even power terms.
-\(W_2 \cap \mathcal{P}_n(F)\) is the set of all polynomials of degree \(\le n\) and having only odd power terms.
+\(\W_1 \cap \mathcal{P}_n(F)\) is the set of all polynomials of degree \(\le n\) and having only even power terms.
+\(\W_2 \cap \mathcal{P}_n(F)\) is the set of all polynomials of degree \(\le n\) and having only odd power terms.
 
 Now suppose \(n\) is even.
 
-Then \(n = 2k\) for some natural number \(k\), and trivially \(W_1 \cap \mathcal{P}_n(F)\) has a basis \(\{ 1, x^2, ..., x^{2k} \} = \{ x^{2 \X 0}, x^{2 \X 1}, ..., x^{2 \X k} \}\), which has \(k + 1 = n/2 + 1\) elements.
-So \(W_1 \cap \mathcal{P}_n(F)\) has dimension \(n/2 + 1\).
+Then \(n = 2k\) for some natural number \(k\), and trivially \(\W_1 \cap \mathcal{P}_n(F)\) has a basis \(\{ 1, x^2, ..., x^{2k} \} = \{ x^{2 \X 0}, x^{2 \X 1}, ..., x^{2 \X k} \}\), which has \(k + 1 = n/2 + 1\) elements.
+So \(\W_1 \cap \mathcal{P}_n(F)\) has dimension \(n/2 + 1\).
 
-Similarly \(W_2 \cap \mathcal{P}_n(F)\) has a basis \(\{ x, x^3, ..., x^{2k - 1} \} = \{ x^{2 \X 0 + 1}, x^{2 \X 1 + 1}, ..., x^{2 \X (k - 1) + 1} \}\), which has \(k = n/2\) elements.
-So \(W_2 \cap \mathcal{P}_n(F)\) has dimension \(n/2\).
+Similarly \(\W_2 \cap \mathcal{P}_n(F)\) has a basis \(\{ x, x^3, ..., x^{2k - 1} \} = \{ x^{2 \X 0 + 1}, x^{2 \X 1 + 1}, ..., x^{2 \X (k - 1) + 1} \}\), which has \(k = n/2\) elements.
+So \(\W_2 \cap \mathcal{P}_n(F)\) has dimension \(n/2\).
 
 Now suppose \(n\) is odd.
 
-Then \(n = 2k + 1\) for some natural number \(k\), and trivially \(W_1 \cap \mathcal{P}_n(F)\) has a basis \(\{ 1, x^2, ..., x^{2k} \} = \{ x^{2 \X 0}, x^{2 \X 1}, ..., x^{2 \X k} \}\), which has \(k + 1 = (n - 1)/2 + 1\) elements.
-So \(W_1 \cap \mathcal{P}_n(F)\) has dimension \((n - 1)/2 + 1\).
+Then \(n = 2k + 1\) for some natural number \(k\), and trivially \(\W_1 \cap \mathcal{P}_n(F)\) has a basis \(\{ 1, x^2, ..., x^{2k} \} = \{ x^{2 \X 0}, x^{2 \X 1}, ..., x^{2 \X k} \}\), which has \(k + 1 = (n - 1)/2 + 1\) elements.
+So \(\W_1 \cap \mathcal{P}_n(F)\) has dimension \((n - 1)/2 + 1\).
 
-Similarly \(W_2 \cap \mathcal{P}_n(F)\) has a basis \(\{ x , x^3, ..., x^{2k + 1} \} = \{ x^{2 \X 0 + 1}, x^{2 \X 1 + 1}, ..., x^{2 \X k + 1} \}\), which also has \(k + 1 = (n - 1)/2 + 1\) elements.
-So \(W_2 \cap \mathcal{P}_n(F)\) has dimension \((n - 1)/2 + 1\).
+Similarly \(\W_2 \cap \mathcal{P}_n(F)\) has a basis \(\{ x , x^3, ..., x^{2k + 1} \} = \{ x^{2 \X 0 + 1}, x^{2 \X 1 + 1}, ..., x^{2 \X k + 1} \}\), which also has \(k + 1 = (n - 1)/2 + 1\) elements.
+So \(\W_2 \cap \mathcal{P}_n(F)\) has dimension \((n - 1)/2 + 1\).
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.28}
-Let \(V\) be a finite-dimensional vector space (of complex numbers) \emph{over \(\SET{C}\)} with dimension \(n\).
-Prove that if \(V\) is now regarded as a vector space \emph{over \(\SET{R}\)}, then \(\dim(V) = 2n\).
+Let \(\V\) be a finite-dimensional vector space (of complex numbers) \emph{over \(\SET{C}\)} with dimension \(n\).
+Prove that if \(\V\) is now regarded as a vector space \emph{over \(\SET{R}\)}, then \(\dim(\V) = 2n\).
 (See \EXAMPLE{1.6.11} and \EXAMPLE{1.6.12}.)
 \end{exercise}
 
@@ -569,12 +569,12 @@ Go back when learning complex numbers rigorously.
 \begin{exercise} \label{exercise 1.6.29} \ 
 
 \begin{enumerate}
-\item Prove that if \(W_1\) and \(W_2\) are finite-dimensional subspaces of a vector space \(V\), then \BLUE{(1)} the subspace \(W_1 + W_2\) is finite-dimensional, \BLUE{(2)} and \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2)\).
-(Note that we do not say \(V\) is finite-dimensional.)
-Hint: Start with a basis \(\{ u_1, u_2, ..., u_k \}\) for \(W_1 \cap W_2\) and extend this set to a basis \(\{ u_1, u_2, ..., u_k, v_1, v_2, ..., v_m \}\) for \(W_1\) and to a basis \(\{ u_1, u_2, ..., u_k, w_1, w_2, ..., w_p \}\) for \(W_2\).
-\item Let \(W_1\) and \(W_2\) be finite-dimensional subspaces of a vector space \(V\), and let(suppose?) \(V = W_1 + W_2\). 
-Deduce that \(V\) is the \emph{direct} sum of \(W_1\)
-and \(W_2\) if and only if \(\dim(V) = \dim(W_1) + \dim(W_2)\).
+\item Prove that if \(\W_1\) and \(\W_2\) are finite-dimensional subspaces of a vector space \(\V\), then \BLUE{(1)} the subspace \(\W_1 + \W_2\) is finite-dimensional, \BLUE{(2)} and \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2)\).
+(Note that we do not say \(\V\) is finite-dimensional.)
+Hint: Start with a basis \(\{ u_1, u_2, ..., u_k \}\) for \(\W_1 \cap \W_2\) and extend this set to a basis \(\{ u_1, u_2, ..., u_k, v_1, v_2, ..., v_m \}\) for \(\W_1\) and to a basis \(\{ u_1, u_2, ..., u_k, w_1, w_2, ..., w_p \}\) for \(\W_2\).
+\item Let \(\W_1\) and \(\W_2\) be finite-dimensional subspaces of a vector space \(\V\), and let(suppose?) \(\V = \W_1 + \W_2\). 
+Deduce that \(\V\) is the \emph{direct} sum of \(\W_1\)
+and \(\W_2\) if and only if \(\dim(\V) = \dim(\W_1) + \dim(\W_2)\).
 \end{enumerate}
 \end{exercise}
 
@@ -584,17 +584,17 @@ and \(W_2\) if and only if \(\dim(V) = \dim(W_1) + \dim(W_2)\).
 \item
 We prove \BLUE{(2)} first, which immediately implies \BLUE{(1)}.
 
-First let \(\beta = \{ u_1, u_2, ..., u_k \}\) be a basis for \(W_1 \cap W_2\).
-Then since \(W_1 \cap W_2\) is (clearly) a subspace of \(W_1\). (Why clear? Both \(W_1, W_2\) are subspace of \(V\), so by \THM{1.4}, \(W_1 \cap W_2\) are subspace of \(V\);
-in particular \(W_1 \cap W_2\) is a vector space.
-But \(W_1 \cap W_2\) is a \emph{subset} of \(W_1\).
-So \(W_1 \cap W_2\) is a subset of \(W_1\) and is also a vector space, so by \DEF{1.2} \(W_1 \cap W_2\) is a subspace of \(W_1\).)
-Similarly \(W_1 \cap W_2\) is a subspace of \(W_2\).
-And \CORO{1.11.1} we can \emph{extend} the basis \(\beta\) of \(W_1 \cap W_2\) to get a \(W_1\)'s basis: \(\beta_1 = \{ u_1, ..., u_k, v_1, ..., v_m \}\);
-similarly for \(W_2\)'s basis: \(\beta_2 = \{ u_1, ..., u_k, w_1, ..., w_n \}\).
+First let \(\beta = \{ u_1, u_2, ..., u_k \}\) be a basis for \(\W_1 \cap \W_2\).
+Then since \(\W_1 \cap \W_2\) is (clearly) a subspace of \(\W_1\). (Why clear? Both \(\W_1, \W_2\) are subspace of \(\V\), so by \THM{1.4}, \(\W_1 \cap \W_2\) are subspace of \(\V\);
+in particular \(\W_1 \cap \W_2\) is a vector space.
+But \(\W_1 \cap \W_2\) is a \emph{subset} of \(\W_1\).
+So \(\W_1 \cap \W_2\) is a subset of \(\W_1\) and is also a vector space, so by \DEF{1.2} \(\W_1 \cap \W_2\) is a subspace of \(\W_1\).)
+Similarly \(\W_1 \cap \W_2\) is a subspace of \(\W_2\).
+And \CORO{1.11.1} we can \emph{extend} the basis \(\beta\) of \(\W_1 \cap \W_2\) to get a \(\W_1\)'s basis: \(\beta_1 = \{ u_1, ..., u_k, v_1, ..., v_m \}\);
+similarly for \(\W_2\)'s basis: \(\beta_2 = \{ u_1, ..., u_k, w_1, ..., w_n \}\).
 
-And for \(W_1\)'s basis we can conclude that \(\dim(W_1) = \#\beta_1 = k + m\);
-similarly \(\dim(W_2) = \#\beta_2 = k + n\).
+And for \(\W_1\)'s basis we can conclude that \(\dim(\W_1) = \#\beta_1 = k + m\);
+similarly \(\dim(\W_2) = \#\beta_2 = k + n\).
 So we have
 \begin{align*}
     & \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2) \\
@@ -603,24 +603,24 @@ So we have
     & = k + m + n \MAROON{(1)}.
 \end{align*}
 
-\sloppy To show \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2) = k + m + n\), it suffices to show \(W_1 + W_2\) has a basis with \(k + m + n\) elements.
+\sloppy To show \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2) = k + m + n\), it suffices to show \(\W_1 + \W_2\) has a basis with \(k + m + n\) elements.
 Now consider
 \[
     T = \{ u_1, ..., u_k, v_1, ..., v_m, w_1, ..., w_n \},
 \]
 then it has \(k + m + n\) elements.
-We will show that \(T\) is actually a basis for \(W_1 + W_2\).
+We will show that \(T\) is actually a basis for \(\W_1 + \W_2\).
 So we first show \(T\) is \LID{}.
 
 So suppose \(a_1 u_1 + ... + a_k u_k + b_1 v_1 + ... + b_m v_m + c_1 w_1 + ... + c_n w_n = \OV\) \MAROON{(2)}.
 \begin{align*}
     \MAROON{(2)} \implies a_1 u_1 + ... + a_k u_k + b_1 v_1 + ... + b_m v_m = - c_1 w_1 - ... - c_n w_n \MAROON{(3)}
 \end{align*}
-Now the \(LHS\) of \MAROON{(3)} is a linear combination of \(\beta_1\), which is \(W_1\)'s basis, so \(LHS \in W_1\).
-The \(RHS\) of \(\MAROON{(3)}\) is a linear combination of (subset of) \(\beta_2\), which is \(W_2\)'s basis, so \(RHS \in W_2\).
-And (of course) \(LHS = RHS\), so both \(LHS\) and \(RHS\) belong to \(W_1\) and \(W_2\), so they belong to \(W_1 \cap W_2\).
+Now the \(LHS\) of \MAROON{(3)} is a linear combination of \(\beta_1\), which is \(\W_1\)'s basis, so \(LHS \in \W_1\).
+The \(RHS\) of \(\MAROON{(3)}\) is a linear combination of (subset of) \(\beta_2\), which is \(\W_2\)'s basis, so \(RHS \in \W_2\).
+And (of course) \(LHS = RHS\), so both \(LHS\) and \(RHS\) belong to \(\W_1\) and \(\W_2\), so they belong to \(\W_1 \cap \W_2\).
 
-In particular, \MAROON{(3)}'s \(RHS = -c_1 w_1 - c_2 w_2 - ... - c_n w_n \in W_1 \cap W_2\), so it can be expressed as a linear combination of the basis \(\beta\) of \(W_1 \cap W_2\);
+In particular, \MAROON{(3)}'s \(RHS = -c_1 w_1 - c_2 w_2 - ... - c_n w_n \in \W_1 \cap \W_2\), so it can be expressed as a linear combination of the basis \(\beta\) of \(\W_1 \cap \W_2\);
 that is,
 \[
     -c_1 w_1 - c_2 w_2 - ... - c_n w_n = d_1 u_1 + d_2 u_2 + ... + d_k u_k
@@ -630,14 +630,14 @@ But arranging equation, we have
 \[
     \OV = c_1 w_1 + c_2 w_2 + ... + c_n w_n + d_1 u_1 + d_2 u_2 + ... + d_k u_k,
 \]
-But this is a linear combination using \(W_2\)'s basis, which is \LID{}, which implies \(c_1 = c_2 = ... = c_n = d_1 = d_2 = ... = d_k = 0\).
+But this is a linear combination using \(\W_2\)'s basis, which is \LID{}, which implies \(c_1 = c_2 = ... = c_n = d_1 = d_2 = ... = d_k = 0\).
 
 And in particular, \(c_1 = c_2 = ... = c_n = 0\), which implies the \(RHS\) of \MAROON{(3)} is \(\OV\), so \MAROON{(3)}'s \(LHS = \OV\).
-But again, \(LHS\) is a linear combination using \(W_1\)'s basis, which is \LID{}, which implies \(a_1 = a_2 = ... = a_k = b_1 = b_2 = ... = b_m = 0\).
+But again, \(LHS\) is a linear combination using \(\W_1\)'s basis, which is \LID{}, which implies \(a_1 = a_2 = ... = a_k = b_1 = b_2 = ... = b_m = 0\).
 So now we have \(a_1 = ... = a_k = b_1 = ... = b_m = c_1 = ... c_n = 0\), and from \MAROON{(2)} we conclude that \(T\) is \LID{}.
 
-Now we show \(\spann(T) = W_1 + W_2\).
-So suppose arbitrary \(x \in W_1 + W_2\).
+Now we show \(\spann(T) = \W_1 + \W_2\).
+So suppose arbitrary \(x \in \W_1 + \W_2\).
 Then
 \begin{align*}
              & x = x_1 + x_2 \\
@@ -647,23 +647,23 @@ Then
     \implies & x = (p_1 + r_1) u_1 + ... + (p_k + r_k) u_k + q_1 v_1 + ... + q_m v_m + s_1 w_1 + ... + s_n w_n,
 \end{align*}
 which is a linear combination of \(T\), so \(x \in \spann(T)\).
-Since \(x\) is arbitrary, we have \(W_1 + W_2 \subseteq \spann(T)\).
+Since \(x\) is arbitrary, we have \(\W_1 + \W_2 \subseteq \spann(T)\).
 Now suppose arbitrary \(x \in \spann(T)\).
-Using the similar equation arranging above, it's trivial that \(x \in W_1 + W_2\), so we have \(\spann(T) \subseteq W_1 + W_2\).
-So \(W_1 + W_2 = \spann(T)\).
+Using the similar equation arranging above, it's trivial that \(x \in \W_1 + \W_2\), so we have \(\spann(T) \subseteq \W_1 + \W_2\).
+So \(\W_1 + \W_2 = \spann(T)\).
 
-So we have \(T\) spans \(W_1 + W_2\) and is \LID{}, hence \(T\) is a basis for \(W_1 + W_2\) and has \(k + m + n\) elements, as desired.
+So we have \(T\) spans \(\W_1 + \W_2\) and is \LID{}, hence \(T\) is a basis for \(\W_1 + \W_2\) and has \(k + m + n\) elements, as desired.
 
 \item
 We restate the result from part(a):
 \[
     \dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2).
 \]
-And suppose \(V = W_1 + W_2\). \MAROON{(4)} (this is a supposition given by the exercise's description.)
+And suppose \(\V = \W_1 + \W_2\). \MAROON{(4)} (this is a supposition given by the exercise's description.)
 
 \(\Longrightarrow\):
-Suppose \(V = W_1 \oplus W_2\).
-Then in particular \(W_1 \cap W_2 = \{ \OV \}\), so we have
+Suppose \(\V = \W_1 \oplus \W_2\).
+Then in particular \(\W_1 \cap \W_2 = \{ \OV \}\), so we have
 \begin{align*}
     \dim(W_1 + W_2) & = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2) \\
                     & = \dim(W_1) + \dim(W_2) - \dim(\{ \OV \}) \\
@@ -672,9 +672,9 @@ Then in particular \(W_1 \cap W_2 = \{ \OV \}\), so we have
 \end{align*}
 
 \(\Longleftarrow\):
-Now suppose \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2)\).
-But we know that \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2)\), so these equations imply \(\dim(W_1 \cap W_2) = 0\), which implies \(W_1 \cap W_2 = \{ \OV \}\).
-With \MAROON{(4)}, we have \(V = W_1 \oplus W_2\).
+Now suppose \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2)\).
+But we know that \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2)\), so these equations imply \(\dim(\W_1 \cap \W_2) = 0\), which implies \(\W_1 \cap \W_2 = \{ \OV \}\).
+With \MAROON{(4)}, we have \(\V = \W_1 \oplus \W_2\).
 \end{enumerate}
 \end{proof}
 
@@ -700,96 +700,96 @@ and
         \in V: a, b \in F
         \bigg\}.
 \]
-Prove that \(W_1\) and \(W_2\) are subspaces of \(V\), and find the dimensions of \(W_1\), \(W_2\), \(W_1 + W_2\), and \(W_1 \cap W_2\).
+Prove that \(\W_1\) and \(\W_2\) are subspaces of \(\V\), and find the dimensions of \(\W_1\), \(\W_2\), \(\W_1 + \W_2\), and \(\W_1 \cap \W_2\).
 \end{exercise}
 
 \begin{proof}
-It's very trivial to show the three conditions of \THM{1.3} to show that \(W_1, W_2\) are subspaces of \(V\).
+It's very trivial to show the three conditions of \THM{1.3} to show that \(\W_1, \W_2\) are subspaces of \(\V\).
 
-And it's trivial that \(\{ E_{11} + E_{22}, E_{12}, E_{21} \}\) is a basis for \(W_1\), so \(\dim(W_1) = 3\).
-Similarly \(\{ E_{12} - E_{21}, E_{22} \}\) is a basis for \(W_2\), so \(\dim(W_1) = 2\).
-Now (it's again trivial that) any matrix in \(W_1 \cap W_2\) can only have the form
+And it's trivial that \(\{ E_{11} + E_{22}, E_{12}, E_{21} \}\) is a basis for \(\W_1\), so \(\dim(\W_1) = 3\).
+Similarly \(\{ E_{12} - E_{21}, E_{22} \}\) is a basis for \(\W_2\), so \(\dim(\W_1) = 2\).
+Now (it's again trivial that) any matrix in \(\W_1 \cap \W_2\) can only have the form
 \(\begin{pmatrix}
     0 & a \\
     -a & 0
 \end{pmatrix}\)
-and trivially \(\dim(W_1 \cap W_2) = 1\).
+and trivially \(\dim(\W_1 \cap \W_2) = 1\).
 
-Finally, from \EXEC{1.6.29}(a) we have \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2) = 3 + 2 - 1 = 4\).
-(And that implies \(W_1 + W_2 = V\).)
+Finally, from \EXEC{1.6.29}(a) we have \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2) = 3 + 2 - 1 = 4\).
+(And that implies \(\W_1 + \W_2 = \V\).)
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.31}
-Let \(W_1\) and \(W_2\) be subspaces having (\emph{finite}) dimensions \(m\) and \(n\), respectively, of a vector space \(V\), where \(m \le n\).
+Let \(\W_1\) and \(\W_2\) be subspaces having (\emph{finite}) dimensions \(m\) and \(n\), respectively, of a vector space \(\V\), where \(m \le n\).
 \begin{enumerate}
-\item Prove that \(\dim(W_1 \cap W_2) \le n\).
-\item Prove that \(\dim(W_1 + W_2) \le m + n\).
+\item Prove that \(\dim(\W_1 \cap \W_2) \le n\).
+\item Prove that \(\dim(\W_1 + \W_2) \le m + n\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof} \ 
 
 \begin{enumerate}
-\item Since \(W_1 \cap W_2\) is a subspace of \(W_2\), which has (finite) dimension \(n\), by \THM{1.11} we have \(\dim(W_1 \cap W_2) \le \dim(W_2) = n\).
+\item Since \(\W_1 \cap \W_2\) is a subspace of \(\W_2\), which has (finite) dimension \(n\), by \THM{1.11} we have \(\dim(\W_1 \cap \W_2) \le \dim(\W_2) = n\).
 \item From \EXEC{1.6.29}(a), we have
     \begin{align*}
         \dim(W_1 + W_2) & = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2) \\
-                        & \le \dim(W_1) + \dim(W_2) & \text{since \(\dim(W_1 \cap W_2) \ge 0\)} \\
+                        & \le \dim(\W_1) + \dim(\W_2) & \text{since \(\dim(\W_1 \cap \W_2) \ge 0\)} \\
                         & = m + n.
     \end{align*}
 \end{enumerate}
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.32}
-Find examples of subspaces \(W_1\) and \(W_2\) of \(\SET{R}^3\) such that \(\dim(W_1) > \dim(W_2) > 0\) and
+Find examples of subspaces \(\W_1\) and \(\W_2\) of \(\SET{R}^3\) such that \(\dim(\W_1) > \dim(\W_2) > 0\) and
 \begin{enumerate}
-\item \(\dim(W_1 \cap W_2) = \dim(W_2)\);
-\item \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2)\);
-\item \(\dim(W_1 + W_2) < \dim(W_1) + \dim(W_2)\).
+\item \(\dim(\W_1 \cap \W_2) = \dim(\W_2)\);
+\item \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2)\);
+\item \(\dim(\W_1 + \W_2) < \dim(\W_1) + \dim(\W_2)\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof}
 I will just informally given some geometric examples.
 \begin{enumerate}
-\item (The equation is related to \EXEC{1.6.22}.) Let \(W_1\) be \(xy\)-plane, which has dimension \(2\), \(W_2\) be just \(x\)-axis, which has dimension \(1\).
-    Then \(W_1 \cap W_2\) is \(x\)-axis, which equals to \(W_2\), so \(\dim(W_1 \cap W_2) = \dim(W_2)\).
-\item (The equation is related to \EXEC{1.6.29}(b).) By \EXEC{1.6.29}(b), the equality holds when \(W_1 \cap W_2 = \{ (0, 0, 0) \}\).
-    So let \(W_1\) be \(xy\)-plane, which has dimension \(2\), \(W_2\) be just \(z\)-axis, which has dimension \(1\).
-    And \(W_1 \cap W_2 = \{ (0, 0, 0) \}\).
-    Then \(W_1 + W_2\) is the whole \(\SET{R}^3\), which has dimension \(3 = 2 + 1 = \dim(W_1) + \dim(W_2)\).
-\item Let \(W_1\) be \(x\)-axis having dimension \(1\), \(W_2\) be \(\SET{R}^3\) having dimension \(3\), then \(\dim(W_1 + W_2) = \dim(\SET{R}^3) = 3 < 1 + 3 = \dim(W_1) + \dim(W_2)\).
+\item (The equation is related to \EXEC{1.6.22}.) Let \(\W_1\) be \(xy\)-plane, which has dimension \(2\), \(\W_2\) be just \(x\)-axis, which has dimension \(1\).
+    Then \(\W_1 \cap \W_2\) is \(x\)-axis, which equals to \(\W_2\), so \(\dim(\W_1 \cap \W_2) = \dim(\W_2)\).
+\item (The equation is related to \EXEC{1.6.29}(b).) By \EXEC{1.6.29}(b), the equality holds when \(\W_1 \cap \W_2 = \{ (0, 0, 0) \}\).
+    So let \(\W_1\) be \(xy\)-plane, which has dimension \(2\), \(\W_2\) be just \(z\)-axis, which has dimension \(1\).
+    And \(\W_1 \cap \W_2 = \{ (0, 0, 0) \}\).
+    Then \(\W_1 + \W_2\) is the whole \(\SET{R}^3\), which has dimension \(3 = 2 + 1 = \dim(\W_1) + \dim(\W_2)\).
+\item Let \(\W_1\) be \(x\)-axis having dimension \(1\), \(\W_2\) be \(\SET{R}^3\) having dimension \(3\), then \(\dim(\W_1 + \W_2) = \dim(\SET{R}^3) = 3 < 1 + 3 = \dim(\W_1) + \dim(\W_2)\).
 \end{enumerate}
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.33} \ 
 
 \begin{enumerate}
-\item Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\) such that \(V = W_1 \oplus W_2\).
-    If \(\beta_1\) and \(\beta_2\) are bases for \(W_1\) and \(W_2\), respectively, show that \(\beta_1 \cap \beta_2 = \emptyset\) and \(\beta_1 \cup \beta_2\) is a \emph{basis} for \(V\).
-\item Conversely, let \(\beta_1\) and \(\beta_2\) be \emph{disjoint} bases for subspaces \(W_1\) and \(W_2\), respectively, of a vector space \(V\).
-    Prove that if \(\beta_1 \cup \beta_2\) is a basis for \(V\), then \(V = W_1 \oplus W_2\).
+\item Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) such that \(\V = \W_1 \oplus \W_2\).
+    If \(\beta_1\) and \(\beta_2\) are bases for \(\W_1\) and \(\W_2\), respectively, show that \(\beta_1 \cap \beta_2 = \emptyset\) and \(\beta_1 \cup \beta_2\) is a \emph{basis} for \(\V\).
+\item Conversely, let \(\beta_1\) and \(\beta_2\) be \emph{disjoint} bases for subspaces \(\W_1\) and \(\W_2\), respectively, of a vector space \(\V\).
+    Prove that if \(\beta_1 \cup \beta_2\) is a basis for \(\V\), then \(\V = \W_1 \oplus \W_2\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof} \ 
 \begin{enumerate}
 \item
-Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\) such that \(V = W_1 \oplus W_2\), and \(\beta_1\) and \(\beta_2\) are bases for \(W_1\) and \(W_2\).
+Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) such that \(\V = \W_1 \oplus \W_2\), and \(\beta_1\) and \(\beta_2\) are bases for \(\W_1\) and \(\W_2\).
 
 We first show that \(\beta_1 \cap \beta_2 = \emptyset\).
 For the sake of contradiction, suppose not.
 Then there exists \(v\) such that \(v \in \beta_1\) and \(v \in \beta_2\).
 Note that \(v\) must be nonzero vector since \(\beta_1, \beta_2\) are (basis, hence) \LID{}.
-But in particular, \(v \in \spann(\beta_1) = W_1\) and \(v \in \spann(\beta_2) = W_2\).
-So we have found a nonzero vector \(v\) such that \(v \in W_1 \cap W_2\), which contradicts that (\(V = W_1 \oplus W_2\), hence in particular we have) \(W_1 \cap W_2 = \{ \OV \}\).
-Now we show that \(\beta_1 \cup \beta_2\) is a basis for \(V\).
-So we first show that \(\spann(\beta_1 \cup \beta_2) = V\).
-But it suffices to show this by showing \(V \subseteq \spann(\beta_1 \cup \beta_2)\) since the other direction is automatically true.
-So suppose arbitrary \(v \in V\).
-Since \(V = W_1 \oplus W_2\), in particular \(V = W_1 + W_2\).
-So \(v = w_1 + w_2\) for some \(w_1 \in W_1, w_2 \in W_2\);
-But \(w_1\) can be represented as a linear combination of the basis \(\beta_1\) of \(W_1\); similarly to \(w_2\) with \(\beta_2\).
+But in particular, \(v \in \spann(\beta_1) = \W_1\) and \(v \in \spann(\beta_2) = \W_2\).
+So we have found a nonzero vector \(v\) such that \(v \in \W_1 \cap \W_2\), which contradicts that (\(\V = \W_1 \oplus \W_2\), hence in particular we have) \(\W_1 \cap \W_2 = \{ \OV \}\).
+Now we show that \(\beta_1 \cup \beta_2\) is a basis for \(\V\).
+So we first show that \(\spann(\beta_1 \cup \beta_2) = \V\).
+But it suffices to show this by showing \(\V \subseteq \spann(\beta_1 \cup \beta_2)\) since the other direction is automatically true.
+So suppose arbitrary \(v \in \V\).
+Since \(\V = \W_1 \oplus \W_2\), in particular \(\V = \W_1 + \W_2\).
+So \(v = w_1 + w_2\) for some \(w_1 \in \W_1, w_2 \in \W_2\);
+But \(w_1\) can be represented as a linear combination of the basis \(\beta_1\) of \(\W_1\); similarly to \(w_2\) with \(\beta_2\).
 So \(v\) can be represented as a sum of a linear combination of \(\beta_1\) and \(\beta_2\), which implies \(v\) is a linear combination of \(\beta_1 \cup \beta_2\).
 Hence \(v \in \spann(\beta_1 \cup \beta_2)\), as desired.
 
@@ -803,31 +803,31 @@ Then from \MAROON{(1)} we have
 \[
     c_1 v_1 + c_2 v_2 + ... + c_m v_m = - d_1 u_1 - d_2 u_2 - ... - d_n u_n \MAROON{(2)};
 \]
-But \(LHS \in \spann(\beta_1) = W_1\) and \(RHS \in \spann(\beta_2) = W_2\), which implies they both belong to \(W_1 \cap W_2\), which implies they equal to \(\OV\) (since \(W_1 \cap W_2 = \{ \OV \}\)).
+But \(LHS \in \spann(\beta_1) = \W_1\) and \(RHS \in \spann(\beta_2) = \W_2\), which implies they both belong to \(\W_1 \cap \W_2\), which implies they equal to \(\OV\) (since \(\W_1 \cap \W_2 = \{ \OV \}\)).
 So we have \(c_1 v_1 + c_2 v_2 + ... + c_m v_m = \OV\) and \(- d_1 u_1 - d_2 u_2 - ... - d_n u_n = \OV\).
 But \(v_1, ..., v_m\) (belong to the basis of \(\beta_1\) hence) are \LID{} and \(u_1, ..., u_n\) (belong to the basis of \(\beta_2\) hence) are \LID{}, this means \(c_1 = c_2 = ... = c_m = d_1 = d_2 = ... = d_n = 0\).
 From \MAROON{(1)}, we have \(\beta_1 \cup \beta_2\) is \LID{}.
 
-So we have \(\spann(\beta_1 \cup \beta_2) = V\) and \(\beta_1 \cup \beta_2\) is \LID{}, hence is a basis for \(V\).
+So we have \(\spann(\beta_1 \cup \beta_2) = \V\) and \(\beta_1 \cup \beta_2\) is \LID{}, hence is a basis for \(\V\).
 
 \item
-Now let \(\beta_1 = \{ v_1, ..., v_m \}\) and \(\beta_2 = \{u_1, ..., u_n \}\) be \emph{disjoint} bases for subspaces \(W_1\) and \(W_2\), respectively, of a vector space \(V\).
-Now suppose \(\beta_1 \cup \beta_2 = \{ v_1, ..., v_m, u_1, ..., u_n \}\) is a basis for \(V\).
-We have to show \(V = W_1 \oplus W_2\).
-That is, \(W_1 + W_2 = V\) and \(W_1 \cap W_2 = \{ \OV \}\).
+Now let \(\beta_1 = \{ v_1, ..., v_m \}\) and \(\beta_2 = \{u_1, ..., u_n \}\) be \emph{disjoint} bases for subspaces \(\W_1\) and \(\W_2\), respectively, of a vector space \(\V\).
+Now suppose \(\beta_1 \cup \beta_2 = \{ v_1, ..., v_m, u_1, ..., u_n \}\) is a basis for \(\V\).
+We have to show \(\V = \W_1 \oplus \W_2\).
+That is, \(\W_1 + \W_2 = \V\) and \(\W_1 \cap \W_2 = \{ \OV \}\).
 
-We first show \(W_1 + W_2 = V\), and it suffices to show \(V \subseteq W_1 + W_2\) since the other direction is automatically true.
-But for arbitrary \(v \in V\),
+We first show \(\W_1 + \W_2 = \V\), and it suffices to show \(\V \subseteq \W_1 + \W_2\) since the other direction is automatically true.
+But for arbitrary \(v \in \V\),
 \begin{align*}
     v & = a_1 v_1 + a_2 v_2 + ... + a_m v_m + b_1 u_1 + b_2 u_2 + ... + b_n u_n & \text{as a l.c. of the basis \(\beta_1 \cup \beta_2\)} \\
       & = (a_1 v_1 + a_2 v_2 + ... + a_m v_m) + (b_1 u_1 + b_2 u_2 + ... + b_n u_n) & \text{in particular} \\
       & \in \spann(\beta_1) + \spann(\beta_2) & \text{by def of ``sum''} \\
-      & = W_1 + W_2 & \text{since \(\beta_1, \beta_2\) are basis for \(W_1, W_2\)}
+      & = \W_1 + \W_2 & \text{since \(\beta_1, \beta_2\) are basis for \(\W_1, \W_2\)}
 \end{align*}
-So \(V \subseteq W_1 + W_2\).
+So \(\V \subseteq \W_1 + \W_2\).
 
-Now we show \(W_1 \cap W_2 = \{ \OV \}\).
-So suppose \(v \in W_1 \cap W_2\), we have to show \(v = \OV\).
+Now we show \(\W_1 \cap \W_2 = \{ \OV \}\).
+So suppose \(v \in \W_1 \cap \W_2\), we have to show \(v = \OV\).
 Then
 \begin{align*}
              & v \in W_1 \cap W_2 \\
@@ -836,7 +836,7 @@ Then
              & \land v = b_1 u_1 + b_2 u_2 + ... + b_n u_n & \text{for some scalars \(a_1, ..., a_m, b_1, ..., b_n\)} \\
     \implies & a_1 v_1 + ... + a_m v_m - b_1 u_1 - ... - b_n u_n = \OV,
 \end{align*}
-which implies \(a_1 = ... = a_m = b_1 = ... = b_n = 0\) since \(\{v_1, ..., v_m, u_1, ..., u_m\}\) (is a basis for \(V\) hence) is \LID{};
+which implies \(a_1 = ... = a_m = b_1 = ... = b_n = 0\) since \(\{v_1, ..., v_m, u_1, ..., u_m\}\) (is a basis for \(\V\) hence) is \LID{};
 and that implies \(v = a_1 v_1 + ... + a_m v_m = \OV\), as desired.
 \end{enumerate}
 \end{proof}
@@ -844,65 +844,65 @@ and that implies \(v = a_1 v_1 + ... + a_m v_m = \OV\), as desired.
 \begin{exercise} \label{exercise 1.6.34}\ 
 
 \begin{enumerate}
-\item Prove that if \(W_1\) is any subspace of a finite-dimensional vector space \(V\), then there exists a subspace \(W_2\) of \(V\) such that \(V = W_1 \oplus W_2\).
-\item Let \(V = \SET{R}^2\) and \(W_1 = \{ (a_1, 0) : a_1 \in \SET{R} \}\).
-    Give examples of two different subspaces \(W_2\) and \(W'_2\) such that \(V = W_1 \oplus W_2\) and \(V = W_1 \oplus W'_2\).
+\item Prove that if \(\W_1\) is any subspace of a finite-dimensional vector space \(\V\), then there exists a subspace \(\W_2\) of \(\V\) such that \(\V = \W_1 \oplus \W_2\).
+\item Let \(\V = \SET{R}^2\) and \(\W_1 = \{ (a_1, 0) : a_1 \in \SET{R} \}\).
+    Give examples of two different subspaces \(\W_2\) and \(\W'_2\) such that \(\V = \W_1 \oplus \W_2\) and \(\V = \W_1 \oplus \W'_2\).
 \end{enumerate}
 \end{exercise}
 
 \begin{proof} \ 
 \begin{enumerate}
-\item Let \(\beta_1 = \{ v_1, v_2, ..., v_k \}\) be a basis for \(W_1\).
-    Then by \CORO{1.11.1} we can extended \(\beta_1\) as \(\{v_1, ..., v_k, v_{k + 1}, ..., v_n \}\) to get a basis for \(V\).
+\item Let \(\beta_1 = \{ v_1, v_2, ..., v_k \}\) be a basis for \(\W_1\).
+    Then by \CORO{1.11.1} we can extended \(\beta_1\) as \(\{v_1, ..., v_k, v_{k + 1}, ..., v_n \}\) to get a basis for \(\V\).
     And of course \(\{ v_1, ..., v_k \} \cap \{ v_{k + 1}, ..., v_n \} = \emptyset\).
-    Now let \(W_2 = \spann(\{ v_{k + 1}, ..., v_n \})\).
-    Then by \EXEC{1.6.33}(b), we have \(V = W_1 \oplus W_2\), as desired.
-\item Clearly, \(\beta_1 = \{ (1, 0) \}\) is a basis for \(W_1\).
-    Now let \(\beta_2 = \{ (0, 1) \}\), \(\beta'_2 = \{ (1, 1) \}\), \(W_2 = \spann(\beta_2)\), \(W'_2 = \spann(\beta'_2)\).
-    Since \(\beta_1 \cap \beta_2 = \emptyset\) and (clearly) \(\beta_1 \cup \beta_2\) is a basis for \(W\), by \EXEC{1.6.33}(b), \(V = W_1 \oplus W_2\).
-    Similarly, \(V = W_1 \oplus W'_2\).
+    Now let \(\W_2 = \spann(\{ v_{k + 1}, ..., v_n \})\).
+    Then by \EXEC{1.6.33}(b), we have \(\V = \W_1 \oplus \W_2\), as desired.
+\item Clearly, \(\beta_1 = \{ (1, 0) \}\) is a basis for \(\W_1\).
+    Now let \(\beta_2 = \{ (0, 1) \}\), \(\beta'_2 = \{ (1, 1) \}\), \(\W_2 = \spann(\beta_2)\), \(\W'_2 = \spann(\beta'_2)\).
+    Since \(\beta_1 \cap \beta_2 = \emptyset\) and (clearly) \(\beta_1 \cup \beta_2\) is a basis for \(\W\), by \EXEC{1.6.33}(b), \(\V = \W_1 \oplus \W_2\).
+    Similarly, \(\V = \W_1 \oplus \W'_2\).
 \end{enumerate}
 \end{proof}
 
 \begin{exercise} \label{exercise 1.6.35}
-Let \(W\) be a subspace of a finite-dimensional vector space \(V\), and consider the basis \(\{ u_1, u_2, ..., u_k \}\) for \(W\).
-Let \(\alpha = \{ u_1, u_2, ..., u_k, u_{k + 1}, ..., u_n \}\) be an extension of this basis to a basis for \(V\).
+Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\), and consider the basis \(\{ u_1, u_2, ..., u_k \}\) for \(\W\).
+Let \(\alpha = \{ u_1, u_2, ..., u_k, u_{k + 1}, ..., u_n \}\) be an extension of this basis to a basis for \(\V\).
 \begin{enumerate}
-\item Prove that \(\beta = \{ u_{k + 1} + W, u_{k + 2} + W, ..., u_n + W \}\) is a basis for \(V / W\).
-\item Derive a formula relating \(\dim(V), \dim(W)\), and \(\dim(V/W)\).
+\item Prove that \(\beta = \{ u_{k + 1} + \W, u_{k + 2} + \W, ..., u_n + \W \}\) is a basis for \(\V / \W\).
+\item Derive a formula relating \(\dim(\V), \dim(\W)\), and \(\dim(\V/\W)\).
 \end{enumerate}
 \end{exercise}
 
 \begin{note}
-We call the zero vector \(\OV + W\) (to see why this is the zero vector, see \EXEC{1.3.31}(d)'s (VS 3)), of \(V/W\) as \(0_{_{V/W}}\), to prevent ambiguity of zero vectors of \(V\) and \(W\).
-The definitions of addition and scalar multiplication of \(V/W\) are also in \EXEC{1.3.31}.
+We call the zero vector \(\OV + \W\) (to see why this is the zero vector, see \EXEC{1.3.31}(d)'s (VS 3)), of \(\V/\W\) as \(0_{_{\V/\W}}\), to prevent ambiguity of zero vectors of \(\V\) and \(\W\).
+The definitions of addition and scalar multiplication of \(\V/\W\) are also in \EXEC{1.3.31}.
 \end{note}
 
 \begin{proof} \ 
 
 \begin{enumerate}
 \item
-We have to show \(\beta\) is \LID{} and \(\spann(\beta) = V/W\).
-So suppose \(0_{_{V/W}} = a_{k + 1} (u_{k + 1} + W) + a_{k + 2} (u_{k + 2} + W) + ... + a_n (u_n + W)\) \MAROON{(1)};
+We have to show \(\beta\) is \LID{} and \(\spann(\beta) = \V/\W\).
+So suppose \(0_{_{\V/\W}} = a_{k + 1} (u_{k + 1} + \W) + a_{k + 2} (u_{k + 2} + \W) + ... + a_n (u_n + \W)\) \MAROON{(1)};
 we have to show \(a_{k + 1} = a_{k + 2} = ... = a_n = 0\) to show \(\beta\) is \LID{} \MAROON{(2)}.
 Now from \MAROON{(1)},
 \begin{align*}
     0_{_{V/W}} & = \OV + W \\
                & = a_{k + 1} (u_{k + 1} + W) + a_{k + 2} (u_{k + 2} + W) + ... + a_n (u_n + W) & \text{by \MAROON{(1)}} \\
-               & = (a_{k + 1} u_{k + 1} + W) + (a_{k + 2} u_{k + 2} + W) + ... + (a_n u_n + W) & \text{by def of \(\cdot\)} \\
-               & = (a_{k + 1} u_{k + 1} + a_{k + 2} u_{k + 2} + ... + a_n u_n) + W, & \text{by def of \(+\)}
+               & = (a_{k + 1} u_{k + 1} + \W) + (a_{k + 2} u_{k + 2} + \W) + ... + (a_n u_n + \W) & \text{by def of \(\cdot\)} \\
+               & = (a_{k + 1} u_{k + 1} + a_{k + 2} u_{k + 2} + ... + a_n u_n) + \W, & \text{by def of \(+\)}
 \end{align*}
 which implies \(a_{k + 1} u_{k + 1} + a_{k + 2} u_{k + 2} + ... + a_n u_n = \OV\).
-But since \(u_{k + 1}, u_{k + 2}, ..., u_n\) is \LID{} (of the vector space \(V\), not \(V/W\)), we have \(a_{k + 1} = a_{k + 2} = ... = a_n = 0\).
+But since \(u_{k + 1}, u_{k + 2}, ..., u_n\) is \LID{} (of the vector space \(\V\), not \(\V/\W\)), we have \(a_{k + 1} = a_{k + 2} = ... = a_n = 0\).
 So \MAROON{(2)} is satisfied, so \(\beta\) is \LID{}, as desired.
 
-Now we will show \(\spann(\beta) = V/W\).
-But again, it suffices to show \(V/W \subseteq \spann(\beta)\) because the other direction is automatically true.
-So suppose arbitrary ``vector'' \(v + W \in V/W\), we have to show \(v + W \in \spann(\beta)\).
+Now we will show \(\spann(\beta) = \V/\W\).
+But again, it suffices to show \(\V/\W \subseteq \spann(\beta)\) because the other direction is automatically true.
+So suppose arbitrary ``vector'' \(v + \W \in \V/\W\), we have to show \(v + \W \in \spann(\beta)\).
 And
 \begin{align*}
     v + W & = (a_1 u_1 + a_2 u_2 + ... + a_n u_n) + W \\
-          & \text{\ \ \ \ \ \ (since \(\alpha\) is a basis for \(V\))} \\
+          & \text{\ \ \ \ \ \ (since \(\alpha\) is a basis for \(\V\))} \\
           & = ((a_1 u_1 + a_2 u_2 + ... + a_k u_k) + (a_{k + 1} u_{k + 1} + ... + a_n u_n)) + W \\
           & \text{\ \ \ \ \ \ (in particular)} \\
           & = ((a_1 u_1 + a_2 u_2 + ... + a_k u_k) + W) + ((a_{k + 1} u_{k + 1} + ... + a_n u_n) + W) \\
@@ -910,33 +910,33 @@ And
           & = (\OV + W) + ((a_{k + 1} u_{k + 1} + ... + a_n u_n) + W) \\
           & \text{\ \ \ \ \ \ (\RED{see below (*)})} \\
           & = ((a_{k + 1} u_{k + 1} + ... + a_n u_n) + W) & \\
-          & \text{\ \ \ \ \ \ (by (VS 3) of \(V/W\))} \\
+          & \text{\ \ \ \ \ \ (by (VS 3) of \(\V/\W\))} \\
           & = a_{k + 1}(u_{k + 1} + W) + a_{k + 2}(u_{k + 2} + W) + ... + a_n(u_n + W) \\
           & \text{\ \ \ \ \ \ (by def of \(+\), \(\cdot\))} \\
           & \in \spann(\beta),
 \end{align*}
 as desired.
 
-\RED{(*)}: We have to show \(((a_1 u_1 + a_2 u_2 + ... + a_k u_k) + W) = \OV + W\).
-Note that any element in these sets is \emph{vector of \(V\)}, not vector of \(V/W\).
+\RED{(*)}: We have to show \(((a_1 u_1 + a_2 u_2 + ... + a_k u_k) + \W) = \OV + \W\).
+Note that any element in these sets is \emph{vector of \(\V\)}, not vector of \(\V/\W\).
 So we just show for any \(v\), \(v\) belongs to the former if and only if \(v\) belongs to the latter:
 \begin{align*}
          & v \in (a_1 u_1 + a_2 u_2 + ... + a_k u_k) + W \\
     \iff & v = (a_1 u_1 + a_2 u_2 + ... + a_k u_k) + (b_1 u_1 + b_2 u_2 + ... + b_k u_k) \\
-         & \text{(since \(\{ u_1, ..., u_k \}\) is a basis for \(W\))} \\
+         & \text{(since \(\{ u_1, ..., u_k \}\) is a basis for \(\W\))} \\
     \iff & v = (a_1 + b_1) u_1 + (a_2 + b_2) u_2 + ... + (a_k + b_k) u_k & \text{of course} \\
     \iff & v = \OV + ((a_1 + b_1) u_1 + (a_2 + b_2) u_2 + ... + (a_k + b_k) u_k) & \text{of course} \\
     \iff & v \in \OV + W \\
-         & \text{(since \(\{ u_1, ..., u_k \}\) is a basis for \(W\))} \\
+         & \text{(since \(\{ u_1, ..., u_k \}\) is a basis for \(\W\))} \\
 \end{align*}
-So we have \((a_1 u_1 + a_2 u_2 + ... + a_k u_k) + W = \OV + W\).
+So we have \((a_1 u_1 + a_2 u_2 + ... + a_k u_k) + \W = \OV + \W\).
 
 \item
-\(\alpha\) is a basis for \(V\), so \(\dim(V) = \#\alpha = n\).
-\(\{ u_1, u_2, ..., u_k \}\) is a basis for \(W\), so \(\dim(W) = k\).
-\(\beta\) is a basis for \(V/W\), so \(\dim(V/W) = \#\beta = n - k\).
-So we have \(\dim(V) = \dim(W) + \dim(V/W)\).
-(Or \(\dim(V/W) = \dim(V) - \dim(W)\) if now we care \(V/W\) instead of \(V\).)
+\(\alpha\) is a basis for \(\V\), so \(\dim(\V) = \#\alpha = n\).
+\(\{ u_1, u_2, ..., u_k \}\) is a basis for \(\W\), so \(\dim(\W) = k\).
+\(\beta\) is a basis for \(\V/\W\), so \(\dim(\V/\W) = \#\beta = n - k\).
+So we have \(\dim(\V) = \dim(\W) + \dim(\V/\W)\).
+(Or \(\dim(\V/\W) = \dim(\V) - \dim(\W)\) if now we care \(\V/\W\) instead of \(\V\).)
 \end{enumerate}
 \end{proof}
 
@@ -951,19 +951,19 @@ This is the placeholder theorem for the basis and dimension of some set of matri
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.20}
-This is the placeholder theorem for \EXEC{1.6.20}: Given any subset \(S\) of finite-dimensional \(V\) with dimension \(n\) where \(S\) is not necessarily finite:
+This is the placeholder theorem for \EXEC{1.6.20}: Given any subset \(S\) of finite-dimensional \(\V\) with dimension \(n\) where \(S\) is not necessarily finite:
 
-\BLUE{(1))} We still can find a subset of \(S\) which is a basis for \(V\).
+\BLUE{(1))} We still can find a subset of \(S\) which is a basis for \(\V\).
 
 \BLUE{(2)} \(S\) still has at least \(n\) elements.
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.21}
-This is the placeholder theorem for \EXEC{1.6.21}: \(V\) is infinite-dimensional if and only if it contains an \emph{infinite} \LID{} subset.
+This is the placeholder theorem for \EXEC{1.6.21}: \(\V\) is infinite-dimensional if and only if it contains an \emph{infinite} \LID{} subset.
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.22}
-This is the placeholder theorem for \EXEC{1.6.22}: Let \(W_1, W_2\) be subspaces of a finite-dimensional vector space \(V\), then \(W_1 \subseteq W_2\) if and only if \(\dim(W_1 \cap W_2) = \dim(W_1)\).
+This is the placeholder theorem for \EXEC{1.6.22}: Let \(\W_1, \W_2\) be subspaces of a finite-dimensional vector space \(\V\), then \(\W_1 \subseteq \W_2\) if and only if \(\dim(\W_1 \cap \W_2) = \dim(\W_1)\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.23}
@@ -984,7 +984,7 @@ is a basis for \(\mathcal{P}_n(F)\).
 
 \begin{additional theorem} \label{athm 1.25}
 This is the placeholder theorem for \EXEC{1.6.25}:
-If \(V\) and \(W\) are vector spaces over \(F\) of dimensions \(m\) and \(n\), the dimension of \(Z\) defined in \EXEC{1.2.21} is \(m + n\).
+If \(\V\) and \(\W\) are vector spaces over \(F\) of dimensions \(m\) and \(n\), the dimension of \(Z\) defined in \EXEC{1.2.21} is \(m + n\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.26}
@@ -995,38 +995,38 @@ The set of all polynomials with degree \(\le n\) and equal to \(0\) given a fixe
 \begin{additional theorem} \label{athm 1.27}
 This is the placeholder theorem for \EXEC{1.6.29}, \EXEC{1.6.31}, \EXEC{1.6.33}, and \EXEC{1.6.34}:
 
-\EXEC{1.6.29}: Given finite dimensional subspaces \(W_1, W_2\) of a vector space \(V\).
+\EXEC{1.6.29}: Given finite dimensional subspaces \(\W_1, \W_2\) of a vector space \(\V\).
 
-\BLUE{(1.1)}: \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2)\).
+\BLUE{(1.1)}: \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2) - \dim(\W_1 \cap \W_2)\).
 
-\BLUE{(1.2)} IF \(V = W_1 + W_2\), then \(V = W_1 \oplus W_2\) if and only if \(\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2)\).
+\BLUE{(1.2)} IF \(\V = \W_1 + \W_2\), then \(\V = \W_1 \oplus \W_2\) if and only if \(\dim(\W_1 + \W_2) = \dim(\W_1) + \dim(\W_2)\).
 
-\EXEC{1.6.31}: Let \(W_1, W_2\) be as like \BLUE{(1.1)} with dimension \(m, n\) respectively, where \(m \ge n\).
+\EXEC{1.6.31}: Let \(\W_1, \W_2\) be as like \BLUE{(1.1)} with dimension \(m, n\) respectively, where \(m \ge n\).
 
-\BLUE{(2.1)}: \(\dim(W_1 \cap W_2) \le n\).
+\BLUE{(2.1)}: \(\dim(\W_1 \cap \W_2) \le n\).
 
-\BLUE{(2.2)}: \(\dim(W_1 + W_2) \le m + n\).
+\BLUE{(2.2)}: \(\dim(\W_1 + \W_2) \le m + n\).
 
 \EXEC{1.6.33}:
 
-\BLUE{(3.1)} Let \(W_1\) and \(W_2\) be subspaces of a vector space \(V\) such that \(V = W_1 \oplus W_2\).
-If \(\beta_1\) and \(\beta_2\) are bases for \(W_1\) and \(W_2\), respectively, then \(\beta_1 \cap \beta_2 = \emptyset\) and \(\beta_1 \cup \beta_2\) is a \emph{basis} for \(V\).
+\BLUE{(3.1)} Let \(\W_1\) and \(\W_2\) be subspaces of a vector space \(\V\) such that \(\V = \W_1 \oplus \W_2\).
+If \(\beta_1\) and \(\beta_2\) are bases for \(\W_1\) and \(\W_2\), respectively, then \(\beta_1 \cap \beta_2 = \emptyset\) and \(\beta_1 \cup \beta_2\) is a \emph{basis} for \(\V\).
 
-\BLUE{(3.2)} Conversely, let \(\beta_1\) and \(\beta_2\) be \emph{disjoint} bases for subspaces \(W_1\) and \(W_2\), respectively, of a vector space \(V\).
-If \(\beta_1 \cup \beta_2\) is a basis for \(V\), then \(V = W_1 \oplus W_2\).
+\BLUE{(3.2)} Conversely, let \(\beta_1\) and \(\beta_2\) be \emph{disjoint} bases for subspaces \(\W_1\) and \(\W_2\), respectively, of a vector space \(\V\).
+If \(\beta_1 \cup \beta_2\) is a basis for \(\V\), then \(\V = \W_1 \oplus \W_2\).
     
 \EXEC{1.6.34}:
 
-\BLUE{(4)} If \(W_1\) is any subspace of a finite-dimensional vector space \(V\), then there exists a subspace \(W_2\) of \(V\) such that \(V = W_1 \oplus W_2\).
+\BLUE{(4)} If \(\W_1\) is any subspace of a finite-dimensional vector space \(\V\), then there exists a subspace \(\W_2\) of \(\V\) such that \(\V = \W_1 \oplus \W_2\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 1.28}
 This is the placeholder theorem for \EXEC{1.6.35}:
 
-Let \(W\) be a subspace of a finite-dimensional vector space \(V\), and \(\{ u_1, u_2, ..., u_k \}\) be a basis for \(W\).
-Let \(\{ u_1, u_2, ..., u_k, u_{k + 1}, ..., u_n \}\) be an extension of this basis to a basis for \(V\).
+Let \(\W\) be a subspace of a finite-dimensional vector space \(\V\), and \(\{ u_1, u_2, ..., u_k \}\) be a basis for \(\W\).
+Let \(\{ u_1, u_2, ..., u_k, u_{k + 1}, ..., u_n \}\) be an extension of this basis to a basis for \(\V\).
 
-\BLUE{(1)}: \(\beta = \{ u_{k + 1} + W, u_{k + 2} + W, ..., u_n + W \}\) is a basis for \(V / W\).
+\BLUE{(1)}: \(\beta = \{ u_{k + 1} + \W, u_{k + 2} + \W, ..., u_n + \W \}\) is a basis for \(\V / \W\).
 
-\BLUE{(2)}: \(\dim(V/W) = \dim(V) - \dim(W)\).
+\BLUE{(2)}: \(\dim(\V/\W) = \dim(\V) - \dim(\W)\).
 \end{additional theorem}

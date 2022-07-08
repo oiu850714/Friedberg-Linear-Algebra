@@ -1,14 +1,14 @@
 \section{Linear Transformations, Null Spaces, and Ranges} \label{sec 2.1}
 
 \begin{definition} \label{def 2.1}
-Let \(V\) and \(W\) be vector spaces over the same field \(F\).
-We call a function \(\T: V \to W\) a \textbf{\LTRAN{} from \(V\) to \(W\)} if, for all \(x, y \in V\) and \(c \in F\), we have
+Let \(\V\) and \(\W\) be vector spaces over the same field \(F\).
+We call a function \(\T: \V \to \W\) a \textbf{\LTRAN{} from \(\V\) to \(\W\)} if, for all \(x, y \in \V\) and \(c \in F\), we have
 \begin{enumerate}
 \item \(\T(x + y) = \T(x) + \T(y)\) and
 \item \(\T(cx) = c\T(x)\).
 \end{enumerate}
 We often simply call \(\T\) \textbf{linear}.
-If \(V = W\), then we call \(\T\) a \textbf{linear operator} on \(V\).
+If \(\V = \W\), then we call \(\T\) a \textbf{linear operator} on \(\V\).
 \end{definition}
 
 \begin{remark} \label{remark 2.1.1}
@@ -18,19 +18,19 @@ See \EXEC{2.1.39} and \EXEC{2.1.40}.
 \end{remark}
 
 \begin{remark} \label{remark 2.1.2}
-Now you can see why \RMK{2.0.1} assume all vector spaces have common field \(F\), because from \DEF{2.1}, we use the scalar \(c \in F\) on both the input vector \(v \in V\) to get scalar multiplication \(c v\), and the output vector \(\T(v) \in W\) to get scalar multiplication \(c \T(v)\).
-So \(v, \T(v)\) are in \emph{different} vector space \(V\) and \(W\).
-If \(W, V\) are also over different field, then one of these scalar multiplications will not even be well-defined.
+Now you can see why \RMK{2.0.1} assume all vector spaces have common field \(F\), because from \DEF{2.1}, we use the scalar \(c \in F\) on both the input vector \(v \in \V\) to get scalar multiplication \(c v\), and the output vector \(\T(v) \in \W\) to get scalar multiplication \(c \T(v)\).
+So \(v, \T(v)\) are in \emph{different} vector space \(\V\) and \(\W\).
+If \(\W, \V\) are also over different field, then one of these scalar multiplications will not even be well-defined.
 \end{remark}
 
 \begin{additional theorem} \label{athm 2.1}
-Given any function \(\T : V \to W\) (where \(V, W\) are vector spaces over a command field \(F\)):
+Given any function \(\T : \V \to \W\) (where \(\V, \W\) are vector spaces over a command field \(F\)):
 \begin{enumerate}
 \item If \(\T\) is linear, then \(\T(\OV) = \OW\).
-\item \(\T\) is linear if and only if \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in V\) and \(c \in F\).
-\item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in V\).
+\item \(\T\) is linear if and only if \(\T(cx + y) = c\T(x) + \T(y)\) for all \(x, y \in \V\) and \(c \in F\).
+\item If \(\T\) is linear, then \(\T(x - y) = \T(x) - \T(y)\) for all \(x, y \in \V\).
     (\(x - y\) (or \(\T(x) - \T(y)\)) is just a ``syntactic sugar'' for \(x + (-y)\)(or \(\T(x) + (-\T(y))\)).)
-\item \(\T\) is linear if and only if, for \(x_1, x_2, ..., x_n \in V\) and \(a_1, a_2, ..., a_n \in F\), we have
+\item \(\T\) is linear if and only if, for \(x_1, x_2, ..., x_n \in \V\) and \(a_1, a_2, ..., a_n \in F\), we have
 \[
     \T \Big( \sum_{i = 1}^{n} a_i x_i \Big) = \sum_{i = 1}^{n} a_i \T(x_i).
 \]
@@ -44,43 +44,43 @@ And we generally use (b) to prove that a given function is linear.
 Suppose \(\T\) is linear.
 Then
 \begin{align*}
-    \T(\OV) & = \T(v + (-v)) & \text{for some \(v \in V\)} \\
+    \T(\OV) & = \T(v + (-v)) & \text{for some \(v \in \V\)} \\
            & = \T(v) + \T(-v) & \text{by \DEF{2.1}(a)} \\
            & = \T(v) + (-\T(v)) & \text{by \DEF{2.1}(b)} \\
-           & = \OW. & \text{by (VS 4) of \(W\)}
+           & = \OW. & \text{by (VS 4) of \(\W\)}
 \end{align*}
 
 \item
 \(\Longrightarrow\): Suppose \(\T\) is linear.
-Then given \(x, y \in V\) and \(c \in F\),
+Then given \(x, y \in \V\) and \(c \in F\),
 \begin{align*}
     \T(cx + y) & = \T(cx) + \T(y) & \text{by \DEF{2.1}(a)} \\
               & = c\T(x) + \T(y) & \text{by \DEF{2.1}(b)}
 \end{align*}
 
 \(\Longleftarrow\):
-Suppose given \(x, y \in V\) and \(c \in F\), \(\T(cx + y) = c\T(x) + \T(y)\).
+Suppose given \(x, y \in \V\) and \(c \in F\), \(\T(cx + y) = c\T(x) + \T(y)\).
 Then in particular, let \(y = \OV\),
 \begin{align*}
-    \T(cx) & = \T(cx + \OV) & \text{by (VS 3) of \(V\)} \\
+    \T(cx) & = \T(cx + \OV) & \text{by (VS 3) of \(\V\)} \\
            & = \T(cx + y) \\
            & = c\T(x) + \T(y) & \text{by assumption} \\
            & = c\T(x) + \T(\OV) \\
            & = c\T(x) + \OW & \text{by part(a)} \\
-           & = c\T(x) & \text{by (VS 3) of \(W\)}
+           & = c\T(x) & \text{by (VS 3) of \(\W\)}
 \end{align*}
 And in particular, let \(c = 1\),
 \begin{align*}
-    \T(x + y) & = \T(1x + y) & \text{by (VS 5) of \(V\)} \\
+    \T(x + y) & = \T(1x + y) & \text{by (VS 5) of \(\V\)} \\
               & = \T(cx + y) \\
               & = c\T(x) + \T(y) & \text{by assumption} \\
               & = 1\T(x) + \T(y) \\
-              & = \T(x) + \T(y) & \text{by (VS 5) of \(W\)}
+              & = \T(x) + \T(y) & \text{by (VS 5) of \(\W\)}
 \end{align*}
 So by \DEF{2.1}, \(\T\) is linear.
 
 \item
-Suppose \(\T\) is linear, and \(x, y \in V\).
+Suppose \(\T\) is linear, and \(x, y \in \V\).
 Then
 \begin{align*}
     \T(x - y) & = \T(x + (-y)) & \text{unwrap ``syntactic sugar''} \\
@@ -159,12 +159,12 @@ hence \(\T\) is linear by \ATHM{2.1}(b).
 \end{example}
 
 \begin{example} \label{example 2.1.6}
-Let \(V\) denote the set of all real-valued functions defined on the real line that \emph{have derivatives of every order}.
-It is easily shown that \(V\) is a vector space over \(\SET{R}\).
+Let \(\V\) denote the set of all real-valued functions defined on the real line that \emph{have derivatives of every order}.
+It is easily shown that \(\V\) is a vector space over \(\SET{R}\).
 (See \EXEC{1.3.16}.)
-Define \(\T : V \to V\) by \(\T(f) = f'\), the derivative of \(f\).
+Define \(\T : \V \to \V\) by \(\T(f) = f'\), the derivative of \(f\).
 (Note that the input of \(\T\) is itself a function(from \(\SET{R}\) to \(\SET{R}\)); the output of \(\T\) is similar.)
-To show that \(\T\) is linear, let \(g, h \in V\) and \(a \in \SET{R}\).
+To show that \(\T\) is linear, let \(g, h \in \V\) and \(a \in \SET{R}\).
 Now
 \begin{align*}
     \T(ag + h) & = (ag + h)' \\
@@ -175,20 +175,20 @@ So by \ATHM{2.1}(b), \(\T\) is linear.
 \end{example}
 
 \begin{example} \label{example 2.1.7}
-Let \(V = \mathcal{C}(\SET{R})\), the vector space of all continuous real-valued functions on \(\SET{R}\).
+Let \(\V = \mathcal{C}(\SET{R})\), the vector space of all continuous real-valued functions on \(\SET{R}\).
 Let \(a, b \in \SET{R}\), \(a < b\).
-Define \(\T : V \to \RED{\SET{R}}\) by
+Define \(\T : \V \to \RED{\SET{R}}\) by
 \[
     \T(f) = \int_a^b f(t) dt
 \]
-for all \(f \in V\).
+for all \(f \in \V\).
 (Note that the input of \(\T\) is a (continuous) function, the output of \(\T\) is the definite integral of that input on the interval \(a, b\).)
 Then \(\T\) is a \LTRAN{} because, by Calculus, the definite integral of a linear combination of functions is the same as the linear combination of
 the definite integrals of the functions.
 \end{example}
 
 \begin{additional definition} \label{adef 2.1}
-For vector spaces \(V\) and \(W\) (over common \(F\)), we define the \textbf{identity transformation} \(\ITRANV: V \to \RED{V}\) by \(\ITRANV(x) = x\) for all \(x \in V\) and the \textbf{zero transformation} \(\TZERO: V \to W\) by \(\TZERO(x) = \OW\) for all \(x \in V\).
+For vector spaces \(\V\) and \(\W\) (over common \(F\)), we define the \textbf{identity transformation} \(\ITRANV: \V \to \RED{\V}\) by \(\ITRANV(x) = x\) for all \(x \in \V\) and the \textbf{zero transformation} \(\TZERO: \V \to \W\) by \(\TZERO(x) = \OW\) for all \(x \in \V\).
 It is clear that both of these transformations are linear.
 We often write \(\mathrm{I}\) instead of \(\ITRANV\).
 \end{additional definition}
@@ -197,16 +197,16 @@ We now turn our attention \emph{to two very important sets associated with \LTRA
 The determination of these sets allows us to examine more closely the \emph{intrinsic} properties of a \LTRAN{}.
 
 \begin{definition} \label{def 2.2}
-Let \(V\) and \(W\) be vector spaces, and let \(\T : V \to W\) be linear.
-We define the \textbf{null space} (or \textbf{kernel}) \(\NULLT\) of \(\T\) to be the set of all vectors \(x\) in \(V\) such that \(\T(x) = \OW\);
-that is, \(\NULLT = \{ x \in V : \T(x) = \OW \}\).
+Let \(\V\) and \(\W\) be vector spaces, and let \(\T : \V \to \W\) be linear.
+We define the \textbf{null space} (or \textbf{kernel}) \(\NULLT\) of \(\T\) to be the set of all vectors \(x\) in \(\V\) such that \(\T(x) = \OW\);
+that is, \(\NULLT = \{ x \in \V : \T(x) = \OW \}\).
 
-We define the \textbf{range} (or \textbf{image}) \(\RANGET\) of \(\T\) to be the subset of \(W\) consisting of all images (under \(\T\)) of vectors in \(V\);
-that is, \(\RANGET = \{ \T(x) : x \in V \}\).
+We define the \textbf{range} (or \textbf{image}) \(\RANGET\) of \(\T\) to be the subset of \(\W\) consisting of all images (under \(\T\)) of vectors in \(\V\);
+that is, \(\RANGET = \{ \T(x) : x \in \V \}\).
 \end{definition}
 
 \begin{example} \label{example 2.1.8}
-Let \(V\) and \(W\) be vector spaces, and let \(\ITRANV : V \to V\) and \(\TZERO : V \to W\) be the identity and zero transformations, respectively. Then \(\NULL(\ITRANV) = \{ \OV \}\), \(\RANGE(\ITRANV) = V\), \(\NULL(\TZERO) = V\), and \(\RANGE(\TZERO) = \{ \OW \}\).
+Let \(\V\) and \(\W\) be vector spaces, and let \(\ITRANV : \V \to \V\) and \(\TZERO : \V \to \W\) be the identity and zero transformations, respectively. Then \(\NULL(\ITRANV) = \{ \OV \}\), \(\RANGE(\ITRANV) = \V\), \(\NULL(\TZERO) = \V\), and \(\RANGE(\TZERO) = \{ \OW \}\).
 \end{example}
 
 \begin{example} \label{example 2.1.9}
@@ -223,12 +223,12 @@ The next result shows that this is \emph{true in general}.
 \end{remark}
 
 \begin{theorem} \label{thm 2.1}
-Let \(V\) and \(W\) be vector spaces and \(T : V \to W\) be linear.
-Then \(\NULLT\) and \(\RANGET\) are \textbf{subspaces} of \(V\) and \(W\) (over common \(F\)), respectively.
+Let \(\V\) and \(\W\) be vector spaces and \(T : \V \to \W\) be linear.
+Then \(\NULLT\) and \(\RANGET\) are \textbf{subspaces} of \(\V\) and \(\W\) (over common \(F\)), respectively.
 \end{theorem}
 
 \begin{proof}
-We prove \(\NULLT\) and \(\RANGET\) are \textbf{subspaces} of \(V\) and \(W\) by showing they satisfy the conditions in \THM{1.3}.
+We prove \(\NULLT\) and \(\RANGET\) are \textbf{subspaces} of \(\V\) and \(\W\) by showing they satisfy the conditions in \THM{1.3}.
 
 Since by \ATHM{2.1}(a), \(\T(\OV) = \OW\), (by \DEF{2.2}) we have that \(\OV \in \NULLT\).
 Let \(x, y \in \NULLT\) and \(c \in F\).
@@ -245,20 +245,20 @@ and
            & = c \OW & \text{since \(x \in \NULLT\)} \\
            & = \OW.
 \end{align*}
-Hence by \DEF{2.2}, \(cx \in \NULLT\), so that by \THM{1.3} \(\NULLT\) is a subspace of \(V\).
+Hence by \DEF{2.2}, \(cx \in \NULLT\), so that by \THM{1.3} \(\NULLT\) is a subspace of \(\V\).
 
 Now for \(\RANGET\), because \(\T(\OV) = \OW\), we have that \(\OV \in \RANGET\).
 Now let \(x, y \in \RANGE(T)\) and \(c \in F\).
-Then there exist \(u\) and \(w\) in \(V\) such that \(\T(v) = x\) and \(\T(w) = y\).
-So \(\T(v + w) = \T(v) + \T(w) = x + y\), and \(\T(cv) = c\T(v) = cx\). Thus \(x + y \in \RANGET\) and \(cx \in \RANGET\), so by \THM{1.3}, \(\RANGET\) is a subspace of \(W\).
+Then there exist \(u\) and \(w\) in \(\V\) such that \(\T(v) = x\) and \(\T(w) = y\).
+So \(\T(v + w) = \T(v) + \T(w) = x + y\), and \(\T(cv) = c\T(v) = cx\). Thus \(x + y \in \RANGET\) and \(cx \in \RANGET\), so by \THM{1.3}, \(\RANGET\) is a subspace of \(\W\).
 \end{proof}
 
 The next theorem provides a method for finding a \emph{spanning set} (\emph{not} necessarily a basis) for the \emph{range} of a \LTRAN{}.
 With this accomplished, using the technique of \EXAMPLE{1.6.6} (or \THM{1.9}), it is easy to find a basis, which is a subset of the spanning set, for the \emph{range}.
 
 \begin{theorem} \label{thm 2.2}
-Let \(V\) and \(W\) be vector spaces, and let \(\T : V \to W\) be linear.
-If \(\beta = \{ v_1, v_2 , ..., v_n \}\) is a \emph{basis} for \(V\), then
+Let \(\V\) and \(\W\) be vector spaces, and let \(\T : \V \to \W\) be linear.
+If \(\beta = \{ v_1, v_2 , ..., v_n \}\) is a \emph{basis} for \(\V\), then
 \[
     \RANGET = \spann(\T(\beta)) =^{\RED{*}} \spann(\{ \T(v_1), \T(v_2), ..., \T(v_n) \}).
 \]
@@ -276,8 +276,8 @@ Because \(\RANGET\) is a \emph{subspace}, by \THM{1.5}(b), \(\RANGET\) contains 
 So we have \(\spann(\T(\beta)) \subseteq \RANGET\).
 
 Now suppose arbitrary \(w \in \RANGET\).
-Then \(w = \T(v)\) for some \(v \in V\).
-Because \(\beta\) is a basis for \(V\), we have
+Then \(w = \T(v)\) for some \(v \in \V\).
+Because \(\beta\) is a basis for \(\V\), we have
 \[
     v = \sum_{i = 1}^n a_i v_i \text{ for some \(a_1, a_2, ..., a_n \in F\)} \MAROON{(1)}.
 \]
@@ -368,7 +368,7 @@ As in \CH{1}, we ``measure the size'' of a subspace by its dimension.
 The null space and range are so important that we \emph{attach special names} to their respective dimensions.
 
 \begin{definition} \label{def 2.3}
-Let \(V\) and \(W\) be vector spaces, and let \(\T : V \to W\) be linear.
+Let \(\V\) and \(\W\) be vector spaces, and let \(\T : \V \to \W\) be linear.
 If \(\NULLT\) and \(\RANGET\) are finite-dimensional, then we define the \textbf{nullity} of \(\T\), denoted \(\nullityT\), and the \textbf{rank} of \(\T\), denoted \(\rankT\),
 to be the dimensions of \(\NULLT\) -- or \(\dim(\NULLT)\) -- and \(\RANGET\) -- or \(\dim(\RANGET)\) -- respectively.
 \end{definition}
@@ -381,16 +381,16 @@ This balance between rank and nullity is made precise in the next theorem, appro
 \end{remark}
 
 \begin{theorem} [Dimension Theorem] \label{thm 2.3}
-Let \(V\) and \(W\) be vector spaces, and let \(\T : V \to W\) be linear.
-If \(V\) is \emph{finite}-dimensional, then
+Let \(\V\) and \(\W\) be vector spaces, and let \(\T : \V \to \W\) be linear.
+If \(\V\) is \emph{finite}-dimensional, then
 \[
     \nullityT + \rankT = \dim(V).
 \]
 \end{theorem}
 
 \begin{proof}
-Suppose that \(\dim(V) = n, \nullityT = k\), and \(\{ v_1, v_2, ..., v_k \}\) is a basis for \(\NULLT\).
-By \CORO{1.11.1}, (since \(\NULLT\) is a subspace of \(V\),) we may extend \(\{ v_1, v_2, ..., v_k \}\) to a basis \(\beta = \{ v_1, v_2, ..., v_k, v_{k +1}, ..., v_n \}\) for \(V\).
+Suppose that \(\dim(\V) = n, \nullityT = k\), and \(\{ v_1, v_2, ..., v_k \}\) is a basis for \(\NULLT\).
+By \CORO{1.11.1}, (since \(\NULLT\) is a subspace of \(\V\),) we may extend \(\{ v_1, v_2, ..., v_k \}\) to a basis \(\beta = \{ v_1, v_2, ..., v_k, v_{k +1}, ..., v_n \}\) for \(\V\).
 We claim that
 \[
     S = \{ \T(v_{k + l}), \T((v_{k + 2}), ..., \T(v_n) \}
@@ -412,12 +412,12 @@ And
 \end{align*}
 So we have a \emph{nontrivial} combination \(\OV = a_1 v_1 + ... + a_k v_k + a (v_i - v_j)\).
 Note that \(a\) cannot be zero, otherwise one of \(a_1, ..., a_k\) must be nonzero and we have nontrivial representation using \(v_1, ..., v_k\), which contradicts that \(v_1, ..., v_k\) is \LID{}.
-But then \(\OV = a_1 v_1 + ... + a_k v_k + a (v_i - v_j) = a_1 v_1 + ... + a_k v_k + a v_i - a v_j\), and that still implies \(\{ a_1, a_2, ..., a_k, a_i, a_j \}\) are \LDP{}, which is a contradiction since it is a subset of a basis (hence \LID{}) of \(V\).
+But then \(\OV = a_1 v_1 + ... + a_k v_k + a (v_i - v_j) = a_1 v_1 + ... + a_k v_k + a v_i - a v_j\), and that still implies \(\{ a_1, a_2, ..., a_k, a_i, a_j \}\) are \LDP{}, which is a contradiction since it is a subset of a basis (hence \LID{}) of \(\V\).
 So \(\T(v_{k + 1}), \T(v_{k + 2}), ..., \T(v_n)\) must be all distinct, so \(S\) really has \(n - k\) elements.
 
 Go back to the consideration of \(S\).
 First we prove that \(S\) generates \(\RANGET\).
-Using \THM{2.2} (and \(\beta\) is a basis for \(V\)) and \RED{the fact that} \(\T(v_i) = \OW\) for \(1 \le i \le k\), we have
+Using \THM{2.2} (and \(\beta\) is a basis for \(\V\)) and \RED{the fact that} \(\T(v_i) = \OW\) for \(1 \le i \le k\), we have
 \begin{align*}
     \RANGET & = \spann(\{ \T(v_1), \T(v_2), ..., \T(v_{k}), \T(v_{k + 1}, ..., T(v_n) \}) & \text{by \THM{2.2}} \\
             & = \spann(\{ \OW, \OW, ..., \OW, \T(v_{k + 1}), ..., \T(v_{n}) \}) & \text{using the fact} \\
@@ -447,12 +447,12 @@ hence
 \[
     \sum_{i = 1}^k (-c_i) v_i + \sum_{i = k + 1}^n b_i v_i = \OV.
 \]
-But \(\beta = \{ v_1, ..., v_k, v_{k + 1}, ..., v_n \}\) is known to be the basis of \(V\) (hence is \LID{}), so we have \(c_i\) for \(i = 1, ..., k\) and \(b_i\) for \(i = k + 1, ..., n\) are all equal to zero.
+But \(\beta = \{ v_1, ..., v_k, v_{k + 1}, ..., v_n \}\) is known to be the basis of \(\V\) (hence is \LID{}), so we have \(c_i\) for \(i = 1, ..., k\) and \(b_i\) for \(i = k + 1, ..., n\) are all equal to zero.
 And in particular, \(b_{k + 1} = ... = b_n = 0\).
 So by \MAROON{(1)}, \(S\) is \LID{}.
 
 Hence we know \(S\) generates \(\RANGET\) and is \LID{}, so \(S\) is a basis for \(\RANGET\).
-Therefore \(\rankT = \#S = n - k\), there for \(\nullityT + \rankT = k + (n - k) = n = \dim(V)\).
+Therefore \(\rankT = \#S = n - k\), there for \(\nullityT + \rankT = k + (n - k) = n = \dim(\V)\).
 \end{proof}
 
 \begin{note}
@@ -466,7 +466,7 @@ This is demonstrated in the next two theorems.
 \end{remark}
 
 \begin{theorem} \label{thm 2.4}
-Let \(V\) and \(W\) be vector spaces, and let \(\T : V \to W\) be linear.
+Let \(\V\) and \(\W\) be vector spaces, and let \(\T : \V \to \W\) be linear.
 Then \(\T\) is one-to-one \emph{if and only if} \(\NULLT = \{ \OV \}\).
 \end{theorem}
 
@@ -495,7 +495,7 @@ So by definition, \(\T\) is one-to-one.
 \end{proof}
 
 \begin{remark} \label{remark 2.1.9}
-\THM{2.4} is true even if \(V\) is \emph{infinite}-dimensional.
+\THM{2.4} is true even if \(\V\) is \emph{infinite}-dimensional.
 \end{remark}
 
 \begin{note}
@@ -505,12 +505,12 @@ Observe that \THM{2.4} allows us to conclude that the transformation defined in 
 Surprisingly, the conditions of one-to-one and onto are \textbf{equivalent} in an important special case; that is, when the domain and codomain of the \LTRAN{} have the same \emph{finite} dimensions.
 
 \begin{theorem} \label{thm 2.5}
-Let \(V\) and \(W\) be \emph{finite}-dimensional vector spaces \textbf{of equal dimension}, and let \(\T : V \to W\) be linear.
+Let \(\V\) and \(\W\) be \emph{finite}-dimensional vector spaces \textbf{of equal dimension}, and let \(\T : \V \to \W\) be linear.
 Then the following are equivalent.
 \begin{enumerate}
 \item \(\T\) is one-to-one.
 \item \(T\) is onto.
-\item \(\rankT = \dim(V)\).
+\item \(\rankT = \dim(\V)\).
 \end{enumerate}
 \end{theorem}
 
@@ -525,17 +525,17 @@ And we have
     \iff & \NULLT = \{ \OV \} & \text{by \THM{2.4}} \\
     \iff & \nullityT = 0 & \text{by \DEF{2.3}} \\
     \iff & \BLUE{\rankT = \dim(V)} & \text{by \MAROON{(1)}} \\
-    \iff & \rankT = \dim(W) & \text{since \(V\) and \(W\) have same finite-dimension} \\
+    \iff & \rankT = \dim(\W) & \text{since \(\V\) and \(\W\) have same finite-dimension} \\
     \iff & \dim(\RANGET) = \dim(W) & \text{by \DEF{2.3}} \\
     \iff & \RED{*} \BLUE{\T \text{ is onto.}}
 \end{align*}
 So we have shown (a), (b), and (c) are equivalent.
 
-\RED{*}: For the last step, since by \THM{2.1}, \(\RANGET\) is a subspace of \(W\), and has the same dimension with \(W\), by \THM{1.11}, \(\RANGET = W\), which implies \(\T\) is onto.
+\RED{*}: For the last step, since by \THM{2.1}, \(\RANGET\) is a subspace of \(\W\), and has the same dimension with \(\W\), by \THM{1.11}, \(\RANGET = \W\), which implies \(\T\) is onto.
 \end{proof}
 
 \begin{remark} \label{remark 2.1.10}
-We note that if \(V\) is \emph{not} finite-dimensional and \(\T : V \to V\) is linear, then \textbf{it does not follow that} one-to-one and onto are equivalent.
+We note that if \(\V\) is \emph{not} finite-dimensional and \(\T : \V \to \V\) is linear, then \textbf{it does not follow that} one-to-one and onto are equivalent.
 (See \EXEC{2.1.15}, \EXEC{2.1.16}, and \EXEC{2.1.21}.)
 
 Note that the \textbf{linearity} of \(\T\) in \THM{2.4} and \THM{2.5} is essential, for it is easy to construct examples of functions from \(\SET{R}\) into \(\SET{R}\) that are not one-to-one, but
@@ -604,12 +604,12 @@ One of the most important properties of a \LTRAN{} is that \textbf{it is complet
 This result, which follows from the next theorem and corollary, is used frequently throughout the book.
 
 \begin{theorem} \label{thm 2.6}
-Let \(V\) and \(W\) be vector spaces over \(F\), and suppose that \(\{ v_1, v_2, ..., v_n \}\) is a basis for \(V\).
-Then given any \(n\) vectors \(w_1, w_2, ..., w_n \in W\), there \textbf{exists exactly one} \LTRAN{} \(\T : V \to W\) such that \(\T(v_i) = w_i\) for \(i= 1, 2, ..., n\).
+Let \(\V\) and \(\W\) be vector spaces over \(F\), and suppose that \(\{ v_1, v_2, ..., v_n \}\) is a basis for \(\V\).
+Then given any \(n\) vectors \(w_1, w_2, ..., w_n \in \W\), there \textbf{exists exactly one} \LTRAN{} \(\T : \V \to \W\) such that \(\T(v_i) = w_i\) for \(i= 1, 2, ..., n\).
 \end{theorem}
 
 \begin{remark} \label{remark 2.1.12}
-The purpose of \THM{2.6} is that, if \(V\) and \(W\) are finite vector spaces, and given any \emph{basis} \(\{ v_1, v_2, ..., v_n \}\) for \(V\), and the ``wanted'' corresponding output \(\{ w_1, w_2, ..., w_n \}\) in \(W\), we \emph{can always find} a \LTRAN{} from \(V\) to \(W\) that satisfies the requirement.
+The purpose of \THM{2.6} is that, if \(\V\) and \(\W\) are finite vector spaces, and given any \emph{basis} \(\{ v_1, v_2, ..., v_n \}\) for \(\V\), and the ``wanted'' corresponding output \(\{ w_1, w_2, ..., w_n \}\) in \(\W\), we \emph{can always find} a \LTRAN{} from \(\V\) to \(\W\) that satisfies the requirement.
 Furthermore, the found \LTRAN{} \emph{is unique}.
 
 Hence we can just use a ``mapping'' \(v_1 \to w_1, v_1 \to w_2, ..., v_n \to w_n\) to \emph{identify} the one and only one \LTRAN{}, so this identification is \emph{well-defined}.
@@ -618,12 +618,12 @@ And that ultimately implies that every \LTRAN{} corresponds to a unique matrix.
 \end{remark}
 
 \begin{proof}
-Let \(\{ v_1, v_2, ..., v_n \}\) be a basis for \(V\), and let \(w_1, w_2, ..., w_n\) be vectors in \(W\).
+Let \(\{ v_1, v_2, ..., v_n \}\) be a basis for \(\V\), and let \(w_1, w_2, ..., w_n\) be vectors in \(\W\).
 
 We first prove the existence of \(\T\) such that \(\T\) is linear and \(\T(v_i) = w_i\) for \(i = 1, 2, ..., n\).
 
-So suppose arbitrary \(x \in V\).
-Then (since \(\{ v_1, ..., v_n \}\) is a basis for \(V\),)
+So suppose arbitrary \(x \in \V\).
+Then (since \(\{ v_1, ..., v_n \}\) is a basis for \(\V\),)
 \[
     x = \sum_{i = 1}^n a_i v_i,
 \]
@@ -633,16 +633,16 @@ Now we prove by construction by defining \(\T\), using this scalars \emph{that d
     \T : V \to W \text{ by } \T(x) = \T\bigg(\sum_{i = 1}^n a_i v_i\bigg) = \sum_{i = 1}^n a_i w_i. \MAROON{(1)}
 \]
 Then of course \(\T\) is really a \emph{well-defined} function, since
-\BLUE{(1)} it's output is a linear combination of \(W\)'s vectors, which must be in \(W\);
-\BLUE{(2)} And since for any \(x\) in \(V\), the corresponding scalars \(a_1, ..., a_n\) are \emph{unique}, hence the output of \(\T\) is also unique.
+\BLUE{(1)} it's output is a linear combination of \(\W\)'s vectors, which must be in \(\W\);
+\BLUE{(2)} And since for any \(x\) in \(\V\), the corresponding scalars \(a_1, ..., a_n\) are \emph{unique}, hence the output of \(\T\) is also unique.
 Also note that \MAROON{(1)} is \textbf{not} actually a ``formula'' with ``constant scalars'' \(a_1, ..., a_n\), since \(a_1, ..., a_n\) are determined by (or dependent on) the given \(x\), so they are ``dynamic''.
 
 Then we have to show (a) \(\T\) is linear; (b) \(\T(v_i) = w_i\) for all \(i = 1, ..., n\):
 \begin{enumerate}
 \item
 We will use \ATHM{2.1}(b) to show \(\T\) is linear.
-So suppose \(u, v \in V\), and \(d \in F\).
-Then (similarly as \(x \in V\),) we may write
+So suppose \(u, v \in \V\), and \(d \in F\).
+Then (similarly as \(x \in \V\),) we may write
 \[
     u = \sum_{i = 1}^n b_i v_i \text{ and } v = \sum_{i = 1}^n c_i v_i \MAROON{(2)}
 \]
@@ -678,9 +678,9 @@ Hence \(\T\) satisfies the two requirements, so the existent part is proved.
 Now we have to show \(\T\) is unique.
 So suppose \(\U\) is also linear such that \(\U(v_i) = w_i\) for \(i = 1, ..., n\).
 We have to show \(\U = \T\);
-that is, (by definition of function equality,) we have to show \(\forall x \in V, \U(x) = \T(x)\).
+that is, (by definition of function equality,) we have to show \(\forall x \in \V, \U(x) = \T(x)\).
 
-But for each \(x \in V\), where again we represent \(x = \sum_{i = 1}^n a_i v_i\) for unique scalars \(a_1, ..., a_n\) \MAROON{(4)},
+But for each \(x \in \V\), where again we represent \(x = \sum_{i = 1}^n a_i v_i\) for unique scalars \(a_1, ..., a_n\) \MAROON{(4)},
 \begin{align*}
     \U(x) & = \U\bigg(\sum_{i = 1}^n a_i v_i\bigg) & \text{by \MAROON{(4)}}\\
            & = \sum_{i = 1}^n a_i \U(v_i) & \text{since \(\U\) is linear} \\
@@ -696,8 +696,8 @@ There is \href{https://www.youtube.com/watch?v=gAlUekIYKLA&ab_channel=DrPeyam}{a
 \end{note}
 
 \begin{corollary} \label{corollary 2.6.1}
-\sloppy Let \(V\) and \(W\) be vector spaces, and suppose that \(V\) has a finite basis \(\{ v_1, v_2, ..., v_n \}\).
-If \(\U, \T : V \to W\) are linear and \(\U(v_i) = \T(v_i)\) for \(i = 1, 2, ..., n\), then \(\U = \T\).
+\sloppy Let \(\V\) and \(\W\) be vector spaces, and suppose that \(\V\) has a finite basis \(\{ v_1, v_2, ..., v_n \}\).
+If \(\U, \T : \V \to \W\) are linear and \(\U(v_i) = \T(v_i)\) for \(i = 1, 2, ..., n\), then \(\U = \T\).
 \end{corollary}
 
 \begin{proof}
