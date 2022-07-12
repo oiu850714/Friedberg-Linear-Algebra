@@ -282,7 +282,7 @@ Prove that \(A = \begin{pmatrix} B_1 & B_2 \\ O & B_3 \end{pmatrix}\) in the pro
 (Let \(\T, \W, \gamma, \beta, A, B_1\) be as in the proof of \THM{5.20}.)
 Note that for \(v \in \gamma\)
 \[
-    \T(v) = \T_W(v) \in W,
+    \T(v) = \T_W(v) \in \W,
 \]
 which means that \(\T(v) \in \W\) and can be written as linear combination of elements in \(\gamma\).
 Specifically, that means
@@ -667,7 +667,7 @@ Again, since we say \(\T\) is ``diagonalizable'', this implies the vector space 
 Suppose \(\T\) is diagonalizable.
 Then by \THM{5.10}, \(\V\) is the direct sum of the eigenspaces of \(\T\):
 \[
-    V = E_{\lambda_1} \oplus E_{\lambda_2} \oplus ... \oplus E_{\lambda_k}
+    \V = E_{\lambda_1} \oplus E_{\lambda_2} \oplus ... \oplus E_{\lambda_k}
 \]
 where \(\lambda_i\) are all distinct eigenvalues of \(\T\).
 
@@ -772,7 +772,7 @@ We require the following definition.
 Let \(\T\) be a linear operator on a vector space \(\V\), and let \(\W\) be a \(\T\)-invariant subspace of \(\V\).
 Define \(\Tover: \V/\W \to \V/\W\) by
 \[
-    \Tover(v + W) = \T(v) + W \quad \text{for any } v + W \in V/W. 
+    \Tover(v + \W) = \T(v) + \W \quad \text{for any } v +\ W \in \V/\W. 
 \]
 \end{additional definition}
 
@@ -879,7 +879,7 @@ Prove that \(\T\) is diagonalizable if and only if \(\V\) is the direct sum of \
 Let \(\T\) be a linear operator on a finite-dimensional vector space \(\V\), and let \(\W_1, \W_2, ..., \W_k\) be \(\T\)-invariant subspaces of \(\V\) such that \(v = \W_1 \oplus \W_2 \oplus ... \oplus \W_k\).
 Prove that
 \[
-    \det(\T) = \det(\T_{W_1}) \cdot \det(\T_{W_2}) \cdot \det(\T_{W_k}).
+    \det(\T) = \det(\T_{\W_1}) \cdot \det(\T_{\W_2}) \cdot \det(\T_{\W_k}).
 \]
 \end{exercise}
 

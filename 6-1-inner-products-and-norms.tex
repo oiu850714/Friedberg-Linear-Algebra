@@ -59,7 +59,7 @@ If \(r \le 0\), then \DEF{6.1}(d) would \emph{not} hold.
 
 \begin{example} \label{example 6.1.3}
 Let \(\V = \CONT([0, 1])\), the vector space of \emph{real-valued continuous functions} on \([0, 1]\).
-For \(f, g \in V\), define \(\LG f, g \RG = \int_0^1 f(t)g(t) dt\).
+For \(f, g \in \V\), define \(\LG f, g \RG = \int_0^1 f(t)g(t) dt\).
 Since the preceding \emph{integral is linear} in \(f\), \DEF{6.1}(a) and (b) are immediate, and (c) is trivial.
 (Again note that in this context (c) is only \(\LG f, g \RG = \LG g, f \RG\), and it's of course true since \(\int_0^1 f(t)g(t) dt = \int_0^1 g(t)f(t) dt\).)
 
@@ -100,7 +100,7 @@ The conjugate transpose of a matrix plays a \emph{very important role} in the re
 \end{remark}
 
 \begin{example} \label{example 6.1.5}
-Let \(\V = M_{n \X n}(F)\), and define \(\LG A, B \RG = \TRACE(B^* A)\) for \(A, B \in V\).
+Let \(\V = M_{n \X n}(F)\), and define \(\LG A, B \RG = \TRACE(B^* A)\) for \(A, B \in \V\).
 (Recall that the trace of a matrix \(A\) is defined by \(\TRACE(A) = \sum_{i = 1}^n A_{ii}\).)
 We verify that (a) and (d) of the definition of inner product hold and leave (b) and (c) to the reader. For this purpose, let \(A, B, C \in V\).
 Then

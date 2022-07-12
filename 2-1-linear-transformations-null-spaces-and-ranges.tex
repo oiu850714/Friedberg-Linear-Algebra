@@ -384,7 +384,7 @@ This balance between rank and nullity is made precise in the next theorem, appro
 Let \(\V\) and \(\W\) be vector spaces, and let \(\T : \V \to \W\) be linear.
 If \(\V\) is \emph{finite}-dimensional, then
 \[
-    \nullityT + \rankT = \dim(V).
+    \nullityT + \rankT = \dim(\V).
 \]
 \end{theorem}
 
@@ -517,7 +517,7 @@ Then the following are equivalent.
 \begin{proof}
 From the dimension theorem \THM{2.3}, we have
 \[
-    \nullityT + \rankT = \dim(V). \MAROON{(1)}
+    \nullityT + \rankT = \dim(\V). \MAROON{(1)}
 \]
 And we have
 \begin{align*}
@@ -630,7 +630,7 @@ Then (since \(\{ v_1, ..., v_n \}\) is a basis for \(\V\),)
 where \(a_1, ..., a_n\) are \textbf{unique} scalars.
 Now we prove by construction by defining \(\T\), using this scalars \emph{that depend on \(x\)}:
 \[
-    \T : V \to W \text{ by } \T(x) = \T\bigg(\sum_{i = 1}^n a_i v_i\bigg) = \sum_{i = 1}^n a_i w_i. \MAROON{(1)}
+    \T : \V \to \W \text{ by } \T(x) = \T\bigg(\sum_{i = 1}^n a_i v_i\bigg) = \sum_{i = 1}^n a_i w_i. \MAROON{(1)}
 \]
 Then of course \(\T\) is really a \emph{well-defined} function, since
 \BLUE{(1)} it's output is a linear combination of \(\W\)'s vectors, which must be in \(\W\);
