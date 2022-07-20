@@ -1,1 +1,424 @@
 \section{Normal and Self-Adjoint Operators} \label{sec 6.4}
+
+We have seen the importance of diagonalizable operators in \CH{5}.
+For an operator on a vector space \(\V\) to be diagonalizable, (by \THM{5.1}) it is necessary and sufficient for \(\V\) to contain a basis of eigenvectors for this operator.
+As \(\V\) is an inner product space in this chapter, \emph{it is reasonable to seek conditions that guarantee that \(\V\) has an \textbf{orthonormal} basis of eigenvectors}.
+A very important result that helps achieve our goal is Schur's theorem (\THM{6.14}).
+The formulation that follows is in terms of linear operators.
+The next section contains the more familiar matrix form.
+We begin with a lemma.
+
+\begin{note}
+小總結，這一節探討的是一個線性算子可用\textbf{標準正交基底}來對角化的充分必要條件，並且把複數內積空間跟實數內積空間分開討論。
+但這個對角化實際上比第五章來地嚴格。意思是說，就算有一個線性算子不符合這些充分必要條件，也不代表他不能被對角化，很多時候它可以被對角化，只是對應的基底不是正交的。
+\end{note}
+
+\begin{lemma} \label{lem 6.4}
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional inner product
+space \(\V\).
+If \(\T\) has an eigenvector, then so does \(\T^*\).
+\end{lemma}
+
+\begin{proof}
+Suppose that \(v\) is an eigenvector \textbf{of \(\T\)} with corresponding eigenvalue \(\lambda\);
+that is, \(\T(v) = \lambda v\) and hence \((\T - \lambda\ITRAN{})(v) = \OV\). \MAROON{(1)}
+Then for any \(x \in \V\),
+\begin{align*}
+    0 & = \LG \OV, x \RG & \text{by \THM{6.1}(c)} \\
+      & = \LG (\T - \lambda\ITRAN{})(v), x \RG & \text{by \MAROON{(1)}} \\
+      & = \LG v, (\T - \lambda\ITRAN{})^*(x) \RG & \text{by \THM{6.9}} \\
+      & = \LG v, (\T^* - \conjugatet{\lambda} \ITRAN{})(x) \RG, & \text{by \THM{6.11}(a)(b)(e)}
+\end{align*}
+hence \(v\) is orthogonal to the \emph{range} of \(\T^* - \conjugatet{\lambda} \ITRAN{}\), so by \DEF{6.7}, \(v \in \RANGE(\T^* - \conjugatet{\lambda} \ITRAN{})^{\perp}\).
+But since \(v \ne \OV\), so (since \(\RANGE(\T^* - \conjugatet{\lambda} \ITRAN{}) \cap \RANGE(\T^* - \conjugatet{\lambda} \ITRAN{})^{\perp} = \{ \OV \}\),) \(v \notin \RANGE(\T^* - \conjugatet{\lambda} \ITRAN{})\).
+Then this implies \(\T^* - \conjugatet{\lambda} \ITRAN{}\) is not onto, (since there exists a vector that is not in its range) hence (by \THM{2.5}) is not one-to-one.
+So there exists a nonzero vector \(u\) such that \(\T^* - \conjugatet{\lambda} \ITRAN{} (u) = \OV\), which implies \(\T^*(u) = \conjugatet{\lambda} u\), so \(u\) is an eigenvector of \(\T^*\) with corresponding eigenvalue \(\conjugatet{\lambda}\).
+\end{proof}
+
+Recall \DEF{5.14} that a subspace \(\W\) of \(\V\) is said to be \(\T\)-invariant if \(\T(\W)\) is contained in \(\W\).
+If \(\W\) is \(\T\)-invariant, we may define the restriction \(\T_\W : \W \to \W\) by \(\T_\W(x) = \T(x)\) for all \(x \in \W\).
+It is clear that \(\T_\W\) is a linear operator on \(\W\).
+Recall from \DEF{5.5} that a polynomial is said to \textbf{split} if it factors into \emph{linear} polynomials.
+
+\begin{theorem} [Schur] \label{thm 6.14}
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional inner product space \(\V\).
+Suppose that the \CPOLY{} of \(\T\) splits.
+Then there exists an \textbf{orthonormal} basis \(\gamma\) for \(\V\) such that the matrix \([\T]_{\gamma}\) is \textbf{upper triangular}.
+\end{theorem}
+
+\begin{proof}
+Since the \CPOLY{} of \(\T\) splits, by \EXEC{5.2.12}(a), there exists an ordered basis \(\beta = \{ w_1, w_2, ..., w_n \}\) for \(\V\) such that \([\T]_{\beta}\) is upper triangular.
+Now apply the Gram-Schmidt process (\THM{6.4}) to \(\beta\) to obtain an ortho\emph{gonal} basis \(\beta' = \{ v_1, v_2, ..., v_n \}\) for \(\V\).
+For each \(k\), \(1 \le k \le n\), let
+\[
+    S_k = \{ w_1, w_2, ..., w_k \} \quad \text{ and } \quad S'_k = \{ v_1, v_2, ..., v_k \}.
+\]
+As in the proof of \THM{6.4}, \(\spann(S_k) = \spann(S'_k)\) for all \(k\). \MAROON{(1)}
+By \EXEC{2.2.12}, (since \([\T]_{\beta}\) is upper triangular,) \(\T(w_k) \in \spann(S_k)\) for all \(k\). \MAROON{(2)}
+So by \MAROON{(1)(2)}, \(\T(v_k) \in \spann(S'_k)\) for all \(k\), and by \EXEC{2.2.12} again, \([\T]_{\beta'}\) is also upper triangular.
+Finally, let \(z_i = \frac{1}{\norm{z_i}} v_i\) for all \(1 \le i \le n\) and \(\gamma = \{ z_1, z_2, ..., z_n \}\).
+Then \(\gamma\) is an ortho\textbf{normal} basis for \(\V\), and \([\T]_{\gamma}\) is (of course still) upper triangular.
+\end{proof}
+
+\begin{proof} [\MAROON{Proof in the fourth edition}]
+The proof is by mathematical induction \textbf{on the dimension} \(n\) of \(\V\).
+The result is immediate if n = 1, since by definition an one-by-one matrix is upper triangular.
+
+So suppose that the result is true for linear operators on \((n - 1)\)-dimensional inner product spaces whose \CPOLY{} split, for some \(n > 1\).
+Now let \(\T\) be a linear operator on \(n\)-dimensional inner product space \(\V\) whose \CPOLY{} splits (hence \(\T\) has eigenvector(s)).
+Then by \LEM{6.4}, we can assume that \(\T^*\) has a \emph{unit} eigenvector \(z\).
+Suppose that \(\T^*(z) = \lambda z\) and that \(\W = \spann(\{ z \})\).
+
+We first show that \(\W^{\perp}\) is \(\T\)-invariant.
+So suppose \(y \in \W^{\perp}\), and suppose arbitrary \(x \in \W\), then
+\begin{align*}
+    \LG \T(y), x \RG & = \LG \T(y), cz \RG \text{\ for come \(c\)} & \text{since \(x \in \W = \spann(\{z\})\)} \\
+        & = \LG y, \T^*(cz) \RG & \text{by \THM{6.9}} \\
+        & = \LG y, c\T^*(z) \RG & \text{since \(\T^*\) is linear} \\
+        & = \LG y, c \lambda z \RG \\
+        & = \conjugatet{c \lambda} \LG y, z \RG & \text{by \THM{6.1}(b)} \\
+        & = \conjugatet{c \lambda} \cdot 0 = 0. & \text{since \(y \in \W^{\perp}\) and \(z \in \W\)}
+\end{align*}
+So by \DEF{6.7}, \(\T(y) \in \W^{\perp}\), hence \(\W^{\perp}\) is \(\T\)-invariant.
+By \THM{5.20} the \CPOLY{} of \(\T_{\W^{\perp}}\)
+\emph{divides} the \CPOLY{} of \(\T\) and hence splits.
+By \THM{6.7}(c), \(\dim(\W^{\perp}) = \dim(\V) - \dim(\W) = n - 1\), \emph{so we may apply the induction hypothesis} to \(\T_{\W^{\perp}}\) and obtain an orthonormal basis \(\gamma\) of \(\W^{\perp}\) such that \([\T_{\W^{\perp}}]_{\gamma}\) is upper triangular.
+Clearly, \(\beta = \gamma \cup \{ z \}\) is an orthonormal basis for \(\V\) such that \([\T]_{\beta}\) is upper triangular.
+\end{proof}
+
+We now return to our original goal of finding an orthonormal basis of eigenvectors of a linear operator \(\T\) on a finite-dimensional inner product space \(\V\).
+
+\begin{remark} \label{remark 6.4.1}
+Note that if such an orthonormal basis \(\beta\) exists, then (by \THM{6.10}) \([\T]_{\beta}\) is a diagonal matrix, and hence \([\T^*]_{\beta} = [\T]^*_{\beta}\) is \emph{also a diagonal} matrix.
+Because diagonal matrices (of course, trivially, obvious, by definition of matrix product) \emph{commute}, we conclude that \(\T\) and \(\T^*\) commute, since
+\begin{align*}
+    [\T\T^*]_{\beta} & = [\T]_{\beta}[\T^*]_{\beta} & \text{by \THM{2.11}} \\
+        & = [\T^*]_{\beta}[\T]_{\beta} & \text{since diagonal matrices commute} \\
+        & = [\T^*\T]_{\beta} & \text{by \THM{2.11}}
+\end{align*}
+Thus \emph{if there exists an orthonormal basis for \(\V\) consisting of eigenvectors of \(\T\), then \(\T\T^* = \T^*\T\)}.
+\end{remark}
+
+\begin{definition} \label{def 6.8}
+Let \(\V\) be an inner product space, and let \(\T\) be a linear operator on \(\V\).
+
+\BLUE{(1)} We say that \(\T\) is \textbf{normal} if \(\T\T^* = \T^*\T\).
+
+\BLUE{(2)} An \(n \X n\) real or complex matrix \(A\) is \textbf{normal} if \(AA^* = A^*A\).
+\end{definition}
+
+\begin{remark} \label{remark 6.4.2}
+It follows immediately from \THM{6.10} that \(\T\) is normal if and only if \([\T]_{\beta}\) is normal for any orthonormal basis \(\beta\).
+
+That is, given arbitrary orthonormal basis \(\beta\),
+\begin{align*}
+    & \T \text{ is normal} \iff \T\T^* = \T^*\T \\
+    \iff & [\T\T^*]_{\beta} = [\T^*\T]_{\beta} \\
+    \iff & [\T]_{\beta} [\T^*]_{\beta} = [\T^*]_{\beta} [\T]_{\beta} & \text{by \THM{2.11}} \\
+    \iff & [\T]_{\beta} ([\T]_{\beta})^* = ([\T]_{\beta})^* [\T]_{\beta} & \text{by \THM{6.10}} \\
+    \iff & [\T]_{\beta} \text{ is normal}
+\end{align*}
+\end{remark}
+
+\begin{note}
+\(\T\) 是正規算子，若且唯若存在一個標準正交基底\ \(\beta\) 使得\ \(\T\) 在\ \(\beta\) 的矩陣代表是正規矩陣。
+\end{note}
+
+\begin{example} \label{example 6.4.1}
+Let \(\T: \SET{R}^2 \to \SET{R}^2\) be \textbf{rotation} by \(\theta\), where \(0 < \theta < \pi\).
+The matrix representation of \(\T\) in the standard ordered basis is given by
+\[
+    A = \begin{pmatrix}
+        \cos \theta & -\sin \theta \\
+        \sin \theta & \cos \theta
+    \end{pmatrix}.
+\]
+Note that \(A A^* = I = A^* A\); so \(A\) is normal, and hence (by \RMK{6.4.2}), \(\T\), is normal.
+\end{example}
+
+\begin{remark} \label{remark 6.4.3}
+Geometrically, in \EXAMPLE{6.4.1}, \(A^*\) can be thought as a rotation matrix that rotates \emph{counterclockwise}.
+That is,
+\begin{align*}
+    A^* & = \begin{pmatrix}
+        \cos \theta & -\sin \theta \\
+        \sin \theta & \cos \theta
+    \end{pmatrix}^* \\
+    & = \begin{pmatrix}
+        \cos \theta & \sin \theta \\
+        -\sin \theta & \cos \theta
+    \end{pmatrix} & \text{by \DEF{6.2}} \\
+    & = \begin{pmatrix}
+        \cos (-\theta) & -\sin (-\theta) \\
+        \sin (-\theta) & \cos (-\theta)
+    \end{pmatrix} & \text{since \(\cos\), \(\sin\) are even and odd functions, respectively}
+\end{align*}
+\end{remark}
+
+\begin{example} \label{example 6.4.2}
+Suppose that \(A\) is a real \emph{skew-symmetric} matrix; that is, \(A^\top = -A\).
+Then \(A\) is normal because both \(A A^\top\) and \(A^\top A\) are equal to \(-A^2\).
+\end{example}
+
+Clearly, the operator \(\T\) in \EXAMPLE{6.4.1} does \emph{not} even possess one eigenvector (if the field is considered to be \(\SET{R}\)).
+So in the case of a \textbf{real} inner product space, we see that \emph{normality is not sufficient to guarantee an orthonormal basis of eigenvectors}.
+All is not lost, however.
+We show that normality \textbf{suffices} if \(\V\) is a \textbf{complex} inner product space.
+Before we prove the promised result for normal operators, we need some general properties of normal operators.
+
+\begin{theorem} \label{thm 6.15}
+Let \(\V\) be an inner product space, and let \(\T\) be a \textbf{normal} operator on \(\V\).
+(We do not say that \(\V\) is finite-dimensional.)
+Then the Following statements are true.
+\begin{enumerate}
+\item \(\norm{\T(x)} = \norm{\T^*(x)}\) for all \(x \in \V\).
+\item \(\T - c\ITRAN{}\) is normal for every \(c \in F\).
+\item If \(x\) is an eigenvector of \(\T\) corresponding to eigenvalue \(\lambda\), then \(x\) is also an eigenvector of \(\T^*\) corresponding to eigenvalue \(\conjugatet{\lambda}\).
+That is, if \(\T(x) = \lambda x\), then \(\T^*(x) = \conjugatet{\lambda}x\).
+\item If \(\lambda_1\) and \(\lambda_2\) are \emph{distinct} eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\), then \(x_1\) and \(x_2\) are orthogonal.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item For any \(x \in \V\), we have
+\begin{align*}
+    \norm{\T(x)}^2 & = \LG \T(x), \T(x) \RG \\
+        & = \LG \T^*(\T(x)), x \RG = \LG \T^*\T(x), x \RG & \text{by \THM{6.9}} \\
+        & = \LG \T\T^*(x), x \RG = \LG \T(\T^*(x)), x \RG & \text{since \(\T\) is normal} \\
+        & = \LG \T^*(x), \T^*(x) \RG & \text{by \THM{6.9}} \\
+        & = \norm{\T^*(x)}^2.
+\end{align*}
+
+\item We have
+\begin{align*}
+    (\T - c\ITRAN{})(\T - c\ITRAN{})^*
+        & = (\T - c\ITRAN{})(\T^* - \conjugatet{c}\ITRAN{}^*) & \text{by \THM{6.11}(a)(b)} \\
+        & = (\T - c\ITRAN{})(\T^* - \conjugatet{c}\ITRAN{}) & \text{by \THM{6.11}(e)} \\
+        & = \T\T^* - c\ITRAN{}\T^* - \T\conjugatet{c}\ITRAN{} + \conjugatet{c}c\ITRAN{}^2 & \text{expand} \\
+        & = \T\T^* - c\T^* - \conjugatet{c}\T + \abs{c}^2\ITRAN{} \quad \quad \MAROON{(b.1)} & \text{simplify}
+\end{align*}
+and 
+\begin{align*}
+    (\T - c\ITRAN{})^*(\T - c\ITRAN{})
+        & = (\T^* - \conjugatet{c}\ITRAN{})(\T - c\ITRAN{}) & \text{just use previous case} \\
+        & = \T^*\T - \conjugatet{c}\ITRAN{}\T - \T^*c\ITRAN{} + \conjugatet{c}c\ITRAN{}^2 & \text{expand} \\
+        & = \T\T^* - \MAROON{\conjugatet{c}\T} - \RED{c\T^*} + \abs{c}^2\ITRAN{} & \text{simplify} \\
+        & = \T\T^* - \RED{c\T^*} - \MAROON{\conjugatet{c}\T} + \abs{c}^2\ITRAN{} = \MAROON{(b.1)} & \text{of course}
+\end{align*}
+
+\item Suppose that \(\T(x) = \lambda x\) for some \(x \in \V\).
+Let \(\U = \T - \lambda \ITRAN{}\) \MAROON{(c.1)}.
+Then \(\U(x) = \T(x) - \lambda \ITRAN{}(x) = \OV\) \MAROON{(c.2)}, and \(\U\) is normal by part (b).
+Thus
+\begin{align*}
+    0 & = \norm{\OV} = \norm{\U(x)} & \text{by \MAROON{(c.2)}} \\
+      & = \norm{\U^*(x)} & \text{since \(\U\) is normal, and by part(a)} \\
+      & = \norm{(\T - \lambda \ITRAN{})^*(x)} & \text{by \MAROON{(c.1)}} \\
+      & = \norm{(\T^* - \conjugatet{\lambda} \ITRAN{})(x)} & \text{just use \THM{6.11}} \\
+      & = \norm{\T^*(x) - \conjugatet{\lambda}(x)}, & \text{of course}
+\end{align*}
+So \(\T^*(x) - \conjugatet{\lambda}(x) = \OV\) hence \(\T^*(x) = \conjugatet{\lambda}(x)\).
+So in particular, if \(x\) is nonzero, that is, \(x\) is an eigenvector of \(\T\) corresponding to eigenvalue \(\lambda\), then \(x\) is an eigenvector of \(\T^*\) corresponding to eigenvalue \(\conjugatet{\lambda}\).
+
+\item Let \(\lambda_1\) and \(\lambda_2\) be \emph{distinct} eigenvalues of \(\T\) with corresponding eigenvectors \(x_1\) and \(x_2\).
+Then we have
+\begin{align*}
+    \lambda_1 \LG x_1, x_2 \RG & = \LG \lambda_1 x_1, x_2 \RG & \text{by \DEF{6.1}(a)} \\
+        & = \LG \T(x_1), x_2 \RG & \text{by supposition} \\
+        & = \LG x_1, \T^*(x_2) \RG & \text{by \THM{6.9}} \\
+        & = \LG x_1, \conjugatet{\lambda_2} x_2 \RG & \text{by part(c), notice the conjugate} \\
+        & = \conjugatet{\conjugatet{\lambda_2}} \LG x_1, x_2 \RG & \text{by \THM{6.1}(b)} \\
+        & = \lambda_2 \LG x_1, x_2 \RG, & \text{by \THM{d.2}(a)}
+\end{align*}
+which implies \((\lambda_1 - \lambda_2) \LG x_1, x_2 \RG = 0\).
+Since \(\lambda_1 \ne \lambda_2\), we conclude that \(\LG x_1, x_2 \RG = 0\), that is, \(x_1, x_2\) are orthogonal.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem} \label{thm 6.16}
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional \textbf{complex} inner product space \(\V\).
+Then \(\T\) is \textbf{normal} if and only if there exists an
+\textbf{orthonormal basis} for \(\V\) consisting of \textbf{eigenvectors} of \(\T\).
+\end{theorem}
+
+\begin{proof}
+Suppose that \(\T\) is normal.
+Since \(\V\) is over \(\SET{C}\), by the fundamental theorem of algebra (\THM{d.4}), the \CPOLY{} of \(\T\) splits.
+So we may apply Schur's theorem \THM{6.14} to obtain an \emph{orthonormal} basis \(\beta = \{ v_1, v_2, ..., v_n \}\) for \(\V\) such that \([\T]_{\beta} = A\) is upper triangular.
+
+Now We know that \(v_1\) is an eigenvector of \(\T\) because \(A\) is upper triangular.
+Assume that \(v_1, v_2, ..., v_{k - 1}\) are eigenvectors of \(\T\) for some \(k > 1\).
+We claim that \(v_k\) is also an eigenvector of \(\T\).
+It then follows by mathematical induction on \(k\) that all of the \(v_i\)'s are eigenvectors of \(\T\).
+Consider any \(j < k\), and let \(\lambda_j\) denote the eigenvalue of \(\T\) corresponding to \(v_j\).
+Since \(\T\) is normal, by \THM{6.15}(c), \(\T^*(v_j) = \conjugatet{\lambda_j} v_j\). \MAROON{(1)}
+Since \(A\) is upper triangular,
+\begin{align*}
+    \T(v_k) & = A_{1k} v_1 + A_{2k} v_2 + ... + A_{jk} v_j + ... + A_{kk}v_k + 0 \cdot v_{k + 1} + ... + 0 \cdot v_{n} \\
+    & = A_{1k} v_1 + A_{2k} v_2 + ... + A_{jk} v_j + ... + A_{kk}v_k. \MAROON{(2)}
+\end{align*}
+Furthermore, by the \CORO{6.5.1}, since \(\beta\) is orthonormal,
+\begin{align*}
+    A_{jk} & = \LG \T(v_k), v_j \RG & \text{by \CORO{6.5.1}} \\
+        & = \LG v_k, \T^*(v_j) \RG & \text{by \THM{6.9}} \\
+        & = \LG v_k, \conjugatet{\lambda_j} v_j \RG & \text{by \MAROON{(1)}} \\
+        & = \conjugatet{\conjugatet{\lambda_j}} \LG v_j, v_k \RG = \lambda_j \LG v_j, v_k \RG & \text{by \THM{6.1}(b)} \\
+        & = \lambda_j \cdot 0 = 0. & \text{since \(v_j\)'s are orthonormal}
+\end{align*}
+So \(A_{jk} = 0\) for all \(j < k\), hence it follows from \MAROON{(2)} that \(\T(v_k) = A_{kk} v_k\), and hence \(v_k\) is an eigenvector of \(\T\).
+So by induction, all the vectors in \(\beta\) are eigenvectors of \(\T\).
+
+The converse was already proved in \RMK{6.4.1}.
+\end{proof}
+
+\begin{remark} \label{remark 6.4.4}
+Interestingly, as the next example shows, \THM{6.16} does \textbf{not} extend to \textbf{infinite}-dimensional \textbf{complex} inner product spaces.
+\end{remark}
+
+\begin{example} \label{example 6.4.3}
+Consider the inner product space \(\textsf{H}\) with the orthonormal set \(S\) from \EXAMPLE{6.1.9}.
+Let \(\V = \spann(S)\), and let \(\T\) and \(\U\) be the linear operators on \(\V\) defined by \(\T(f) = f_1 f\) and \(\U(f) = f_{-1} f\).
+Then by law of (complex) exponents,
+\[
+  \T(f_n)= f_{n + 1} \quad \text{ and } \quad \U(f_n) = f_{n-1} \quad \MAROON{(1)}
+\]
+for \emph{all} integers \(n\).
+Thus
+\begin{align*}
+    \LG \T(f_m), f_n \RG & = \LG f_{m + 1}, f_n \RG & \text{by \MAROON{(1)}} \\
+        & = \delta_{(m + 1), n} & \text{since \(S\) is orthonormal} \\
+        & = \delta_{m, (n -1)} & \text{need to show, but trivial} \\
+        & = \LG f_m, f_{n - 1} \RG & \text{again since \(S\) is orthonormal} \\
+        & = \LG f_m, \U(f_n) \RG. & \text{by \MAROON{(1)}}
+\end{align*}
+It follows that \(\U = \T^*\).
+Furthermore, by \MAROON{(1)}, it immediately follows that \(\T\T^* = \ITRAN{} = \T^*\T\); so \(\T\) is normal.
+
+Now we show that \(\T\) has \textbf{no} eigenvectors.
+For the sake of contradiction, suppose that \(f\) is an eigenvector of \(\T\), say, \(\T(f) = \lambda f\) for some \(\lambda\). \MAROON{(2)}
+Since \(\V\) equals the span of \(S\), we may write \(f\) as a \emph{finite} linear combination of vectors in \(S\).
+That is, without loss of generality, there exist integer \(n, m\) (as lower bound and upper bound for the indices of vectors we pick) such that \(n \le m\) and
+\[
+    f = \sum_{i = n}^m a_i f_i, \quad \text{ where } a_m \ne 0. \quad \quad \MAROON{(3)}
+\]
+In particular,
+\begin{align*}
+    \lambda \sum_{i = n}^m a_i f_i & = \lambda f & \text{by \MAROON{(3)}} \\
+        & = \T(f) & \text{by \MAROON{(2)}} \\
+        & = \T \left( \sum_{i = n}^m a_i f_i \right) & \text{by \MAROON{(3)}} \\
+        & = \sum_{i = n}^m a_i \T(f_i) & \text{since \(\T\) is linear} \\
+        & = \sum_{i = 1}^m a_i f_{i + 1} & \text{by \MAROON{(1)}}
+\end{align*}
+So \(\lambda \sum_{i = n}^m a_i f_i = \sum_{i = 1}^m a_i f_{i + 1}\).
+Since \(a_m \ne 0\), from this equation, by moving \emph{all but the last} terms from the right side to the left side, we can write \(f_{m + 1}\) as a linear combination of \(f_n, f_{n + 1}, ..., f_m\).
+But this is a \textbf{contradiction} because \(S\) is \LID{}.
+\end{example}
+
+\begin{remark} \label{remark 6.4.5}
+\EXAMPLE{6.4.1} illustrates that \emph{normality is not sufficient} to guarantee the existence of an orthonormal basis of eigenvectors for \textbf{real} inner product spaces.
+For real inner product spaces, we must \emph{replace normality by the stronger condition} \RED{that \(\T = \T^*\)} in order to guarantee such a basis.
+\end{remark}
+
+\begin{definition} \label{def 6.9}
+Let \(\T\) be a linear operator on an inner product space \(\V\).
+We say that \(\T\) is \textbf{self-adjoint} (or \textbf{Hermitian}) if \(\T = \T^*\).
+An \(n \X n\) real or complex matrix \(A\) is \textbf{self-adjoint} (or \textbf{Hermitian}) if \(A = A^*\).
+\end{definition}
+
+\begin{remark} \label{remark 6.4.6}
+It follows immediately that if \(\beta\) is an orthonormal basis, then (using \THM{6.10}) \(\T\) is self-adjoint if and only if \([\T]_{\beta}\) is self-adjoint.
+For \textbf{real} matrices \(A\), this condition reduces to the requirement that \(A\) be \emph{symmetric}.
+\end{remark}
+
+\begin{remark} \label{remark 6.4.7}
+Before we state our main result for self-adjoint operators, we need some preliminary work.
+By definition, a linear operator on a real inner product space \emph{has only real eigenvalues}.
+The lemma that follows shows that \emph{the same can be said} for self-adjoint operators on a \textbf{complex} inner product space.
+Similarly, the \CPOLY{} of every linear operator on a \textbf{complex} inner product space splits, and \emph{the same is true} for \textbf{self-adjoint} operators on a \textbf{real} inner product space.
+\end{remark}
+
+\begin{note}
+矩陣看成在複數，則特徵多項式一定\ split。
+矩陣若看成在實數，但是矩陣本身\ self-adjoint，則特徵多項式也一定\ split，其中根據定義，分解後得到的根，也就是\ eigenvalues，也是實數。
+\end{note}
+
+\begin{lemma} \label{lem 6.5}
+Let \(\T\) be a \textbf{self-adjoint} operator on a \emph{finite}-dimensional inner product space \(\V\).
+Then
+\begin{enumerate}
+\item Every eigenvalue of \(\T\) is \textbf{real} (even though the inner product space is on complex field).
+\item Suppose that \(\V\) is a \textbf{\RED{real}} inner product space.
+Then the \CPOLY{} of \(\T\) splits (over \(\SET{R}\)).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Suppose that \(\T(x) = \lambda x\) for \(x \ne \OV\).
+Because a self-adjoint operator is (of course by definition) also normal, we can apply \THM{6.15}(c) to obtain
+\begin{align*}
+    \lambda x & = \T(x) \\
+        & = \T^*(x) & \text{since \(\T\) is self-adjoint} \\
+        & = \conjugatet{\lambda} x, & \text{by \THM{6.15}(c)}
+\end{align*}
+which implies \(\lambda = \conjugatet{\lambda}\);
+that is, (by \THM{d.2}(e)), \(\lambda\) is real.
+
+\item Let \(n = \dim(\V)\), \(\beta\) be an \emph{orthonormal} basis for \(\V\), and \(A = [\T]_{\beta}\).
+Then (by \RMK{6.4.6}) \(A\) is self-adjoint.
+Let \(\T_A\) be the linear operator \RED{on \(\SET{C}^n\)} defined by \(\T_A(x) = Ax\) for all \(x \in \SET{C}^n\).
+Because (by \THM{2.15}(a)) \([\T_A]_{\gamma} = A\), where \(\gamma\) is the standard ordered (orthonormal) basis for \(\SET{C}^n\), (by \RMK{6.4.6} again) \(\T_A\) is also self-adjoint.
+So, by part(a), the eigenvalues of \(\T_A\) are \textbf{real}.
+By the fundamental theorem of algebra, the
+\CPOLY{} of \(\T_A\) splits (over \(\SET{C}\)) into factors of the form \(t - \lambda\).
+\emph{But since each \(\lambda\) is real}, the \CPOLY{} splits \RED{over \(\SET{R}\)}.
+But \(\T_A\) (by \DEF{5.4}) has the same \CPOLY{} as \(A\), which (again by \DEF{5.4}) has the same \CPOLY{} as \(\T\).
+Therefore the \CPOLY{} of \(\T\) splits (over \(\SET{R}\)).
+\end{enumerate}
+\end{proof}
+
+We are now able to establish one of the major results of this chapter.
+
+\begin{theorem} \label{thm 6.17}
+Let \(\T\) be a linear operator on a \emph{finite}-dimensional \textbf{real} inner product space \(\V\).
+Then \(\T\) is \textbf{self-adjoint} if and only if there exists an \textbf{orthonormal} basis \(\beta\) for \(\V\) \textbf{consisting of eigenvectors} of \(\T\).
+\end{theorem}
+
+\begin{proof}
+Suppose that \(\T\) is self-adjoint.
+By \LEM{6.5}(b), the \CPOLY{} of \(\T\) \emph{splits} (over \(\SET{R}\)),
+so we may apply Schur's theorem(\THM{6.14}) to obtain an \emph{orthonormal} basis \(\beta\) for \(\V\) such that the matrix \(A = [\T]_{\beta}\) is upper triangular.
+But
+\begin{align*}
+    A^* & = ([\T]_{\beta})^* = [\T^*]_{\beta} & \text{by \THM{6.10}} \\
+        & = [\T]_{\beta} & \text{since \(\T\) is self-adjoint} \\
+        & = A,
+\end{align*}
+which implies \(A\) and \(A^*\) are both upper triangular.
+But (trivially) that only happens when \(A\) is in fact a diagonal matrix.
+Thus \(\beta\) must consist of eigenvectors of \(\T\).
+
+Now suppose there exists a basis \(\beta\) for \(\V\) (over \(\SET{R}\)) such that it is orthonormal and consists of eigenvectors of \(\T\).
+Then in particular, \(A = [\T]_{\beta}\) \MAROON{(1)} is a diagonal matrix, and the diagonal entries, by \CH{5}, are eigenvalues of \(\T\), which implies \emph{they must be real numbers}, hence we have \(A^* = A\). \MAROON{(2)}
+But that implies
+\begin{align*}
+    [\T^*]_{\beta} & = ([\T]_{\beta})^* & \text{by \THM{6.10}} \\
+        & = A^* & \text{by \MAROON{(1)}} \\
+        & = A & \text{by \MAROON{(2)}} \\
+        & = [\T]_{\beta}, & \text{by \MAROON{(1)} again}
+\end{align*}
+which implies \(\T^* = \T\), hence \(\T\) is self-adjoint.
+\end{proof}
+
+\begin{example} \label{example 6.4.4}
+As we noted earlier, \emph{real} symmetric matrices are self-adjoint, and self-adjoint matrices are normal.
+The following matrix \(A\) is \emph{complex} and symmetric:
+\[
+    A = \begin{pmatrix} \iu & \iu \\ \iu & 1 \end{pmatrix} \quad \text{ and } \quad A^* = \begin{pmatrix} -\iu & -\iu \\ -\iu & 1 \end{pmatrix}.
+\]
+But \(A\) is \emph{not} normal, because \((AA^*)_{12} = 1 + \iu\) and \((A^*A)_{12} = 1 - \iu\).
+Therefore complex symmetric matrices need not be normal.
+\end{example}

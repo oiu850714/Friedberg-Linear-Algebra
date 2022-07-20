@@ -9,6 +9,7 @@
 \usepackage{dirtytalk}
 \usepackage{array}
 \usepackage{blkarray} % For giving label on particular row or column of a matrix. See https://tex.stackexchange.com/questions/59517/label-rows-of-a-matrix-by-characters
+\usepackage{cancel} % See https://tex.stackexchange.com/questions/23711/strikethrough-text
 
 
 \usepackage[dvipsnames]{xcolor}
@@ -137,17 +138,17 @@
 \newcommand{\POLYCINF}{\textsf{P}(\SET{C})}
 
 \newcommand{\me}{\mathrm{e}}
-\newcommand{\NULL}{\mathrm{N}}
+\newcommand{\NULL}{\textsf{N}}
 \newcommand{\T}{\textsf{T}}
 \newcommand{\U}{\textsf{U}}
 \newcommand{\LMTRAN}{\textsf{L}}
-\newcommand{\NULLT}{\textsf{N(T)}}
-\newcommand{\RANGE}{\mathrm{R}}
-\newcommand{\RANGET}{\textsf{R(T)}}
+\newcommand{\NULLT}{\textsf{N}(\T)}
+\newcommand{\RANGE}{\textsf{R}}
+\newcommand{\RANGET}{\textsf{R}(\T)}
 \newcommand{\LDP}{linearly dependent}
 \newcommand{\LID}{linearly independent}
 \newcommand{\LTRAN}{linear transformation}
-\newcommand{\nullity}{\textsf{nullity}}
+\newcommand{\nullity}{\mathrm{nullity}}
 \newcommand{\nullityT}{\nullity(\T)}
 \newcommand{\rank}{\mathrm{rank}}
 \newcommand{\rankT}{\rank(\T)}

@@ -806,12 +806,12 @@ Let \(\V\) be a vector space, and let \(\T : \V \to \V\) be linear.
 that is, \(\T(\W) \subseteq \W\).
 
 \BLUE{(2)} If \(\W\) is \(\T\)-invariant, we define the \textbf{restriction of \(\T\) on \(\W\)} to
-be the function \(\T_W : \GREEN{\W} \to \BLUE{\W}\) defined by \(\T_W(x) = \T(x)\) for all \(x \in \GREEN{\W}\).
+be the function \(\T_\W : \GREEN{\W} \to \BLUE{\W}\) defined by \(\T_\W(x) = \T(x)\) for all \(x \in \GREEN{\W}\).
 \end{additional definition}
 
 \begin{note}
 Only if \(\W\) is \(\T\)-is invariant makes the definition of \(\T\)-restriction well-defined.
-Otherwise there exists \(w \in \GREEN{\W}\) such that \(\T(w) \notin \BLUE{\W}\), which makes \(\T_W\) not well-defined(\(\T_W(w) = \T(w)\) does not exist in the codomain \(\BLUE{\W}\)).
+Otherwise there exists \(w \in \GREEN{\W}\) such that \(\T(w) \notin \BLUE{\W}\), which makes \(\T_\W\) not well-defined(\(\T_\W(w) = \T(w)\) does not exist in the codomain \(\BLUE{\W}\)).
 \end{note}
 
 \begin{note}
@@ -853,28 +853,28 @@ Prove that the subspaces \(\{ \OV \}, \V, \RANGET\), and \(\NULLT\) are all \(\T
 \end{proof}
 
 \begin{exercise} \label{exercise 2.1.30}
-If \(\W\) is \(\T\)-invariant, prove that \(\T_W\) is linear.
+If \(\W\) is \(\T\)-invariant, prove that \(\T_\W\) is linear.
 \end{exercise}
 
 \begin{note}
-If \(\W\) is not \(\T\)-invariant, then \(\T_W\) is not even well-defined.
-What the exercise wants to say is, if \(\W\) is \(\T\)-invariant, then \(\T_W\) is not only well-defined function, but also linear.
+If \(\W\) is not \(\T\)-invariant, then \(\T_\W\) is not even well-defined.
+What the exercise wants to say is, if \(\W\) is \(\T\)-invariant, then \(\T_\W\) is not only well-defined function, but also linear.
 \end{note}
 
 \begin{proof}
 Suppose \(\W\) is \(\T\)-invariant.
 Then for any \(u, v \in \W\) and scalar \(c\), of course \(cu + v \in \W\), and
 \begin{align*}
-    \T_W(cu + v) & = \T(cu + v) & \text{by \ADEF{2.3}(2)} \\
+    \T_\W(cu + v) & = \T(cu + v) & \text{by \ADEF{2.3}(2)} \\
                  & = c\T(u) + \T(v) & \text{since \(\T\) is linear} \\
-                 & = c\T_W(u) + \T_W(v) & \text{by \ADEF{2.3}(2)}
+                 & = c\T_\W(u) + \T_\W(v) & \text{by \ADEF{2.3}(2)}
 \end{align*}
-Hence by \ATHM{2.1}(b), \(\T_W\) is linear.
+Hence by \ATHM{2.1}(b), \(\T_\W\) is linear.
 \end{proof}
 
 \begin{exercise} \label{exercise 2.1.31}
 Suppose that \(\T\) is the projection on \(\W\) along some subspace \(\W'\).
-Prove that \(\W\) is \(\T\)-invariant and that \(\T_W = \ITRANW\).
+Prove that \(\W\) is \(\T\)-invariant and that \(\T_\W = \ITRANW\).
 \end{exercise}
 
 \begin{proof}
@@ -882,11 +882,11 @@ By \EXEC{2.1.27}(b), \(\W = \RANGET\), and by \EXEC{2.1.29}, \(\RANGET\) is \(\T
 
 And for arbitrary \(w \in \W\), \(w = \BLUE{w} + \OV\) \MAROON{(1)} where \(\BLUE{w} \in \W\) and \(\OV \in \W'\), and
 \begin{align*}
-    \T_W(w) & = \T(w) & \text{by \ADEF{2.3}(b)} \\
+    \T_\W(w) & = \T(w) & \text{by \ADEF{2.3}(b)} \\
             & = \T(\BLUE{w} + \OV) & \text{by \MAROON{(1)}} \\
             & = \BLUE{w} & \text{since \(\T\) is a projection on \(\W\) along \(\W'\)}
 \end{align*}
-Hence \(\T_W\) is equal to the identity transformation (from \(\W\) to \(\W\)), \(\ITRANW\).
+Hence \(\T_\W\) is equal to the identity transformation (from \(\W\) to \(\W\)), \(\ITRANW\).
 \end{proof}
 
 \begin{exercise} \label{exercise 2.1.32}
@@ -946,7 +946,7 @@ Suppose that \(\V = \RANGET \oplus \W\) and \(\W\) is \(\T\)-invariant.
 
 \begin{exercise} \label{exercise 2.1.33}
 Suppose that \(\W\) is \(\T\)-invariant.
-Prove that \(\NULL(\T_W) = \NULLT \cap \W\) and \(\RANGE(\T_W) = \T(\W)\).
+Prove that \(\NULL(\T_\W) = \NULLT \cap \W\) and \(\RANGE(\T_\W) = \T(\W)\).
 \end{exercise}
 
 \begin{note}
@@ -955,42 +955,42 @@ This exercise shows that we can represent the null space and the range of the re
 
 \begin{proof} We prove the two set equalities by splitting into four set inclusions:
 
-\(\NULL(\T_W) \subseteq \NULLT \cap \W\):
-Suppose arbitrary \(w \in \NULL(\T_W)\), we have to show \(w \in \NULLT \cap \W\).
-Since \(w \in \NULL(\T_W)\), that just implies \(w\) is an element of the domain of \(\T_W\), that is, \(w \in \W\).
+\(\NULL(\T_\W) \subseteq \NULLT \cap \W\):
+Suppose arbitrary \(w \in \NULL(\T_\W)\), we have to show \(w \in \NULLT \cap \W\).
+Since \(w \in \NULL(\T_\W)\), that just implies \(w\) is an element of the domain of \(\T_\W\), that is, \(w \in \W\).
 And
 \begin{align*}
-             & w \in \NULL(\T_W) \\
-    \implies & \T_W(w) = \OV & \text{by def of null space} \\
-    \implies & \T(w) = \OV & \text{since \(\T_W(w) = \T(w)\)} \\
+             & w \in \NULL(\T_\W) \\
+    \implies & \T_\W(w) = \OV & \text{by def of null space} \\
+    \implies & \T(w) = \OV & \text{since \(\T_\W(w) = \T(w)\)} \\
     \implies & w \in \NULLT. & \text{by def of null space}
 \end{align*}
 So we have \(w \in \W\) and \(w \in \NULLT\), in particular \(w \in \W \cap \NULLT\), as desired.
 
-\(\NULLT \cap \W \subseteq \NULL(\T_W)\):
-Suppose arbitrary \(w \in \NULLT \cap \W\), we have to show \(w \in \NULL(\T_W)\).
+\(\NULLT \cap \W \subseteq \NULL(\T_\W)\):
+Suppose arbitrary \(w \in \NULLT \cap \W\), we have to show \(w \in \NULL(\T_\W)\).
 In particular \(w \in \NULLT\), so \(\T(w) = \OV\).
-And in particular, \(w \in \W\), so \(\T_W(w) = \T(w)\), that is \(\T_W(w) = \OV\).
-So by definition of null space, \(w \in \NULL(\T_W)\), as desired.
+And in particular, \(w \in \W\), so \(\T_\W(w) = \T(w)\), that is \(\T_\W(w) = \OV\).
+So by definition of null space, \(w \in \NULL(\T_\W)\), as desired.
 
-\(\RANGE(\T_W) \subseteq \T(\W)\):
-Suppose arbitrary \(w \in \RANGE(\T_W)\), we have to show \(w \in \T(\W)\).
+\(\RANGE(\T_\W) \subseteq \T(\W)\):
+Suppose arbitrary \(w \in \RANGE(\T_\W)\), we have to show \(w \in \T(\W)\).
 Then
 \begin{align*}
-             & w \in \RANGE(\T_W) \\
-    \implies & \exists v \in W, \T_W(v) = w & \text{by def of range} \\
-    \implies & \exists v \in \W, \T(v) = w & \text{since \(\T_W(v) = \T(v)\)},
+             & w \in \RANGE(\T_\W) \\
+    \implies & \exists v \in W, \T_\W(v) = w & \text{by def of range} \\
+    \implies & \exists v \in \W, \T(v) = w & \text{since \(\T_\W(v) = \T(v)\)},
 \end{align*}
 so we have found \(v \in \W\) such that \(\T(v) = w\), hence \(w \in \T(\W)\), as desired.
 
-\(\T(\W) \subseteq \RANGE(\T_W)\):
-Suppose arbitrary \(w \in \T(\W)\), we have to show \(w \in \RANGE(\T_W)\).
+\(\T(\W) \subseteq \RANGE(\T_\W)\):
+Suppose arbitrary \(w \in \T(\W)\), we have to show \(w \in \RANGE(\T_\W)\).
 Then
 \begin{align*}
              & w \in \T(W) \\
     \implies & \exists v \in \W, \T(v) = w & \text{by def of \(\T(\W)\)} \\
-    \implies & \exists v \in \W, \T_W(v) = w & \text{since \(v \in \W\) and \(\T_W(v) = \T(v)\)} \\
-    \implies & w \in \RANGE(\T_W) & \text{by def of range}
+    \implies & \exists v \in \W, \T_\W(v) = w & \text{since \(v \in \W\) and \(\T_\W(v) = \T(v)\)} \\
+    \implies & w \in \RANGE(\T_\W) & \text{by def of range}
 \end{align*}
 as desired.
 \end{proof}
@@ -1456,9 +1456,9 @@ Then
 
 \BLUE{(1)}: \EXEC{2.1.29}: \(\{ \OV \}, \V, \RANGET, \NULLT\) are all \(\T\)-invariant.
 
-\BLUE{(2)}: \EXEC{2.1.30}: If \(\W\) is \(\T\)-invariant, then \(\T_W\) is linear.
+\BLUE{(2)}: \EXEC{2.1.30}: If \(\W\) is \(\T\)-invariant, then \(\T_\W\) is linear.
 
-\BLUE{(3)} \EXEC{2.1.31}: If \(\T\) is the projection on \(\W\) along some subspace \(\W'\), then \(\W\) is \(\T\)-invariant and that \(\T_W = \ITRANW\).
+\BLUE{(3)} \EXEC{2.1.31}: If \(\T\) is the projection on \(\W\) along some subspace \(\W'\), then \(\W\) is \(\T\)-invariant and that \(\T_\W = \ITRANW\).
 
 \EXEC{2.1.32}: (\RED{Warning}: we do not say \(\T\) is a projection.)
 If \(\V = \RANGET \oplus \W\) and \(\W\) is \(\T\)-invariant, then
@@ -1472,7 +1472,7 @@ If \(\V = \RANGET \oplus \W\) and \(\W\) is \(\T\)-invariant, then
 \EXEC{2.1.33}
 
 \BLUE{(4)}:
-If \(\W\) is \(\T\)-invariant, then \(\NULL(\T_W) = \NULLT \cap \W\) and \(\RANGE(\T_W) = \T(\W)\).
+If \(\W\) is \(\T\)-invariant, then \(\NULL(\T_\W) = \NULLT \cap \W\) and \(\RANGE(\T_\W) = \T(\W)\).
 \end{additional theorem}
 
 \begin{additional theorem} \label{athm 2.10}

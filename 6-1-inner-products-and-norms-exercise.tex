@@ -179,7 +179,8 @@ Compute \(\LG x, y \RG\) for \(x = (1 - \iu, 2 + 3\iu)\) and \(y = (2 + \iu, 3 -
 \begin{note}
 According to the context, I assume the elements \(x, y, z\) in \(\SET{C}^2\) are \emph{row} vectors (hence \(x^*, y^*, z^*\) are column vectors), and we can view them as \(1 \X 2\) or \(2 \X 1\) matrices as desired.
 
-We have said that \((A^*)^* = A\) in \DEF{6.2}, and from \CORO{6.11.1}(c), \((AB)^* = B^* A^*\); the prove is similar to \((AB)^\top = B^\top A^\top\), since adjoint also involves transpose operation.
+We have said that \((A^*)^* = A\) in \DEF{6.2}, and from \CORO{6.11.1}(c), \((AB)^* = B^* A^*\);
+the proof in that corollary uses the concept of adjoint operator, but it can be directly proved using \DEF{6.2}; see \EXEC{6.3.5}(b).
 \end{note}
 
 \begin{proof}
@@ -794,6 +795,10 @@ That is, prove that if \(A = B_1 + \iu B_2\), where \(B_1^* = B_1\) and \(B_2^* 
 \end{enumerate}
 \end{exercise}
 
+\begin{note}
+There is some \href{https://www.wikiwand.com/en/Hermitian_matrix#/Decomposition_into_Hermitian_and_skew-Hermitian_matrices}{related wiki} for this exercise.
+\end{note}
+
 \begin{proof} \ 
 
 \begin{enumerate}
@@ -817,13 +822,27 @@ Similarly,
 Finally,
 \begin{align*}
     A_1 + \iu A_2 & = \frac{1}{2} (A + A^*) + \iu \cdot \frac{1}{2\iu}(A - A^*) \\
-        & = \frac{1}{2} (A + A^*) - \frac{1}{2}(A - A^*) \\
+        & = \frac{1}{2} (A + A^*) + \frac{1\iu}{2\iu}(A - A^*) \\
+        & = \frac{1}{2} (A + A^*) + \frac{1}{2}(A - A^*) \\
         & = A^*
 \end{align*}
-\RED{WARNING}, it seem that \(A_1 \RED{-} \iu A_2 = A\), not \(A_1 + \iu A_2 = A\).
-BTW, there is some \href{https://www.wikiwand.com/en/Hermitian_matrix#/Decomposition_into_Hermitian_and_skew-Hermitian_matrices}{related wiki} for this exercise.
+The representation has some useful properties that split a matrix into two self-adjoint matrices; but that does not mean \(A_1\) only has real entries and \(A_2\) only has imaginary entries.
 
-Skip part(b) because of the glitch of part(a).
+\item Suppose \(A = B_1 + \iu B_2\) where \(B_1^* = B_1\) and \(B_2^* = B_2\).
+In particular,
+\begin{align*}
+    A^* & = (B_1 + \iu B_2)^* \\
+        & = B_1^* + \conjugatet{\iu} B_2^* = B_1^* - \iu B_2^* & \text{using \EXEC{6.1.14}} \\
+        & = B_1 - \iu B_2 & \text{since \(B_1^* = B_1\) and \(B_2^* = B_2\)} \\
+    \implies & A + A^* = (B_1 + \iu B_2) + (B_1 - \iu B_2) = 2 B_1 \\
+    \implies & B_1 = \frac{1}{2} (A + A^*) = A_1. & \text{by def of \(A_1\)}
+\end{align*}
+Similarly,
+\begin{align*}
+    A - A^* & = (B_1 + \iu B_2) - (B_1 - \iu B_2) = 2\iu B_2 \\
+    \implies & B_2 = \frac{1}{2\iu} (A - A^*) = A_2. & \text{by def of \(A_2\)}
+\end{align*}
+Hence the representation that \(A = A_1 + \iu A_2\) is unique.
 \end{enumerate}
 \end{proof}
 
@@ -922,6 +941,8 @@ Show that \([\U]_{\beta} = [\T]_{\beta}^*\) for any \emph{orthonormal} basis \(\
 
 \begin{note}
 (a) feels like the generalization of \(\LG x, cy \RG = \conjugatet{c} \LG x, y \RG = \LG \conjugatet{c}x, y \RG\).
+
+For (c), that \(Q\) is an \emph{unitary matrix}; see \SEC{6.5}.
 
 BTW, this exercise is highly related to \SEC{6.3}.
 

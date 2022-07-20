@@ -1,0 +1,811 @@
+\exercisesection
+
+\begin{exercise} \label{exercise 6.4.1}
+Label the following statements as true or false.
+Assume that the underlying inner product spaces are \emph{finite}-dimensional.
+\begin{enumerate}
+\item Every self-adjoint operator is normal.
+\item Operators and their adjoints have the same eigenvectors.
+\item If \(\T\) is an operator on an inner product space \(\V\), then \(\T\) is normal if and only if \([\T]_{\beta}\) is normal, where \(\beta\) is \emph{any} ordered basis for \(\V\).
+\item A real or complex matrix \(A\) is normal if and only if \(\LMTRAN_A\) is normal.
+\item The eigenvalues of a self-adjoint operator must all be real.
+\item The identity and zero operators are self-adjoint.
+\item Every normal operator is diagonalizable.
+\item Every self-adjoint operator is diagonalizable.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item True, since
+\begin{align*}
+    \T \RED{\T^*} & = \BLUE{\T} \RED{\T} & \text{since \(\RED{\T^*} = \RED{\T}\)} \\
+        & = \BLUE{\T^*} \T & \text{since \(\BLUE{\T} = \BLUE{\T^*}\)}
+\end{align*}
+
+\item False.
+Counterexample, let \(A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\) hence \(A^* = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}\), then we have \(\begin{pmatrix} 1 \\ 0 \end{pmatrix}\) as \(\LMTRAN_A\)'s eigenvector but not as \((\LMTRAN_A)^* = \LMTRAN_{A^*}\)'s eigenvector.
+
+\item False, \(\beta\) should also be orthonormal.
+
+\item True.
+\(\LMTRAN_A\) is normal, iff (by \RMK{6.4.2}) \([\LMTRAN_A]_{\beta}\) is normal where \(\beta\) is the standard ordered (orthonormal) basis for \(F^n\), if and only if (by \THM{2.15}(a)) \(A\) is normal.
+
+\item True by \LEM{6.5}(a).
+\item True, since (by \THM{6.11}(d)) \(\ITRAN{}^* = \ITRAN{}\) and (similarly) \(\TZERO^* = \TZERO\).
+
+\item False, a counterexample is \EXAMPLE{6.4.1}, the rotation transformation (over \(\SET{R}\)).
+
+\item True.
+For \emph{complex} inner product space, since (by part(a)) self-adjoint implies normal, by \THM{6.16}, we can find a orthonormal basis \(\beta\) such that the matrix representation of the operator using \(\beta\) is diagonal.
+For \emph{real} inner product space, the same result is guaranteed by \THM{6.17}.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.2}
+For each linear operator \(\T\) on an inner product space \(\V\), determine whether \(\T\) is normal, self-adjoint, or neither.
+If possible, produce an orthonormal basis of eigenvectors of \(\T\) for \(\V\) and list the corresponding eigenvalues.
+\begin{enumerate}
+\item \(\V = \SET{R}^2\) and \(\T\) is defined by \(\T(a, b) = (2a - 2b, -2a + 5b)\).
+\item \(\V = \SET{R}^3\) and \(\T\) is defined by \(\T(a, b, c) = (-a + b, 5b, 4a - 2b + 5c)\).
+\item \(\V = \SET{C}^2\) and \(\T\) is defined by \(\T(a, b) = (2a + \iu b, a + 2b)\).
+\item \(\V = \POLYRR\) and \(\T\) is defined by \(\T(f) = f'\), where
+\[
+    \LG f(x), g(x) \RG = \int_0^1 f(t)g(t) dt.
+\]
+\item \(\V = M_{2 \X 2}(\SET{R})\) and \(\T\) is defined by \(\T(A) = A^\top\).
+\item \(\V = M_{2 \X 2}(\SET{R})\) and \(\T\) is defined by \(\T \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} c & d \\ a & b \end{pmatrix}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+If an operator is self-adjoint, then by \EXEC{6.4.1}(a) it is normal.
+
+To find an orthonormal basis of eigenvectors of \(\T\) for \(\V\), just find an \emph{orthonormal basis for each eigenspace} and take the union of them as the desired basis.
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item Let \(\beta = \{ e_1, e_2 \}\), and let  \(A = [\T]_{\beta} = \begin{pmatrix}2 & -2 \\ -2 & 5\end{pmatrix}\),
+then \([\T^*]_{\beta} = \begin{pmatrix}2 & -2 \\ -2 & 5\end{pmatrix}^* = \begin{pmatrix}2 & -2 \\ -2 & 5\end{pmatrix} = A\).
+So by \RMK{6.4.6}, \(\T\) is self-adjoint, hence is normal.
+
+\item Let  \(\beta = \{ e_1, e_2, e_3 \}\), and let \(A = [\T]_{\beta} = \begin{pmatrix}-1 & 1 & 0 \\ 0 & 5 & 0 \\ 4 & -2 & 5\end{pmatrix}\), then \([\T^*]_{\beta} = A^{*} = \begin{pmatrix}-1 & 0 & 4 \\ 1 & 5 & -2 \\ 0 & 0 & 5\end{pmatrix} \neq A\), So by \RMK{6.4.6}, \(\T\) is \emph{not} self-adjoint.
+And in particular, since \((A A^*)_{11} = 2\) and \((A^* A)_{11} = 17\), \(A A^* \ne A^*A\), and by \RMK{6.4.2}, \(\T\) is not normal.
+So in particular, since \(\V\) is over \(\SET{R}\), by \THM{6.17}, we cannot find a orthonormal basis consisting of eigenvectors of \(\T\).
+
+\item Let \(\beta = \{ e_1, e_2 \}\), and let \(A = [\T]_{\beta} = \begin{pmatrix} 2 & \iu \\ 1 & 2 \end{pmatrix}\).
+By calculation, \(A\) is normal but not self-adjoint.
+Hence (by \RMK{6.4.6} and \RMK{6.4.2}) \(\T\) is normal but not self-adjoint.
+Since the \(\V\) is over \(\SET{C}\), and \(\T\) is normal, by \THM{6.16} there exists an orthonormal basis for \(\V\) consisting eigenvectors of \(\T\).
+We can compute this basis as the aforementioned note, but skip, tedious.
+But one such basis is
+\[
+    \left\{ \left( \frac{1}{\sqrt{2}}, -\frac{1}{2} + \frac{1}{2}\iu \right), \left( \frac{1}{\sqrt{2}}, \frac{1}{2} - \frac{1}{2}\iu \right) \right\}
+\]
+
+\item We have calculated a orthonormal basis with respect to this inner product on \EXEC{6.3.2}:
+\[
+    \beta = \{ f_1, f_2, f_3 \} = \left\{ 1, 2\sqrt{3} \left( t - \frac{1}{2} \right), 6\sqrt{5} \left( t^2 - t + \frac{1}{6} \right) \right\}.
+\]
+And
+\begin{align*}
+    \T(f_1) & = 0 = 0 \cdot f_1 + 0 \cdot f_2 + 0 \cdot f_3 \\
+    \T(f_2) & = 2\sqrt{3} = 2\sqrt{3} \cdot f_1 + 0 \cdot f_2 + 0 \cdot f_3 \\
+    \T(f_3) & = 12\sqrt{5}t - 6\sqrt{5} = 0 \cdot f_1 + 2\sqrt{15} \cdot f_2 + 0 \cdot f_3 \\
+    \implies &
+    [\T]_{\beta} = \begin{pmatrix}
+        0 & 2\sqrt{3} & 0 \\
+        0 & 0 & 2\sqrt{15} \\
+        0 & 0 & 0
+    \end{pmatrix}
+\end{align*}
+So by calculation, \([\T]_{\beta}\) is neither self-adjoint nor normal, hence (by \RMK{6.3.6} and \RMK{6.3.2}) \(\T\) is neither self-adjoint nor normal.
+So in particular, since \(\V\) is over \(\SET{R}\), by \THM{6.17}, we cannot find an orthonormal basis consisting of eigenvectors of \(\T\).
+
+\item Let \(\beta = \{ E_{11}, E_{12}, E_{21}, E_{22} \}\) the ``standard'' ordered basis.
+Note that the ``standard'' inner product on matrix is Frobenius inner product(\ADEF{6.1}), and \(\beta\) is orthonormal with respect to this inner product.
+Then, of course,
+\[
+    [\T]_{\beta} = \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix},
+\]
+which by calculation is self-adjoint and normal, hence (by \RMK{6.3.6} and \RMK{6.3.2}) \(\T\) is both self-adjoint and normal.
+Since the \(\V\) is over \(\SET{R}\), and \(\T\) is self-adjoint, by \THM{6.17} there exists an orthonormal basis for \(\V\) consisting eigenvectors of \(\T\).
+We can compute this basis as the aforementioned note, but skip, tedious.
+But one such basis is
+\[
+    \left\{ (1,0,0,0), \frac{1}{\sqrt{2}}(0,1,1,0),(0,0,0,1), \frac{1}{\sqrt{2}}(0,1,-1,0)\right \}
+\]
+
+\item Pick \(\beta\) as part(e), then, of course,
+\[
+    [\T]_{\beta} = \begin{pmatrix}
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0
+    \end{pmatrix},
+\]
+which by calculation is self-adjoint and normal, hence (by \RMK{6.3.6} and \RMK{6.3.2}) \(\T\) is both self-adjoint and normal.
+Since the \(\V\) is over \(\SET{R}\), and \(\T\) is self-adjoint, by \THM{6.17} there exists an orthonormal basis for \(\V\) consisting eigenvectors of \(\T\).
+We can compute this basis as the aforementioned note, but skip, tedious.
+But one such basis is
+\[
+    \left\{\frac{1}{\sqrt{2}}(1,0,-1,0), \frac{1}{\sqrt{2}}(0,1,0,-1), \frac{1}{\sqrt{2}}(1,0,1,0), \frac{1}{\sqrt{2}}(0,1,0,1)\right\}
+\]
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.3}
+Give an example of a linear operator \(\T\) on \(\SET{R}^2\) and an \emph{ordered basis}(but not orthonormal) for \(\SET{R}^2\) that provides a \emph{counterexample} to the statement in \EXEC{6.4.1}(c).
+\end{exercise}
+
+\begin{proof}
+Let \(\T(a, b) = (2a, b)\), and \(\beta = \{ (1, 1), (1, 0) \}\).
+In particular for \(\alpha\) be the standard ordered (orthonormal) basis, \([\T]_{\alpha} = \begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix}\), which is symmetric hence of course normal, hence (by \RMK{6.3.2}) \(\T\) is normal.
+But \([\T]_{\beta} = \begin{pmatrix} 1 & 0 \\ 1 & 2 \end{pmatrix}\), which is \emph{not} normal.
+
+Furthermore, the converse is also not true;
+that is, we can find an operator \(\T\), which is not normal, but we can find an ordered basis \(\beta\) such that \([\T]_{\beta}\) is normal.
+The process is similar.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.4}
+Let \(\T\) and \(\U\) be self-adjoint operators on an inner product space \(\V\).
+Prove that \(\T\U\) is self-adjoint if and only if \(\T\U = \U\T\).
+\end{exercise}
+
+\begin{note}
+根據這個陳述可知，兩個\ self-adjoint 的算子的合成\textbf{不一定}會是\ self-adjoint。
+\end{note}
+
+\begin{proof}
+Suppose \(\T\U\) is self-adjoint.
+Then
+\begin{align*}
+    \T\U & = (\T\U)^* & \text{since \(\T\U\) is self-adjoint} \\
+        & = \U^*\T^* & \text{by \THM{6.11}(c)} \\
+        & = \U\T^* = \U\T. & \text{since \(\T\) and \(\U\) are self-adjoint}
+\end{align*}
+
+Now suppose \(\T\U = \U\T\).
+Then
+\begin{align*}
+    (\T\U)^* & = \U^*\T^* & \text{by \THM{6.11}(c)} \\
+        & = \U\T^* = \U\T & \text{since \(\T\) and \(\U\) are self-adjoint} \\
+        & = \T\U & \text{since \(\T\U = \U\T\)}
+\end{align*}
+Hence \(\T\U\) is self-adjoint.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.5}
+Prove \THM{6.15}(b).
+\end{exercise}
+
+\begin{proof}
+See \THM{6.15}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.6}
+Let \(\V\) be a \emph{complex} inner product space, and let \(\T\) be a linear operator on \(\V\).
+Define
+\[
+    \T_1 = \frac{1}{2}(\T + \T^*) \quad \text{ and } \quad \T_2 = \frac{1}{2\MAROON{\iu}} (\T - \T^*).
+\]
+\begin{enumerate}
+\item Prove that \(\T_1\) and \(\T_2\) are self-adjoint and that \(\T = \T_1 + \iu \T_2\).
+\item Suppose also that \(\T = \U_1 + \iu\U_2\), where \(\U_1\) and \(\U_2\) are self-adjoint.
+Prove that \(\U_1 = \T_1\) and \(\U_2 = \T_2\).
+(Hence the representation is unique.)
+\item Prove that \(\T\) is normal if and only if \(\T_1 \T_2 = \T_2 \T_1\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+There is a related \EXEC{6.1.21}.
+\begin{enumerate}
+\item
+We have
+\begin{align*}
+    (\T_1)^* & = \left[ \frac{1}{2}(\T + \T^*) \right]^* \\
+        & = \conjugatet{\left(\frac{1}{2}\right)} (\T + \T^*)^* = \frac{1}{2} (\T + \T^*)^*& \text{by \THM{6.11}(b)} \\
+        & = \frac{1}{2} (\T^* + (\T^*)^*) & \text{by \THM{6.11}(a)} \\
+        & = \frac{1}{2} (\T^* + \T) = \frac{1}{2} (\T + \T^*) & \text{by \THM{6.11}(d)} \\
+        & = \T_1
+\end{align*}
+and
+\begin{align*}
+    (\T_2)^* & = \left[ \frac{1}{2\iu}(\T - \T^*) \right]^* \\
+        & = \conjugatet{\left(\frac{1}{2\iu}\right)} (\T - \T^*)^* = -\frac{1}{2\iu} (\T - \T^*)^*& \text{by \THM{6.11}(b)} \\
+        & = -\frac{1}{2\iu} (\T^* - (\T^*)^*) & \text{by \THM{6.11}(a)} \\
+        & = -\frac{1}{2\iu} (\T^* - \T) = \frac{1}{2\iu} (\T - \T^*) & \text{by \THM{6.11}(d)} \\
+        & = \T_2
+\end{align*}
+Finally,
+\begin{align*}
+    \T_1 + \iu \T_2 & = \frac{1}{2}(\T + \T^*) + \iu \cdot \frac{1}{2\MAROON{\iu}} (\T - \T^*) \\
+        & = \frac{1}{2}(\T + \T^*) + \frac{1\iu}{2\iu} (\T - \T^*) \\
+        & =\frac{1}{2}(\T + \T^*) + \frac{1}{2} (\T - \T^*)
+        = \T.
+\end{align*}
+
+\item Suppose \(\T = \U_1 + \iu \U_2\) where \(\U_1\) and \(\U_2\) are self-adjoint.
+In particular,
+\begin{align*}
+    \T^* & = (\U_1 + \iu \U_2)^* \\
+        & = \U_1^* + \conjugatet{\iu} \U_2^* = \U_1^* - \iu \U_2^* & \text{by \THM{6.11}(b)} \\
+        & = \U_1 - \iu \U_2 & \text{since \(\U_1, \U_2\) are self-adjoint} \\
+    \implies & \T + \T^* = (\U_1 + \iu \U_2) + (\U_1 - \iu \U_2) = 2 \U_1 \\
+    \implies & \U_1 = \frac{1}{2} (\T + \T^*) = \T_1. & \text{by def of \(\T_1\)}
+\end{align*}
+Similarly,
+\begin{align*}
+    \T - \T^* & = (\U_1 + \iu \U_2) - (\U_1 - \iu \U_2) = 2\iu \U_2 \\
+    \implies & \U_2 = \frac{1}{2\iu} (\T - \T^*) = \T_2. & \text{by def of \(\T_2\)}
+\end{align*}
+Hence the representation that \(\T = \T_1 + \iu \T_2\) is unique.
+
+\item By tedious but skipped calculation, we have the equation
+\[
+    \T_1\T_2 - \T_2\T_1 = ... = \frac{1}{2\iu} (\T^*\T - \T\T^*).
+\]
+Then from this equation it's clear that \(\T_1\T_2 = \T_2\T_1\) if and only if \(\T^*\T = \T\T^*\), that is, if and only if \(\T\) is normal.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.7}
+Let \(\T\) be a linear operator on an inner product space \(\V\), and let \(\W\) be a \(\T\)-invariant subspace of \(\V\).
+Prove the following results.
+\begin{enumerate}
+\item If \(\T\) is self-adjoint, then \(\T_\W\) is self-adjoint.
+\item \(\W^{\perp}\) is \(\T^{\RED{*}}\)-invariant.
+\item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant, then \((\T_\W)^* = (\T^*)_\W\).
+\item If \(\W\) is both \(\T\)- and \(\T^*\)-invariant and \(\T\) is normal, then \(\T_\W\) is normal.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Although \(\V\) (and \(\W\)) may be infinite-dimensional, by \RMK{6.3.4}, we assume the existence of the adjoint of any linear operators.
+
+Note that \(\W\) itself can be seen as an inner product space, using the inner product defined on \(\V\).
+\begin{enumerate}
+\item Suppose \(\T\) is self-adjoint, we have to show \(\T_\W = (\T_\W)^*\).
+Then for any \(x, y \in \W\),
+\begin{align*}
+    \LG x, (\T_\W)^*(y) \RG & = \LG \T_\W(x), y \RG & \text{by \THM{6.9}} \\
+        & = \LG \T(x), y \RG & \text{by def of \(\T_\W\)} \\
+        & = \LG x, \T^*(y) \RG & \text{by \THM{6.9} again} \\
+        & = \LG x, \T(y) \RG & \text{since \(\T\) is self-adjoint} \\
+        & = \LG x, \T_\W(y) \RG & \text{by def of \(\T_\W\)}
+\end{align*}
+which (by \THM{6.1}(e)) implies \((\T_\W)^*(y) = \T_\W(y)\) for all \(y \in \W\), hence \((\T_\W)^* = \T_\W\).
+
+\item Suppose \(x \in \W^{\perp}\), we have to show \(\T^*(x) \in \W^{\perp}\).
+To do this, (by \DEF{6.7}) we can show that \(\LG \T^*(x), y \RG = 0\) for all \(y \in \W\).
+But for all \(y \in \W\),
+\begin{align*}
+    \LG \T^*(x), y \RG & = \LG \T(x), y \RG & \text{since \(\T\) is self-adjoint} \\
+        & = \LG x, \T^*(y) \RG & \text{by \THM{6.9}} \\
+        & = \LG x, \T(y) \RG & \text{since \(\T\) is self-adjoint} \\
+        & = 0, &
+\end{align*}
+where the last step is because that \(\T(y) \in \W\) (since \(y \in \W\) and \(\W\) is \(\T\)-invariant) and \(x \in \W^{\perp}\).
+Hence \(\T^*(x) \in \W^{\perp}\), so \(\W^{\perp}\) is \(\T^*\)-invariant.
+
+\item (By the assumption that \(\W\) is \(\T^*\)-invariant, the notation \((\T^*)_\W\) now does make sense.)
+For all \(x, y \in \W\),
+\begin{align*}
+    \LG x, (\T_\W)^*(y) \RG & = \LG \T_\W(x), y \RG & \text{by \THM{6.9}} \\
+        & = \LG \T(x), y \RG & \text{by def of \(\T_\W\)} \\
+        & = \LG x, \T^*(y) \RG & \text{by \THM{6.9} again} \\
+        & = \LG x, (\T^*)_\W(y) \RG & \text{by def of \((\T^*)_\W\)}
+\end{align*}
+Hence (by \THM{6.1}(e)) \((\T_\W)^*(y) = (\T^*)_\W(y)\) for all \(y \in \W\), hence \((\T_\W)^* = (\T^*)_\W\).
+
+\item We have to show \((\T_\W)^* \T_\W = \T_\W (\T_\W)^*\).
+And for all \(x \in \W\),
+\begin{align*}
+    (\T_\W)^* \T_\W(x) & = \RED{(\T^*)_\W} \T_\W(x) & \text{by part(c)} \\
+        & = \T^* \T (x) & \text{by def of \((\T^*)_\W\) and \(\T_\W\)} \\
+        & = \T \T^* (x) & \text{since \(\T\) is normal} \\
+        & = \T_\W (\T^*)_\W (x) & \text{by def of \(\T_\W\) and \((\T^*)_\W\) again} \\
+        & = \T_\W \RED{(\T_\W)^*} (x) & \text{by part(c)}
+\end{align*}
+Hence \((\T_\W)^* \T_\W = \T_\W (\T_\W)^*\), as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.8}
+Let \(\T\) be a \emph{normal} operator on a \emph{finite}-dimensional \textbf{complex} inner product space \(\V\), and let \(\W\) be a subspace of \(\V\).
+Prove that if \(\W\) is \(\T\)-invariant, then \(\W\) is also \(\T^*\)-invariant.
+\emph{Hint}: Use \EXEC{5.4.24}.
+\end{exercise}
+
+\begin{proof}
+Since \(\V\) is over \(\SET{C}\) and \(\T\) is normal, by \THM{6.16} there exists an orthonormal basis consisting of eigenvectors of \(\V\).
+In particular, \(\T\) is diagonalizable, and by \EXEC{5.4.24}, \(\T_\W\) is diagonalizable.
+So let \(\beta_\W = \{ v_1, v_2, ..., v_k \}\) be the basis for \(\W\) and consist of eigenvectors of \(\T_\W\).
+Then in particular, \(v_1, ..., v_k\) are eigenvectors of \(\T\); and we can let the corresponding eigenvalues as \(\lambda_1, ..., \lambda_k\).
+By \THM{6.15}(c), \(v_1, ..., v_k\) are eigenvectors of \(\T^*\) corresponding to \(\conjugatet{\lambda_1}, ..., \conjugatet{\lambda_k}\).
+
+Now we show that \(\W\) is \(\T^*\)-invariant, that is, if \(v \in \W\), then \(\T^*(v) \in \W\).
+So let \(v \in \W\).
+Since \(\beta_\W\) is a basis for \(\W\), we can let \(v = a_1 v_1 + ... + a_k v_k\) for some coefficients \(a_1, ..., a_k\), and
+\begin{align*}
+    \T^*(v) & = \T^*(a_1 v_1 + ... + a_k v_k) \\
+        & = a_1 \T^* (v_1) + ... + a_k \T^* (v_k) & \text{since \(\T^*\) is linear} \\
+        & = a_1 \conjugatet{\lambda_1} v_1 + ... + a_k \conjugatet{\lambda_k} v_k
+\end{align*}
+which is still a linear combination of \(v_1, ..., v_k\) hence is in \(\W\).
+So \(\T^*\) is \(\W\)-invariant.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.9}
+Let \(\T\) be a \emph{normal} operator on a \emph{finite}-dimensional inner product space \(\V\).
+Prove that \(\NULLT = \NULL(\T^*)\) and \(\RANGET = \RANGE(\T^*)\).
+\emph{Hint}: Use \THM{6.15} and \EXEC{6.3.12}.
+\end{exercise}
+
+\begin{note}
+所以一個\ operator 如果\ normal，則它跟它的\ adjoint 的零空間還有值域都會一樣。
+\end{note}
+
+\begin{proof}
+We have
+\begin{align*}
+    x \in \NULLT & \iff \T(x) = \OV \iff \norm{\T(x)} = 0 & \text{by \THM{6.2}(b)} \\
+        & \iff \norm{\T^*(x)} = 0 & \text{since \(\T\) is normal and by \THM{6.15}(a)} \\
+        & \iff \T^*(x) = \OV \iff x \in \NULL(\T^*) & \text{by \THM{6.2}(b)}
+\end{align*}
+
+Now by \EXEC{6.3.12}(b), (since \(\V\) is finite-dimensional) we have \(\RANGE(\T^*) = \NULLT^{\perp}\) for any linear operator \(\T\).
+In particular, we have \(\RANGE(\RED{(\T^*)}^*) = \NULL(\RED{\T^*})^{\perp}\). \MAROON{(1)}
+
+For the second equation \(\RANGET = \RANGE(\T^*)\), we have
+\begin{align*}
+    \RANGET & = \RANGE(\RED{(\T^*)}^*) & \text{by \THM{6.11}(d)} \\
+        & = \NULL(\RED{\T^*})^{\perp} & \text{by \MAROON{(1)}} \\
+        & = \NULL(\BLUE{\T})^{\perp} & \text{by the first equation that we have shown} \\
+        & = \RANGE(\BLUE{\T}^*) & \text{by \EXEC{6.3.12}(c) again, where the operator is \(\BLUE{\T}\)}
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.10}
+Let \(\T\) be a \emph{self-adjoint} operator on a finite-dimensional inner product space \(\V\).
+Prove that for all \(x \in \V\)
+\[
+    \norm{\T(x) \pm \iu x}^2 = \norm{\T(x)}^2 + \norm{x}^2.
+\]
+Deduce that \(\T - \iu \ITRAN{}\) is invertible and that \emph{the adjoint of} \((\T - \iu \ITRAN{})^{-1}\) is \((\T + \iu \ITRAN{})^{-1}\).
+\end{exercise}
+
+\begin{proof}
+We have
+\begin{align*}
+    \norm{\T(x) + \iu x}^2
+        & = \LG \T(x) + \iu x, \T(x) + \iu x \RG & \text{by \DEF{6.3}} \\
+        & = \LG \T(x), \T(x) \RG
+          + \LG \T(x), \iu x \RG
+          + \LG \iu x, \T(x) \RG
+          + \LG \iu x, \iu x \RG \\
+          & \quad \quad \quad \text{(by \THM{6.1}, \DEF{6.1}(a))} \\
+        & = \norm{\T(x)}^2
+          + \LG \T(x), \iu x \RG
+          + \LG \iu x, \T(x) \RG
+          + \norm{\iu x}^2 & \text{by \DEF{6.3}} \\
+        & = \norm{\T(x)}^2 - \iu \LG \T(x), x \RG + \iu \LG x, \T(x) \RG + \norm{\iu x}^2 \\
+          & \quad \quad \quad \text{(by \THM{6.1}, \DEF{6.1}(b))} \\
+        & = \norm{\T(x)}^2 - \iu \LG x, \RED{\T^*}(x) \RG + \iu \LG x, \T(x) \RG + \norm{\iu x}^2 & \text{by \THM{6.9}} \\
+        & = \norm{\T(x)}^2 - \iu \LG x, \RED{\T}(x) \RG + \iu \LG x, \T(x) \RG + \norm{\iu x}^2 & \text{since \(\T\) is self-adjoint} \\
+        & = \norm{\T(x)}^2 + \norm{\iu x}^2 & \text{of course} \\
+        & = \norm{\T(x)}^2 + \abs{\iu}^2\norm{x}^2 & \text{by \THM{6.2}(a)} \\
+        & = \norm{\T(x)}^2 + \norm{x}^2 & \text{of course}
+\end{align*}
+Similarly,
+\begin{align*}
+    \norm{\T(x) - \iu x}^2
+        & = \LG \T(x) - \iu x, \T(x) - \iu x \RG & \text{by \DEF{6.3}} \\
+        & = \LG \T(x), \T(x) \RG
+          + \LG \T(x), -\iu x \RG
+          + \LG -\iu x, \T(x) \RG
+          + \LG -\iu x, -\iu x \RG \\
+          & \quad \quad \quad \text{(by \THM{6.1}, \DEF{6.1}(a))} \\
+        & = \norm{\T(x)}^2 + \iu \LG \T(x), x \RG - \iu \LG x, \T(x) \RG + \norm{\iu x}^2 \\
+          & \quad \quad \quad \text{(by \DEF{6.3}, \THM{6.1}, \DEF{6.1}(b))} \\
+        & = \norm{\T(x)}^2 + \iu \LG x, \RED{\T^*}(x) \RG - \iu \LG x, \T(x) \RG + \norm{\iu x}^2 & \text{by \THM{6.9}} \\
+        & = \norm{\T(x)}^2 + \iu \LG x, \RED{\T}(x) \RG - \iu \LG x, \T(x) \RG + \norm{\iu x}^2 & \text{since \(\T\) is self-adjoint} \\
+        & = \norm{\T(x)}^2 + \norm{\iu x}^2 & \text{of course} \\
+        & = \norm{\T(x)}^2 + \abs{\iu}^2\norm{x}^2 & \text{by \THM{6.2}(a)} \\
+        & = \norm{\T(x)}^2 + \norm{x}^2 & \text{of course}
+\end{align*}
+
+In particular, \(\T - \iu \ITRAN{}\) is one-to-one, since:
+\begin{align*}
+         & (\T - \iu \ITRAN{}) (x) = \OV \\
+    \iff & \norm{(\T - \iu \ITRAN{})(x)} = \norm{\T(x) - \iu x} = 0 & \text{by \THM{6.2}(b)} \\
+    \iff & \norm{\T(x) - \iu x}^2 = 0 & \text{of course} \\
+    \iff & \norm{\T(x)}^2 + \norm{x}^2 = 0 & \text{by what we have shown} \\
+    \iff & \norm{\T(x)} = \norm{x} = 0 & \text{of course (by field algebra)} \\
+    \iff & \T(x) = x = \OV & \text{by \THM{6.2}(b) again}
+\end{align*}
+Hence \((\T - \iu \ITRAN{}) (x) = \OV \iff x = \OV\), so \(\T - \iu \ITRAN{}\) is one-to-one, and  (by \THM{2.5}) invertible, so \((\T - \iu \ITRAN{})^{-1}\) exists, hence \(\left[ (\T - \iu \ITRAN{})^{-1} \right]^*\) exists.
+
+Finally, we need to show that \((\T + \iu \ITRAN{})^{-1}\) also exists and \((\T + \iu \ITRAN{})^{-1} = \left[ (\T - \iu \ITRAN{})^{-1} \right]^*\).
+And it suffices to show that \(\left[ (\T - \iu \ITRAN{})^{-1} \right]^* (\T + \iu \ITRAN{}) = (\T + \iu \ITRAN{}) \left[ (\T - \iu \ITRAN{})^{-1} \right]^* = \ITRAN{}\).
+
+We use the ``inner product trick'' again: for any \(x, y \in \V\),
+\begin{align*}
+    & \quad \LG x, \left[ (\T - \iu \ITRAN{})^{-1} \right]^* (\T + \iu \ITRAN{}) (y) \RG \\
+    & = \LG \left[ (\T - \iu \ITRAN{})^{-1} \right](x), (\T + \iu \ITRAN{}) (y) \RG & \text{by \THM{6.9}} \\
+    & = \LG \left[ (\T - \iu \ITRAN{})^{-1} \right](x), (\RED{\T^*} + \iu \ITRAN{}) (y) \RG & \text{since \(\T\) is self-adjoint} \\
+    & = \LG \left[ (\T - \iu \ITRAN{})^{-1} \right](x), (\T - \iu \ITRAN{})^* (y) \RG & \text{of course by \THM{6.11}} \\
+    & = \LG (\T - \iu \ITRAN{}) \left[ (\T - \iu \ITRAN{})^{-1} \right](x), y \RG & \text{by \THM{6.9} again} \\
+    & = \LG x, y \RG = \LG x, \ITRAN{}(y) \RG. & \text{of course}
+\end{align*}
+hence \(\left[ (\T - \iu \ITRAN{})^{-1} \right]^* (\T + \iu \ITRAN{}) (y) = \ITRAN{}(y)\) for all \(y \in \V\), so \(\left[ (\T - \iu \ITRAN{})^{-1} \right]^* (\T + \iu \ITRAN{}) = \ITRAN{}\).
+The same process can be used to show that \((\T + \iu \ITRAN{}) \left[ (\T - \iu \ITRAN{})^{-1} \right]^* = \ITRAN{}\).
+Hence we have \((\T + \iu \ITRAN{})^{-1} = \left[ (\T - \iu \ITRAN{})^{-1} \right]^*\).
+\end{proof}
+\begin{note}
+\EXEC{6.4.10} 不知道有什麼用意? 給定一個\ self-adjoint \(\T\)，\(\T \pm \iu \ITRAN{}\) 有什麼特別的用途嗎?
+\end{note}
+
+\begin{exercise} \label{exercise 6.4.11}
+Assume that \(\T\) is a linear operator on a \emph{complex} (\emph{not necessarily finite} dimensional) inner product space \(\V\) with an adjoint \(\T^*\).
+Prove the following results.
+\begin{enumerate}
+\item If \(\T\) is self-adjoint, then \(\LG \T(x), x \RG\) is \textbf{real} for all \(x \in \V\).
+\item If \(\T\) satisfies \(\LG \T(x), x \RG = 0\) for all \(x \in \V\), then \(\T = \TZERO\).
+\emph{Hint}: Replace \(x\) by \(x + y\) and then by \(x + \iu y\), and expand the resulting inner products.
+\item If \(\LG \T(x), x \RG\) is real for all \(x \in \V\), then \(\T\) is self-adjoint.
+\end{enumerate}
+\end{exercise}
+
+\begin{note}
+Part(a) and part(c) form a if and only if statement.
+And it seems that part(b) is used in \SEC{6.5} (by my professor).
+\TODOREF{(which part?)}
+\end{note}
+
+\begin{proof} \ 
+
+\begin{enumerate}
+\item For all \(x \in \V\), we have
+\begin{align*}
+    \LG \T(x), x \RG & = \LG x, \T^*(x) \RG & \text{by \THM{6.9}} \\
+        & = \LG x, \T(x) \RG & \text{since \(\T\) is self-adjoint} \\
+        & = \conjugatet{\LG \T(x), x \RG} & \text{by \DEF{6.1}(c)}
+\end{align*}
+which by \THM{d.2}(e) implies \(\LG \T(x), x \RG\) is a real number.
+
+\item In particular, for \(x, y \in \V\), \(x + y \in \V\) and \(x + \iu y \in \V\), so we have \(\LG \T(x + y), x + y \RG = 0\) and \(\LG \T(x + \iu y), x + \iu y \RG = 0\).
+And that implies
+\begin{align*}
+    0 & = \LG \T(x + y), x + y \RG \\
+      & = \LG \T(x) + \T(y), x + y \RG & \text{since \(\T\) is linear} \\
+      & = \LG \T(x), x \RG + \LG \T(x), y \RG + \LG \T(y), x \RG + \LG \T(y), y \RG & \text{just expand} \\
+      & = 0 + \LG \T(x), y \RG + \LG \T(y), x \RG + 0 & \text{since \(x \in \V\) and \(y \in \V\)} \\
+    \implies & \LG \T(x), y \RG = -\LG \T(y), x \RG.
+\end{align*}
+and
+\begin{align*}
+    0 & = \LG \T(x + \iu y), x + \iu y \RG \\
+      & = \LG \T(x) + \iu \T(y), x + \iu y \RG & \text{since \(\T\) is linear} \\
+      & = \LG \T(x), x \RG + \LG \T(x), \iu y \RG + \LG \iu \T(y), x \RG + \LG \iu \T(y), \iu y \RG & \text{just expand} \\
+      & = \LG \T(x), x \RG - \iu \LG \T(x), y \RG + \iu \LG \T(y), x \RG + \abs{\iu}^2 \LG \T(y), y \RG \\
+      & \quad \quad \quad \text{(by \THM{6.1},\DEF{6.1}(b))} \\
+      & = 0 - \iu \LG \T(x), y \RG + \iu \LG \T(y), x \RG + 1 \cdot 0 & \text{since \(x \in \V\) and \(y \in \V\)} \\
+      & = -\iu \LG \T(x), y \RG + \iu \LG \T(y), x \RG \\
+    \implies & \iu \LG \T(x), y \RG = \iu \LG \T(y), x \RG \\
+    \implies & \LG \T(x), y \RG = \LG \T(y), x \RG
+\end{align*}
+Hence we have \(\LG \T(x), y \RG = -\LG \T(y), x \RG\) and \(\LG \T(x), y \RG = \LG \T(y), x \RG\), which implies \(-\LG \T(y), x \RG = \LG \T(y), x \RG\) and implies \(\LG \T(y), x \RG = 0\). 
+In particular, \(\LG \T(x), y \RG = \LG \T(y), x \RG = 0\), and \(\LG y, \T(x) \RG = \conjugatet{\LG \T(x), y \RG} = \conjugatet{0} = 0\).
+
+So we have for all \(x, y \in \V\), \(\LG y, \T(x) \RG = 0\), which (by \THM{6.1}(e)) implies \(\T(x) = \OV\) for all \(x\), hence \(\T = \TZERO\).
+
+\item We have, for all \(x \in \V\),
+\begin{align*}
+    \LG \T(x), x \RG & = \conjugatet{\LG \T(x), x \RG} & \text{by \THM{d.2}(e)} \\
+        & = \conjugatet{\LG x, \T^*(x) \RG} & \text{by \THM{6.9}} \\
+        & = \LG \T^*(x), x \RG & \text{by \DEF{6.1}(c)} \\
+    \implies & \LG \T(x) - \T^*(x), x \RG = 0 & \text{by \DEF{6.1}} \\
+    \implies & \LG (\T - \T^*)(x), x \RG = 0 & \text{of course}
+\end{align*}
+By part(b), we have \(\T - \T^* = \TZERO\), hence \(\T = \T^*\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.12}
+Let \(\T\) be a \emph{normal} operator on a \emph{finite}-dimensional \textbf{real} inner product space \(\V\) whose \CPOLY{} \emph{splits}.
+Prove that \(\V\) has an orthonormal basis of eigenvectors of \(\T\).
+Hence (since \(\V\) is over \(\SET{R}\) and consists of orthonormal basis of eigenvectors of \(\T\), by \THM{6.17}, with the statement from right to left,) \(\T\) is self-adjoint.
+\end{exercise}
+
+\begin{note}
+So on \emph{real} inner product space, normal and splitted-\CPOLY{} imply self-adjoint.
+\end{note}
+
+\begin{proof}
+(The proof is similar to \THM{6.16}.)
+Suppose \(\T\) is a normal operator on real inner product space \(\V\) such that its \CPOLY{} splits.
+In particular, all eigenvalues of \(\T\) are real. \MAROON{(1)}
+And by Schur's Theorem (\THM{6.14}), there exists an ordered orthonormal basis \(\beta = \{ v_1, v_2, ..., v_n \}\) such that \([\T]_{\beta}\) is upper triangular.
+In particular, (sine \([\T]_{\beta}\) is upper triangular,) \(v_1\) is an eigenvector of \(\T\).
+(Similar to the proof of \THM{6.16},) Assume that \(v_1, v_2, ..., v_{k - 1}\) are eigenvectors of \(\T\) for some \(k > 1\).
+We claim that \(v_k\) is also an eigenvector of \(\T\).
+It then follows by mathematical induction on \(k\) that all of the \(v_i\)'s are eigenvectors of \(\T\).
+
+Consider any \(j < k\), and let \(\lambda_j\) denote the eigenvalue of \(\T\) corresponding to \(v_j\).
+Since \(\T\) is normal, by \THM{6.15}(c), \(\T^*(v_j) = \conjugatet{\lambda_j} v_j\).
+But (since the inner product space is over \(\SET{R}\)), by \MAROON{(1)} we have \(\conjugatet{\lambda_j} = \lambda_j\), that is, \(\T^*(v_j) = \lambda_j v_j\). \MAROON{(2)}
+
+And since \(A\) is upper triangular,
+\begin{align*}
+    \T(v_k) & = A_{1k} v_1 + A_{2k} v_2 + ... + A_{jk} v_j + ... + A_{kk}v_k + 0 \cdot v_{k + 1} + ... + 0 \cdot v_{n} \\
+    & = A_{1k} v_1 + A_{2k} v_2 + ... + A_{jk} v_j + ... + A_{kk}v_k. \quad \quad \MAROON{(3)}
+\end{align*}
+Furthermore, by the \CORO{6.5.1}, since \(\beta\) is orthonormal,
+\begin{align*}
+    A_{jk} & = \LG \T(v_k), v_j \RG & \text{by \CORO{6.5.1}} \\
+        & = \LG v_k, \T^*(v_j) \RG & \text{by \THM{6.9}} \\
+        & = \LG v_k, \lambda_j v_j \RG & \text{by \MAROON{(2)}} \\
+        & = \conjugatet{\lambda_j} \LG v_j, v_k \RG = \lambda \LG v_j, v_k \RG & \text{by \THM{6.1}(b) and \MAROON{(1)}} \\
+        & = \lambda_j \cdot 0 = 0. & \text{since \(v_j\)'s are orthonormal}
+\end{align*}
+So \(A_{jk} = 0\) for all \(j < k\), hence it follows from \MAROON{(3)} that \(\T(v_k) = A_{kk} v_k\), and hence \(v_k\) is an eigenvector of \(\T\).
+So by induction, all the vectors in \(\beta\) are eigenvectors of \(\T\);
+so \(\V\) has an orthonormal basis, \(\beta\), of eigenvectors of \(\T\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.13}
+An \(n \X n\) \emph{real} matrix \(A\) is said to be a \textbf{Gramian} matrix if there exists a \emph{real} (square) matrix \(B\) such that \(A = B^\top B\).
+Prove that \(A\) is a Gramian matrix if and only if \(A\) is symmetric and all of its eigenvalues are \emph{nonnegative}.
+\emph{Hint}: Apply \THM{6.17} to \(\T = \LMTRAN_A\) to obtain an orthonormal basis \(\{ v_1, v_2, ..., v_n \}\)
+of eigenvectors with the associated eigenvalues \(\lambda_1, \lambda_2, ..., \lambda_n\).
+Define the linear operator \(\U\) by \(\U(v_i) = \sqrt{\lambda_i} v_i\).
+\end{exercise}
+
+\begin{proof}
+Note that since the matrix is real, \(A^*\) is reduced to \(A^\top\).
+
+\(\Longrightarrow\): Suppose \(A\) is Gramian such that \(A = B^\top B\) for some real square matrix \(B\).
+Then we have (by the properties of matrix transpose)
+\[
+    A^\top = (B^\top B)^\top = B^\top (B^\top)^\top = B^\top B = A
+\]
+Hence \(A\) is symmetric.
+Now suppose \(\lambda\) is an eigenvalue of \(A\), hence we have \(Ax = \lambda x\) for some \textbf{unit vector} \(x\).
+In particular, (if we view \(Ax, Bx\) as \(\LMTRAN_A(x), \LMTRAN_B(x)\), with \THM{6.9},)
+\begin{align*}
+    0 & \le \LG Bx, Bx \RG & \text{of course} \\
+      & = \LG x, B^* B x \RG & \text{by \THM{6.9}} \\
+      & = \LG x, B^\top B x \RG & \text{since \(B\) is real matrix} \\
+      & = \LG x, Ax \RG & \text{by def of \(A\)} \\
+      & = \LG x, A^\top x \RG = \LG x, A^* \top \RG & \text{since \(A\) is symmetric and real} \\
+      & = \LG Ax, x \RG & \text{by \THM{6.9} again} \\
+      & = \LG \lambda x, x \RG & \text{by supposition} \\
+      & = \lambda \LG x, x \RG & \text{by \DEF{6.1}(b)} \\
+      & = \lambda \cdot 1 = \lambda & \text{since \(x\) is unit vector}.
+\end{align*}
+So all eigenvalues of \(A\) are nonnegative.
+
+\(\Longleftarrow\): Now suppose \(A\) is symmetric and all eigenvalues of \(A\) are nonnegative.
+In particular, since \(A\) is real and symmetric, by definition it's self-adjoint, and \(A = [\LMTRAN_A]_{\alpha}\) where \(\alpha\) is the standard ordered (orthonormal) basis, hence (by \RMK{6.4.6}) \(\LMTRAN_A\) is also self-adjoint.
+
+So by \THM{6.17}, there exists an orthonormal basis \(\beta = \{ v_1, v_2, ..., v_n \}\) consisting eigenvectors of \(\LMTRAN_A\), in particular, \([\LMTRAN_A]_{\beta}\) is diagonal.
+
+Now the tricky part: define \(D\) be the diagonal matrix such that its \(ii\)-entry is \(\sqrt{\lambda_i}\) where \(\lambda_i\) is the \(ii\)-entry of \([\LMTRAN_A]_{\beta}\).
+Then since each \(\lambda_i\) is nonnegative, \(D\) is also a \textbf{real} matrix.
+And of course \(D\) is symmetric \MAROON{(1)} and \(D^2 = [\LMTRAN_A]_{\beta}\). \MAROON{(2)}
+
+Note that we have let \(\alpha\) be the standard ordered basis, and
+\begin{align*}
+    A & = [\LMTRAN_A]_{\alpha} & \text{by \THM{2.15}(a)} \\
+      & = [\ITRAN{}]_{\beta}^{\alpha} [\LMTRAN_A]_{\beta} [\ITRAN{}]_{\alpha}^{\beta} & \text{by \THM{2.23}} \\
+      & = [\ITRAN{}]_{\beta}^{\alpha} D^2 [\ITRAN{}]_{\alpha}^{\beta} & \text{by \MAROON{(2)}} \\
+      & = ([\ITRAN{}]_{\beta}^{\alpha} D) (D [\ITRAN{}]_{\alpha}^{\beta}) & \text{of course} \\
+      & = ([\ITRAN{}]_{\beta}^{\alpha} D) (D^\top) [\ITRAN{}]_{\alpha}^{\beta}) & \text{by \MAROON{(1)}}
+\end{align*}
+Now from \THM{2.23}, let \(Q^{-1} = [\ITRAN{}]_{\beta}^{\alpha}\), then \(Q = [\ITRAN{}]_{\alpha}^{\beta}\), so from the last equation we have \(A = (Q^{-1} D) (D^\top Q)\). \MAROON{(3)}.
+
+Since \(Q^{-1} = [\ITRAN{}]_{\beta}^{\alpha}\), the \(j\)th column of \(Q^{-1}\) is \(v_j\), that is, the columns of \(Q^{-1}\) are the vectors of the orthonormal basis \(\beta\).
+So by \EXEC{6.1.23}(c), we have \((Q^{-1})^* = (Q^{-1})^{-1} = Q\).
+But since \((Q^{-1})^*\) is real matrix, the equation reduces to \((Q^{-1})^\top = Q\). \MAROON{(4)}
+
+Hence
+\begin{align*}
+    A & = (Q^{-1} D) (D^\top \RED{Q}) & \text{by \MAROON{(3)}} \\
+      & = (Q^{-1} D) (D^\top \RED{(Q^{-1})^\top}) & \text{by \MAROON{(4)}} \\
+      & = (Q^{-1} D) (Q^{-1} D)^\top & \text{of course by the property of transpose} \\
+      & = ((Q^{-1} D)^\top)^\top (Q^{-1} D)^\top. & \text{of course by the property of transpose}
+\end{align*}
+Hence we have found a matrix \(B = (Q^{-1} D)^\top\) such that \(A = B^\top B\);
+in particular, since \(Q^{-1}\) and \(D\) are \textbf{real} matrices, \(B\) is also real matrix, hence \(A\) is a Gramian matrix, as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.14}
+\emph{Simultaneous Diagonalization}.
+Let \(\V\) be a finite-dimensional \textbf{real} inner product space, and let \(\U\) and \(\T\) be \textbf{self-adjoint} linear operators on \(\V\) such that \(\U\T = \T\U\).
+Prove that there exists an \textbf{orthonormal} basis for \(\V\) consisting of vectors that are eigenvectors of both \(\U\) and \(\T\).
+(The complex version of this result appears as \EXEC{6.6.10}.)
+\emph{Hint}: For any eigenspace \(\W = E_{\lambda}\) of \(\T\), we have that \(\W\) is both \(\T\)- and \(\U\)-invariant.
+By \EXEC{6.4.7}, we have that \(\W^{\perp}\) is both \(\T\)- and \(\U\)-invariant.
+Apply \THM{6.17} and \THM{6.6}.
+\end{exercise}
+
+\begin{proof}
+Let \(\V\) be an arbitrary \(n\)-dimensional \textbf{real} inner product space, and let \(\U\) and \(\T\) be \textbf{self-adjoint} linear operators on \(\V\) such that \(\U\T = \T\U\).
+
+We use induction on the dimension of the underlying (real) inner product space.
+So for \(n = 1\), by \EXEC{5.4.25} \(\T\) and \(\U\) can already be diagonalized simultaneously by an ordered basis.
+But since the basis is a singleton set, by normalizing the vector in it, we get an orthonormal basis, hence \(\T\) and \(\U\) can be diagonalized simultaneously by an orthonormal basis.
+
+Now suppose the statement is true for \(n \le k - 1\), where \(k > 1\);
+that is, for arbitrary finite-dimensional real inner product space \(\V\) such that \(\dim(\V) \le k - 1\),
+given \(\U\) and \(\T\) be \textbf{self-adjoint} linear operators on \(\V\) such that \(\U\T = \T\U\), there exists an orthonormal basis for \(\V\) consisting of vectors that are eigenvectors of both \(\U\) and \(\T\).
+
+We have to show the statement is true for \(n = k\); that is, for arbitrary \(k\)-dimensional real inner product space \(\V\),
+given \(\U\) and \(\T\) be \textbf{self-adjoint} linear operators on \(\V\) such that \(\U\T = \T\U\), there exists an orthonormal basis for \(\V\) consisting of vectors that are eigenvectors of both \(\U\) and \(\T\).
+
+So let \(\V\) be a \(k\)-dimensional real inner product space, and let \(\U\) and \(\T\) be \textbf{self-adjoint} linear operators on \(\V\) such that \(\U\T = \T\U\).
+Let assume \(\W = E_{\lambda}\) is an eigenspace corresponding to \(\lambda\) of \(\T\).
+Then (by \EXAMPLE{5.4.1}) \(\W\) is \(\T\)-invariant.
+Now we show that \(\W\) is also \(\U\)-invariant:
+Suppose \(x \in \W\); in particular, \(\T(x) = \lambda x\). \MAROON{(1)}
+Then
+\begin{align*}
+    \U\T = \T\U \implies & \U\T(x) = \T\U(x) \\
+        \implies & \U(\T(x)) = \T(\U(x)) & \text{of course} \\
+        \implies & \U(\lambda x) = \T(\U(x)) & \text{by \MAROON{(1)}} \\
+        \implies & \lambda \U(x) = \T(\U(x)) & \text{since \(\U\) is linear} \\
+        \implies & \U(x) \text{ is an eigenvector of \(\T\) corresponding to } \lambda
+\end{align*}
+So by definition, \(\U(x) \in E_{\lambda}\); that is, \(\U(x) \in \W\), hence \(\W\) is \(\U\)-invariant. \MAROON{(2)}
+(BTW the same strategy was used in the more general exercise \EXEC{5.4.25}(a).)
+
+Now by \EXEC{6.4.7}(b), since \(\W\) is \(\T\)- and \(\U\)-invariant, \(\W^{\perp}\) is \(\T^*\)- and \(\U^*\)-invariant.
+But since \(\T\) and \(\U\) are self-adjoint, that implies \(\W^{\perp}\) is also \(\T\)- and \(\U\)-invariant.
+And by \EXEC{6.4.7}(a), \(\T_\W\), \(\T_{\W^{\perp}}\), \(\U_\W\), and \(\U_{\W^{\perp}}\) are all self-adjoint. \MAROON{(3)}
+
+Since both \(\W\) and \(\W^{\perp}\) are \emph{proper subsets} of \(\V\), that is, \(\dim(\W) < \dim(\V)\) and \(\dim(\W^{\perp}) < \dim(\V)\),
+with \MAROON{(3)}, we can apply the induction hypothesis on \(\W\) with \(\T_\W, \U_\W\), and on \(\W^{\perp}\) with \(\T_{\W^{\perp}}, \U_{\W^{\perp}}\), respectively.
+
+That is, there exist orthonormal bases \(\beta_1\) for \(\W\) consisting of eigenvectors of both \(\T_\W\) and \(\U_\W\),
+and there exist orthonormal bases \(\beta_2\) for \(\W^{\perp}\) consisting of eigenvectors of both \(\T_{\W^{\perp}}\) and \(\U_{\W^{\perp}}\).
+In particular, \(\beta_1\) consists of eigenvectors of both \(\T\) and \(\U\), and \(\beta_2\) consists of eigenvectors of both \(\T\) and \(\U\).
+
+Finally, (by \EXEC{6.2.10}) since \(\V = \W \oplus \W^{\perp}\), (by the equivalent (e) of \THM{5.9},) \(\beta = \beta_1 \cup \beta_2\) is an ordered basis for \(\V\), and consists of eigenvectors of both \(\T\) and \(\U\).
+So the statement is true for \(k\).
+This closes the induction.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.15}
+Let \(A\) and \(B\) be symmetric \(n \X n\) matrices such that \(AB = BA\).
+Use \EXEC{6.4.14} to prove that there exists an \emph{orthogonal} matrix \(P\) such that \(P^\top A P\) and \(P^\top B P\) are both diagonal matrices.
+\end{exercise}
+
+\begin{note}
+The definition of orthogonal matrix is in \DEF{6.12}, in \SEC{6.5}.
+\end{note}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.16}
+Prove the \emph{Cayley-Hamilton} theorem for a \textbf{complex} \(n \X n\) matrix \(A\).
+That is, if \(f(t)\) is the \CPOLY{} of \(A\), prove that \(f(A) = O\).
+Hint: Use Schur's theorem (\THM{6.14}) to show that \(A\) may be assumed to be upper triangular, in which case
+\[
+    f(t) = \sum_{i = 1}^n (A_{ii} - t).
+\]
+Now if \(\T = \LMTRAN_A\), we have \((A_{jj} \ITRAN{} - \T)(e_j) \in \spann(\{ e_1, e_2, ..., e_{j - 1} \})\) for
+\(j \ge 2\), where \(\{ e_1, e_2, ..., e_n \}\) is the standard ordered basis for \(\SET{C}^n\).
+(The general case is proved in \THM{5.21}.)
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+The following definitions are used in Exercises 17 through 23.
+\begin{additional definition} \label{adef 6.6}
+A linear operator \(\T\) on a \emph{finite}-dimensional inner product space is called \textbf{positive definite} [\textbf{positive semidefinite}] if \(\T\) is self-adjoint and \(\LG \T(x), x \RG > 0\) [\(\LG \T(x), x \RG \ge 0\)] for all \(x \ne \OV\).
+An \(n \X n\) matrix \(A\) with entries from \(\SET{R}\) or \(\SET{C}\) is called \textbf{positive definite}
+[\textbf{positive semidefinite}] if \(\LMTRAN_A\) is positive definite [positive semidefinite].
+\end{additional definition}
+
+\begin{exercise} \label{exercise 6.4.17}
+Let \(\T\) and \(\U\) be self-adjoint linear operators on an \(n\)-dimensional inner product space \(\V\), and let \(A = [\T]_{\beta}\), where \(\beta\) is an \emph{orthonormal} basis for \(\V\).
+Prove the following results.
+\begin{enumerate}
+\item \(\T\) is positive definite [semidefinite] if and only if all of its eigenvalues are positive [nonnegative].
+\item \(\T\) is positive definite if and only if
+\[
+    \sum_{i, j} A_{ij} a_j \conjugatet{a_i} > 0 \text{ for all nonzero \(n\)-tuples } (a_1, a_2, ..., a_n).
+\]
+\item \(\T\) is positive semidefinite if and only if \(A = B^* B\) for some square matrix \(B\).
+\item If \(\T\) and \(\U\) are positive semidefinite operators such that \(\T^2 = \U^2\), then \(\T = \U\).
+\item If \(\T\) and \(\U\) are positive definite operators such that \(\T\U = \U\T\), then \(\T\U\) is positive definite.
+\item \(\T\) is positive definite [semidefinite] if and only if \(A\) is positive definite [semidefinite].
+\end{enumerate}
+Because of (f), results analogous to items (a) through (d) hold for matrices as well as operators.
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.18}
+Let \(\T: \V \to \W\) be a \LTRAN{}, where \(\V\) and \(\W\) are finite-dimensional inner product spaces.
+Prove the following results.
+\begin{enumerate}
+\item \(\T^*\T\) and \(\T\T^*\) are positive semidefinite. (See \EXEC{6.3.15}.)
+\item \(\rank(\T^*\T) = \rank(\T\T^*) = \rankT\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.19}
+Let \(\T\) and \(\U\) be positive definite operators on an inner product space \(\V\).
+Prove the following results.
+\begin{enumerate}
+\item \(\T + \U\) is positive definite.
+\item If \(c > 0\), then \(c \T\) is positive definite.
+\item \(\T^{-1}\) is positive definite.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+Visit goo. gl/ cQch7i for a solution.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.20}
+Let \(\V\) be an inner product space with inner product \(\InnerOp\), and let \(\T\) be a positive definite linear operator on \(\V\).
+Prove that \(\LG x, y \RG' = \LG \T(x), y \RG\) defines another inner product on \(\V\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.21}
+Let \(\V\) be a finite-dimensional inner product space, and let \(\T\) and \(\U\) be self-adjoint operators on \(\V\) such that \(\T\) is positive definite.
+Prove that both \(\T\U\) and \(\U\T\) are diagonalizable linear operators \emph{that have only real eigenvalues}.
+\emph{Hint}: Show that \(\U\T\) is self-adjoint \emph{with respect to} the inner product \(\LG x, y \RG' = \LG \T(x), y \RG\).
+To show that \(\T\U\) is self-adjoint, repeat the argument with \(\T^{-1}\) in place of \(\T\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.22}
+This exercise provides a converse to \EXEC{6.4.20}.
+Let \(\V\) be a finite-dimensional inner product space with inner product \(\InnerOp\), and let \(\InnerOp'\) be any other inner product on \(\V\).
+\begin{enumerate}
+\item Prove that there exists a \textbf{unique} linear operator \(\T\) on \(\V\) such that \(\LG x, y \RG' = \LG \T(x), y \RG\) for all \(x\) and \(y\) in \(\V\).
+\emph{Hint}: Let \(\beta = \{ v_1, v_2, ..., v_n \}\) be an \emph{orthonormal} basis for \(\V\) \emph{with respect to} \(\InnerOp\), and define a matrix \(A\) by \(A_{ij} = \LG v_j, v_i \RG'\) for all \(i\) and \(j\).
+Let \(\T\) be the unique linear operator on \(\V\) such that \([\T]_{\beta} = A\).
+\item Prove that the operator \(\T\) of (a) is positive definite with respect to \textbf{both} inner products.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.23}
+Let \(\U\) be a diagonalizable linear operator on a finite-dimensional inner product space \(\V\) such that all of the eigenvalues of \(\U\) are \emph{real}.
+Prove that there exist positive definite linear operators \(\T_1\) and \(\T_1'\) and self-adjoint linear operators \(\T_2\) and \(\T_2'\) such that \(\U = \T_2 \T_1 = \T_1' \T_2'\).
+\emph{Hint}: Let \(\InnerOp\) be the inner product associated with \(\V\), \(\beta\) a basis of eigenvectors for \(\U\), \(\InnerOp'\) the inner product on \(\V\) with respect to which \(\beta\) is orthonormal (see \EXEC{6.1.22}(a)), and \(\T_1\) the positive definite operator according to \EXEC{6.4.22}.
+Show that \(\U\) is self-adjoint with respect to \(\InnerOp'\) and \(\U = \T_1^{-1} \U^* \T_1\) (the adjoint is \emph{with respect to} \(\InnerOp\)).
+Let \(\T_2 = \T_1^{-1} \U^*\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
